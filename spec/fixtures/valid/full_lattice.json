@@ -1,0 +1,105 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "cc-full-lattice-002",
+  "name": "Full Lifecycle Crystal with Transient Leases & Lessons",
+  "createdAt": "2026-08-28T12:00:00Z",
+  "updatedAt": "2026-08-28T13:30:00Z",
+  "parentCrystalId": null,
+  "goal": {
+    "title": "Implement High-Performance Cross-Compiled Parser",
+    "intent": "Deliver zero-reflection Scala 3 parser cross-compiling to Native, JVM, and JS.",
+    "status": "concluded_success",
+    "acceptanceCriteria": [
+      {
+        "id": "ac-1",
+        "description": "Cross-platform tests pass on all 3 runtimes",
+        "completed": true
+      }
+    ]
+  },
+  "entities": [
+    {
+      "id": "ent-human-1",
+      "kind": "human",
+      "name": "Architect"
+    },
+    {
+      "id": "ent-agent-1",
+      "kind": "model",
+      "name": "Antigravity Harness"
+    }
+  ],
+  "activeMask": {
+    "name": "ConductorImplementer",
+    "roleDescription": "TDD Implementation Persona",
+    "capabilities": ["fs_write", "sbt_test", "git_commit"]
+  },
+  "dag": {
+    "rootNodeId": "node-1",
+    "nodes": [
+      {
+        "id": "node-1",
+        "parentIds": [],
+        "timestamp": "2026-08-28T12:00:00Z",
+        "actorId": "ent-human-1",
+        "kind": "human_prompt",
+        "contentSummary": "Initialize cross-compilation pipeline",
+        "artifactIds": []
+      },
+      {
+        "id": "node-2",
+        "parentIds": ["node-1"],
+        "timestamp": "2026-08-28T12:15:00Z",
+        "actorId": "ent-agent-1",
+        "kind": "tool_execution",
+        "contentSummary": "Configured sbt plugins and verified sbt-crossproject",
+        "artifactIds": ["art-build-sbt"]
+      },
+      {
+        "id": "node-3",
+        "parentIds": ["node-2"],
+        "timestamp": "2026-08-28T13:30:00Z",
+        "actorId": "ent-agent-1",
+        "kind": "resolution",
+        "contentSummary": "All 3 platform targets verified green.",
+        "artifactIds": []
+      }
+    ]
+  },
+  "transientLeases": [
+    {
+      "id": "lease-worktree-1",
+      "resourceType": "git_worktree",
+      "resourcePath": ".git/worktrees/spike-native-ffi",
+      "description": "Temporary worktree for testing Scala Native FFI bindings",
+      "disposalPolicy": "revert_on_conclusion",
+      "status": "cleaned",
+      "createdAt": "2026-08-28T12:20:00Z"
+    }
+  ],
+  "lessonsLearned": [
+    {
+      "id": "lesson-1",
+      "observedFriction": "Scala Native 0.5 link error with unportable java.time imports",
+      "rootCause": "Direct usage of standard java.time instead of portable io.github.cquiroz::scala-java-time",
+      "recommendedAction": "Enforce portable time library in tech-stack.md",
+      "status": "actioned",
+      "actionAuditTrail": [
+        {
+          "timestamp": "2026-08-28T13:00:00Z",
+          "action": "Updated tech-stack.md with scala-java-time dependency rule",
+          "actorId": "ent-human-1"
+        }
+      ]
+    }
+  ],
+  "artifacts": [
+    {
+      "id": "art-build-sbt",
+      "uri": "file:///build.sbt",
+      "mediaType": "text/x-scala",
+      "description": "Multi-project build configuration",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  ]
+}

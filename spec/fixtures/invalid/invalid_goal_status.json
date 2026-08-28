@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "cc-invalid-002",
+  "createdAt": "2026-08-28T12:00:00Z",
+  "updatedAt": "2026-08-28T12:00:00Z",
+  "goal": {
+    "title": "Invalid Goal",
+    "intent": "Intent text",
+    "status": "unknown_status_enum",
+    "acceptanceCriteria": []
+  },
+  "entities": [],
+  "dag": {
+    "rootNodeId": "node-1",
+    "nodes": []
+  },
+  "transientLeases": [],
+  "lessonsLearned": []
+}

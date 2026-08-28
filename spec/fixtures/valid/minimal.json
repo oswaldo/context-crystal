@@ -1,0 +1,54 @@
+{
+  "schemaVersion": "1.0.0",
+  "id": "cc-minimal-001",
+  "name": "Minimal Context Crystal",
+  "createdAt": "2026-08-28T12:00:00Z",
+  "updatedAt": "2026-08-28T12:00:00Z",
+  "parentCrystalId": null,
+  "goal": {
+    "title": "Fix NullPointerException in User Parser",
+    "intent": "Investigate and resolve NPE thrown when user email is omitted.",
+    "status": "in_progress",
+    "acceptanceCriteria": [
+      {
+        "id": "ac-1",
+        "description": "Reproduce NPE with failing test",
+        "completed": true
+      },
+      {
+        "id": "ac-2",
+        "description": "Make email optional in parser",
+        "completed": false
+      }
+    ]
+  },
+  "entities": [
+    {
+      "id": "ent-human-1",
+      "kind": "human",
+      "name": "Lead Developer"
+    },
+    {
+      "id": "ent-model-1",
+      "kind": "model",
+      "name": "Gemini 3.7 Flash"
+    }
+  ],
+  "dag": {
+    "rootNodeId": "node-root-1",
+    "nodes": [
+      {
+        "id": "node-root-1",
+        "parentIds": [],
+        "timestamp": "2026-08-28T12:00:00Z",
+        "actorId": "ent-human-1",
+        "kind": "human_prompt",
+        "contentSummary": "Please fix NPE when user JSON lacks email field.",
+        "artifactIds": []
+      }
+    ]
+  },
+  "transientLeases": [],
+  "lessonsLearned": [],
+  "artifacts": []
+}
