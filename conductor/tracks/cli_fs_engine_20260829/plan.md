@@ -5,12 +5,12 @@
 
 ---
 
-## Phase 1: Filesystem Store (`FsCrystalStore`) (TDD)
+## Phase 1: Filesystem Store (`FsCrystalStore`) (TDD) [checkpoint: 1853c3f]
 Implement the filesystem storage backend for `.ccrystals/`.
 
-- [~] Task: (TDD Red) Write MUnit tests for `FsCrystalStore` directory creation, loading, and atomic saving
-- [ ] Task: (TDD Green) Implement `ccrystal.core.store.FsCrystalStore` with human-readable files (`crystal.json`, `tasks.md`, `transient.json`, `lessons-learned.md`)
-- [ ] Task: Phase Verification & Checkpoint (Refer to workflow.md)
+- [x] Task: (TDD Red) Write MUnit tests for `FsCrystalStore` directory creation, loading, and atomic saving [1853c3f]
+- [x] Task: (TDD Green) Implement `ccrystal.core.store.FsCrystalStore` with human-readable files (`crystal.json`, `tasks.md`, `transient.json`, `lessons-learned.md`) [1853c3f]
+- [x] Task: Phase Verification & Checkpoint (Refer to workflow.md) [1853c3f]
 
 ---
 
