@@ -1,0 +1,230 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://contextcrystal.org/schemas/v1/context-crystal.json",
+  "title": "ContextCrystal",
+  "description": "Standardized, immutable interchange schema and context lifecycle envelope.",
+  "type": "object",
+  "required": [
+    "schemaVersion",
+    "id",
+    "createdAt",
+    "updatedAt",
+    "goal",
+    "entities",
+    "dag",
+    "transientLeases",
+    "lessonsLearned"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "type": "string",
+      "enum": ["1.0.0"]
+    },
+    "id": {
+      "type": "string",
+      "description": "Unique identifier for the context crystal"
+    },
+    "name": {
+      "type": "string",
+      "description": "Human-readable name of the context crystal"
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "updatedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "parentCrystalId": {
+      "type": ["string", "null"],
+      "description": "Optional parent crystal identifier when structured as a sub-context dendrite"
+    },
+    "goal": {
+      "$ref": "#/$defs/Goal"
+    },
+    "entities": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Entity"
+      }
+    },
+    "activeMask": {
+      "$ref": "#/$defs/Mask"
+    },
+    "dag": {
+      "$ref": "#/$defs/DAG"
+    },
+    "transientLeases": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/TransientLease"
+      }
+    },
+    "lessonsLearned": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/LessonLearned"
+      }
+    },
+    "artifacts": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/Artifact"
+      },
+      "default": []
+    }
+  },
+  "$defs": {
+    "Goal": {
+      "type": "object",
+      "required": ["title", "intent", "status", "acceptanceCriteria"],
+      "properties": {
+        "title": { "type": "string" },
+        "intent": { "type": "string" },
+        "status": {
+          "type": "string",
+          "enum": ["in_progress", "concluded_success", "concluded_abandoned"]
+        },
+        "acceptanceCriteria": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "description", "completed"],
+            "properties": {
+              "id": { "type": "string" },
+              "description": { "type": "string" },
+              "completed": { "type": "boolean" }
+            }
+          }
+        }
+      }
+    },
+    "Entity": {
+      "type": "object",
+      "required": ["id", "kind", "name"],
+      "properties": {
+        "id": { "type": "string" },
+        "kind": {
+          "type": "string",
+          "enum": ["human", "model", "system", "tool"]
+        },
+        "name": { "type": "string" },
+        "metadata": {
+          "type": "object",
+          "additionalProperties": { "type": "string" }
+        }
+      }
+    },
+    "Mask": {
+      "type": "object",
+      "required": ["name", "roleDescription"],
+      "properties": {
+        "name": { "type": "string" },
+        "roleDescription": { "type": "string" },
+        "capabilities": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "parameters": {
+          "type": "object",
+          "additionalProperties": { "type": "string" }
+        }
+      }
+    },
+    "DAG": {
+      "type": "object",
+      "required": ["rootNodeId", "nodes"],
+      "properties": {
+        "rootNodeId": { "type": "string" },
+        "nodes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/DAGNode"
+          }
+        }
+      }
+    },
+    "DAGNode": {
+      "type": "object",
+      "required": ["id", "parentIds", "timestamp", "actorId", "kind", "contentSummary"],
+      "properties": {
+        "id": { "type": "string" },
+        "parentIds": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "timestamp": { "type": "string", "format": "date-time" },
+        "actorId": { "type": "string" },
+        "kind": {
+          "type": "string",
+          "enum": ["human_prompt", "agent_reasoning", "tool_execution", "checkpoint", "branch", "resolution"]
+        },
+        "contentSummary": { "type": "string" },
+        "artifactIds": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "TransientLease": {
+      "type": "object",
+      "required": ["id", "resourceType", "description", "disposalPolicy", "status"],
+      "properties": {
+        "id": { "type": "string" },
+        "resourceType": {
+          "type": "string",
+          "enum": ["git_worktree", "env_override", "debug_config", "dummy_asset", "mock_service"]
+        },
+        "resourcePath": { "type": "string" },
+        "description": { "type": "string" },
+        "disposalPolicy": {
+          "type": "string",
+          "enum": ["revert_on_conclusion", "delete_after_test", "replace_in_final_cut", "manual"]
+        },
+        "status": {
+          "type": "string",
+          "enum": ["active", "reverted", "cleaned", "promoted_to_permanent"]
+        },
+        "createdAt": { "type": "string", "format": "date-time" }
+      }
+    },
+    "LessonLearned": {
+      "type": "object",
+      "required": ["id", "observedFriction", "status"],
+      "properties": {
+        "id": { "type": "string" },
+        "observedFriction": { "type": "string" },
+        "rootCause": { "type": "string" },
+        "recommendedAction": { "type": "string" },
+        "status": {
+          "type": "string",
+          "enum": ["open", "actioned", "dismissed"]
+        },
+        "actionAuditTrail": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["timestamp", "action", "actorId"],
+            "properties": {
+              "timestamp": { "type": "string", "format": "date-time" },
+              "action": { "type": "string" },
+              "actorId": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    "Artifact": {
+      "type": "object",
+      "required": ["id", "uri", "mediaType"],
+      "properties": {
+        "id": { "type": "string" },
+        "uri": { "type": "string" },
+        "mediaType": { "type": "string" },
+        "description": { "type": "string" },
+        "sha256": { "type": "string" }
+      }
+    }
+  }
+}
