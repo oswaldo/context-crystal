@@ -14,12 +14,12 @@ Establish the vendor-neutral JSON Schema v1 and standard validation fixtures.
 
 ---
 
-## Phase 2: sbt Multi-Platform Build Configuration
+## Phase 2: sbt Multi-Platform Build Configuration [checkpoint: 48c71de]
 Configure the Scala 3 build system with `sbt-crossproject` targeting JVM, Native, and JS.
 
-- [~] Task: Configure `project/plugins.sbt` with `sbt-scalajs`, `sbt-scala-native`, and `sbt-crossproject`
-- [ ] Task: Create `build.sbt` defining `core` cross-project with Circe and MUnit dependencies
-- [ ] Task: Phase Verification & Checkpoint (Refer to workflow.md)
+- [x] Task: Configure `project/plugins.sbt` with `sbt-scalajs`, `sbt-scala-native`, and `sbt-crossproject` [05de5b9]
+- [x] Task: Create `build.sbt` defining `core` cross-project with Circe and MUnit dependencies [48c71de]
+- [x] Task: Phase Verification & Checkpoint (Refer to workflow.md) [48c71de]
 
 ---
 
