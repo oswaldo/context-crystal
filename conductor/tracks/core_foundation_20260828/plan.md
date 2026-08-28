@@ -5,12 +5,12 @@
 
 ---
 
-## Phase 1: Specification & Schema Fixtures
+## Phase 1: Specification & Schema Fixtures [checkpoint: 26be76a]
 Establish the vendor-neutral JSON Schema v1 and standard validation fixtures.
 
 - [x] Task: Create `spec/v1/context-crystal.json` JSON Schema (Draft 2020-12) defining Envelope, Goal, Entity/Mask, DAG Nodes, Transient Leases, and Lessons Learned [734e999]
-- [~] Task: Create valid and invalid sample crystal fixtures in `spec/fixtures/`
-- [ ] Task: Phase Verification & Checkpoint (Refer to workflow.md)
+- [x] Task: Create valid and invalid sample crystal fixtures in `spec/fixtures/` [26be76a]
+- [x] Task: Phase Verification & Checkpoint (Refer to workflow.md) [26be76a]
 
 ---
 
