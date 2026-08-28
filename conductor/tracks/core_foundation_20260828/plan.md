@@ -34,12 +34,12 @@ Implement domain ADTs and Circe JSON encoders/decoders with full cross-platform 
 
 ---
 
-## Phase 4: DAG State Operations & Deterministic Auditing (TDD)
+## Phase 4: DAG State Operations & Deterministic Auditing (TDD) [checkpoint: 9e67301]
 Implement immutable lattice DAG operations and pure functional auditing routines.
 
-- [ ] Task: (TDD Red) Write MUnit tests for DAG node addition, branch creation, ancestor traversal, and cycle detection
-- [ ] Task: (TDD Green) Implement `ccrystal.core.dag.CrystalDAG` immutable graph operations
-- [ ] Task: (TDD Red) Write MUnit tests for transient lease audit (uncleaned items) and lessons learned audit (unaddressed items)
-- [ ] Task: (TDD Green) Implement `ccrystal.core.audit.CrystalAuditor` deterministic scanning routines
-- [ ] Task: Verify all unit tests pass across JVM, Native, and JS with >80% code coverage
-- [ ] Task: Phase Verification & Checkpoint (Refer to workflow.md)
+- [x] Task: (TDD Red) Write MUnit tests for DAG node addition, branch creation, ancestor traversal, and cycle detection [9e67301]
+- [x] Task: (TDD Green) Implement `ccrystal.core.dag.CrystalDAG` immutable graph operations [9e67301]
+- [x] Task: (TDD Red) Write MUnit tests for transient lease audit (uncleaned items) and lessons learned audit (unaddressed items) [9e67301]
+- [x] Task: (TDD Green) Implement `ccrystal.core.audit.CrystalAuditor` deterministic scanning routines [9e67301]
+- [x] Task: Verify all unit tests pass across JVM, Native, and JS with >80% code coverage [9e67301]
+- [x] Task: Phase Verification & Checkpoint (Refer to workflow.md) [9e67301]
