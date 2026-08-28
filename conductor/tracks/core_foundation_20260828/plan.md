@@ -23,14 +23,14 @@ Configure the Scala 3 build system with `sbt-crossproject` targeting JVM, Native
 
 ---
 
-## Phase 3: Core Domain Models & Codecs (TDD)
+## Phase 3: Core Domain Models & Codecs (TDD) [checkpoint: 0120081]
 Implement domain ADTs and Circe JSON encoders/decoders with full cross-platform parity.
 
-- [ ] Task: (TDD Red) Write MUnit tests for Domain Model serialization and deserialization against `spec/fixtures/`
-- [ ] Task: (TDD Green) Implement `ccrystal.core.model.*` (Envelope, Goal, Entity, Mask, StateNode, TransientLease, LessonLearned)
-- [ ] Task: (TDD Green) Implement `ccrystal.core.codec.*` Circe encoders/decoders
-- [ ] Task: Verify cross-platform round-trip serialization tests on `coreJVM`, `coreNative`, and `coreJS`
-- [ ] Task: Phase Verification & Checkpoint (Refer to workflow.md)
+- [x] Task: (TDD Red) Write MUnit tests for Domain Model serialization and deserialization against `spec/fixtures/` [0120081]
+- [x] Task: (TDD Green) Implement `ccrystal.core.model.*` (Envelope, Goal, Entity, Mask, StateNode, TransientLease, LessonLearned) [0120081]
+- [x] Task: (TDD Green) Implement `ccrystal.core.codec.*` Circe encoders/decoders [0120081]
+- [x] Task: Verify cross-platform round-trip serialization tests on `coreJVM`, `coreNative`, and `coreJS` [0120081]
+- [x] Task: Phase Verification & Checkpoint (Refer to workflow.md) [0120081]
 
 ---
 
