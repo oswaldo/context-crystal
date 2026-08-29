@@ -226,5 +226,24 @@ class Runner(val store: CrystalStore):
         sb.toString
       }
 
+    case CliCommand.Refresh(crystalIdOpt, all) =>
+      if all then
+        store.list().flatMap { crystals =>
+          val results = crystals.map(c => store.save(c))
+          val failures = results.collect { case Left(err) => err }
+          if failures.isEmpty then
+            Right(s"Refreshed derived views for ${crystals.size} crystal(s).")
+          else
+            Left(s"Errors during batch refresh: ${failures.mkString("; ")}")
+        }
+      else
+        crystalIdOpt match
+          case Some(id) =>
+            store.load(id).flatMap { crystal =>
+              store.save(crystal).map(_ => s"Refreshed derived views (tasks.md, lessons-learned.md, transient.json) for '$id'.")
+            }
+          case None =>
+            Left("Please specify a crystal ID or use --all to refresh all crystals.")
+
     case CliCommand.Batch(script) =>
       Left("Batch execution handled via BatchExecutor")

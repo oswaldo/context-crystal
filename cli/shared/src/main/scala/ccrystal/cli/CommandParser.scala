@@ -7,8 +7,6 @@ import ccrystal.core.model.*
 
 object CommandParser:
 
-  private val nameArg = Argument[String]
-
   private val nodeKindArgument: Argument[NodeKind] = Argument.from("node-kind") {
     case "human_prompt"    => Validated.valid(NodeKind.HumanPrompt)
     case "agent_reasoning" => Validated.valid(NodeKind.AgentReasoning)
@@ -99,6 +97,11 @@ object CommandParser:
     Opts.flag("summary-only", "Emit only high-level summary").orFalse
   ).mapN(CliCommand.Cast.apply)
 
+  private val refreshOpts = (
+    Opts.argument[String]("crystal-id").orNone,
+    Opts.flag("all", "Refresh derived views for all crystals in .ccrystals/").orFalse
+  ).mapN(CliCommand.Refresh.apply)
+
   private val mainCommand = Command("ccrystal", "Context Crystal CLI")(
     Opts.subcommand("init", "Initialize a new crystal")(initOpts)
       .orElse(Opts.subcommand("list", "List crystals")(listOpts))
@@ -118,6 +121,7 @@ object CommandParser:
       ))
       .orElse(Opts.subcommand("cast", "Cast a context beam for LLMs")(castOpts))
       .orElse(Opts.subcommand("hydrate", "Hydrate context for LLMs (alias for cast)")(hydrateOpts))
+      .orElse(Opts.subcommand("refresh", "Re-project derived views (tasks.md, lessons-learned.md) from crystal.json")(refreshOpts))
   )
 
   def parse(args: List[String]): Either[String, CliCommand] =

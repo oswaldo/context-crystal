@@ -16,4 +16,5 @@ enum CliCommand derives CanEqual:
   case TransientClean(crystalId: String, leaseId: String)
   case TransientList(crystalId: String)
   case Cast(crystalId: String, depth: Int = 10, summaryOnly: Boolean = false)
+  case Refresh(crystalId: Option[String], all: Boolean)
   case Batch(scriptOrChain: String)
