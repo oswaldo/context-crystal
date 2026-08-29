@@ -14,21 +14,21 @@ Implement the filesystem storage backend for `.ccrystals/`.
 
 ---
 
-## Phase 2: CLI Subcommands & Decline Parser (TDD)
+## Phase 2: CLI Subcommands & Decline Parser (TDD) [checkpoint: 8e3b11d]
 Implement the command parser and execution dispatcher.
 
-- [ ] Task: Configure `cli` subproject in `build.sbt` with `decline` for Scala Native
-- [ ] Task: (TDD Red) Write unit tests for command parsing (`init`, `list`, `task`, `node`, `lesson`, `transient`, `cast`/`hydrate`)
-- [ ] Task: (TDD Green) Implement `ccrystal.cli.CommandParser` and `ccrystal.cli.Runner`
-- [ ] Task: Phase Verification & Checkpoint (Refer to workflow.md)
+- [x] Task: Configure `cli` subproject in `build.sbt` with `decline` for Scala Native [8e3b11d]
+- [x] Task: (TDD Red) Write unit tests for command parsing (`init`, `list`, `task`, `node`, `lesson`, `transient`, `cast`/`hydrate`) [8e3b11d]
+- [x] Task: (TDD Green) Implement `ccrystal.cli.CommandParser` and `ccrystal.cli.Runner` [8e3b11d]
+- [x] Task: Phase Verification & Checkpoint (Refer to workflow.md) [8e3b11d]
 
 ---
 
-## Phase 3: Batch Execution Engine & Context Casting (TDD)
+## Phase 3: Batch Execution Engine & Context Casting (TDD) [checkpoint: eab50a4]
 Implement multi-command batching and token-efficient context casting.
 
-- [ ] Task: (TDD Red) Write tests for chained semicolon execution and script batch parsing
-- [ ] Task: (TDD Green) Implement `ccrystal.cli.BatchExecutor` supporting chained strings and stdin scripts
-- [ ] Task: (TDD Green) Implement `ccrystal.core.cast.ContextCaster` generating token-optimized markdown prompts for LLM consumption
-- [ ] Task: Build native binary (`sbt cliNative/nativeLink`) and verify end-to-end execution
-- [ ] Task: Phase Verification & Checkpoint (Refer to workflow.md)
+- [x] Task: (TDD Red) Write tests for chained semicolon execution and script batch parsing [eab50a4]
+- [x] Task: (TDD Green) Implement `ccrystal.cli.BatchExecutor` supporting chained strings and stdin scripts [eab50a4]
+- [x] Task: (TDD Green) Implement `ccrystal.core.cast.ContextCaster` generating token-optimized markdown prompts for LLM consumption [eab50a4]
+- [x] Task: Build native binary (`sbt cliNative/nativeLink`) and verify end-to-end execution [eab50a4]
+- [x] Task: Phase Verification & Checkpoint (Refer to workflow.md) [eab50a4]
