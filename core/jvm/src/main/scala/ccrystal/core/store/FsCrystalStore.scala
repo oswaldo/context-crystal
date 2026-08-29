@@ -21,15 +21,15 @@ class FsCrystalStore(val rootPath: Path) extends CrystalStore:
       Files.createDirectories(dir)
       Files.createDirectories(dir.resolve("artifacts"))
 
-      // 1. Write crystal.json
+      // 1. Write crystal.json (Source of Truth)
       val jsonContent = crystal.asJson.spaces2
       Files.write(dir.resolve("crystal.json"), jsonContent.getBytes(StandardCharsets.UTF_8))
 
-      // 2. Write tasks.md
+      // 2. Write tasks.md (Derived view)
       val tasksContent = generateTasksMarkdown(crystal)
       Files.write(dir.resolve("tasks.md"), tasksContent.getBytes(StandardCharsets.UTF_8))
 
-      // 3. Write lessons-learned.md
+      // 3. Write lessons-learned.md (Derived view)
       val lessonsContent = generateLessonsMarkdown(crystal)
       Files.write(dir.resolve("lessons-learned.md"), lessonsContent.getBytes(StandardCharsets.UTF_8))
 
@@ -76,9 +76,13 @@ class FsCrystalStore(val rootPath: Path) extends CrystalStore:
   private def crystalDir(id: String): Path =
     rootPath.resolve(id)
 
+  private val AutoGenWarning =
+    "> [!NOTE]\n> **Auto-Generated View:** This file is projected from `crystal.json` (the single source of truth). Do not edit manually; use `ccrystal` CLI commands to update state.\n\n"
+
   private def generateTasksMarkdown(crystal: ContextCrystal): String =
     val sb = new java.lang.StringBuilder()
     sb.append(s"# Tasks: ${crystal.goal.title}\n\n")
+    sb.append(AutoGenWarning)
     sb.append(s"**Status:** ${crystal.goal.status}\n\n")
     sb.append("## Acceptance Criteria / Tasks\n\n")
     if crystal.goal.acceptanceCriteria.isEmpty then
@@ -93,6 +97,7 @@ class FsCrystalStore(val rootPath: Path) extends CrystalStore:
   private def generateLessonsMarkdown(crystal: ContextCrystal): String =
     val sb = new java.lang.StringBuilder()
     sb.append(s"# Lessons Learned: ${crystal.goal.title}\n\n")
+    sb.append(AutoGenWarning)
     if crystal.lessonsLearned.isEmpty then
       sb.append("No lessons recorded yet.\n")
     else
