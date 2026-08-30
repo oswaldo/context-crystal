@@ -8,6 +8,7 @@
 - [x] **Track: CLI Filesystem Engine & Batch Execution**  
   *Link: [conductor/tracks/cli_fs_engine_20260829/index.md](./tracks/cli_fs_engine_20260829/index.md)*
 
-- [ ] **Track: Cave Entities and Authorship Tracking**  
+- [x] **Track: Cave Entities and Authorship Tracking**  
   *Link: [conductor/tracks/cave_entities_authorship_20260830/index.md](./tracks/cave_entities_authorship_20260830/index.md)*
+
 
