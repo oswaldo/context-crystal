@@ -1,10 +1,10 @@
 # Track Implementation Plan: Cave Entities and Authorship Tracking (`cave_entities_authorship_20260830`)
 
-## Phase 1: Core Domain Models & Codecs (TDD)
+## Phase 1: Core Domain Models & Codecs (TDD) [checkpoint: 6fc7527]
 - [x] Task: Write failing unit tests in `core` for `AuthorshipMode`, `EntityRegistry`, `EntityKind`, and extensible `metadata` fields in `ModelCodecSuite.scala` (d481c60)
 - [x] Task: Implement `AuthorshipMode`, `EntityRegistry`, updated `Entity`, and `metadata` support in `Models.scala` and `Codecs.scala` (800344d)
 - [x] Task: Verify cross-platform codec tests pass on JVM, Native, and JS (`sbt test`) (800344d)
-- [ ] Task: Phase Verification & Checkpoint (Refer to workflow.md)
+- [x] Task: Phase Verification & Checkpoint (Refer to workflow.md) (6fc7527)
 
 ## Phase 2: Storage Layer & Collision Resolution (TDD)
 - [ ] Task: Write failing unit tests in `FsCrystalStoreSuite.scala` for `.ccrystals/entities.json` lifecycle and collision resolution
