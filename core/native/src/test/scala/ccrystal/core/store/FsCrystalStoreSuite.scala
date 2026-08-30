@@ -94,3 +94,42 @@ class FsCrystalStoreSuite extends FunSuite:
     assert(listRes.isRight)
     val list = listRes.toOption.get
     assertEquals(list.map(_.id).toSet, Set("crystal-a", "crystal-b"))
+
+  test("FsCrystalStore manages .ccrystals/entities.json lifecycle and collision resolution"):
+    val store = FsCrystalStore(tempDir.resolve(".ccrystals").toString)
+
+    // Initial registry should be empty or auto-created
+    val initialEntities = store.getEntityRegistry()
+    assert(initialEntities.isRight)
+    assertEquals(initialEntities.toOption.get.entities.isEmpty, true)
+
+    // Register human entity
+    val humanRes = store.registerEntity(Entity("usr_oswaldo", EntityKind.Human, "oswaldo", Map("role" -> "lead")))
+    assert(humanRes.isRight)
+
+    // Resolve or create agent entity with collision resolution
+    val agt1 = store.resolveOrCreateEntity("antigravity", EntityKind.Agent)
+    assert(agt1.isRight)
+    assertEquals(agt1.toOption.get.name, "antigravity")
+
+    // Requesting another concurrent agent of same base name resolves to incremented suffix
+    val agt2 = store.resolveOrCreateEntity("antigravity", EntityKind.Agent, distinct = true)
+    assert(agt2.isRight)
+    assertEquals(agt2.toOption.get.name, "antigravity-1")
+
+    val agt3 = store.resolveOrCreateEntity("antigravity", EntityKind.Agent, distinct = true)
+    assert(agt3.isRight)
+    assertEquals(agt3.toOption.get.name, "antigravity-2")
+
+    // Verify entities.json exists and contains registered entities
+    val entitiesJsonPath = tempDir.resolve(".ccrystals").resolve("entities.json")
+    assert(Files.exists(entitiesJsonPath), "entities.json should exist")
+
+    val reloadedRegistry = store.getEntityRegistry()
+    assert(reloadedRegistry.isRight)
+    val entitiesMap = reloadedRegistry.toOption.get.entities
+    assert(entitiesMap.contains("usr_oswaldo"))
+    assert(entitiesMap.contains(agt1.toOption.get.id))
+    assert(entitiesMap.contains(agt2.toOption.get.id))
+    assert(entitiesMap.contains(agt3.toOption.get.id))
+
