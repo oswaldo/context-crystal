@@ -7,8 +7,8 @@
 - [x] Task: Phase Verification & Checkpoint (Refer to workflow.md) (6fc7527)
 
 ## Phase 2: Storage Layer & Collision Resolution (TDD)
-- [ ] Task: Write failing unit tests in `FsCrystalStoreSuite.scala` for `.ccrystals/entities.json` lifecycle and collision resolution
-- [ ] Task: Implement entity registry read/write and incremental suffix collision resolution in `FsCrystalStore.scala` (both JVM and Native)
+- [x] Task: Write failing unit tests in `FsCrystalStoreSuite.scala` for `.ccrystals/entities.json` lifecycle and collision resolution (2c4ed5c)
+- [~] Task: Implement entity registry read/write and incremental suffix collision resolution in `FsCrystalStore.scala` (both JVM and Native)
 - [ ] Task: Verify storage suite passes on JVM and Native targets
 - [ ] Task: Phase Verification & Checkpoint (Refer to workflow.md)
 
