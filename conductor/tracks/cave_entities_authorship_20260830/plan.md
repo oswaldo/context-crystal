@@ -6,11 +6,11 @@
 - [x] Task: Verify cross-platform codec tests pass on JVM, Native, and JS (`sbt test`) (800344d)
 - [x] Task: Phase Verification & Checkpoint (Refer to workflow.md) (6fc7527)
 
-## Phase 2: Storage Layer & Collision Resolution (TDD)
+## Phase 2: Storage Layer & Collision Resolution (TDD) [checkpoint: d2298f0]
 - [x] Task: Write failing unit tests in `FsCrystalStoreSuite.scala` for `.ccrystals/entities.json` lifecycle and collision resolution (2c4ed5c)
-- [~] Task: Implement entity registry read/write and incremental suffix collision resolution in `FsCrystalStore.scala` (both JVM and Native)
-- [ ] Task: Verify storage suite passes on JVM and Native targets
-- [ ] Task: Phase Verification & Checkpoint (Refer to workflow.md)
+- [x] Task: Implement entity registry read/write and incremental suffix collision resolution in `FsCrystalStore.scala` (both JVM and Native) (d2298f0)
+- [x] Task: Verify storage suite passes on JVM and Native targets (d2298f0)
+- [x] Task: Phase Verification & Checkpoint (Refer to workflow.md) (d2298f0)
 
 ## Phase 3: CLI Commands & Authorship Integration (TDD)
 - [ ] Task: Write failing CLI command tests for `--author`, `--author-kind`, `ccrystal entity list`, and `ccrystal entity register`
