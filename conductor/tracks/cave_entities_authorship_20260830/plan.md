@@ -2,8 +2,8 @@
 
 ## Phase 1: Core Domain Models & Codecs (TDD)
 - [x] Task: Write failing unit tests in `core` for `AuthorshipMode`, `EntityRegistry`, `EntityKind`, and extensible `metadata` fields in `ModelCodecSuite.scala` (d481c60)
-- [~] Task: Implement `AuthorshipMode`, `EntityRegistry`, updated `Entity`, and `metadata` support in `Models.scala` and `Codecs.scala`
-- [ ] Task: Verify cross-platform codec tests pass on JVM, Native, and JS (`sbt test`)
+- [x] Task: Implement `AuthorshipMode`, `EntityRegistry`, updated `Entity`, and `metadata` support in `Models.scala` and `Codecs.scala` (800344d)
+- [x] Task: Verify cross-platform codec tests pass on JVM, Native, and JS (`sbt test`) (800344d)
 - [ ] Task: Phase Verification & Checkpoint (Refer to workflow.md)
 
 ## Phase 2: Storage Layer & Collision Resolution (TDD)
