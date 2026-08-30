@@ -20,6 +20,7 @@ given Decoder[GoalStatus] = Decoder.decodeString.emap {
 
 given Encoder[EntityKind] = Encoder.encodeString.contramap {
   case EntityKind.Human  => "human"
+  case EntityKind.Agent  => "agent"
   case EntityKind.Model  => "model"
   case EntityKind.System => "system"
   case EntityKind.Tool   => "tool"
@@ -27,10 +28,24 @@ given Encoder[EntityKind] = Encoder.encodeString.contramap {
 
 given Decoder[EntityKind] = Decoder.decodeString.emap {
   case "human"  => Right(EntityKind.Human)
+  case "agent"  => Right(EntityKind.Agent)
   case "model"  => Right(EntityKind.Model)
   case "system" => Right(EntityKind.System)
   case "tool"   => Right(EntityKind.Tool)
   case other    => Left(s"Invalid EntityKind: $other")
+}
+
+given Encoder[AuthorshipMode] = Encoder.encodeString.contramap {
+  case AuthorshipMode.None    => "none"
+  case AuthorshipMode.Tracked => "tracked"
+  case AuthorshipMode.Signed  => "signed"
+}
+
+given Decoder[AuthorshipMode] = Decoder.decodeString.emap {
+  case "none"    => Right(AuthorshipMode.None)
+  case "tracked" => Right(AuthorshipMode.Tracked)
+  case "signed"  => Right(AuthorshipMode.Signed)
+  case other     => Left(s"Invalid AuthorshipMode: $other")
 }
 
 given Encoder[NodeKind] = Encoder.encodeString.contramap {
@@ -115,6 +130,7 @@ given Decoder[LessonStatus] = Decoder.decodeString.emap {
 given Codec[AcceptanceCriterion] = deriveCodec
 given Codec[Goal] = deriveCodec
 given Codec[Entity] = deriveCodec
+given Codec[EntityRegistry] = deriveCodec
 given Codec[Mask] = deriveCodec
 given Codec[DAGNode] = deriveCodec
 given Codec[DAG] = deriveCodec

@@ -17,19 +17,34 @@ case class Goal(
   title: String,
   intent: String,
   status: GoalStatus,
-  acceptanceCriteria: List[AcceptanceCriterion]
+  acceptanceCriteria: List[AcceptanceCriterion],
+  metadata: Map[String, String] = Map.empty
 ) derives CanEqual
 
 enum EntityKind derives CanEqual:
   case Human
+  case Agent
   case Model
   case System
   case Tool
+
+enum AuthorshipMode derives CanEqual:
+  case None
+  case Tracked
+  case Signed
 
 case class Entity(
   id: String,
   kind: EntityKind,
   name: String,
+  metadata: Map[String, String] = Map.empty,
+  publicKey: Option[String] = None
+) derives CanEqual
+
+case class EntityRegistry(
+  caveId: Option[String] = None,
+  authorshipMode: AuthorshipMode = AuthorshipMode.Tracked,
+  entities: Map[String, Entity] = Map.empty,
   metadata: Map[String, String] = Map.empty
 ) derives CanEqual
 
@@ -55,7 +70,8 @@ case class DAGNode(
   actorId: String,
   kind: NodeKind,
   contentSummary: String,
-  artifactIds: List[String] = Nil
+  artifactIds: List[String] = Nil,
+  metadata: Map[String, String] = Map.empty
 ) derives CanEqual
 
 case class DAG(
@@ -127,11 +143,14 @@ case class ContextCrystal(
   createdAt: String,
   updatedAt: String,
   parentCrystalId: Option[String] = None,
+  caveId: Option[String] = None,
+  defaultAuthorId: Option[String] = None,
   goal: Goal,
   entities: List[Entity],
   activeMask: Option[Mask] = None,
   dag: DAG,
   transientLeases: List[TransientLease] = Nil,
   lessonsLearned: List[LessonLearned] = Nil,
-  artifacts: List[Artifact] = Nil
+  artifacts: List[Artifact] = Nil,
+  metadata: Map[String, String] = Map.empty
 ) derives CanEqual
