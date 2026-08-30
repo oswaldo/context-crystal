@@ -107,3 +107,40 @@ class ModelCodecSuite extends FunSuite:
     val json = crystal.asJson
     val decoded = decode[ContextCrystal](json.noSpaces)
     assertEquals(decoded, Right(crystal))
+
+  test("Round-trip serialization of AuthorshipMode and EntityRegistry"):
+    val registry = EntityRegistry(
+      caveId = Some("acme/eng/platform"),
+      authorshipMode = AuthorshipMode.Tracked,
+      entities = Map(
+        "usr_oswaldo" -> Entity("usr_oswaldo", EntityKind.Human, "oswaldo", Map("role" -> "architect")),
+        "agt_antigravity_1" -> Entity("agt_antigravity_1", EntityKind.Agent, "antigravity-1", Map("model" -> "gemini-3.7-flash"))
+      )
+    )
+
+    val json = registry.asJson
+    val decoded = decode[EntityRegistry](json.noSpaces)
+    assertEquals(decoded, Right(registry))
+
+  test("AuthorshipMode enum values serialization"):
+    assertEquals(AuthorshipMode.None.asJson.asString, Some("none"))
+    assertEquals(AuthorshipMode.Tracked.asJson.asString, Some("tracked"))
+    assertEquals(AuthorshipMode.Signed.asJson.asString, Some("signed"))
+    assertEquals(decode[AuthorshipMode]("\"none\""), Right(AuthorshipMode.None))
+    assertEquals(decode[AuthorshipMode]("\"tracked\""), Right(AuthorshipMode.Tracked))
+    assertEquals(decode[AuthorshipMode]("\"signed\""), Right(AuthorshipMode.Signed))
+
+  test("Extensible metadata support across ContextCrystal, DAGNode, and Goal"):
+    val node = DAGNode(
+      id = "n-1",
+      parentIds = Nil,
+      timestamp = "2026-08-30T12:00:00Z",
+      actorId = "agt_antigravity_1",
+      kind = NodeKind.AgentReasoning,
+      contentSummary = "Synthesized next steps",
+      artifactIds = Nil,
+      metadata = Map("tokens_used" -> "120", "temperature" -> "0.2")
+    )
+    val decodedNode = decode[DAGNode](node.asJson.noSpaces)
+    assertEquals(decodedNode, Right(node))
+
