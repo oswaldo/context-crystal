@@ -13,7 +13,7 @@
 - [x] Task: Phase Verification & Checkpoint (Refer to workflow.md) (d2298f0)
 
 ## Phase 3: CLI Commands & Authorship Integration (TDD)
-- [ ] Task: Write failing CLI command tests for `--author`, `--author-kind`, `ccrystal entity list`, and `ccrystal entity register`
-- [ ] Task: Update `CliCommand.scala`, `CommandParser.scala`, and `BatchExecutor.scala` to support entity management and author attribution
+- [x] Task: Write failing CLI command tests for `--author`, `--author-kind`, `ccrystal entity list`, and `ccrystal entity register` (0c8e00e)
+- [~] Task: Update `CliCommand.scala`, `CommandParser.scala`, and `BatchExecutor.scala` to support entity management and author attribution
 - [ ] Task: Build Native binary (`sbt cliNative/nativeLink`) and verify end-to-end entity registration and authorship tracking
 - [ ] Task: Phase Verification & Checkpoint (Refer to workflow.md)
