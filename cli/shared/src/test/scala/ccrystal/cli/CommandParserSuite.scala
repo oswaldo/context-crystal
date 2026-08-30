@@ -55,3 +55,26 @@ class CommandParserSuite extends FunSuite:
     val parsedLease = CommandParser.parse(leaseArgs)
     assert(parsedLease.isRight)
     assertEquals(parsedLease.toOption.get, CliCommand.TransientLeaseCmd("my-crystal", TransientResourceType.GitWorktree, None, "Spike branch", DisposalPolicy.RevertOnConclusion))
+
+  test("Parses 'entity list' and 'entity register' commands"):
+    val listArgs = List("entity", "list")
+    val parsedList = CommandParser.parse(listArgs)
+    assert(parsedList.isRight)
+    assertEquals(parsedList.toOption.get, CliCommand.EntityList)
+
+    val regArgs = List("entity", "register", "--name", "antigravity", "--kind", "agent")
+    val parsedReg = CommandParser.parse(regArgs)
+    assert(parsedReg.isRight)
+    assertEquals(parsedReg.toOption.get, CliCommand.EntityRegister("antigravity", EntityKind.Agent))
+
+  test("Parses 'init' and 'node add' with explicit --author"):
+    val initArgs = List("init", "authored-crystal", "--goal", "Fix bugs", "--author", "antigravity", "--author-kind", "agent")
+    val parsedInit = CommandParser.parse(initArgs)
+    assert(parsedInit.isRight)
+    assertEquals(parsedInit.toOption.get, CliCommand.Init("authored-crystal", "Fix bugs", None, Some("antigravity"), Some(EntityKind.Agent)))
+
+    val nodeArgs = List("node", "add", "authored-crystal", "--kind", "agent_reasoning", "--summary", "Planned next steps", "--author", "agt_antigravity_1")
+    val parsedNode = CommandParser.parse(nodeArgs)
+    assert(parsedNode.isRight)
+    assertEquals(parsedNode.toOption.get, CliCommand.NodeAdd("authored-crystal", NodeKind.AgentReasoning, "Planned next steps", Nil, Some("agt_antigravity_1")))
+
