@@ -34,12 +34,23 @@ object CommandParser:
     case other                  => Validated.invalidNel(s"Invalid disposal policy: $other")
   }
 
+  private val entityKindArgument: Argument[EntityKind] = Argument.from("entity-kind") {
+    case "human"  => Validated.valid(EntityKind.Human)
+    case "agent"  => Validated.valid(EntityKind.Agent)
+    case "model"  => Validated.valid(EntityKind.Model)
+    case "system" => Validated.valid(EntityKind.System)
+    case "tool"   => Validated.valid(EntityKind.Tool)
+    case other    => Validated.invalidNel(s"Invalid entity kind: $other")
+  }
+
   // --- Subcommands ---
 
   private val initOpts = (
     Opts.argument[String]("name"),
     Opts.option[String]("goal", "Goal title", "g"),
-    Opts.option[String]("intent", "Detailed goal intent", "i").orNone
+    Opts.option[String]("intent", "Detailed goal intent", "i").orNone,
+    Opts.option[String]("author", "Author entity name", "u").orNone,
+    Opts.option[EntityKind]("author-kind", "Author entity kind")(entityKindArgument).orNone
   ).mapN(CliCommand.Init.apply)
 
   private val listOpts = (
@@ -67,8 +78,16 @@ object CommandParser:
     Opts.argument[String]("crystal-id"),
     Opts.option[NodeKind]("kind", "Node kind", "k")(nodeKindArgument),
     Opts.option[String]("summary", "Content summary", "s"),
-    Opts.options[String]("parent", "Parent node IDs", "p").orEmpty
+    Opts.options[String]("parent", "Parent node IDs", "p").orEmpty,
+    Opts.option[String]("author", "Author/Actor entity ID", "u").orNone
   ).mapN(CliCommand.NodeAdd.apply)
+
+  private val entityListOpts = Opts.unit.map(_ => CliCommand.EntityList)
+
+  private val entityRegisterOpts = (
+    Opts.option[String]("name", "Entity name", "n"),
+    Opts.option[EntityKind]("kind", "Entity kind", "k")(entityKindArgument)
+  ).mapN(CliCommand.EntityRegister.apply)
 
   private val lessonAddOpts = (
     Opts.argument[String]("crystal-id"),
@@ -112,6 +131,10 @@ object CommandParser:
       ))
       .orElse(Opts.subcommand("node", "Manage DAG nodes")(
         Opts.subcommand("add", "Add DAG transition node")(nodeAddOpts)
+      ))
+      .orElse(Opts.subcommand("entity", "Manage cave entity registry")(
+        Opts.subcommand("list", "List all registered entities in cave")(entityListOpts)
+          .orElse(Opts.subcommand("register", "Register a new entity in cave")(entityRegisterOpts))
       ))
       .orElse(Opts.subcommand("lesson", "Manage lessons learned")(
         Opts.subcommand("add", "Log a lesson learned")(lessonAddOpts)

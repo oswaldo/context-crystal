@@ -11,33 +11,40 @@ import java.time.Instant
 class Runner(val store: CrystalStore):
 
   def run(cmd: CliCommand): Either[String, String] = cmd match
-    case CliCommand.Init(name, goalTitle, intent) =>
+    case CliCommand.Init(name, goalTitle, intent, authorOpt, authorKindOpt) =>
       val now = Instant.now().toString
-      val goal = Goal(
-        title = goalTitle,
-        intent = intent.getOrElse(goalTitle),
-        status = GoalStatus.InProgress,
-        acceptanceCriteria = Nil
-      )
-      val rootNode = DAGNode(
-        id = s"node-$name-init",
-        parentIds = Nil,
-        timestamp = now,
-        actorId = "human",
-        kind = NodeKind.HumanPrompt,
-        contentSummary = s"Initialized crystal '$name' with goal: $goalTitle"
-      )
-      val crystal = ContextCrystal(
-        schemaVersion = "1.0.0",
-        id = name,
-        name = Some(name),
-        createdAt = now,
-        updatedAt = now,
-        goal = goal,
-        entities = List(Entity("human", EntityKind.Human, "Operator")),
-        dag = DAG(rootNode.id, List(rootNode))
-      )
-      store.save(crystal).map(_ => s"Initialized crystal '$name' at .ccrystals/$name")
+      val authorKind = authorKindOpt.getOrElse(EntityKind.Human)
+      val authorName = authorOpt.getOrElse("Operator")
+      
+      for
+        resolvedAuthor <- store.resolveOrCreateEntity(authorName, authorKind)
+        goal = Goal(
+          title = goalTitle,
+          intent = intent.getOrElse(goalTitle),
+          status = GoalStatus.InProgress,
+          acceptanceCriteria = Nil
+        )
+        rootNode = DAGNode(
+          id = s"node-$name-init",
+          parentIds = Nil,
+          timestamp = now,
+          actorId = resolvedAuthor.id,
+          kind = NodeKind.HumanPrompt,
+          contentSummary = s"Initialized crystal '$name' with goal: $goalTitle"
+        )
+        crystal = ContextCrystal(
+          schemaVersion = "1.0.0",
+          id = name,
+          name = Some(name),
+          createdAt = now,
+          updatedAt = now,
+          defaultAuthorId = Some(resolvedAuthor.id),
+          goal = goal,
+          entities = List(resolvedAuthor),
+          dag = DAG(rootNode.id, List(rootNode))
+        )
+        _ <- store.save(crystal)
+      yield s"Initialized crystal '$name' at .ccrystals/$name (Author: ${resolvedAuthor.name} [${resolvedAuthor.id}])"
 
     case CliCommand.ListCrystals(statusOpt, jsonOutput) =>
       store.list().map { crystals =>
@@ -97,12 +104,13 @@ class Runner(val store: CrystalStore):
         sb.toString
       }
 
-    case CliCommand.NodeAdd(crystalId, kind, summary, parentIds) =>
+    case CliCommand.NodeAdd(crystalId, kind, summary, parentIds, authorOpt) =>
       store.load(crystalId).flatMap { crystal =>
         val now = Instant.now().toString
         val parents = if parentIds.isEmpty then crystal.dag.nodes.lastOption.map(n => List(n.id)).getOrElse(Nil) else parentIds
         val nodeId = s"node-${crystal.dag.nodes.size + 1}"
-        val newNode = DAGNode(nodeId, parents, now, "agent", kind, summary)
+        val actorId = authorOpt.orElse(crystal.defaultAuthorId).getOrElse("usr_operator")
+        val newNode = DAGNode(nodeId, parents, now, actorId, kind, summary)
 
         for
           cDag <- CrystalDAG.fromDAG(crystal.dag)
@@ -112,8 +120,29 @@ class Runner(val store: CrystalStore):
             dag = updatedDag.raw
           )
           _ <- store.save(updatedCrystal)
-        yield s"Appended node '$nodeId' [$kind] to $crystalId: $summary"
+        yield s"Appended node '$nodeId' [$kind] (Author: $actorId) to $crystalId: $summary"
       }
+
+    case CliCommand.EntityList =>
+      store.getEntityRegistry().map { reg =>
+        val sb = new java.lang.StringBuilder()
+        sb.append(s"=== Cave Entity Registry (${reg.entities.size} registered) ===\n")
+        reg.caveId.foreach(c => sb.append(s"Cave Scope: $c\n"))
+        sb.append(s"Authorship Mode: ${reg.authorshipMode}\n\n")
+        if reg.entities.isEmpty then
+          sb.append("No entities registered yet.\n")
+        else
+          reg.entities.values.foreach { e =>
+            sb.append(s"- ${e.id} [${e.kind}] name: '${e.name}'\n")
+          }
+        sb.toString
+      }
+
+    case CliCommand.EntityRegister(name, kind) =>
+      store.resolveOrCreateEntity(name, kind).map { entity =>
+        s"Registered entity '${entity.name}' with ID '${entity.id}' in cave registry."
+      }
+
 
     case CliCommand.LessonAdd(crystalId, friction, rootCause, action) =>
       store.load(crystalId).flatMap { crystal =>

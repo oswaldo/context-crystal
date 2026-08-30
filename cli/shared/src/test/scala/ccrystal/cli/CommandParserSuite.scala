@@ -10,10 +10,12 @@ class CommandParserSuite extends FunSuite:
     val parsed = CommandParser.parse(args)
     assert(parsed.isRight)
     parsed.foreach {
-      case CliCommand.Init(name, goal, intent) =>
+      case CliCommand.Init(name, goal, intent, author, authorKind) =>
         assertEquals(name, "my-crystal")
         assertEquals(goal, "Fix bug")
         assertEquals(intent, Some("Resolve NPE in parser"))
+        assertEquals(author, None)
+        assertEquals(authorKind, None)
       case other => fail(s"Unexpected command: $other")
     }
 
