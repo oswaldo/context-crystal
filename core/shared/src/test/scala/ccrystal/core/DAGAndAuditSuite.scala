@@ -13,7 +13,7 @@ class DAGAndAuditSuite extends FunSuite:
     timestamp = "2026-08-28T12:00:00Z",
     actorId = "human-1",
     kind = NodeKind.HumanPrompt,
-    contentSummary = "Root Prompt"
+    contentSummary = "Root Prompt",
   )
 
   val node1 = DAGNode(
@@ -22,7 +22,7 @@ class DAGAndAuditSuite extends FunSuite:
     timestamp = "2026-08-28T12:05:00Z",
     actorId = "agent-1",
     kind = NodeKind.AgentReasoning,
-    contentSummary = "Step 1"
+    contentSummary = "Step 1",
   )
 
   val node2 = DAGNode(
@@ -31,7 +31,7 @@ class DAGAndAuditSuite extends FunSuite:
     timestamp = "2026-08-28T12:10:00Z",
     actorId = "agent-1",
     kind = NodeKind.ToolExecution,
-    contentSummary = "Step 2"
+    contentSummary = "Step 2",
   )
 
   test("CrystalDAG adds nodes and validates cycle-free state"):
@@ -60,7 +60,7 @@ class DAGAndAuditSuite extends FunSuite:
       timestamp = "2026-08-28T12:20:00Z",
       actorId = "agent-1",
       kind = NodeKind.AgentReasoning,
-      contentSummary = "Duplicate root"
+      contentSummary = "Duplicate root",
     )
     assert(dag0.addNode(duplicateNode).isLeft)
 
@@ -70,7 +70,7 @@ class DAGAndAuditSuite extends FunSuite:
       timestamp = "2026-08-28T12:25:00Z",
       actorId = "agent-1",
       kind = NodeKind.AgentReasoning,
-      contentSummary = "Missing parent"
+      contentSummary = "Missing parent",
     )
     assert(dag0.addNode(nonExistentParentNode).isLeft)
 
@@ -82,7 +82,7 @@ class DAGAndAuditSuite extends FunSuite:
       description = "Dangling worktree",
       disposalPolicy = DisposalPolicy.RevertOnConclusion,
       status = TransientLeaseStatus.Active,
-      createdAt = "2026-08-28T12:00:00Z"
+      createdAt = "2026-08-28T12:00:00Z",
     )
     val cleanedLease = TransientLease(
       id = "lease-cleaned",
@@ -91,7 +91,7 @@ class DAGAndAuditSuite extends FunSuite:
       description = "Cleaned config",
       disposalPolicy = DisposalPolicy.DeleteAfterTest,
       status = TransientLeaseStatus.Cleaned,
-      createdAt = "2026-08-28T12:00:00Z"
+      createdAt = "2026-08-28T12:00:00Z",
     )
 
     val crystal = ContextCrystal(
@@ -103,7 +103,7 @@ class DAGAndAuditSuite extends FunSuite:
       entities = Nil,
       dag = DAG("n-root", List(nodeRoot)),
       transientLeases = List(activeLease, cleanedLease),
-      lessonsLearned = Nil
+      lessonsLearned = Nil,
     )
 
     val uncleaned = CrystalAuditor.findUncleanedTransientLeases(crystal)
@@ -114,13 +114,13 @@ class DAGAndAuditSuite extends FunSuite:
     val openLesson = LessonLearned(
       id = "lesson-open",
       observedFriction = "Friction A",
-      status = LessonStatus.Open
+      status = LessonStatus.Open,
     )
     val actionedLesson = LessonLearned(
       id = "lesson-done",
       observedFriction = "Friction B",
       status = LessonStatus.Actioned,
-      actionAuditTrail = List(ActionAuditEntry("2026-08-28T13:00:00Z", "Fixed", "user-1"))
+      actionAuditTrail = List(ActionAuditEntry("2026-08-28T13:00:00Z", "Fixed", "user-1")),
     )
 
     val crystal = ContextCrystal(
@@ -132,7 +132,7 @@ class DAGAndAuditSuite extends FunSuite:
       entities = Nil,
       dag = DAG("n-root", List(nodeRoot)),
       transientLeases = Nil,
-      lessonsLearned = List(openLesson, actionedLesson)
+      lessonsLearned = List(openLesson, actionedLesson),
     )
 
     val unaddressed = CrystalAuditor.findUnaddressedLessons(crystal)
@@ -140,7 +140,7 @@ class DAGAndAuditSuite extends FunSuite:
     assert(CrystalAuditor.isReadyForConclusion(crystal).isLeft)
 
   test(
-    "CrystalAuditor passes conclusion readiness when all leases are cleaned and lessons actioned"
+    "CrystalAuditor passes conclusion readiness when all leases are cleaned and lessons actioned",
   ):
     val readyCrystal = ContextCrystal(
       schemaVersion = "1.0.0",
@@ -158,8 +158,8 @@ class DAGAndAuditSuite extends FunSuite:
           "Worktree",
           DisposalPolicy.RevertOnConclusion,
           TransientLeaseStatus.Cleaned,
-          "2026-08-28T12:00:00Z"
-        )
+          "2026-08-28T12:00:00Z",
+        ),
       ),
       lessonsLearned = List(
         LessonLearned(
@@ -168,8 +168,8 @@ class DAGAndAuditSuite extends FunSuite:
           None,
           None,
           LessonStatus.Actioned,
-          List(ActionAuditEntry("2026-08-28T12:00:00Z", "Actioned", "human"))
-        )
-      )
+          List(ActionAuditEntry("2026-08-28T12:00:00Z", "Actioned", "human")),
+        ),
+      ),
     )
     assertEquals(CrystalAuditor.isReadyForConclusion(readyCrystal), Right(()))

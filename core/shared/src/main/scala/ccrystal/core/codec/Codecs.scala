@@ -170,10 +170,10 @@ given Codec[DAGNode] = Codec.from(
       contentSummary,
       artifactIds,
       fidelity,
-      metadata
+      metadata,
     )
   },
-  deriveEncoder[DAGNode]
+  deriveEncoder[DAGNode],
 )
 given Codec[DAG]              = deriveCodec
 given Codec[TransientLease]   = deriveCodec

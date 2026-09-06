@@ -8,7 +8,7 @@ enum CliCommand derives CanEqual:
       goalTitle: String,
       intent: Option[String],
       author: Option[String] = None,
-      authorKind: Option[EntityKind] = None
+      authorKind: Option[EntityKind] = None,
   )
   case ListCrystals(status: Option[GoalStatus], jsonOutput: Boolean)
   case TaskAdd(crystalId: String, description: String)
@@ -19,13 +19,14 @@ enum CliCommand derives CanEqual:
       kind: NodeKind,
       summary: String,
       parentIds: List[String],
-      author: Option[String] = None
+      author: Option[String] = None,
+      fidelity: CaptureFidelity = CaptureFidelity.Inferred,
   )
   case LessonAdd(
       crystalId: String,
       friction: String,
       rootCause: Option[String],
-      action: Option[String]
+      action: Option[String],
   )
   case LessonAction(crystalId: String, lessonId: String, actionText: String, actorId: String)
   case LessonList(crystalId: String)
@@ -34,7 +35,7 @@ enum CliCommand derives CanEqual:
       resourceType: TransientResourceType,
       path: Option[String],
       description: String,
-      policy: DisposalPolicy
+      policy: DisposalPolicy,
   )
   case TransientClean(crystalId: String, leaseId: String)
   case TransientList(crystalId: String)

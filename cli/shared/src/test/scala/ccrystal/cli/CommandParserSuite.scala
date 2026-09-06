@@ -36,7 +36,7 @@ class CommandParserSuite extends FunSuite:
     assert(parsedCast.isRight)
     assertEquals(
       parsedCast.toOption.get,
-      CliCommand.Cast("my-crystal", depth = 5, summaryOnly = false)
+      CliCommand.Cast("my-crystal", depth = 5, summaryOnly = false),
     )
 
     val hydrateArgs   = List("hydrate", "my-crystal", "--summary-only")
@@ -44,7 +44,7 @@ class CommandParserSuite extends FunSuite:
     assert(parsedHydrate.isRight)
     assertEquals(
       parsedHydrate.toOption.get,
-      CliCommand.Cast("my-crystal", depth = 10, summaryOnly = true)
+      CliCommand.Cast("my-crystal", depth = 10, summaryOnly = true),
     )
 
   test("Parses 'node add' command"):
@@ -54,7 +54,7 @@ class CommandParserSuite extends FunSuite:
     assert(parsedNode.isRight)
     assertEquals(
       parsedNode.toOption.get,
-      CliCommand.NodeAdd("my-crystal", NodeKind.ToolExecution, "Ran test suite", Nil)
+      CliCommand.NodeAdd("my-crystal", NodeKind.ToolExecution, "Ran test suite", Nil),
     )
 
   test("Parses 'lesson add' and 'transient lease' commands"):
@@ -65,13 +65,13 @@ class CommandParserSuite extends FunSuite:
       "--friction",
       "Native link failure",
       "--action",
-      "Update libs"
+      "Update libs",
     )
     val parsedLesson = CommandParser.parse(lessonArgs)
     assert(parsedLesson.isRight)
     assertEquals(
       parsedLesson.toOption.get,
-      CliCommand.LessonAdd("my-crystal", "Native link failure", None, Some("Update libs"))
+      CliCommand.LessonAdd("my-crystal", "Native link failure", None, Some("Update libs")),
     )
 
     val leaseArgs = List(
@@ -83,7 +83,7 @@ class CommandParserSuite extends FunSuite:
       "--desc",
       "Spike branch",
       "--policy",
-      "revert_on_conclusion"
+      "revert_on_conclusion",
     )
     val parsedLease = CommandParser.parse(leaseArgs)
     assert(parsedLease.isRight)
@@ -94,8 +94,8 @@ class CommandParserSuite extends FunSuite:
         TransientResourceType.GitWorktree,
         None,
         "Spike branch",
-        DisposalPolicy.RevertOnConclusion
-      )
+        DisposalPolicy.RevertOnConclusion,
+      ),
     )
 
   test("Parses 'entity list' and 'entity register' commands"):
@@ -118,7 +118,7 @@ class CommandParserSuite extends FunSuite:
       "--author",
       "antigravity",
       "--author-kind",
-      "agent"
+      "agent",
     )
     val parsedInit = CommandParser.parse(initArgs)
     assert(parsedInit.isRight)
@@ -129,8 +129,8 @@ class CommandParserSuite extends FunSuite:
         "Fix bugs",
         None,
         Some("antigravity"),
-        Some(EntityKind.Agent)
-      )
+        Some(EntityKind.Agent),
+      ),
     )
 
     val nodeArgs = List(
@@ -142,7 +142,7 @@ class CommandParserSuite extends FunSuite:
       "--summary",
       "Planned next steps",
       "--author",
-      "agt_antigravity_1"
+      "agt_antigravity_1",
     )
     val parsedNode = CommandParser.parse(nodeArgs)
     assert(parsedNode.isRight)
@@ -153,6 +153,70 @@ class CommandParserSuite extends FunSuite:
         NodeKind.AgentReasoning,
         "Planned next steps",
         Nil,
-        Some("agt_antigravity_1")
-      )
+        Some("agt_antigravity_1"),
+        CaptureFidelity.Inferred,
+      ),
     )
+
+  test("Parses 'node add' with explicit and default --fidelity"):
+    val defaultFidelityArgs = List(
+      "node",
+      "add",
+      "c-1",
+      "--kind",
+      "human_prompt",
+      "--summary",
+      "Prompt text",
+    )
+    val parsedDefault = CommandParser.parse(defaultFidelityArgs)
+    assert(parsedDefault.isRight)
+    assertEquals(
+      parsedDefault.toOption.get,
+      CliCommand.NodeAdd(
+        "c-1",
+        NodeKind.HumanPrompt,
+        "Prompt text",
+        Nil,
+        None,
+        CaptureFidelity.Inferred,
+      ),
+    )
+
+    val interceptedArgs = List(
+      "node",
+      "add",
+      "c-1",
+      "--kind",
+      "tool_execution",
+      "--summary",
+      "Captured verbatim stdout",
+      "--fidelity",
+      "intercepted",
+    )
+    val parsedIntercepted = CommandParser.parse(interceptedArgs)
+    assert(parsedIntercepted.isRight)
+    assertEquals(
+      parsedIntercepted.toOption.get,
+      CliCommand.NodeAdd(
+        "c-1",
+        NodeKind.ToolExecution,
+        "Captured verbatim stdout",
+        Nil,
+        None,
+        CaptureFidelity.Intercepted,
+      ),
+    )
+
+    val invalidFidelityArgs = List(
+      "node",
+      "add",
+      "c-1",
+      "--kind",
+      "tool_execution",
+      "--summary",
+      "Captured verbatim stdout",
+      "--fidelity",
+      "unknown_fidelity",
+    )
+    val parsedInvalid = CommandParser.parse(invalidFidelityArgs)
+    assert(parsedInvalid.isLeft)

@@ -13,5 +13,5 @@ trait CrystalStore:
   def resolveOrCreateEntity(
       name: String,
       kind: EntityKind,
-      distinct: Boolean = false
+      distinct: Boolean = false,
   ): Either[String, Entity]

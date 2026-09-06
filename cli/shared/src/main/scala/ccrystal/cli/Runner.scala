@@ -22,7 +22,7 @@ class Runner(val store: CrystalStore):
           title = goalTitle,
           intent = intent.getOrElse(goalTitle),
           status = GoalStatus.InProgress,
-          acceptanceCriteria = Nil
+          acceptanceCriteria = Nil,
         )
         rootNode = DAGNode(
           id = s"node-$name-init",
@@ -30,7 +30,7 @@ class Runner(val store: CrystalStore):
           timestamp = now,
           actorId = resolvedAuthor.id,
           kind = NodeKind.HumanPrompt,
-          contentSummary = s"Initialized crystal '$name' with goal: $goalTitle"
+          contentSummary = s"Initialized crystal '$name' with goal: $goalTitle",
         )
         crystal = ContextCrystal(
           schemaVersion = "1.0.0",
@@ -41,7 +41,7 @@ class Runner(val store: CrystalStore):
           defaultAuthorId = Some(resolvedAuthor.id),
           goal = goal,
           entities = List(resolvedAuthor),
-          dag = DAG(rootNode.id, List(rootNode))
+          dag = DAG(rootNode.id, List(rootNode)),
         )
         _ <- store.save(crystal)
       yield s"Initialized crystal '$name' at .ccrystals/$name (Author: ${resolvedAuthor.name} [${resolvedAuthor.id}])"
@@ -62,7 +62,7 @@ class Runner(val store: CrystalStore):
             val openLessons  = c.lessonsLearned.count(_.status == LessonStatus.Open)
             val activeLeases = c.transientLeases.count(_.status == TransientLeaseStatus.Active)
             sb.append(
-              s"- ${c.id} [${c.goal.status}] Tasks: $done/$total | Active Leases: $activeLeases | Open Lessons: $openLessons\n"
+              s"- ${c.id} [${c.goal.status}] Tasks: $done/$total | Active Leases: $activeLeases | Open Lessons: $openLessons\n",
             )
           }
           sb.toString
@@ -73,11 +73,11 @@ class Runner(val store: CrystalStore):
         val taskId = s"task-${crystal.goal.acceptanceCriteria.size + 1}"
         val newAc  = AcceptanceCriterion(taskId, desc, completed = false)
         val updatedGoal = crystal.goal.copy(
-          acceptanceCriteria = crystal.goal.acceptanceCriteria :+ newAc
+          acceptanceCriteria = crystal.goal.acceptanceCriteria :+ newAc,
         )
         val updated = crystal.copy(
           updatedAt = Instant.now().toString,
-          goal = updatedGoal
+          goal = updatedGoal,
         )
         store.save(updated).map(_ => s"Added task '$taskId' to $crystalId: $desc")
       }
@@ -89,7 +89,7 @@ class Runner(val store: CrystalStore):
         }
         val updated = crystal.copy(
           updatedAt = Instant.now().toString,
-          goal = crystal.goal.copy(acceptanceCriteria = updatedAcs)
+          goal = crystal.goal.copy(acceptanceCriteria = updatedAcs),
         )
         store.save(updated).map(_ => s"Marked task '$taskId' as completed in $crystalId")
       }
@@ -105,7 +105,7 @@ class Runner(val store: CrystalStore):
         sb.toString
       }
 
-    case CliCommand.NodeAdd(crystalId, kind, summary, parentIds, authorOpt) =>
+    case CliCommand.NodeAdd(crystalId, kind, summary, parentIds, authorOpt, fidelity) =>
       store.load(crystalId).flatMap { crystal =>
         val now = Instant.now().toString
         val parents =
@@ -113,17 +113,26 @@ class Runner(val store: CrystalStore):
           else parentIds
         val nodeId  = s"node-${crystal.dag.nodes.size + 1}"
         val actorId = authorOpt.orElse(crystal.defaultAuthorId).getOrElse("usr_operator")
-        val newNode = DAGNode(nodeId, parents, now, actorId, kind, summary)
+        val newNode = DAGNode(
+          id = nodeId,
+          parentIds = parents,
+          timestamp = now,
+          actorId = actorId,
+          kind = kind,
+          contentSummary = summary,
+          artifactIds = Nil,
+          fidelity = fidelity,
+        )
 
         for
           cDag       <- CrystalDAG.fromDAG(crystal.dag)
           updatedDag <- cDag.addNode(newNode)
           updatedCrystal = crystal.copy(
             updatedAt = now,
-            dag = updatedDag.raw
+            dag = updatedDag.raw,
           )
           _ <- store.save(updatedCrystal)
-        yield s"Appended node '$nodeId' [$kind] (Author: $actorId) to $crystalId: $summary"
+        yield s"Appended node '$nodeId' [$kind] [${fidelity.toString.toLowerCase}] (Author: $actorId) to $crystalId: $summary"
       }
 
     case CliCommand.EntityList =>
@@ -151,7 +160,7 @@ class Runner(val store: CrystalStore):
         val newLesson = LessonLearned(lessonId, friction, rootCause, action, LessonStatus.Open)
         val updated = crystal.copy(
           updatedAt = Instant.now().toString,
-          lessonsLearned = crystal.lessonsLearned :+ newLesson
+          lessonsLearned = crystal.lessonsLearned :+ newLesson,
         )
         store.save(updated).map(_ => s"Logged lesson '$lessonId' in $crystalId: $friction")
       }
@@ -163,13 +172,13 @@ class Runner(val store: CrystalStore):
           if l.id == lessonId then
             l.copy(
               status = LessonStatus.Actioned,
-              actionAuditTrail = l.actionAuditTrail :+ ActionAuditEntry(now, actionText, actorId)
+              actionAuditTrail = l.actionAuditTrail :+ ActionAuditEntry(now, actionText, actorId),
             )
           else l
         }
         val updated = crystal.copy(
           updatedAt = now,
-          lessonsLearned = updatedLessons
+          lessonsLearned = updatedLessons,
         )
         store.save(updated).map(_ => s"Actioned lesson '$lessonId' in $crystalId: $actionText")
       }
@@ -194,11 +203,11 @@ class Runner(val store: CrystalStore):
           desc,
           policy,
           TransientLeaseStatus.Active,
-          Instant.now().toString
+          Instant.now().toString,
         )
         val updated = crystal.copy(
           updatedAt = Instant.now().toString,
-          transientLeases = crystal.transientLeases :+ newLease
+          transientLeases = crystal.transientLeases :+ newLease,
         )
         store.save(updated).map(_ => s"Registered transient lease '$leaseId' in $crystalId: $desc")
       }
@@ -210,7 +219,7 @@ class Runner(val store: CrystalStore):
         }
         val updated = crystal.copy(
           updatedAt = Instant.now().toString,
-          transientLeases = updatedLeases
+          transientLeases = updatedLeases,
         )
         store.save(updated).map(_ => s"Cleaned transient lease '$leaseId' in $crystalId")
       }
@@ -281,7 +290,7 @@ class Runner(val store: CrystalStore):
               store
                 .save(crystal)
                 .map(_ =>
-                  s"Refreshed derived views (tasks.md, lessons-learned.md, transient.json) for '$id'."
+                  s"Refreshed derived views (tasks.md, lessons-learned.md, transient.json) for '$id'.",
                 )
             }
           case None =>

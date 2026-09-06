@@ -27,8 +27,8 @@ class FsCrystalStoreSuite extends FunSuite:
       status = GoalStatus.InProgress,
       acceptanceCriteria = List(
         AcceptanceCriterion("ac-1", "Setup panel", true),
-        AcceptanceCriterion("ac-2", "Stream metrics", false)
-      )
+        AcceptanceCriterion("ac-2", "Stream metrics", false),
+      ),
     )
 
     val crystal = ContextCrystal(
@@ -48,9 +48,9 @@ class FsCrystalStoreSuite extends FunSuite:
             "2026-08-29T12:00:00Z",
             "e-1",
             NodeKind.HumanPrompt,
-            "Init dashboard"
-          )
-        )
+            "Init dashboard",
+          ),
+        ),
       ),
       transientLeases = List(
         TransientLease(
@@ -60,8 +60,8 @@ class FsCrystalStoreSuite extends FunSuite:
           "Debug telemetry",
           DisposalPolicy.RevertOnConclusion,
           TransientLeaseStatus.Active,
-          "2026-08-29T12:00:00Z"
-        )
+          "2026-08-29T12:00:00Z",
+        ),
       ),
       lessonsLearned = List(
         LessonLearned(
@@ -69,9 +69,9 @@ class FsCrystalStoreSuite extends FunSuite:
           "Grafana rate limiting",
           Some("Poll interval too low"),
           Some("Increase interval"),
-          LessonStatus.Open
-        )
-      )
+          LessonStatus.Open,
+        ),
+      ),
     )
 
     val saveRes = store.save(crystal)
@@ -82,7 +82,7 @@ class FsCrystalStoreSuite extends FunSuite:
     assert(Files.exists(crystalDir.resolve("tasks.md")), "tasks.md should exist")
     assert(
       Files.exists(crystalDir.resolve("lessons-learned.md")),
-      "lessons-learned.md should exist"
+      "lessons-learned.md should exist",
     )
     assert(Files.exists(crystalDir.resolve("transient.json")), "transient.json should exist")
 
@@ -107,8 +107,8 @@ class FsCrystalStoreSuite extends FunSuite:
       entities = Nil,
       dag = DAG(
         "root",
-        List(DAGNode("root", Nil, "2026-08-29T12:00:00Z", "u-1", NodeKind.HumanPrompt, "A"))
-      )
+        List(DAGNode("root", Nil, "2026-08-29T12:00:00Z", "u-1", NodeKind.HumanPrompt, "A")),
+      ),
     )
     val crystalB = ContextCrystal(
       schemaVersion = "1.0.0",
@@ -119,8 +119,8 @@ class FsCrystalStoreSuite extends FunSuite:
       entities = Nil,
       dag = DAG(
         "root",
-        List(DAGNode("root", Nil, "2026-08-29T12:00:00Z", "u-1", NodeKind.HumanPrompt, "B"))
-      )
+        List(DAGNode("root", Nil, "2026-08-29T12:00:00Z", "u-1", NodeKind.HumanPrompt, "B")),
+      ),
     )
 
     store.save(crystalA)
@@ -141,7 +141,7 @@ class FsCrystalStoreSuite extends FunSuite:
 
     // Register human entity
     val humanRes = store.registerEntity(
-      Entity("usr_oswaldo", EntityKind.Human, "oswaldo", Map("role" -> "lead"))
+      Entity("usr_oswaldo", EntityKind.Human, "oswaldo", Map("role" -> "lead")),
     )
     assert(humanRes.isRight)
 

@@ -15,13 +15,13 @@ class ModelCodecSuite extends FunSuite:
       status = GoalStatus.InProgress,
       acceptanceCriteria = List(
         AcceptanceCriterion("ac-1", "Reproduce NPE with failing test", completed = true),
-        AcceptanceCriterion("ac-2", "Make email optional in parser", completed = false)
-      )
+        AcceptanceCriterion("ac-2", "Make email optional in parser", completed = false),
+      ),
     )
 
     val entities = List(
       Entity("ent-human-1", EntityKind.Human, "Lead Developer", Map.empty),
-      Entity("ent-model-1", EntityKind.Model, "Gemini 3.7 Flash", Map("temperature" -> "0.2"))
+      Entity("ent-model-1", EntityKind.Model, "Gemini 3.7 Flash", Map("temperature" -> "0.2")),
     )
 
     val dag = DAG(
@@ -34,9 +34,9 @@ class ModelCodecSuite extends FunSuite:
           actorId = "ent-human-1",
           kind = NodeKind.HumanPrompt,
           contentSummary = "Please fix NPE when user JSON lacks email field.",
-          artifactIds = Nil
-        )
-      )
+          artifactIds = Nil,
+        ),
+      ),
     )
 
     val crystal = ContextCrystal(
@@ -52,7 +52,7 @@ class ModelCodecSuite extends FunSuite:
       dag = dag,
       transientLeases = Nil,
       lessonsLearned = Nil,
-      artifacts = Nil
+      artifacts = Nil,
     )
 
     val json    = crystal.asJson
@@ -71,15 +71,15 @@ class ModelCodecSuite extends FunSuite:
         title = "Implement High-Performance Cross-Compiled Parser",
         intent = "Deliver zero-reflection Scala 3 parser",
         status = GoalStatus.ConcludedSuccess,
-        acceptanceCriteria = List(AcceptanceCriterion("ac-1", "Pass all runtimes", true))
+        acceptanceCriteria = List(AcceptanceCriterion("ac-1", "Pass all runtimes", true)),
       ),
       entities = List(Entity("ent-1", EntityKind.Human, "Architect", Map.empty)),
       activeMask = Some(Mask("TDD", "Persona", List("fs_write"), Map.empty)),
       dag = DAG(
         "n-1",
         List(
-          DAGNode("n-1", Nil, "2026-08-28T12:00:00Z", "ent-1", NodeKind.HumanPrompt, "Start", Nil)
-        )
+          DAGNode("n-1", Nil, "2026-08-28T12:00:00Z", "ent-1", NodeKind.HumanPrompt, "Start", Nil),
+        ),
       ),
       transientLeases = List(
         TransientLease(
@@ -89,8 +89,8 @@ class ModelCodecSuite extends FunSuite:
           description = "Spike worktree",
           disposalPolicy = DisposalPolicy.RevertOnConclusion,
           status = TransientLeaseStatus.Cleaned,
-          createdAt = "2026-08-28T12:20:00Z"
-        )
+          createdAt = "2026-08-28T12:20:00Z",
+        ),
       ),
       lessonsLearned = List(
         LessonLearned(
@@ -100,13 +100,13 @@ class ModelCodecSuite extends FunSuite:
           recommendedAction = Some("Use scala-java-time"),
           status = LessonStatus.Actioned,
           actionAuditTrail = List(
-            ActionAuditEntry("2026-08-28T13:00:00Z", "Updated tech-stack.md", "ent-1")
-          )
-        )
+            ActionAuditEntry("2026-08-28T13:00:00Z", "Updated tech-stack.md", "ent-1"),
+          ),
+        ),
       ),
       artifacts = List(
-        Artifact("art-1", "file:///build.sbt", "text/x-scala", Some("Build file"), Some("hash123"))
-      )
+        Artifact("art-1", "file:///build.sbt", "text/x-scala", Some("Build file"), Some("hash123")),
+      ),
     )
 
     val json    = crystal.asJson
@@ -122,15 +122,15 @@ class ModelCodecSuite extends FunSuite:
           "usr_oswaldo",
           EntityKind.Human,
           "oswaldo",
-          Map("role" -> "architect")
+          Map("role" -> "architect"),
         ),
         "agt_antigravity_1" -> Entity(
           "agt_antigravity_1",
           EntityKind.Agent,
           "antigravity-1",
-          Map("model" -> "gemini-3.7-flash")
-        )
-      )
+          Map("model" -> "gemini-3.7-flash"),
+        ),
+      ),
     )
 
     val json    = registry.asJson
@@ -154,7 +154,7 @@ class ModelCodecSuite extends FunSuite:
       kind = NodeKind.AgentReasoning,
       contentSummary = "Synthesized next steps",
       artifactIds = Nil,
-      metadata = Map("tokens_used" -> "120", "temperature" -> "0.2")
+      metadata = Map("tokens_used" -> "120", "temperature" -> "0.2"),
     )
     val decodedNode = decode[DAGNode](node.asJson.noSpaces)
     assertEquals(decodedNode, Right(node))
@@ -164,7 +164,7 @@ class ModelCodecSuite extends FunSuite:
       parentCrystalId = "cc-parent-999",
       parentNodeId = Some("node-parent-42"),
       reason = Some("fork_bug_investigation"),
-      createdAt = Some("2026-09-06T04:00:00Z")
+      createdAt = Some("2026-09-06T04:00:00Z"),
     )
     val entity = Entity(
       id = "ent-worker-1",
@@ -174,15 +174,15 @@ class ModelCodecSuite extends FunSuite:
       publicKey = Some("ssh-ed25519 AAAAC3NzaC1lZDI1NTE5..."),
       endpoints = Map(
         "inbox" -> ".ccrystals/_comms/ent-worker-1/inbox",
-        "rpc"   -> "http://127.0.0.1:9090"
-      )
+        "rpc"   -> "http://127.0.0.1:9090",
+      ),
     )
 
     assertEquals(decode[CrystalOrigin](origin.asJson.noSpaces), Right(origin))
     assertEquals(decode[Entity](entity.asJson.noSpaces), Right(entity))
 
   test(
-    "Round-trip serialization of DAGNode with new CaptureFidelity enum (both Inferred and Intercepted)"
+    "Round-trip serialization of DAGNode with new CaptureFidelity enum (both Inferred and Intercepted)",
   ):
     val nodeInferred = DAGNode(
       id = "n-1",
@@ -193,18 +193,18 @@ class ModelCodecSuite extends FunSuite:
       contentSummary = "Let's start",
       artifactIds = Nil,
       fidelity = CaptureFidelity.Inferred,
-      metadata = Map.empty
+      metadata = Map.empty,
     )
     val nodeIntercepted = nodeInferred.copy(
       id = "n-2",
-      fidelity = CaptureFidelity.Intercepted
+      fidelity = CaptureFidelity.Intercepted,
     )
 
     assertEquals(decode[DAGNode](nodeInferred.asJson.noSpaces), Right(nodeInferred))
     assertEquals(decode[DAGNode](nodeIntercepted.asJson.noSpaces), Right(nodeIntercepted))
 
   test(
-    "Legacy JSON payloads missing the fidelity field deserialize cleanly with Inferred as default"
+    "Legacy JSON payloads missing the fidelity field deserialize cleanly with Inferred as default",
   ):
     val legacyJson =
       """
@@ -227,7 +227,7 @@ class ModelCodecSuite extends FunSuite:
       contentSummary = "Old crystal node",
       artifactIds = Nil,
       fidelity = CaptureFidelity.Inferred,
-      metadata = Map.empty
+      metadata = Map.empty,
     )
 
     assertEquals(decode[DAGNode](legacyJson), Right(expectedNode))

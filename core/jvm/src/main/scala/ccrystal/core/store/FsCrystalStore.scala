@@ -33,7 +33,7 @@ class FsCrystalStore(val rootPath: Path) extends CrystalStore:
       val lessonsContent = generateLessonsMarkdown(crystal)
       Files.write(
         dir.resolve("lessons-learned.md"),
-        lessonsContent.getBytes(StandardCharsets.UTF_8)
+        lessonsContent.getBytes(StandardCharsets.UTF_8),
       )
 
       // 4. Write transient.json
@@ -50,7 +50,7 @@ class FsCrystalStore(val rootPath: Path) extends CrystalStore:
       else
         val content = new String(Files.readAllBytes(file), StandardCharsets.UTF_8)
         decode[ContextCrystal](content).left.map(err =>
-          s"JSON parse error for '$id': ${err.getMessage}"
+          s"JSON parse error for '$id': ${err.getMessage}",
         )
     catch case ex: Throwable => Left(s"Failed to load crystal '$id': ${ex.getMessage}")
 
@@ -82,7 +82,7 @@ class FsCrystalStore(val rootPath: Path) extends CrystalStore:
       else
         val content = new String(Files.readAllBytes(file), StandardCharsets.UTF_8)
         decode[EntityRegistry](content).left.map(err =>
-          s"JSON parse error in entities.json: ${err.getMessage}"
+          s"JSON parse error in entities.json: ${err.getMessage}",
         )
     catch case ex: Throwable => Left(s"Failed to load entity registry: ${ex.getMessage}")
 
@@ -104,7 +104,7 @@ class FsCrystalStore(val rootPath: Path) extends CrystalStore:
   override def resolveOrCreateEntity(
       name: String,
       kind: EntityKind,
-      distinct: Boolean = false
+      distinct: Boolean = false,
   ): Either[String, Entity] =
     getEntityRegistry().flatMap { reg =>
       val existingMatches = reg.entities.values
@@ -183,7 +183,7 @@ class FsCrystalStore(val rootPath: Path) extends CrystalStore:
         if l.actionAuditTrail.nonEmpty then
           sb.append("- **Audit Trail:**\n")
           l.actionAuditTrail.foreach(at =>
-            sb.append(s"  - `${at.timestamp}` (${at.actorId}): ${at.action}\n")
+            sb.append(s"  - `${at.timestamp}` (${at.actorId}): ${at.action}\n"),
           )
         sb.append("\n")
       }
