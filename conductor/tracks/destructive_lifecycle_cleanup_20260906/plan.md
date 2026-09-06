@@ -1,8 +1,8 @@
 # Implementation Plan: Destructive Lifecycle Cleanup
 
 ## Phase 1: Core Store Deletion & Cascade Resolution
-- [ ] Task: Write failing unit tests for CrystalStore delete and cascade resolution (Red)
-- [ ] Task: Implement CrystalStore.deleteCrystal and cascade entity deregistration in FsCrystalStore (Green)
+- [x] Task: Write failing unit tests for CrystalStore delete and cascade resolution (Red) [2cec0a8]
+- [~] Task: Implement CrystalStore.deleteCrystal and cascade entity deregistration in FsCrystalStore (Green)
 - [ ] Task: Write failing unit tests for CrystalStore deregisterEntity and cascade crystal deletion (Red)
 - [ ] Task: Implement CrystalStore.deregisterEntity with cascading crystal removal in FsCrystalStore (Green)
 - [ ] Task: Implement deletion impact preview computation and CCRYSTAL_DELETION_PREVIEW_LIMIT configuration
