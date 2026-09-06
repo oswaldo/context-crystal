@@ -14,15 +14,15 @@
 
 ---
 
-## 2. Immediate Next Agenda: Track 6 (Agent Skill & Interaction Loop)
-The next milestone is to build the **Agent Skill** (`skills/context-crystal/SKILL.md` + Antigravity/Claude/Cursor adapters) to unlock:
-1. **Verbs & Utterances:**
-   - `"Crystallize this context"` / `"crystalise session"`: Snapshot live session into `.ccrystals/<name>/` with agent entity identity.
-   - `"Resume work on last task"` / `"cast crystal"`: Query and cast the latest crystal back into prompt.
-   - `"Slice session from anchor X"` / `"ccrystal slice"`: Cleave long sessions and fork clean child contexts with unbroken lineage.
-   - `"What crystal is closer to completion?"`: Prioritize and inspect open crystals.
-2. **Deterministic Context Forking:** Leverage `ccrystal slice --fork-to` to spin off diverging scope into new crystals linked to `origin`.
-3. **Dogfooding:** Use Context Crystal within this repository to plan and execute subsequent tracks.
+## 2. Immediate Active Track: Track 6 (`agent_skill_interaction_loop_20260906`)
+Initialized and ready for execution:
+1. **Decoupled Store Engine:** Add `CCRYSTAL_STORE` env var, `--store <path>` CLI flag, and `.ccrystal-store` resolution to preserve clean code repositories and enable disjoint context repos.
+2. **Canonical Skill (`skills/context-crystal/SKILL.md`):**
+   - Autonomous agent self-bootstrapping (auto-detect and install `ccrystal` binary if missing).
+   - Dual-mode operation (Symbiotic low-token mode with Conductor/OpenSpec vs Autonomous Spine mode for freeform).
+   - Conversational utterances mapped to single-roundtrip `ccrystal batch` recipes.
+3. **Platform Adapters:** Native adapters for Antigravity, Claude Code, and Cursor/Windsurf.
+4. **Verification & Dogfooding:** Cross-platform command test suite and live crystal initialization in repo.
 
 ---
 

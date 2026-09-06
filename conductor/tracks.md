@@ -18,3 +18,6 @@
 
 - [x] **Track: Crystal Cleavage & Fragment Slicing**  
   *Link: [conductor/tracks/crystal_cleavage_and_slicing_20260906/index.md](./tracks/crystal_cleavage_and_slicing_20260906/index.md)*
+
+- [ ] **Track: Agent Skill, Self-Bootstrapping & Interaction Loop**  
+  *Link: [conductor/tracks/agent_skill_interaction_loop_20260906/index.md](./tracks/agent_skill_interaction_loop_20260906/index.md)*
