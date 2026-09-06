@@ -8,6 +8,8 @@ val declineVersion  = "2.6.2"
 ThisBuild / scalaVersion := scala3Version
 ThisBuild / organization := "org.contextcrystal"
 ThisBuild / version      := "0.1.0-SNAPSHOT"
+ThisBuild / licenses     := List("MIT" -> new java.net.URI("https://opensource.org/licenses/MIT").toURL)
+ThisBuild / homepage     := Some(new java.net.URI("https://github.com/oswaldo/context-crystal").toURL)
 
 lazy val root = project.in(file("."))
   .aggregate(core.jvm, core.native, core.js, cli.jvm, cli.native)
