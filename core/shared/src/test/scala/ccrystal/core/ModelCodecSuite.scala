@@ -55,7 +55,7 @@ class ModelCodecSuite extends FunSuite:
       artifacts = Nil
     )
 
-    val json = crystal.asJson
+    val json    = crystal.asJson
     val decoded = decode[ContextCrystal](json.noSpaces)
     assertEquals(decoded, Right(crystal))
 
@@ -75,7 +75,12 @@ class ModelCodecSuite extends FunSuite:
       ),
       entities = List(Entity("ent-1", EntityKind.Human, "Architect", Map.empty)),
       activeMask = Some(Mask("TDD", "Persona", List("fs_write"), Map.empty)),
-      dag = DAG("n-1", List(DAGNode("n-1", Nil, "2026-08-28T12:00:00Z", "ent-1", NodeKind.HumanPrompt, "Start", Nil))),
+      dag = DAG(
+        "n-1",
+        List(
+          DAGNode("n-1", Nil, "2026-08-28T12:00:00Z", "ent-1", NodeKind.HumanPrompt, "Start", Nil)
+        )
+      ),
       transientLeases = List(
         TransientLease(
           id = "lease-1",
@@ -104,7 +109,7 @@ class ModelCodecSuite extends FunSuite:
       )
     )
 
-    val json = crystal.asJson
+    val json    = crystal.asJson
     val decoded = decode[ContextCrystal](json.noSpaces)
     assertEquals(decoded, Right(crystal))
 
@@ -113,12 +118,22 @@ class ModelCodecSuite extends FunSuite:
       caveId = Some("acme/eng/platform"),
       authorshipMode = AuthorshipMode.Tracked,
       entities = Map(
-        "usr_oswaldo" -> Entity("usr_oswaldo", EntityKind.Human, "oswaldo", Map("role" -> "architect")),
-        "agt_antigravity_1" -> Entity("agt_antigravity_1", EntityKind.Agent, "antigravity-1", Map("model" -> "gemini-3.7-flash"))
+        "usr_oswaldo" -> Entity(
+          "usr_oswaldo",
+          EntityKind.Human,
+          "oswaldo",
+          Map("role" -> "architect")
+        ),
+        "agt_antigravity_1" -> Entity(
+          "agt_antigravity_1",
+          EntityKind.Agent,
+          "antigravity-1",
+          Map("model" -> "gemini-3.7-flash")
+        )
       )
     )
 
-    val json = registry.asJson
+    val json    = registry.asJson
     val decoded = decode[EntityRegistry](json.noSpaces)
     assertEquals(decoded, Right(registry))
 
@@ -159,10 +174,9 @@ class ModelCodecSuite extends FunSuite:
       publicKey = Some("ssh-ed25519 AAAAC3NzaC1lZDI1NTE5..."),
       endpoints = Map(
         "inbox" -> ".ccrystals/_comms/ent-worker-1/inbox",
-        "rpc" -> "http://127.0.0.1:9090"
+        "rpc"   -> "http://127.0.0.1:9090"
       )
     )
 
     assertEquals(decode[CrystalOrigin](origin.asJson.noSpaces), Right(origin))
     assertEquals(decode[Entity](entity.asJson.noSpaces), Right(entity))
-

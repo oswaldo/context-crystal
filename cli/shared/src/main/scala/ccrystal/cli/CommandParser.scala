@@ -17,14 +17,15 @@ object CommandParser:
     case other             => Validated.invalidNel(s"Invalid node kind: $other")
   }
 
-  private val resourceTypeArgument: Argument[TransientResourceType] = Argument.from("resource-type") {
-    case "git_worktree" => Validated.valid(TransientResourceType.GitWorktree)
-    case "env_override" => Validated.valid(TransientResourceType.EnvOverride)
-    case "debug_config" => Validated.valid(TransientResourceType.DebugConfig)
-    case "dummy_asset"  => Validated.valid(TransientResourceType.DummyAsset)
-    case "mock_service" => Validated.valid(TransientResourceType.MockService)
-    case other          => Validated.invalidNel(s"Invalid resource type: $other")
-  }
+  private val resourceTypeArgument: Argument[TransientResourceType] =
+    Argument.from("resource-type") {
+      case "git_worktree" => Validated.valid(TransientResourceType.GitWorktree)
+      case "env_override" => Validated.valid(TransientResourceType.EnvOverride)
+      case "debug_config" => Validated.valid(TransientResourceType.DebugConfig)
+      case "dummy_asset"  => Validated.valid(TransientResourceType.DummyAsset)
+      case "mock_service" => Validated.valid(TransientResourceType.MockService)
+      case other          => Validated.invalidNel(s"Invalid resource type: $other")
+    }
 
   private val disposalPolicyArgument: Argument[DisposalPolicy] = Argument.from("disposal-policy") {
     case "revert_on_conclusion" => Validated.valid(DisposalPolicy.RevertOnConclusion)
@@ -54,11 +55,14 @@ object CommandParser:
   ).mapN(CliCommand.Init.apply)
 
   private val listOpts = (
-    Opts.option[String]("status", "Filter by goal status").orNone.map(_.flatMap {
-      case "in_progress" => Some(GoalStatus.InProgress)
-      case "concluded"   => Some(GoalStatus.ConcludedSuccess)
-      case _             => None
-    }),
+    Opts
+      .option[String]("status", "Filter by goal status")
+      .orNone
+      .map(_.flatMap {
+        case "in_progress" => Some(GoalStatus.InProgress)
+        case "concluded"   => Some(GoalStatus.ConcludedSuccess)
+        case _             => None
+      }),
     Opts.flag("json", "Output as JSON").orFalse
   ).mapN(CliCommand.ListCrystals.apply)
 
@@ -122,29 +126,49 @@ object CommandParser:
   ).mapN(CliCommand.Refresh.apply)
 
   private val mainCommand = Command("ccrystal", "Context Crystal CLI")(
-    Opts.subcommand("init", "Initialize a new crystal")(initOpts)
+    Opts
+      .subcommand("init", "Initialize a new crystal")(initOpts)
       .orElse(Opts.subcommand("list", "List crystals")(listOpts))
-      .orElse(Opts.subcommand("task", "Manage tasks")(
-        Opts.subcommand("add", "Add task")(taskAddOpts)
-          .orElse(Opts.subcommand("done", "Complete task")(taskDoneOpts))
-          .orElse(Opts.subcommand("list", "List tasks")(taskListOpts))
-      ))
-      .orElse(Opts.subcommand("node", "Manage DAG nodes")(
-        Opts.subcommand("add", "Add DAG transition node")(nodeAddOpts)
-      ))
-      .orElse(Opts.subcommand("entity", "Manage cave entity registry")(
-        Opts.subcommand("list", "List all registered entities in cave")(entityListOpts)
-          .orElse(Opts.subcommand("register", "Register a new entity in cave")(entityRegisterOpts))
-      ))
-      .orElse(Opts.subcommand("lesson", "Manage lessons learned")(
-        Opts.subcommand("add", "Log a lesson learned")(lessonAddOpts)
-      ))
-      .orElse(Opts.subcommand("transient", "Manage transient leases")(
-        Opts.subcommand("lease", "Acquire a transient lease")(leaseOpts)
-      ))
+      .orElse(
+        Opts.subcommand("task", "Manage tasks")(
+          Opts
+            .subcommand("add", "Add task")(taskAddOpts)
+            .orElse(Opts.subcommand("done", "Complete task")(taskDoneOpts))
+            .orElse(Opts.subcommand("list", "List tasks")(taskListOpts))
+        )
+      )
+      .orElse(
+        Opts.subcommand("node", "Manage DAG nodes")(
+          Opts.subcommand("add", "Add DAG transition node")(nodeAddOpts)
+        )
+      )
+      .orElse(
+        Opts.subcommand("entity", "Manage cave entity registry")(
+          Opts
+            .subcommand("list", "List all registered entities in cave")(entityListOpts)
+            .orElse(
+              Opts.subcommand("register", "Register a new entity in cave")(entityRegisterOpts)
+            )
+        )
+      )
+      .orElse(
+        Opts.subcommand("lesson", "Manage lessons learned")(
+          Opts.subcommand("add", "Log a lesson learned")(lessonAddOpts)
+        )
+      )
+      .orElse(
+        Opts.subcommand("transient", "Manage transient leases")(
+          Opts.subcommand("lease", "Acquire a transient lease")(leaseOpts)
+        )
+      )
       .orElse(Opts.subcommand("cast", "Cast a context beam for LLMs")(castOpts))
       .orElse(Opts.subcommand("hydrate", "Hydrate context for LLMs (alias for cast)")(hydrateOpts))
-      .orElse(Opts.subcommand("refresh", "Re-project derived views (tasks.md, lessons-learned.md) from crystal.json")(refreshOpts))
+      .orElse(
+        Opts.subcommand(
+          "refresh",
+          "Re-project derived views (tasks.md, lessons-learned.md) from crystal.json"
+        )(refreshOpts)
+      )
   )
 
   def parse(args: List[String]): Either[String, CliCommand] =

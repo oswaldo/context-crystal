@@ -47,10 +47,12 @@ class DAGAndAuditSuite extends FunSuite:
     assertEquals(dag.leafNodes.map(_.id), List("n-2"))
 
   test("CrystalDAG detects invalid cycles and duplicates"):
-    val dag0 = CrystalDAG.empty("n-root", nodeRoot)
+    val dag0 = CrystalDAG
+      .empty("n-root", nodeRoot)
       .flatMap(_.addNode(node1))
       .flatMap(_.addNode(node2))
-      .toOption.get
+      .toOption
+      .get
 
     val duplicateNode = DAGNode(
       id = "n-root",
@@ -137,7 +139,9 @@ class DAGAndAuditSuite extends FunSuite:
     assertEquals(unaddressed.map(_.id), List("lesson-open"))
     assert(CrystalAuditor.isReadyForConclusion(crystal).isLeft)
 
-  test("CrystalAuditor passes conclusion readiness when all leases are cleaned and lessons actioned"):
+  test(
+    "CrystalAuditor passes conclusion readiness when all leases are cleaned and lessons actioned"
+  ):
     val readyCrystal = ContextCrystal(
       schemaVersion = "1.0.0",
       id = "cc-ready",
@@ -147,10 +151,25 @@ class DAGAndAuditSuite extends FunSuite:
       entities = Nil,
       dag = DAG("n-root", List(nodeRoot)),
       transientLeases = List(
-        TransientLease("l-1", TransientResourceType.GitWorktree, None, "Worktree", DisposalPolicy.RevertOnConclusion, TransientLeaseStatus.Cleaned, "2026-08-28T12:00:00Z")
+        TransientLease(
+          "l-1",
+          TransientResourceType.GitWorktree,
+          None,
+          "Worktree",
+          DisposalPolicy.RevertOnConclusion,
+          TransientLeaseStatus.Cleaned,
+          "2026-08-28T12:00:00Z"
+        )
       ),
       lessonsLearned = List(
-        LessonLearned("les-1", "Friction", None, None, LessonStatus.Actioned, List(ActionAuditEntry("2026-08-28T12:00:00Z", "Actioned", "human")))
+        LessonLearned(
+          "les-1",
+          "Friction",
+          None,
+          None,
+          LessonStatus.Actioned,
+          List(ActionAuditEntry("2026-08-28T12:00:00Z", "Actioned", "human"))
+        )
       )
     )
     assertEquals(CrystalAuditor.isReadyForConclusion(readyCrystal), Right(()))

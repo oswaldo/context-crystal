@@ -20,63 +20,139 @@ class CommandParserSuite extends FunSuite:
     }
 
   test("Parses 'task add' and 'task done' commands"):
-    val addArgs = List("task", "add", "my-crystal", "--desc", "Write test")
+    val addArgs   = List("task", "add", "my-crystal", "--desc", "Write test")
     val parsedAdd = CommandParser.parse(addArgs)
     assert(parsedAdd.isRight)
     assertEquals(parsedAdd.toOption.get, CliCommand.TaskAdd("my-crystal", "Write test"))
 
-    val doneArgs = List("task", "done", "my-crystal", "--id", "ac-1")
+    val doneArgs   = List("task", "done", "my-crystal", "--id", "ac-1")
     val parsedDone = CommandParser.parse(doneArgs)
     assert(parsedDone.isRight)
     assertEquals(parsedDone.toOption.get, CliCommand.TaskDone("my-crystal", "ac-1"))
 
   test("Parses 'cast' (and 'hydrate') command"):
-    val castArgs = List("cast", "my-crystal", "--depth", "5")
+    val castArgs   = List("cast", "my-crystal", "--depth", "5")
     val parsedCast = CommandParser.parse(castArgs)
     assert(parsedCast.isRight)
-    assertEquals(parsedCast.toOption.get, CliCommand.Cast("my-crystal", depth = 5, summaryOnly = false))
+    assertEquals(
+      parsedCast.toOption.get,
+      CliCommand.Cast("my-crystal", depth = 5, summaryOnly = false)
+    )
 
-    val hydrateArgs = List("hydrate", "my-crystal", "--summary-only")
+    val hydrateArgs   = List("hydrate", "my-crystal", "--summary-only")
     val parsedHydrate = CommandParser.parse(hydrateArgs)
     assert(parsedHydrate.isRight)
-    assertEquals(parsedHydrate.toOption.get, CliCommand.Cast("my-crystal", depth = 10, summaryOnly = true))
+    assertEquals(
+      parsedHydrate.toOption.get,
+      CliCommand.Cast("my-crystal", depth = 10, summaryOnly = true)
+    )
 
   test("Parses 'node add' command"):
-    val nodeArgs = List("node", "add", "my-crystal", "--kind", "tool_execution", "--summary", "Ran test suite")
+    val nodeArgs =
+      List("node", "add", "my-crystal", "--kind", "tool_execution", "--summary", "Ran test suite")
     val parsedNode = CommandParser.parse(nodeArgs)
     assert(parsedNode.isRight)
-    assertEquals(parsedNode.toOption.get, CliCommand.NodeAdd("my-crystal", NodeKind.ToolExecution, "Ran test suite", Nil))
+    assertEquals(
+      parsedNode.toOption.get,
+      CliCommand.NodeAdd("my-crystal", NodeKind.ToolExecution, "Ran test suite", Nil)
+    )
 
   test("Parses 'lesson add' and 'transient lease' commands"):
-    val lessonArgs = List("lesson", "add", "my-crystal", "--friction", "Native link failure", "--action", "Update libs")
+    val lessonArgs = List(
+      "lesson",
+      "add",
+      "my-crystal",
+      "--friction",
+      "Native link failure",
+      "--action",
+      "Update libs"
+    )
     val parsedLesson = CommandParser.parse(lessonArgs)
     assert(parsedLesson.isRight)
-    assertEquals(parsedLesson.toOption.get, CliCommand.LessonAdd("my-crystal", "Native link failure", None, Some("Update libs")))
+    assertEquals(
+      parsedLesson.toOption.get,
+      CliCommand.LessonAdd("my-crystal", "Native link failure", None, Some("Update libs"))
+    )
 
-    val leaseArgs = List("transient", "lease", "my-crystal", "--type", "git_worktree", "--desc", "Spike branch", "--policy", "revert_on_conclusion")
+    val leaseArgs = List(
+      "transient",
+      "lease",
+      "my-crystal",
+      "--type",
+      "git_worktree",
+      "--desc",
+      "Spike branch",
+      "--policy",
+      "revert_on_conclusion"
+    )
     val parsedLease = CommandParser.parse(leaseArgs)
     assert(parsedLease.isRight)
-    assertEquals(parsedLease.toOption.get, CliCommand.TransientLeaseCmd("my-crystal", TransientResourceType.GitWorktree, None, "Spike branch", DisposalPolicy.RevertOnConclusion))
+    assertEquals(
+      parsedLease.toOption.get,
+      CliCommand.TransientLeaseCmd(
+        "my-crystal",
+        TransientResourceType.GitWorktree,
+        None,
+        "Spike branch",
+        DisposalPolicy.RevertOnConclusion
+      )
+    )
 
   test("Parses 'entity list' and 'entity register' commands"):
-    val listArgs = List("entity", "list")
+    val listArgs   = List("entity", "list")
     val parsedList = CommandParser.parse(listArgs)
     assert(parsedList.isRight)
     assertEquals(parsedList.toOption.get, CliCommand.EntityList)
 
-    val regArgs = List("entity", "register", "--name", "antigravity", "--kind", "agent")
+    val regArgs   = List("entity", "register", "--name", "antigravity", "--kind", "agent")
     val parsedReg = CommandParser.parse(regArgs)
     assert(parsedReg.isRight)
     assertEquals(parsedReg.toOption.get, CliCommand.EntityRegister("antigravity", EntityKind.Agent))
 
   test("Parses 'init' and 'node add' with explicit --author"):
-    val initArgs = List("init", "authored-crystal", "--goal", "Fix bugs", "--author", "antigravity", "--author-kind", "agent")
+    val initArgs = List(
+      "init",
+      "authored-crystal",
+      "--goal",
+      "Fix bugs",
+      "--author",
+      "antigravity",
+      "--author-kind",
+      "agent"
+    )
     val parsedInit = CommandParser.parse(initArgs)
     assert(parsedInit.isRight)
-    assertEquals(parsedInit.toOption.get, CliCommand.Init("authored-crystal", "Fix bugs", None, Some("antigravity"), Some(EntityKind.Agent)))
+    assertEquals(
+      parsedInit.toOption.get,
+      CliCommand.Init(
+        "authored-crystal",
+        "Fix bugs",
+        None,
+        Some("antigravity"),
+        Some(EntityKind.Agent)
+      )
+    )
 
-    val nodeArgs = List("node", "add", "authored-crystal", "--kind", "agent_reasoning", "--summary", "Planned next steps", "--author", "agt_antigravity_1")
+    val nodeArgs = List(
+      "node",
+      "add",
+      "authored-crystal",
+      "--kind",
+      "agent_reasoning",
+      "--summary",
+      "Planned next steps",
+      "--author",
+      "agt_antigravity_1"
+    )
     val parsedNode = CommandParser.parse(nodeArgs)
     assert(parsedNode.isRight)
-    assertEquals(parsedNode.toOption.get, CliCommand.NodeAdd("authored-crystal", NodeKind.AgentReasoning, "Planned next steps", Nil, Some("agt_antigravity_1")))
-
+    assertEquals(
+      parsedNode.toOption.get,
+      CliCommand.NodeAdd(
+        "authored-crystal",
+        NodeKind.AgentReasoning,
+        "Planned next steps",
+        Nil,
+        Some("agt_antigravity_1")
+      )
+    )

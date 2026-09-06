@@ -14,7 +14,8 @@ class FsCrystalStoreSuite extends FunSuite:
 
   override def afterEach(context: AfterEach): Unit =
     if tempDir != null && Files.exists(tempDir) then
-      Files.walk(tempDir)
+      Files
+        .walk(tempDir)
         .sorted(Comparator.reverseOrder())
         .forEach(Files.deleteIfExists)
 
@@ -38,12 +39,38 @@ class FsCrystalStoreSuite extends FunSuite:
       updatedAt = "2026-08-29T12:00:00Z",
       goal = goal,
       entities = List(Entity("e-1", EntityKind.Human, "Flight Director")),
-      dag = DAG("n-root", List(DAGNode("n-root", Nil, "2026-08-29T12:00:00Z", "e-1", NodeKind.HumanPrompt, "Init dashboard"))),
+      dag = DAG(
+        "n-root",
+        List(
+          DAGNode(
+            "n-root",
+            Nil,
+            "2026-08-29T12:00:00Z",
+            "e-1",
+            NodeKind.HumanPrompt,
+            "Init dashboard"
+          )
+        )
+      ),
       transientLeases = List(
-        TransientLease("l-1", TransientResourceType.EnvOverride, None, "Debug telemetry", DisposalPolicy.RevertOnConclusion, TransientLeaseStatus.Active, "2026-08-29T12:00:00Z")
+        TransientLease(
+          "l-1",
+          TransientResourceType.EnvOverride,
+          None,
+          "Debug telemetry",
+          DisposalPolicy.RevertOnConclusion,
+          TransientLeaseStatus.Active,
+          "2026-08-29T12:00:00Z"
+        )
       ),
       lessonsLearned = List(
-        LessonLearned("les-1", "Grafana rate limiting", Some("Poll interval too low"), Some("Increase interval"), LessonStatus.Open)
+        LessonLearned(
+          "les-1",
+          "Grafana rate limiting",
+          Some("Poll interval too low"),
+          Some("Increase interval"),
+          LessonStatus.Open
+        )
       )
     )
 
@@ -53,7 +80,10 @@ class FsCrystalStoreSuite extends FunSuite:
     val crystalDir = tempDir.resolve(".ccrystals").resolve("mission-launch-dashboard")
     assert(Files.exists(crystalDir.resolve("crystal.json")), "crystal.json should exist")
     assert(Files.exists(crystalDir.resolve("tasks.md")), "tasks.md should exist")
-    assert(Files.exists(crystalDir.resolve("lessons-learned.md")), "lessons-learned.md should exist")
+    assert(
+      Files.exists(crystalDir.resolve("lessons-learned.md")),
+      "lessons-learned.md should exist"
+    )
     assert(Files.exists(crystalDir.resolve("transient.json")), "transient.json should exist")
 
     // Verify round-trip load
@@ -75,7 +105,10 @@ class FsCrystalStoreSuite extends FunSuite:
       updatedAt = "2026-08-29T12:00:00Z",
       goal = Goal("Goal A", "Intent A", GoalStatus.InProgress, Nil),
       entities = Nil,
-      dag = DAG("root", List(DAGNode("root", Nil, "2026-08-29T12:00:00Z", "u-1", NodeKind.HumanPrompt, "A")))
+      dag = DAG(
+        "root",
+        List(DAGNode("root", Nil, "2026-08-29T12:00:00Z", "u-1", NodeKind.HumanPrompt, "A"))
+      )
     )
     val crystalB = ContextCrystal(
       schemaVersion = "1.0.0",
@@ -84,7 +117,10 @@ class FsCrystalStoreSuite extends FunSuite:
       updatedAt = "2026-08-29T12:00:00Z",
       goal = Goal("Goal B", "Intent B", GoalStatus.ConcludedSuccess, Nil),
       entities = Nil,
-      dag = DAG("root", List(DAGNode("root", Nil, "2026-08-29T12:00:00Z", "u-1", NodeKind.HumanPrompt, "B")))
+      dag = DAG(
+        "root",
+        List(DAGNode("root", Nil, "2026-08-29T12:00:00Z", "u-1", NodeKind.HumanPrompt, "B"))
+      )
     )
 
     store.save(crystalA)
@@ -104,7 +140,9 @@ class FsCrystalStoreSuite extends FunSuite:
     assertEquals(initialEntities.toOption.get.entities.isEmpty, true)
 
     // Register human entity
-    val humanRes = store.registerEntity(Entity("usr_oswaldo", EntityKind.Human, "oswaldo", Map("role" -> "lead")))
+    val humanRes = store.registerEntity(
+      Entity("usr_oswaldo", EntityKind.Human, "oswaldo", Map("role" -> "lead"))
+    )
     assert(humanRes.isRight)
 
     // Resolve or create agent entity with collision resolution
@@ -132,4 +170,3 @@ class FsCrystalStoreSuite extends FunSuite:
     assert(entitiesMap.contains(agt1.toOption.get.id))
     assert(entitiesMap.contains(agt2.toOption.get.id))
     assert(entitiesMap.contains(agt3.toOption.get.id))
-

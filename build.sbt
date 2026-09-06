@@ -1,8 +1,8 @@
 import sbtcrossproject.CrossPlugin.autoImport.{crossProject, CrossType}
 
 val scala3Version   = "3.3.4"
-val circeVersion    = "0.14.10"
-val munitVersion    = "1.0.4"
+val circeVersion    = "0.14.16"
+val munitVersion    = "1.3.6"
 val declineVersion  = "2.6.2"
 
 ThisBuild / scalaVersion := scala3Version
@@ -62,3 +62,6 @@ lazy val cli = crossProject(JVMPlatform, NativePlatform)
   )
   .jvmSettings()
   .nativeSettings()
+
+ThisBuild / semanticdbEnabled := true
+ThisBuild / semanticdbVersion := scalafixSemanticdb.revision

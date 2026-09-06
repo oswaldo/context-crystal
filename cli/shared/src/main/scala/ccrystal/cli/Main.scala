@@ -7,8 +7,8 @@ import scala.io.Source
 object Main:
   def main(args: Array[String]): Unit =
     val rootStore = Paths.get(".ccrystals")
-    val store = FsCrystalStore(rootStore)
-    val runner = Runner(store)
+    val store     = FsCrystalStore(rootStore)
+    val runner    = Runner(store)
 
     if args.isEmpty then
       println("Usage: ccrystal <subcommand> [options]")
@@ -26,12 +26,14 @@ object Main:
           System.err.println(s"Batch execution error: $err")
           System.exit(1)
     else if args(0) == "--batch" then
-      val scriptContent = if args.length > 1 then
-        Source.fromFile(args(1)).mkString
-      else
-        Source.stdin.mkString
+      val scriptContent =
+        if args.length > 1 then Source.fromFile(args(1)).mkString
+        else Source.stdin.mkString
 
-      val chain = scriptContent.linesIterator.map(_.trim).filterNot(l => l.isEmpty || l.startsWith("#")).mkString("; ")
+      val chain = scriptContent.linesIterator
+        .map(_.trim)
+        .filterNot(l => l.isEmpty || l.startsWith("#"))
+        .mkString("; ")
       BatchExecutor.executeChain(chain, runner) match
         case Right(outputs) =>
           outputs.foreach(println)

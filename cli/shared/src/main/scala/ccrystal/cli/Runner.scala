@@ -12,10 +12,10 @@ class Runner(val store: CrystalStore):
 
   def run(cmd: CliCommand): Either[String, String] = cmd match
     case CliCommand.Init(name, goalTitle, intent, authorOpt, authorKindOpt) =>
-      val now = Instant.now().toString
+      val now        = Instant.now().toString
       val authorKind = authorKindOpt.getOrElse(EntityKind.Human)
       val authorName = authorOpt.getOrElse("Operator")
-      
+
       for
         resolvedAuthor <- store.resolveOrCreateEntity(authorName, authorKind)
         goal = Goal(
@@ -52,17 +52,18 @@ class Runner(val store: CrystalStore):
           case Some(st) => crystals.filter(_.goal.status == st)
           case None     => crystals
 
-        if jsonOutput then
-          filtered.asJson.spaces2
+        if jsonOutput then filtered.asJson.spaces2
         else
           val sb = new java.lang.StringBuilder()
           sb.append(s"Found ${filtered.size} crystal(s):\n")
           filtered.foreach { c =>
-            val done = c.goal.acceptanceCriteria.count(_.completed)
-            val total = c.goal.acceptanceCriteria.size
-            val openLessons = c.lessonsLearned.count(_.status == LessonStatus.Open)
+            val done         = c.goal.acceptanceCriteria.count(_.completed)
+            val total        = c.goal.acceptanceCriteria.size
+            val openLessons  = c.lessonsLearned.count(_.status == LessonStatus.Open)
             val activeLeases = c.transientLeases.count(_.status == TransientLeaseStatus.Active)
-            sb.append(s"- ${c.id} [${c.goal.status}] Tasks: $done/$total | Active Leases: $activeLeases | Open Lessons: $openLessons\n")
+            sb.append(
+              s"- ${c.id} [${c.goal.status}] Tasks: $done/$total | Active Leases: $activeLeases | Open Lessons: $openLessons\n"
+            )
           }
           sb.toString
       }
@@ -70,7 +71,7 @@ class Runner(val store: CrystalStore):
     case CliCommand.TaskAdd(crystalId, desc) =>
       store.load(crystalId).flatMap { crystal =>
         val taskId = s"task-${crystal.goal.acceptanceCriteria.size + 1}"
-        val newAc = AcceptanceCriterion(taskId, desc, completed = false)
+        val newAc  = AcceptanceCriterion(taskId, desc, completed = false)
         val updatedGoal = crystal.goal.copy(
           acceptanceCriteria = crystal.goal.acceptanceCriteria :+ newAc
         )
@@ -107,13 +108,15 @@ class Runner(val store: CrystalStore):
     case CliCommand.NodeAdd(crystalId, kind, summary, parentIds, authorOpt) =>
       store.load(crystalId).flatMap { crystal =>
         val now = Instant.now().toString
-        val parents = if parentIds.isEmpty then crystal.dag.nodes.lastOption.map(n => List(n.id)).getOrElse(Nil) else parentIds
-        val nodeId = s"node-${crystal.dag.nodes.size + 1}"
+        val parents =
+          if parentIds.isEmpty then crystal.dag.nodes.lastOption.map(n => List(n.id)).getOrElse(Nil)
+          else parentIds
+        val nodeId  = s"node-${crystal.dag.nodes.size + 1}"
         val actorId = authorOpt.orElse(crystal.defaultAuthorId).getOrElse("usr_operator")
         val newNode = DAGNode(nodeId, parents, now, actorId, kind, summary)
 
         for
-          cDag <- CrystalDAG.fromDAG(crystal.dag)
+          cDag       <- CrystalDAG.fromDAG(crystal.dag)
           updatedDag <- cDag.addNode(newNode)
           updatedCrystal = crystal.copy(
             updatedAt = now,
@@ -129,8 +132,7 @@ class Runner(val store: CrystalStore):
         sb.append(s"=== Cave Entity Registry (${reg.entities.size} registered) ===\n")
         reg.caveId.foreach(c => sb.append(s"Cave Scope: $c\n"))
         sb.append(s"Authorship Mode: ${reg.authorshipMode}\n\n")
-        if reg.entities.isEmpty then
-          sb.append("No entities registered yet.\n")
+        if reg.entities.isEmpty then sb.append("No entities registered yet.\n")
         else
           reg.entities.values.foreach { e =>
             sb.append(s"- ${e.id} [${e.kind}] name: '${e.name}'\n")
@@ -143,10 +145,9 @@ class Runner(val store: CrystalStore):
         s"Registered entity '${entity.name}' with ID '${entity.id}' in cave registry."
       }
 
-
     case CliCommand.LessonAdd(crystalId, friction, rootCause, action) =>
       store.load(crystalId).flatMap { crystal =>
-        val lessonId = s"lesson-${crystal.lessonsLearned.size + 1}"
+        val lessonId  = s"lesson-${crystal.lessonsLearned.size + 1}"
         val newLesson = LessonLearned(lessonId, friction, rootCause, action, LessonStatus.Open)
         val updated = crystal.copy(
           updatedAt = Instant.now().toString,
@@ -186,7 +187,15 @@ class Runner(val store: CrystalStore):
     case CliCommand.TransientLeaseCmd(crystalId, rType, path, desc, policy) =>
       store.load(crystalId).flatMap { crystal =>
         val leaseId = s"lease-${crystal.transientLeases.size + 1}"
-        val newLease = TransientLease(leaseId, rType, path, desc, policy, TransientLeaseStatus.Active, Instant.now().toString)
+        val newLease = TransientLease(
+          leaseId,
+          rType,
+          path,
+          desc,
+          policy,
+          TransientLeaseStatus.Active,
+          Instant.now().toString
+        )
         val updated = crystal.copy(
           updatedAt = Instant.now().toString,
           transientLeases = crystal.transientLeases :+ newLease
@@ -248,7 +257,8 @@ class Runner(val store: CrystalStore):
           val activeLeases = crystal.transientLeases.filter(_.status == TransientLeaseStatus.Active)
           if activeLeases.nonEmpty then
             sb.append("## Active Transient Leases (Must be cleaned before conclusion):\n")
-            activeLeases.foreach(l => sb.append(s"- [${l.id}] ${l.resourceType}: ${l.description}\n"))
+            activeLeases
+              .foreach(l => sb.append(s"- [${l.id}] ${l.resourceType}: ${l.description}\n"))
             sb.append("\n")
 
         sb.append("=== END CAST ===")
@@ -258,18 +268,21 @@ class Runner(val store: CrystalStore):
     case CliCommand.Refresh(crystalIdOpt, all) =>
       if all then
         store.list().flatMap { crystals =>
-          val results = crystals.map(c => store.save(c))
+          val results  = crystals.map(c => store.save(c))
           val failures = results.collect { case Left(err) => err }
           if failures.isEmpty then
             Right(s"Refreshed derived views for ${crystals.size} crystal(s).")
-          else
-            Left(s"Errors during batch refresh: ${failures.mkString("; ")}")
+          else Left(s"Errors during batch refresh: ${failures.mkString("; ")}")
         }
       else
         crystalIdOpt match
           case Some(id) =>
             store.load(id).flatMap { crystal =>
-              store.save(crystal).map(_ => s"Refreshed derived views (tasks.md, lessons-learned.md, transient.json) for '$id'.")
+              store
+                .save(crystal)
+                .map(_ =>
+                  s"Refreshed derived views (tasks.md, lessons-learned.md, transient.json) for '$id'."
+                )
             }
           case None =>
             Left("Please specify a crystal ID or use --all to refresh all crystals.")

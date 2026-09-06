@@ -100,10 +100,10 @@ given Decoder[DisposalPolicy] = Decoder.decodeString.emap {
 }
 
 given Encoder[TransientLeaseStatus] = Encoder.encodeString.contramap {
-  case TransientLeaseStatus.Active               => "active"
-  case TransientLeaseStatus.Reverted             => "reverted"
-  case TransientLeaseStatus.Cleaned              => "cleaned"
-  case TransientLeaseStatus.PromotedToPermanent  => "promoted_to_permanent"
+  case TransientLeaseStatus.Active              => "active"
+  case TransientLeaseStatus.Reverted            => "reverted"
+  case TransientLeaseStatus.Cleaned             => "cleaned"
+  case TransientLeaseStatus.PromotedToPermanent => "promoted_to_permanent"
 }
 
 given Decoder[TransientLeaseStatus] = Decoder.decodeString.emap {
@@ -128,15 +128,15 @@ given Decoder[LessonStatus] = Decoder.decodeString.emap {
 }
 
 given Codec[AcceptanceCriterion] = deriveCodec
-given Codec[Goal] = deriveCodec
-given Codec[Entity] = deriveCodec
-given Codec[EntityRegistry] = deriveCodec
-given Codec[Mask] = deriveCodec
-given Codec[DAGNode] = deriveCodec
-given Codec[DAG] = deriveCodec
-given Codec[TransientLease] = deriveCodec
-given Codec[ActionAuditEntry] = deriveCodec
-given Codec[LessonLearned] = deriveCodec
-given Codec[Artifact] = deriveCodec
-given Codec[CrystalOrigin] = deriveCodec
-given Codec[ContextCrystal] = deriveCodec
+given Codec[Goal]                = deriveCodec
+given Codec[Entity]              = deriveCodec
+given Codec[EntityRegistry]      = deriveCodec
+given Codec[Mask]                = deriveCodec
+given Codec[DAGNode]             = deriveCodec
+given Codec[DAG]                 = deriveCodec
+given Codec[TransientLease]      = deriveCodec
+given Codec[ActionAuditEntry]    = deriveCodec
+given Codec[LessonLearned]       = deriveCodec
+given Codec[Artifact]            = deriveCodec
+given Codec[CrystalOrigin]       = deriveCodec
+given Codec[ContextCrystal]      = deriveCodec
