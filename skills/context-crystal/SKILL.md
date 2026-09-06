@@ -167,6 +167,8 @@ When the user communicates in natural language, translate their intent into the 
 | *"This bug is unrelated, let's track it separately"* | Cleave context and fork into child crystal | `ccrystal slice <id> --from <anchor-or-node> --fork-to <child-id> --prune` |
 | *"What crystals are in progress?"*, *"Which is closer to done?"* | Inspect crystal status and completion ratios | `ccrystal list --status in_progress` |
 | *"Complete task X"* | Mark acceptance criterion done | `ccrystal task done <id> -t <task-id>` |
+| *"Delete crystal X"*, *"Remove scratch session"* | Permanently delete crystal and cascade orphaned entities | `ccrystal delete <id>` (or `ccrystal delete <id> -f` when automated) |
+| *"Deregister entity X"*, *"Remove actor from cave"* | Deregister entity and cascade-delete associated crystals | `ccrystal entity deregister <entity-id>` (or `-f` when automated) |
 
 ---
 
@@ -190,6 +192,12 @@ ccrystal batch "node add my-feature -k checkpoint -s 'Schema finalized' --fideli
 
 ```bash
 ccrystal batch "task done my-feature -t task-3; node add my-feature -k resolution -s 'OAuth2 flow verified with 100% test coverage' --fidelity inferred; transient clean my-feature -l lease-1; lesson add my-feature -f 'PKCE code challenge salt collision' -r 'Used weak PRNG in mock' -a 'Always use java.security.SecureRandom'"
+```
+
+### Recipe 4: Automated Scratch Cleanup & Regeneration
+
+```bash
+ccrystal batch "delete scratch-spike -f; init scratch-spike -g 'Spike 2' -i 'Fresh exploration'"
 ```
 
 ---
