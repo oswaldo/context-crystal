@@ -2,7 +2,7 @@ package ccrystal.cli
 
 import ccrystal.core.model.*
 import ccrystal.core.store.CrystalStore
-import ccrystal.core.dag.CrystalDAG
+import ccrystal.core.dag.{CrystalDAG, CrystalSlicer, SliceParams}
 import ccrystal.core.audit.CrystalAuditor
 import ccrystal.core.codec.given
 import io.circe.syntax.*
@@ -100,12 +100,12 @@ class Runner(val store: CrystalStore):
         sb.append(s"Tasks for '${crystal.id}':\n")
         crystal.goal.acceptanceCriteria.foreach { ac =>
           val mark = if ac.completed then "[x]" else "[ ]"
-          sb.append(s"$mark ${ac.id}: ${ac.description}\n")
+          sb.append(s"- $mark ${ac.id}: ${ac.description}\n")
         }
         sb.toString
       }
 
-    case CliCommand.NodeAdd(crystalId, kind, summary, parentIds, authorOpt, fidelity) =>
+    case CliCommand.NodeAdd(crystalId, kind, summary, parentIds, authorOpt, fidelity, anchorOpt) =>
       store.load(crystalId).flatMap { crystal =>
         val now = Instant.now().toString
         val parents =
@@ -120,6 +120,7 @@ class Runner(val store: CrystalStore):
           actorId = actorId,
           kind = kind,
           contentSummary = summary,
+          anchor = anchorOpt,
           artifactIds = Nil,
           fidelity = fidelity,
         )
@@ -132,7 +133,9 @@ class Runner(val store: CrystalStore):
             dag = updatedDag.raw,
           )
           _ <- store.save(updatedCrystal)
-        yield s"Appended node '$nodeId' [$kind] [${fidelity.toString.toLowerCase}] (Author: $actorId) to $crystalId: $summary"
+        yield
+          val anchorMsg = anchorOpt.fold("")(a => s" <anchor: $a>")
+          s"Appended node '$nodeId' [$kind]$anchorMsg [${fidelity.toString.toLowerCase}] (Author: $actorId) to $crystalId: $summary"
       }
 
     case CliCommand.EntityList =>
@@ -295,6 +298,63 @@ class Runner(val store: CrystalStore):
             }
           case None =>
             Left("Please specify a crystal ID or use --all to refresh all crystals.")
+
+    case CliCommand.Slice(crystalId, fromOpt, toOpt, headOpt, tailOpt, format, forkToOpt, prune) =>
+      store.load(crystalId).flatMap { crystal =>
+        val params = SliceParams(fromOpt, toOpt, headOpt, tailOpt)
+        CrystalSlicer.slice(crystal, params).flatMap { slice =>
+          forkToOpt match
+            case Some(forkName) =>
+              val now = Instant.now().toString
+              val child =
+                slice.fork(newId = forkName, newName = Some(forkName), createdAt = Some(now))
+              for
+                _ <- store.save(child)
+                _ <-
+                  if prune then
+                    val updatedParent = crystal.copy(
+                      updatedAt = now,
+                      metadata = crystal.metadata ++ Map(
+                        "fracture_cleavage_to" -> forkName,
+                        "fracture_anchor"      -> slice.entryNode.id,
+                        "fractured_at"         -> now,
+                      ),
+                    )
+                    store.save(updatedParent)
+                  else Right(())
+              yield s"Sliced fragment (${slice.slicedNodes.size} node(s)) and forked to new crystal '$forkName' at .ccrystals/$forkName"
+
+            case None =>
+              format match
+                case SliceFormat.Prompt =>
+                  val sb         = new java.lang.StringBuilder()
+                  val anchorInfo = slice.entryNode.anchor.fold("")(a => s" (Anchor: $a)")
+                  sb.append(s"=== CONTEXT CRYSTAL SLICE: ${crystal.id} ===\n\n")
+                  sb.append(s"Slice Entry: ${slice.entryNode.id}$anchorInfo\n")
+                  sb.append(s"Nodes: ${slice.slicedNodes.size}\n\n")
+                  sb.append("## State Transitions:\n")
+                  slice.slicedNodes.foreach { n =>
+                    val anchorTag = n.anchor.fold("")(a => s" <anchor: $a>")
+                    sb.append(s"- [${n.kind}] (${n.actorId})$anchorTag: ${n.contentSummary}\n")
+                  }
+                  sb.append("\n=== END SLICE ===")
+                  Right(sb.toString)
+
+                case SliceFormat.Human =>
+                  val sb = new java.lang.StringBuilder()
+                  sb.append(s"Crystal '${crystal.id}' Slice Summary:\n")
+                  sb.append(
+                    s"- Range: ${slice.slicedNodes.head.id} -> ${slice.slicedNodes.last.id}\n",
+                  )
+                  sb.append(s"- Node Count: ${slice.slicedNodes.size}\n")
+                  val anchors = slice.slicedNodes.flatMap(_.anchor)
+                  if anchors.nonEmpty then sb.append(s"- Anchors: ${anchors.mkString(", ")}\n")
+                  Right(sb.toString)
+
+                case SliceFormat.Json =>
+                  Right(slice.normalizedDag.asJson.spaces2)
+        }
+      }
 
     case CliCommand.Batch(script) =>
       Left("Batch execution handled via BatchExecutor")

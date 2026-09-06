@@ -54,6 +54,14 @@ object CommandParser:
         )
     }
 
+  private val sliceFormatArgument: Argument[SliceFormat] = Argument.from("format") {
+    case "prompt" => Validated.valid(SliceFormat.Prompt)
+    case "human"  => Validated.valid(SliceFormat.Human)
+    case "json"   => Validated.valid(SliceFormat.Json)
+    case other =>
+      Validated.invalidNel(s"Invalid slice format: $other (must be 'prompt', 'human', or 'json')")
+  }
+
   // --- Subcommands ---
 
   private val initOpts = (
@@ -99,7 +107,21 @@ object CommandParser:
         captureFidelityArgument,
       )
       .withDefault(CaptureFidelity.Inferred),
+    Opts.option[String]("anchor", "Semantic anchor label for node", "a").orNone,
   ).mapN(CliCommand.NodeAdd.apply)
+
+  private val sliceOpts = (
+    Opts.argument[String]("crystal-id"),
+    Opts.option[String]("from", "Start slicing from anchor or node ID").orNone,
+    Opts.option[String]("to", "End slicing at anchor or node ID").orNone,
+    Opts.option[Int]("head", "Take first N nodes of slice").orNone,
+    Opts.option[Int]("tail", "Take last N nodes of slice").orNone,
+    Opts
+      .option[SliceFormat]("format", "Output format (prompt, human, json)")(sliceFormatArgument)
+      .withDefault(SliceFormat.Prompt),
+    Opts.option[String]("fork-to", "Materialize slice into a new crystal with lineage").orNone,
+    Opts.flag("prune", "Tag/prune cleavage point in parent crystal when forking").orFalse,
+  ).mapN(CliCommand.Slice.apply)
 
   private val entityListOpts = Opts.unit.map(_ => CliCommand.EntityList)
 
@@ -183,7 +205,8 @@ object CommandParser:
           "refresh",
           "Re-project derived views (tasks.md, lessons-learned.md) from crystal.json",
         )(refreshOpts),
-      ),
+      )
+      .orElse(Opts.subcommand("slice", "Extract crystal fragments or slice sub-DAGs")(sliceOpts)),
   )
 
   def parse(args: List[String]): Either[String, CliCommand] =

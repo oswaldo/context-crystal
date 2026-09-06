@@ -220,3 +220,75 @@ class CommandParserSuite extends FunSuite:
     )
     val parsedInvalid = CommandParser.parse(invalidFidelityArgs)
     assert(parsedInvalid.isLeft)
+
+  test("Parses 'node add' with optional --anchor"):
+    val anchorArgs = List(
+      "node",
+      "add",
+      "c-1",
+      "--kind",
+      "checkpoint",
+      "--summary",
+      "Save state",
+      "--anchor",
+      "milestone_1",
+    )
+    val parsed = CommandParser.parse(anchorArgs)
+    assert(parsed.isRight)
+    assertEquals(
+      parsed.toOption.get,
+      CliCommand.NodeAdd(
+        "c-1",
+        NodeKind.Checkpoint,
+        "Save state",
+        Nil,
+        None,
+        CaptureFidelity.Inferred,
+        Some("milestone_1"),
+      ),
+    )
+
+  test("Parses 'slice' command with selectors and formats"):
+    val sliceDefault  = List("slice", "my-crystal")
+    val parsedDefault = CommandParser.parse(sliceDefault)
+    assert(parsedDefault.isRight)
+    assertEquals(
+      parsedDefault.toOption.get,
+      CliCommand.Slice("my-crystal", None, None, None, None, SliceFormat.Prompt, None, false),
+    )
+
+    val sliceAllFlags = List(
+      "slice",
+      "my-crystal",
+      "--from",
+      "auth_pivot",
+      "--to",
+      "done",
+      "--head",
+      "10",
+      "--tail",
+      "5",
+      "--format",
+      "json",
+      "--fork-to",
+      "new-session",
+      "--prune",
+    )
+    val parsedAll = CommandParser.parse(sliceAllFlags)
+    assert(parsedAll.isRight)
+    assertEquals(
+      parsedAll.toOption.get,
+      CliCommand.Slice(
+        "my-crystal",
+        Some("auth_pivot"),
+        Some("done"),
+        Some(10),
+        Some(5),
+        SliceFormat.Json,
+        Some("new-session"),
+        true,
+      ),
+    )
+
+    val invalidFormat = List("slice", "my-crystal", "--format", "yaml")
+    assert(CommandParser.parse(invalidFormat).isLeft)

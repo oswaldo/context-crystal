@@ -2,6 +2,11 @@ package ccrystal.cli
 
 import ccrystal.core.model.*
 
+enum SliceFormat derives CanEqual:
+  case Prompt
+  case Human
+  case Json
+
 enum CliCommand derives CanEqual:
   case Init(
       name: String,
@@ -21,6 +26,17 @@ enum CliCommand derives CanEqual:
       parentIds: List[String],
       author: Option[String] = None,
       fidelity: CaptureFidelity = CaptureFidelity.Inferred,
+      anchor: Option[String] = None,
+  )
+  case Slice(
+      crystalId: String,
+      from: Option[String] = None,
+      to: Option[String] = None,
+      head: Option[Int] = None,
+      tail: Option[Int] = None,
+      format: SliceFormat = SliceFormat.Prompt,
+      forkTo: Option[String] = None,
+      prune: Boolean = false,
   )
   case LessonAdd(
       crystalId: String,
