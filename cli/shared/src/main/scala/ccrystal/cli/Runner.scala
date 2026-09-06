@@ -427,6 +427,16 @@ class Runner(
         else executeDeregister(entityId)
       }
 
+    case CliCommand.Mcp(transport) =>
+      if transport != "stdio" then
+        Left(s"Unsupported MCP transport: '$transport'. Only 'stdio' is currently supported.")
+      else
+        val handler = new ccrystal.cli.mcp.DefaultMcpHandler(store, this)
+        val in      = new java.io.BufferedReader(new java.io.InputStreamReader(System.in, "UTF-8"))
+        val stdioTransport = new ccrystal.cli.mcp.StdioMcpTransport(in, System.out)
+        stdioTransport.run(handler)
+        Right("")
+
   private def getPreviewLimit: Int =
     sys.env.get("CCRYSTAL_DELETION_PREVIEW_LIMIT").flatMap(_.toIntOption).getOrElse(10)
 

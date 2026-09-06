@@ -65,3 +65,4 @@ enum CliCommand derives CanEqual:
   case Refresh(crystalId: Option[String], all: Boolean)
   case Batch(scriptOrChain: String)
   case Delete(crystalId: String, force: Boolean = false)
+  case Mcp(transport: String = "stdio")

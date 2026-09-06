@@ -3,7 +3,7 @@
   "id" : "native-mcp-server",
   "name" : "native-mcp-server",
   "createdAt" : "2026-09-06T21:58:48.125Z",
-  "updatedAt" : "2026-09-06T22:08:16.068Z",
+  "updatedAt" : "2026-09-06T22:14:49.132Z",
   "parentCrystalId" : null,
   "origin" : null,
   "caveId" : null,
@@ -36,6 +36,31 @@
       {
         "id" : "task-5",
         "description" : "Phase 1 Verification & Checkpoint",
+        "completed" : true
+      },
+      {
+        "id" : "task-6",
+        "description" : "Write failing unit tests for McpTransport and StdioMcpTransport stream loop",
+        "completed" : true
+      },
+      {
+        "id" : "task-7",
+        "description" : "Implement McpTransport trait and StdioMcpTransport line-delimited engine",
+        "completed" : true
+      },
+      {
+        "id" : "task-8",
+        "description" : "Write failing unit tests for CLI 'ccrystal mcp' command parsing",
+        "completed" : true
+      },
+      {
+        "id" : "task-9",
+        "description" : "Implement CliCommand.Mcp in CommandParser, Runner, and Main entry point",
+        "completed" : true
+      },
+      {
+        "id" : "task-10",
+        "description" : "Phase 2 Verification & Checkpoint",
         "completed" : true
       }
     ],
@@ -87,6 +112,23 @@
         "kind" : "checkpoint",
         "contentSummary" : "Phase 1 Complete: MCP Protocol models, Circe codecs, and DefaultMcpHandler implemented and verified natively",
         "anchor" : "phase-1-checkpoint",
+        "artifactIds" : [
+        ],
+        "fidelity" : "inferred",
+        "metadata" : {
+          
+        }
+      },
+      {
+        "id" : "node-3",
+        "parentIds" : [
+          "node-2"
+        ],
+        "timestamp" : "2026-09-06T22:14:49.132Z",
+        "actorId" : "usr_oswaldo",
+        "kind" : "checkpoint",
+        "contentSummary" : "Phase 2 Complete: StdioMcpTransport line-delimited engine, CommandParser mcp subcommand, and Runner integration verified across JVM and Native",
+        "anchor" : "phase-2-checkpoint",
         "artifactIds" : [
         ],
         "fidelity" : "inferred",

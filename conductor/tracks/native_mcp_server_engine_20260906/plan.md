@@ -8,11 +8,11 @@
 - [x] Task: Phase Verification & Checkpoint (Refer to workflow.md)
 
 ## Phase 2: Transport Layer & CLI Integration (Red-Green TDD)
-- [ ] Task: Write failing unit tests for McpTransport and StdioMcpTransport stream loop (Red)
-- [ ] Task: Implement McpTransport trait and StdioMcpTransport line-delimited engine (Green)
-- [ ] Task: Write failing unit tests for CLI 'ccrystal mcp' command parsing (Red)
-- [ ] Task: Implement CliCommand.Mcp in CommandParser, Runner, and Main entry point (Green)
-- [ ] Task: Phase Verification & Checkpoint (Refer to workflow.md)
+- [x] Task: Write failing unit tests for McpTransport and StdioMcpTransport stream loop (Red)
+- [x] Task: Implement McpTransport trait and StdioMcpTransport line-delimited engine (Green)
+- [x] Task: Write failing unit tests for CLI 'ccrystal mcp' command parsing (Red)
+- [x] Task: Implement CliCommand.Mcp in CommandParser, Runner, and Main entry point (Green)
+- [x] Task: Phase Verification & Checkpoint (Refer to workflow.md)
 
 ## Phase 3: Client Compatibility, Distribution Configs & Native Verification
 - [ ] Task: Write end-to-end integration tests simulating an MCP client session over stdio streams

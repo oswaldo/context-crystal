@@ -223,3 +223,39 @@ ccrystal batch "delete scratch-spike -f; init scratch-spike -g 'Spike 2' -i 'Fre
     2. **Omit / Rephrase:** Restructure the goal, task, or friction summary to describe the technical or architectural reality without containing any personal identifiers.
     3. **Explicit Authorization:** Proceed only if the user explicitly confirms that the repository is strictly private and that they hold the authority to record the data.
 - **Strict Rule:** The AI entity MUST ALWAYS ask and NEVER assume when PII is involved.
+
+---
+
+## 8. Cave Lifecycle Hygiene & Review Protocol (Triage)
+
+Over weeks or months of continuous delivery, crystals accumulate in the workspace cave (`.ccrystals/`). As projects evolve, old spike crystals, completed features, or abandoned experiments consume space and clutter context listings.
+
+Because cleaning up workspace crystals requires cognitive evaluation rather than blind automation, AI entities must support operators in reviewing the cave through the following triage protocol:
+
+### A. Triage Triggers
+
+- **Explicit Operator Request:** When the user asks to "review the cave", "clean up old crystals", "triage workspace crystals", or "free up context clutter".
+- **Cave Bloat Heuristic:** When `ccrystal list` (or MCP `resources/list`) reports more than 10 crystals in the workspace with multiple completed or stale goals.
+
+### B. Triage Categorization Matrix
+
+Inspect each crystal and categorize it into one of three buckets:
+
+1. **Candidates for Permanent Deletion (Safe Cleanup):**
+   - Goal status is `concluded_success` or `concluded_abandoned`.
+   - All tasks are completed (`100%`).
+   - Active transient leases: `0`.
+   - Open lessons: `0` (or lessons already incorporated into codebase documentation/ADRs).
+2. **Stale Spikes (Review & Action Needed):**
+   - Goal status is `in_progress`, but no DAG nodes or updates have occurred in over 30 days.
+   - Unclosed transient leases or open unharvested lessons remain.
+   - Recommendation: Prompt operator whether to abandon, harvest lessons, and purge, or keep.
+3. **Protected (Active Work):**
+   - Active feature or bugfix tracks currently in development.
+   - Never recommend deletion for active tracks without explicit operator instruction.
+
+### C. Presentation & Execution Safety
+
+- **Present Inventory Table:** Always present a clear table with columns: `Crystal ID`, `Status`, `Goal Title`, `Pending Tasks`, `Active Leases`, `Recommendation`.
+- **Never Assume Deletion:** Destructive cleanup is irreversible. The AI entity MUST request explicit confirmation from the operator specifying the crystal IDs to be deleted.
+- **Execute Deletion:** Once confirmed by the operator, invoke `ccrystal delete <crystal-id> --force` (or use the MCP `crystal_delete` tool with `force: true`), summarizing the removed files and cascaded entity records.

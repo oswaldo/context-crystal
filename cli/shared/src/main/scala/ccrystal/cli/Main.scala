@@ -64,7 +64,7 @@ object Main:
         case Right(cmd) =>
           runner.run(cmd) match
             case Right(output) =>
-              println(output)
+              if output.nonEmpty then println(output)
               System.exit(0)
             case Left(err) =>
               System.err.println(s"Error: $err")

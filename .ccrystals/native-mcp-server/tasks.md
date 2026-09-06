@@ -12,3 +12,8 @@
 - [x] Write failing unit tests for McpHandler tool dispatching, resource providers, and prompts `[task-3]`
 - [x] Implement McpHandler trait and DefaultMcpHandler wired to CrystalStore and Runner `[task-4]`
 - [x] Phase 1 Verification & Checkpoint `[task-5]`
+- [x] Write failing unit tests for McpTransport and StdioMcpTransport stream loop `[task-6]`
+- [x] Implement McpTransport trait and StdioMcpTransport line-delimited engine `[task-7]`
+- [x] Write failing unit tests for CLI 'ccrystal mcp' command parsing `[task-8]`
+- [x] Implement CliCommand.Mcp in CommandParser, Runner, and Main entry point `[task-9]`
+- [x] Phase 2 Verification & Checkpoint `[task-10]`

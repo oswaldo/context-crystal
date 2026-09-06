@@ -191,6 +191,11 @@ object CommandParser:
     Opts.flag("all", "Refresh derived views for all crystals in .ccrystals/").orFalse,
   ).mapN(CliCommand.Refresh.apply)
 
+  private val mcpOpts = Opts
+    .option[String]("transport", "MCP transport protocol (default: stdio)", "t")
+    .withDefault("stdio")
+    .map(CliCommand.Mcp.apply)
+
   private val mainCommand = Command("ccrystal", "Context Crystal CLI")(
     Opts
       .subcommand("init", "Initialize a new crystal")(initOpts)
@@ -252,6 +257,12 @@ object CommandParser:
           "delete",
           "Permanently delete a crystal and cascade orphaned entities",
         )(deleteOpts),
+      )
+      .orElse(
+        Opts.subcommand(
+          "mcp",
+          "Start the Model Context Protocol (MCP) server",
+        )(mcpOpts),
       ),
   )
 

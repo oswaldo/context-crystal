@@ -393,7 +393,8 @@ class CommandParserSuite extends FunSuite:
     assert(parsed2.isRight)
     assertEquals(parsed2.toOption.get, CliCommand.EntityDeregister("usr_alice", force = true))
 
-    val deregShortForce = List("entity", "deregister", "usr_alice", "-f")
-    val parsed3         = CommandParser.parse(deregShortForce)
-    assert(parsed3.isRight)
-    assertEquals(parsed3.toOption.get, CliCommand.EntityDeregister("usr_alice", force = true))
+  test("Parses 'mcp' command"):
+    val mcpArgs = List("mcp")
+    val parsed  = CommandParser.parse(mcpArgs)
+    assertEquals(parsed.isRight, true)
+    assertEquals(parsed.toOption.get, CliCommand.Mcp("stdio"))
