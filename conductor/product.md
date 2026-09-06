@@ -27,6 +27,8 @@ As work progresses in AI-assisted environments, information coalesces like atoms
 9. **Built-in Continuous Improvement & Lessons Learned:** Native tracking of tasks, operational friction, and lessons learned within each crystal, with deterministic auditing for closing feedback loops.
 10. **Deterministic, Zero-LLM Housekeeping:** High-speed Scala Native tooling for querying, auditing lessons learned, classifying crystal states (Active, Solid, Stale), cleaning transient leases, and managing lifecycles without incurring LLM latency or token costs.
 11. **Zero-Learning-Curve Agent Interoperability:** Native agent skills and conversational utterances ("crystallize session", "cast crystal") enable AI tools to read and advance crystals out of the box.
+12. **Decoupled Context Repositories & Clean Codebase Invariant:** Context stores can be completely decoupled from the project's source tree via out-of-tree companion repositories (`CCRYSTAL_STORE` / `--store`). Public open-source codebases remain 100% clean and free of tool clutter, local notes, or private agent identities, while companion context repositories maintain full version-controlled lineage.
+13. **Agent-as-Operator & Self-Bootstrapping UX:** Zero human cognitive overhead. Developers never need to learn CLI flags, subcommands, or manual installation procedures; agents autonomously detect missing binaries, execute self-bootstrapping installation recipes, and manage state transitions via atomic batches.
 
 ---
 

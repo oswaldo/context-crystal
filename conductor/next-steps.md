@@ -9,20 +9,17 @@
 - **Track 3 (`cave_entities_authorship_20260830`):** Complete `[x]` (Cave entity registry `.ccrystals/entities.json`, `AuthorshipMode`, deterministic agent collision suffix resolution, compact block attribution, extensible `metadata` maps, CLI entity commands).
 - **Track 4 (`capture_fidelity_20260906`):** Complete `[x]` (Data provenance, `CaptureFidelity` enum on `DAGNode`, CLI `--fidelity`).
 - **Track 5 (`crystal_cleavage_and_slicing_20260906`):** Complete `[x]` (Semantic anchors on `DAGNode`, `ccrystal slice`, fragment extraction, fork to child crystal).
+- **Track 6 (`agent_skill_interaction_loop_20260906`):** Complete `[x]` (Canonical agent skill, autonomous bootstrap, decoupled store `CCRYSTAL_STORE`, explicit event timestamps, adapters for Antigravity, Claude Code, and Cursor).
 - **Binary Location:** `./cli/native/target/scala-3.3.4/ccrystal-cli` (installed in `~/.local/bin/ccrystal`)
 - **Codeberg Remote:** Ready to push with conventional commits and Git Notes.
 
 ---
 
-## 2. Immediate Active Track: Track 6 (`agent_skill_interaction_loop_20260906`)
-Initialized and ready for execution:
-1. **Decoupled Store Engine:** Add `CCRYSTAL_STORE` env var, `--store <path>` CLI flag, and `.ccrystal-store` resolution to preserve clean code repositories and enable disjoint context repos.
-2. **Canonical Skill (`skills/context-crystal/SKILL.md`):**
-   - Autonomous agent self-bootstrapping (auto-detect and install `ccrystal` binary if missing).
-   - Dual-mode operation (Symbiotic low-token mode with Conductor/OpenSpec vs Autonomous Spine mode for freeform).
-   - Conversational utterances mapped to single-roundtrip `ccrystal batch` recipes.
-3. **Platform Adapters:** Native adapters for Antigravity, Claude Code, and Cursor/Windsurf.
-4. **Verification & Dogfooding:** Cross-platform command test suite and live crystal initialization in repo.
+## 2. Immediate Next Agenda: Track 7 (Selective Context Hydration & Beam Shaping)
+The next milestone is **Track 7 (`selective_context_hydration_20260906`)**:
+1. **Context & Vision:** Enhance `ccrystal cast` and `ccrystal hydrate` with slice selector flags (`--from <anchor|id>`, `--to <anchor|id>`, `--tail <N>`).
+2. **Operational Value:** Reconstitutes the living state container (Goal, Tasks, Leases, Lessons) while focusing the state transition beam on a specific sub-DAG or milestone, keeping prompts lean without requiring a permanent fork.
+3. **Synergy with Agent Skill:** The agent skill's `hydrate` verb will automatically utilize `--tail <N>` or `--from <anchor>` to minimize prompt token overhead during long projects.
 
 ---
 
