@@ -63,12 +63,15 @@ sbt test
 # Fast iteration on JVM only (avoids native LLVM linking time)
 sbt "coreJVM/test; cliJVM/test"
 
-# Compile and link the native CLI binary
+# Compile and link the native CLI binary (Development mode, ~10s)
 sbt "cliNative/nativeLink"
 # Binary output: ./cli/native/target/scala-3.9.0/ccrystal-cli
 
+# Compile and link optimized release binary with Thin LTO (Release mode, peak performance)
+sbt 'set cli.native / nativeConfig ~= { _.withMode(scala.scalanative.build.Mode.releaseFast).withLTO(scala.scalanative.build.LTO.thin) }; cliNative/nativeLink'
+
 # Install native binary into local user PATH (~/.local/bin)
-mkdir -p ~/.local/bin && cp ./cli/native/target/scala-3.9.0/ccrystal-cli ~/.local/bin/ccrystal && chmod +x ~/.local/bin/ccrystal
+mkdir -p ~/.local/bin && cp --remove-destination ./cli/native/target/scala-3.9.0/ccrystal-cli ~/.local/bin/ccrystal && chmod +x ~/.local/bin/ccrystal && strip ~/.local/bin/ccrystal
 
 # Run formatting and scalafix fix round before committing (Scala)
 sbt "scalafmtAll; scalafixAll"

@@ -95,6 +95,33 @@ Context Crystal includes ready-to-use skills and instruction adapters for major 
 
 ---
 
+## Native Model Context Protocol (MCP) Server (`ccrystal mcp`)
+
+Context Crystal includes an embedded, zero-overhead MCP server built directly into the native binary. It connects Claude Desktop, Cursor, Zed, Windsurf, and agent harnesses to your workspace crystals with zero Python or Node.js runtime dependencies.
+
+- **Compound Atomic Tools:** Features `crystal_batch` for executing multi-operation recipes in a single roundtrip, plus `crystal_init`, `crystal_checkpoint`, `crystal_task_transition`, `crystal_transient_lease`, `crystal_slice_fork`, and `crystal_delete`.
+- **Dynamic Context Resources:** Inspect living states (`crystal://{id}/state`), DAG lineages (`crystal://{id}/dag`), and identities (`crystal://entities`).
+- **Prompt Beams & Triage:** Hydrate context beams directly via `hydrate_context` and review cave lifecycle hygiene via `triage_cave`.
+
+### Client Configuration
+
+Add to your MCP client settings (e.g., Claude Desktop `claude_desktop_config.json`, Cursor `.cursor/mcp.json`, or Antigravity `mcp_config.json`):
+
+```json
+{
+  "mcpServers": {
+    "context-crystal": {
+      "command": "ccrystal",
+      "args": ["mcp"]
+    }
+  }
+}
+```
+
+For detailed protocol specifications and editor templates, see **[docs/mcp/README.md](docs/mcp/README.md)**.
+
+---
+
 ## Verified CLI Quickstart
 
 If you do want to run commands directly or script automation, the native CLI is fast and ergonomic.
@@ -107,13 +134,17 @@ If you do want to run commands directly or script automation, the native CLI is 
 - **Native Linker:** `clang` (for Scala Native LLVM target)
 
 ```bash
-# Build native binary using Scala Native
+# 1. Fast build (development mode, ~10s)
 sbt "cliNative/nativeLink"
+
+# 2. Optimized release build with Thin LTO (~25s, dead-code elimination, peak runtime performance)
+sbt 'set cli.native / nativeConfig ~= { _.withMode(scala.scalanative.build.Mode.releaseFast).withLTO(scala.scalanative.build.LTO.thin) }; cliNative/nativeLink'
 
 # Install into local user PATH
 mkdir -p ~/.local/bin
-cp ./cli/native/target/scala-3.9.0/ccrystal-cli ~/.local/bin/ccrystal
+cp --remove-destination ./cli/native/target/scala-3.9.0/ccrystal-cli ~/.local/bin/ccrystal
 chmod +x ~/.local/bin/ccrystal
+strip ~/.local/bin/ccrystal
 ```
 
 ### Essential Commands

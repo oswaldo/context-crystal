@@ -3,7 +3,7 @@
   "id" : "native-mcp-server",
   "name" : "native-mcp-server",
   "createdAt" : "2026-09-06T21:58:48.125Z",
-  "updatedAt" : "2026-09-06T22:14:49.132Z",
+  "updatedAt" : "2026-09-06T22:21:14.383Z",
   "parentCrystalId" : null,
   "origin" : null,
   "caveId" : null,
@@ -61,6 +61,31 @@
       {
         "id" : "task-10",
         "description" : "Phase 2 Verification & Checkpoint",
+        "completed" : true
+      },
+      {
+        "id" : "task-11",
+        "description" : "Write end-to-end integration tests simulating an MCP client session over stdio streams",
+        "completed" : true
+      },
+      {
+        "id" : "task-12",
+        "description" : "Generate distribution templates for Claude Desktop and Cursor rules in docs/mcp/",
+        "completed" : true
+      },
+      {
+        "id" : "task-13",
+        "description" : "Compile native CLI binary, install to ~/.local/bin, and configure local MCP client setup",
+        "completed" : true
+      },
+      {
+        "id" : "task-14",
+        "description" : "Update README.md and documentation with local MCP setup and usage instructions",
+        "completed" : true
+      },
+      {
+        "id" : "task-15",
+        "description" : "Phase 3 Verification & Checkpoint",
         "completed" : true
       }
     ],
@@ -129,6 +154,23 @@
         "kind" : "checkpoint",
         "contentSummary" : "Phase 2 Complete: StdioMcpTransport line-delimited engine, CommandParser mcp subcommand, and Runner integration verified across JVM and Native",
         "anchor" : "phase-2-checkpoint",
+        "artifactIds" : [
+        ],
+        "fidelity" : "inferred",
+        "metadata" : {
+          
+        }
+      },
+      {
+        "id" : "node-4",
+        "parentIds" : [
+          "node-3"
+        ],
+        "timestamp" : "2026-09-06T22:21:14.383Z",
+        "actorId" : "usr_oswaldo",
+        "kind" : "resolution",
+        "contentSummary" : "Track 8 Concluded: Native Model Context Protocol (MCP) Server Engine fully implemented, tested, verified natively, installed into ~/.local/bin/ccrystal, and registered in local MCP client configuration",
+        "anchor" : null,
         "artifactIds" : [
         ],
         "fidelity" : "inferred",

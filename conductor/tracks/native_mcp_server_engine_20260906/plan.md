@@ -15,9 +15,9 @@
 - [x] Task: Phase Verification & Checkpoint (Refer to workflow.md)
 
 ## Phase 3: Client Compatibility, Distribution Configs & Native Verification
-- [ ] Task: Write end-to-end integration tests simulating an MCP client session over stdio streams
-- [ ] Task: Generate distribution templates for Claude Desktop and Cursor rules in docs/mcp/
-- [ ] Task: Compile native CLI binary, install to ~/.local/bin, and configure local MCP client setup
-- [ ] Task: Update README.md and documentation with local MCP setup and usage instructions
-- [ ] Task: Phase Verification & Checkpoint (Refer to workflow.md)
+- [x] Task: Write end-to-end integration tests simulating an MCP client session over stdio streams
+- [x] Task: Generate distribution templates for Claude Desktop and Cursor rules in docs/mcp/
+- [x] Task: Compile native CLI binary, install to ~/.local/bin, and configure local MCP client setup
+- [x] Task: Update README.md and documentation with local MCP setup and usage instructions
+- [x] Task: Phase Verification & Checkpoint (Refer to workflow.md)
 

@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "context-crystal": {
+      "command": "ccrystal",
+      "args": ["mcp"]
+    }
+  }
+}

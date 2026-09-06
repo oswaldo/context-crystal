@@ -17,3 +17,8 @@
 - [x] Write failing unit tests for CLI 'ccrystal mcp' command parsing `[task-8]`
 - [x] Implement CliCommand.Mcp in CommandParser, Runner, and Main entry point `[task-9]`
 - [x] Phase 2 Verification & Checkpoint `[task-10]`
+- [x] Write end-to-end integration tests simulating an MCP client session over stdio streams `[task-11]`
+- [x] Generate distribution templates for Claude Desktop and Cursor rules in docs/mcp/ `[task-12]`
+- [x] Compile native CLI binary, install to ~/.local/bin, and configure local MCP client setup `[task-13]`
+- [x] Update README.md and documentation with local MCP setup and usage instructions `[task-14]`
+- [x] Phase 3 Verification & Checkpoint `[task-15]`

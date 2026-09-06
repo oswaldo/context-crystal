@@ -4,6 +4,7 @@
 > **Conductor Workflow Active:** This repository strictly follows the **Conductor** Spec-Driven Development (SDD) workflow (`conductor/workflow.md`, `conductor/tracks.md`). Always verify and use Conductor skills (`conductor-status`, `conductor-new-track`, `conductor-implement`, `conductor-review`) when starting sessions.
 
 ## 1. Project Status Overview
+
 - **Track 1 (`core_foundation_20260828`):** Complete `[x]` (JSON Schema v1, sbt cross-project build, models, codecs, DAG, auditor).
 - **Track 2 (`cli_fs_engine_20260829`):** Complete `[x]` (Native CLI, decline parser, FsCrystalStore, batch execution, `cast` / `hydrate`, and `refresh`).
 - **Track 3 (`cave_entities_authorship_20260830`):** Complete `[x]` (Cave entity registry `.ccrystals/entities.json`, `AuthorshipMode`, deterministic agent collision suffix resolution, compact block attribution, extensible `metadata` maps, CLI entity commands).
@@ -11,20 +12,23 @@
 - **Track 5 (`crystal_cleavage_and_slicing_20260906`):** Complete `[x]` (Semantic anchors on `DAGNode`, `ccrystal slice`, fragment extraction, fork to child crystal).
 - **Track 6 (`agent_skill_interaction_loop_20260906`):** Complete `[x]` (Canonical agent skill, autonomous bootstrap, decoupled store `CCRYSTAL_STORE`, explicit event timestamps, adapters for Antigravity, Claude Code, and Cursor).
 - **Track 7 (`destructive_lifecycle_cleanup_20260906`):** Complete `[x]` (Destructive operations, `ccrystal delete`, `ccrystal entity deregister`, cascade cleanup, deletion impact preview, interactive y/N confirmation, --force bypass, batch safety, and PII protection guidelines).
+- **Track 8 (`native_mcp_server_engine_20260906`):** Complete `[x]` (Native stdio JSON-RPC 2.0 MCP server `ccrystal mcp`, decoupled `McpHandler` & `McpTransport`, tools, dynamic state/DAG resources, prompts `hydrate_context` & `triage_cave`, client configs for Claude/Cursor/Zed, and local registration).
 - **Binary Location:** `./cli/native/target/scala-3.9.0/ccrystal-cli` (installed in `~/.local/bin/ccrystal`)
 - **Codeberg Remote:** Ready to push with conventional commits and Git Notes.
 
 ---
 
-## 2. Immediate Next Agenda: Native Model Context Protocol (MCP) Server
-The immediate next milestone is **Track 8 (`native_mcp_server_engine_20260906`)**:
-1. **Context & Vision:** Implement native stdio JSON-RPC MCP server (`ccrystal mcp`), exposing tools (`crystal_batch`, `crystal_init`, `crystal_task_transition`, `crystal_checkpoint`, `crystal_delete`), resources (`crystal://{id}/state`, `crystal://{id}/dag`), and prompts (`hydrate_context`).
-2. **Operational Value:** Instant zero-runtime MCP integration for Claude Desktop, Cursor, Windsurf, Zed, and autonomous agents across Smithery, Glama, and the official MCP registry.
+## 2. Immediate Next Agenda: Selective Context Hydration & Beam Shaping
 
+The next candidate milestone is **Track 9: Selective Context Hydration & Beam Shaping (`ccrystal cast/hydrate --from`)**:
+
+1. **Context & Vision:** Enhance `ccrystal cast` and `ccrystal hydrate` with sub-DAG slice selector flags (`--from <anchor|id>`, `--to <anchor|id>`, `--tail <N>`).
+2. **Operational Value:** Reconstitutes living state container (Goal, Tasks, Leases, Lessons) while focusing the state transition beam on a specific milestone, keeping prompts lean without requiring permanent forking.
 
 ---
 
 ## 3. Backlog & Future Track Roadmap
+
 - **Track 6: Agent Skill & Interaction Loop:** Native adapters for Antigravity, Claude Code, and Cursor (`skills/context-crystal/SKILL.md`), unlocking conversational verbs (`crystallize`, `cast`, `slice`, `fork`) and dogfooding.
 - **Track 7: Selective Context Hydration & Beam Shaping (`ccrystal cast/hydrate --from`):**
   - *Context & Vision:* Enhance `ccrystal cast` and `ccrystal hydrate` with slice selector flags (`--from <anchor|id>`, `--to <anchor|id>`, `--tail <N>`).
@@ -47,4 +51,3 @@ The immediate next milestone is **Track 8 (`native_mcp_server_engine_20260906`)*
   - *Context & Vision:* Improve code quality and eliminate runtime failure classes across `core` and `cli` by strictly disallowing mutable state (`var`), nullable types (`null`), and exceptions (`throw` / `throws`).
   - *Refactoring & Tooling:* Introduce scalafix lint rules and compiler warning configurations (e.g., `-Werror`, `-Wnonunit-statement`, strict `Option`/`Either`/ADT return types) to enforce total pure-functional invariants and refactor any lingering mutable/nullable test scaffolding.
 - **Maintenance / Chore (Completed / Locked):** Upgraded to Scala 3.9.0 LTS and sbt-scala-native 0.5.12 with zero warnings. sbt 2.0.8 compatibility locked at sbt 1.10.7 pending community sbt 2.x cross-publishing of required plugins (sbt-crossproject, sbt-updates, scalafix, scalafmt).
-
