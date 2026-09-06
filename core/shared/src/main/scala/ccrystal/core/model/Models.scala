@@ -64,6 +64,10 @@ enum NodeKind derives CanEqual:
   case Branch
   case Resolution
 
+enum CaptureFidelity derives CanEqual:
+  case Inferred
+  case Intercepted
+
 case class DAGNode(
     id: String,
     parentIds: List[String],
@@ -72,6 +76,7 @@ case class DAGNode(
     kind: NodeKind,
     contentSummary: String,
     artifactIds: List[String] = Nil,
+    fidelity: CaptureFidelity = CaptureFidelity.Inferred,
     metadata: Map[String, String] = Map.empty
 ) derives CanEqual
 

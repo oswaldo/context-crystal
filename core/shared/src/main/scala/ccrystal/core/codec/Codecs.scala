@@ -127,16 +127,58 @@ given Decoder[LessonStatus] = Decoder.decodeString.emap {
   case other       => Left(s"Invalid LessonStatus: $other")
 }
 
+given Encoder[CaptureFidelity] = Encoder.encodeString.contramap {
+  case CaptureFidelity.Inferred    => "inferred"
+  case CaptureFidelity.Intercepted => "intercepted"
+}
+
+given Decoder[CaptureFidelity] = Decoder.decodeString.emap {
+  case "inferred"    => Right(CaptureFidelity.Inferred)
+  case "intercepted" => Right(CaptureFidelity.Intercepted)
+  case other         => Left(s"Invalid CaptureFidelity: $other")
+}
+
 given Codec[AcceptanceCriterion] = deriveCodec
 given Codec[Goal]                = deriveCodec
 given Codec[Entity]              = deriveCodec
 given Codec[EntityRegistry]      = deriveCodec
 given Codec[Mask]                = deriveCodec
-given Codec[DAGNode]             = deriveCodec
-given Codec[DAG]                 = deriveCodec
-given Codec[TransientLease]      = deriveCodec
-given Codec[ActionAuditEntry]    = deriveCodec
-given Codec[LessonLearned]       = deriveCodec
-given Codec[Artifact]            = deriveCodec
-given Codec[CrystalOrigin]       = deriveCodec
-given Codec[ContextCrystal]      = deriveCodec
+given Codec[DAGNode] = Codec.from(
+  Decoder.instance { c =>
+    for
+      id             <- c.downField("id").as[String]
+      parentIds      <- c.downField("parentIds").as[List[String]]
+      timestamp      <- c.downField("timestamp").as[String]
+      actorId        <- c.downField("actorId").as[String]
+      kind           <- c.downField("kind").as[NodeKind]
+      contentSummary <- c.downField("contentSummary").as[String]
+      artifactIds    <- c.downField("artifactIds").as[Option[List[String]]].map(_.getOrElse(Nil))
+      fidelity <- c
+        .downField("fidelity")
+        .as[Option[CaptureFidelity]]
+        .map(_.getOrElse(CaptureFidelity.Inferred))
+      metadata <- c
+        .downField("metadata")
+        .as[Option[Map[String, String]]]
+        .map(_.getOrElse(Map.empty))
+    yield DAGNode(
+      id,
+      parentIds,
+      timestamp,
+      actorId,
+      kind,
+      contentSummary,
+      artifactIds,
+      fidelity,
+      metadata
+    )
+  },
+  deriveEncoder[DAGNode]
+)
+given Codec[DAG]              = deriveCodec
+given Codec[TransientLease]   = deriveCodec
+given Codec[ActionAuditEntry] = deriveCodec
+given Codec[LessonLearned]    = deriveCodec
+given Codec[Artifact]         = deriveCodec
+given Codec[CrystalOrigin]    = deriveCodec
+given Codec[ContextCrystal]   = deriveCodec

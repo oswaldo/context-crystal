@@ -180,3 +180,60 @@ class ModelCodecSuite extends FunSuite:
 
     assertEquals(decode[CrystalOrigin](origin.asJson.noSpaces), Right(origin))
     assertEquals(decode[Entity](entity.asJson.noSpaces), Right(entity))
+
+  test(
+    "Round-trip serialization of DAGNode with new CaptureFidelity enum (both Inferred and Intercepted)"
+  ):
+    val nodeInferred = DAGNode(
+      id = "n-1",
+      parentIds = Nil,
+      timestamp = "2026-09-06T12:00:00Z",
+      actorId = "usr_oswaldo",
+      kind = NodeKind.HumanPrompt,
+      contentSummary = "Let's start",
+      artifactIds = Nil,
+      fidelity = CaptureFidelity.Inferred,
+      metadata = Map.empty
+    )
+    val nodeIntercepted = nodeInferred.copy(
+      id = "n-2",
+      fidelity = CaptureFidelity.Intercepted
+    )
+
+    assertEquals(decode[DAGNode](nodeInferred.asJson.noSpaces), Right(nodeInferred))
+    assertEquals(decode[DAGNode](nodeIntercepted.asJson.noSpaces), Right(nodeIntercepted))
+
+  test(
+    "Legacy JSON payloads missing the fidelity field deserialize cleanly with Inferred as default"
+  ):
+    val legacyJson =
+      """
+        |{
+        |  "id": "n-legacy",
+        |  "parentIds": [],
+        |  "timestamp": "2026-09-06T12:00:00Z",
+        |  "actorId": "usr_oswaldo",
+        |  "kind": "human_prompt",
+        |  "contentSummary": "Old crystal node"
+        |}
+        |""".stripMargin
+
+    val expectedNode = DAGNode(
+      id = "n-legacy",
+      parentIds = Nil,
+      timestamp = "2026-09-06T12:00:00Z",
+      actorId = "usr_oswaldo",
+      kind = NodeKind.HumanPrompt,
+      contentSummary = "Old crystal node",
+      artifactIds = Nil,
+      fidelity = CaptureFidelity.Inferred,
+      metadata = Map.empty
+    )
+
+    assertEquals(decode[DAGNode](legacyJson), Right(expectedNode))
+
+  test("CaptureFidelity enum values serialization"):
+    assertEquals(CaptureFidelity.Inferred.asJson.asString, Some("inferred"))
+    assertEquals(CaptureFidelity.Intercepted.asJson.asString, Some("intercepted"))
+    assertEquals(decode[CaptureFidelity]("\"inferred\""), Right(CaptureFidelity.Inferred))
+    assertEquals(decode[CaptureFidelity]("\"intercepted\""), Right(CaptureFidelity.Intercepted))
