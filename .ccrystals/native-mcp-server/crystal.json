@@ -1,0 +1,91 @@
+{
+  "schemaVersion" : "1.0.0",
+  "id" : "native-mcp-server",
+  "name" : "native-mcp-server",
+  "createdAt" : "2026-09-06T21:58:48.125Z",
+  "updatedAt" : "2026-09-06T22:03:53.684Z",
+  "parentCrystalId" : null,
+  "origin" : null,
+  "caveId" : null,
+  "defaultAuthorId" : "usr_oswaldo",
+  "goal" : {
+    "title" : "Native Model Context Protocol (MCP) Server Engine",
+    "intent" : "Implement ccrystal mcp stdio JSON-RPC server with decoupled McpHandler, tools, resources, and prompts",
+    "status" : "in_progress",
+    "acceptanceCriteria" : [
+      {
+        "id" : "task-1",
+        "description" : "Write failing unit tests for MCP JSON-RPC protocol models and codecs",
+        "completed" : true
+      },
+      {
+        "id" : "task-2",
+        "description" : "Implement MCP protocol ADTs and JSON-RPC 2.0 Circe codecs",
+        "completed" : true
+      },
+      {
+        "id" : "task-3",
+        "description" : "Write failing unit tests for McpHandler tool dispatching, resource providers, and prompts",
+        "completed" : false
+      },
+      {
+        "id" : "task-4",
+        "description" : "Implement McpHandler trait and DefaultMcpHandler wired to CrystalStore and Runner",
+        "completed" : false
+      },
+      {
+        "id" : "task-5",
+        "description" : "Phase 1 Verification & Checkpoint",
+        "completed" : false
+      }
+    ],
+    "metadata" : {
+      
+    }
+  },
+  "entities" : [
+    {
+      "id" : "usr_oswaldo",
+      "kind" : "human",
+      "name" : "Oswaldo",
+      "metadata" : {
+        
+      },
+      "publicKey" : null,
+      "endpoints" : {
+        
+      }
+    }
+  ],
+  "activeMask" : null,
+  "dag" : {
+    "rootNodeId" : "node-native-mcp-server-init",
+    "nodes" : [
+      {
+        "id" : "node-native-mcp-server-init",
+        "parentIds" : [
+        ],
+        "timestamp" : "2026-09-06T21:58:48.125Z",
+        "actorId" : "usr_oswaldo",
+        "kind" : "human_prompt",
+        "contentSummary" : "Initialized crystal 'native-mcp-server' with goal: Native Model Context Protocol (MCP) Server Engine",
+        "anchor" : null,
+        "artifactIds" : [
+        ],
+        "fidelity" : "inferred",
+        "metadata" : {
+          
+        }
+      }
+    ]
+  },
+  "transientLeases" : [
+  ],
+  "lessonsLearned" : [
+  ],
+  "artifacts" : [
+  ],
+  "metadata" : {
+    
+  }
+}
