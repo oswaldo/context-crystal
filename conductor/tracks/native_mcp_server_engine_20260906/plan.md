@@ -3,9 +3,9 @@
 ## Phase 1: Core MCP Protocol Models, Codecs & Decoupled Handlers (Red-Green TDD)
 - [x] Task: Write failing unit tests for MCP JSON-RPC protocol models and codecs (Red)
 - [x] Task: Implement MCP protocol ADTs and JSON-RPC 2.0 Circe codecs (Green)
-- [ ] Task: Write failing unit tests for McpHandler tool dispatching, resource providers, and prompts (Red)
-- [ ] Task: Implement McpHandler trait and DefaultMcpHandler wired to CrystalStore and Runner (Green)
-- [ ] Task: Phase Verification & Checkpoint (Refer to workflow.md)
+- [x] Task: Write failing unit tests for McpHandler tool dispatching, resource providers, and prompts (Red)
+- [x] Task: Implement McpHandler trait and DefaultMcpHandler wired to CrystalStore and Runner (Green)
+- [x] Task: Phase Verification & Checkpoint (Refer to workflow.md)
 
 ## Phase 2: Transport Layer & CLI Integration (Red-Green TDD)
 - [ ] Task: Write failing unit tests for McpTransport and StdioMcpTransport stream loop (Red)
