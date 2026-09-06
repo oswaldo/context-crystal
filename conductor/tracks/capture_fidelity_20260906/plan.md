@@ -9,7 +9,7 @@
 - [x] Task: Phase Verification & Checkpoint (Refer to workflow.md) [3d35b85]
 
 ## Phase 2: CLI Integration
-- [ ] Task: Write Tests - Add tests in `ccrystal-cli` test suite to verify the new `--fidelity` flag is parsed correctly by decline.
-- [ ] Task: Implement - Update decline parser in `ccrystal-cli` to accept `--fidelity <inferred|intercepted>`.
-- [ ] Task: Implement - Plumb the parsed `fidelity` option into the node creation logic (defaulting to `CaptureFidelity.Inferred` if omitted).
+- [x] Task: Write Tests - Add tests in `ccrystal-cli` test suite to verify the new `--fidelity` flag is parsed correctly by decline [c21d2be]
+- [x] Task: Implement - Update decline parser in `ccrystal-cli` to accept `--fidelity <inferred|intercepted>` [c21d2be]
+- [x] Task: Implement - Plumb the parsed `fidelity` option into the node creation logic (defaulting to `CaptureFidelity.Inferred` if omitted) [c21d2be]
 - [ ] Task: Phase Verification & Checkpoint (Refer to workflow.md)
