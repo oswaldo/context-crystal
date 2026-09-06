@@ -66,6 +66,13 @@ sbt "cliNative/nativeLink"
 # Binary output: ./cli/native/target/scala-3.3.4/ccrystal-cli
 ```
 
+### Installing into Local PATH
+```bash
+mkdir -p ~/.local/bin
+cp ./cli/native/target/scala-3.3.4/ccrystal-cli ~/.local/bin/ccrystal
+chmod +x ~/.local/bin/ccrystal
+```
+
 ### Basic CLI Usage
 ```bash
 # Initialize a new crystal

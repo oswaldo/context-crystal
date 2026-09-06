@@ -61,6 +61,9 @@ sbt "coreJVM/test; cliJVM/test"
 sbt "cliNative/nativeLink"
 # Binary output: ./cli/native/target/scala-3.3.4/ccrystal-cli
 
+# Install native binary into local user PATH (~/.local/bin)
+mkdir -p ~/.local/bin && cp ./cli/native/target/scala-3.3.4/ccrystal-cli ~/.local/bin/ccrystal && chmod +x ~/.local/bin/ccrystal
+
 # Run formatting and scalafix fix round before committing
 sbt "scalafmtAll; scalafixAll"
 
