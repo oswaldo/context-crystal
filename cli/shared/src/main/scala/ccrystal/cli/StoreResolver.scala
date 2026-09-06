@@ -5,22 +5,23 @@ import java.nio.file.{Files, Path, Paths}
 object StoreResolver:
 
   def extractStoreArg(args: collection.Seq[String]): (Option[String], List[String]) =
-    var storeVal: Option[String] = None
-    val remaining                = List.newBuilder[String]
-    var i                        = 0
-    val list                     = args.toList
+    @scala.annotation.tailrec
+    def loop(
+        remaining: List[String],
+        accStore: Option[String],
+        accRest: List[String],
+    ): (Option[String], List[String]) =
+      remaining match
+        case Nil =>
+          (accStore, accRest.reverse)
+        case "--store" :: storePath :: tail if !storePath.startsWith("--") =>
+          loop(tail, Some(storePath), accRest)
+        case "--store" :: tail =>
+          loop(tail, accStore, accRest)
+        case head :: tail =>
+          loop(tail, accStore, head :: accRest)
 
-    while i < list.length do
-      if list(i) == "--store" then
-        if i + 1 < list.length && !list(i + 1).startsWith("--") then
-          storeVal = Some(list(i + 1))
-          i += 2
-        else i += 1
-      else
-        remaining += list(i)
-        i += 1
-
-    (storeVal, remaining.result())
+    loop(args.toList, None, Nil)
 
   def resolveStorePath(
       cliStoreOpt: Option[String],
