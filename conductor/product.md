@@ -17,16 +17,16 @@ As work progresses in AI-assisted environments, information coalesces like atoms
 ## 2. Core Tenets
 
 1. **Context Over Session:** Context and goals exist independently of any individual chat session, IDE window, or tool lifecycle.
-2. **Decoupled Entities & Masks:** Base models (foundational intelligence backend), runtime harnesses, and operational personas/masks (e.g., specific system prompts, active skills, role specializations) are cleanly separated from the context payload.
-3. **Goal-Oriented Progression to Conclusion:** Context is structured not merely as conversational history, but as a verifiable progression driving a defined goal (e.g., investigating a bug to a fix, or taking ideation to a reviewed specification) to a terminal, conclusive state.
-4. **Immutable Lineage & Provenance:** Every transformation, tool interaction, human intervention, and AI contribution is captured in an auditable, verifiable record.
-5. **Tool & Model Agnostic:** Works across heterogeneous toolchains, allowing different editors, agents, and pipelines to inspect, append, and advance the same crystal.
-6. **Methodology & Framework Agnostic:** Operates identically whether a project uses formal specification/planning frameworks (e.g., Conductor, OpenSpec, SpecKit, ADRs), traditional trackers, or no formal planning system at all.
-7. **Ephemeral State & Transient Resource Leases:** First-class tracking of temporary artifacts (git worktrees, test configs, dummy assets meant for replacement/removal), ensuring zero orphaned debris or mystery side-effects.
-8. **Built-in Continuous Improvement & Lessons Learned:** Native tracking of tasks, operational friction, and lessons learned within each crystal, with deterministic auditing for closing feedback loops.
-9. **Pluggable & Hierarchical Storage:** Native zero-config filesystem storage with nested sub-context hierarchies, alongside a clean storage API for local databases and remote client-server backends.
-10. **Deterministic, Zero-LLM Housekeeping:** High-speed Scala Native tooling for querying, auditing lessons learned, cleaning transient leases, and managing lifecycles without incurring LLM latency or token costs.
-11. **Zero-Learning-Curve Agent Interoperability:** Native agent skills and integrations enable AI tools (Antigravity, Claude Code, Cursor, etc.) to read and advance crystals out of the box.
+2. **Neutral Entity Architecture & Decoupled Personas:** Grounded in cybernetics (Norbert Wiener, Ross Ashby), participants are modeled as self-governing **Entities** (human or machine) operating on explicit feedback loops rather than theatrical roleplay or simulated org charts. Persona masks remain strictly decoupled. (See [docs/for_devs.md](../docs/for_devs.md) and [docs/for_ais.md](../docs/for_ais.md)).
+3. **Goal-Oriented Progression to Conclusion:** Context is structured not merely as conversational history, but as a verifiable progression driving a defined goal to a terminal, conclusive state.
+4. **Immutable Lineage & Provenance:** Every transformation, tool interaction, human intervention, and AI contribution is captured in an auditable, verifiable record. For filesystem stores, Git serves as the primary tamper-evident provenance substrate.
+5. **Context Forking & Spinoffs:** Unrelated discoveries (e.g. adjacent bugs found during feature work) can spawn new crystals with an explicit `origin` link (`parentCrystalId`, `parentNodeId`, `reason`) maintaining full provenance.
+6. **Tool & Model Agnostic:** Works across heterogeneous toolchains, allowing different editors, agents, and pipelines to inspect, append, and advance the same crystal.
+7. **Methodology & Framework Agnostic:** Operates identically whether a project uses formal specification/planning frameworks (e.g., Conductor, OpenSpec, SpecKit, ADRs), traditional trackers, or no formal planning system at all.
+8. **Ephemeral State & Transient Resource Leases:** First-class tracking of temporary artifacts (git worktrees, test configs, dummy assets meant for replacement/removal), ensuring zero orphaned debris or mystery side-effects.
+9. **Built-in Continuous Improvement & Lessons Learned:** Native tracking of tasks, operational friction, and lessons learned within each crystal, with deterministic auditing for closing feedback loops.
+10. **Deterministic, Zero-LLM Housekeeping:** High-speed Scala Native tooling for querying, auditing lessons learned, classifying crystal states (Active, Solid, Stale), cleaning transient leases, and managing lifecycles without incurring LLM latency or token costs.
+11. **Zero-Learning-Curve Agent Interoperability:** Native agent skills and conversational utterances ("crystallize session", "cast crystal") enable AI tools to read and advance crystals out of the box.
 
 ---
 
@@ -35,10 +35,10 @@ As work progresses in AI-assisted environments, information coalesces like atoms
 Context Crystal is organized as a unified monorepo supporting specification, core data structures, agent extensions, and multi-tier tooling:
 
 - `spec/`: The vendor-neutral JSON Schema specification, JSON-LD context definitions, and compliance test suite that any compliant tool/ecosystem participant must adhere to.
-- `core/`: High-performance reference implementation of the data structures, DAG operations, transient lease registry, and pluggable storage repository SPI written in the latest **Scala 3**, cross-compiled targeting **Scala Native**, **Scala JVM**, and **Scala.js**.
+- `core/`: High-performance reference implementation of the data structures, DAG operations, transient lease registry, and pluggable storage repository SPI written in **Scala 3**, cross-compiled targeting **Scala Native**, **Scala JVM**, and **Scala.js**.
 - `cli/`: Lightweight command-line interface for 1-shot interactions, deterministic audits (transient cleanup, lessons learned, unaddressed insights, archiving), validation, export, diffing, and context manipulation.
 - `tui/`: Rich terminal user interface for interactive inspection, branching exploration, and local context navigation.
-- `web/`: Enterprise-grade, sovereign, and auditable web UI supporting access control, real-time visual exploration of context lattices, sharing, and compliance auditing.
+- `web/` & `viz/`: Enterprise-grade web UI and experimental **3D Context Lattice Visualizer** supporting customizable visual environments (celestial clouds, subterranean cave lattices, or archival library views) for spatial navigation of complex context graphs.
 - `skills/`: Packaged agent skills, prompts, and MCP adapters enabling environments like **Antigravity**, **Claude Code**, and **Cursor** to manipulate, attach, and advance Context Crystals with zero friction.
 
 ---
@@ -54,40 +54,33 @@ When using the default filesystem backend, each named crystal is represented as 
 - `transient.json` / `transient.md`: Active registry of temporary facts, scaffolding resources, temporary git worktrees, debug environment overrides, or placeholder assets marked for reversal or replacement upon conclusion.
 - `ccrystals/` *(Optional sub-contexts)*: Nested directories for dendritic sub-crystals.
 
-### B. Transient Resource Leases & Cleanup Gates
+### B. Crystal Comms (Lock-Free Multi-Entity Mailbox Protocol)
+To coordinate parallel entities without file collisions or distributed lock contention, crystals support a filesystem mailbox convention:
+- `.ccrystals/_comms/<entity-id>/inbox/`: Directory where sending entities drop JSON-formatted signal envelopes.
+- Entities announce their reachable coordinates (`inbox`, `rpc`, `url`) in their `Entity.endpoints` registry.
+- Processing protocol: Receiving entity reads messages from its inbox, executes tasks, and atomically moves them to `processed/` or archives them with a timestamped receipt.
+
+### C. Crystal Aging & Lifecycle States (Active, Solid, Stale)
+- **Active:** Crystals actively receiving DAG transitions or open transient leases.
+- **Solid:** Concluded or stable crystals untouched for a configurable retention threshold (e.g. 30 days) with all leases cleaned and lessons addressed.
+- **Stale / Melting / GC:** Stale crystals with open friction or obsolete dendrites can be "melted" (summarized into compact milestone nodes) or garbage-collected into `.ccrystals/archive/`.
+
+### D. Transient Resource Leases & Cleanup Gates
 - **Explicit Lifecycle Bounds:** Temporary resources (e.g., git worktrees, debug flags, dummy media files) are registered with explicit disposal criteria (`revert_on_conclusion`, `delete_after_test`, `replace_in_final_cut`).
 - **Zero Orphaned Scaffolding:** Fast CLI checks prevent premature crystal closure if transient resources remain un-reverted or un-cleaned.
 
-### C. Lessons Learned & Closed-Loop Auditing
+### E. Lessons Learned & Closed-Loop Auditing
 - **Actionable Post-Mortem:** At crystal conclusion, operational lessons can be reviewed and marked as "acted upon" (e.g., converted into a rule update, prompt adjustment, or skill improvement).
 - **Deterministic Auditing:** Fast, non-LLM Scala Native scripts can scan all crystals to report unhandled lessons learned, track action trails, or enforce cleanup policies before archiving.
 
-### D. Pluggable Backends & Long-Term Roadmap
-- **Pluggable Storage SPI:** Decoupled persistence supporting Filesystem, SQLite/embedded KV, and remote Web server backends.
-- **Federation & Multi-Tenancy:** Cross-repository crystal linking, distributed sync, and sovereign multi-tenant workspaces.
-
 ---
 
-## 5. Core Primitives & Schema Entities
+## 5. Industry Context & References
 
-1. **Crystal Envelope / Header:**
-   - Manifest metadata, schema version, unique identifier, timestamp, and signature validation.
-2. **Goal & Outcome State:**
-   - Problem statement, acceptance criteria, active milestones, and conclusive resolution status (`in_progress`, `concluded_success`, `abandoned`).
-3. **Entity & Persona Separation:**
-   - **Entity:** Foundational intelligence / model backend or human contributor.
-   - **Mask / Persona:** Active prompt configuration, role specialization, and available capabilities at a given state transition.
-   - **Harness:** Surrounding environment, constraints, and platform configuration.
-4. **State Transition DAG (Lattice Model):**
-   - Directed Acyclic Graph of context states, branching explorations, consolidated decisions, and milestones.
-5. **Transient Resource Leases:**
-   - Registered temporary state, worktrees, placeholder assets, and environment overrides with expected lifecycle actions.
-6. **Lineage & Provenance Track:**
-   - Cryptographically verifiable or deterministic event log detailing tool invocations, edits, human feedback, and AI generations.
-7. **Artifacts & Attachments:**
-   - Strongly typed references to code snippets, diffs, external URLs, logs, schemas, or media.
-8. **Continuous Improvement Ledger:**
-   - Structured records of lessons learned, resolution status, and action audit trails.
+The architectural philosophy of Context Crystal aligns with emerging industry standards and principles in software engineering and AI systems:
+- **Agent Context Development Lifecycle (ACDL):** Treating context as a versioned, testable, first-class software lifecycle artifact rather than ephemeral chat strings ([The New Stack: Agent Context Development Lifecycle](https://thenewstack.io/agent-context-development-lifecycle/)).
+- **Pragmatic, Transparent AI Engineering:** Focusing AI tools on surgical, auditable problem solving rather than personality simulation ([Linus Torvalds on Pragmatic AI Bug Investigation](https://www.xda-developers.com/linus-used-ai-bug-llm-critics-face-choice/)).
+- **Strict Provenance & Attribution:** Maintaining tamper-evident records of human vs machine contributions to ensure supply chain and open-source compliance ([Debian Linux LLM Policy & Attribution](https://www.helpnetsecurity.com/2026/08/31/debian-linux-llm-policy/)).
 
 ---
 

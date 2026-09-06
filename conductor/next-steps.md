@@ -14,12 +14,17 @@
 
 ## 2. Immediate Next Agenda: Track 4 (Agent Skill & Interaction Loop)
 The next milestone is to build the **Agent Skill** (`skills/context-crystal/SKILL.md` + Antigravity/Claude/Cursor adapters) to unlock:
-1. **"Crystallize this context":** Snapshot live sessions into `.ccrystals/<name>/` with agent entity identity.
-2. **"Resume work on last task":** Query and cast the latest crystal back into the prompt.
-3. **"What crystal is closer to completion?":** Prioritize and inspect open crystals.
-4. **Dogfooding:** Use Context Crystal within this repository to plan and execute subsequent tracks.
+1. **Verbs & Utterances:**
+   - `"Crystallize this context"` / `"crystalise session"`: Snapshot live session into `.ccrystals/<name>/` with agent entity identity.
+   - `"Resume work on last task"` / `"cast crystal"`: Query and cast the latest crystal back into prompt.
+   - `"What crystal is closer to completion?"`: Prioritize and inspect open crystals.
+2. **Deterministic Context Forking:** Support spinning off unrelated issues into new crystals linked to `origin`.
+3. **Dogfooding:** Use Context Crystal within this repository to plan and execute subsequent tracks.
 
 ---
 
-## 3. Backlog / Future Chores
-- **Scala Version Upgrade & Dep Check Chore:** Check compatibility with Scala 3 LTS (3.3.5+/3.3.8) and latest release (3.8.4), adding `sbt-updates` plugin.
+## 3. Backlog & Future Track Roadmap
+- **Track 5: Crystal Comms & Lock-Free Multi-Entity Mailboxes:** Filesystem-based inbox/outbox signaling (`.ccrystals/_comms/<entity-id>/inbox/`) and `Entity.endpoints` resolution.
+- **Track 6: Lifecycle Housekeeping, Melting & Archiving:** CLI commands for state classification (`--solid`, `--stale`), sub-DAG summarization (`ccrystal melt`), and garbage collection (`ccrystal archive`).
+- **Track 7: Experimental 3D Context Lattice Visualizer:** Interactive Three.js/WebGL spatial navigation supporting thematic views (celestial clouds, subterranean cave lattices, archival library books).
+- **Maintenance / Chore:** Scala 3 LTS dependency upgrade and sbt plugin verification.
