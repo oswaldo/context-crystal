@@ -50,4 +50,11 @@ The next candidate milestone is **Track 9: Selective Context Hydration & Beam Sh
 - **Track 14: Strict Functional Quality & Invariant Hardening (Disallow var, null, throws):**
   - *Context & Vision:* Improve code quality and eliminate runtime failure classes across `core` and `cli` by strictly disallowing mutable state (`var`), nullable types (`null`), and exceptions (`throw` / `throws`).
   - *Refactoring & Tooling:* Introduce scalafix lint rules and compiler warning configurations (e.g., `-Werror`, `-Wnonunit-statement`, strict `Option`/`Either`/ADT return types) to enforce total pure-functional invariants and refactor any lingering mutable/nullable test scaffolding.
+- **Track 15: Context Armor & Threat Modeling (Prompt Injection Defenses & Structural Sandboxing):**
+  - *Context & Threat Model:* As LLM applications face indirect prompt injection, supply chain tampering, and delimiter hijacking through untrusted tool outputs or repository artifacts, Context Crystal serves as an essential line of defense for context integrity.
+  - *Mitigations & Architecture:*
+    - Structural Sandboxing & Delimiter Escaping: Wrap untrusted node summaries and tool execution outputs in strict data boundaries with delimiter neutralization, preventing synthetic section injection (e.g. escaping fake `=== END CAST ===` or prompt override tokens).
+    - Untrusted Data Provenance Stamping: Explicitly annotate tool outputs and external artifacts as untrusted data boundaries in prompt beams.
+    - Cryptographic Verification: Leverage `AuthorshipMode.Signed` to verify authorized human/agent origins and prevent node spoofing.
+    - Zero-Reflection Codec Hardening: Strict Circe AST validation preventing deserialization and malformed JSON bombs.
 - **Maintenance / Chore (Completed / Locked):** Upgraded to Scala 3.9.0 LTS and sbt-scala-native 0.5.12 with zero warnings. sbt 2.0.8 compatibility locked at sbt 1.10.7 pending community sbt 2.x cross-publishing of required plugins (sbt-crossproject, sbt-updates, scalafix, scalafmt).

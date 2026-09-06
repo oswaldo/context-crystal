@@ -5,13 +5,13 @@
 - [x] Task: Implement ContextHydrator and HydrationParams in ccrystal.core with living state preservation and shaped transition formatting (Green) [ad48e3f]
 - [x] Task: Phase Verification & Checkpoint (Refer to workflow.md) [8552255]
 
-## Phase 2: CLI Integration & Command Parsing (Red-Green TDD)
+## Phase 2: CLI Integration & Command Parsing (Red-Green TDD) [checkpoint: cca4c1e]
 - [x] Task: Write failing unit tests for CommandParser supporting --from, --to, --tail, --depth, --summary-only on cast and hydrate (Red) [fa10126]
 - [x] Task: Implement CLI command parsing and wire CliCommand.Cast through Runner using ContextHydrator (Green) [d2f55d9]
-- [~] Task: Phase Verification & Checkpoint (Refer to workflow.md)
+- [x] Task: Phase Verification & Checkpoint (Refer to workflow.md) [cca4c1e]
 
 ## Phase 3: MCP Prompt & Resource Beam Shaping (Red-Green TDD)
-- [ ] Task: Write failing unit tests for DefaultMcpHandler supporting selective hydrate_context prompt arguments and crystal://{id}/hydrate resource queries (Red)
+- [~] Task: Write failing unit tests for DefaultMcpHandler supporting selective hydrate_context prompt arguments and crystal://{id}/hydrate resource queries (Red)
 - [ ] Task: Implement selective prompt parameters and crystal://{id}/hydrate URI query parsing in DefaultMcpHandler (Green)
 - [ ] Task: Phase Verification & Checkpoint (Refer to workflow.md)
 
