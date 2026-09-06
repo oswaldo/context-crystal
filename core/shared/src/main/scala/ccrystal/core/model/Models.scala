@@ -190,3 +190,39 @@ case class ContextCrystal(
     artifacts: List[Artifact] = Nil,
     metadata: Map[String, String] = Map.empty,
 ) derives CanEqual
+
+case class CrystalDeletionResult(
+    deletedCrystalId: String,
+    deregisteredEntityIds: List[String] = Nil,
+) derives CanEqual
+
+case class EntityDeregistrationResult(
+    deregisteredEntityId: String,
+    deletedCrystalIds: List[String] = Nil,
+) derives CanEqual
+
+case class CrystalImpactPreview(
+    crystalId: String,
+    goalTitle: String,
+    intent: String,
+    goalStatus: GoalStatus,
+    createdAt: String,
+    updatedAt: String,
+    totalNodes: Int,
+    nodeSummaries: List[String],
+    totalTasks: Int,
+    completedTasks: Int,
+    taskDescriptions: List[String],
+    totalLessons: Int,
+    openLessons: Int,
+    lessonFrictions: List[String],
+    totalLeases: Int,
+    activeLeases: Int,
+    leaseDescriptions: List[String],
+    cascadingDeregisterEntityIds: List[String] = Nil,
+) derives CanEqual
+
+case class EntityImpactPreview(
+    entity: Entity,
+    affectedCrystals: List[CrystalImpactPreview],
+) derives CanEqual

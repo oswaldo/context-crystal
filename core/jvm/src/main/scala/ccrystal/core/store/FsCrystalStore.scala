@@ -149,6 +149,130 @@ class FsCrystalStore(val rootPath: Path) extends CrystalStore:
         registerEntity(newEntity)
     }
 
+  override def deleteCrystal(id: String): Either[String, CrystalDeletionResult] =
+    try
+      val dir = crystalDir(id)
+      if !Files.exists(dir) || !Files.exists(dir.resolve("crystal.json")) then
+        Left(s"Crystal '$id' not found at $dir")
+      else
+        for
+          targetCrystal <- load(id)
+          allCrystals   <- list()
+          remainingCrystals  = allCrystals.filterNot(_.id == id)
+          remainingEntityIds = remainingCrystals.flatMap(crystalEntityReferences).toSet
+          targetEntityIds    = crystalEntityReferences(targetCrystal).toSet
+          orphanedEntityIds  = targetEntityIds.filterNot(remainingEntityIds.contains)
+          registry <- getEntityRegistry()
+          entitiesToDeregister = orphanedEntityIds.filter(registry.entities.contains).toList.sorted
+          _ <- deleteDirectoryRecursively(dir)
+          _ <-
+            if entitiesToDeregister.isEmpty then Right(())
+            else
+              val updatedRegistry =
+                registry.copy(entities = registry.entities -- entitiesToDeregister)
+              saveEntityRegistry(updatedRegistry)
+        yield CrystalDeletionResult(id, entitiesToDeregister)
+    catch case ex: Throwable => Left(s"Failed to delete crystal '$id': ${ex.getMessage}")
+
+  override def deregisterEntity(entityId: String): Either[String, EntityDeregistrationResult] =
+    try
+      for
+        registry <- getEntityRegistry()
+        _ <-
+          if !registry.entities.contains(entityId) then
+            Left(s"Entity '$entityId' not found in cave registry")
+          else Right(())
+        allCrystals <- list()
+        crystalsToDelete = allCrystals.filter(c => crystalEntityReferences(c).contains(entityId))
+        deletedIds       = crystalsToDelete.map(_.id).sorted
+        _ <- deletedIds.foldLeft[Either[String, Unit]](Right(())) { (acc, cId) =>
+          acc.flatMap(_ => deleteDirectoryRecursively(crystalDir(cId)))
+        }
+        updatedRegistry = registry.copy(entities = registry.entities - entityId)
+        _ <- saveEntityRegistry(updatedRegistry)
+      yield EntityDeregistrationResult(entityId, deletedIds)
+    catch case ex: Throwable => Left(s"Failed to deregister entity '$entityId': ${ex.getMessage}")
+
+  override def previewCrystalDeletion(
+      id: String,
+      limit: Int = 10,
+  ): Either[String, CrystalImpactPreview] =
+    for
+      targetCrystal <- load(id)
+      allCrystals   <- list()
+      remainingCrystals  = allCrystals.filterNot(_.id == id)
+      remainingEntityIds = remainingCrystals.flatMap(crystalEntityReferences).toSet
+      targetEntityIds    = crystalEntityReferences(targetCrystal).toSet
+      orphanedEntityIds  = targetEntityIds.filterNot(remainingEntityIds.contains)
+      registry <- getEntityRegistry()
+      entitiesToDeregister = orphanedEntityIds.filter(registry.entities.contains).toList.sorted
+      nodes                = targetCrystal.dag.nodes.reverse
+      nodeSummaries        = nodes.take(limit).map(n => s"[${n.kind}] ${n.contentSummary}")
+      tasks                = targetCrystal.goal.acceptanceCriteria.reverse
+      taskDescriptions = tasks
+        .take(limit)
+        .map(t => s"[${if t.completed then "x" else " "}] ${t.description}")
+      lessons           = targetCrystal.lessonsLearned.reverse
+      lessonFrictions   = lessons.take(limit).map(l => s"[${l.status}] ${l.observedFriction}")
+      leases            = targetCrystal.transientLeases.reverse
+      leaseDescriptions = leases.take(limit).map(l => s"[${l.status}] ${l.description}")
+    yield CrystalImpactPreview(
+      crystalId = targetCrystal.id,
+      goalTitle = targetCrystal.goal.title,
+      intent = targetCrystal.goal.intent,
+      goalStatus = targetCrystal.goal.status,
+      createdAt = targetCrystal.createdAt,
+      updatedAt = targetCrystal.updatedAt,
+      totalNodes = targetCrystal.dag.nodes.size,
+      nodeSummaries = nodeSummaries,
+      totalTasks = targetCrystal.goal.acceptanceCriteria.size,
+      completedTasks = targetCrystal.goal.acceptanceCriteria.count(_.completed),
+      taskDescriptions = taskDescriptions,
+      totalLessons = targetCrystal.lessonsLearned.size,
+      openLessons = targetCrystal.lessonsLearned.count(_.status == LessonStatus.Open),
+      lessonFrictions = lessonFrictions,
+      totalLeases = targetCrystal.transientLeases.size,
+      activeLeases = targetCrystal.transientLeases.count(_.status == TransientLeaseStatus.Active),
+      leaseDescriptions = leaseDescriptions,
+      cascadingDeregisterEntityIds = entitiesToDeregister,
+    )
+
+  override def previewEntityDeregistration(
+      entityId: String,
+      limit: Int = 10,
+  ): Either[String, EntityImpactPreview] =
+    for
+      registry <- getEntityRegistry()
+      entity <- registry.entities.get(entityId) match
+        case Some(e) => Right(e)
+        case None    => Left(s"Entity '$entityId' not found in cave registry")
+      allCrystals <- list()
+      crystalsToDelete = allCrystals.filter(c => crystalEntityReferences(c).contains(entityId))
+      previews <- crystalsToDelete.foldLeft[Either[String, List[CrystalImpactPreview]]](
+        Right(Nil),
+      ) { (acc, c) =>
+        acc.flatMap { list =>
+          previewCrystalDeletion(c.id, limit).map(p => list :+ p)
+        }
+      }
+    yield EntityImpactPreview(entity, previews)
+
+  private def crystalEntityReferences(crystal: ContextCrystal): Set[String] =
+    val author     = crystal.defaultAuthorId.toSet
+    val inEntities = crystal.entities.map(_.id).toSet
+    val inNodes    = crystal.dag.nodes.map(_.actorId).toSet
+    author ++ inEntities ++ inNodes
+
+  private def deleteDirectoryRecursively(dir: Path): Either[String, Unit] =
+    try
+      if Files.exists(dir) then
+        Files
+          .walk(dir)
+          .sorted(java.util.Comparator.reverseOrder())
+          .forEach(Files.deleteIfExists)
+      Right(())
+    catch case ex: Throwable => Left(s"Failed to delete directory '$dir': ${ex.getMessage}")
+
   private def crystalDir(id: String): Path =
     rootPath.resolve(id)
 

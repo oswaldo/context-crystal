@@ -29,11 +29,14 @@ class FsCrystalStoreDeletionSuite extends FunSuite:
       defaultAuthorId = Some(authorId),
       goal = Goal(s"Goal $id", s"Intent $id", GoalStatus.InProgress, Nil),
       entities = List(Entity(authorId, EntityKind.Human, authorId)),
-      dag = DAG("root", List(DAGNode("root", Nil, "2026-09-06T12:00:00Z", authorId, NodeKind.HumanPrompt, "Init"))),
+      dag = DAG(
+        "root",
+        List(DAGNode("root", Nil, "2026-09-06T12:00:00Z", authorId, NodeKind.HumanPrompt, "Init")),
+      ),
     )
 
   test("deleteCrystal removes crystal directory and state files"):
-    val store = FsCrystalStore(tempDir.resolve(".ccrystals").toString)
+    val store   = FsCrystalStore(tempDir.resolve(".ccrystals").toString)
     val crystal = createDummyCrystal("c-1", "usr_oswaldo")
     val saveRes = store.save(crystal)
     assert(saveRes.isRight)
@@ -46,7 +49,7 @@ class FsCrystalStoreDeletionSuite extends FunSuite:
     assert(store.load("c-1").isLeft)
 
   test("deleteCrystal cascades to deregister orphaned entity"):
-    val store = FsCrystalStore(tempDir.resolve(".ccrystals").toString)
+    val store   = FsCrystalStore(tempDir.resolve(".ccrystals").toString)
     val entity1 = Entity("usr_solo", EntityKind.Human, "Solo User")
     val entity2 = Entity("usr_shared", EntityKind.Human, "Shared User")
     assert(store.registerEntity(entity1).isRight)
@@ -69,7 +72,7 @@ class FsCrystalStoreDeletionSuite extends FunSuite:
     assert(registry.entities.contains("usr_shared"), "usr_shared should still exist")
 
   test("deleteCrystal does not deregister entity if another crystal still references it"):
-    val store = FsCrystalStore(tempDir.resolve(".ccrystals").toString)
+    val store  = FsCrystalStore(tempDir.resolve(".ccrystals").toString)
     val entity = Entity("usr_shared", EntityKind.Human, "Shared User")
     assert(store.registerEntity(entity).isRight)
 
@@ -88,7 +91,7 @@ class FsCrystalStoreDeletionSuite extends FunSuite:
     assert(registry.entities.contains("usr_shared"), "usr_shared must remain registered")
 
   test("deleteCrystal returns error when crystal does not exist"):
-    val store = FsCrystalStore(tempDir.resolve(".ccrystals").toString)
+    val store     = FsCrystalStore(tempDir.resolve(".ccrystals").toString)
     val deleteRes = store.deleteCrystal("non-existent")
     assert(deleteRes.isLeft, "Expected deletion to fail")
     assert(deleteRes.left.toOption.get.contains("not found"), "Error should contain 'not found'")

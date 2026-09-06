@@ -15,3 +15,10 @@ trait CrystalStore:
       kind: EntityKind,
       distinct: Boolean = false,
   ): Either[String, Entity]
+  def deleteCrystal(id: String): Either[String, CrystalDeletionResult]
+  def deregisterEntity(entityId: String): Either[String, EntityDeregistrationResult]
+  def previewCrystalDeletion(id: String, limit: Int = 10): Either[String, CrystalImpactPreview]
+  def previewEntityDeregistration(
+      entityId: String,
+      limit: Int = 10,
+  ): Either[String, EntityImpactPreview]
