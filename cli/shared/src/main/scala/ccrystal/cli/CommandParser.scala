@@ -139,6 +139,15 @@ object CommandParser:
     Opts.option[String]("action", "Recommended action", "a").orNone,
   ).mapN(CliCommand.LessonAdd.apply)
 
+  private val lessonActionOpts = (
+    Opts.argument[String]("crystal-id"),
+    Opts.option[String]("id", "Lesson identifier", "i"),
+    Opts.option[String]("action", "Action text", "a"),
+    Opts.option[String]("actor", "Actor identifier", "u"),
+  ).mapN(CliCommand.LessonAction.apply)
+
+  private val lessonListOpts = Opts.argument[String]("crystal-id").map(CliCommand.LessonList.apply)
+
   private val leaseOpts = (
     Opts.argument[String]("crystal-id"),
     Opts.option[TransientResourceType]("type", "Resource type", "t")(resourceTypeArgument),
@@ -147,6 +156,14 @@ object CommandParser:
     Opts.option[DisposalPolicy]("policy", "Disposal policy")(disposalPolicyArgument),
     Opts.option[String]("acquired-at", "ISO-8601 acquisition timestamp").orNone,
   ).mapN(CliCommand.TransientLeaseCmd.apply)
+
+  private val leaseCleanOpts = (
+    Opts.argument[String]("crystal-id"),
+    Opts.option[String]("id", "Lease identifier to clean", "l"),
+  ).mapN(CliCommand.TransientClean.apply)
+
+  private val leaseListOpts =
+    Opts.argument[String]("crystal-id").map(CliCommand.TransientList.apply)
 
   private val castOpts = (
     Opts.argument[String]("crystal-id"),
@@ -193,12 +210,18 @@ object CommandParser:
       )
       .orElse(
         Opts.subcommand("lesson", "Manage lessons learned")(
-          Opts.subcommand("add", "Log a lesson learned")(lessonAddOpts),
+          Opts
+            .subcommand("add", "Log a lesson learned")(lessonAddOpts)
+            .orElse(Opts.subcommand("action", "Action a lesson learned")(lessonActionOpts))
+            .orElse(Opts.subcommand("list", "List lessons learned")(lessonListOpts)),
         ),
       )
       .orElse(
         Opts.subcommand("transient", "Manage transient leases")(
-          Opts.subcommand("lease", "Acquire a transient lease")(leaseOpts),
+          Opts
+            .subcommand("lease", "Acquire a transient lease")(leaseOpts)
+            .orElse(Opts.subcommand("clean", "Clean a transient lease")(leaseCleanOpts))
+            .orElse(Opts.subcommand("list", "List transient leases")(leaseListOpts)),
         ),
       )
       .orElse(Opts.subcommand("cast", "Cast a context beam for LLMs")(castOpts))

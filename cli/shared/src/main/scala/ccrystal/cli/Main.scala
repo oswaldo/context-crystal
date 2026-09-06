@@ -29,9 +29,14 @@ object Main:
       )
       System.exit(0)
 
-    if remainingArgs.length == 1 && remainingArgs(0).contains(";") then
-      // Chained execution
-      BatchExecutor.executeChain(remainingArgs(0), runner) match
+    val isChained  = remainingArgs.length == 1 && remainingArgs(0).contains(";")
+    val isBatchCmd = remainingArgs.length >= 2 && remainingArgs(0) == "batch"
+
+    if isChained || isBatchCmd then
+      val chain =
+        if remainingArgs(0) == "batch" then remainingArgs.drop(1).mkString(" ")
+        else remainingArgs(0)
+      BatchExecutor.executeChain(chain, runner) match
         case Right(outputs) =>
           outputs.foreach(println)
           System.exit(0)
