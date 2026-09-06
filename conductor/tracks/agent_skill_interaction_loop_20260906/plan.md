@@ -11,7 +11,7 @@
   - [x] Verify all unit tests pass green
 - [x] Task: 1.3 Phase Verification & Checkpoint (Refer to workflow.md)
 
-## Phase 2: Canonical Agent Skill (`skills/context-crystal/SKILL.md`)
+## Phase 2: Canonical Agent Skill (`skills/context-crystal/SKILL.md`) [checkpoint: 0331a5d]
 - [x] Task: 2.1 Author core skill specification & autonomous self-bootstrapping workflow (0331a5d)
   - [x] Define YAML frontmatter (`name: context-crystal`), description, and operational invariants
   - [x] Write autonomous binary bootstrap recipe (`which ccrystal` check + automatic install to `~/.local/bin`)
@@ -23,7 +23,7 @@
 - [x] Task: 2.3 Codify conversational utterances & `ccrystal batch` recipes (0331a5d)
   - [x] Map natural language utterances (`crystallize`, `cast`, `slice`, `fork`, `lesson`, `transient`)
   - [x] Define standardized single-roundtrip `ccrystal batch` multi-command execution recipes
-- [ ] Task: 2.4 Phase Verification & Checkpoint (Refer to workflow.md)
+- [x] Task: 2.4 Phase Verification & Checkpoint (Refer to workflow.md)
 
 ## Phase 3: Host Adapters & Platform Tooling
 - [ ] Task: 3.1 Antigravity Skill Adapter
