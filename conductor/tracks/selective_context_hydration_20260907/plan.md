@@ -15,8 +15,8 @@
 - [x] Task: Implement selective prompt parameters and crystal://{id}/hydrate URI query parsing in DefaultMcpHandler (Green) [dbd023e]
 - [x] Task: Phase Verification & Checkpoint (Refer to workflow.md) [ee03072]
 
-## Phase 4: End-to-End Integration, Native Compilation & Documentation
-- [~] Task: Write integration tests for end-to-end CLI cast/hydrate beam shaping and MCP JSON-RPC hydration calls
-- [ ] Task: Update README.md, skills/context-crystal/SKILL.md, and docs with selective hydration syntax and examples
-- [ ] Task: Compile native CLI binary (cliNative/nativeLink), install to ~/.local/bin/ccrystal, and run full test suites
-- [ ] Task: Phase Verification & Checkpoint (Refer to workflow.md)
+## Phase 4: End-to-End Integration, Native Compilation & Documentation [checkpoint: a8ac684]
+- [x] Task: Write integration tests for end-to-end CLI cast/hydrate beam shaping and MCP JSON-RPC hydration calls [a8ac684]
+- [x] Task: Update README.md, skills/context-crystal/SKILL.md, and docs with selective hydration syntax and examples [a8ac684]
+- [x] Task: Compile native CLI binary (cliNative/nativeLink), install to ~/.local/bin/ccrystal, and run full test suites [a8ac684]
+- [x] Task: Phase Verification & Checkpoint (Refer to workflow.md) [a8ac684]
