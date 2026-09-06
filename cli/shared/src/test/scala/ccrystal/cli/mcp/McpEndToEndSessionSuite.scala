@@ -7,7 +7,8 @@ import io.circe.parser.*
 import io.circe.syntax.*
 import ccrystal.core.mcp.*
 import ccrystal.core.mcp.McpCodecs.given
-import ccrystal.cli.{InMemoryCrystalStore, Runner}
+import ccrystal.core.model.*
+import ccrystal.cli.{CliCommand, InMemoryCrystalStore, Runner}
 
 class McpEndToEndSessionSuite extends FunSuite:
 
@@ -97,3 +98,99 @@ class McpEndToEndSessionSuite extends FunSuite:
     val deleteResult = deleteResp.result.get.hcursor.as[CallToolResult].toOption.get
     assertEquals(deleteResult.isError, false)
     assertEquals(store.exists("e2e-crystal"), false)
+
+  test("End-to-end selective context hydration and beam shaping via CLI and MCP"):
+    val store   = new InMemoryCrystalStore()
+    val runner  = new Runner(store, confirmPrompt = _ => true)
+    val handler = new DefaultMcpHandler(store, runner)
+
+    // Setup crystal with multi-milestone DAG
+    runner.run(
+      CliCommand.Init(
+        "beam-e2e",
+        "E2E Beam Shaping",
+        Some("Test end to end beam shaping"),
+        None,
+        None,
+        None,
+      ),
+    )
+    runner.run(
+      CliCommand.NodeAdd(
+        "beam-e2e",
+        NodeKind.HumanPrompt,
+        "Init spec",
+        Nil,
+        anchor = Some("spec_init"),
+      ),
+    )
+    runner.run(
+      CliCommand.NodeAdd(
+        "beam-e2e",
+        NodeKind.AgentReasoning,
+        "Architecture design",
+        Nil,
+        anchor = Some("arch_done"),
+      ),
+    )
+    runner.run(CliCommand.NodeAdd("beam-e2e", NodeKind.ToolExecution, "Implement models", Nil))
+    runner.run(
+      CliCommand.NodeAdd(
+        "beam-e2e",
+        NodeKind.Checkpoint,
+        "Phase 1 Green",
+        Nil,
+        anchor = Some("p1_green"),
+      ),
+    )
+
+    // 1. CLI Cast with --from arch_done --to p1_green
+    val cliCastResult =
+      runner.run(CliCommand.Cast("beam-e2e", from = Some("arch_done"), to = Some("p1_green")))
+    assert(cliCastResult.isRight, "CLI cast should succeed")
+    val cliCastText = cliCastResult.toOption.get
+    assert(!cliCastText.contains("Init spec"), "Init spec should be excluded")
+    assert(cliCastText.contains("Architecture design"), "Architecture design should be present")
+    assert(cliCastText.contains("Phase 1 Green"), "Phase 1 Green should be present")
+
+    // 2. CLI Hydrate with --tail 1
+    val cliHydrateResult = runner.run(CliCommand.Cast("beam-e2e", tail = Some(1)))
+    assert(cliHydrateResult.isRight, "CLI hydrate should succeed")
+    val cliHydrateText = cliHydrateResult.toOption.get
+    assert(!cliHydrateText.contains("Architecture design"), "Arch design excluded by tail 1")
+    assert(cliHydrateText.contains("Phase 1 Green"), "Phase 1 Green present with tail 1")
+
+    // 3. MCP JSON-RPC prompts/get with arguments
+    val promptReq = JsonRpcRequest(
+      id = JsonRpcId.Num(101L),
+      method = "prompts/get",
+      params = Some(
+        Json.obj(
+          "name" -> "hydrate_context".asJson,
+          "arguments" -> Json.obj(
+            "crystal_id" -> "beam-e2e".asJson,
+            "from"       -> "arch_done".asJson,
+            "tail"       -> "1".asJson,
+          ),
+        ),
+      ),
+    )
+    val promptResp = handler.handle(promptReq)
+    assertEquals(promptResp.error.isEmpty, true)
+    val promptResult = promptResp.result.get.hcursor.as[GetPromptResult].toOption.get
+    val promptMsg    = promptResult.messages.head.content.text
+    assert(!promptMsg.contains("Init spec"), "MCP prompt excludes node before from")
+    assert(promptMsg.contains("Phase 1 Green"), "MCP prompt includes tail node")
+
+    // 4. MCP JSON-RPC resources/read with URI query string
+    val resReq = JsonRpcRequest(
+      id = JsonRpcId.Num(102L),
+      method = "resources/read",
+      params = Some(Json.obj("uri" -> "crystal://beam-e2e/hydrate?tail=2".asJson)),
+    )
+    val resResp = handler.handle(resReq)
+    assertEquals(resResp.error.isEmpty, true)
+    val resResult = resResp.result.get.hcursor.as[ReadResourceResult].toOption.get
+    val resText   = resResult.contents.head.text
+    assert(!resText.contains("Init spec"), "Resource query excludes older nodes")
+    assert(resText.contains("Phase 1 Green"), "Resource query includes recent node")

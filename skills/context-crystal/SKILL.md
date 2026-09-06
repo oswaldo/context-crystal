@@ -111,10 +111,13 @@ The skill automatically adapts its update cadence and token usage based on the h
 
 - **Zero Micro-Step Chatter:** Do NOT invoke `ccrystal` after every single tool call or minor edit. Allow the host framework to drive minute tasks.
 - **Synchronization Trigger Points:**
-  1. **Session Inception:** Cast existing crystal or initialize aligned with the track goal:
+  1. **Session Inception & Hydration:** Cast existing crystal or initialize aligned with the track goal:
 
      ```bash
      ccrystal hydrate <crystal-id>
+     # Or selectively shape the context beam to conserve tokens:
+     ccrystal hydrate <crystal-id> --tail 10
+     ccrystal hydrate <crystal-id> --from <anchor-or-node-prefix>
      # Or initialize if first session:
      ccrystal init <crystal-id> -g "<Goal Title>" -i "<Detailed Intent>" --created-at "<ISO-8601>"
      ```
@@ -173,6 +176,10 @@ When the user communicates in natural language, translate their intent into the 
 | :--- | :--- | :--- |
 | *"Crystallize this session"*, *"Save checkpoint"* | Snapshot current state and progress | `ccrystal batch "node add <id> -k checkpoint -s '<summary>' --fidelity inferred"` |
 | *"Resume last task"*, *"What are we working on?"*, *"Cast context"* | Hydrate prompt with goals, active tasks, recent nodes, open leases | `ccrystal hydrate <id>` (or `ccrystal cast <id> --depth 10`) |
+| *"Hydrate from checkpoint X"*, *"Show context since anchor"* | Selectively hydrate prompt from an anchor, UUID, or prefix forward | `ccrystal hydrate <id> --from <selector>` |
+| *"Cast range between X and Y"*, *"Shape context beam"* | Shape context beam between two specific nodes or anchors | `ccrystal cast <id> --from <selA> --to <selB>` |
+| *"Show recent 5 nodes of context"*, *"Hydrate tail"* | Hydrate living state and only the most recent N DAG transitions | `ccrystal hydrate <id> --tail 5` |
+| *"Hydrate high-level context only"*, *"Cast summary"* | Hydrate goal, tasks, leases, and lessons without DAG transitions | `ccrystal hydrate <id> --summary-only` |
 | *"We hit a blocker / build error"*, *"Log a lesson"* | Record friction and corrective action | `ccrystal lesson add <id> -f '<friction>' -r '<cause>' -a '<action>'` |
 | *"Set up a temporary branch / mock config"* | Acquire a transient resource lease | `ccrystal transient lease <id> -t git_worktree -p '<path>' -d '<desc>' --policy revert_on_conclusion` |
 | *"We're done with the spike, clean it"* | Release/clean transient resource | `ccrystal transient clean <id> -l <lease-id>` |

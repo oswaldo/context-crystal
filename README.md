@@ -78,9 +78,10 @@ Context Crystal adapts to your team's workflow without polluting your code:
 2. **Capture Fidelity Guarantees:** Distinguishes between **Inferred** context (agent synthesis, chain-of-thought) and **Intercepted** telemetry (deterministic, verbatim tool input/output), preventing synthetic hallucinations from masquerading as verified facts.
 3. **First-Class Transient Resource Leases:** Tracks temporary resources (`git_worktree`, test environment overrides, mock services, dummy assets) with automated cleanup gates before task conclusion.
 4. **Context Cleavage & Slicing (`ccrystal slice`):** Prune context lattices to avoid token saturation, or slice and fork unexpected discoveries into linked child crystals with full parent lineage.
-5. **Continuous Improvement & Lessons Learned:** Built-in ledger tracking friction, root causes, and verified action audit trails.
-6. **Sub-Millisecond Atomic Batching:** Pipelined CLI execution (`ccrystal batch "..."`) combines multi-step state transitions into a single roundtrip, eliminating agent latency and token waste.
-7. **Deterministic Zero-LLM Housekeeping:** Compiled via **Scala Native (LLVM)** into a sub-10ms, self-contained binary that inspects, hydrates, and audits contexts with zero token cost.
+5. **Selective Context Hydration & Beam Shaping (`ccrystal cast/hydrate --from`):** Reconstitutes living state (Goal, Tasks, Leases, Lessons) while focusing the state transition beam on a specific milestone (`--from <anchor|id>`, `--to <anchor|id>`, `--tail <N>`), keeping prompts lean without permanent forking.
+6. **Continuous Improvement & Lessons Learned:** Built-in ledger tracking friction, root causes, and verified action audit trails.
+7. **Sub-Millisecond Atomic Batching:** Pipelined CLI execution (`ccrystal batch "..."`) combines multi-step state transitions into a single roundtrip, eliminating agent latency and token waste.
+8. **Deterministic Zero-LLM Housekeeping:** Compiled via **Scala Native (LLVM)** into a sub-10ms, self-contained binary that inspects, hydrates, and audits contexts with zero token cost.
 
 ---
 
@@ -100,8 +101,8 @@ Context Crystal includes ready-to-use skills and instruction adapters for major 
 Context Crystal includes an embedded, zero-overhead MCP server built directly into the native binary. It connects Claude Desktop, Cursor, Zed, Windsurf, and agent harnesses to your workspace crystals with zero Python or Node.js runtime dependencies.
 
 - **Compound Atomic Tools:** Features `crystal_batch` for executing multi-operation recipes in a single roundtrip, plus `crystal_init`, `crystal_checkpoint`, `crystal_task_transition`, `crystal_transient_lease`, `crystal_slice_fork`, and `crystal_delete`.
-- **Dynamic Context Resources:** Inspect living states (`crystal://{id}/state`), DAG lineages (`crystal://{id}/dag`), and identities (`crystal://entities`).
-- **Prompt Beams & Triage:** Hydrate context beams directly via `hydrate_context` and review cave lifecycle hygiene via `triage_cave`.
+- **Dynamic Context Resources:** Inspect living states (`crystal://{id}/state`), DAG lineages (`crystal://{id}/dag`), identities (`crystal://entities`), and shaped context beams (`crystal://{id}/hydrate?from=...&tail=...`).
+- **Prompt Beams & Triage:** Hydrate shaped context beams directly via `hydrate_context` (accepting `from`, `to`, `tail`, `depth`) and review cave lifecycle hygiene via `triage_cave`.
 
 ### Client Configuration
 
@@ -172,6 +173,9 @@ ccrystal batch "task add auth-refactor -d 'Deploy to staging'; transient clean a
 
 # 7. Context Cleavage: slice and fork into a child crystal
 ccrystal slice auth-refactor --from node-1 --to node-3 --fork-to auth-edge-cases --prune
+
+# 8. Selective Context Hydration & Beam Shaping
+ccrystal hydrate auth-refactor --from v1-checkpoint --tail 5
 ```
 
 ---
