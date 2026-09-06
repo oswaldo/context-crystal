@@ -12,17 +12,17 @@
 - [x] Task: 1.3 Phase Verification & Checkpoint (Refer to workflow.md)
 
 ## Phase 2: Canonical Agent Skill (`skills/context-crystal/SKILL.md`)
-- [ ] Task: 2.1 Author core skill specification & autonomous self-bootstrapping workflow
-  - [ ] Define YAML frontmatter (`name: context-crystal`), description, and operational invariants
-  - [ ] Write autonomous binary bootstrap recipe (`which ccrystal` check + automatic install to `~/.local/bin`)
-  - [ ] Encode storage location discovery (`CCRYSTAL_STORE`, external repo vs local `.ccrystals/`)
-- [ ] Task: 2.2 Define dual-mode operational heuristics (Symbiotic vs Autonomous Spine)
-  - [ ] Specify detection heuristics for `conductor/`, `openspec/`, `speckit/`, etc.
-  - [ ] Detail milestone batching cadences for Symbiotic Mode (zero micro-step chatter)
-  - [ ] Detail pre-yield micro-batch flushes for Autonomous Spine Mode (crash & compaction resilience)
-- [ ] Task: 2.3 Codify conversational utterances & `ccrystal batch` recipes
-  - [ ] Map natural language utterances (`crystallize`, `cast`, `slice`, `fork`, `lesson`, `transient`)
-  - [ ] Define standardized single-roundtrip `ccrystal batch` multi-command execution recipes
+- [x] Task: 2.1 Author core skill specification & autonomous self-bootstrapping workflow (0331a5d)
+  - [x] Define YAML frontmatter (`name: context-crystal`), description, and operational invariants
+  - [x] Write autonomous binary bootstrap recipe (`which ccrystal` check + automatic install to `~/.local/bin`)
+  - [x] Encode storage location discovery (`CCRYSTAL_STORE`, external repo vs local `.ccrystals/`)
+- [x] Task: 2.2 Define dual-mode operational heuristics (Symbiotic vs Autonomous Spine) (0331a5d)
+  - [x] Specify detection heuristics for `conductor/`, `openspec/`, `speckit/`, etc.
+  - [x] Detail milestone batching cadences for Symbiotic Mode (zero micro-step chatter)
+  - [x] Detail pre-yield micro-batch flushes for Autonomous Spine Mode (crash & compaction resilience)
+- [x] Task: 2.3 Codify conversational utterances & `ccrystal batch` recipes (0331a5d)
+  - [x] Map natural language utterances (`crystallize`, `cast`, `slice`, `fork`, `lesson`, `transient`)
+  - [x] Define standardized single-roundtrip `ccrystal batch` multi-command execution recipes
 - [ ] Task: 2.4 Phase Verification & Checkpoint (Refer to workflow.md)
 
 ## Phase 3: Host Adapters & Platform Tooling
