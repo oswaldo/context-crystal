@@ -176,15 +176,16 @@ object CommandParser:
 
   private val castOpts = (
     Opts.argument[String]("crystal-id"),
-    Opts.option[Int]("depth", "Max DAG depth to cast", "d").withDefault(10),
+    Opts.option[String]("from", "Start of transition slice (anchor or node ID/prefix)").orNone,
+    Opts.option[String]("to", "End of transition slice (anchor or node ID/prefix)").orNone,
+    Opts.option[Int]("tail", "Number of recent transitions to include in slice").orNone,
+    Opts.option[Int]("depth", "Max DAG depth to cast (alias for tail)", "d").withDefault(10),
     Opts.flag("summary-only", "Emit only high-level summary").orFalse,
-  ).mapN(CliCommand.Cast.apply)
+  ).mapN { (id, from, to, tail, depth, summaryOnly) =>
+    CliCommand.Cast(id, from = from, to = to, tail = tail, depth = depth, summaryOnly = summaryOnly)
+  }
 
-  private val hydrateOpts = (
-    Opts.argument[String]("crystal-id"),
-    Opts.option[Int]("depth", "Max DAG depth to cast", "d").withDefault(10),
-    Opts.flag("summary-only", "Emit only high-level summary").orFalse,
-  ).mapN(CliCommand.Cast.apply)
+  private val hydrateOpts = castOpts
 
   private val refreshOpts = (
     Opts.argument[String]("crystal-id").orNone,

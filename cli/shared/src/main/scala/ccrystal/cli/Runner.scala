@@ -2,7 +2,7 @@ package ccrystal.cli
 
 import ccrystal.core.model.*
 import ccrystal.core.store.CrystalStore
-import ccrystal.core.dag.{CrystalDAG, CrystalSlicer, SliceParams}
+import ccrystal.core.dag.{ContextHydrator, CrystalDAG, CrystalSlicer, HydrationParams, SliceParams}
 import ccrystal.core.audit.CrystalAuditor
 import ccrystal.core.codec.given
 import io.circe.syntax.*
@@ -263,44 +263,12 @@ class Runner(
         sb.toString
       }
 
-    case CliCommand.Cast(crystalId, depth, summaryOnly) =>
-      store.load(crystalId).map { crystal =>
-        val sb = new java.lang.StringBuilder()
-        sb.append(s"=== CONTEXT CRYSTAL CAST: ${crystal.id} ===\n\n")
-        sb.append(s"## Goal: ${crystal.goal.title}\n")
-        sb.append(s"Intent: ${crystal.goal.intent}\n")
-        sb.append(s"Status: ${crystal.goal.status}\n\n")
-
-        sb.append("## Active Tasks:\n")
-        crystal.goal.acceptanceCriteria.foreach { ac =>
-          val mark = if ac.completed then "[x]" else "[ ]"
-          sb.append(s"- $mark ${ac.id}: ${ac.description}\n")
-        }
-        sb.append("\n")
-
-        if !summaryOnly then
-          sb.append(s"## Recent State Transitions (Depth: $depth):\n")
-          val recentNodes = crystal.dag.nodes.takeRight(depth)
-          recentNodes.foreach { n =>
-            sb.append(s"- [${n.kind}] (${n.actorId}): ${n.contentSummary}\n")
-          }
-          sb.append("\n")
-
-          val openLessons = crystal.lessonsLearned.filter(_.status == LessonStatus.Open)
-          if openLessons.nonEmpty then
-            sb.append("## Unresolved Lessons Learned:\n")
-            openLessons.foreach(l => sb.append(s"- [${l.id}] ${l.observedFriction}\n"))
-            sb.append("\n")
-
-          val activeLeases = crystal.transientLeases.filter(_.status == TransientLeaseStatus.Active)
-          if activeLeases.nonEmpty then
-            sb.append("## Active Transient Leases (Must be cleaned before conclusion):\n")
-            activeLeases
-              .foreach(l => sb.append(s"- [${l.id}] ${l.resourceType}: ${l.description}\n"))
-            sb.append("\n")
-
-        sb.append("=== END CAST ===")
-        sb.toString
+    case castCmd: CliCommand.Cast =>
+      store.load(castCmd.crystalId).flatMap { crystal =>
+        ContextHydrator.hydrate(
+          crystal,
+          HydrationParams(slice = castCmd.castSliceParams, summaryOnly = castCmd.summaryOnly),
+        )
       }
 
     case CliCommand.Refresh(crystalIdOpt, all) =>

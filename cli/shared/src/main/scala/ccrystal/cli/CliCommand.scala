@@ -1,6 +1,7 @@
 package ccrystal.cli
 
 import ccrystal.core.model.*
+import ccrystal.core.dag.SliceParams
 
 enum SliceFormat derives CanEqual:
   case Prompt
@@ -61,8 +62,21 @@ enum CliCommand derives CanEqual:
   case EntityList
   case EntityRegister(name: String, kind: EntityKind)
   case EntityDeregister(entityId: String, force: Boolean = false)
-  case Cast(crystalId: String, depth: Int = 10, summaryOnly: Boolean = false)
+  case Cast(
+      crystalId: String,
+      from: Option[String] = None,
+      to: Option[String] = None,
+      tail: Option[Int] = None,
+      depth: Int = 10,
+      summaryOnly: Boolean = false,
+  )
   case Refresh(crystalId: Option[String], all: Boolean)
   case Batch(scriptOrChain: String)
   case Delete(crystalId: String, force: Boolean = false)
   case Mcp(transport: String = "stdio")
+
+  def castSliceParams: SliceParams = this match
+    case Cast(_, from, to, tail, depth, _) =>
+      val effTail = tail.orElse(if from.isEmpty && to.isEmpty then Some(depth) else None)
+      SliceParams(from = from, to = to, tail = effTail)
+    case _ => SliceParams()
