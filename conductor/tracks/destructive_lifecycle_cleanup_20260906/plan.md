@@ -10,13 +10,13 @@
 
 ## Phase 2: CLI Parsing, Runner & Interactive Confirmation
 - [x] Task: Write failing unit tests for CLI delete and entity deregister command parsing (Red) [872a1e3]
-- [~] Task: Implement CliCommand.Delete and CliCommand.EntityDeregister in CommandParser (Green)
-- [ ] Task: Implement interactive y/N confirmation prompt and non-interactive --force handling in Runner (Green)
-- [ ] Task: Implement batch executor safety preventing unforced destructive commands in scripts (Green)
-- [ ] Task: Phase Verification & Checkpoint (Refer to workflow.md)
+- [x] Task: Implement CliCommand.Delete and CliCommand.EntityDeregister in CommandParser (Green) [eae3094]
+- [x] Task: Implement interactive y/N confirmation prompt and non-interactive --force handling in Runner (Green) [eae3094]
+- [x] Task: Implement batch executor safety preventing unforced destructive commands in scripts (Green) [eae3094]
+- [x] Task: Phase Verification & Checkpoint (Refer to workflow.md) [eae3094]
 
 ## Phase 3: Integration, Agent Skill & Documentation
-- [ ] Task: Write end-to-end integration tests for CLI deletion and entity deregistration workflows
+- [~] Task: Write end-to-end integration tests for CLI deletion and entity deregistration workflows
 - [ ] Task: Update Agent Skill (.agents/skills/context-crystal/SKILL.md) with deletion recipes and conversational matrix
 - [ ] Task: Compile native CLI binary and verify command line help
 - [ ] Task: Phase Verification & Checkpoint (Refer to workflow.md)
