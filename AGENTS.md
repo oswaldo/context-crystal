@@ -52,13 +52,13 @@ All new features and non-trivial fixes follow Conductor:
 5. **Cave Hygiene & Retrospective Gate:** At the end of every track:
    - Perform cave hygiene triage (`ccrystal list` or MCP `triage_cave`). Prompt the operator to confirm purging completed/concluded crystals to prevent cave bloat.
    - Run the Operational Learning Gate: Explicitly ask whether any friction, tool patterns, or build learnings should be codified into `AGENTS.md` or `skills/context-crystal/SKILL.md`.
-6. **Clean Merge & Worktree Teardown:** Fast-forward merge into `main`, update the local release installation, and remove the worktree.
+6. **Clean Merge & Worktree Teardown:** Fast-forward merge into `main`, update the local release installation (following the optimized release build instructions in [README.md](README.md#prerequisites--installation)), and remove the worktree.
 
 ---
 
 ## 4. Build, Test, and Link Commands
 
-All builds and tests are managed with `sbt`:
+All builds and tests are managed with `sbt`. Always check [README.md](README.md#prerequisites--installation) for primary environment prerequisites, installation instructions, and optimized release compilation flags to avoid redundant deviations:
 
 ```bash
 # Run entire test suite across all platforms (Native, JVM, JS)
@@ -108,7 +108,7 @@ npx shellcheck skills/**/*.sh
 - **Transient Cleanup:** Clean or promote all transient resource leases before marking tasks complete.
 - **Commit Signing:** All commits must be cryptographically signed (e.g., using SSH or GPG keys).
 - **MUnit Strict Equality Clues:** Under `-language:strictEquality`, avoid bare `assert(cond)` which can trigger ambiguous overload errors in MUnit; prefer `assertEquals(actual, expected)` or provide explicit clue strings: `assert(cond, "clue")`.
-- **Atomic Binary Inode Replacement:** Always use `cp --remove-destination` (or `install`) when updating installed native binaries in `~/.local/bin/ccrystal`. This unlinks the inode and prevents `Text file busy` errors if a background process (like the active MCP server engine) is currently executing the binary.
+- **Atomic Binary Inode Replacement:** Always use `cp --remove-destination` (or `install`) when updating installed native binaries in `~/.local/bin/ccrystal`. Ensure the binary was compiled using the optimized release configuration documented in [README.md](README.md#prerequisites--installation) (`Mode.releaseFast` with Thin LTO). This unlinks the inode and prevents `Text file busy` errors if a background process (like the active MCP server engine) is currently executing the binary.
 - **MCP Tool First / Batch Preference:** Autonomous agents interacting with Context Crystal should prioritize native MCP tools (`crystal_batch`, `crystal_init`, etc.) over invoking CLI commands via subshells. For multi-step context transitions, compose a single `crystal_batch` recipe to execute atomically with minimal turn roundtrips.
 - **Proactive Crystal Anchoring & Dogfooding:** When beginning any non-trivial or multi-step track or task, the entity MUST first check for existing crystals (`ccrystal list` or MCP `list_resources` / `crystal://*`). If a matching crystal exists, attach to it and hydrate state (`ccrystal hydrate <id>` or MCP `read_resource`); otherwise, initialize a dedicated crystal (`crystal_init` or `ccrystal init`). If developing in an isolated worktree, register a transient resource lease (`git_worktree`). Never conduct multi-step development in the repository without active Context Crystal tracking.
 - **Conventional Commits:** Follow standard conventions:
