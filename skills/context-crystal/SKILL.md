@@ -147,6 +147,17 @@ The skill automatically adapts its update cadence and token usage based on the h
 *Active when no external planning tool is present.*
 
 - **Context Crystal as Primary Spine:** The crystal directly maintains goals, sub-tasks (`tasks.md`), lessons learned (`lessons-learned.md`), and temporary resources (`transient.json`).
+- **High Information-Density Messaging Standard:**
+  - Because there is no external `spec.md` or `plan.md`, the crystal's DAG nodes and lessons must be **semantically dense** to prevent future sessions from reinvestigating settled topics.
+  - Every transition summary MUST follow the **Action + Rationale + Constraint/Artifact Trio**:
+    - ❌ *Low Density (Forces reinvestigation):* `"Fixed connection timeout"`
+    - ✅ *High Density (Self-hydrating):* `"Resolved pool starvation in db/pool.go by configuring max idle conns to 20 and keep-alives; discarded connection pooling wrapper because it introduced deadlocks on rollbacks"`
+- **Anti-Reinvestigation Gate (Discarded Alternatives & Dead Ends):**
+  - Whenever an investigation reveals a dead end, library incompatibility, or rejected architectural alternative, log it immediately:
+    - In node summaries or via `lesson add <id> -f '<friction>' -r '<root cause>' -a '<remediation>'`
+    - This guarantees that when a future turn or new agent session runs `ccrystal hydrate`, it immediately inherits the settled rationale and never wastes tokens re-exploring discarded paths.
+- **Density Guardrail (No Token Bloat):**
+  - Dense does not mean verbatim code dumps. Keep summaries bounded to **1–2 crisp, high-signal sentences (20–40 words)** focusing on symbols, root causes, invariants, and decisions made.
 - **Pre-Yield Micro-Batching Rule:**
   - Whenever you finish a logical batch of work, or **immediately before asking the human a question or yielding your conversational turn**, flush pending transitions in an atomic batch.
   - This ensures that if the chat window is closed, crashes, or triggers automatic context compaction, resuming via `ccrystal hydrate <crystal-id>` reconstitutes the exact state without data loss.
