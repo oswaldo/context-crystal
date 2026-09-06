@@ -10,16 +10,17 @@
 - **Track 4 (`capture_fidelity_20260906`):** Complete `[x]` (Data provenance, `CaptureFidelity` enum on `DAGNode`, CLI `--fidelity`).
 - **Track 5 (`crystal_cleavage_and_slicing_20260906`):** Complete `[x]` (Semantic anchors on `DAGNode`, `ccrystal slice`, fragment extraction, fork to child crystal).
 - **Track 6 (`agent_skill_interaction_loop_20260906`):** Complete `[x]` (Canonical agent skill, autonomous bootstrap, decoupled store `CCRYSTAL_STORE`, explicit event timestamps, adapters for Antigravity, Claude Code, and Cursor).
+- **Track 7 (`destructive_lifecycle_cleanup_20260906`):** Complete `[x]` (Destructive operations, `ccrystal delete`, `ccrystal entity deregister`, cascade cleanup, deletion impact preview, interactive y/N confirmation, --force bypass, batch safety, and PII protection guidelines).
 - **Binary Location:** `./cli/native/target/scala-3.9.0/ccrystal-cli` (installed in `~/.local/bin/ccrystal`)
 - **Codeberg Remote:** Ready to push with conventional commits and Git Notes.
 
 ---
 
-## 2. Immediate Next Agenda: Track 7 (Selective Context Hydration & Beam Shaping)
-The next milestone is **Track 7 (`selective_context_hydration_20260906`)**:
-1. **Context & Vision:** Enhance `ccrystal cast` and `ccrystal hydrate` with slice selector flags (`--from <anchor|id>`, `--to <anchor|id>`, `--tail <N>`).
-2. **Operational Value:** Reconstitutes the living state container (Goal, Tasks, Leases, Lessons) while focusing the state transition beam on a specific sub-DAG or milestone, keeping prompts lean without requiring a permanent fork.
-3. **Synergy with Agent Skill:** The agent skill's `hydrate` verb will automatically utilize `--tail <N>` or `--from <anchor>` to minimize prompt token overhead during long projects.
+## 2. Immediate Next Agenda: Native Model Context Protocol (MCP) Server
+The immediate next milestone is **Track 8 (`native_mcp_server_engine_20260906`)**:
+1. **Context & Vision:** Implement native stdio JSON-RPC MCP server (`ccrystal mcp`), exposing tools (`crystal_batch`, `crystal_init`, `crystal_task_transition`, `crystal_checkpoint`, `crystal_delete`), resources (`crystal://{id}/state`, `crystal://{id}/dag`), and prompts (`hydrate_context`).
+2. **Operational Value:** Instant zero-runtime MCP integration for Claude Desktop, Cursor, Windsurf, Zed, and autonomous agents across Smithery, Glama, and the official MCP registry.
+
 
 ---
 
