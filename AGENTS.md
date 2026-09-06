@@ -81,6 +81,9 @@ npx markdownlint-cli --fix "README.md" "docs/*.md" "skills/**/SKILL.md"
 
 # Verify Markdown formatting and linter compliance
 npx markdownlint-cli "README.md" "docs/*.md" "skills/**/SKILL.md"
+
+# Verify shell scripts (ShellCheck)
+npx shellcheck skills/**/*.sh
 ```
 
 ---
@@ -92,6 +95,7 @@ npx markdownlint-cli "README.md" "docs/*.md" "skills/**/SKILL.md"
 - **Mandatory Pre-Commit Linting Round:** Always execute relevant linters before committing:
   - For Scala changes: `sbt "scalafmtAll; scalafixAll"` followed by `sbt "scalafmtCheckAll"`
   - For Markdown changes: `npx markdownlint-cli --fix ...` followed by `npx markdownlint-cli ...`
+  - For Shell script changes: `npx shellcheck skills/**/*.sh`
   Always verify clean git diffs and test passes before any commit.
 - **Strict Codecs:** Ensure JSON serialization round-trips adhere strictly to `spec/v1/context-crystal.json`.
 - **Transient Cleanup:** Clean or promote all transient resource leases before marking tasks complete.
