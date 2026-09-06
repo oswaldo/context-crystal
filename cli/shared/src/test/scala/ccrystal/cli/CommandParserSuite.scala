@@ -10,12 +10,32 @@ class CommandParserSuite extends FunSuite:
     val parsed = CommandParser.parse(args)
     assert(parsed.isRight)
     parsed.foreach {
-      case CliCommand.Init(name, goal, intent, author, authorKind) =>
+      case CliCommand.Init(name, goal, intent, author, authorKind, createdAt) =>
         assertEquals(name, "my-crystal")
         assertEquals(goal, "Fix bug")
         assertEquals(intent, Some("Resolve NPE in parser"))
         assertEquals(author, None)
         assertEquals(authorKind, None)
+        assertEquals(createdAt, None)
+      case other => fail(s"Unexpected command: $other")
+    }
+
+  test("Parses 'init' with explicit --created-at"):
+    val args = List(
+      "init",
+      "my-crystal",
+      "--goal",
+      "Fix bug",
+      "--created-at",
+      "2026-09-06T12:00:00Z",
+    )
+    val parsed = CommandParser.parse(args)
+    assert(parsed.isRight)
+    parsed.foreach {
+      case CliCommand.Init(name, goal, intent, author, authorKind, createdAt) =>
+        assertEquals(name, "my-crystal")
+        assertEquals(goal, "Fix bug")
+        assertEquals(createdAt, Some("2026-09-06T12:00:00Z"))
       case other => fail(s"Unexpected command: $other")
     }
 
@@ -57,6 +77,31 @@ class CommandParserSuite extends FunSuite:
       CliCommand.NodeAdd("my-crystal", NodeKind.ToolExecution, "Ran test suite", Nil),
     )
 
+  test("Parses 'node add' with explicit --timestamp"):
+    val nodeArgs = List(
+      "node",
+      "add",
+      "my-crystal",
+      "--kind",
+      "tool_execution",
+      "--summary",
+      "Ran test suite",
+      "--timestamp",
+      "2026-09-06T14:30:00Z",
+    )
+    val parsedNode = CommandParser.parse(nodeArgs)
+    assert(parsedNode.isRight)
+    assertEquals(
+      parsedNode.toOption.get,
+      CliCommand.NodeAdd(
+        "my-crystal",
+        NodeKind.ToolExecution,
+        "Ran test suite",
+        Nil,
+        timestamp = Some("2026-09-06T14:30:00Z"),
+      ),
+    )
+
   test("Parses 'lesson add' and 'transient lease' commands"):
     val lessonArgs = List(
       "lesson",
@@ -95,6 +140,34 @@ class CommandParserSuite extends FunSuite:
         None,
         "Spike branch",
         DisposalPolicy.RevertOnConclusion,
+      ),
+    )
+
+  test("Parses 'transient lease' with explicit --acquired-at"):
+    val leaseArgs = List(
+      "transient",
+      "lease",
+      "my-crystal",
+      "--type",
+      "git_worktree",
+      "--desc",
+      "Spike branch",
+      "--policy",
+      "revert_on_conclusion",
+      "--acquired-at",
+      "2026-09-06T13:00:00Z",
+    )
+    val parsedLease = CommandParser.parse(leaseArgs)
+    assert(parsedLease.isRight)
+    assertEquals(
+      parsedLease.toOption.get,
+      CliCommand.TransientLeaseCmd(
+        "my-crystal",
+        TransientResourceType.GitWorktree,
+        None,
+        "Spike branch",
+        DisposalPolicy.RevertOnConclusion,
+        acquiredAt = Some("2026-09-06T13:00:00Z"),
       ),
     )
 

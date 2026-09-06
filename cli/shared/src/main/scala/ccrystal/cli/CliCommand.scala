@@ -14,6 +14,7 @@ enum CliCommand derives CanEqual:
       intent: Option[String],
       author: Option[String] = None,
       authorKind: Option[EntityKind] = None,
+      createdAt: Option[String] = None,
   )
   case ListCrystals(status: Option[GoalStatus], jsonOutput: Boolean)
   case TaskAdd(crystalId: String, description: String)
@@ -27,6 +28,7 @@ enum CliCommand derives CanEqual:
       author: Option[String] = None,
       fidelity: CaptureFidelity = CaptureFidelity.Inferred,
       anchor: Option[String] = None,
+      timestamp: Option[String] = None,
   )
   case Slice(
       crystalId: String,
@@ -52,6 +54,7 @@ enum CliCommand derives CanEqual:
       path: Option[String],
       description: String,
       policy: DisposalPolicy,
+      acquiredAt: Option[String] = None,
   )
   case TransientClean(crystalId: String, leaseId: String)
   case TransientList(crystalId: String)

@@ -6,36 +6,41 @@ import scala.io.Source
 
 object Main:
   def main(args: Array[String]): Unit =
-    val rootStore = Paths.get(".ccrystals")
-    val store     = FsCrystalStore(rootStore)
-    val runner    = Runner(store)
+    val (cliStoreOpt, remainingArgsList) = StoreResolver.extractStoreArg(args.toIndexedSeq)
+    val remainingArgs                    = remainingArgsList.toArray
+    val rootStore                        = StoreResolver.resolveStorePath(cliStoreOpt)
+    val store                            = FsCrystalStore(rootStore)
+    val runner                           = Runner(store)
 
-    if args.isEmpty then
+    if remainingArgs.isEmpty then
       println(
         """Context Crystal: Zero-overhead context & DAG lifecycle engine
           |
           |Usage:
-          |  ccrystal <subcommand> [options]
-          |  ccrystal "<cmd1>; <cmd2>; ..."
-          |  ccrystal --batch <script-file>
+          |  ccrystal [options] <subcommand> [command-options]
+          |  ccrystal [--store <path>] "<cmd1>; <cmd2>; ..."
+          |  ccrystal [--store <path>] --batch <script-file>
+          |
+          |Global Options:
+          |  --store <path>   Override context store directory (or set CCRYSTAL_STORE)
           |
           |Run 'ccrystal --help' for a full list of available subcommands and options.
           |""".stripMargin.trim,
       )
       System.exit(0)
 
-    if args.length == 1 && args(0).contains(";") then
+    if remainingArgs.length == 1 && remainingArgs(0).contains(";") then
       // Chained execution
-      BatchExecutor.executeChain(args(0), runner) match
+      BatchExecutor.executeChain(remainingArgs(0), runner) match
         case Right(outputs) =>
           outputs.foreach(println)
           System.exit(0)
         case Left(err) =>
           System.err.println(s"Batch execution error: $err")
           System.exit(1)
-    else if args(0) == "--batch" then
+    else if remainingArgs(0) == "--batch" then
       val scriptContent =
-        if args.length > 1 then Source.fromFile(args(1)).mkString
+        if remainingArgs.length > 1 then Source.fromFile(remainingArgs(1)).mkString
         else Source.stdin.mkString
 
       val chain = scriptContent.linesIterator
@@ -50,7 +55,7 @@ object Main:
           System.err.println(s"Batch execution error: $err")
           System.exit(1)
     else
-      CommandParser.parseWithHelp(args.toList) match
+      CommandParser.parseWithHelp(remainingArgs.toList) match
         case Right(cmd) =>
           runner.run(cmd) match
             case Right(output) =>

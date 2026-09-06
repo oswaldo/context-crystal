@@ -11,8 +11,8 @@ import java.time.Instant
 class Runner(val store: CrystalStore):
 
   def run(cmd: CliCommand): Either[String, String] = cmd match
-    case CliCommand.Init(name, goalTitle, intent, authorOpt, authorKindOpt) =>
-      val now        = Instant.now().toString
+    case CliCommand.Init(name, goalTitle, intent, authorOpt, authorKindOpt, createdAtOpt) =>
+      val now        = createdAtOpt.getOrElse(Instant.now().toString)
       val authorKind = authorKindOpt.getOrElse(EntityKind.Human)
       val authorName = authorOpt.getOrElse("Operator")
 
@@ -105,9 +105,19 @@ class Runner(val store: CrystalStore):
         sb.toString
       }
 
-    case CliCommand.NodeAdd(crystalId, kind, summary, parentIds, authorOpt, fidelity, anchorOpt) =>
+    case CliCommand.NodeAdd(
+          crystalId,
+          kind,
+          summary,
+          parentIds,
+          authorOpt,
+          fidelity,
+          anchorOpt,
+          timestampOpt,
+        ) =>
       store.load(crystalId).flatMap { crystal =>
-        val now = Instant.now().toString
+        val now      = Instant.now().toString
+        val nodeTime = timestampOpt.getOrElse(now)
         val parents =
           if parentIds.isEmpty then crystal.dag.nodes.lastOption.map(n => List(n.id)).getOrElse(Nil)
           else parentIds
@@ -116,7 +126,7 @@ class Runner(val store: CrystalStore):
         val newNode = DAGNode(
           id = nodeId,
           parentIds = parents,
-          timestamp = now,
+          timestamp = nodeTime,
           actorId = actorId,
           kind = kind,
           contentSummary = summary,
@@ -196,9 +206,11 @@ class Runner(val store: CrystalStore):
         sb.toString
       }
 
-    case CliCommand.TransientLeaseCmd(crystalId, rType, path, desc, policy) =>
+    case CliCommand.TransientLeaseCmd(crystalId, rType, path, desc, policy, acquiredAtOpt) =>
       store.load(crystalId).flatMap { crystal =>
-        val leaseId = s"lease-${crystal.transientLeases.size + 1}"
+        val now       = Instant.now().toString
+        val leaseTime = acquiredAtOpt.getOrElse(now)
+        val leaseId   = s"lease-${crystal.transientLeases.size + 1}"
         val newLease = TransientLease(
           leaseId,
           rType,
@@ -206,10 +218,10 @@ class Runner(val store: CrystalStore):
           desc,
           policy,
           TransientLeaseStatus.Active,
-          Instant.now().toString,
+          leaseTime,
         )
         val updated = crystal.copy(
-          updatedAt = Instant.now().toString,
+          updatedAt = now,
           transientLeases = crystal.transientLeases :+ newLease,
         )
         store.save(updated).map(_ => s"Registered transient lease '$leaseId' in $crystalId: $desc")

@@ -70,6 +70,7 @@ object CommandParser:
     Opts.option[String]("intent", "Detailed goal intent", "i").orNone,
     Opts.option[String]("author", "Author entity name", "u").orNone,
     Opts.option[EntityKind]("author-kind", "Author entity kind")(entityKindArgument).orNone,
+    Opts.option[String]("created-at", "ISO-8601 creation timestamp").orNone,
   ).mapN(CliCommand.Init.apply)
 
   private val listOpts = (
@@ -108,6 +109,7 @@ object CommandParser:
       )
       .withDefault(CaptureFidelity.Inferred),
     Opts.option[String]("anchor", "Semantic anchor label for node", "a").orNone,
+    Opts.option[String]("timestamp", "ISO-8601 timestamp for the event").orNone,
   ).mapN(CliCommand.NodeAdd.apply)
 
   private val sliceOpts = (
@@ -143,6 +145,7 @@ object CommandParser:
     Opts.option[String]("path", "Path of resource", "p").orNone,
     Opts.option[String]("desc", "Description", "d"),
     Opts.option[DisposalPolicy]("policy", "Disposal policy")(disposalPolicyArgument),
+    Opts.option[String]("acquired-at", "ISO-8601 acquisition timestamp").orNone,
   ).mapN(CliCommand.TransientLeaseCmd.apply)
 
   private val castOpts = (
