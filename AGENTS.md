@@ -25,7 +25,8 @@ We operate on a **cybernetic, neutral entity model**:
   git worktree add -b track/<track-name> ../ccrystal-worktrees/<track-name> main
   ```
 - All feature implementations, temporary files, build caches, and test runs occur within the worktree.
-- Once a track passes review, rebase/merge back into `main` and clean up the worktree:
+- We prefer to keep a linear history. Once a track passes review, rebase your branch on `main` and perform a fast-forward merge. Avoid merge commits.
+- Clean up the worktree:
   ```bash
   git worktree remove ../ccrystal-worktrees/<track-name>
   ```
