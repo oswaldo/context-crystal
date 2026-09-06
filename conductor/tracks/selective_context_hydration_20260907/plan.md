@@ -6,8 +6,8 @@
 - [x] Task: Phase Verification & Checkpoint (Refer to workflow.md) [8552255]
 
 ## Phase 2: CLI Integration & Command Parsing (Red-Green TDD)
-- [~] Task: Write failing unit tests for CommandParser supporting --from, --to, --tail, --depth, --summary-only on cast and hydrate (Red)
-- [ ] Task: Implement CLI command parsing and wire CliCommand.Cast through Runner using ContextHydrator (Green)
+- [x] Task: Write failing unit tests for CommandParser supporting --from, --to, --tail, --depth, --summary-only on cast and hydrate (Red) [fa10126]
+- [~] Task: Implement CLI command parsing and wire CliCommand.Cast through Runner using ContextHydrator (Green)
 - [ ] Task: Phase Verification & Checkpoint (Refer to workflow.md)
 
 ## Phase 3: MCP Prompt & Resource Beam Shaping (Red-Green TDD)
