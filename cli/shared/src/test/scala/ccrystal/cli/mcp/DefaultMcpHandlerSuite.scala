@@ -206,6 +206,100 @@ class DefaultMcpHandlerSuite extends FunSuite:
       true,
     )
 
+  test(
+    "DefaultMcpHandler supports selective hydrate_context prompt arguments and crystal://{id}/hydrate resource",
+  ):
+    val (handler, _, _) = createFixture()
+
+    // Initialize crystal and add nodes
+    handler.handle(
+      JsonRpcRequest(
+        id = JsonRpcId.Num(30L),
+        method = "tools/call",
+        params = Some(
+          Json.obj(
+            "name" -> "crystal_init".asJson,
+            "arguments" -> Json.obj(
+              "name" -> "beam-crystal".asJson,
+              "goal" -> "Test MCP Beam Shaping".asJson,
+            ),
+          ),
+        ),
+      ),
+    )
+    handler.handle(
+      JsonRpcRequest(
+        id = JsonRpcId.Num(31L),
+        method = "tools/call",
+        params = Some(
+          Json.obj(
+            "name" -> "crystal_checkpoint".asJson,
+            "arguments" -> Json.obj(
+              "crystal_id" -> "beam-crystal".asJson,
+              "summary"    -> "First milestone reached".asJson,
+              "anchor"     -> "m1".asJson,
+            ),
+          ),
+        ),
+      ),
+    )
+    handler.handle(
+      JsonRpcRequest(
+        id = JsonRpcId.Num(32L),
+        method = "tools/call",
+        params = Some(
+          Json.obj(
+            "name" -> "crystal_checkpoint".asJson,
+            "arguments" -> Json.obj(
+              "crystal_id" -> "beam-crystal".asJson,
+              "summary"    -> "Second milestone reached".asJson,
+              "anchor"     -> "m2".asJson,
+            ),
+          ),
+        ),
+      ),
+    )
+
+    // Verify resources/list includes crystal://beam-crystal/hydrate
+    val resListReq  = JsonRpcRequest(id = JsonRpcId.Num(33L), method = "resources/list")
+    val resListResp = handler.handle(resListReq)
+    assertEquals(resListResp.error.isEmpty, true)
+    val uris =
+      resListResp.result.get.hcursor.as[ListResourcesResult].toOption.get.resources.map(_.uri)
+    assertEquals(uris.contains("crystal://beam-crystal/hydrate"), true)
+
+    // Read resource crystal://beam-crystal/hydrate?from=m1&tail=1
+    val readReq = JsonRpcRequest(
+      id = JsonRpcId.Num(34L),
+      method = "resources/read",
+      params = Some(Json.obj("uri" -> "crystal://beam-crystal/hydrate?from=m1&tail=1".asJson)),
+    )
+    val readResp = handler.handle(readReq)
+    assertEquals(readResp.error.isEmpty, true)
+    val readResult = readResp.result.get.hcursor.as[ReadResourceResult].toOption.get
+    assertEquals(readResult.contents.head.mimeType, Some("text/markdown"))
+    assertEquals(readResult.contents.head.text.contains("Second milestone reached"), true)
+
+    // Get prompt hydrate_context with selective arguments (from = m1, tail = 1)
+    val promptReq = JsonRpcRequest(
+      id = JsonRpcId.Num(35L),
+      method = "prompts/get",
+      params = Some(
+        Json.obj(
+          "name" -> "hydrate_context".asJson,
+          "arguments" -> Json.obj(
+            "crystal_id" -> "beam-crystal".asJson,
+            "from"       -> "m1".asJson,
+            "tail"       -> "1".asJson,
+          ),
+        ),
+      ),
+    )
+    val promptResp = handler.handle(promptReq)
+    assertEquals(promptResp.error.isEmpty, true)
+    val promptResult = promptResp.result.get.hcursor.as[GetPromptResult].toOption.get
+    assertEquals(promptResult.messages.head.content.text.contains("Second milestone reached"), true)
+
   test("DefaultMcpHandler returns MethodNotFound for unknown methods"):
     val (handler, _, _) = createFixture()
     val req = JsonRpcRequest(
