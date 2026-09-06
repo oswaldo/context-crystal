@@ -191,3 +191,16 @@ ccrystal batch "node add my-feature -k checkpoint -s 'Schema finalized' --fideli
 ```bash
 ccrystal batch "task done my-feature -t task-3; node add my-feature -k resolution -s 'OAuth2 flow verified with 100% test coverage' --fidelity inferred; transient clean my-feature -l lease-1; lesson add my-feature -f 'PKCE code challenge salt collision' -r 'Used weak PRNG in mock' -a 'Always use java.security.SecureRandom'"
 ```
+
+---
+
+## 7. Privacy, PII Protection & Public Repository Sovereignty
+
+- **Zero Unprompted PII Persistence:** An AI entity MUST NEVER record Personally Identifiable Information (personal names, private email addresses, phone numbers, physical addresses, personal API keys/tokens, private corporate IDs, or customer data) into a crystal (`init`, `node add`, `task add`, `lesson add`, `transient lease`) without proactively consulting the operator.
+- **Context Space Awareness (Public vs. Private):** Crystals (`.ccrystals/`) are designed to be committed to version control, published to remote stores, or shared across multi-agent pipelines. If the repository or destination store is public or shared:
+  - The AI entity MUST warn the user about potential permanent exposure.
+  - The AI entity MUST offer the user three explicit choices before proceeding:
+    1. **Anonymize / Pseudonymize:** Replace identifiers with role-based or synthetic pseudonyms (e.g., `usr_lead_developer`, `[REDACTED_EMAIL]`).
+    2. **Omit / Rephrase:** Restructure the goal, task, or friction summary to describe the technical or architectural reality without containing any personal identifiers.
+    3. **Explicit Authorization:** Proceed only if the user explicitly confirms that the repository is strictly private and that they hold the authority to record the data.
+- **Strict Rule:** The AI entity MUST ALWAYS ask and NEVER assume when PII is involved.
