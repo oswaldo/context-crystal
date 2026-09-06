@@ -1,0 +1,7 @@
+# Context Crystal (.cursorrules)
+
+When working in this repository:
+- Context is persisted using `ccrystal`.
+- Run `ccrystal hydrate <id>` at session startup.
+- Flush milestones atomically with `ccrystal batch "node add <id> -k checkpoint -s '...'; task done <id> -t <task-id>"`.
+- Support out-of-tree context stores via `CCRYSTAL_STORE`.
