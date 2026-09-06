@@ -13,5 +13,5 @@
 
 
 
-- [~] **Track: Data Provenance - [ ] **Track: Data Provenance & Capture Fidelity** Capture Fidelity**  
+- [x] **Track: Data Provenance & Capture Fidelity**  
   *Link: [conductor/tracks/capture_fidelity_20260906/index.md](./tracks/capture_fidelity_20260906/index.md)*
