@@ -215,8 +215,23 @@ class DefaultMcpHandler(
             arguments = List(
               PromptArgument("crystal_id", Some("Target crystal ID"), required = true),
               PromptArgument(
+                "from",
+                Some("Start of transition slice (anchor or node ID/prefix)"),
+                required = false,
+              ),
+              PromptArgument(
+                "to",
+                Some("End of transition slice (anchor or node ID/prefix)"),
+                required = false,
+              ),
+              PromptArgument(
+                "tail",
+                Some("Number of recent transitions to include in slice"),
+                required = false,
+              ),
+              PromptArgument(
                 "depth",
-                Some("Maximum DAG traversal depth (default: 10)"),
+                Some("Maximum DAG traversal depth (default: 10, alias for tail)"),
                 required = false,
               ),
               PromptArgument(
@@ -448,6 +463,12 @@ class DefaultMcpHandler(
             description = Some("Lineage and DAG nodes JSON"),
             mimeType = Some("application/json"),
           ),
+          Resource(
+            uri = s"crystal://${c.id}/hydrate",
+            name = s"Hydrated context beam for ${c.id}",
+            description = Some("Hydrated context beam text/markdown"),
+            mimeType = Some("text/markdown"),
+          ),
         )
       }
       entityResource = Resource(
@@ -503,6 +524,53 @@ class DefaultMcpHandler(
                   ),
                 )
               }
+            else if uri
+                .startsWith("crystal://") && (uri.contains("/hydrate?") || uri.endsWith("/hydrate"))
+            then
+              val raw = uri.stripPrefix("crystal://")
+              val (pathPart, queryPart) =
+                if raw.contains("?") then
+                  val parts = raw.split('?')
+                  (parts(0), parts(1))
+                else (raw, "")
+              val crystalId = pathPart.stripSuffix("/hydrate")
+              val queryParams: Map[String, String] =
+                if queryPart.nonEmpty then
+                  queryPart
+                    .split('&')
+                    .flatMap { pair =>
+                      val kv = pair.split('=')
+                      if kv.length == 2 then Some(kv(0) -> kv(1))
+                      else if kv.length == 1 then Some(kv(0) -> "")
+                      else None
+                    }
+                    .toMap
+                else Map.empty
+
+              val fromOpt        = queryParams.get("from")
+              val toOpt          = queryParams.get("to")
+              val tailOpt        = queryParams.get("tail").flatMap(_.toIntOption)
+              val depthOpt       = queryParams.get("depth").flatMap(_.toIntOption)
+              val summaryOnlyOpt = queryParams.get("summary_only").map(_.toBoolean).getOrElse(false)
+              val cmd = CliCommand.Cast(
+                crystalId = crystalId,
+                from = fromOpt,
+                to = toOpt,
+                tail = tailOpt,
+                depth = depthOpt.getOrElse(10),
+                summaryOnly = summaryOnlyOpt,
+              )
+              runner.run(cmd).map { beamText =>
+                ReadResourceResult(
+                  List(
+                    ResourceContents(
+                      uri = uri,
+                      mimeType = Some("text/markdown"),
+                      text = beamText,
+                    ),
+                  ),
+                )
+              }
             else Left(s"Unknown or unsupported resource URI: $uri")
 
   private def handlePromptGet(paramsOpt: Option[Json]): Either[String, GetPromptResult] =
@@ -518,10 +586,16 @@ class DefaultMcpHandler(
                 val crystalId = args.get("crystal_id") match
                   case Some(id) => id
                   case None     => return Left("Missing required argument 'crystal_id'")
+                val fromOpt        = args.get("from")
+                val toOpt          = args.get("to")
+                val tailOpt        = args.get("tail").flatMap(_.toIntOption)
                 val depthOpt       = args.get("depth").flatMap(_.toIntOption)
                 val summaryOnlyOpt = args.get("summary_only").map(_.toBoolean)
                 val cmd = CliCommand.Cast(
                   crystalId = crystalId,
+                  from = fromOpt,
+                  to = toOpt,
+                  tail = tailOpt,
                   depth = depthOpt.getOrElse(10),
                   summaryOnly = summaryOnlyOpt.getOrElse(false),
                 )
