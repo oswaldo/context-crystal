@@ -1,7 +1,30 @@
+# Build & Compiler Artifacts
 target/
 project/target/
 project/project/
+*.class
+*.tasty
+*.log
+
+# Build Server Protocol & IDEs
+.bsp/
 .bloop/
 .metals/
 .idea/
-*.class
+.idea_modules/
+*.iml
+*.ipr
+*.iws
+.vscode/
+
+# Temporary, Cache & Scratch
+tmp/
+scratch/
+.cache/
+
+# OS & Editor Artifacts
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+*~
