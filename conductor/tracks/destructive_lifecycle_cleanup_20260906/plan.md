@@ -9,8 +9,8 @@
 - [x] Task: Phase Verification & Checkpoint (Refer to workflow.md) [eaae369]
 
 ## Phase 2: CLI Parsing, Runner & Interactive Confirmation
-- [~] Task: Write failing unit tests for CLI delete and entity deregister command parsing (Red)
-- [ ] Task: Implement CliCommand.Delete and CliCommand.EntityDeregister in CommandParser (Green)
+- [x] Task: Write failing unit tests for CLI delete and entity deregister command parsing (Red) [872a1e3]
+- [~] Task: Implement CliCommand.Delete and CliCommand.EntityDeregister in CommandParser (Green)
 - [ ] Task: Implement interactive y/N confirmation prompt and non-interactive --force handling in Runner (Green)
 - [ ] Task: Implement batch executor safety preventing unforced destructive commands in scripts (Green)
 - [ ] Task: Phase Verification & Checkpoint (Refer to workflow.md)
