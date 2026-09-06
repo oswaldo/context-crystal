@@ -35,7 +35,7 @@
   - [x] Create `skills/context-crystal/adapters/cursor/` with `.cursor/rules/context-crystal.mdc` rules snippet
 - [x] Task: 3.4 Phase Verification & Checkpoint (Refer to workflow.md)
 
-## Phase 4: Automated Verification, Documentation & In-Repo Dogfooding
+## Phase 4: Automated Verification, Documentation & In-Repo Dogfooding [checkpoint: 4f0255f]
 - [x] Task: 4.1 Automated Skill Verification Test Suite (40dc1b8)
   - [x] Create `skills/context-crystal/tests/verify_skill_commands.sh`
   - [x] Validate end-to-end execution of all documented batch commands in both in-tree and out-of-tree (`CCRYSTAL_STORE`) modes
@@ -44,4 +44,4 @@
   - [x] Update `conductor/next-steps.md` with Track 6 completion summary
 - [x] Task: 4.3 In-Repo Dogfooding (4f0255f)
   - [x] Initialize a Context Crystal tracking subsequent project milestones using the newly crafted skill
-- [ ] Task: 4.4 Phase Verification & Checkpoint (Refer to workflow.md)
+- [x] Task: 4.4 Phase Verification & Checkpoint (Refer to workflow.md)
