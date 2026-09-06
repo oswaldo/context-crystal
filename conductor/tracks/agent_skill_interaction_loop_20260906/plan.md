@@ -36,12 +36,12 @@
 - [x] Task: 3.4 Phase Verification & Checkpoint (Refer to workflow.md)
 
 ## Phase 4: Automated Verification, Documentation & In-Repo Dogfooding
-- [ ] Task: 4.1 Automated Skill Verification Test Suite
-  - [ ] Create `skills/context-crystal/tests/verify_skill_commands.sh`
-  - [ ] Validate end-to-end execution of all documented batch commands in both in-tree and out-of-tree (`CCRYSTAL_STORE`) modes
-- [ ] Task: 4.2 Update Project Documentation & Architecture Guides
-  - [ ] Update `conductor/product.md` with Decoupled Context Repos and Agent-as-Operator principles
-  - [ ] Update `conductor/next-steps.md` with Track 6 completion summary
-- [ ] Task: 4.3 In-Repo Dogfooding
-  - [ ] Initialize a Context Crystal tracking subsequent project milestones using the newly crafted skill
+- [x] Task: 4.1 Automated Skill Verification Test Suite (40dc1b8)
+  - [x] Create `skills/context-crystal/tests/verify_skill_commands.sh`
+  - [x] Validate end-to-end execution of all documented batch commands in both in-tree and out-of-tree (`CCRYSTAL_STORE`) modes
+- [x] Task: 4.2 Update Project Documentation & Architecture Guides (8303a45)
+  - [x] Update `conductor/product.md` with Decoupled Context Repos and Agent-as-Operator principles
+  - [x] Update `conductor/next-steps.md` with Track 6 completion summary
+- [x] Task: 4.3 In-Repo Dogfooding (4f0255f)
+  - [x] Initialize a Context Crystal tracking subsequent project milestones using the newly crafted skill
 - [ ] Task: 4.4 Phase Verification & Checkpoint (Refer to workflow.md)
