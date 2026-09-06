@@ -2,8 +2,8 @@
 
 ## Phase 1: Core Hydration Engine & Slice Selector Extensions (Red-Green TDD)
 - [x] Task: Write failing unit tests for ContextHydrator and enhanced slice selector resolution (Red) [06b6805]
-- [~] Task: Implement ContextHydrator and HydrationParams in ccrystal.core with living state preservation and shaped transition formatting (Green)
-- [ ] Task: Phase Verification & Checkpoint (Refer to workflow.md)
+- [x] Task: Implement ContextHydrator and HydrationParams in ccrystal.core with living state preservation and shaped transition formatting (Green) [ad48e3f]
+- [~] Task: Phase Verification & Checkpoint (Refer to workflow.md)
 
 ## Phase 2: CLI Integration & Command Parsing (Red-Green TDD)
 - [ ] Task: Write failing unit tests for CommandParser supporting --from, --to, --tail, --depth, --summary-only on cast and hydrate (Red)
