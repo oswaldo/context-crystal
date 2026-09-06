@@ -11,8 +11,8 @@
 - [x] Task: Phase Verification & Checkpoint (Refer to workflow.md) [cca4c1e]
 
 ## Phase 3: MCP Prompt & Resource Beam Shaping (Red-Green TDD)
-- [~] Task: Write failing unit tests for DefaultMcpHandler supporting selective hydrate_context prompt arguments and crystal://{id}/hydrate resource queries (Red)
-- [ ] Task: Implement selective prompt parameters and crystal://{id}/hydrate URI query parsing in DefaultMcpHandler (Green)
+- [x] Task: Write failing unit tests for DefaultMcpHandler supporting selective hydrate_context prompt arguments and crystal://{id}/hydrate resource queries (Red) [bb8a439]
+- [~] Task: Implement selective prompt parameters and crystal://{id}/hydrate URI query parsing in DefaultMcpHandler (Green)
 - [ ] Task: Phase Verification & Checkpoint (Refer to workflow.md)
 
 ## Phase 4: End-to-End Integration, Native Compilation & Documentation
