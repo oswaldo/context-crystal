@@ -1,0 +1,81 @@
+{
+  "schemaVersion" : "1.0.0",
+  "id" : "selective-context-hydration",
+  "name" : "selective-context-hydration",
+  "createdAt" : "2026-09-06T17:15:10.167Z",
+  "updatedAt" : "2026-09-06T17:15:10.171Z",
+  "parentCrystalId" : null,
+  "origin" : null,
+  "caveId" : null,
+  "defaultAuthorId" : "agt_antigravity",
+  "goal" : {
+    "title" : "Selective Context Hydration & Beam Shaping",
+    "intent" : "Enhance ccrystal cast/hydrate with slice selector flags --from, --to, --tail",
+    "status" : "in_progress",
+    "acceptanceCriteria" : [
+      {
+        "id" : "task-1",
+        "description" : "Design SliceSelector parser in CommandParser",
+        "completed" : false
+      },
+      {
+        "id" : "task-2",
+        "description" : "Implement selective subgraph hydration in Runner",
+        "completed" : false
+      },
+      {
+        "id" : "task-3",
+        "description" : "Validate lean prompt beam generation",
+        "completed" : false
+      }
+    ],
+    "metadata" : {
+      
+    }
+  },
+  "entities" : [
+    {
+      "id" : "agt_antigravity",
+      "kind" : "agent",
+      "name" : "Antigravity",
+      "metadata" : {
+        
+      },
+      "publicKey" : null,
+      "endpoints" : {
+        
+      }
+    }
+  ],
+  "activeMask" : null,
+  "dag" : {
+    "rootNodeId" : "node-selective-context-hydration-init",
+    "nodes" : [
+      {
+        "id" : "node-selective-context-hydration-init",
+        "parentIds" : [
+        ],
+        "timestamp" : "2026-09-06T17:15:10.167Z",
+        "actorId" : "agt_antigravity",
+        "kind" : "human_prompt",
+        "contentSummary" : "Initialized crystal 'selective-context-hydration' with goal: Selective Context Hydration & Beam Shaping",
+        "anchor" : null,
+        "artifactIds" : [
+        ],
+        "fidelity" : "inferred",
+        "metadata" : {
+          
+        }
+      }
+    ]
+  },
+  "transientLeases" : [
+  ],
+  "lessonsLearned" : [
+  ],
+  "artifacts" : [
+  ],
+  "metadata" : {
+    
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "caveId" : null,
+  "authorshipMode" : "tracked",
+  "entities" : {
+    "agt_antigravity" : {
+      "id" : "agt_antigravity",
+      "kind" : "agent",
+      "name" : "Antigravity",
+      "metadata" : {
+        
+      },
+      "publicKey" : null,
+      "endpoints" : {
+        
+      }
+    }
+  },
+  "metadata" : {
+    
+  }
+}
