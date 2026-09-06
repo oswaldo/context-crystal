@@ -61,8 +61,11 @@ sbt "coreJVM/test; cliJVM/test"
 sbt "cliNative/nativeLink"
 # Binary output: ./cli/native/target/scala-3.3.4/ccrystal-cli
 
-# Run formatting / scalafix checks
-sbt scalafmtCheckAll
+# Run formatting and scalafix fix round before committing
+sbt "scalafmtAll; scalafixAll"
+
+# Verify formatting and linter compliance
+sbt "scalafmtCheckAll"
 ```
 
 ---
@@ -70,6 +73,8 @@ sbt scalafmtCheckAll
 ## 5. Coding & Architectural Invariants
 
 - **Zero-Reflection / Pure Functional:** Use immutable case classes, enums, ADTs, and pure functions.
+- **Zero-Warning Policy:** Leave no warning message behind unless absolutely unavoidable. Address all compiler warnings, deprecations, unused imports/symbols, and linter warnings prior to committing.
+- **Mandatory Pre-Commit Linting Round:** Always execute `sbt "scalafmtAll; scalafixAll"` followed by checking clean git diffs and test passes before any commit.
 - **Strict Codecs:** Ensure JSON serialization round-trips adhere strictly to `spec/v1/context-crystal.json`.
 - **Transient Cleanup:** Clean or promote all transient resource leases before marking tasks complete.
 - **Commit Signing:** All commits must be cryptographically signed (e.g., using SSH or GPG keys).
