@@ -7,6 +7,6 @@
 
 ## Acceptance Criteria / Tasks
 
-- [ ] Design SliceSelector parser in CommandParser `[task-1]`
-- [ ] Implement selective subgraph hydration in Runner `[task-2]`
-- [ ] Validate lean prompt beam generation `[task-3]`
+- [x] Design SliceSelector parser in CommandParser `[task-1]`
+- [x] Implement selective subgraph hydration in Runner `[task-2]`
+- [x] Validate lean prompt beam generation `[task-3]`

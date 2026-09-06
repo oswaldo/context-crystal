@@ -1,2 +1,11 @@
 [
+  {
+    "id" : "lease-1",
+    "resourceType" : "git_worktree",
+    "resourcePath" : "/home/oswaldo/git/ccrystal-worktrees/selective-hydration",
+    "description" : "Isolated git worktree for track 9",
+    "disposalPolicy" : "revert_on_conclusion",
+    "status" : "cleaned",
+    "createdAt" : "2026-09-06T22:52:00.901Z"
+  }
 ]

@@ -3,7 +3,7 @@
   "id" : "selective-context-hydration",
   "name" : "selective-context-hydration",
   "createdAt" : "2026-09-06T17:15:10.167Z",
-  "updatedAt" : "2026-09-06T17:15:10.171Z",
+  "updatedAt" : "2026-09-06T23:24:00.958Z",
   "parentCrystalId" : null,
   "origin" : null,
   "caveId" : null,
@@ -16,17 +16,17 @@
       {
         "id" : "task-1",
         "description" : "Design SliceSelector parser in CommandParser",
-        "completed" : false
+        "completed" : true
       },
       {
         "id" : "task-2",
         "description" : "Implement selective subgraph hydration in Runner",
-        "completed" : false
+        "completed" : true
       },
       {
         "id" : "task-3",
         "description" : "Validate lean prompt beam generation",
-        "completed" : false
+        "completed" : true
       }
     ],
     "metadata" : {
@@ -66,10 +66,104 @@
         "metadata" : {
           
         }
+      },
+      {
+        "id" : "node-2",
+        "parentIds" : [
+          "node-selective-context-hydration-init"
+        ],
+        "timestamp" : "2026-09-06T22:52:00.902Z",
+        "actorId" : "agt_antigravity",
+        "kind" : "checkpoint",
+        "contentSummary" : "Completed Phase 1 Red-Green TDD: implemented ContextHydrator and prefix/anchor slice resolution",
+        "anchor" : "phase_1_green",
+        "artifactIds" : [
+        ],
+        "fidelity" : "inferred",
+        "metadata" : {
+          
+        }
+      },
+      {
+        "id" : "node-3",
+        "parentIds" : [
+          "node-2"
+        ],
+        "timestamp" : "2026-09-06T22:55:46.484Z",
+        "actorId" : "agt_antigravity",
+        "kind" : "checkpoint",
+        "contentSummary" : "Completed Phase 1 verification: ContextHydrator and enhanced selector resolution passing across JVM, Native, and JS",
+        "anchor" : "phase_1_complete",
+        "artifactIds" : [
+        ],
+        "fidelity" : "inferred",
+        "metadata" : {
+          
+        }
+      },
+      {
+        "id" : "node-4",
+        "parentIds" : [
+          "node-3"
+        ],
+        "timestamp" : "2026-09-06T23:07:52.768Z",
+        "actorId" : "agt_antigravity",
+        "kind" : "checkpoint",
+        "contentSummary" : "Completed Phase 2: CLI integration and command parsing (--from, --to, --tail) wired to ContextHydrator",
+        "anchor" : "phase_2_complete",
+        "artifactIds" : [
+        ],
+        "fidelity" : "inferred",
+        "metadata" : {
+          
+        }
+      },
+      {
+        "id" : "node-5",
+        "parentIds" : [
+          "node-4"
+        ],
+        "timestamp" : "2026-09-06T23:14:56.977Z",
+        "actorId" : "agt_antigravity",
+        "kind" : "checkpoint",
+        "contentSummary" : "Completed Phase 3: MCP prompt arguments (from, to, tail) and crystal://{id}/hydrate URI query parsing verified",
+        "anchor" : "phase_3_complete",
+        "artifactIds" : [
+        ],
+        "fidelity" : "inferred",
+        "metadata" : {
+          
+        }
+      },
+      {
+        "id" : "node-6",
+        "parentIds" : [
+          "node-5"
+        ],
+        "timestamp" : "2026-09-06T23:24:00.958Z",
+        "actorId" : "agt_antigravity",
+        "kind" : "resolution",
+        "contentSummary" : "Selective context hydration and beam shaping completed, fully tested, and released via Thin LTO binary",
+        "anchor" : null,
+        "artifactIds" : [
+        ],
+        "fidelity" : "inferred",
+        "metadata" : {
+          
+        }
       }
     ]
   },
   "transientLeases" : [
+    {
+      "id" : "lease-1",
+      "resourceType" : "git_worktree",
+      "resourcePath" : "/home/oswaldo/git/ccrystal-worktrees/selective-hydration",
+      "description" : "Isolated git worktree for track 9",
+      "disposalPolicy" : "revert_on_conclusion",
+      "status" : "cleaned",
+      "createdAt" : "2026-09-06T22:52:00.901Z"
+    }
   ],
   "lessonsLearned" : [
   ],
