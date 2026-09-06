@@ -1,13 +1,14 @@
 # Implementation Plan: Agent Skill, Self-Bootstrapping & Interaction Loop
 
-## Phase 1: CLI Decoupled Storage Engine (`CCRYSTAL_STORE` & `--store`)
-- [ ] Task: 1.1 Write failing unit/integration tests for store path resolution
-  - [ ] Write tests asserting precedence: `--store <path>` > `CCRYSTAL_STORE` > `.ccrystal-store` > `.ccrystals/`
-  - [ ] Assert correct resolution across JVM and Native test targets
-- [ ] Task: 1.2 Implement store path resolution in CLI entry point and parser
-  - [ ] Add `--store` global CLI option in `cli/shared/src/main/scala/ccrystal/cli/CommandParser.scala`
-  - [ ] Implement hierarchical store resolution in `cli/shared/src/main/scala/ccrystal/cli/Main.scala`
-  - [ ] Verify unit tests pass green
+## Phase 1: CLI Decoupled Storage Engine & Event Timestamps (`CCRYSTAL_STORE`, `--store`, `--timestamp`)
+- [x] Task: 1.1 Write failing unit/integration tests for store path resolution and event timestamps (55a0a16)
+  - [x] Write tests asserting precedence: `--store <path>` > `CCRYSTAL_STORE` > `.ccrystal-store` > `.ccrystals/`
+  - [x] Write tests asserting `--timestamp` on `node add`, `--created-at` on `init`, and `--acquired-at` on `transient lease`
+  - [x] Assert correct resolution across JVM and Native test targets
+- [x] Task: 1.2 Implement store path resolution and event timestamp options (55a0a16)
+  - [x] Add `--store` global CLI option and hierarchical resolution in `cli/shared/src/main/scala/ccrystal/cli/Main.scala`
+  - [x] Add `--timestamp`, `--created-at`, and `--acquired-at` options in `CommandParser.scala` and `Runner.scala`
+  - [x] Verify all unit tests pass green
 - [ ] Task: 1.3 Phase Verification & Checkpoint (Refer to workflow.md)
 
 ## Phase 2: Canonical Agent Skill (`skills/context-crystal/SKILL.md`)

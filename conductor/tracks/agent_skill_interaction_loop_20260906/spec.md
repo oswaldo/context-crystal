@@ -14,6 +14,12 @@ Track 6 introduces the canonical Context Crystal Agent Skill (`skills/context-cr
     4. Default local fallback: `.ccrystals/`
 - **Clean Repo Preservation:**
   - Allows crystals to be stored in an out-of-tree companion git repo (e.g. `../project-crystals/` or `~/.ccrystals/stores/<repo-hash>`), keeping the code repository 100% pristine and free of tool clutter or sensitive context.
+- **Historical & Batched Event Timestamps:**
+  - Support explicit ISO-8601 timestamps on CLI commands:
+    - `node add --timestamp <iso8601>`: Records true historical execution time in DAG transitions.
+    - `init --created-at <iso8601>`: Records true session inception time.
+    - `transient lease --acquired-at <iso8601>`: Records true lease acquisition timestamp.
+  - Defaults to `Instant.now().toString` if omitted, enabling batch replay from external process tools (OpenSpec, Conductor, Git logs) without timestamp flattening.
 
 ### 2.2 Canonical Skill (`skills/context-crystal/SKILL.md`)
 - **Metadata & Frontmatter:** Conforms to universal skill specifications (`name: context-crystal`, `description`, YAML metadata).
