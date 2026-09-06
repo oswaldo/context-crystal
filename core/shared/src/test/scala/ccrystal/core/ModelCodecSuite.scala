@@ -78,7 +78,15 @@ class ModelCodecSuite extends FunSuite:
       dag = DAG(
         "n-1",
         List(
-          DAGNode("n-1", Nil, "2026-08-28T12:00:00Z", "ent-1", NodeKind.HumanPrompt, "Start", Nil),
+          DAGNode(
+            "n-1",
+            Nil,
+            "2026-08-28T12:00:00Z",
+            "ent-1",
+            NodeKind.HumanPrompt,
+            "Start",
+            artifactIds = Nil,
+          ),
         ),
       ),
       transientLeases = List(
@@ -237,3 +245,52 @@ class ModelCodecSuite extends FunSuite:
     assertEquals(CaptureFidelity.Intercepted.asJson.asString, Some("intercepted"))
     assertEquals(decode[CaptureFidelity]("\"inferred\""), Right(CaptureFidelity.Inferred))
     assertEquals(decode[CaptureFidelity]("\"intercepted\""), Right(CaptureFidelity.Intercepted))
+
+  test("Round-trip serialization of DAGNode with semantic anchor"):
+    val nodeWithAnchor = DAGNode(
+      id = "n-anchor-1",
+      parentIds = Nil,
+      timestamp = "2026-09-06T17:30:00Z",
+      actorId = "usr_oswaldo",
+      kind = NodeKind.Checkpoint,
+      contentSummary = "Reached stable checkpoint",
+      anchor = Some("v1_milestone"),
+      artifactIds = Nil,
+      fidelity = CaptureFidelity.Intercepted,
+      metadata = Map.empty,
+    )
+    val nodeWithoutAnchor = nodeWithAnchor.copy(
+      id = "n-anchor-2",
+      anchor = None,
+    )
+
+    assertEquals(decode[DAGNode](nodeWithAnchor.asJson.noSpaces), Right(nodeWithAnchor))
+    assertEquals(decode[DAGNode](nodeWithoutAnchor.asJson.noSpaces), Right(nodeWithoutAnchor))
+
+  test("Legacy JSON payloads missing the anchor field deserialize cleanly with None as default"):
+    val legacyJson =
+      """
+        |{
+        |  "id": "n-legacy-no-anchor",
+        |  "parentIds": [],
+        |  "timestamp": "2026-09-06T12:00:00Z",
+        |  "actorId": "usr_oswaldo",
+        |  "kind": "human_prompt",
+        |  "contentSummary": "Old crystal node without anchor"
+        |}
+        |""".stripMargin
+
+    val expectedNode = DAGNode(
+      id = "n-legacy-no-anchor",
+      parentIds = Nil,
+      timestamp = "2026-09-06T12:00:00Z",
+      actorId = "usr_oswaldo",
+      kind = NodeKind.HumanPrompt,
+      contentSummary = "Old crystal node without anchor",
+      anchor = None,
+      artifactIds = Nil,
+      fidelity = CaptureFidelity.Inferred,
+      metadata = Map.empty,
+    )
+
+    assertEquals(decode[DAGNode](legacyJson), Right(expectedNode))

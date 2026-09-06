@@ -179,6 +179,7 @@
           "enum": ["human_prompt", "agent_reasoning", "tool_execution", "checkpoint", "branch", "resolution"]
         },
         "contentSummary": { "type": "string" },
+        "anchor": { "type": ["string", "null"] },
         "artifactIds": {
           "type": "array",
           "items": { "type": "string" }

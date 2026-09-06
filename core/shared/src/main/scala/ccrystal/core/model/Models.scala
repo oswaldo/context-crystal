@@ -75,10 +75,32 @@ case class DAGNode(
     actorId: String,
     kind: NodeKind,
     contentSummary: String,
+    anchor: Option[String] = None,
     artifactIds: List[String] = Nil,
     fidelity: CaptureFidelity = CaptureFidelity.Inferred,
     metadata: Map[String, String] = Map.empty,
 ) derives CanEqual
+
+object DAGNode:
+  def apply(
+      id: String,
+      parentIds: List[String],
+      timestamp: String,
+      actorId: String,
+      kind: NodeKind,
+      contentSummary: String,
+      artifactIds: List[String],
+  ): DAGNode =
+    DAGNode(
+      id = id,
+      parentIds = parentIds,
+      timestamp = timestamp,
+      actorId = actorId,
+      kind = kind,
+      contentSummary = contentSummary,
+      anchor = None,
+      artifactIds = artifactIds,
+    )
 
 case class DAG(
     rootNodeId: String,

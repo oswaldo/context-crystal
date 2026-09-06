@@ -152,6 +152,7 @@ given Codec[DAGNode] = Codec.from(
       actorId        <- c.downField("actorId").as[String]
       kind           <- c.downField("kind").as[NodeKind]
       contentSummary <- c.downField("contentSummary").as[String]
+      anchor         <- c.downField("anchor").as[Option[String]]
       artifactIds    <- c.downField("artifactIds").as[Option[List[String]]].map(_.getOrElse(Nil))
       fidelity <- c
         .downField("fidelity")
@@ -168,6 +169,7 @@ given Codec[DAGNode] = Codec.from(
       actorId,
       kind,
       contentSummary,
+      anchor,
       artifactIds,
       fidelity,
       metadata,
