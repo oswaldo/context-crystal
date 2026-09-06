@@ -15,7 +15,10 @@ All tasks follow a strict lifecycle:
 
 ### Standard Task Workflow
 
-1.  **Select Task:** Choose the next available task from `plan.md` in sequential order
+1.  **Select Task & Context Inception:**
+    - Choose the next available task from `plan.md` in sequential order.
+    - Check if an active Context Crystal already exists for the track or session (`ccrystal list` or MCP `list_resources`). If found, attach and hydrate context; if not, initialize one.
+    - If developing within an isolated git worktree, register a transient resource lease (`git_worktree`).
 2.  **Mark In Progress:** Before beginning work, edit `plan.md` and change the task from `[ ]` to `[~]`
 3.  **Write Failing Tests (Red Phase):**
     - Create a new test file for the feature or bug fix.

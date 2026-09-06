@@ -19,3 +19,7 @@ Context Crystal anchors your reasoning in a continuous feedback loop:
 ## 4. Grounded Alignment with Human Collaborators
 
 By communicating state through a shared crystal rather than unbounded chat transcripts, human steersmen and machine entities achieve high-bandwidth alignment. You receive clear intent and structural bounds; the human receives auditable lineage and verifiable artifacts. Cooperation becomes a calm, synchronized engineering discipline.
+
+## 5. Proactive Task Inception Invariant
+
+Before embarking on any non-trivial or multi-step engineering effort, always perform an inception check: query existing crystals (`ccrystal list` or MCP `resources/list`) to avoid orphaned work. If an existing crystal corresponds to the current objective, attach to it and hydrate context; if not, initialize a new crystal before modifying code. When operating in temporary workspaces or worktrees, register a transient resource lease (`git_worktree`) to ensure clean lifecycle disposal.

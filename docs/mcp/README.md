@@ -41,6 +41,15 @@ The Context Crystal native MCP server exposes zero-overhead context lifecycle ma
 
 ---
 
+## Agent Operational Invariant: Task Inception Check
+
+When beginning any non-trivial or multi-step engineering task, an AI entity interacting through MCP should:
+1. **Discover:** Query `resources/list` (matching `crystal://*`) to determine whether a relevant crystal is already active.
+2. **Attach or Initialize:** If a matching crystal exists, read its state (`crystal://{id}/state`) or invoke `hydrate_context`. If no crystal matches the current objective, initialize a new crystal via `crystal_init`.
+3. **Lease Isolation:** If operating in a temporary branch or worktree, register a transient lease via `crystal_transient_lease` to ensure auditable cleanup upon conclusion.
+
+---
+
 ## Configuration Templates
 
 - [Claude Desktop Configuration](claude-desktop.json)

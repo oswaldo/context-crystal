@@ -19,6 +19,7 @@ This skill equips AI coding entities (Antigravity, Claude Code, Cursor, Windsurf
 - **Fidelity Guarantee:** In the absence of an OS-level deterministic kernel interceptor, all agent-synthesized DAG transitions MUST specify `--fidelity inferred`.
 - **Atomic Multi-Command Batching:** To avoid token inflation and roundtrip latency, ALWAYS prefer executing composite transitions in a single atomic invocation using `ccrystal batch "<cmd1>; <cmd2>; ..."`.
 - **Preservation of Clean Repositories:** Context Crystal fully supports out-of-tree companion context repositories (`CCRYSTAL_STORE`). Respect user repository policies to prevent polluting production code with local tracking files.
+- **Mandatory Task Inception Gate:** When starting any non-trivial or multi-step engineering task, the agent MUST immediately inspect existing crystals (`ccrystal list` or MCP `list_resources`). If an existing crystal relates to the session context or feature track, attach to it and hydrate context before making code edits. If none exists, initialize a new crystal (`ccrystal init` or `crystal_init`). Never proceed through multi-turn refactors or feature tracks without active crystal anchoring.
 
 ---
 
