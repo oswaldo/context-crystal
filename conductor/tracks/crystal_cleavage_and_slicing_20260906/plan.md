@@ -1,12 +1,12 @@
 # Implementation Plan: Track - Crystal Cleavage & Fragment Slicing
 
-## Phase 1: Semantic Anchors on DAGNode & Schema Update
-- [ ] Task: Write Tests - Add tests in `ModelCodecSuite` verifying serialization and deserialization of `DAGNode` with `anchor: Option[String]` (both `Some(...)` and `None`)
-- [ ] Task: Write Tests - Add tests in `ModelCodecSuite` ensuring legacy JSON payloads missing `anchor` decode cleanly with `None`
-- [ ] Task: Implement - Add `anchor: Option[String] = None` to `DAGNode` in `Models.scala`
-- [ ] Task: Implement - Update `Codecs.scala` to handle `anchor` field encoding and decoding
-- [ ] Task: Implement - Update `spec/v1/context-crystal.json` schema to include optional `anchor` on `DAGNode`
-- [ ] Task: Phase Verification & Checkpoint
+## Phase 1: Semantic Anchors on DAGNode & Schema Update [checkpoint: a4c8b28]
+- [x] Task: Write Tests - Add tests in `ModelCodecSuite` verifying serialization and deserialization of `DAGNode` with `anchor: Option[String]` (both `Some(...)` and `None`) [a4c8b28]
+- [x] Task: Write Tests - Add tests in `ModelCodecSuite` ensuring legacy JSON payloads missing `anchor` decode cleanly with `None` [a4c8b28]
+- [x] Task: Implement - Add `anchor: Option[String] = None` to `DAGNode` in `Models.scala` [a4c8b28]
+- [x] Task: Implement - Update `Codecs.scala` to handle `anchor` field encoding and decoding [a4c8b28]
+- [x] Task: Implement - Update `spec/v1/context-crystal.json` schema to include optional `anchor` on `DAGNode` [a4c8b28]
+- [x] Task: Phase Verification & Checkpoint [a4c8b28]
 
 ## Phase 2: Pure Functional Slicing Engine (`CrystalSlicer`)
 - [ ] Task: Write Tests - Create `CrystalSlicerSuite` in `core` testing:
