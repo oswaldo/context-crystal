@@ -8,14 +8,10 @@
 - [x] Task: Implement - Update `spec/v1/context-crystal.json` schema to include optional `anchor` on `DAGNode` [a4c8b28]
 - [x] Task: Phase Verification & Checkpoint [a4c8b28]
 
-## Phase 2: Pure Functional Slicing Engine (`CrystalSlicer`)
-- [ ] Task: Write Tests - Create `CrystalSlicerSuite` in `core` testing:
-  - Node resolution by `id` and by `anchor`
-  - Linear range slicing (`from`, `to`, `head`, `tail`)
-  - Sub-DAG normalization (setting root to slice entry, filtering invalid parent references)
-  - Sub-crystal fork construction with `CrystalOrigin`
-- [ ] Task: Implement - Create `ccrystal.core.dag.CrystalSlicer` implementing pure slicing and fork generation
-- [ ] Task: Phase Verification & Checkpoint
+## Phase 2: Pure Functional Slicing Engine (`CrystalSlicer`) [checkpoint: a5e4426]
+- [x] Task: Write Tests - Create `CrystalSlicerSuite` in `core` testing node resolution, range slicing, DAG normalization, and lineage fork construction [a5e4426]
+- [x] Task: Implement - Create `ccrystal.core.dag.CrystalSlicer` implementing pure slicing and fork generation [a5e4426]
+- [x] Task: Phase Verification & Checkpoint [a5e4426]
 
 ## Phase 3: CLI Slicing Command (`ccrystal slice`) & Formats
 - [ ] Task: Write Tests - Add CLI decline parser tests for `slice` command options (`--from`, `--to`, `--head`, `--tail`, `--format`, `--fork-to`, `--prune`)
