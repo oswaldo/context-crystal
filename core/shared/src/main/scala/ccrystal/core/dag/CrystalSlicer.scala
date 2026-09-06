@@ -48,8 +48,11 @@ case class CrystalSlice(
 
 object CrystalSlicer:
 
+  private def matchesSelector(n: DAGNode, sel: String): Boolean =
+    n.id == sel || n.anchor.contains(sel) || n.id.startsWith(sel)
+
   def findNode(dag: DAG, selector: String): Option[DAGNode] =
-    dag.nodes.find(n => n.id == selector || n.anchor.contains(selector))
+    dag.nodes.find(n => matchesSelector(n, selector))
 
   def slice(crystal: ContextCrystal, params: SliceParams): Either[String, CrystalSlice] =
     val nodes = crystal.dag.nodes
@@ -57,14 +60,14 @@ object CrystalSlicer:
     else
       val fromIndexRes: Either[String, Int] = params.from match
         case Some(sel) =>
-          nodes.indexWhere(n => n.id == sel || n.anchor.contains(sel)) match
+          nodes.indexWhere(n => matchesSelector(n, sel)) match
             case -1  => Left(s"Selector '$sel' (for --from) did not match any node ID or anchor")
             case idx => Right(idx)
         case None => Right(0)
 
       val toIndexRes: Either[String, Int] = params.to match
         case Some(sel) =>
-          nodes.lastIndexWhere(n => n.id == sel || n.anchor.contains(sel)) match
+          nodes.lastIndexWhere(n => matchesSelector(n, sel)) match
             case -1  => Left(s"Selector '$sel' (for --to) did not match any node ID or anchor")
             case idx => Right(idx)
         case None => Right(nodes.length - 1)

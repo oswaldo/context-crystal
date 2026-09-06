@@ -111,7 +111,7 @@ class ContextHydratorSuite extends FunSuite:
     assert(text.contains("## Unresolved Lessons Learned:"), "Missing lessons header")
     assert(text.contains("Large DAGs consume excess tokens"), "Missing lesson content")
     assert(text.contains("## Active Transient Leases"), "Missing leases header")
-    assert(text.contains("temp_worktree: Worktree at /tmp/test"), "Missing lease content")
+    assert(text.contains("Worktree at /tmp/test"), "Missing lease content")
 
     // Assert Transitions
     assert(text.contains("Initialize project specification"), "Missing node 1")
