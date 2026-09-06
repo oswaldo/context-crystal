@@ -12,8 +12,8 @@
 
 ## Phase 3: MCP Prompt & Resource Beam Shaping (Red-Green TDD)
 - [x] Task: Write failing unit tests for DefaultMcpHandler supporting selective hydrate_context prompt arguments and crystal://{id}/hydrate resource queries (Red) [bb8a439]
-- [~] Task: Implement selective prompt parameters and crystal://{id}/hydrate URI query parsing in DefaultMcpHandler (Green)
-- [ ] Task: Phase Verification & Checkpoint (Refer to workflow.md)
+- [x] Task: Implement selective prompt parameters and crystal://{id}/hydrate URI query parsing in DefaultMcpHandler (Green) [dbd023e]
+- [~] Task: Phase Verification & Checkpoint (Refer to workflow.md)
 
 ## Phase 4: End-to-End Integration, Native Compilation & Documentation
 - [ ] Task: Write integration tests for end-to-end CLI cast/hydrate beam shaping and MCP JSON-RPC hydration calls
