@@ -1,12 +1,12 @@
 # Implementation Plan: Selective Context Hydration & Beam Shaping
 
-## Phase 1: Core Hydration Engine & Slice Selector Extensions (Red-Green TDD)
+## Phase 1: Core Hydration Engine & Slice Selector Extensions (Red-Green TDD) [checkpoint: 8552255]
 - [x] Task: Write failing unit tests for ContextHydrator and enhanced slice selector resolution (Red) [06b6805]
 - [x] Task: Implement ContextHydrator and HydrationParams in ccrystal.core with living state preservation and shaped transition formatting (Green) [ad48e3f]
-- [~] Task: Phase Verification & Checkpoint (Refer to workflow.md)
+- [x] Task: Phase Verification & Checkpoint (Refer to workflow.md) [8552255]
 
 ## Phase 2: CLI Integration & Command Parsing (Red-Green TDD)
-- [ ] Task: Write failing unit tests for CommandParser supporting --from, --to, --tail, --depth, --summary-only on cast and hydrate (Red)
+- [~] Task: Write failing unit tests for CommandParser supporting --from, --to, --tail, --depth, --summary-only on cast and hydrate (Red)
 - [ ] Task: Implement CLI command parsing and wire CliCommand.Cast through Runner using ContextHydrator (Green)
 - [ ] Task: Phase Verification & Checkpoint (Refer to workflow.md)
 
