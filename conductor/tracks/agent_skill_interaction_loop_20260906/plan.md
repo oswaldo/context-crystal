@@ -1,6 +1,6 @@
 # Implementation Plan: Agent Skill, Self-Bootstrapping & Interaction Loop
 
-## Phase 1: CLI Decoupled Storage Engine & Event Timestamps (`CCRYSTAL_STORE`, `--store`, `--timestamp`)
+## Phase 1: CLI Decoupled Storage Engine & Event Timestamps (`CCRYSTAL_STORE`, `--store`, `--timestamp`) [checkpoint: 55a0a16]
 - [x] Task: 1.1 Write failing unit/integration tests for store path resolution and event timestamps (55a0a16)
   - [x] Write tests asserting precedence: `--store <path>` > `CCRYSTAL_STORE` > `.ccrystal-store` > `.ccrystals/`
   - [x] Write tests asserting `--timestamp` on `node add`, `--created-at` on `init`, and `--acquired-at` on `transient lease`
@@ -9,7 +9,7 @@
   - [x] Add `--store` global CLI option and hierarchical resolution in `cli/shared/src/main/scala/ccrystal/cli/Main.scala`
   - [x] Add `--timestamp`, `--created-at`, and `--acquired-at` options in `CommandParser.scala` and `Runner.scala`
   - [x] Verify all unit tests pass green
-- [ ] Task: 1.3 Phase Verification & Checkpoint (Refer to workflow.md)
+- [x] Task: 1.3 Phase Verification & Checkpoint (Refer to workflow.md)
 
 ## Phase 2: Canonical Agent Skill (`skills/context-crystal/SKILL.md`)
 - [ ] Task: 2.1 Author core skill specification & autonomous self-bootstrapping workflow
