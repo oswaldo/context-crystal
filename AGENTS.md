@@ -49,6 +49,10 @@ All new features and non-trivial fixes follow Conductor:
    - Implement the minimal code required to pass tests.
    - Commit atomically with Conventional Commits (`feat:`, `test:`, `fix:`, `chore(conductor):`).
 4. **Review & Verification:** Run the full test suite across Native, JVM, and JS targets before completing phase checkpoints.
+5. **Cave Hygiene & Retrospective Gate:** At the end of every track:
+   - Perform cave hygiene triage (`ccrystal list` or MCP `triage_cave`). Prompt the operator to confirm purging completed/concluded crystals to prevent cave bloat.
+   - Run the Operational Learning Gate: Explicitly ask whether any friction, tool patterns, or build learnings should be codified into `AGENTS.md` or `skills/context-crystal/SKILL.md`.
+6. **Clean Merge & Worktree Teardown:** Fast-forward merge into `main`, update the local release installation, and remove the worktree.
 
 ---
 
@@ -103,6 +107,9 @@ npx shellcheck skills/**/*.sh
 - **Strict Codecs:** Ensure JSON serialization round-trips adhere strictly to `spec/v1/context-crystal.json`.
 - **Transient Cleanup:** Clean or promote all transient resource leases before marking tasks complete.
 - **Commit Signing:** All commits must be cryptographically signed (e.g., using SSH or GPG keys).
+- **MUnit Strict Equality Clues:** Under `-language:strictEquality`, avoid bare `assert(cond)` which can trigger ambiguous overload errors in MUnit; prefer `assertEquals(actual, expected)` or provide explicit clue strings: `assert(cond, "clue")`.
+- **Atomic Binary Inode Replacement:** Always use `cp --remove-destination` (or `install`) when updating installed native binaries in `~/.local/bin/ccrystal`. This unlinks the inode and prevents `Text file busy` errors if a background process (like the active MCP server engine) is currently executing the binary.
+- **MCP Tool First / Batch Preference:** Autonomous agents interacting with Context Crystal should prioritize native MCP tools (`crystal_batch`, `crystal_init`, etc.) over invoking CLI commands via subshells. For multi-step context transitions, compose a single `crystal_batch` recipe to execute atomically with minimal turn roundtrips.
 - **Conventional Commits:** Follow standard conventions:
   - `feat(core): ...`, `feat(cli): ...`, `feat(spec): ...`
   - `test(core): ...`, `test(cli): ...`
