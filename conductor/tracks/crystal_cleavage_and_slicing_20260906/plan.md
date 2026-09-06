@@ -13,11 +13,11 @@
 - [x] Task: Implement - Create `ccrystal.core.dag.CrystalSlicer` implementing pure slicing and fork generation [a5e4426]
 - [x] Task: Phase Verification & Checkpoint [a5e4426]
 
-## Phase 3: CLI Slicing Command (`ccrystal slice`) & Formats
-- [ ] Task: Write Tests - Add CLI decline parser tests for `slice` command options (`--from`, `--to`, `--head`, `--tail`, `--format`, `--fork-to`, `--prune`)
-- [ ] Task: Implement - Add `slice` command to CLI with `--format <prompt|human|json>` renderers
-- [ ] Task: Implement - Wire `--fork-to <name>` to persist new child crystal via `CrystalStore` with provenance lineage
-- [ ] Task: Phase Verification & Checkpoint
+## Phase 3: CLI Slicing Command (`ccrystal slice`) & Formats [checkpoint: e67b3a0]
+- [x] Task: Write Tests - Add CLI decline parser tests for `slice` command options (`--from`, `--to`, `--head`, `--tail`, `--format`, `--fork-to`, `--prune`) [e67b3a0]
+- [x] Task: Implement - Add `slice` command to CLI with `--format <prompt|human|json>` renderers [e67b3a0]
+- [x] Task: Implement - Wire `--fork-to <name>` to persist new child crystal via `CrystalStore` with provenance lineage [e67b3a0]
+- [x] Task: Phase Verification & Checkpoint [e67b3a0]
 
 ## Phase 4: Full Cross-Platform & Native Verification
 - [ ] Task: Run full test suite across `coreJVM`, `coreNative`, `coreJS`, `cliJVM`, `cliNative`
