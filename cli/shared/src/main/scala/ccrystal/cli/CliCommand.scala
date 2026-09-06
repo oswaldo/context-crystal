@@ -60,6 +60,8 @@ enum CliCommand derives CanEqual:
   case TransientList(crystalId: String)
   case EntityList
   case EntityRegister(name: String, kind: EntityKind)
+  case EntityDeregister(entityId: String, force: Boolean = false)
   case Cast(crystalId: String, depth: Int = 10, summaryOnly: Boolean = false)
   case Refresh(crystalId: Option[String], all: Boolean)
   case Batch(scriptOrChain: String)
+  case Delete(crystalId: String, force: Boolean = false)

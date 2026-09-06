@@ -41,10 +41,20 @@ object BatchExecutor:
       val args = commandArgsList(idx)
       CommandParser.parse(args) match
         case Right(cmd) =>
-          runner.run(cmd) match
-            case Right(out) => outputs += out
-            case Left(err) =>
-              error = Some(s"Error at command #${idx + 1} (${args.mkString(" ")}): $err")
+          cmd match
+            case CliCommand.Delete(_, false) =>
+              error = Some(
+                s"Destructive command 'delete' in batch mode requires --force (-f) flag at command #${idx + 1} (${args.mkString(" ")})",
+              )
+            case CliCommand.EntityDeregister(_, false) =>
+              error = Some(
+                s"Destructive command 'entity deregister' in batch mode requires --force (-f) flag at command #${idx + 1} (${args.mkString(" ")})",
+              )
+            case _ =>
+              runner.run(cmd) match
+                case Right(out) => outputs += out
+                case Left(err) =>
+                  error = Some(s"Error at command #${idx + 1} (${args.mkString(" ")}): $err")
         case Left(parseErr) =>
           error = Some(s"Syntax error at command #${idx + 1} (${args.mkString(" ")}): $parseErr")
       idx += 1

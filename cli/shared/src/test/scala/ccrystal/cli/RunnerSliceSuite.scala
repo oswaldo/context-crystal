@@ -39,6 +39,48 @@ class InMemoryCrystalStore extends CrystalStore:
     val ent = Entity(s"ent-$name", kind, name)
     registerEntity(ent)
 
+  def deleteCrystal(id: String): Either[String, CrystalDeletionResult] =
+    if crystals.remove(id).isDefined then Right(CrystalDeletionResult(id, Nil))
+    else Left(s"Crystal not found: $id")
+
+  def deregisterEntity(entityId: String): Either[String, EntityDeregistrationResult] =
+    if registry.entities.contains(entityId) then
+      registry = registry.copy(entities = registry.entities - entityId)
+      Right(EntityDeregistrationResult(entityId, Nil))
+    else Left(s"Entity not found: $entityId")
+
+  def previewCrystalDeletion(id: String, limit: Int): Either[String, CrystalImpactPreview] =
+    load(id).map { c =>
+      CrystalImpactPreview(
+        c.id,
+        c.goal.title,
+        c.goal.intent,
+        c.goal.status,
+        c.createdAt,
+        c.updatedAt,
+        c.dag.nodes.size,
+        c.dag.nodes.take(limit).map(_.contentSummary),
+        c.goal.acceptanceCriteria.size,
+        c.goal.acceptanceCriteria.count(_.completed),
+        c.goal.acceptanceCriteria.take(limit).map(_.description),
+        c.lessonsLearned.size,
+        c.lessonsLearned.count(_.status == LessonStatus.Open),
+        c.lessonsLearned.take(limit).map(_.observedFriction),
+        c.transientLeases.size,
+        c.transientLeases.count(_.status == TransientLeaseStatus.Active),
+        c.transientLeases.take(limit).map(_.description),
+        Nil,
+      )
+    }
+
+  def previewEntityDeregistration(
+      entityId: String,
+      limit: Int,
+  ): Either[String, EntityImpactPreview] =
+    registry.entities.get(entityId) match
+      case Some(e) => Right(EntityImpactPreview(e, Nil))
+      case None    => Left(s"Entity not found: $entityId")
+
 class RunnerSliceSuite extends FunSuite:
 
   def createTestRunner(): (Runner, InMemoryCrystalStore) =

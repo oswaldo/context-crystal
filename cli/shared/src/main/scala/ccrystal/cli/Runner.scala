@@ -8,7 +8,21 @@ import ccrystal.core.codec.given
 import io.circe.syntax.*
 import java.time.Instant
 
-class Runner(val store: CrystalStore):
+object Runner:
+  val defaultConfirmPrompt: String => Boolean = { prompt =>
+    print(prompt)
+    Console.out.flush()
+    val input = scala.io.StdIn.readLine()
+    if input == null then false
+    else
+      val trimmed = input.trim.toLowerCase
+      trimmed == "y" || trimmed == "yes"
+  }
+
+class Runner(
+    val store: CrystalStore,
+    val confirmPrompt: String => Boolean = Runner.defaultConfirmPrompt,
+):
 
   def run(cmd: CliCommand): Either[String, String] = cmd match
     case CliCommand.Init(name, goalTitle, intent, authorOpt, authorKindOpt, createdAtOpt) =>
@@ -370,3 +384,112 @@ class Runner(val store: CrystalStore):
 
     case CliCommand.Batch(script) =>
       Left("Batch execution handled via BatchExecutor")
+
+    case CliCommand.Delete(crystalId, force) =>
+      val limit = getPreviewLimit
+      store.previewCrystalDeletion(crystalId, limit).flatMap { preview =>
+        if !force then
+          print(formatCrystalDeletionPreview(preview))
+          val confirmed = confirmPrompt(
+            s"Are you sure you want to permanently delete crystal '$crystalId' and all associated state? [y/N]: ",
+          )
+          if !confirmed then Right(s"Deletion of crystal '$crystalId' cancelled.")
+          else executeDelete(crystalId)
+        else executeDelete(crystalId)
+      }
+
+    case CliCommand.EntityDeregister(entityId, force) =>
+      val limit = getPreviewLimit
+      store.previewEntityDeregistration(entityId, limit).flatMap { preview =>
+        if !force then
+          val sb = new java.lang.StringBuilder()
+          sb.append(
+            s"\n--- IRRECOVERABLE DEREGISTRATION IMPACT: Entity '$entityId' (${preview.entity.name} [${preview.entity.kind}]) ---\n",
+          )
+          if preview.affectedCrystals.isEmpty then
+            sb.append("No crystals are associated with this entity.\n")
+          else
+            sb.append(
+              s"WARNING: Deregistering this entity will cascade-delete ${preview.affectedCrystals.size} crystal(s):\n",
+            )
+            preview.affectedCrystals.foreach { cp =>
+              sb.append(
+                s"- ${cp.crystalId}: ${cp.goalTitle} (${cp.totalNodes} nodes, ${cp.totalTasks} tasks)\n",
+              )
+            }
+          sb.append("------------------------------------------------------------\n")
+          print(sb.toString)
+          val confirmed = confirmPrompt(
+            s"Are you sure you want to deregister entity '$entityId' and cascade-delete all associated crystals? [y/N]: ",
+          )
+          if !confirmed then Right(s"Deregistration of entity '$entityId' cancelled.")
+          else executeDeregister(entityId)
+        else executeDeregister(entityId)
+      }
+
+  private def getPreviewLimit: Int =
+    sys.env.get("CCRYSTAL_DELETION_PREVIEW_LIMIT").flatMap(_.toIntOption).getOrElse(10)
+
+  private def executeDelete(crystalId: String): Either[String, String] =
+    store.deleteCrystal(crystalId).map { res =>
+      val cascadeMsg =
+        if res.deregisteredEntityIds.nonEmpty then
+          s" (Cascade-deregistered orphaned entities: ${res.deregisteredEntityIds.mkString(", ")})"
+        else ""
+      s"Permanently deleted crystal '$crystalId'$cascadeMsg"
+    }
+
+  private def executeDeregister(entityId: String): Either[String, String] =
+    store.deregisterEntity(entityId).map { res =>
+      val cascadeMsg =
+        if res.deletedCrystalIds.nonEmpty then
+          s" (Cascade-deleted crystals: ${res.deletedCrystalIds.mkString(", ")})"
+        else ""
+      s"Deregistered entity '$entityId' from cave registry$cascadeMsg"
+    }
+
+  private def formatCrystalDeletionPreview(preview: CrystalImpactPreview): String =
+    val sb = new java.lang.StringBuilder()
+    sb.append(s"\n--- IRRECOVERABLE DELETION IMPACT: Crystal '${preview.crystalId}' ---\n")
+    sb.append(s"Goal: ${preview.goalTitle} [${preview.goalStatus}]\n")
+    if preview.intent.nonEmpty then sb.append(s"Intent: ${preview.intent}\n")
+    sb.append(s"Created: ${preview.createdAt} | Updated: ${preview.updatedAt}\n\n")
+
+    sb.append(s"DAG Nodes (${preview.totalNodes} total):\n")
+    preview.nodeSummaries.foreach(s => sb.append(s"  - $s\n"))
+    if preview.totalNodes > preview.nodeSummaries.size then
+      sb.append(s"  ... and ${preview.totalNodes - preview.nodeSummaries.size} older nodes\n")
+
+    sb.append(s"\nTasks (${preview.totalTasks} total, ${preview.completedTasks} completed):\n")
+    preview.taskDescriptions.foreach(t => sb.append(s"  - $t\n"))
+    if preview.totalTasks > preview.taskDescriptions.size then
+      sb.append(s"  ... and ${preview.totalTasks - preview.taskDescriptions.size} older tasks\n")
+
+    if preview.totalLessons > 0 then
+      sb.append(
+        s"\nLessons Learned (${preview.totalLessons} total, ${preview.openLessons} open):\n",
+      )
+      preview.lessonFrictions.foreach(l => sb.append(s"  - $l\n"))
+      if preview.totalLessons > preview.lessonFrictions.size then
+        sb.append(
+          s"  ... and ${preview.totalLessons - preview.lessonFrictions.size} older lessons\n",
+        )
+
+    if preview.totalLeases > 0 then
+      sb.append(
+        s"\nTransient Leases (${preview.totalLeases} total, ${preview.activeLeases} active):\n",
+      )
+      preview.leaseDescriptions.foreach(ls => sb.append(s"  - $ls\n"))
+      if preview.totalLeases > preview.leaseDescriptions.size then
+        sb.append(
+          s"  ... and ${preview.totalLeases - preview.leaseDescriptions.size} older leases\n",
+        )
+
+    if preview.cascadingDeregisterEntityIds.nonEmpty then
+      sb.append("\nCascading Entity Deregistration:\n")
+      preview.cascadingDeregisterEntityIds.foreach { eid =>
+        sb.append(s"  ! Entity '$eid' will be deregistered from cave (no remaining crystals)\n")
+      }
+
+    sb.append("------------------------------------------------------------\n")
+    sb.toString

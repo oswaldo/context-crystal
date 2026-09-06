@@ -131,6 +131,16 @@ object CommandParser:
     Opts.option[EntityKind]("kind", "Entity kind", "k"),
   ).mapN(CliCommand.EntityRegister.apply)
 
+  private val entityDeregisterOpts = (
+    Opts.argument[String]("entity-id"),
+    Opts.flag("force", "Skip interactive confirmation prompt", "f").orFalse,
+  ).mapN(CliCommand.EntityDeregister.apply)
+
+  private val deleteOpts = (
+    Opts.argument[String]("crystal-id"),
+    Opts.flag("force", "Skip interactive confirmation prompt", "f").orFalse,
+  ).mapN(CliCommand.Delete.apply)
+
   private val lessonAddOpts = (
     Opts.argument[String]("crystal-id"),
     Opts.option[String]("friction", "Observed friction", "f"),
@@ -204,6 +214,11 @@ object CommandParser:
             .subcommand("list", "List all registered entities in cave")(entityListOpts)
             .orElse(
               Opts.subcommand("register", "Register a new entity in cave")(entityRegisterOpts),
+            )
+            .orElse(
+              Opts.subcommand("deregister", "Deregister an entity with cascading deletion")(
+                entityDeregisterOpts,
+              ),
             ),
         ),
       )
@@ -231,7 +246,13 @@ object CommandParser:
           "Re-project derived views (tasks.md, lessons-learned.md) from crystal.json",
         )(refreshOpts),
       )
-      .orElse(Opts.subcommand("slice", "Extract crystal fragments or slice sub-DAGs")(sliceOpts)),
+      .orElse(Opts.subcommand("slice", "Extract crystal fragments or slice sub-DAGs")(sliceOpts))
+      .orElse(
+        Opts.subcommand(
+          "delete",
+          "Permanently delete a crystal and cascade orphaned entities",
+        )(deleteOpts),
+      ),
   )
 
   def parse(args: List[String]): Either[String, CliCommand] =
