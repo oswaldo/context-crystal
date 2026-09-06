@@ -27,3 +27,6 @@
 
 - [x] **Track: Native Model Context Protocol (MCP) Server Engine**  
   *Link: [conductor/tracks/native_mcp_server_engine_20260906/index.md](./tracks/native_mcp_server_engine_20260906/index.md)*
+
+- [ ] **Track: Selective Context Hydration & Beam Shaping**  
+  *Link: [conductor/tracks/selective_context_hydration_20260907/index.md](./tracks/selective_context_hydration_20260907/index.md)*
