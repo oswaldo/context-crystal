@@ -13,6 +13,18 @@
       "endpoints" : {
         
       }
+    },
+    "usr_oswaldo" : {
+      "id" : "usr_oswaldo",
+      "kind" : "human",
+      "name" : "Oswaldo",
+      "metadata" : {
+        
+      },
+      "publicKey" : null,
+      "endpoints" : {
+        
+      }
     }
   },
   "metadata" : {
