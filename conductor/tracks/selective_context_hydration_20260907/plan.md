@@ -7,8 +7,8 @@
 
 ## Phase 2: CLI Integration & Command Parsing (Red-Green TDD)
 - [x] Task: Write failing unit tests for CommandParser supporting --from, --to, --tail, --depth, --summary-only on cast and hydrate (Red) [fa10126]
-- [~] Task: Implement CLI command parsing and wire CliCommand.Cast through Runner using ContextHydrator (Green)
-- [ ] Task: Phase Verification & Checkpoint (Refer to workflow.md)
+- [x] Task: Implement CLI command parsing and wire CliCommand.Cast through Runner using ContextHydrator (Green) [d2f55d9]
+- [~] Task: Phase Verification & Checkpoint (Refer to workflow.md)
 
 ## Phase 3: MCP Prompt & Resource Beam Shaping (Red-Green TDD)
 - [ ] Task: Write failing unit tests for DefaultMcpHandler supporting selective hydrate_context prompt arguments and crystal://{id}/hydrate resource queries (Red)
