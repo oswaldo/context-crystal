@@ -1,0 +1,7 @@
+target/
+.metals/
+.bloop/
+.bsp/
+tmp/
+scratch/
+.cache/

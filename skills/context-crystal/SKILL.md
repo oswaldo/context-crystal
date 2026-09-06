@@ -31,22 +31,31 @@ which ccrystal || command -v ccrystal || [ -f "$HOME/.local/bin/ccrystal" ]
 ```
 
 ### Autonomous Bootstrap Protocol
+
 If `ccrystal` is not present in PATH:
+
 1. Ensure `~/.local/bin` exists and is in `PATH`:
+
    ```bash
    mkdir -p "$HOME/.local/bin"
    export PATH="$HOME/.local/bin:$PATH"
    ```
+
 2. Fetch the native release binary or install from source:
    - **Automated Installer (Recommended):**
+
      ```bash
      curl -fsSL https://context-crystal.org/install.sh | sh
      ```
+
    - **Monorepo Fallback (When in Context Crystal repository):**
+
      ```bash
      sbt "cliNative/nativeLink" && cp ./cli/native/target/scala-3.3.4/ccrystal-cli "$HOME/.local/bin/ccrystal" && chmod +x "$HOME/.local/bin/ccrystal"
      ```
+
 3. Test availability:
+
    ```bash
    ccrystal --help
    ```
@@ -63,9 +72,11 @@ Context Crystal decouples the **Code Workspace** from the **Context Store**. Whe
    - Check if `.ccrystal-store` exists in the workspace root. If present, read its path pointer.
 3. **Clean Repository Preference:**
    - If the workspace is a strict/public repository (or the user requests a clean working tree without `.ccrystals/`), set `CCRYSTAL_STORE` to an external companion directory, e.g.:
+
      ```bash
      export CCRYSTAL_STORE="$HOME/.ccrystals/stores/$(basename "$PWD")"
      ```
+
 4. **Default In-Tree Storage:**
    - Fall back to standard in-repo `.ccrystals/` directory.
 
@@ -75,7 +86,7 @@ Context Crystal decouples the **Code Workspace** from the **Context Store**. Whe
 
 The skill automatically adapts its update cadence and token usage based on the host project's workflow infrastructure:
 
-```
+```text
                           ┌───────────────────────────┐
                           │ Project Environment Check │
                           └─────────────┬─────────────┘
@@ -94,34 +105,45 @@ The skill automatically adapts its update cadence and token usage based on the h
 ```
 
 ### A. Mode 1: Symbiotic Mode (Low Token Overhead)
+
 *Active when `conductor/`, `.conductor/`, `openspec/`, `speckit/`, or `docs/adr/` is present.*
 
 - **Zero Micro-Step Chatter:** Do NOT invoke `ccrystal` after every single tool call or minor edit. Allow the host framework to drive minute tasks.
 - **Synchronization Trigger Points:**
   1. **Session Inception:** Cast existing crystal or initialize aligned with the track goal:
+
      ```bash
      ccrystal hydrate <crystal-id>
      # Or initialize if first session:
      ccrystal init <crystal-id> -g "<Goal Title>" -i "<Detailed Intent>" --created-at "<ISO-8601>"
      ```
+
   2. **Phase / Milestone Boundaries:** When tests pass or a plan phase completes, record an atomic batch transition:
+
      ```bash
      ccrystal batch "node add <crystal-id> -k checkpoint -s 'Phase complete: <summary>' --fidelity inferred; task done <crystal-id> -t <task-id>"
      ```
+
   3. **Historical Event Batching:** When syncing multiple completed actions from git logs or OpenSpec tasks, supply explicit `--timestamp <ISO-8601>` flags to preserve true chronological fidelity rather than collapsing into a single second:
+
      ```bash
      ccrystal batch "node add <id> -k tool_execution -s 'Ran migration' --timestamp 2026-09-06T14:10:00Z; node add <id> -k checkpoint -s 'Tests green' --timestamp 2026-09-06T14:25:00Z"
      ```
+
   4. **Cleavage / Divergence:** When an adjacent bug or exploration emerges that diverges from the main track, cleave and fork cleanly:
+
      ```bash
      ccrystal slice <crystal-id> --from <anchor> --fork-to <child-crystal-id> --prune
      ```
+
   5. **Hand-Off & Conclusion:** Clean temporary leases and log actionable friction:
+
      ```bash
      ccrystal batch "transient clean <crystal-id> -l <lease-id>; lesson add <crystal-id> -f '<Observed friction>' -r '<Root cause>' -a '<Remediation>'"
      ```
 
 ### B. Mode 2: Autonomous Spine Mode (High Crash & Compaction Resilience)
+
 *Active when no external planning tool is present.*
 
 - **Context Crystal as Primary Spine:** The crystal directly maintains goals, sub-tasks (`tasks.md`), lessons learned (`lessons-learned.md`), and temporary resources (`transient.json`).
@@ -142,7 +164,7 @@ When the user communicates in natural language, translate their intent into the 
 | *"We hit a blocker / build error"*, *"Log a lesson"* | Record friction and corrective action | `ccrystal lesson add <id> -f '<friction>' -r '<cause>' -a '<action>'` |
 | *"Set up a temporary branch / mock config"* | Acquire a transient resource lease | `ccrystal transient lease <id> -t git_worktree -p '<path>' -d '<desc>' --policy revert_on_conclusion` |
 | *"We're done with the spike, clean it"* | Release/clean transient resource | `ccrystal transient clean <id> -l <lease-id>` |
-| *"This bug is unrelated, let's track it separately"* | Cleave context and fork into child crystal | `ccrystal slice <id> --from <anchor|node> --fork-to <child-id> --prune` |
+| *"This bug is unrelated, let's track it separately"* | Cleave context and fork into child crystal | `ccrystal slice <id> --from <anchor-or-node> --fork-to <child-id> --prune` |
 | *"What crystals are in progress?"*, *"Which is closer to done?"* | Inspect crystal status and completion ratios | `ccrystal list --status in_progress` |
 | *"Complete task X"* | Mark acceptance criterion done | `ccrystal task done <id> -t <task-id>` |
 
@@ -153,16 +175,19 @@ When the user communicates in natural language, translate their intent into the 
 The `batch` subcommand executes multiple statements in a single sub-millisecond process execution. Commands are separated by semicolons (`;`).
 
 ### Recipe 1: Initial Inception & Task Breakdown
+
 ```bash
 ccrystal batch "init my-feature -g 'OAuth2 Authentication' -i 'Implement PKCE flow'; task add my-feature -d 'Design schema'; task add my-feature -d 'Implement token exchange'; task add my-feature -d 'Verify test suite'"
 ```
 
 ### Recipe 2: Milestone Completion & Lease Registration
+
 ```bash
 ccrystal batch "node add my-feature -k checkpoint -s 'Schema finalized' --fidelity inferred; task done my-feature -t task-1; transient lease my-feature -t debug_config -d 'OAuth test sandbox credentials' --policy revert_on_conclusion"
 ```
 
 ### Recipe 3: Conclusion & Transient Cleanup Gate
+
 ```bash
 ccrystal batch "task done my-feature -t task-3; node add my-feature -k resolution -s 'OAuth2 flow verified with 100% test coverage' --fidelity inferred; transient clean my-feature -l lease-1; lesson add my-feature -f 'PKCE code challenge salt collision' -r 'Used weak PRNG in mock' -a 'Always use java.security.SecureRandom'"
 ```
