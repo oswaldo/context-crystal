@@ -26,13 +26,13 @@
 - [x] Task: 2.4 Phase Verification & Checkpoint (Refer to workflow.md)
 
 ## Phase 3: Host Adapters & Platform Tooling
-- [ ] Task: 3.1 Antigravity Skill Adapter
-  - [ ] Create `skills/context-crystal/adapters/antigravity/` guide and modal (`ask_question`) integration rules
-  - [ ] Scaffold local installation link (`.agents/skills/context-crystal/SKILL.md`)
-- [ ] Task: 3.2 Claude Code Adapter
-  - [ ] Create `skills/context-crystal/adapters/claude/` with `.claude/commands/crystallize.md` and `CLAUDE.md` snippets
-- [ ] Task: 3.3 Cursor & Windsurf Rules Adapter
-  - [ ] Create `skills/context-crystal/adapters/cursor/` with `.cursor/rules/context-crystal.mdc` rules snippet
+- [x] Task: 3.1 Antigravity Skill Adapter (0b73329)
+  - [x] Create `skills/context-crystal/adapters/antigravity/` guide and modal (`ask_question`) integration rules
+  - [x] Scaffold local installation link (`.agents/skills/context-crystal/SKILL.md`)
+- [x] Task: 3.2 Claude Code Adapter (0b73329)
+  - [x] Create `skills/context-crystal/adapters/claude/` with `.claude/commands/crystallize.md` and `CLAUDE.md` snippets
+- [x] Task: 3.3 Cursor & Windsurf Rules Adapter (0b73329)
+  - [x] Create `skills/context-crystal/adapters/cursor/` with `.cursor/rules/context-crystal.mdc` rules snippet
 - [ ] Task: 3.4 Phase Verification & Checkpoint (Refer to workflow.md)
 
 ## Phase 4: Automated Verification, Documentation & In-Repo Dogfooding
