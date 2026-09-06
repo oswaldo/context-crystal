@@ -16,7 +16,8 @@
 - [x] Task: Phase Verification & Checkpoint (Refer to workflow.md) [eae3094]
 
 ## Phase 3: Integration, Agent Skill & Documentation
-- [~] Task: Write end-to-end integration tests for CLI deletion and entity deregistration workflows
-- [ ] Task: Update Agent Skill (.agents/skills/context-crystal/SKILL.md) with deletion recipes and conversational matrix
-- [ ] Task: Compile native CLI binary and verify command line help
-- [ ] Task: Phase Verification & Checkpoint (Refer to workflow.md)
+- [x] Task: Write end-to-end integration tests for CLI deletion and entity deregistration workflows [cf2519b]
+- [x] Task: Update Agent Skill (.agents/skills/context-crystal/SKILL.md) with deletion recipes and conversational matrix [cf2519b]
+- [x] Task: Compile native CLI binary and verify command line help [cf2519b]
+- [x] Task: Phase Verification & Checkpoint (Refer to workflow.md) [cf2519b]
+
