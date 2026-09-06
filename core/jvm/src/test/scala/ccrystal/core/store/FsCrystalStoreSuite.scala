@@ -7,7 +7,7 @@ import java.util.Comparator
 
 class FsCrystalStoreSuite extends FunSuite:
 
-  var tempDir: Path = _
+  var tempDir: Path = scala.compiletime.uninitialized
 
   override def beforeEach(context: BeforeEach): Unit =
     tempDir = Files.createTempDirectory("ccrystal-test-")

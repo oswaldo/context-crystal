@@ -6,7 +6,7 @@ Context Crystal decouples **context**, **goals**, **transient resources**, and *
 
 [![Specification](https://img.shields.io/badge/spec-v1.0.0-blue.svg)](spec/v1/context-crystal.json)
 [![Build & Tests](https://img.shields.io/badge/tests-cross--platform%20(Native%2C%20JVM%2C%20JS)-green.svg)](#running-tests)
-[![Zero Reflection](https://img.shields.io/badge/scala-3.3.4-red.svg)](core/)
+[![Zero Reflection](https://img.shields.io/badge/scala-3.9.0-red.svg)](core/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 ---
@@ -99,15 +99,20 @@ Context Crystal includes ready-to-use skills and instruction adapters for major 
 
 If you do want to run commands directly or script automation, the native CLI is fast and ergonomic.
 
-### Installation
+### Prerequisites & Installation
+
+- **Java Development Kit (JDK):** Version 21+ (managed via SDKMAN or package manager)
+- **Build Tool:** `sbt` 1.10+
+- **Compiler:** Scala 3.9+
+- **Native Linker:** `clang` (for Scala Native LLVM target)
 
 ```bash
-# Build native binary using Scala Native (requires JDK 21+ and clang)
+# Build native binary using Scala Native
 sbt "cliNative/nativeLink"
 
 # Install into local user PATH
 mkdir -p ~/.local/bin
-cp ./cli/native/target/scala-3.3.4/ccrystal-cli ~/.local/bin/ccrystal
+cp ./cli/native/target/scala-3.9.0/ccrystal-cli ~/.local/bin/ccrystal
 chmod +x ~/.local/bin/ccrystal
 ```
 

@@ -7,7 +7,7 @@ import ccrystal.core.model.*
 
 object CommandParser:
 
-  private val nodeKindArgument: Argument[NodeKind] = Argument.from("node-kind") {
+  private given nodeKindArgument: Argument[NodeKind] = Argument.from("node-kind") {
     case "human_prompt"    => Validated.valid(NodeKind.HumanPrompt)
     case "agent_reasoning" => Validated.valid(NodeKind.AgentReasoning)
     case "tool_execution"  => Validated.valid(NodeKind.ToolExecution)
@@ -17,7 +17,7 @@ object CommandParser:
     case other             => Validated.invalidNel(s"Invalid node kind: $other")
   }
 
-  private val resourceTypeArgument: Argument[TransientResourceType] =
+  private given resourceTypeArgument: Argument[TransientResourceType] =
     Argument.from("resource-type") {
       case "git_worktree" => Validated.valid(TransientResourceType.GitWorktree)
       case "env_override" => Validated.valid(TransientResourceType.EnvOverride)
@@ -27,15 +27,16 @@ object CommandParser:
       case other          => Validated.invalidNel(s"Invalid resource type: $other")
     }
 
-  private val disposalPolicyArgument: Argument[DisposalPolicy] = Argument.from("disposal-policy") {
-    case "revert_on_conclusion" => Validated.valid(DisposalPolicy.RevertOnConclusion)
-    case "delete_after_test"    => Validated.valid(DisposalPolicy.DeleteAfterTest)
-    case "replace_in_final_cut" => Validated.valid(DisposalPolicy.ReplaceInFinalCut)
-    case "manual"               => Validated.valid(DisposalPolicy.Manual)
-    case other                  => Validated.invalidNel(s"Invalid disposal policy: $other")
-  }
+  private given disposalPolicyArgument: Argument[DisposalPolicy] =
+    Argument.from("disposal-policy") {
+      case "revert_on_conclusion" => Validated.valid(DisposalPolicy.RevertOnConclusion)
+      case "delete_after_test"    => Validated.valid(DisposalPolicy.DeleteAfterTest)
+      case "replace_in_final_cut" => Validated.valid(DisposalPolicy.ReplaceInFinalCut)
+      case "manual"               => Validated.valid(DisposalPolicy.Manual)
+      case other                  => Validated.invalidNel(s"Invalid disposal policy: $other")
+    }
 
-  private val entityKindArgument: Argument[EntityKind] = Argument.from("entity-kind") {
+  private given entityKindArgument: Argument[EntityKind] = Argument.from("entity-kind") {
     case "human"  => Validated.valid(EntityKind.Human)
     case "agent"  => Validated.valid(EntityKind.Agent)
     case "model"  => Validated.valid(EntityKind.Model)
@@ -44,7 +45,7 @@ object CommandParser:
     case other    => Validated.invalidNel(s"Invalid entity kind: $other")
   }
 
-  private val captureFidelityArgument: Argument[CaptureFidelity] =
+  private given captureFidelityArgument: Argument[CaptureFidelity] =
     Argument.from("capture-fidelity") {
       case "inferred"    => Validated.valid(CaptureFidelity.Inferred)
       case "intercepted" => Validated.valid(CaptureFidelity.Intercepted)
@@ -54,7 +55,7 @@ object CommandParser:
         )
     }
 
-  private val sliceFormatArgument: Argument[SliceFormat] = Argument.from("format") {
+  private given sliceFormatArgument: Argument[SliceFormat] = Argument.from("format") {
     case "prompt" => Validated.valid(SliceFormat.Prompt)
     case "human"  => Validated.valid(SliceFormat.Human)
     case "json"   => Validated.valid(SliceFormat.Json)
@@ -69,7 +70,7 @@ object CommandParser:
     Opts.option[String]("goal", "Goal title", "g"),
     Opts.option[String]("intent", "Detailed goal intent", "i").orNone,
     Opts.option[String]("author", "Author entity name", "u").orNone,
-    Opts.option[EntityKind]("author-kind", "Author entity kind")(entityKindArgument).orNone,
+    Opts.option[EntityKind]("author-kind", "Author entity kind").orNone,
     Opts.option[String]("created-at", "ISO-8601 creation timestamp").orNone,
   ).mapN(CliCommand.Init.apply)
 
@@ -99,14 +100,12 @@ object CommandParser:
 
   private val nodeAddOpts = (
     Opts.argument[String]("crystal-id"),
-    Opts.option[NodeKind]("kind", "Node kind", "k")(nodeKindArgument),
+    Opts.option[NodeKind]("kind", "Node kind", "k"),
     Opts.option[String]("summary", "Content summary", "s"),
     Opts.options[String]("parent", "Parent node IDs", "p").orEmpty,
     Opts.option[String]("author", "Author/Actor entity ID", "u").orNone,
     Opts
-      .option[CaptureFidelity]("fidelity", "Capture fidelity guarantee (inferred, intercepted)")(
-        captureFidelityArgument,
-      )
+      .option[CaptureFidelity]("fidelity", "Capture fidelity guarantee (inferred, intercepted)")
       .withDefault(CaptureFidelity.Inferred),
     Opts.option[String]("anchor", "Semantic anchor label for node", "a").orNone,
     Opts.option[String]("timestamp", "ISO-8601 timestamp for the event").orNone,
@@ -119,7 +118,7 @@ object CommandParser:
     Opts.option[Int]("head", "Take first N nodes of slice").orNone,
     Opts.option[Int]("tail", "Take last N nodes of slice").orNone,
     Opts
-      .option[SliceFormat]("format", "Output format (prompt, human, json)")(sliceFormatArgument)
+      .option[SliceFormat]("format", "Output format (prompt, human, json)")
       .withDefault(SliceFormat.Prompt),
     Opts.option[String]("fork-to", "Materialize slice into a new crystal with lineage").orNone,
     Opts.flag("prune", "Tag/prune cleavage point in parent crystal when forking").orFalse,
@@ -129,7 +128,7 @@ object CommandParser:
 
   private val entityRegisterOpts = (
     Opts.option[String]("name", "Entity name", "n"),
-    Opts.option[EntityKind]("kind", "Entity kind", "k")(entityKindArgument),
+    Opts.option[EntityKind]("kind", "Entity kind", "k"),
   ).mapN(CliCommand.EntityRegister.apply)
 
   private val lessonAddOpts = (
@@ -150,10 +149,10 @@ object CommandParser:
 
   private val leaseOpts = (
     Opts.argument[String]("crystal-id"),
-    Opts.option[TransientResourceType]("type", "Resource type", "t")(resourceTypeArgument),
+    Opts.option[TransientResourceType]("type", "Resource type", "t"),
     Opts.option[String]("path", "Path of resource", "p").orNone,
     Opts.option[String]("desc", "Description", "d"),
-    Opts.option[DisposalPolicy]("policy", "Disposal policy")(disposalPolicyArgument),
+    Opts.option[DisposalPolicy]("policy", "Disposal policy"),
     Opts.option[String]("acquired-at", "ISO-8601 acquisition timestamp").orNone,
   ).mapN(CliCommand.TransientLeaseCmd.apply)
 
