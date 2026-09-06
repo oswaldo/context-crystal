@@ -40,6 +40,10 @@
       "type": ["string", "null"],
       "description": "Optional parent crystal identifier when structured as a sub-context dendrite"
     },
+    "origin": {
+      "$ref": "#/$defs/CrystalOrigin",
+      "description": "Optional provenance origin tracking parent crystal, node, and reason for forking"
+    },
     "goal": {
       "$ref": "#/$defs/Goal"
     },
@@ -76,6 +80,16 @@
     }
   },
   "$defs": {
+    "CrystalOrigin": {
+      "type": "object",
+      "required": ["parentCrystalId"],
+      "properties": {
+        "parentCrystalId": { "type": "string" },
+        "parentNodeId": { "type": ["string", "null"] },
+        "reason": { "type": ["string", "null"] },
+        "createdAt": { "type": ["string", "null"], "format": "date-time" }
+      }
+    },
     "Goal": {
       "type": "object",
       "required": ["title", "intent", "status", "acceptanceCriteria"],
@@ -111,6 +125,10 @@
         },
         "name": { "type": "string" },
         "metadata": {
+          "type": "object",
+          "additionalProperties": { "type": "string" }
+        },
+        "endpoints": {
           "type": "object",
           "additionalProperties": { "type": "string" }
         }

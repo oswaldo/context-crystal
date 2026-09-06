@@ -138,4 +138,5 @@ given Codec[TransientLease] = deriveCodec
 given Codec[ActionAuditEntry] = deriveCodec
 given Codec[LessonLearned] = deriveCodec
 given Codec[Artifact] = deriveCodec
+given Codec[CrystalOrigin] = deriveCodec
 given Codec[ContextCrystal] = deriveCodec

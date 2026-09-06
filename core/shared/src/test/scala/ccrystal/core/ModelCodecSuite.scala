@@ -144,3 +144,25 @@ class ModelCodecSuite extends FunSuite:
     val decodedNode = decode[DAGNode](node.asJson.noSpaces)
     assertEquals(decodedNode, Right(node))
 
+  test("Round-trip serialization of CrystalOrigin and Entity endpoints"):
+    val origin = CrystalOrigin(
+      parentCrystalId = "cc-parent-999",
+      parentNodeId = Some("node-parent-42"),
+      reason = Some("fork_bug_investigation"),
+      createdAt = Some("2026-09-06T04:00:00Z")
+    )
+    val entity = Entity(
+      id = "ent-worker-1",
+      kind = EntityKind.Agent,
+      name = "Subagent Worker",
+      metadata = Map("cluster" -> "gpu-us-east"),
+      publicKey = Some("ssh-ed25519 AAAAC3NzaC1lZDI1NTE5..."),
+      endpoints = Map(
+        "inbox" -> ".ccrystals/_comms/ent-worker-1/inbox",
+        "rpc" -> "http://127.0.0.1:9090"
+      )
+    )
+
+    assertEquals(decode[CrystalOrigin](origin.asJson.noSpaces), Right(origin))
+    assertEquals(decode[Entity](entity.asJson.noSpaces), Right(entity))
+

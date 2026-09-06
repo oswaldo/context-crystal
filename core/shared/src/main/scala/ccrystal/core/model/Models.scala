@@ -38,7 +38,8 @@ case class Entity(
   kind: EntityKind,
   name: String,
   metadata: Map[String, String] = Map.empty,
-  publicKey: Option[String] = None
+  publicKey: Option[String] = None,
+  endpoints: Map[String, String] = Map.empty
 ) derives CanEqual
 
 case class EntityRegistry(
@@ -136,6 +137,13 @@ case class Artifact(
   sha256: Option[String] = None
 ) derives CanEqual
 
+case class CrystalOrigin(
+  parentCrystalId: String,
+  parentNodeId: Option[String] = None,
+  reason: Option[String] = None,
+  createdAt: Option[String] = None
+) derives CanEqual
+
 case class ContextCrystal(
   schemaVersion: String,
   id: String,
@@ -143,6 +151,7 @@ case class ContextCrystal(
   createdAt: String,
   updatedAt: String,
   parentCrystalId: Option[String] = None,
+  origin: Option[CrystalOrigin] = None,
   caveId: Option[String] = None,
   defaultAuthorId: Option[String] = None,
   goal: Goal,
