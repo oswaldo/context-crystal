@@ -211,3 +211,6 @@ object CommandParser:
 
   def parse(args: List[String]): Either[String, CliCommand] =
     mainCommand.parse(args).leftMap(_.toString)
+
+  def parseWithHelp(args: List[String]): Either[Help, CliCommand] =
+    mainCommand.parse(args)

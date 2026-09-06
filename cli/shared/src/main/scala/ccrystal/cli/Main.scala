@@ -11,10 +11,18 @@ object Main:
     val runner    = Runner(store)
 
     if args.isEmpty then
-      println("Usage: ccrystal <subcommand> [options]")
-      println("       ccrystal --batch <script-file>")
-      println("       ccrystal \"<cmd1>; <cmd2>; <cmd3>\"")
-      System.exit(1)
+      println(
+        """Context Crystal: Zero-overhead context & DAG lifecycle engine
+          |
+          |Usage:
+          |  ccrystal <subcommand> [options]
+          |  ccrystal "<cmd1>; <cmd2>; ..."
+          |  ccrystal --batch <script-file>
+          |
+          |Run 'ccrystal --help' for a full list of available subcommands and options.
+          |""".stripMargin.trim,
+      )
+      System.exit(0)
 
     if args.length == 1 && args(0).contains(";") then
       // Chained execution
@@ -42,7 +50,7 @@ object Main:
           System.err.println(s"Batch execution error: $err")
           System.exit(1)
     else
-      CommandParser.parse(args.toList) match
+      CommandParser.parseWithHelp(args.toList) match
         case Right(cmd) =>
           runner.run(cmd) match
             case Right(output) =>
@@ -51,6 +59,13 @@ object Main:
             case Left(err) =>
               System.err.println(s"Error: $err")
               System.exit(1)
-        case Left(parseErr) =>
-          System.err.println(s"Command parse error: $parseErr")
-          System.exit(1)
+        case Left(help) =>
+          if help.errors.isEmpty then
+            println(help)
+            System.exit(0)
+          else
+            System.err.println(help)
+            System.err.println(
+              "\nRun 'ccrystal --help' for a full list of available subcommands and options.",
+            )
+            System.exit(1)
