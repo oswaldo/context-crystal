@@ -19,7 +19,7 @@
 - [x] Task: Implement - Wire `--fork-to <name>` to persist new child crystal via `CrystalStore` with provenance lineage [e67b3a0]
 - [x] Task: Phase Verification & Checkpoint [e67b3a0]
 
-## Phase 4: Full Cross-Platform & Native Verification
-- [ ] Task: Run full test suite across `coreJVM`, `coreNative`, `coreJS`, `cliJVM`, `cliNative`
-- [ ] Task: Format and lint pass (`scalafmtCheckAll`, `scalafix`)
-- [ ] Task: Phase Verification & Final Review Checkpoint
+## Phase 4: Full Cross-Platform & Native Verification [checkpoint: complete]
+- [x] Task: Run full test suite across `coreJVM`, `coreNative`, `coreJS`, `cliJVM`, `cliNative`
+- [x] Task: Format and lint pass (`scalafmtCheckAll`, `scalafix`)
+- [x] Task: Phase Verification & Final Review Checkpoint

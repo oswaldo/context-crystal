@@ -8,18 +8,21 @@
 - **Track 2 (`cli_fs_engine_20260829`):** Complete `[x]` (Native CLI, decline parser, FsCrystalStore, batch execution, `cast` / `hydrate`, and `refresh`).
 - **Track 3 (`cave_entities_authorship_20260830`):** Complete `[x]` (Cave entity registry `.ccrystals/entities.json`, `AuthorshipMode`, deterministic agent collision suffix resolution, compact block attribution, extensible `metadata` maps, CLI entity commands).
 - **Track 4 (`capture_fidelity_20260906`):** Complete `[x]` (Data provenance, `CaptureFidelity` enum on `DAGNode`, CLI `--fidelity`).
-- **Track 5 (`crystal_cleavage_and_slicing_20260906`):** Active `[ ]` (Semantic anchors on `DAGNode`, `ccrystal slice`, fragment extraction, fork to child crystal).
-- **Binary Location:** `./cli/native/target/scala-3.3.4/ccrystal-cli`
+- **Track 5 (`crystal_cleavage_and_slicing_20260906`):** Complete `[x]` (Semantic anchors on `DAGNode`, `ccrystal slice`, fragment extraction, fork to child crystal).
+- **Binary Location:** `./cli/native/target/scala-3.3.4/ccrystal-cli` (installed in `~/.local/bin/ccrystal`)
 - **Codeberg Remote:** Ready to push with conventional commits and Git Notes.
 
 ---
 
-## 2. Immediate Next Agenda: Track 5 (Crystal Cleavage & Fragment Slicing)
-Implement cleavage and fragment slicing:
-1. **Semantic Anchors:** Optional `anchor: Option[String]` on `DAGNode` allowing human/AI-readable cleavage landmarks.
-2. **Pure Slicing Traversal:** `CrystalSlicer` in `core` supporting linear (`--from`, `--to`, `--head`, `--tail`) and topological sub-graph extractions.
-3. **CLI Commands & Formats:** `ccrystal slice` with `--format prompt|human|json`, plus `--fork-to <name>` for materialized provenance lineage.
-4. **Follow-up Track:** Agent Skill & Interaction Loop (Track 6), consuming these slice/fork verbs directly.
+## 2. Immediate Next Agenda: Track 6 (Agent Skill & Interaction Loop)
+The next milestone is to build the **Agent Skill** (`skills/context-crystal/SKILL.md` + Antigravity/Claude/Cursor adapters) to unlock:
+1. **Verbs & Utterances:**
+   - `"Crystallize this context"` / `"crystalise session"`: Snapshot live session into `.ccrystals/<name>/` with agent entity identity.
+   - `"Resume work on last task"` / `"cast crystal"`: Query and cast the latest crystal back into prompt.
+   - `"Slice session from anchor X"` / `"ccrystal slice"`: Cleave long sessions and fork clean child contexts with unbroken lineage.
+   - `"What crystal is closer to completion?"`: Prioritize and inspect open crystals.
+2. **Deterministic Context Forking:** Leverage `ccrystal slice --fork-to` to spin off diverging scope into new crystals linked to `origin`.
+3. **Dogfooding:** Use Context Crystal within this repository to plan and execute subsequent tracks.
 
 ---
 
