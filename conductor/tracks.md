@@ -21,3 +21,6 @@
 
 - [x] **Track: Agent Skill, Self-Bootstrapping & Interaction Loop**  
   *Link: [conductor/tracks/agent_skill_interaction_loop_20260906/index.md](./tracks/agent_skill_interaction_loop_20260906/index.md)*
+
+- [ ] **Track: Destructive Lifecycle Cleanup: Crystal Deletion and Entity Deregistration**  
+  *Link: [conductor/tracks/destructive_lifecycle_cleanup_20260906/index.md](./tracks/destructive_lifecycle_cleanup_20260906/index.md)*
