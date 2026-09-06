@@ -15,3 +15,6 @@
 
 - [x] **Track: Data Provenance & Capture Fidelity**  
   *Link: [conductor/tracks/capture_fidelity_20260906/index.md](./tracks/capture_fidelity_20260906/index.md)*
+
+- [ ] **Track: Crystal Cleavage & Fragment Slicing**  
+  *Link: [conductor/tracks/crystal_cleavage_and_slicing_20260906/index.md](./tracks/crystal_cleavage_and_slicing_20260906/index.md)*
