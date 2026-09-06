@@ -67,6 +67,53 @@ class CommandParserSuite extends FunSuite:
       CliCommand.Cast("my-crystal", depth = 10, summaryOnly = true),
     )
 
+  test("Parses 'cast' with selective beam shaping flags (--from, --to, --tail)"):
+    val castArgs = List(
+      "cast",
+      "my-crystal",
+      "--from",
+      "arch_init",
+      "--to",
+      "tests_pass",
+      "--tail",
+      "5",
+    )
+    val parsedCast = CommandParser.parse(castArgs)
+    assert(parsedCast.isRight, "Expected successful parse of cast with beam shaping")
+    assertEquals(
+      parsedCast.toOption.get,
+      CliCommand.Cast(
+        "my-crystal",
+        from = Some("arch_init"),
+        to = Some("tests_pass"),
+        tail = Some(5),
+        summaryOnly = false,
+      ),
+    )
+
+  test("Parses 'hydrate' with selective beam shaping flags"):
+    val hydrateArgs = List(
+      "hydrate",
+      "my-crystal",
+      "--from",
+      "checkpoint-1",
+      "--tail",
+      "3",
+      "--summary-only",
+    )
+    val parsedHydrate = CommandParser.parse(hydrateArgs)
+    assert(parsedHydrate.isRight, "Expected successful parse of hydrate with beam shaping")
+    assertEquals(
+      parsedHydrate.toOption.get,
+      CliCommand.Cast(
+        "my-crystal",
+        from = Some("checkpoint-1"),
+        to = None,
+        tail = Some(3),
+        summaryOnly = true,
+      ),
+    )
+
   test("Parses 'node add' command"):
     val nodeArgs =
       List("node", "add", "my-crystal", "--kind", "tool_execution", "--summary", "Ran test suite")
