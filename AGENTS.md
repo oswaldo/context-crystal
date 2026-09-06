@@ -72,6 +72,7 @@ sbt scalafmtCheckAll
 - **Zero-Reflection / Pure Functional:** Use immutable case classes, enums, ADTs, and pure functions.
 - **Strict Codecs:** Ensure JSON serialization round-trips adhere strictly to `spec/v1/context-crystal.json`.
 - **Transient Cleanup:** Clean or promote all transient resource leases before marking tasks complete.
+- **Commit Signing:** All commits must be cryptographically signed (e.g., using SSH or GPG keys).
 - **Conventional Commits:** Follow standard conventions:
   - `feat(core): ...`, `feat(cli): ...`, `feat(spec): ...`
   - `test(core): ...`, `test(cli): ...`
