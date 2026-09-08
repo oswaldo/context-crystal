@@ -395,6 +395,28 @@ class Runner(
         else executeDeregister(entityId)
       }
 
+    case CliCommand.EntityConventions =>
+      Right(
+        """================================================================================
+          |Context Crystal: Entity Naming & PII Protection Conventions
+          |================================================================================
+          |
+          |Prefix   Kind     Example Handle    Canonical Entity ID
+          |--------------------------------------------------------------------------------
+          |usr_     Human    john / lead       usr_john / usr_lead
+          |agt_     Agent    antigravity       agt_antigravity
+          |mdl_     Model    gemini-flash      mdl_gemini_flash
+          |tool_    Tool     bash-runner       tool_bash_runner
+          |sys_     System   git-sync          sys_git_sync
+          |
+          |Core Guidelines:
+          |1. Handles should be short alphanumeric slugs (lowercase, hyphens/underscores).
+          |2. Avoid personal full names, accents, or diacritics (e.g. prefer 'john' over 'John Doe Júnior').
+          |3. Crystals are committed to Git: protect Personally Identifiable Information (PII) from unintended public exposure.
+          |4. For single-developer contexts, the entity display name is optional and defaults to the handle.
+          |================================================================================""".stripMargin.trim,
+      )
+
     case CliCommand.Mcp(transport) =>
       if transport != "stdio" then
         Left(s"Unsupported MCP transport: '$transport'. Only 'stdio' is currently supported.")

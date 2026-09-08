@@ -457,3 +457,18 @@ class CommandParserSuite extends FunSuite:
     assert(res.isLeft)
     val helpText = res.left.toOption.get.toString
     assert(helpText.contains("--for-ai"), "Help must list --for-ai")
+
+  test("Parses 'entity conventions' command into CliCommand.EntityConventions"):
+    val convArgs = List("entity", "conventions")
+    val parsed   = CommandParser.parse(convArgs)
+    assertEquals(parsed.isRight, true)
+    assertEquals(parsed.toOption.get, CliCommand.EntityConventions)
+
+  test("init --help contains PII warning and handle guidance for --author"):
+    val res = CommandParser.parseWithHelp(List("init", "--help"))
+    assert(res.isLeft)
+    val helpText = res.left.toOption.get.toString
+    assert(
+      helpText.contains("avoid full legal names") || helpText.contains("PII"),
+      "init --help must warn against PII in --author",
+    )

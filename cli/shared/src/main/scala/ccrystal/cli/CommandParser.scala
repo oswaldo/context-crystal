@@ -69,7 +69,13 @@ object CommandParser:
     Opts.argument[String]("name"),
     Opts.option[String]("goal", "Goal title", "g"),
     Opts.option[String]("intent", "Detailed goal intent", "i").orNone,
-    Opts.option[String]("author", "Author entity name", "u").orNone,
+    Opts
+      .option[String](
+        "author",
+        "Author entity handle/alias (e.g. 'john' or 'maintainer'; avoid full legal names in public repos)",
+        "u",
+      )
+      .orNone,
     Opts.option[EntityKind]("author-kind", "Author entity kind").orNone,
     Opts.option[String]("created-at", "ISO-8601 creation timestamp").orNone,
   ).mapN(CliCommand.Init.apply)
@@ -127,9 +133,15 @@ object CommandParser:
   private val entityListOpts = Opts.unit.map(_ => CliCommand.EntityList)
 
   private val entityRegisterOpts = (
-    Opts.option[String]("name", "Entity name", "n"),
+    Opts.option[String](
+      "name",
+      "Entity handle or name (e.g. 'john'; clean alphanumeric handle, avoid PII or accents)",
+      "n",
+    ),
     Opts.option[EntityKind]("kind", "Entity kind", "k"),
   ).mapN(CliCommand.EntityRegister.apply)
+
+  private val entityConventionsOpts = Opts.unit.map(_ => CliCommand.EntityConventions)
 
   private val entityDeregisterOpts = (
     Opts.argument[String]("entity-id"),
@@ -232,6 +244,12 @@ object CommandParser:
               Opts.subcommand("deregister", "Deregister an entity with cascading deletion")(
                 entityDeregisterOpts,
               ),
+            )
+            .orElse(
+              Opts.subcommand(
+                "conventions",
+                "Display canonical entity naming schemes and PII conventions",
+              )(entityConventionsOpts),
             ),
         ),
       )

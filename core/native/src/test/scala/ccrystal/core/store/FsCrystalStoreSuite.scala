@@ -170,3 +170,8 @@ class FsCrystalStoreSuite extends FunSuite:
     assert(entitiesMap.contains(agt1.toOption.get.id))
     assert(entitiesMap.contains(agt2.toOption.get.id))
     assert(entitiesMap.contains(agt3.toOption.get.id))
+
+    // Resolve entity with diacritics strips accents cleanly to produce readable slug
+    val diacriticRes = store.resolveOrCreateEntity("John Doe Júnior", EntityKind.Human)
+    assert(diacriticRes.isRight)
+    assertEquals(diacriticRes.toOption.get.id, "usr_john_doe_junior")

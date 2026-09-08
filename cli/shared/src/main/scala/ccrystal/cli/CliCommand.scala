@@ -62,6 +62,7 @@ enum CliCommand derives CanEqual:
   case EntityList
   case EntityRegister(name: String, kind: EntityKind)
   case EntityDeregister(entityId: String, force: Boolean = false)
+  case EntityConventions
   case Cast(
       crystalId: String,
       from: Option[String] = None,
