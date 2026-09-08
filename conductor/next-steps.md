@@ -13,26 +13,26 @@
 - **Track 6 (`agent_skill_interaction_loop_20260906`):** Complete `[x]` (Canonical agent skill, autonomous bootstrap, decoupled store `CCRYSTAL_STORE`, explicit event timestamps, adapters for Antigravity, Claude Code, and Cursor).
 - **Track 7 (`destructive_lifecycle_cleanup_20260906`):** Complete `[x]` (Destructive operations, `ccrystal delete`, `ccrystal entity deregister`, cascade cleanup, deletion impact preview, interactive y/N confirmation, --force bypass, batch safety, and PII protection guidelines).
 - **Track 8 (`native_mcp_server_engine_20260906`):** Complete `[x]` (Native stdio JSON-RPC 2.0 MCP server `ccrystal mcp`, decoupled `McpHandler` & `McpTransport`, tools, dynamic state/DAG resources, prompts `hydrate_context` & `triage_cave`, client configs for Claude/Cursor/Zed, and local registration).
+- **Track 9 (`selective_context_hydration_20260907`):** Complete `[x]` (Selective context hydration, beam shaping with `--from`, `--to`, `--tail`, sub-DAG slice reconstitution, and prompt rendering).
 - **Binary Location:** `./cli/native/target/scala-3.9.0/ccrystal-cli` (installed in `~/.local/bin/ccrystal`)
 - **Codeberg Remote:** Ready to push with conventional commits and Git Notes.
 
 ---
 
-## 2. Immediate Next Agenda: Selective Context Hydration & Beam Shaping
+## 2. Immediate Next Agenda: Public Documentation Website & Launch Preparation
 
-The next candidate milestone is **Track 9: Selective Context Hydration & Beam Shaping (`ccrystal cast/hydrate --from`)**:
+The next candidate milestone is **Track 8: Public Documentation Website, Interactive Showcase & Launch Preparation**:
 
-1. **Context & Vision:** Enhance `ccrystal cast` and `ccrystal hydrate` with sub-DAG slice selector flags (`--from <anchor|id>`, `--to <anchor|id>`, `--tail <N>`).
-2. **Operational Value:** Reconstitutes living state container (Goal, Tasks, Leases, Lessons) while focusing the state transition beam on a specific milestone, keeping prompts lean without requiring permanent forking.
+1. **Context & Vision:** Build the official public portal, documentation site, and launchpad for Context Crystal (deployed via GitHub Pages / Codeberg Pages).
+2. **Components:**
+   - Static docs framework (VitePress / Starlight) with custom branding and interactive architecture diagrams.
+   - Interactive terminal demos (vhs/asciinema) demonstrating zero-token speed, cleavage/slicing, and provenance audit trails.
+   - Public developer guide, schema explorer (`spec/v1/context-crystal.json`), and quickstart installer guide.
 
 ---
 
 ## 3. Backlog & Future Track Roadmap
 
-- **Track 6: Agent Skill & Interaction Loop:** Native adapters for Antigravity, Claude Code, and Cursor (`skills/context-crystal/SKILL.md`), unlocking conversational verbs (`crystallize`, `cast`, `slice`, `fork`) and dogfooding.
-- **Track 7: Selective Context Hydration & Beam Shaping (`ccrystal cast/hydrate --from`):**
-  - *Context & Vision:* Enhance `ccrystal cast` and `ccrystal hydrate` with slice selector flags (`--from <anchor|id>`, `--to <anchor|id>`, `--tail <N>`).
-  - *Operational Value:* Reconstitutes the living state container (Goal, Tasks, Leases, Lessons) while focusing the state transition beam on a specific sub-DAG or milestone, keeping prompts lean without requiring a permanent fork.
 - **Track 8: Public Documentation Website, Interactive Showcase & Launch Preparation:**
   - *Context & Vision:* Build the official public portal, documentation site, and launchpad for Context Crystal (deployed via GitHub Pages / Codeberg Pages).
   - *Components:*
@@ -57,4 +57,11 @@ The next candidate milestone is **Track 9: Selective Context Hydration & Beam Sh
     - Untrusted Data Provenance Stamping: Explicitly annotate tool outputs and external artifacts as untrusted data boundaries in prompt beams.
     - Cryptographic Verification: Leverage `AuthorshipMode.Signed` to verify authorized human/agent origins and prevent node spoofing.
     - Zero-Reflection Codec Hardening: Strict Circe AST validation preventing deserialization and malformed JSON bombs.
+- **Track 16: Artifact & World-State Ontology (Virtual & Physical Substrates):**
+  - *Context & Vision:* Elevate artifacts, physical environments, and ambient invariants to first-class citizens alongside Entities and DAG transitions. Bridges the gap between conversational deliberation and physical/virtual reality.
+  - *Components:*
+    - **Schema & Core Models (`spec/v1.1`):** `ArtifactSubstrate` (`Virtual`, `Physical`), `ArtifactRole` (`Target`, `Instrument`, `Precondition`), `PhysicalLocation` (civic address, RFC 5870 `geo:`, room/bench coordinates), optional standard `uri`.
+    - **Causal DAG Links:** Directional artifact tracking on `DAGNode` (`inputArtifactIds`, `outputArtifactIds`, `preconditionArtifactIds`).
+    - **Cave Artifact Registry (`.ccrystals/artifacts.json` & `crystal://artifacts`):** Long-lived shared assets (lab environments, tooling profiles, canonical repositories).
+    - **Beam Shaping Integration:** Projecting active deliverables, available instruments, and environmental invariants directly into the prompt beam during context hydration.
 - **Maintenance / Chore (Completed / Locked):** Upgraded to Scala 3.9.0 LTS and sbt-scala-native 0.5.12 with zero warnings. sbt 2.0.8 compatibility locked at sbt 1.10.7 pending community sbt 2.x cross-publishing of required plugins (sbt-crossproject, sbt-updates, scalafix, scalafmt).

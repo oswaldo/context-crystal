@@ -2,12 +2,14 @@
 
 ## 1. Vision & Core Philosophy
 
-**Context Crystal** is an open, standardized interchange schema and context lifecycle ecosystem designed to decouple *context*, *entities*, and *tools* from the ephemeral boundaries of chat sessions and agent runtimes.
+**Context Crystal** is an open, standardized interchange schema and context lifecycle ecosystem designed to decouple *context*, *entities*, and *tools* from the ephemeral boundaries of chat sessions and agent runtimes. Engineered to empower humans and AI across every horizon of work—from micro-ephemeral, single-task crystals that live for minutes, to permanent, multi-generational cave knowledge lattices that anchor long-term systems, physical environments, and collaborative intelligence.
 
 Drawing inspiration from the philosophy of **OpenTimelineIO (OTIO)** in media production—which created a vendor-agnostic, immutable data interchange format for edit timelines across disparate software—Context Crystal provides a unified, structured schema for AI-assisted collaborative work.
 
 ### The Crystal Metaphor
+
 As work progresses in AI-assisted environments, information coalesces like atoms and molecules organizing into a crystalline lattice. A Context Crystal can range from a simple linear facet to an intricate dendritic snowflake structure:
+
 - **Lattice Nucleus (Core Intent):** The foundational goal and acceptance criteria driving the context.
 - **Bonds & Facets (State Transitions & Lineage):** Verifiable transitions, tool executions, decisions, and artifacts that form the structural matrix.
 - **Structural Branches (Dendrites):** Branching explorations and sub-tasks that may reference or spawn nested/external contexts while remaining anchored to the central crystal.
@@ -29,6 +31,7 @@ As work progresses in AI-assisted environments, information coalesces like atoms
 11. **Zero-Learning-Curve Agent Interoperability:** Native agent skills and conversational utterances ("crystallize session", "cast crystal") enable AI tools to read and advance crystals out of the box.
 12. **Decoupled Context Repositories & Clean Codebase Invariant:** Context stores can be completely decoupled from the project's source tree via out-of-tree companion repositories (`CCRYSTAL_STORE` / `--store`). Public open-source codebases remain 100% clean and free of tool clutter, local notes, or private agent identities, while companion context repositories maintain full version-controlled lineage.
 13. **Agent-as-Operator & Self-Bootstrapping UX:** Zero human cognitive overhead. Developers never need to learn CLI flags, subcommands, or manual installation procedures; agents autonomously detect missing binaries, execute self-bootstrapping installation recipes, and manage state transitions via atomic batches.
+14. **First-Class Artifacts & World-State Grounding:** Decouples deliberation from reality by formalizing artifacts across virtual (files, code, commits, APIs) and physical (devices, materials, civic/bench locations) substrates. Explicitly distinguishes between targets (the goal/product), instruments (the tools/apparatus), and preconditions (ambient environmental invariants like voltage, architecture, or runtime constraints) to guarantee causal clarity in the state transition DAG.
 
 ---
 
@@ -48,7 +51,9 @@ Context Crystal is organized as a unified monorepo supporting specification, cor
 ## 4. Storage & Lifecycle Model
 
 ### A. Folder Anatomy (`.ccrystals/<crystal-name>/`)
+
 When using the default filesystem backend, each named crystal is represented as a self-contained directory:
+
 - `crystal.json`: The machine-readable state transition DAG, envelope metadata, entity masks, and lineage graph.
 - `artifacts/`: Directory containing artifacts generated during the lifecycle (diffs, diagrams, specs, logs).
 - `tasks.md` *(Default zero-config fallback)*: Lightweight checklist tracking sub-goals when no external framework (like Conductor or OpenSpec) is active.
@@ -57,21 +62,26 @@ When using the default filesystem backend, each named crystal is represented as 
 - `ccrystals/` *(Optional sub-contexts)*: Nested directories for dendritic sub-crystals.
 
 ### B. Crystal Comms (Lock-Free Multi-Entity Mailbox Protocol)
+
 To coordinate parallel entities without file collisions or distributed lock contention, crystals support a filesystem mailbox convention:
+
 - `.ccrystals/_comms/<entity-id>/inbox/`: Directory where sending entities drop JSON-formatted signal envelopes.
 - Entities announce their reachable coordinates (`inbox`, `rpc`, `url`) in their `Entity.endpoints` registry.
 - Processing protocol: Receiving entity reads messages from its inbox, executes tasks, and atomically moves them to `processed/` or archives them with a timestamped receipt.
 
 ### C. Crystal Aging & Lifecycle States (Active, Solid, Stale)
+
 - **Active:** Crystals actively receiving DAG transitions or open transient leases.
 - **Solid:** Concluded or stable crystals untouched for a configurable retention threshold (e.g. 30 days) with all leases cleaned and lessons addressed.
 - **Stale / Melting / GC:** Stale crystals with open friction or obsolete dendrites can be "melted" (summarized into compact milestone nodes) or garbage-collected into `.ccrystals/archive/`.
 
 ### D. Transient Resource Leases & Cleanup Gates
+
 - **Explicit Lifecycle Bounds:** Temporary resources (e.g., git worktrees, debug flags, dummy media files) are registered with explicit disposal criteria (`revert_on_conclusion`, `delete_after_test`, `replace_in_final_cut`).
 - **Zero Orphaned Scaffolding:** Fast CLI checks prevent premature crystal closure if transient resources remain un-reverted or un-cleaned.
 
 ### E. Lessons Learned & Closed-Loop Auditing
+
 - **Actionable Post-Mortem:** At crystal conclusion, operational lessons can be reviewed and marked as "acted upon" (e.g., converted into a rule update, prompt adjustment, or skill improvement).
 - **Deterministic Auditing:** Fast, non-LLM Scala Native scripts can scan all crystals to report unhandled lessons learned, track action trails, or enforce cleanup policies before archiving.
 
@@ -80,6 +90,7 @@ To coordinate parallel entities without file collisions or distributed lock cont
 ## 5. Industry Context & References
 
 The architectural philosophy of Context Crystal aligns with emerging industry standards and principles in software engineering and AI systems:
+
 - **Agent Context Development Lifecycle (ACDL):** Treating context as a versioned, testable, first-class software lifecycle artifact rather than ephemeral chat strings ([The New Stack: Agent Context Development Lifecycle](https://thenewstack.io/agent-context-development-lifecycle/)).
 - **Pragmatic, Transparent AI Engineering:** Focusing AI tools on surgical, auditable problem solving rather than personality simulation ([Linus Torvalds on Pragmatic AI Bug Investigation](https://www.xda-developers.com/linus-used-ai-bug-llm-critics-face-choice/)).
 - **Strict Provenance & Attribution:** Maintaining tamper-evident records of human vs machine contributions to ensure supply chain and open-source compliance ([Debian Linux LLM Policy & Attribution](https://www.helpnetsecurity.com/2026/08/31/debian-linux-llm-policy/)).
@@ -89,6 +100,7 @@ The architectural philosophy of Context Crystal aligns with emerging industry st
 ## 6. Boundaries & Explicit Non-Goals
 
 To maintain high focus and interoperability, Context Crystal explicitly excludes:
+
 - **Planning & Methodology Enforcement:** Does not mandate or enforce specific planning schemas (e.g., Conductor, OpenSpec, SpecKit); it serves as the underlying context and state interchange format for all of them.
 - **Long-Term Memory Search & Storage:** Vector databases, embedding indexes, semantic search engines, and knowledge vaults are considered external consumer/producer tools.
 - **Agent Runtime & Orchestration:** Model switching loops, autonomous execution loops, and scheduler daemons are the responsibility of the host engine/harness.

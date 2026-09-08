@@ -115,3 +115,8 @@ npx shellcheck skills/**/*.sh
   - `feat(core): ...`, `feat(cli): ...`, `feat(spec): ...`
   - `test(core): ...`, `test(cli): ...`
   - `chore(conductor): ...`, `docs(conductor): ...`
+- **Synthetic Example & Fixture Hygiene:** To prevent confusion, unintentional PII leaks, or perceived association with real-world organizations, always use standard, reserved neutral conventions in documentation, fixtures, and tests:
+  - Domains & URIs: RFC 2606 reserved domains (`example.com`, `example.org`, `example.net`).
+  - Organizations: Standard fictitious names (`Acme Corp`, `Example Industries`).
+  - Personas / Individual Names: Standard neutral cultural placeholders (e.g., *Max Mustermann* / *Erika Mustermann* in German contexts; *Fulano de Tal* / *Beltrano da Silva* in Brazilian contexts; *John Doe* / *Jane Roe* in Anglo contexts; *Jean Dupont* / *Marie Durand* in French contexts).
+  - Addresses & Coordinates: Standard fictitious civic references (e.g., *Musterstraße 1, Berlin*; *Rua das Flores 123, São Paulo*). Never use real corporate, private, or identifiable residential addresses.
