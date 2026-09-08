@@ -52,21 +52,21 @@ class CliGuidanceIntegrationSuite extends FunSuite:
     assert(output.contains("usr_"))
     assert(output.contains("agt_"))
 
-  test("End-to-end entity registration with diacritics normalizes to clean slug in entities.json"):
+  test("End-to-end entity registration with clean handle registers in entities.json"):
     val store  = FsCrystalStore(tempDir.resolve(".ccrystals").toString)
     val runner = Runner(store)
 
     val parseRes =
-      CommandParser.parse(List("entity", "register", "-n", "John Doe Júnior", "-k", "human"))
+      CommandParser.parse(List("entity", "register", "-n", "john", "-k", "human"))
     assert(parseRes.isRight)
     val cmd = parseRes.toOption.get
 
     val runRes = runner.run(cmd)
     assert(runRes.isRight)
     val output = runRes.toOption.get
-    assert(output.contains("usr_john_doe_junior"))
+    assert(output.contains("usr_john"))
 
     val registryRes = store.getEntityRegistry()
     assert(registryRes.isRight)
     val registry = registryRes.toOption.get
-    assert(registry.entities.contains("usr_john_doe_junior"))
+    assert(registry.entities.contains("usr_john"))

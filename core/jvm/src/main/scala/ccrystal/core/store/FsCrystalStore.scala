@@ -119,7 +119,7 @@ class FsCrystalStore(val rootPath: Path) extends CrystalStore:
           case EntityKind.Model  => "mdl"
           case EntityKind.System => "sys"
           case EntityKind.Tool   => "tool"
-        val slug      = toSlug(name)
+        val slug      = name.toLowerCase.replaceAll("[^a-z0-9_-]", "_")
         val entityId  = s"${prefix}_$slug"
         val newEntity = Entity(entityId, kind, name)
         registerEntity(newEntity)
@@ -143,20 +143,11 @@ class FsCrystalStore(val rootPath: Path) extends CrystalStore:
           case EntityKind.Model  => "mdl"
           case EntityKind.System => "sys"
           case EntityKind.Tool   => "tool"
-        val slug      = toSlug(newName)
+        val slug      = newName.toLowerCase.replaceAll("[^a-z0-9_-]", "_")
         val entityId  = s"${prefix}_$slug"
         val newEntity = Entity(entityId, kind, newName)
         registerEntity(newEntity)
     }
-
-  private def toSlug(raw: String): String =
-    val normalized =
-      java.text.Normalizer.normalize(raw, java.text.Normalizer.Form.NFD).replaceAll("\\p{M}", "")
-    normalized.toLowerCase
-      .replaceAll("[^a-z0-9_-]", "_")
-      .replaceAll("_+", "_")
-      .stripPrefix("_")
-      .stripSuffix("_")
 
   override def deleteCrystal(id: String): Either[String, CrystalDeletionResult] =
     try
