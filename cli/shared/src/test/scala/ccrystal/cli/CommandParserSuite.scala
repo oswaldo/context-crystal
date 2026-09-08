@@ -445,3 +445,15 @@ class CommandParserSuite extends FunSuite:
     val parsed  = CommandParser.parse(mcpArgs)
     assertEquals(parsed.isRight, true)
     assertEquals(parsed.toOption.get, CliCommand.Mcp("stdio"))
+
+  test("Parses '--for-ai' flag into CliCommand.ForAi"):
+    val aiArgs = List("--for-ai")
+    val parsed = CommandParser.parse(aiArgs)
+    assertEquals(parsed.isRight, true)
+    assertEquals(parsed.toOption.get, CliCommand.ForAi)
+
+  test("CommandParser.parseWithHelp(List('--help')) includes '--for-ai' flag description"):
+    val res = CommandParser.parseWithHelp(List("--help"))
+    assert(res.isLeft)
+    val helpText = res.left.toOption.get.toString
+    assert(helpText.contains("--for-ai"), "Help must list --for-ai")

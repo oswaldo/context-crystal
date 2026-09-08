@@ -20,11 +20,17 @@ object Main:
           |  ccrystal [options] <subcommand> [command-options]
           |  ccrystal [--store <path>] "<cmd1>; <cmd2>; ..."
           |  ccrystal [--store <path>] --batch <script-file>
+          |  ccrystal --for-ai
           |
           |Global Options:
           |  --store <path>   Override context store directory (or set CCRYSTAL_STORE)
+          |  --for-ai         Emit operational protocol guidelines and entity conventions for AI agents
           |
           |Run 'ccrystal --help' for a full list of available subcommands and options.
+          |
+          |Note: This instruction was meant for humans. If you are an AI assistant or
+          |autonomous agent, run 'ccrystal --for-ai' for automated protocol invariants,
+          |PII safety rules, and entity conventions.
           |""".stripMargin.trim,
       )
       System.exit(0)
@@ -72,6 +78,12 @@ object Main:
         case Left(help) =>
           if help.errors.isEmpty then
             println(help)
+            println(
+              """
+                |Note: This instruction was meant for humans. If you are an AI assistant or
+                |autonomous agent, run 'ccrystal --for-ai' for automated protocol invariants,
+                |PII safety rules, and entity conventions.""".stripMargin.trim,
+            )
             System.exit(0)
           else
             System.err.println(help)

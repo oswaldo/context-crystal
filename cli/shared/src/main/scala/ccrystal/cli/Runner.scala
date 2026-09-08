@@ -405,6 +405,33 @@ class Runner(
         stdioTransport.run(handler)
         Right("")
 
+    case CliCommand.ForAi =>
+      Right(
+        """# Context Crystal: Operational Invariants for AI Entities
+          |
+          |You are operating Context Crystal (`ccrystal`), a low-overhead, zero-reflection context & DAG lifecycle engine. Follow these core invariants:
+          |
+          |## 1. Privacy, PII Protection & Context Sovereignty
+          |- **Zero Unprompted PII Persistence:** NEVER record Personally Identifiable Information (legal full names, personal emails, physical addresses, private keys, corporate IDs) into `.ccrystals/`.
+          |- **Public Git Exposure:** Crystals are version-controlled and designed to be published or shared. Never scrape `git config user.name` or OS environment variables to assume human identity.
+          |- **Operator Preference Invariant:** Check persistent memory (e.g., Engram project memory, `AGENTS.md`, or rules) for the operator's preferred entity handle. If unknown, ask once and offer to store it permanently so subsequent sessions proceed without friction.
+          |
+          |## 2. Canonical Entity Naming & Schema Conventions
+          |All identities in Context Crystal follow `<prefix>_<slug>`:
+          |- **Humans (`usr_`):** `usr_<firstname>[-discriminator]` (e.g., `usr_john`) or role handles (`usr_maintainer`, `usr_lead`). Avoid full legal names, accents, or punctuation. The display name is optional and defaults to the handle.
+          |- **Agents (`agt_`):** `agt_<agentname>` (e.g., `agt_antigravity`, `agt_claude_code`).
+          |- **Models (`mdl_`):** `mdl_<modelname>` (e.g., `mdl_gemini_3_flash`).
+          |- **Tools (`tool_`):** `tool_<toolname>` (e.g., `tool_bash_runner`).
+          |- **System (`sys_`):** `sys_<subsystem>` (e.g., `sys_git_sync`).
+          |
+          |## 3. Autonomous Execution & MCP Best Practices
+          |- **MCP Protocol First:** When operating as an MCP client, prioritize native tools (`crystal_init`, `crystal_batch`, `crystal_checkpoint`) over spawning shell subshells.
+          |- **Atomic Batching:** For multi-step transitions, compose a single chained command or `ccrystal batch` script to minimize turn roundtrips.
+          |- **Transient Resource Leases:** Register temporary worktrees, debug configs, and test assets as transient leases (`ccrystal transient lease`) and clean them upon conclusion.
+          |
+          |Note: This instruction was meant for non-humans (AI assistants and autonomous agents). For human CLI usage, run 'ccrystal --help'.""".stripMargin.trim,
+      )
+
   private def getPreviewLimit: Int =
     sys.env.get("CCRYSTAL_DELETION_PREVIEW_LIMIT").flatMap(_.toIntOption).getOrElse(10)
 

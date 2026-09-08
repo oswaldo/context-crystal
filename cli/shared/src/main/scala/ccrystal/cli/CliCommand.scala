@@ -74,6 +74,7 @@ enum CliCommand derives CanEqual:
   case Batch(scriptOrChain: String)
   case Delete(crystalId: String, force: Boolean = false)
   case Mcp(transport: String = "stdio")
+  case ForAi
 
   def castSliceParams: SliceParams = this match
     case Cast(_, from, to, tail, depth, _) =>

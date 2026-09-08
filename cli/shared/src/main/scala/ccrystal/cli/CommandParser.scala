@@ -197,9 +197,16 @@ object CommandParser:
     .withDefault("stdio")
     .map(CliCommand.Mcp.apply)
 
+  private val forAiOpt = Opts
+    .flag(
+      "for-ai",
+      "Emit operational protocol guidelines, PII safety rules, and entity conventions for AI agents",
+    )
+    .as(CliCommand.ForAi)
+
   private val mainCommand = Command("ccrystal", "Context Crystal CLI")(
-    Opts
-      .subcommand("init", "Initialize a new crystal")(initOpts)
+    forAiOpt
+      .orElse(Opts.subcommand("init", "Initialize a new crystal")(initOpts))
       .orElse(Opts.subcommand("list", "List crystals")(listOpts))
       .orElse(
         Opts.subcommand("task", "Manage tasks")(
