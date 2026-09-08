@@ -4,9 +4,9 @@
 
 Context Crystal records conversational workflows, tasks, and lineage into version-controlled files under `.ccrystals/`. In collaborative and open-source environments, these files are published to remote git repositories.
 
-Currently, CLI commands (such as `ccrystal init` and `ccrystal entity register`) lack explicit guidance regarding Personally Identifiable Information (PII), identity conventions, and dual human/AI operation. When autonomous agents initialize crystals without specialized skill files loaded, they may default to extracting full legal names from `git config` or the OS environment (e.g., `"João Silva Júnior"`). This leads to:
+Currently, CLI commands (such as `ccrystal init` and `ccrystal entity register`) lack explicit guidance regarding Personally Identifiable Information (PII), identity conventions, and dual human/AI operation. When autonomous agents initialize crystals without specialized skill files loaded, they may default to extracting full legal names from `git config` or the OS environment (e.g., `"John Doe Júnior"`). This leads to:
 1. **Unintended PII Exposure:** Personal names permanently recorded into version-controlled crystal files and Cave registries.
-2. **Slug Mangling:** Accents and punctuation in full names are converted into awkward underscores (e.g., `usr_jo_o_silva_j_nior`).
+2. **Slug Mangling:** Accents and punctuation in full names are converted into awkward underscores (e.g., `usr_john_doe_j_nior`).
 3. **Ambiguity Between Handle and Display Name:** Over-specifying display names when a clean, uniform handle suffices, especially for solo developers.
 
 This track introduces **Dual-Audience CLI Guidance (`--for-ai`)**, **PII Protection Warnings**, and **Canonical Entity Conventions** directly into the Context Crystal CLI.
@@ -30,7 +30,7 @@ This track introduces **Dual-Audience CLI Guidance (`--for-ai`)**, **PII Protect
   - Outputs a high-signal, token-optimized guide for LLMs and autonomous agents covering:
     1. **PII Protection & Privacy Invariant:** Never record full personal names, personal email addresses, or private credentials into `.ccrystals/`. Never scrape `git config user.name` without explicit user consent.
     2. **Canonical Entity Conventions:**
-       - **Humans (`usr`):** `usr_<firstname>[-discriminator]` (e.g., `usr_alex`) or role handle (`usr_maintainer`, `usr_lead`). Avoid full legal names, accents, and special characters. Display name is optional and defaults to the handle.
+       - **Humans (`usr`):** `usr_<firstname>[-discriminator]` (e.g., `usr_john`) or role handle (`usr_maintainer`, `usr_lead`). Avoid full legal names, accents, and special characters. Display name is optional and defaults to the handle.
        - **Agents (`agt`):** `agt_<agentname>` (e.g., `agt_antigravity`, `agt_claude_code`).
        - **Models (`mdl`):** `mdl_<modelname>` (e.g., `mdl_gemini_3_flash`).
        - **Tools (`tool`):** `tool_<toolname>` (e.g., `tool_bash_runner`).
@@ -42,7 +42,7 @@ This track introduces **Dual-Audience CLI Guidance (`--for-ai`)**, **PII Protect
 
 - **`ccrystal init --help`:**
   - Update `--author` option description:
-    `Author entity handle/name (e.g. 'alex' or role alias; prefer simple handle or role to avoid committing PII to public repositories).`
+    `Author entity handle/name (e.g. 'john' or role alias; prefer simple handle or role to avoid committing PII to public repositories).`
   - Clarify that the handle automatically determines the entity ID (`usr_<handle>`) and default display name.
 - **`ccrystal entity --help` & Subcommands:**
   - Update `ccrystal entity register` option descriptions to advise clean, slug-friendly handles without punctuation or diacritics.
