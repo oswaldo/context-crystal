@@ -31,5 +31,5 @@
 - [x] **Track: Selective Context Hydration & Beam Shaping**  
   *Link: [conductor/tracks/selective_context_hydration_20260907/index.md](./tracks/selective_context_hydration_20260907/index.md)*
 
-- [ ] **Track: CLI AI Guidance, PII Protection & Entity Conventions**  
+- [x] **Track: CLI AI Guidance, PII Protection & Entity Conventions**  
   *Link: [conductor/tracks/cli_ai_guidance_and_pii_conventions_20260908/index.md](./tracks/cli_ai_guidance_and_pii_conventions_20260908/index.md)*
