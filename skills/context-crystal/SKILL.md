@@ -230,6 +230,25 @@ ccrystal batch "delete scratch-spike -f; init scratch-spike -g 'Spike 2' -i 'Fre
     1. **Anonymize / Pseudonymize:** Replace identifiers with role-based or synthetic pseudonyms (e.g., `usr_lead_developer`, `[REDACTED_EMAIL]`).
     2. **Omit / Rephrase:** Restructure the goal, task, or friction summary to describe the technical or architectural reality without containing any personal identifiers.
     3. **Explicit Authorization:** Proceed only if the user explicitly confirms that the repository is strictly private and that they hold the authority to record the data.
+- **Canonical Entity Conventions & ID Schemes:**
+  All Cave entities follow `<prefix>_<slug>`:
+
+  | Prefix | Kind | Example Handle | Canonical Entity ID | Description |
+  | :--- | :--- | :--- | :--- | :--- |
+  | `usr_` | Human | `john` / `lead` | `usr_john` / `usr_lead` | First name or role alias. Display name defaults to handle. Avoid full legal names or accents. |
+  | `agt_` | Agent | `antigravity` | `agt_antigravity` | Autonomous pairing agent or entity. |
+  | `mdl_` | Model | `gemini-flash` | `mdl_gemini_flash` | Model backend or LLM architecture. |
+  | `tool_` | Tool | `bash-runner` | `tool_bash_runner` | External tool, compiler, or runner. |
+  | `sys_` | System | `git-sync` | `sys_git_sync` | Background subsystem or daemon. |
+
+- **Operator Preference & Persistent Memory Invariant:**
+  - An AI entity MUST check persistent memory (e.g., Engram project memory, `AGENTS.md`, or rules) for the operator's preferred entity handle and privacy stance before prompting.
+  - If unset, prompt the operator *once*, and offer to persist the choice so subsequent pairing sessions run autonomously without repeated questions.
+  - NEVER scrape `git config user.name` or OS environment variables without explicit operator confirmation.
+
+- **CLI Guidance Invariants:**
+  - Run `ccrystal --for-ai` to retrieve dense operational invariants directly from the CLI binary.
+  - Run `ccrystal entity conventions` to display the canonical prefix reference table.
 - **Strict Rule:** The AI entity MUST ALWAYS ask and NEVER assume when PII is involved.
 
 ---

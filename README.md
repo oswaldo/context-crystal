@@ -192,6 +192,10 @@ ccrystal slice auth-refactor --from node-1 --to node-3 --fork-to auth-edge-cases
 
 # 8. Selective Context Hydration & Beam Shaping
 ccrystal hydrate auth-refactor --from v1-checkpoint --tail 5
+
+# 9. Dual-Audience Guidance & Entity Conventions
+ccrystal --for-ai               # Operational invariants, PII rules, and entity schemes for AI agents
+ccrystal entity conventions     # Display canonical entity prefixes (usr_, agt_, mdl_, tool_, sys_)
 ```
 
 ---
