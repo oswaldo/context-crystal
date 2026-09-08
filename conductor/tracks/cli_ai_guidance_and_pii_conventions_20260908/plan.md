@@ -5,10 +5,10 @@
 - [x] Task: Implement ccrystal --for-ai emitting token-optimized agent guidance, and add human/AI discriminator note to default root banner and --help (Green) [66d3766]
 - [x] Task: Phase Verification & Checkpoint (Refer to workflow.md) [66d3766]
 
-## Phase 2: Entity Conventions & PII-Safe Command Help Enhancements (Red-Green TDD)
-- [ ] Task: Write failing unit tests for ccrystal entity conventions subcommand and enriched option descriptions on init and entity register (Red)
-- [ ] Task: Implement ccrystal entity conventions subcommand output, update --author and --name option descriptions with handle/PII guidance, and refine entity slug handling (Green)
-- [ ] Task: Phase Verification & Checkpoint (Refer to workflow.md)
+## Phase 2: Entity Conventions & PII-Safe Command Help Enhancements (Red-Green TDD) [checkpoint: a2b8ebb]
+- [x] Task: Write failing unit tests for ccrystal entity conventions subcommand and enriched option descriptions on init and entity register (Red) [a2b8ebb]
+- [x] Task: Implement ccrystal entity conventions subcommand output, update --author and --name option descriptions with handle/PII guidance, and refine entity slug handling (Green) [a2b8ebb]
+- [x] Task: Phase Verification & Checkpoint (Refer to workflow.md) [a2b8ebb]
 
 ## Phase 3: Integration, Skill/Doc Alignment, Native Build & Cave Hygiene
 - [ ] Task: Write integration tests verifying end-to-end CLI root invocation, --for-ai output, and entity conventions
