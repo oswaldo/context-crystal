@@ -9,24 +9,24 @@ Currently, CLI commands (such as `ccrystal init` and `ccrystal entity register`)
 2. **Slug Mangling:** Accents and punctuation in full names are converted into awkward underscores (e.g., `usr_jo_o_silva_j_nior`).
 3. **Ambiguity Between Handle and Display Name:** Over-specifying display names when a clean, uniform handle suffices, especially for solo developers.
 
-This track introduces **Dual-Audience CLI Guidance (`--for-ai` / `--for-assistant`)**, **PII Protection Warnings**, and **Canonical Entity Conventions** directly into the Context Crystal CLI.
+This track introduces **Dual-Audience CLI Guidance (`--for-ai`)**, **PII Protection Warnings**, and **Canonical Entity Conventions** directly into the Context Crystal CLI.
 
 ---
 
 ## Functional Requirements
 
-### 1. Dual-Audience Root Guidance (`--for-ai` / `--for-assistant`)
+### 1. Dual-Audience Root Guidance (`--for-ai`)
 
-- **Global Flags:** Support `--for-ai` and `--for-assistant` as top-level CLI flags (e.g., `ccrystal --for-ai` or `ccrystal --for-assistant`).
+- **Global Flag:** Support `--for-ai` as a top-level CLI flag (`ccrystal --for-ai`).
 - **Default (Human) Root Banner & `--help`:**
   - Emits clean, human-oriented usage instructions.
   - Appends a concise discriminator note:
     ```text
     Note: This guidance is intended for human operators. If you are an AI assistant
-    or autonomous agent, run 'ccrystal --for-ai' (or '--for-assistant') for automated
-    protocol invariants, PII safety rules, and entity conventions.
+    or autonomous agent, run 'ccrystal --for-ai' for automated protocol invariants,
+    PII safety rules, and entity conventions.
     ```
-- **Agent Guidance Mode (`ccrystal --for-ai` / `ccrystal --for-assistant`):**
+- **Agent Guidance Mode (`ccrystal --for-ai`):**
   - Outputs a high-signal, token-optimized guide for LLMs and autonomous agents covering:
     1. **PII Protection & Privacy Invariant:** Never record full personal names, personal email addresses, or private credentials into `.ccrystals/`. Never scrape `git config user.name` without explicit user consent.
     2. **Canonical Entity Conventions:**

@@ -1,8 +1,8 @@
 # Implementation Plan: CLI AI Guidance, PII Protection & Entity Conventions
 
-## Phase 1: Dual-Audience Root Guidance (--for-ai / --for-assistant) & Discriminator Note (Red-Green TDD)
-- [ ] Task: Write failing unit tests for --for-ai / --for-assistant flag parsing in CommandParserSuite and output formatting in RunnerSuite (Red)
-- [ ] Task: Implement ccrystal --for-ai and ccrystal --for-assistant emitting token-optimized agent guidance, and add human/AI discriminator note to default root banner and --help (Green)
+## Phase 1: Dual-Audience Root Guidance (--for-ai) & Discriminator Note (Red-Green TDD)
+- [ ] Task: Write failing unit tests for --for-ai flag parsing in CommandParserSuite and output formatting in RunnerSuite (Red)
+- [ ] Task: Implement ccrystal --for-ai emitting token-optimized agent guidance, and add human/AI discriminator note to default root banner and --help (Green)
 - [ ] Task: Phase Verification & Checkpoint (Refer to workflow.md)
 
 ## Phase 2: Entity Conventions & PII-Safe Command Help Enhancements (Red-Green TDD)
