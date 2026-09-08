@@ -1,0 +1,152 @@
+name: Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Release version (e.g. v0.1.0). Leave empty to auto-increment minor version."
+        required: false
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  prepare-release:
+    name: Prepare Release
+    runs-on: ubuntu-latest
+    outputs:
+      release_version: ${{ steps.determine_version.outputs.version }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Determine Version and Tag
+        id: determine_version
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          INPUT_VERSION: ${{ inputs.version }}
+          EVENT_NAME: ${{ github.event_name }}
+          REF_NAME: ${{ github.ref_name }}
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+
+          if [ "$EVENT_NAME" = "push" ]; then
+            VERSION="$REF_NAME"
+            echo "Triggered by tag push: $VERSION"
+          else
+            PREV_TAG=$(git describe --tags --abbrev=0 --match "v*" 2>/dev/null || echo "")
+            echo "Previous Official Tag: '$PREV_TAG'"
+
+            if [ -n "$INPUT_VERSION" ]; then
+              VERSION="$INPUT_VERSION"
+            else
+              if [ -z "$PREV_TAG" ]; then
+                VERSION="v0.1.0"
+              else
+                clean_ver=${PREV_TAG#v}
+                IFS='.' read -r major minor patch <<< "$clean_ver"
+                if [ -z "$major" ] || [ -z "$minor" ]; then
+                  echo "Error: Could not parse previous version '$PREV_TAG'. Please provide manual version."
+                  exit 1
+                fi
+                new_minor=$((minor + 1))
+                VERSION="v$major.$new_minor.0"
+              fi
+              echo "Auto-incremented version to: $VERSION"
+            fi
+
+            git tag "$VERSION"
+            git push origin "$VERSION"
+          fi
+
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+
+          NOTES_ARGS="--generate-notes"
+          PREV_TAG_FOR_NOTES=$(git describe --tags --abbrev=0 --match "v*" "$VERSION^" 2>/dev/null || echo "")
+          if [ -n "$PREV_TAG_FOR_NOTES" ]; then
+            NOTES_ARGS="$NOTES_ARGS --notes-start-tag $PREV_TAG_FOR_NOTES"
+          elif [ "$EVENT_NAME" = "workflow_dispatch" ] && [ -n "$(git describe --tags --abbrev=0 --match "v*" 2>/dev/null || echo "")" ]; then
+            NOTES_ARGS="$NOTES_ARGS --notes-start-tag $(git describe --tags --abbrev=0 --match "v*" 2>/dev/null)"
+          fi
+
+          gh release create "$VERSION" $NOTES_ARGS --title "$VERSION" --verify-tag || echo "Release might already exist"
+
+  build-and-release:
+    name: Release ${{ matrix.target }}
+    needs: prepare-release
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        include:
+          - os: ubuntu-latest
+            target: linux-x86_64
+            asset_name: ccrystal-linux-x86_64
+            install_deps: |
+              sudo apt-get update
+              sudo apt-get install -y clang libssl-dev libidn2-dev
+          - os: macos-15 # Intel Mac
+            target: macos-x86_64
+            asset_name: ccrystal-macos-x86_64
+            install_deps: |
+              brew install openssl libidn2
+          - os: macos-14 # Apple Silicon Mac
+            target: macos-aarch64
+            asset_name: ccrystal-macos-aarch64
+            install_deps: |
+              brew install openssl libidn2
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ needs.prepare-release.outputs.release_version }}
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: "temurin"
+          java-version: "21"
+
+      - name: Setup sbt
+        uses: sbt/setup-sbt@v1
+
+      - name: Cache Coursier
+        uses: coursier/cache-action@v6
+
+      - name: Install Dependencies
+        run: ${{ matrix.install_deps }}
+
+      - name: Configure macOS Environment
+        if: runner.os == 'macOS'
+        run: |
+          OPENSSL_ROOT=$(brew --prefix openssl)
+          LIBIDN2_ROOT=$(brew --prefix libidn2)
+          echo "OPENSSL_ROOT=$OPENSSL_ROOT" >> "$GITHUB_ENV"
+          echo "LIBIDN2_ROOT=$LIBIDN2_ROOT" >> "$GITHUB_ENV"
+          echo "LDFLAGS=-L$OPENSSL_ROOT/lib -L$LIBIDN2_ROOT/lib" >> "$GITHUB_ENV"
+          echo "CPPFLAGS=-I$OPENSSL_ROOT/include -I$LIBIDN2_ROOT/include" >> "$GITHUB_ENV"
+          echo "PKG_CONFIG_PATH=$OPENSSL_ROOT/lib/pkgconfig:$LIBIDN2_ROOT/lib/pkgconfig" >> "$GITHUB_ENV"
+
+      - name: Build Optimized Native Binary (Thin LTO)
+        run: |
+          sbt 'set cli.native / nativeConfig ~= { _.withMode(scala.scalanative.build.Mode.releaseFast).withLTO(scala.scalanative.build.LTO.thin) }; cliNative/nativeLink'
+
+      - name: Package Native Asset
+        run: |
+          cp ./cli/native/target/scala-3.9.0/ccrystal-cli ${{ matrix.asset_name }}
+          chmod +x ${{ matrix.asset_name }}
+          if [ "${{ runner.os }}" = "Linux" ]; then
+            strip ${{ matrix.asset_name }}
+          fi
+
+      - name: Upload Release Asset
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ needs.prepare-release.outputs.release_version }}
+          files: ${{ matrix.asset_name }}
