@@ -1,0 +1,20 @@
+[
+  {
+    "id" : "lease-1",
+    "resourceType" : "git_worktree",
+    "resourcePath" : "../ccrystal-worktrees/public-prep",
+    "description" : "Isolated worktree for public launch readiness",
+    "disposalPolicy" : "revert_on_conclusion",
+    "status" : "cleaned",
+    "createdAt" : "2026-09-07T17:35:41.407Z"
+  },
+  {
+    "id" : "lease-2",
+    "resourceType" : "git_worktree",
+    "resourcePath" : null,
+    "description" : "Isolated worktree for Stream 2 editorial review at ../ccrystal-worktrees/editorial-review",
+    "disposalPolicy" : "manual",
+    "status" : "cleaned",
+    "createdAt" : "2026-09-08T22:44:42.395Z"
+  }
+]

@@ -1,0 +1,11 @@
+[
+  {
+    "id" : "lease-1",
+    "resourceType" : "git_worktree",
+    "resourcePath" : null,
+    "description" : "Dedicated worktree at ../ccrystal-worktrees/cli_ai_guidance_and_pii_conventions_20260908",
+    "disposalPolicy" : "manual",
+    "status" : "cleaned",
+    "createdAt" : "2026-09-08T21:51:32.401Z"
+  }
+]

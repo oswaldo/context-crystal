@@ -1,0 +1,194 @@
+{
+  "schemaVersion" : "1.0.0",
+  "id" : "entity-pii-guidance-exploration",
+  "name" : "entity-pii-guidance-exploration",
+  "createdAt" : "2026-09-08T21:19:19.909Z",
+  "updatedAt" : "2026-09-08T23:39:18.442Z",
+  "parentCrystalId" : null,
+  "origin" : null,
+  "caveId" : null,
+  "defaultAuthorId" : "usr_oswaldo",
+  "goal" : {
+    "title" : "Explore entity identity conventions, PII protection, and dual human/AI CLI guidance",
+    "intent" : "Validate approach for CLI help hints, --for-ai/--for-assistant mode, entity naming conventions (usr_firstname), PII protection in Cave registries, and remediation of current uncommitted diffs.",
+    "status" : "concluded_success",
+    "acceptanceCriteria" : [
+    ],
+    "metadata" : {
+      
+    }
+  },
+  "entities" : [
+    {
+      "id" : "usr_oswaldo",
+      "kind" : "human",
+      "name" : "Oswaldo",
+      "metadata" : {
+        
+      },
+      "publicKey" : null,
+      "endpoints" : {
+        
+      }
+    }
+  ],
+  "activeMask" : null,
+  "dag" : {
+    "rootNodeId" : "node-entity-pii-guidance-exploration-init",
+    "nodes" : [
+      {
+        "id" : "node-entity-pii-guidance-exploration-init",
+        "parentIds" : [
+        ],
+        "timestamp" : "2026-09-08T21:19:19.909Z",
+        "actorId" : "usr_oswaldo",
+        "kind" : "human_prompt",
+        "contentSummary" : "Initialized crystal 'entity-pii-guidance-exploration' with goal: Explore entity identity conventions, PII protection, and dual human/AI CLI guidance",
+        "anchor" : null,
+        "artifactIds" : [
+        ],
+        "fidelity" : "inferred",
+        "metadata" : {
+          
+        }
+      },
+      {
+        "id" : "node-2",
+        "parentIds" : [
+          "node-entity-pii-guidance-exploration-init"
+        ],
+        "timestamp" : "2026-09-08T21:19:38.791Z",
+        "actorId" : "usr_oswaldo",
+        "kind" : "checkpoint",
+        "contentSummary" : "Analyzed uncommitted full name in entities.json and public-launch-readiness; mapped user proposal for dual CLI guidance (--for-ai / --for-assistant) and PII protection hints",
+        "anchor" : "initial-pii-analysis",
+        "artifactIds" : [
+        ],
+        "fidelity" : "inferred",
+        "metadata" : {
+          
+        }
+      },
+      {
+        "id" : "node-3",
+        "parentIds" : [
+          "node-2"
+        ],
+        "timestamp" : "2026-09-08T22:34:41.903Z",
+        "actorId" : "usr_oswaldo",
+        "kind" : "checkpoint",
+        "contentSummary" : "Created isolated worktree track/cli_ai_guidance_and_pii_conventions_20260908, sanitized all personal names to synthetic examples (João Silva Júnior / alex), and committed spec, plan, and registry (832e4fe).",
+        "anchor" : "track-scaffolded",
+        "artifactIds" : [
+        ],
+        "fidelity" : "inferred",
+        "metadata" : {
+          
+        }
+      },
+      {
+        "id" : "node-4",
+        "parentIds" : [
+          "node-3"
+        ],
+        "timestamp" : "2026-09-08T22:42:33.103Z",
+        "actorId" : "usr_oswaldo",
+        "kind" : "checkpoint",
+        "contentSummary" : "Standardized on single canonical flag '--for-ai' across spec.md and plan.md (61589b9).",
+        "anchor" : "flag-standardized",
+        "artifactIds" : [
+        ],
+        "fidelity" : "inferred",
+        "metadata" : {
+          
+        }
+      },
+      {
+        "id" : "node-5",
+        "parentIds" : [
+          "node-4"
+        ],
+        "timestamp" : "2026-09-08T23:06:05.020Z",
+        "actorId" : "usr_oswaldo",
+        "kind" : "checkpoint",
+        "contentSummary" : "Phase 1 verified: Implemented --for-ai flag emitting token-optimized agent invariants, PII safety rules, and canonical entity conventions; added human/AI discriminator note to root and help banners; all 97 JVM tests pass cleanly.",
+        "anchor" : "phase-1-verified",
+        "artifactIds" : [
+        ],
+        "fidelity" : "inferred",
+        "metadata" : {
+          
+        }
+      },
+      {
+        "id" : "node-6",
+        "parentIds" : [
+          "node-5"
+        ],
+        "timestamp" : "2026-09-08T23:23:33.290Z",
+        "actorId" : "usr_oswaldo",
+        "kind" : "checkpoint",
+        "contentSummary" : "Phase 2 verified: Implemented 'ccrystal entity conventions', PII warnings in 'ccrystal init --help' and 'ccrystal entity register --help', and NFD diacritic-stripping entity slug generation in FsCrystalStore. All tests passing (100/100).",
+        "anchor" : "phase-2-verified",
+        "artifactIds" : [
+        ],
+        "fidelity" : "inferred",
+        "metadata" : {
+          
+        }
+      },
+      {
+        "id" : "node-7",
+        "parentIds" : [
+          "node-6"
+        ],
+        "timestamp" : "2026-09-08T23:37:02.336Z",
+        "actorId" : "usr_oswaldo",
+        "kind" : "checkpoint",
+        "contentSummary" : "Track cli_ai_guidance_and_pii_conventions_20260908 complete: Implemented --for-ai, ccrystal entity conventions, PII-safe help text, pure-functional slug baseline, 103/103 tests passing across Native, JVM, and JS, and installed optimized release binary.",
+        "anchor" : "track-completed",
+        "artifactIds" : [
+        ],
+        "fidelity" : "inferred",
+        "metadata" : {
+          
+        }
+      },
+      {
+        "id" : "node-8",
+        "parentIds" : [
+          "node-7"
+        ],
+        "timestamp" : "2026-09-08T23:39:18.442Z",
+        "actorId" : "usr_oswaldo",
+        "kind" : "checkpoint",
+        "contentSummary" : "Remediated uncommitted diffs in entities.json and public-launch-readiness crystal; verified zero occurrences of full legal name across git repo; saved operator entity and PII conventions to Engram persistent memory. Exploration concluded with all goals achieved.",
+        "anchor" : "exploration-concluded",
+        "artifactIds" : [
+        ],
+        "fidelity" : "inferred",
+        "metadata" : {
+          
+        }
+      }
+    ]
+  },
+  "transientLeases" : [
+    {
+      "id" : "lease-1",
+      "resourceType" : "git_worktree",
+      "resourcePath" : null,
+      "description" : "Dedicated worktree at ../ccrystal-worktrees/cli_ai_guidance_and_pii_conventions_20260908",
+      "disposalPolicy" : "manual",
+      "status" : "cleaned",
+      "createdAt" : "2026-09-08T21:51:32.401Z"
+    }
+  ],
+  "lessonsLearned" : [
+  ],
+  "artifacts" : [
+  ],
+  "metadata" : {
+    
+  }
+}

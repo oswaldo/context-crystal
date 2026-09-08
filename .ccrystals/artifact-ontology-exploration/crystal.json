@@ -1,0 +1,139 @@
+{
+  "schemaVersion" : "1.0.0",
+  "id" : "artifact-ontology-exploration",
+  "name" : "artifact-ontology-exploration",
+  "createdAt" : "2026-09-08T21:37:47.947Z",
+  "updatedAt" : "2026-09-08T22:49:34.385Z",
+  "parentCrystalId" : null,
+  "origin" : null,
+  "caveId" : null,
+  "defaultAuthorId" : "agt_antigravity",
+  "goal" : {
+    "title" : "Reason and design artifact & world state abstraction in Context Crystal DAG and registry",
+    "intent" : "Explore ontology, abstraction levels, naming conventions, and registry mechanisms for virtual and physical artifacts, tools, environmental preconditions, and goals across ephemeral crystals and permanent caves.",
+    "status" : "in_progress",
+    "acceptanceCriteria" : [
+      {
+        "id" : "task-1",
+        "description" : "Document Artifact & World-State Ontology track in conductor/next-steps.md and update product manifesto and example hygiene",
+        "completed" : true
+      },
+      {
+        "id" : "task-2",
+        "description" : "Scaffold Conductor Track 16 (artifact_world_state_ontology_20260909) using conductor-new-track skill",
+        "completed" : false
+      },
+      {
+        "id" : "task-3",
+        "description" : "Update spec/v1/context-crystal.json and Models.scala with ArtifactSubstrate (Virtual, Physical), ArtifactRole (Target, Instrument, Precondition), PhysicalLocation, and optional uri",
+        "completed" : false
+      },
+      {
+        "id" : "task-4",
+        "description" : "Enrich DAGNode with directional artifact links (inputArtifactIds, outputArtifactIds, preconditionArtifactIds)",
+        "completed" : false
+      },
+      {
+        "id" : "task-5",
+        "description" : "Implement Cave Artifact Registry (.ccrystals/artifacts.json & crystal://artifacts) and CLI artifact commands",
+        "completed" : false
+      },
+      {
+        "id" : "task-6",
+        "description" : "Integrate artifacts into selective context hydration beam projection",
+        "completed" : false
+      }
+    ],
+    "metadata" : {
+      
+    }
+  },
+  "entities" : [
+    {
+      "id" : "agt_antigravity",
+      "kind" : "agent",
+      "name" : "Antigravity",
+      "metadata" : {
+        
+      },
+      "publicKey" : null,
+      "endpoints" : {
+        
+      }
+    }
+  ],
+  "activeMask" : null,
+  "dag" : {
+    "rootNodeId" : "node-artifact-ontology-exploration-init",
+    "nodes" : [
+      {
+        "id" : "node-artifact-ontology-exploration-init",
+        "parentIds" : [
+        ],
+        "timestamp" : "2026-09-08T21:37:47.947Z",
+        "actorId" : "agt_antigravity",
+        "kind" : "human_prompt",
+        "contentSummary" : "Initialized crystal 'artifact-ontology-exploration' with goal: Reason and design artifact & world state abstraction in Context Crystal DAG and registry",
+        "anchor" : null,
+        "artifactIds" : [
+        ],
+        "fidelity" : "inferred",
+        "metadata" : {
+          
+        }
+      },
+      {
+        "id" : "node-2",
+        "parentIds" : [
+          "node-artifact-ontology-exploration-init"
+        ],
+        "timestamp" : "2026-09-08T22:18:54.136Z",
+        "actorId" : "agt_antigravity",
+        "kind" : "checkpoint",
+        "contentSummary" : "Consensus reached on Artifact & World-State Ontology: Substrate (Virtual, Physical), Role (Target, Instrument, Precondition), Optional URI with standard RFCs, PhysicalLocation with civic/bench coordinates, and RFC 2606 example hygiene.",
+        "anchor" : "artifact-world-state-consensus",
+        "artifactIds" : [
+        ],
+        "fidelity" : "intercepted",
+        "metadata" : {
+          
+        }
+      },
+      {
+        "id" : "node-3",
+        "parentIds" : [
+          "node-2"
+        ],
+        "timestamp" : "2026-09-08T22:49:34.385Z",
+        "actorId" : "agt_antigravity",
+        "kind" : "checkpoint",
+        "contentSummary" : "Handoff State & Implementation Playbook for Track 16:\n1. Core consensus: Binary Substrate (Virtual, Physical), Functional Triad Role (Target, Instrument, Precondition), Scaffolding handled by TransientLease, standard RFC addressing (uri: Option[String]), PhysicalLocation for civic/bench coordinates, and RFC 2606 example hygiene.\n2. Roadmap integration: Track 16 registered in conductor/next-steps.md, Scale Manifesto & Core Tenet 14 added to conductor/product.md, Fixture hygiene added to AGENTS.md.\n3. Execution sequence to resume:\n   a. Create worktree: git worktree add -b track/artifact-world-state-ontology ../ccrystal-worktrees/artifact-world-state-ontology main\n   b. Register worktree lease in crystal: crystal_transient_lease action=lease\n   c. Run conductor-new-track to generate spec.md and plan.md for track 16\n   d. Follow Red-Green TDD across core (models, codecs) -> cli -> hydration beam.",
+        "anchor" : "handoff-next-steps",
+        "artifactIds" : [
+        ],
+        "fidelity" : "intercepted",
+        "metadata" : {
+          
+        }
+      }
+    ]
+  },
+  "transientLeases" : [
+    {
+      "id" : "lease-1",
+      "resourceType" : "git_worktree",
+      "resourcePath" : null,
+      "description" : "Git worktree for track/artifact-ontology-roadmap at ../ccrystal-worktrees/track-artifact-ontology-roadmap",
+      "disposalPolicy" : "manual",
+      "status" : "cleaned",
+      "createdAt" : "2026-09-08T22:31:24.452Z"
+    }
+  ],
+  "lessonsLearned" : [
+  ],
+  "artifacts" : [
+  ],
+  "metadata" : {
+    
+  }
+}

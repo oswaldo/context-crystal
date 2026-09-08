@@ -1,0 +1,11 @@
+[
+  {
+    "id" : "lease-1",
+    "resourceType" : "git_worktree",
+    "resourcePath" : null,
+    "description" : "Git worktree for track/artifact-ontology-roadmap at ../ccrystal-worktrees/track-artifact-ontology-roadmap",
+    "disposalPolicy" : "manual",
+    "status" : "cleaned",
+    "createdAt" : "2026-09-08T22:31:24.452Z"
+  }
+]

@@ -1,0 +1,184 @@
+{
+  "schemaVersion" : "1.0.0",
+  "id" : "public-launch-readiness",
+  "name" : "public-launch-readiness",
+  "createdAt" : "2026-09-07T17:35:31.740Z",
+  "updatedAt" : "2026-09-08T23:15:17.302Z",
+  "parentCrystalId" : null,
+  "origin" : null,
+  "caveId" : null,
+  "defaultAuthorId" : "usr_oswaldo",
+  "goal" : {
+    "title" : "Prepare Context Crystal for Public Developer Alpha Release",
+    "intent" : "Implement zero-friction install script and GitHub Actions release workflow adapted from ~/git/first, conduct paragraph-by-paragraph audit of README and developer documentation, and verify linting and tests prior to public launch.",
+    "status" : "concluded_success",
+    "acceptanceCriteria" : [
+      {
+        "id" : "task-1",
+        "description" : "Stream 1: Release packaging (install.sh + .github/workflows/release.yml)",
+        "completed" : true
+      },
+      {
+        "id" : "task-2",
+        "description" : "Stream 2: 3-Filter Editorial Review of README.md and dev docs",
+        "completed" : true
+      },
+      {
+        "id" : "task-3",
+        "description" : "Verification: linting (shellcheck, markdownlint) and clean merge to main",
+        "completed" : true
+      }
+    ],
+    "metadata" : {
+      
+    }
+  },
+  "entities" : [
+    {
+      "id" : "usr_oswaldo",
+      "kind" : "human",
+      "name" : "Oswaldo",
+      "metadata" : {
+        
+      },
+      "publicKey" : null,
+      "endpoints" : {
+        
+      }
+    }
+  ],
+  "activeMask" : null,
+  "dag" : {
+    "rootNodeId" : "node-public-launch-readiness-init",
+    "nodes" : [
+      {
+        "id" : "node-public-launch-readiness-init",
+        "parentIds" : [
+        ],
+        "timestamp" : "2026-09-07T17:35:31.740Z",
+        "actorId" : "usr_oswaldo",
+        "kind" : "human_prompt",
+        "contentSummary" : "Initialized crystal 'public-launch-readiness' with goal: Prepare Context Crystal for Public Developer Alpha Release",
+        "anchor" : null,
+        "artifactIds" : [
+        ],
+        "fidelity" : "inferred",
+        "metadata" : {
+          
+        }
+      },
+      {
+        "id" : "node-2",
+        "parentIds" : [
+          "node-public-launch-readiness-init"
+        ],
+        "timestamp" : "2026-09-07T21:48:53.131Z",
+        "actorId" : "usr_oswaldo",
+        "kind" : "checkpoint",
+        "contentSummary" : "Drafted install.sh and .github/workflows/release.yml based on ~/git/first blueprint; isolated worktree ready at ../ccrystal-worktrees/public-prep; awaiting approval to create files and begin paragraph-by-paragraph README review.",
+        "anchor" : "stream-1-drafted",
+        "artifactIds" : [
+        ],
+        "fidelity" : "inferred",
+        "metadata" : {
+          
+        }
+      },
+      {
+        "id" : "node-3",
+        "parentIds" : [
+          "node-2"
+        ],
+        "timestamp" : "2026-09-08T22:37:13.701Z",
+        "actorId" : "usr_oswaldo",
+        "kind" : "checkpoint",
+        "contentSummary" : "Implemented Stream 1 in isolated worktree ../ccrystal-worktrees/public-prep: install.sh with POSIX sh compatibility and atomic inode replacement, plus .github/workflows/release.yml for automated multi-arch Thin LTO binary compilation. Verified with shellcheck and committed cleanly.",
+        "anchor" : "stream-1-completed",
+        "artifactIds" : [
+        ],
+        "fidelity" : "inferred",
+        "metadata" : {
+          
+        }
+      },
+      {
+        "id" : "node-4",
+        "parentIds" : [
+          "node-3"
+        ],
+        "timestamp" : "2026-09-08T23:05:55.686Z",
+        "actorId" : "usr_oswaldo",
+        "kind" : "checkpoint",
+        "contentSummary" : "Completed Stream 2 editorial review: standardized dynamic MCP resource URIs uniformly to ccrystal:// across handler, tests, docs, and AGENTS.md; documented /hydrate endpoint and curl installer quickstart in README.md; passed all unit tests, scalafmt, markdownlint, and shellcheck.",
+        "anchor" : "stream-2-completed",
+        "artifactIds" : [
+        ],
+        "fidelity" : "inferred",
+        "metadata" : {
+          
+        }
+      },
+      {
+        "id" : "node-5",
+        "parentIds" : [
+          "node-4"
+        ],
+        "timestamp" : "2026-09-08T23:13:42.029Z",
+        "actorId" : "usr_oswaldo",
+        "kind" : "checkpoint",
+        "contentSummary" : "Concluded public-launch-readiness track: all 3 streams complete. install.sh and .github/workflows/release.yml implemented, ccrystal:// URI scheme standardized, 3-filter editorial audit of documentation complete, all linters and tests passed, worktrees torn down, and main fast-forward merged and pushed to github and origin.",
+        "anchor" : "alpha-launch-prep-concluded",
+        "artifactIds" : [
+        ],
+        "fidelity" : "inferred",
+        "metadata" : {
+          
+        }
+      },
+      {
+        "id" : "node-6",
+        "parentIds" : [
+          "node-5"
+        ],
+        "timestamp" : "2026-09-08T23:15:17.302Z",
+        "actorId" : "usr_oswaldo",
+        "kind" : "resolution",
+        "contentSummary" : "Public alpha release preparation successfully concluded: release packaging, ccrystal:// URI standardization, and 3-filter editorial documentation audit verified and live on main.",
+        "anchor" : null,
+        "artifactIds" : [
+        ],
+        "fidelity" : "inferred",
+        "metadata" : {
+          
+        }
+      }
+    ]
+  },
+  "transientLeases" : [
+    {
+      "id" : "lease-1",
+      "resourceType" : "git_worktree",
+      "resourcePath" : "../ccrystal-worktrees/public-prep",
+      "description" : "Isolated worktree for public launch readiness",
+      "disposalPolicy" : "revert_on_conclusion",
+      "status" : "cleaned",
+      "createdAt" : "2026-09-07T17:35:41.407Z"
+    },
+    {
+      "id" : "lease-2",
+      "resourceType" : "git_worktree",
+      "resourcePath" : null,
+      "description" : "Isolated worktree for Stream 2 editorial review at ../ccrystal-worktrees/editorial-review",
+      "disposalPolicy" : "manual",
+      "status" : "cleaned",
+      "createdAt" : "2026-09-08T22:44:42.395Z"
+    }
+  ],
+  "lessonsLearned" : [
+  ],
+  "artifacts" : [
+  ],
+  "metadata" : {
+    
+  }
+}
