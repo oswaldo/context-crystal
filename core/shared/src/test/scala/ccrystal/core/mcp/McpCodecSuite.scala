@@ -100,7 +100,7 @@ class McpCodecSuite extends FunSuite:
 
   test("Resources list and read codecs"):
     val resource = Resource(
-      uri = "crystal://native-mcp-server/state",
+      uri = "ccrystal://native-mcp-server/state",
       name = "State for native-mcp-server",
       description = Some("Living state container JSON"),
       mimeType = Some("application/json"),
@@ -112,7 +112,7 @@ class McpCodecSuite extends FunSuite:
     val readResult = ReadResourceResult(
       contents = List(
         ResourceContents(
-          uri = "crystal://native-mcp-server/state",
+          uri = "ccrystal://native-mcp-server/state",
           mimeType = Some("application/json"),
           text = "{\"id\":\"native-mcp-server\"}",
         ),

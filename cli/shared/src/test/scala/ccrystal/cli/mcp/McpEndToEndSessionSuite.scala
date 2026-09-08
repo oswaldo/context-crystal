@@ -23,7 +23,7 @@ class McpEndToEndSessionSuite extends FunSuite:
         |{"jsonrpc":"2.0","id":2,"method":"tools/list"}
         |{"jsonrpc":"2.0","id":3,"method":"tools/call","params":{"name":"crystal_init","arguments":{"name":"e2e-crystal","goal":"E2E Lifecycle Goal"}}}
         |{"jsonrpc":"2.0","id":4,"method":"tools/call","params":{"name":"crystal_batch","arguments":{"commands":"task add -d 'Implement core' e2e-crystal; node add -k agent_reasoning -s 'Analyzed requirements' e2e-crystal; task done -t task-1 e2e-crystal; node add -k checkpoint -s 'Phase 1 done' -a 'v1-checkpoint' e2e-crystal"}}}
-        |{"jsonrpc":"2.0","id":5,"method":"resources/read","params":{"uri":"crystal://e2e-crystal/state"}}
+        |{"jsonrpc":"2.0","id":5,"method":"resources/read","params":{"uri":"ccrystal://e2e-crystal/state"}}
         |{"jsonrpc":"2.0","id":6,"method":"prompts/get","params":{"name":"hydrate_context","arguments":{"crystal_id":"e2e-crystal"}}}
         |{"jsonrpc":"2.0","id":7,"method":"prompts/get","params":{"name":"triage_cave"}}
         |{"jsonrpc":"2.0","id":8,"method":"tools/call","params":{"name":"crystal_delete","arguments":{"crystal_id":"e2e-crystal","force":true}}}
@@ -186,7 +186,7 @@ class McpEndToEndSessionSuite extends FunSuite:
     val resReq = JsonRpcRequest(
       id = JsonRpcId.Num(102L),
       method = "resources/read",
-      params = Some(Json.obj("uri" -> "crystal://beam-e2e/hydrate?tail=2".asJson)),
+      params = Some(Json.obj("uri" -> "ccrystal://beam-e2e/hydrate?tail=2".asJson)),
     )
     val resResp = handler.handle(resReq)
     assertEquals(resResp.error.isEmpty, true)

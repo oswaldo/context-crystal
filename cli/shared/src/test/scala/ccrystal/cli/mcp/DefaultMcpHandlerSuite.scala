@@ -128,20 +128,20 @@ class DefaultMcpHandlerSuite extends FunSuite:
     assertEquals(listResp.error.isEmpty, true)
     val resList = listResp.result.get.hcursor.as[ListResourcesResult].toOption.get
     val uris    = resList.resources.map(_.uri)
-    assertEquals(uris.contains("crystal://res-crystal/state"), true)
-    assertEquals(uris.contains("crystal://res-crystal/dag"), true)
-    assertEquals(uris.contains("crystal://entities"), true)
+    assertEquals(uris.contains("ccrystal://res-crystal/state"), true)
+    assertEquals(uris.contains("ccrystal://res-crystal/dag"), true)
+    assertEquals(uris.contains("ccrystal://entities"), true)
 
     // Read resource state
     val readReq = JsonRpcRequest(
       id = JsonRpcId.Num(12L),
       method = "resources/read",
-      params = Some(Json.obj("uri" -> "crystal://res-crystal/state".asJson)),
+      params = Some(Json.obj("uri" -> "ccrystal://res-crystal/state".asJson)),
     )
     val readResp = handler.handle(readReq)
     assertEquals(readResp.error.isEmpty, true)
     val readResult = readResp.result.get.hcursor.as[ReadResourceResult].toOption.get
-    assertEquals(readResult.contents.head.uri, "crystal://res-crystal/state")
+    assertEquals(readResult.contents.head.uri, "ccrystal://res-crystal/state")
     assertEquals(readResult.contents.head.text.contains("res-crystal"), true)
 
   test("DefaultMcpHandler handles prompts/list and prompts/get"):
@@ -207,7 +207,7 @@ class DefaultMcpHandlerSuite extends FunSuite:
     )
 
   test(
-    "DefaultMcpHandler supports selective hydrate_context prompt arguments and crystal://{id}/hydrate resource",
+    "DefaultMcpHandler supports selective hydrate_context prompt arguments and ccrystal://{id}/hydrate resource",
   ):
     val (handler, _, _) = createFixture()
 
@@ -260,19 +260,19 @@ class DefaultMcpHandlerSuite extends FunSuite:
       ),
     )
 
-    // Verify resources/list includes crystal://beam-crystal/hydrate
+    // Verify resources/list includes ccrystal://beam-crystal/hydrate
     val resListReq  = JsonRpcRequest(id = JsonRpcId.Num(33L), method = "resources/list")
     val resListResp = handler.handle(resListReq)
     assertEquals(resListResp.error.isEmpty, true)
     val uris =
       resListResp.result.get.hcursor.as[ListResourcesResult].toOption.get.resources.map(_.uri)
-    assertEquals(uris.contains("crystal://beam-crystal/hydrate"), true)
+    assertEquals(uris.contains("ccrystal://beam-crystal/hydrate"), true)
 
-    // Read resource crystal://beam-crystal/hydrate?from=m1&tail=1
+    // Read resource ccrystal://beam-crystal/hydrate?from=m1&tail=1
     val readReq = JsonRpcRequest(
       id = JsonRpcId.Num(34L),
       method = "resources/read",
-      params = Some(Json.obj("uri" -> "crystal://beam-crystal/hydrate?from=m1&tail=1".asJson)),
+      params = Some(Json.obj("uri" -> "ccrystal://beam-crystal/hydrate?from=m1&tail=1".asJson)),
     )
     val readResp = handler.handle(readReq)
     assertEquals(readResp.error.isEmpty, true)

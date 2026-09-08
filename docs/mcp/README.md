@@ -29,14 +29,19 @@ The Context Crystal native MCP server exposes zero-overhead context lifecycle ma
 
 ### 2. Resources
 
-- **`crystal://{crystal_id}/state`:** Returns living state container JSON (Goal status, pending tasks, active leases, open lessons).
-- **`crystal://{crystal_id}/dag`:** Returns normalized DAG nodes and parent lineage JSON.
-- **`crystal://entities`:** Returns registered cave entities and identities.
+All living context crystals expose dynamic resources under the `ccrystal://` URI scheme:
+
+- **`ccrystal://{crystal_id}/state`:** Returns living state container JSON (Goal status, pending tasks, active leases, open lessons).
+- **`ccrystal://{crystal_id}/dag`:** Returns normalized DAG nodes and parent lineage JSON.
+- **`ccrystal://{crystal_id}/hydrate`:** Returns the synthesized, human- and LLM-ready Markdown context beam (the "cast"). Supports selective sub-DAG beam shaping query parameters: `?from=<anchor|id>&to=<anchor|id>&tail=<N>`.
+- **`ccrystal://entities`:** Returns registered cave entities and identities.
+
+Why the `/hydrate` endpoint? Context Crystal separates raw state and topological graph data from prompt-ready context beams. Reading `.../state` returns structured JSON for tools, whereas `.../hydrate` performs selective DAG traversal and formats living state into a concise, token-efficient prompt beam ready for immediate LLM ingestion.
 
 ### 3. Prompts
 
 - **`hydrate_context`:** Injects a synthesized Context Crystal prompt beam directly into the client conversation.
-  *Arguments:* `crystal_id` (required), `depth` (optional), `summary_only` (optional).
+  *Arguments:* `crystal_id` (required), `from` (optional), `to` (optional), `tail` (optional), `depth` (optional), `summary_only` (optional).
 - **`triage_cave`:** Generates a workspace inventory report and instructions for reviewing and cleaning up concluded, abandoned, or stale crystals.
 
 ---
@@ -44,8 +49,9 @@ The Context Crystal native MCP server exposes zero-overhead context lifecycle ma
 ## Agent Operational Invariant: Task Inception Check
 
 When beginning any non-trivial or multi-step engineering task, an AI entity interacting through MCP should:
-1. **Discover:** Query `resources/list` (matching `crystal://*`) to determine whether a relevant crystal is already active.
-2. **Attach or Initialize:** If a matching crystal exists, read its state (`crystal://{id}/state`) or invoke `hydrate_context`. If no crystal matches the current objective, initialize a new crystal via `crystal_init`.
+
+1. **Discover:** Query `resources/list` (matching `ccrystal://*`) to determine whether a relevant crystal is already active.
+2. **Attach or Initialize:** If a matching crystal exists, read its state (`ccrystal://{id}/state` or `ccrystal://{id}/hydrate`) or invoke `hydrate_context`. If no crystal matches the current objective, initialize a new crystal via `crystal_init`.
 3. **Lease Isolation:** If operating in a temporary branch or worktree, register a transient lease via `crystal_transient_lease` to ensure auditable cleanup upon conclusion.
 
 ---

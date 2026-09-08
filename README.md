@@ -101,7 +101,11 @@ Context Crystal includes ready-to-use skills and instruction adapters for major 
 Context Crystal includes an embedded, zero-overhead MCP server built directly into the native binary. It connects Claude Desktop, Cursor, Zed, Windsurf, and agent harnesses to your workspace crystals with zero Python or Node.js runtime dependencies.
 
 - **Compound Atomic Tools:** Features `crystal_batch` for executing multi-operation recipes in a single roundtrip, plus `crystal_init`, `crystal_checkpoint`, `crystal_task_transition`, `crystal_transient_lease`, `crystal_slice_fork`, and `crystal_delete`.
-- **Dynamic Context Resources:** Inspect living states (`crystal://{id}/state`), DAG lineages (`crystal://{id}/dag`), identities (`crystal://entities`), and shaped context beams (`crystal://{id}/hydrate?from=...&tail=...`).
+- **Dynamic Context Resources (`ccrystal://`):**
+  - `ccrystal://{id}/state`: Living state container JSON (Goal status, pending tasks, active leases, open lessons).
+  - `ccrystal://{id}/dag`: Normalized DAG nodes and parent lineage JSON.
+  - `ccrystal://{id}/hydrate`: Synthesized Markdown context beam formatted for immediate LLM prompt injection (supports `?from=...&to=...&tail=...` query parameters).
+  - `ccrystal://entities`: Registered cave identities and authors.
 - **Prompt Beams & Triage:** Hydrate shaped context beams directly via `hydrate_context` (accepting `from`, `to`, `tail`, `depth`) and review cave lifecycle hygiene via `triage_cave`.
 
 ### Client Configuration
@@ -125,9 +129,21 @@ For detailed protocol specifications and editor templates, see **[docs/mcp/READM
 
 ## Verified CLI Quickstart
 
-If you do want to run commands directly or script automation, the native CLI is fast and ergonomic.
+If you want to run commands directly or script automation, the native CLI is fast and ergonomic.
 
-### Prerequisites & Installation
+### Quick Installation (Recommended)
+
+Install the standalone native binary for Linux or macOS with a single command:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/oswaldo/context-crystal/main/install.sh | sh
+```
+
+The script automatically detects your OS and architecture (`linux-x86_64`, `macos-aarch64`, `macos-x86_64`), installs `ccrystal` into `~/.local/bin`, and verifies binary execution.
+
+### Building from Source (Alternative)
+
+If you prefer building from source, ensure you have:
 
 - **Java Development Kit (JDK):** Version 21+ (managed via SDKMAN or package manager)
 - **Build Tool:** `sbt` 1.10+

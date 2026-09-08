@@ -452,19 +452,19 @@ class DefaultMcpHandler(
       crystalResources = crystals.flatMap { c =>
         List(
           Resource(
-            uri = s"crystal://${c.id}/state",
+            uri = s"ccrystal://${c.id}/state",
             name = s"State for ${c.id}",
             description = Some("Living state container JSON"),
             mimeType = Some("application/json"),
           ),
           Resource(
-            uri = s"crystal://${c.id}/dag",
+            uri = s"ccrystal://${c.id}/dag",
             name = s"DAG for ${c.id}",
             description = Some("Lineage and DAG nodes JSON"),
             mimeType = Some("application/json"),
           ),
           Resource(
-            uri = s"crystal://${c.id}/hydrate",
+            uri = s"ccrystal://${c.id}/hydrate",
             name = s"Hydrated context beam for ${c.id}",
             description = Some("Hydrated context beam text/markdown"),
             mimeType = Some("text/markdown"),
@@ -472,7 +472,7 @@ class DefaultMcpHandler(
         )
       }
       entityResource = Resource(
-        uri = "crystal://entities",
+        uri = "ccrystal://entities",
         name = "Cave Entities Registry",
         description = Some("Registered cave entities and identities"),
         mimeType = Some("application/json"),
@@ -486,7 +486,7 @@ class DefaultMcpHandler(
         params.as[ReadResourceParams] match
           case Left(err) => Left(s"Failed to decode ReadResourceParams: ${err.getMessage}")
           case Right(ReadResourceParams(uri)) =>
-            if uri == "crystal://entities" then
+            if uri == "ccrystal://entities" then
               store.getEntityRegistry().map { reg =>
                 ReadResourceResult(
                   List(
@@ -498,8 +498,8 @@ class DefaultMcpHandler(
                   ),
                 )
               }
-            else if uri.startsWith("crystal://") && uri.endsWith("/state") then
-              val crystalId = uri.stripPrefix("crystal://").stripSuffix("/state")
+            else if uri.startsWith("ccrystal://") && uri.endsWith("/state") then
+              val crystalId = uri.stripPrefix("ccrystal://").stripSuffix("/state")
               store.load(crystalId).map { c =>
                 ReadResourceResult(
                   List(
@@ -511,8 +511,8 @@ class DefaultMcpHandler(
                   ),
                 )
               }
-            else if uri.startsWith("crystal://") && uri.endsWith("/dag") then
-              val crystalId = uri.stripPrefix("crystal://").stripSuffix("/dag")
+            else if uri.startsWith("ccrystal://") && uri.endsWith("/dag") then
+              val crystalId = uri.stripPrefix("ccrystal://").stripSuffix("/dag")
               store.load(crystalId).map { c =>
                 ReadResourceResult(
                   List(
@@ -525,9 +525,11 @@ class DefaultMcpHandler(
                 )
               }
             else if uri
-                .startsWith("crystal://") && (uri.contains("/hydrate?") || uri.endsWith("/hydrate"))
+                .startsWith("ccrystal://") && (uri.contains("/hydrate?") || uri.endsWith(
+                "/hydrate",
+              ))
             then
-              val raw = uri.stripPrefix("crystal://")
+              val raw = uri.stripPrefix("ccrystal://")
               val (pathPart, queryPart) =
                 if raw.contains("?") then
                   val parts = raw.split('?')
