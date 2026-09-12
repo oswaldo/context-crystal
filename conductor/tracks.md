@@ -34,5 +34,5 @@
 - [x] **Track: CLI AI Guidance, PII Protection & Entity Conventions**  
   *Link: [conductor/tracks/cli_ai_guidance_and_pii_conventions_20260908/index.md](./tracks/cli_ai_guidance_and_pii_conventions_20260908/index.md)*
 
-- [ ] **Track: Collaborator Readiness: Toolchain, Hardware Baselines, Dual-Key Security & CI**  
+- [x] **Track: Collaborator Readiness: Toolchain, Hardware Baselines, Dual-Key Security & CI**  
   *Link: [conductor/tracks/collaborator_readiness_20260912/index.md](./tracks/collaborator_readiness_20260912/index.md)*
