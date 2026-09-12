@@ -11,7 +11,7 @@
   "goal" : {
     "title" : "Selective Context Hydration & Beam Shaping",
     "intent" : "Enhance ccrystal cast/hydrate with slice selector flags --from, --to, --tail",
-    "status" : "in_progress",
+    "status" : "concluded_success",
     "acceptanceCriteria" : [
       {
         "id" : "task-1",

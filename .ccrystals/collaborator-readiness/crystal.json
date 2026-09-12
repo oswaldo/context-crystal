@@ -1,0 +1,109 @@
+{
+  "schemaVersion" : "1.0.0",
+  "id" : "collaborator-readiness",
+  "name" : "collaborator-readiness",
+  "createdAt" : "2026-09-12T21:40:49.213Z",
+  "updatedAt" : "2026-09-12T21:58:14.413Z",
+  "parentCrystalId" : null,
+  "origin" : null,
+  "caveId" : null,
+  "defaultAuthorId" : "agt_antigravity",
+  "goal" : {
+    "title" : "Collaborator readiness: toolchain bootstrapping, hardware baselines, dual-key security, and multi-platform CI matrix",
+    "intent" : "Establish repo readiness for external collaborators: .jvmopts baseline, docs/contributing.md onboarding, README quickstart, and GitHub Actions PR CI workflow matrix.",
+    "status" : "concluded_success",
+    "acceptanceCriteria" : [
+    ],
+    "metadata" : {
+      
+    }
+  },
+  "entities" : [
+    {
+      "id" : "agt_antigravity",
+      "kind" : "agent",
+      "name" : "Antigravity",
+      "metadata" : {
+        
+      },
+      "publicKey" : null,
+      "endpoints" : {
+        
+      }
+    }
+  ],
+  "activeMask" : null,
+  "dag" : {
+    "rootNodeId" : "node-collaborator-readiness-init",
+    "nodes" : [
+      {
+        "id" : "node-collaborator-readiness-init",
+        "parentIds" : [
+        ],
+        "timestamp" : "2026-09-12T21:40:49.213Z",
+        "actorId" : "agt_antigravity",
+        "kind" : "human_prompt",
+        "contentSummary" : "Initialized crystal 'collaborator-readiness' with goal: Collaborator readiness: toolchain bootstrapping, hardware baselines, dual-key security, and multi-platform CI matrix",
+        "anchor" : null,
+        "artifactIds" : [
+        ],
+        "fidelity" : "inferred",
+        "metadata" : {
+          
+        }
+      },
+      {
+        "id" : "node-2",
+        "parentIds" : [
+          "node-collaborator-readiness-init"
+        ],
+        "timestamp" : "2026-09-12T21:49:36.795Z",
+        "actorId" : "agt_antigravity",
+        "kind" : "checkpoint",
+        "contentSummary" : "Completed collaborator readiness track: .jvmopts, ci.yml, docs/contributing.md, README.md, AGENTS.md, all tests and linters verified.",
+        "anchor" : "track-complete",
+        "artifactIds" : [
+        ],
+        "fidelity" : "inferred",
+        "metadata" : {
+          
+        }
+      },
+      {
+        "id" : "node-3",
+        "parentIds" : [
+          "node-2"
+        ],
+        "timestamp" : "2026-09-13T00:40:00.000Z",
+        "actorId" : "agt_antigravity",
+        "kind" : "resolution",
+        "contentSummary" : "Collaborator readiness track successfully concluded: toolchain bootstrapping, CI matrix, contributing guide, and dual-key security invariants verified and pushed to remote.",
+        "anchor" : null,
+        "artifactIds" : [
+        ],
+        "fidelity" : "inferred",
+        "metadata" : {
+          
+        }
+      }
+    ]
+  },
+  "transientLeases" : [
+    {
+      "id" : "lease-1",
+      "resourceType" : "git_worktree",
+      "resourcePath" : null,
+      "description" : "Isolated git worktree for track/collaborator-readiness",
+      "disposalPolicy" : "manual",
+      "status" : "cleaned",
+      "createdAt" : "2026-09-12T21:41:36.043Z"
+    }
+  ],
+  "lessonsLearned" : [
+  ],
+  "artifacts" : [
+  ],
+  "metadata" : {
+    
+  }
+}
