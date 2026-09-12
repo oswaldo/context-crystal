@@ -1,0 +1,102 @@
+name: CI
+
+on:
+  pull_request:
+    branches: ["main"]
+  push:
+    branches: ["main"]
+
+jobs:
+  quality-check:
+    name: Quality Check (Scalafmt, Scalafix, Docs)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: "temurin"
+          java-version: "21"
+
+      - name: Setup sbt
+        uses: sbt/setup-sbt@v1
+
+      - name: Cache Coursier
+        uses: coursier/cache-action@v6
+
+      - name: Verify Scala Formatting & Lints
+        run: |
+          sbt "scalafmtCheckAll; scalafixAll --check"
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+
+      - name: Run Markdown & Shell Linters
+        run: |
+          npx markdownlint-cli "README.md" "docs/*.md" "skills/**/SKILL.md"
+          find skills -name "*.sh" -exec npx shellcheck {} +
+          npx shellcheck install.sh
+
+      - name: Check for Uncommitted Changes
+        run: git diff --exit-code
+
+  test-matrix:
+    name: Test (${{ matrix.target }})
+    needs: quality-check
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-latest
+            target: linux-x86_64
+            install_deps: |
+              sudo apt-get update
+              sudo apt-get install -y clang libssl-dev libidn2-dev
+          - os: macos-14 # Apple Silicon (M-series)
+            target: macos-aarch64
+            install_deps: |
+              brew install openssl libidn2 llvm
+          - os: macos-15 # Intel Mac
+            target: macos-x86_64
+            install_deps: |
+              brew install openssl libidn2 llvm
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: "temurin"
+          java-version: "21"
+
+      - name: Setup sbt
+        uses: sbt/setup-sbt@v1
+
+      - name: Cache Coursier
+        uses: coursier/cache-action@v6
+
+      - name: Install System Dependencies
+        run: ${{ matrix.install_deps }}
+
+      - name: Configure macOS Environment
+        if: runner.os == 'macOS'
+        run: |
+          OPENSSL_ROOT=$(brew --prefix openssl)
+          LIBIDN2_ROOT=$(brew --prefix libidn2)
+          echo "OPENSSL_ROOT=$OPENSSL_ROOT" >> "$GITHUB_ENV"
+          echo "LIBIDN2_ROOT=$LIBIDN2_ROOT" >> "$GITHUB_ENV"
+          echo "LDFLAGS=-L$OPENSSL_ROOT/lib -L$LIBIDN2_ROOT/lib" >> "$GITHUB_ENV"
+          echo "CPPFLAGS=-I$OPENSSL_ROOT/include -I$LIBIDN2_ROOT/include" >> "$GITHUB_ENV"
+          echo "PKG_CONFIG_PATH=$OPENSSL_ROOT/lib/pkgconfig:$LIBIDN2_ROOT/lib/pkgconfig" >> "$GITHUB_ENV"
+
+      - name: Run Full Test Suite (Native, JVM, JS)
+        run: sbt test
+
+      - name: Verify Native CLI Linking (Dev Mode)
+        run: sbt "cliNative/nativeLink"
