@@ -25,7 +25,7 @@
 - [x] Task: Phase Verification & Checkpoint (Refer to workflow.md) [f77836d]
 
 ## Phase 5: End-to-End Verification, Release Build & Track Wrap-up
-- [ ] Task: Run full test suite across all platforms (`sbt test`)
-- [ ] Task: Run formatting and linters (`scalafmtAll`, `scalafixAll`, `markdownlint`)
-- [ ] Task: Compile and install optimized release binary (`~/.local/bin/ccrystal`) using Thin LTO
-- [ ] Task: Phase Verification & Checkpoint (Refer to workflow.md)
+- [x] Task: Run full test suite across all platforms (`sbt test`)
+- [x] Task: Run formatting and linters (`scalafmtAll`, `scalafixAll`, `markdownlint`)
+- [x] Task: Compile and install optimized release binary (`~/.local/bin/ccrystal`) using Thin LTO
+- [x] Task: Phase Verification & Checkpoint (Refer to workflow.md)
