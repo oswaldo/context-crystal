@@ -40,5 +40,5 @@
 - [x] **Track: Artifact & World-State Ontology (Virtual & Physical Substrates)**  
   *Link: [conductor/tracks/artifact_world_state_ontology_20260913/index.md](./tracks/artifact_world_state_ontology_20260913/index.md)*
 
-- [~] **Track: Native MCP Server Ergonomics & Advanced Tooling (crystal_list, atomic crystal_init, crystal_hydrate, crystal_triage)**  
+- [x] **Track: Native MCP Server Ergonomics & Advanced Tooling (crystal_list, atomic crystal_init, crystal_hydrate, crystal_triage)**  
   *Link: [conductor/tracks/mcp_server_ergonomics_and_tools_20260913/index.md](./tracks/mcp_server_ergonomics_and_tools_20260913/index.md)*
