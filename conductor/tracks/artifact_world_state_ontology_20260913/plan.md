@@ -7,11 +7,11 @@
 - [x] Task: Update `spec/v1/context-crystal.json` schema definitions for artifact models and DAG node linkages [3765d06]
 - [x] Task: Phase Verification & Checkpoint (Refer to workflow.md) [3765d06]
 
-## Phase 2: Cave Artifact Registry & Storage Layer (Red-Green TDD)
-- [ ] Task: Write failing unit tests in `FsCrystalStoreSuite` for reading, writing, and listing artifacts in Cave Registry (`.ccrystals/artifacts.json`)
-- [ ] Task: Implement `CaveArtifactRegistry` storage handling in `FsCrystalStore` (or `ArtifactStore`) supporting both cave-wide and crystal-scoped artifacts
-- [ ] Task: Verify cross-platform store compatibility across JVM, Native, and JS targets
-- [ ] Task: Phase Verification & Checkpoint (Refer to workflow.md)
+## Phase 2: Cave Artifact Registry & Storage Layer (Red-Green TDD) [checkpoint: 80f88ab]
+- [x] Task: Write failing unit tests in `FsCrystalStoreSuite` for reading, writing, and listing artifacts in Cave Registry (`.ccrystals/artifacts.json`) [80f88ab]
+- [x] Task: Implement `CaveArtifactRegistry` storage handling in `FsCrystalStore` (or `ArtifactStore`) supporting both cave-wide and crystal-scoped artifacts [80f88ab]
+- [x] Task: Verify cross-platform store compatibility across JVM, Native, and JS targets [80f88ab]
+- [x] Task: Phase Verification & Checkpoint (Refer to workflow.md) [80f88ab]
 
 ## Phase 3: Context Hydration Beam Projection (Red-Green TDD)
 - [ ] Task: Write failing unit tests in `ContextHydratorSuite` for projecting active Targets, available Instruments, and Preconditions into context beams
