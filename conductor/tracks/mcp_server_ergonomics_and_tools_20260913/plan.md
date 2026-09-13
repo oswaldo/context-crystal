@@ -27,9 +27,9 @@
 
 ## Phase 3: End-to-End Integration, Skill & Tool Schema Alignment
 
-- [ ] Task: Update end-to-end integration tests in `McpEndToEndSessionSuite.scala`
-  - [ ] Write comprehensive session test exercising `crystal_init` (with tasks), `crystal_list`, `crystal_hydrate`, and `crystal_triage`
-  - [ ] Verify all tests pass cleanly
+- [x] Task: Update end-to-end integration tests in `McpEndToEndSessionSuite.scala` [dfda2c3]
+  - [x] Write comprehensive session test exercising `crystal_init` (with tasks), `crystal_list`, `crystal_hydrate`, and `crystal_triage`
+  - [x] Verify all tests pass cleanly
 - [ ] Task: Export updated JSON tool schemas and update `SKILL.md`
   - [ ] Export schema files to `/home/oswaldo/.gemini/antigravity-cli/mcp/context-crystal/`
   - [ ] Update `.agents/skills/context-crystal/SKILL.md` and documentation
