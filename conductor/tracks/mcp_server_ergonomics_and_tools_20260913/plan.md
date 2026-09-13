@@ -19,10 +19,10 @@
   - [x] Write failing unit test in `DefaultMcpHandlerSuite.scala` testing `tail`, `from`, `to`, and `summary_only` arguments
   - [x] Expose `crystal_hydrate` in `tools/list` and wire execution to `CliCommand.Cast`
   - [x] Verify test passes cleanly
-- [ ] Task: Implement `crystal_triage` MCP tool with structured classification
-  - [ ] Write failing unit test in `DefaultMcpHandlerSuite.scala` verifying categorization (`CandidateForCleanup`, `Active`, `RequiresReview`)
-  - [ ] Expose `crystal_triage` in `tools/list` and wire execution to triage analysis
-  - [ ] Verify test passes cleanly
+- [x] Task: Implement `crystal_triage` MCP tool with structured classification [3bc877a]
+  - [x] Write failing unit test in `DefaultMcpHandlerSuite.scala` verifying categorization (`CandidateForCleanup`, `Active`, `RequiresReview`)
+  - [x] Expose `crystal_triage` in `tools/list` and wire execution to triage analysis
+  - [x] Verify test passes cleanly
 - [ ] Task: Phase 2 Verification & Checkpoint (Refer to workflow.md)
 
 ## Phase 3: End-to-End Integration, Skill & Tool Schema Alignment
