@@ -35,12 +35,12 @@
   - [x] Update `.agents/skills/context-crystal/SKILL.md` and documentation
 - [x] Task: Phase 3 Verification & Checkpoint (Refer to workflow.md) [81837be]
 
-## Phase 4: Release Binary Compilation, Dogfooding & Verification
+## Phase 4: Release Binary Compilation, Dogfooding & Verification [checkpoint: cb372fd]
 
-- [ ] Task: Full test suite verification across JVM and Native targets
-  - [ ] Run `sbt test` across core and cli modules
-  - [ ] Run `sbt "scalafmtCheckAll"`
-- [ ] Task: Build optimized release native binary with Thin LTO into `~/.local/bin/ccrystal`
-  - [ ] Execute release build and copy with atomic replacement
-- [ ] Task: Dogfood the new tools via active Context Crystal tracking for this session
-- [ ] Task: Phase 4 Verification & Checkpoint (Refer to workflow.md)
+- [x] Task: Full test suite verification across JVM and Native targets
+  - [x] Run `sbt test` across core and cli modules
+  - [x] Run `sbt "scalafmtCheckAll"`
+- [x] Task: Build optimized release native binary with Thin LTO into `~/.local/bin/ccrystal`
+  - [x] Execute release build and copy with atomic replacement
+- [x] Task: Dogfood the new tools via active Context Crystal tracking for this session
+- [x] Task: Phase 4 Verification & Checkpoint (Refer to workflow.md) [cb372fd]
