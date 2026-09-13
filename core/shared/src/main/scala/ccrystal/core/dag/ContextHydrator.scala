@@ -52,6 +52,20 @@ object ContextHydrator:
         }
         sb.append("\n")
 
+      if crystal.artifacts.nonEmpty then
+        sb.append("## Artifacts & World State:\n")
+        crystal.artifacts.foreach { a =>
+          val uriPart = a.uri.map(u => s" <$u>").getOrElse("")
+          val locPart = a.location match
+            case Some(loc) =>
+              val benchPart = loc.benchCoordinates.map(b => s" ($b)").getOrElse("")
+              s" @ ${loc.name}$benchPart"
+            case None => ""
+          val descPart = a.description.map(d => s" - $d").getOrElse("")
+          sb.append(s"- [${a.role}] (${a.substrate}) ${a.id}: ${a.name}$locPart$uriPart$descPart\n")
+        }
+        sb.append("\n")
+
       if !params.summaryOnly && slicedNodes.nonEmpty then
         val subtitle = (params.slice.from, params.slice.to, params.slice.tail) match
           case (Some(f), Some(t), Some(tl)) => s" (From: $f, To: $t, Tail: $tl)"
@@ -67,7 +81,20 @@ object ContextHydrator:
           val anchorPart = n.anchor.map(a => s" [#$a]").getOrElse("")
           val fidelityPart =
             if n.fidelity != CaptureFidelity.Inferred then s" [fidelity: ${n.fidelity}]" else ""
-          sb.append(s"- [${n.kind}] (${n.actorId}): ${n.contentSummary}$anchorPart$fidelityPart\n")
+          val inputsPart =
+            if n.inputArtifactIds.nonEmpty then s" [inputs: ${n.inputArtifactIds.mkString(", ")}]"
+            else ""
+          val outputsPart =
+            if n.outputArtifactIds.nonEmpty then
+              s" [outputs: ${n.outputArtifactIds.mkString(", ")}]"
+            else ""
+          val precondsPart =
+            if n.preconditionArtifactIds.nonEmpty then
+              s" [preconditions: ${n.preconditionArtifactIds.mkString(", ")}]"
+            else ""
+          sb.append(
+            s"- [${n.kind}] (${n.actorId}): ${n.contentSummary}$anchorPart$fidelityPart$inputsPart$outputsPart$precondsPart\n",
+          )
         }
         sb.append("\n")
 

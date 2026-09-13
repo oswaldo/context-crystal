@@ -204,3 +204,87 @@ class ContextHydratorSuite extends FunSuite:
       "Expected Invalid slice range error",
     )
   }
+
+  test(
+    "ContextHydrator: projects Artifacts & World State section and directional transition links",
+  ) {
+    val targetArtifact = Artifact(
+      id = "art-model-file",
+      name = "Models.scala",
+      substrate = ArtifactSubstrate.Virtual,
+      role = ArtifactRole.Target,
+      uri = Some("file:///core/Models.scala"),
+      description = Some("Domain models source"),
+    )
+    val instrumentArtifact = Artifact(
+      id = "art-test-rig",
+      name = "CAN-bus Rig 01",
+      substrate = ArtifactSubstrate.Physical,
+      role = ArtifactRole.Instrument,
+      uri = Some("urn:hardware:rig-01"),
+      description = Some("Physical test bench"),
+      location = Some(
+        PhysicalLocation(
+          name = "Electronics Lab",
+          civicAddress = Some("Musterstraße 1, Berlin"),
+          geoUri = Some("geo:52.5200,13.4050"),
+          benchCoordinates = Some("Bench-07"),
+        ),
+      ),
+    )
+    val preconditionArtifact = Artifact(
+      id = "art-env-power",
+      name = "24V Power Bus",
+      substrate = ArtifactSubstrate.Physical,
+      role = ArtifactRole.Precondition,
+      description = Some("Power supply ready and calibrated"),
+    )
+
+    val nodeWithCausalLinks = DAGNode(
+      id = "node-causal-test",
+      parentIds = Nil,
+      timestamp = "2026-09-13T10:00:00Z",
+      actorId = "agent_bob",
+      kind = NodeKind.ToolExecution,
+      contentSummary = "Flash firmware and run telemetry",
+      anchor = Some("flash_test"),
+      artifactIds = List("art-model-file"),
+      inputArtifactIds = List("art-model-file"),
+      outputArtifactIds = List("art-telemetry-log"),
+      preconditionArtifactIds = List("art-env-power", "art-test-rig"),
+    )
+
+    val crystalWithArtifacts = crystal.copy(
+      artifacts = List(targetArtifact, instrumentArtifact, preconditionArtifact),
+      dag = DAG(rootNodeId = "node-causal-test", nodes = List(nodeWithCausalLinks)),
+    )
+
+    val res = ContextHydrator.hydrate(crystalWithArtifacts, HydrationParams())
+    assert(res.isRight, "Expected successful hydration with artifacts")
+    val text = res.toOption.get
+
+    // Assert Artifacts & World State header and items
+    assert(text.contains("## Artifacts & World State:"), "Missing artifacts section header")
+    assert(
+      text.contains("[Target] (Virtual) art-model-file: Models.scala"),
+      "Missing Target artifact",
+    )
+    assert(text.contains("<file:///core/Models.scala>"), "Missing Target URI")
+    assert(
+      text.contains("[Instrument] (Physical) art-test-rig: CAN-bus Rig 01"),
+      "Missing Instrument artifact",
+    )
+    assert(text.contains("@ Electronics Lab (Bench-07)"), "Missing physical bench location")
+    assert(
+      text.contains("[Precondition] (Physical) art-env-power: 24V Power Bus"),
+      "Missing Precondition artifact",
+    )
+
+    // Assert directional links in transition line
+    assert(text.contains("[inputs: art-model-file]"), "Missing inputs badge")
+    assert(text.contains("[outputs: art-telemetry-log]"), "Missing outputs badge")
+    assert(
+      text.contains("[preconditions: art-env-power, art-test-rig]"),
+      "Missing preconditions badge",
+    )
+  }
