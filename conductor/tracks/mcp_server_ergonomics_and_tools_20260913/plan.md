@@ -15,10 +15,10 @@
 
 ## Phase 2: Beam Shaping & Cave Triage MCP Tools
 
-- [ ] Task: Implement `crystal_hydrate` MCP tool with beam shaping parameters
-  - [ ] Write failing unit test in `DefaultMcpHandlerSuite.scala` testing `tail`, `from`, `to`, and `summary_only` arguments
-  - [ ] Expose `crystal_hydrate` in `tools/list` and wire execution to `CliCommand.Cast`
-  - [ ] Verify test passes cleanly
+- [x] Task: Implement `crystal_hydrate` MCP tool with beam shaping parameters [91ae9e8]
+  - [x] Write failing unit test in `DefaultMcpHandlerSuite.scala` testing `tail`, `from`, `to`, and `summary_only` arguments
+  - [x] Expose `crystal_hydrate` in `tools/list` and wire execution to `CliCommand.Cast`
+  - [x] Verify test passes cleanly
 - [ ] Task: Implement `crystal_triage` MCP tool with structured classification
   - [ ] Write failing unit test in `DefaultMcpHandlerSuite.scala` verifying categorization (`CandidateForCleanup`, `Active`, `RequiresReview`)
   - [ ] Expose `crystal_triage` in `tools/list` and wire execution to triage analysis
