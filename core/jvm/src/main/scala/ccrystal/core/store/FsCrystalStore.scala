@@ -101,6 +101,53 @@ class FsCrystalStore(val rootPath: Path) extends CrystalStore:
       saveEntityRegistry(updated).map(_ => entity)
     }
 
+  override def getArtifactRegistry(): Either[String, CaveArtifactRegistry] =
+    try
+      val file = rootPath.resolve("artifacts.json")
+      if !Files.exists(file) then Right(CaveArtifactRegistry())
+      else
+        val content = new String(Files.readAllBytes(file), StandardCharsets.UTF_8)
+        decode[CaveArtifactRegistry](content).left.map(err =>
+          s"JSON parse error in artifacts.json: ${err.getMessage}",
+        )
+    catch case ex: Throwable => Left(s"Failed to load artifact registry: ${ex.getMessage}")
+
+  override def saveArtifactRegistry(registry: CaveArtifactRegistry): Either[String, Unit] =
+    try
+      Files.createDirectories(rootPath)
+      val file        = rootPath.resolve("artifacts.json")
+      val jsonContent = registry.asJson.spaces2
+      Files.write(file, jsonContent.getBytes(StandardCharsets.UTF_8))
+      Right(())
+    catch case ex: Throwable => Left(s"Failed to save artifact registry: ${ex.getMessage}")
+
+  override def registerArtifact(artifact: Artifact): Either[String, Artifact] =
+    getArtifactRegistry().flatMap { reg =>
+      val updated = reg.copy(artifacts = reg.artifacts + (artifact.id -> artifact))
+      saveArtifactRegistry(updated).map(_ => artifact)
+    }
+
+  override def listArtifacts(crystalId: Option[String] = None): Either[String, List[Artifact]] =
+    crystalId match
+      case Some(cId) =>
+        load(cId).map(_.artifacts)
+      case None =>
+        getArtifactRegistry().map(_.artifacts.values.toList.sortBy(_.id))
+
+  override def getArtifact(
+      id: String,
+      crystalId: Option[String] = None,
+  ): Either[String, Option[Artifact]] =
+    crystalId match
+      case Some(cId) =>
+        load(cId).flatMap { crystal =>
+          crystal.artifacts.find(_.id == id) match
+            case some @ Some(_) => Right(some)
+            case None           => getArtifactRegistry().map(_.artifacts.get(id))
+        }
+      case None =>
+        getArtifactRegistry().map(_.artifacts.get(id))
+
   override def resolveOrCreateEntity(
       name: String,
       kind: EntityKind,

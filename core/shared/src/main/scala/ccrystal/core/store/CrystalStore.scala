@@ -22,3 +22,8 @@ trait CrystalStore:
       entityId: String,
       limit: Int = 10,
   ): Either[String, EntityImpactPreview]
+  def getArtifactRegistry(): Either[String, CaveArtifactRegistry]
+  def saveArtifactRegistry(registry: CaveArtifactRegistry): Either[String, Unit]
+  def registerArtifact(artifact: Artifact): Either[String, Artifact]
+  def listArtifacts(crystalId: Option[String] = None): Either[String, List[Artifact]]
+  def getArtifact(id: String, crystalId: Option[String] = None): Either[String, Option[Artifact]]

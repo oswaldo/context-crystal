@@ -175,3 +175,89 @@ class FsCrystalStoreSuite extends FunSuite:
     val handleRes = store.resolveOrCreateEntity("john", EntityKind.Human)
     assert(handleRes.isRight)
     assertEquals(handleRes.toOption.get.id, "usr_john")
+
+  test("FsCrystalStore manages .ccrystals/artifacts.json lifecycle and artifact queries"):
+    val store = FsCrystalStore(tempDir.resolve(".ccrystals").toString)
+
+    // Initial registry should be empty
+    val initialArtifacts = store.getArtifactRegistry()
+    assert(initialArtifacts.isRight)
+    assertEquals(initialArtifacts.toOption.get.artifacts.isEmpty, true)
+
+    // Register a cave-wide instrument artifact
+    val rigArtifact = Artifact(
+      id = "art-rig-01",
+      name = "CAN-bus Hardware Test Rig",
+      substrate = ArtifactSubstrate.Physical,
+      role = ArtifactRole.Instrument,
+      uri = Some("urn:hardware:can-rig:01"),
+      description = Some("Bench test rig"),
+      location = Some(
+        PhysicalLocation(
+          name = "Electronics Lab",
+          civicAddress = Some("Musterstraße 1, Berlin"),
+          geoUri = Some("geo:52.5200,13.4050"),
+          benchCoordinates = Some("Bench-07"),
+        ),
+      ),
+    )
+    val regRes = store.registerArtifact(rigArtifact)
+    assert(regRes.isRight)
+
+    // Verify artifacts.json exists on disk
+    val artifactsJsonPath = tempDir.resolve(".ccrystals").resolve("artifacts.json")
+    assert(Files.exists(artifactsJsonPath), "artifacts.json should exist")
+
+    // Query cave artifacts
+    val caveList = store.listArtifacts()
+    assert(caveList.isRight, "caveList should be Right")
+    assertEquals(caveList.toOption.get.map(_.id), List("art-rig-01"), "caveList IDs match")
+
+    // Save a crystal with crystal-scoped deliverables
+    val fileArtifact = Artifact(
+      id = "art-schema",
+      name = "v1 Schema",
+      substrate = ArtifactSubstrate.Virtual,
+      role = ArtifactRole.Target,
+      uri = Some("file:///spec/v1/context-crystal.json"),
+    )
+    val crystal = ContextCrystal(
+      schemaVersion = "1.0.0",
+      id = "c-with-artifacts",
+      createdAt = "2026-09-13T10:00:00Z",
+      updatedAt = "2026-09-13T10:00:00Z",
+      goal = Goal("Schema Goal", "Intent", GoalStatus.InProgress, Nil),
+      entities = Nil,
+      dag = DAG(
+        "root",
+        List(DAGNode("root", Nil, "2026-09-13T10:00:00Z", "u-1", NodeKind.HumanPrompt, "Init")),
+      ),
+      artifacts = List(fileArtifact),
+    )
+    assert(store.save(crystal).isRight, "save crystal with artifacts should be Right")
+
+    // Query crystal-scoped artifacts
+    val crystalArtifacts = store.listArtifacts(crystalId = Some("c-with-artifacts"))
+    assert(crystalArtifacts.isRight, "crystalArtifacts should be Right")
+    assertEquals(
+      crystalArtifacts.toOption.get.map(_.id),
+      List("art-schema"),
+      "crystalArtifacts IDs match",
+    )
+
+    // Query specific artifact with crystal fallback
+    val fetchedTarget = store.getArtifact("art-schema", crystalId = Some("c-with-artifacts"))
+    assert(fetchedTarget.isRight, "fetchedTarget should be Right")
+    assertEquals(
+      fetchedTarget.toOption.get.map(_.name),
+      Some("v1 Schema"),
+      "fetchedTarget name matches",
+    )
+
+    val fetchedRig = store.getArtifact("art-rig-01", crystalId = Some("c-with-artifacts"))
+    assert(fetchedRig.isRight, "fetchedRig should be Right")
+    assertEquals(
+      fetchedRig.toOption.get.map(_.name),
+      Some("CAN-bus Hardware Test Rig"),
+      "fetchedRig name matches",
+    )

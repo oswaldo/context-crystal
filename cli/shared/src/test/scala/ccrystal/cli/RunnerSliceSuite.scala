@@ -31,6 +31,31 @@ class InMemoryCrystalStore extends CrystalStore:
     registry = registry.copy(entities = registry.entities + (entity.id -> entity))
     Right(entity)
 
+  var artifactRegistry = CaveArtifactRegistry()
+
+  def getArtifactRegistry(): Either[String, CaveArtifactRegistry] = Right(artifactRegistry)
+
+  def saveArtifactRegistry(reg: CaveArtifactRegistry): Either[String, Unit] =
+    artifactRegistry = reg
+    Right(())
+
+  def registerArtifact(artifact: Artifact): Either[String, Artifact] =
+    artifactRegistry =
+      artifactRegistry.copy(artifacts = artifactRegistry.artifacts + (artifact.id -> artifact))
+    Right(artifact)
+
+  def listArtifacts(crystalId: Option[String]): Either[String, List[Artifact]] =
+    crystalId match
+      case Some(cId) => load(cId).map(_.artifacts)
+      case None      => Right(artifactRegistry.artifacts.values.toList.sortBy(_.id))
+
+  def getArtifact(id: String, crystalId: Option[String]): Either[String, Option[Artifact]] =
+    crystalId match
+      case Some(cId) =>
+        load(cId).map(_.artifacts.find(_.id == id).orElse(artifactRegistry.artifacts.get(id)))
+      case None =>
+        Right(artifactRegistry.artifacts.get(id))
+
   def resolveOrCreateEntity(
       name: String,
       kind: EntityKind,
