@@ -13,7 +13,7 @@
   - [x] Verify test passes cleanly
 - [x] Task: Phase 1 Verification & Checkpoint (Refer to workflow.md) [605fd11]
 
-## Phase 2: Beam Shaping & Cave Triage MCP Tools
+## Phase 2: Beam Shaping & Cave Triage MCP Tools [checkpoint: 734e510]
 
 - [x] Task: Implement `crystal_hydrate` MCP tool with beam shaping parameters [91ae9e8]
   - [x] Write failing unit test in `DefaultMcpHandlerSuite.scala` testing `tail`, `from`, `to`, and `summary_only` arguments
@@ -23,7 +23,7 @@
   - [x] Write failing unit test in `DefaultMcpHandlerSuite.scala` verifying categorization (`CandidateForCleanup`, `Active`, `RequiresReview`)
   - [x] Expose `crystal_triage` in `tools/list` and wire execution to triage analysis
   - [x] Verify test passes cleanly
-- [ ] Task: Phase 2 Verification & Checkpoint (Refer to workflow.md)
+- [x] Task: Phase 2 Verification & Checkpoint (Refer to workflow.md) [734e510]
 
 ## Phase 3: End-to-End Integration, Skill & Tool Schema Alignment
 
