@@ -6,11 +6,11 @@
   - [x] Write failing unit test in `cli/shared/src/test/scala/ccrystal/cli/RunnerSuite.scala`
   - [x] Update `CliCommand.Init` definition and `Runner.run` to instantiate `AcceptanceCriterion` elements
   - [x] Verify test passes cleanly
-- [ ] Task: Implement `crystal_list` and extended `crystal_init` tools in `DefaultMcpHandler`
-  - [ ] Write failing unit test in `cli/shared/src/test/scala/ccrystal/cli/mcp/DefaultMcpHandlerSuite.scala`
-  - [ ] Expose `crystal_list` in `tools/list` and wire execution to `CliCommand.ListCrystals`
-  - [ ] Update `crystal_init` in `tools/list` with optional `tasks` array and wire execution to `CliCommand.Init`
-  - [ ] Verify test passes cleanly
+- [x] Task: Implement `crystal_list` and extended `crystal_init` tools in `DefaultMcpHandler` [8815340]
+  - [x] Write failing unit test in `cli/shared/src/test/scala/ccrystal/cli/mcp/DefaultMcpHandlerSuite.scala`
+  - [x] Expose `crystal_list` in `tools/list` and wire execution to `CliCommand.ListCrystals`
+  - [x] Update `crystal_init` in `tools/list` with optional `tasks` array and wire execution to `CliCommand.Init`
+  - [x] Verify test passes cleanly
 - [ ] Task: Phase 1 Verification & Checkpoint (Refer to workflow.md)
 
 ## Phase 2: Beam Shaping & Cave Triage MCP Tools
