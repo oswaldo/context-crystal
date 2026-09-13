@@ -11,7 +11,7 @@
   "goal" : {
     "title" : "Native MCP Server Ergonomics & Advanced Tooling",
     "intent" : "Close MCP server gaps and add crystal_list, crystal_hydrate, and crystal_triage",
-    "status" : "in_progress",
+    "status" : "concluded_success",
     "acceptanceCriteria" : [
       {
         "id" : "task-1",
