@@ -18,11 +18,11 @@
 - [x] Task: Update `ContextHydrator` to render the `## Artifacts & World State` section in markdown casts [15e5e18]
 - [x] Task: Phase Verification & Checkpoint (Refer to workflow.md) [15e5e18]
 
-## Phase 4: CLI Interface & Native MCP Server Integration (Red-Green TDD)
-- [ ] Task: Write failing tests in `CommandParserSuite` and `RunnerSuite` for `ccrystal artifact` (`list`, `register`, `inspect`) and `ccrystal node add` artifact options
-- [ ] Task: Implement CLI commands and argument parsing in `CliCommand.scala`, `CommandParser.scala`, and `Runner.scala`
-- [ ] Task: Implement MCP resources (`ccrystal://artifacts`, `ccrystal://{id}/artifacts`) and MCP tool `crystal_artifact` in `DefaultMcpHandler.scala` with test coverage
-- [ ] Task: Phase Verification & Checkpoint (Refer to workflow.md)
+## Phase 4: CLI Interface & Native MCP Server Integration (Red-Green TDD) [checkpoint: f77836d]
+- [x] Task: Write failing tests in `CommandParserSuite` and `RunnerSuite` for `ccrystal artifact` (`list`, `register`, `inspect`) and `ccrystal node add` artifact options [f77836d]
+- [x] Task: Implement CLI commands and argument parsing in `CliCommand.scala`, `CommandParser.scala`, and `Runner.scala` [f77836d]
+- [x] Task: Implement MCP resources (`ccrystal://artifacts`, `ccrystal://{id}/artifacts`) and MCP tool `crystal_artifact` in `DefaultMcpHandler.scala` with test coverage [f77836d]
+- [x] Task: Phase Verification & Checkpoint (Refer to workflow.md) [f77836d]
 
 ## Phase 5: End-to-End Verification, Release Build & Track Wrap-up
 - [ ] Task: Run full test suite across all platforms (`sbt test`)
