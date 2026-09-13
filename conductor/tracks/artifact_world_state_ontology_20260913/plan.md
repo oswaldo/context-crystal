@@ -1,11 +1,11 @@
 # Implementation Plan: Artifact & World-State Ontology (Virtual & Physical Substrates)
 
-## Phase 1: Core Models, Codecs & JSON Schema (Red-Green TDD)
-- [ ] Task: Write failing unit tests in `ModelCodecSuite` for `ArtifactSubstrate`, `ArtifactRole`, `PhysicalLocation`, `Artifact`, directional `DAGNode` links, and backward-compatible crystal deserialization
-- [ ] Task: Implement ADTs and Enums in `ccrystal.core.model.Models.scala` with `derives CanEqual`
-- [ ] Task: Implement Circe Encoders and Decoders in `ccrystal.core.codec.Codecs.scala`
-- [ ] Task: Update `spec/v1/context-crystal.json` schema definitions for artifact models and DAG node linkages
-- [ ] Task: Phase Verification & Checkpoint (Refer to workflow.md)
+## Phase 1: Core Models, Codecs & JSON Schema (Red-Green TDD) [checkpoint: 3765d06]
+- [x] Task: Write failing unit tests in `ModelCodecSuite` for `ArtifactSubstrate`, `ArtifactRole`, `PhysicalLocation`, `Artifact`, directional `DAGNode` links, and backward-compatible crystal deserialization [3765d06]
+- [x] Task: Implement ADTs and Enums in `ccrystal.core.model.Models.scala` with `derives CanEqual` [3765d06]
+- [x] Task: Implement Circe Encoders and Decoders in `ccrystal.core.codec.Codecs.scala` [3765d06]
+- [x] Task: Update `spec/v1/context-crystal.json` schema definitions for artifact models and DAG node linkages [3765d06]
+- [x] Task: Phase Verification & Checkpoint (Refer to workflow.md) [3765d06]
 
 ## Phase 2: Cave Artifact Registry & Storage Layer (Red-Green TDD)
 - [ ] Task: Write failing unit tests in `FsCrystalStoreSuite` for reading, writing, and listing artifacts in Cave Registry (`.ccrystals/artifacts.json`)
