@@ -17,7 +17,7 @@ This skill equips AI coding entities (Antigravity, Claude Code, Cursor, Windsurf
 - **Context Over Session:** Context and goals exist independently of any individual chat session, IDE window, or token budget.
 - **Agent as Operator (Zero Human Learning Curve):** The human operator should never need to learn CLI flags, subcommands, or manual installation routines. The agent autonomously interprets user intent, manages binary installation, and executes atomic batched updates behind the scenes.
 - **Fidelity Guarantee:** In the absence of an OS-level deterministic kernel interceptor, all agent-synthesized DAG transitions MUST specify `--fidelity inferred`.
-- **Atomic Multi-Command Batching:** To avoid token inflation and roundtrip latency, ALWAYS prefer executing composite transitions in a single atomic invocation using `ccrystal batch "<cmd1>; <cmd2>; ..."`.
+- **Atomic Multi-Command Batching & Native MCP Preference:** Autonomous agents interacting with Context Crystal should prioritize native MCP tools (`crystal_batch`, `crystal_artifact`, `crystal_init`, `crystal_checkpoint`, `crystal_task_transition`, `crystal_transient_lease`, `crystal_slice_fork`, `crystal_delete`) and resources (`ccrystal://artifacts`, `ccrystal://{id}/artifacts`) over shell subprocesses. For multi-step transitions, compose a single `crystal_batch` recipe or `ccrystal batch` command to execute atomically with minimal turn roundtrips.
 - **Preservation of Clean Repositories:** Context Crystal fully supports out-of-tree companion context repositories (`CCRYSTAL_STORE`). Respect user repository policies to prevent polluting production code with local tracking files.
 - **Mandatory Task Inception Gate:** When starting any non-trivial or multi-step engineering task, the agent MUST immediately inspect existing crystals (`ccrystal list` or MCP `list_resources`). If an existing crystal relates to the session context or feature track, attach to it and hydrate context before making code edits. If none exists, initialize a new crystal (`ccrystal init` or `crystal_init`). Never proceed through multi-turn refactors or feature tracks without active crystal anchoring.
 
@@ -146,6 +146,13 @@ The skill automatically adapts its update cadence and token usage based on the h
      ccrystal batch "transient clean <crystal-id> -l <lease-id>; lesson add <crystal-id> -f '<Observed friction>' -r '<Root cause>' -a '<Remediation>'"
      ```
 
+  6. **Artifact & World-State Linkage:** Register long-lived tools, virtual mocks, or physical lab environments in the Cave Registry or crystal scope, and link them directionally:
+
+      ```bash
+      ccrystal artifact register --id dev-rig-1 --name 'Development Rig' --substrate physical --role instrument --cave
+      ccrystal node add <crystal-id> -k tool_execution -s 'Execute firmware test' --input-artifact dev-rig-1 --output-artifact test-report-1
+      ```
+
 ### B. Mode 2: Autonomous Spine Mode (High Crash & Compaction Resilience)
 
 *Active when no external planning tool is present.*
@@ -186,6 +193,10 @@ When the user communicates in natural language, translate their intent into the 
 | *"This bug is unrelated, let's track it separately"* | Cleave context and fork into child crystal | `ccrystal slice <id> --from <anchor-or-node> --fork-to <child-id> --prune` |
 | *"What crystals are in progress?"*, *"Which is closer to done?"* | Inspect crystal status and completion ratios | `ccrystal list --status in_progress` |
 | *"Complete task X"* | Mark acceptance criterion done | `ccrystal task done <id> -t <task-id>` |
+| *"Register artifact / tool X"*, *"Add physical device / hardware rig"* | Register virtual or physical artifact in cave or crystal | `ccrystal artifact register --id <id> --name '<name>' --substrate <virtual\|physical> --role <target\|instrument\|precondition> [--uri <uri>] [--location-name '<loc>'] [--bench-coords '<coords>']` |
+| *"What artifacts are available?"*, *"List tools / hardware"* | List artifacts across cave or within a crystal | `ccrystal artifact list [--cave] [--crystal <id>]` |
+| *"Inspect artifact X"*, *"Check test rig location / details"* | Inspect metadata, substrate, and physical location of artifact | `ccrystal artifact inspect <id> [--crystal <id>]` |
+| *"Execute test using rig X"*, *"Link artifact inputs / outputs"* | Record transition with directional artifact links | `ccrystal node add <id> -k tool_execution -s '<summary>' --input-artifact <in-id> --output-artifact <out-id> --precondition-artifact <pre-id>` |
 | *"Delete crystal X"*, *"Remove scratch session"* | Permanently delete crystal and cascade orphaned entities | `ccrystal delete <id>` (or `ccrystal delete <id> -f` when automated) |
 | *"Deregister entity X"*, *"Remove actor from cave"* | Deregister entity and cascade-delete associated crystals | `ccrystal entity deregister <entity-id>` (or `-f` when automated) |
 
@@ -217,6 +228,12 @@ ccrystal batch "task done my-feature -t task-3; node add my-feature -k resolutio
 
 ```bash
 ccrystal batch "delete scratch-spike -f; init scratch-spike -g 'Spike 2' -i 'Fresh exploration'"
+```
+
+### Recipe 5: Artifact Registration & Directional Execution Linkage
+
+```bash
+ccrystal batch "artifact register --id rig-sensor-1 --name 'Oscilloscope Station' --substrate physical --role precondition --location-name 'Hardware Lab' --bench-coords 'Bench-4' --cave; node add my-feature -k tool_execution -s 'Executed signal sampling' --precondition-artifact rig-sensor-1 --output-artifact waveform-dump-1"
 ```
 
 ---
