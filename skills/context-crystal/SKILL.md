@@ -17,9 +17,9 @@ This skill equips AI coding entities (Antigravity, Claude Code, Cursor, Windsurf
 - **Context Over Session:** Context and goals exist independently of any individual chat session, IDE window, or token budget.
 - **Agent as Operator (Zero Human Learning Curve):** The human operator should never need to learn CLI flags, subcommands, or manual installation routines. The agent autonomously interprets user intent, manages binary installation, and executes atomic batched updates behind the scenes.
 - **Fidelity Guarantee:** In the absence of an OS-level deterministic kernel interceptor, all agent-synthesized DAG transitions MUST specify `--fidelity inferred`.
-- **Atomic Multi-Command Batching & Native MCP Preference:** Autonomous agents interacting with Context Crystal should prioritize native MCP tools (`crystal_batch`, `crystal_artifact`, `crystal_init`, `crystal_checkpoint`, `crystal_task_transition`, `crystal_transient_lease`, `crystal_slice_fork`, `crystal_delete`) and resources (`ccrystal://artifacts`, `ccrystal://{id}/artifacts`) over shell subprocesses. For multi-step transitions, compose a single `crystal_batch` recipe or `ccrystal batch` command to execute atomically with minimal turn roundtrips.
+- **Atomic Multi-Command Batching & Native MCP Preference:** Autonomous agents interacting with Context Crystal should prioritize native MCP tools (`crystal_batch`, `crystal_list`, `crystal_hydrate`, `crystal_triage`, `crystal_init`, `crystal_checkpoint`, `crystal_task_transition`, `crystal_transient_lease`, `crystal_slice_fork`, `crystal_delete`, `crystal_artifact`) and resources (`ccrystal://artifacts`, `ccrystal://{id}/artifacts`) over shell subprocesses. For multi-step transitions, compose a single `crystal_batch` recipe or `ccrystal batch` command to execute atomically with minimal turn roundtrips.
 - **Preservation of Clean Repositories:** Context Crystal fully supports out-of-tree companion context repositories (`CCRYSTAL_STORE`). Respect user repository policies to prevent polluting production code with local tracking files.
-- **Mandatory Task Inception Gate:** When starting any non-trivial or multi-step engineering task, the agent MUST immediately inspect existing crystals (`ccrystal list` or MCP `list_resources`). If an existing crystal relates to the session context or feature track, attach to it and hydrate context before making code edits. If none exists, initialize a new crystal (`ccrystal init` or `crystal_init`). Never proceed through multi-turn refactors or feature tracks without active crystal anchoring.
+- **Mandatory Task Inception Gate:** When starting any non-trivial or multi-step engineering task, the agent MUST immediately inspect existing crystals (`ccrystal list` or MCP `crystal_list`). If an existing crystal relates to the session context or feature track, attach to it and hydrate context (`ccrystal hydrate` or MCP `crystal_hydrate`) before making code edits. If none exists, initialize a new crystal with atomic acceptance criteria (`crystal_init` with `tasks` or `ccrystal init -t ...`). Never proceed through multi-turn refactors or feature tracks without active crystal anchoring.
 
 ---
 
@@ -182,16 +182,17 @@ When the user communicates in natural language, translate their intent into the 
 | User Utterance / Intent | Meaning | Recommended CLI Recipe |
 | :--- | :--- | :--- |
 | *"Crystallize this session"*, *"Save checkpoint"* | Snapshot current state and progress | `ccrystal batch "node add <id> -k checkpoint -s '<summary>' --fidelity inferred"` |
-| *"Resume last task"*, *"What are we working on?"*, *"Cast context"* | Hydrate prompt with goals, active tasks, recent nodes, open leases | `ccrystal hydrate <id>` (or `ccrystal cast <id> --depth 10`) |
-| *"Hydrate from checkpoint X"*, *"Show context since anchor"* | Selectively hydrate prompt from an anchor, UUID, or prefix forward | `ccrystal hydrate <id> --from <selector>` |
-| *"Cast range between X and Y"*, *"Shape context beam"* | Shape context beam between two specific nodes or anchors | `ccrystal cast <id> --from <selA> --to <selB>` |
-| *"Show recent 5 nodes of context"*, *"Hydrate tail"* | Hydrate living state and only the most recent N DAG transitions | `ccrystal hydrate <id> --tail 5` |
-| *"Hydrate high-level context only"*, *"Cast summary"* | Hydrate goal, tasks, leases, and lessons without DAG transitions | `ccrystal hydrate <id> --summary-only` |
+| *"Resume last task"*, *"What are we working on?"*, *"Cast context"* | Hydrate prompt with goals, active tasks, recent nodes, open leases | `ccrystal hydrate <id>` (or MCP `crystal_hydrate`) |
+| *"Hydrate from checkpoint X"*, *"Show context since anchor"* | Selectively hydrate prompt from an anchor, UUID, or prefix forward | `ccrystal hydrate <id> --from <selector>` (or MCP `crystal_hydrate`) |
+| *"Cast range between X and Y"*, *"Shape context beam"* | Shape context beam between two specific nodes or anchors | `ccrystal cast <id> --from <selA> --to <selB>` (or MCP `crystal_hydrate`) |
+| *"Show recent 5 nodes of context"*, *"Hydrate tail"* | Hydrate living state and only the most recent N DAG transitions | `ccrystal hydrate <id> --tail 5` (or MCP `crystal_hydrate`) |
+| *"Hydrate high-level context only"*, *"Cast summary"* | Hydrate goal, tasks, leases, and lessons without DAG transitions | `ccrystal hydrate <id> --summary-only` (or MCP `crystal_hydrate`) |
 | *"We hit a blocker / build error"*, *"Log a lesson"* | Record friction and corrective action | `ccrystal lesson add <id> -f '<friction>' -r '<cause>' -a '<action>'` |
 | *"Set up a temporary branch / mock config"* | Acquire a transient resource lease | `ccrystal transient lease <id> -t git_worktree -p '<path>' -d '<desc>' --policy revert_on_conclusion` |
 | *"We're done with the spike, clean it"* | Release/clean transient resource | `ccrystal transient clean <id> -l <lease-id>` |
 | *"This bug is unrelated, let's track it separately"* | Cleave context and fork into child crystal | `ccrystal slice <id> --from <anchor-or-node> --fork-to <child-id> --prune` |
-| *"What crystals are in progress?"*, *"Which is closer to done?"* | Inspect crystal status and completion ratios | `ccrystal list --status in_progress` |
+| *"What crystals are in progress?"*, *"Which is closer to done?"* | Inspect crystal status and completion ratios | `ccrystal list --status in_progress` (or MCP `crystal_list`) |
+| *"Triage workspace cave"*, *"What crystals can we clean?"* | Classify cave crystals for lifecycle hygiene | `crystal_triage` |
 | *"Complete task X"* | Mark acceptance criterion done | `ccrystal task done <id> -t <task-id>` |
 | *"Register artifact / tool X"*, *"Add physical device / hardware rig"* | Register virtual or physical artifact in cave or crystal | `ccrystal artifact register --id <id> --name '<name>' --substrate <virtual\|physical> --role <target\|instrument\|precondition> [--uri <uri>] [--location-name '<loc>'] [--bench-coords '<coords>']` |
 | *"What artifacts are available?"*, *"List tools / hardware"* | List artifacts across cave or within a crystal | `ccrystal artifact list [--cave] [--crystal <id>]` |
@@ -278,8 +279,8 @@ Because cleaning up workspace crystals requires cognitive evaluation rather than
 
 ### A. Triage Triggers
 
-- **Explicit Operator Request:** When the user asks to "review the cave", "clean up old crystals", "triage workspace crystals", or "free up context clutter".
-- **Cave Bloat Heuristic:** When `ccrystal list` (or MCP `resources/list`) reports more than 10 crystals in the workspace with multiple completed or stale goals.
+- **Explicit Operator Request:** When the user asks to "review the cave", "clean up old crystals", "triage workspace crystals", or "free up context clutter". Use the `crystal_triage` MCP tool.
+- **Cave Bloat Heuristic:** When `ccrystal list` or MCP `crystal_triage` reports multiple completed or stale goals ready for cleanup.
 
 ### B. Triage Categorization Matrix
 
