@@ -25,7 +25,7 @@
   - [x] Verify test passes cleanly
 - [x] Task: Phase 2 Verification & Checkpoint (Refer to workflow.md) [734e510]
 
-## Phase 3: End-to-End Integration, Skill & Tool Schema Alignment
+## Phase 3: End-to-End Integration, Skill & Tool Schema Alignment [checkpoint: 81837be]
 
 - [x] Task: Update end-to-end integration tests in `McpEndToEndSessionSuite.scala` [dfda2c3]
   - [x] Write comprehensive session test exercising `crystal_init` (with tasks), `crystal_list`, `crystal_hydrate`, and `crystal_triage`
@@ -33,7 +33,7 @@
 - [x] Task: Export updated JSON tool schemas and update `SKILL.md` [d820138]
   - [x] Export schema files to `/home/oswaldo/.gemini/antigravity-cli/mcp/context-crystal/`
   - [x] Update `.agents/skills/context-crystal/SKILL.md` and documentation
-- [ ] Task: Phase 3 Verification & Checkpoint (Refer to workflow.md)
+- [x] Task: Phase 3 Verification & Checkpoint (Refer to workflow.md) [81837be]
 
 ## Phase 4: Release Binary Compilation, Dogfooding & Verification
 
