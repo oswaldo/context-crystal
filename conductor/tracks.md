@@ -36,3 +36,6 @@
 
 - [x] **Track: Collaborator Readiness: Toolchain, Hardware Baselines, Dual-Key Security & CI**  
   *Link: [conductor/tracks/collaborator_readiness_20260912/index.md](./tracks/collaborator_readiness_20260912/index.md)*
+
+- [ ] **Track: Artifact & World-State Ontology (Virtual & Physical Substrates)**  
+  *Link: [conductor/tracks/artifact_world_state_ontology_20260913/index.md](./tracks/artifact_world_state_ontology_20260913/index.md)*

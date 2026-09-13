@@ -1,0 +1,31 @@
+# Implementation Plan: Artifact & World-State Ontology (Virtual & Physical Substrates)
+
+## Phase 1: Core Models, Codecs & JSON Schema (Red-Green TDD)
+- [ ] Task: Write failing unit tests in `ModelCodecSuite` for `ArtifactSubstrate`, `ArtifactRole`, `PhysicalLocation`, `Artifact`, directional `DAGNode` links, and backward-compatible crystal deserialization
+- [ ] Task: Implement ADTs and Enums in `ccrystal.core.model.Models.scala` with `derives CanEqual`
+- [ ] Task: Implement Circe Encoders and Decoders in `ccrystal.core.codec.Codecs.scala`
+- [ ] Task: Update `spec/v1/context-crystal.json` schema definitions for artifact models and DAG node linkages
+- [ ] Task: Phase Verification & Checkpoint (Refer to workflow.md)
+
+## Phase 2: Cave Artifact Registry & Storage Layer (Red-Green TDD)
+- [ ] Task: Write failing unit tests in `FsCrystalStoreSuite` for reading, writing, and listing artifacts in Cave Registry (`.ccrystals/artifacts.json`)
+- [ ] Task: Implement `CaveArtifactRegistry` storage handling in `FsCrystalStore` (or `ArtifactStore`) supporting both cave-wide and crystal-scoped artifacts
+- [ ] Task: Verify cross-platform store compatibility across JVM, Native, and JS targets
+- [ ] Task: Phase Verification & Checkpoint (Refer to workflow.md)
+
+## Phase 3: Context Hydration Beam Projection (Red-Green TDD)
+- [ ] Task: Write failing unit tests in `ContextHydratorSuite` for projecting active Targets, available Instruments, and Preconditions into context beams
+- [ ] Task: Update `ContextHydrator` to render the `## Artifacts & World State` section in markdown casts
+- [ ] Task: Phase Verification & Checkpoint (Refer to workflow.md)
+
+## Phase 4: CLI Interface & Native MCP Server Integration (Red-Green TDD)
+- [ ] Task: Write failing tests in `CommandParserSuite` and `RunnerSuite` for `ccrystal artifact` (`list`, `register`, `inspect`) and `ccrystal node add` artifact options
+- [ ] Task: Implement CLI commands and argument parsing in `CliCommand.scala`, `CommandParser.scala`, and `Runner.scala`
+- [ ] Task: Implement MCP resources (`ccrystal://artifacts`, `ccrystal://{id}/artifacts`) and MCP tool `crystal_artifact` in `DefaultMcpHandler.scala` with test coverage
+- [ ] Task: Phase Verification & Checkpoint (Refer to workflow.md)
+
+## Phase 5: End-to-End Verification, Release Build & Track Wrap-up
+- [ ] Task: Run full test suite across all platforms (`sbt test`)
+- [ ] Task: Run formatting and linters (`scalafmtAll`, `scalafixAll`, `markdownlint`)
+- [ ] Task: Compile and install optimized release binary (`~/.local/bin/ccrystal`) using Thin LTO
+- [ ] Task: Phase Verification & Checkpoint (Refer to workflow.md)
