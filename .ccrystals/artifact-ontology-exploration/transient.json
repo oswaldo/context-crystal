@@ -7,5 +7,14 @@
     "disposalPolicy" : "manual",
     "status" : "cleaned",
     "createdAt" : "2026-09-08T22:31:24.452Z"
+  },
+  {
+    "id" : "lease-2",
+    "resourceType" : "git_worktree",
+    "resourcePath" : null,
+    "description" : "Isolated git worktree for Track 16 at ../ccrystal-worktrees/artifact-world-state-ontology",
+    "disposalPolicy" : "manual",
+    "status" : "cleaned",
+    "createdAt" : "2026-09-13T08:30:32.961Z"
   }
 ]
