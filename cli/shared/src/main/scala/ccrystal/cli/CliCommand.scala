@@ -16,6 +16,7 @@ enum CliCommand derives CanEqual:
       author: Option[String] = None,
       authorKind: Option[EntityKind] = None,
       createdAt: Option[String] = None,
+      tasks: List[String] = Nil,
   )
   case ListCrystals(status: Option[GoalStatus], jsonOutput: Boolean)
   case TaskAdd(crystalId: String, description: String)

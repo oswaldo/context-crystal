@@ -99,6 +99,7 @@ object CommandParser:
       .orNone,
     Opts.option[EntityKind]("author-kind", "Author entity kind").orNone,
     Opts.option[String]("created-at", "ISO-8601 creation timestamp").orNone,
+    Opts.options[String]("task", "Initial acceptance criterion / task", "t").orEmpty,
   ).mapN(CliCommand.Init.apply)
 
   private val listOpts = (

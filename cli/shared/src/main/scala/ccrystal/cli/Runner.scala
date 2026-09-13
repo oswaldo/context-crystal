@@ -25,18 +25,21 @@ class Runner(
 ):
 
   def run(cmd: CliCommand): Either[String, String] = cmd match
-    case CliCommand.Init(name, goalTitle, intent, authorOpt, authorKindOpt, createdAtOpt) =>
+    case CliCommand.Init(name, goalTitle, intent, authorOpt, authorKindOpt, createdAtOpt, tasks) =>
       val now        = createdAtOpt.getOrElse(Instant.now().toString)
       val authorKind = authorKindOpt.getOrElse(EntityKind.Human)
       val authorName = authorOpt.getOrElse("Operator")
 
       for
         resolvedAuthor <- store.resolveOrCreateEntity(authorName, authorKind)
+        initialTasks = tasks.zipWithIndex.map { case (desc, idx) =>
+          AcceptanceCriterion(s"task-${idx + 1}", desc, completed = false)
+        }
         goal = Goal(
           title = goalTitle,
           intent = intent.getOrElse(goalTitle),
           status = GoalStatus.InProgress,
-          acceptanceCriteria = Nil,
+          acceptanceCriteria = initialTasks,
         )
         rootNode = DAGNode(
           id = s"node-$name-init",

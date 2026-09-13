@@ -10,13 +10,14 @@ class CommandParserSuite extends FunSuite:
     val parsed = CommandParser.parse(args)
     assert(parsed.isRight)
     parsed.foreach {
-      case CliCommand.Init(name, goal, intent, author, authorKind, createdAt) =>
+      case CliCommand.Init(name, goal, intent, author, authorKind, createdAt, tasks) =>
         assertEquals(name, "my-crystal")
         assertEquals(goal, "Fix bug")
         assertEquals(intent, Some("Resolve NPE in parser"))
         assertEquals(author, None)
         assertEquals(authorKind, None)
         assertEquals(createdAt, None)
+        assertEquals(tasks, Nil)
       case other => fail(s"Unexpected command: $other")
     }
 
@@ -32,10 +33,32 @@ class CommandParserSuite extends FunSuite:
     val parsed = CommandParser.parse(args)
     assert(parsed.isRight)
     parsed.foreach {
-      case CliCommand.Init(name, goal, intent, author, authorKind, createdAt) =>
+      case CliCommand.Init(name, goal, intent, author, authorKind, createdAt, tasks) =>
         assertEquals(name, "my-crystal")
         assertEquals(goal, "Fix bug")
         assertEquals(createdAt, Some("2026-09-06T12:00:00Z"))
+        assertEquals(tasks, Nil)
+      case other => fail(s"Unexpected command: $other")
+    }
+
+  test("Parses 'init' with multiple --task flags"):
+    val args = List(
+      "init",
+      "my-crystal",
+      "--goal",
+      "Feature X",
+      "-t",
+      "Task 1",
+      "--task",
+      "Task 2",
+    )
+    val parsed = CommandParser.parse(args)
+    assert(parsed.isRight)
+    parsed.foreach {
+      case CliCommand.Init(name, goal, _, _, _, _, tasks) =>
+        assertEquals(name, "my-crystal")
+        assertEquals(goal, "Feature X")
+        assertEquals(tasks, List("Task 1", "Task 2"))
       case other => fail(s"Unexpected command: $other")
     }
 
