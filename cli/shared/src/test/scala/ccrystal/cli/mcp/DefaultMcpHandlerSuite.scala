@@ -5,6 +5,7 @@ import io.circe.Json
 import io.circe.syntax.*
 import ccrystal.core.mcp.*
 import ccrystal.core.mcp.McpCodecs.given
+import ccrystal.core.model.*
 import ccrystal.cli.{InMemoryCrystalStore, Runner}
 
 class DefaultMcpHandlerSuite extends FunSuite:
@@ -576,3 +577,141 @@ class DefaultMcpHandlerSuite extends FunSuite:
       !hydSumText.contains("State Transitions"),
       "summary_only must exclude State Transitions header",
     )
+
+  test("DefaultMcpHandler handles crystal_triage tool with structured categorization"):
+    val (handler, store, _) = createFixture()
+
+    // 1. Create c-clean: concluded success with all tasks done and 0 leases
+    val cClean = ContextCrystal(
+      schemaVersion = "1.0.0",
+      id = "c-clean",
+      name = Some("c-clean"),
+      createdAt = "2026-09-06T10:00:00Z",
+      updatedAt = "2026-09-06T11:00:00Z",
+      defaultAuthorId = None,
+      goal = Goal(
+        "Clean Goal",
+        "Done",
+        GoalStatus.ConcludedSuccess,
+        List(AcceptanceCriterion("task-1", "Done task", completed = true)),
+      ),
+      entities = Nil,
+      dag = DAG(
+        "root-1",
+        List(DAGNode("root-1", Nil, "2026-09-06T10:00:00Z", "usr_1", NodeKind.HumanPrompt, "Init")),
+      ),
+      transientLeases = Nil,
+      lessonsLearned = Nil,
+    )
+    store.save(cClean)
+
+    // 2. Create c-active: in progress with active lease
+    val cActive = ContextCrystal(
+      schemaVersion = "1.0.0",
+      id = "c-active",
+      name = Some("c-active"),
+      createdAt = "2026-09-06T12:00:00Z",
+      updatedAt = "2026-09-06T13:00:00Z",
+      defaultAuthorId = None,
+      goal = Goal(
+        "Active Goal",
+        "Active",
+        GoalStatus.InProgress,
+        List(AcceptanceCriterion("task-1", "Pending task", completed = false)),
+      ),
+      entities = Nil,
+      dag = DAG(
+        "root-2",
+        List(DAGNode("root-2", Nil, "2026-09-06T12:00:00Z", "usr_1", NodeKind.HumanPrompt, "Init")),
+      ),
+      transientLeases = List(
+        TransientLease(
+          "lease-1",
+          TransientResourceType.GitWorktree,
+          Some("path"),
+          "Worktree",
+          DisposalPolicy.Manual,
+          TransientLeaseStatus.Active,
+          "2026-09-06T12:00:00Z",
+        ),
+      ),
+      lessonsLearned = Nil,
+    )
+    store.save(cActive)
+
+    // 3. Create c-review: concluded success but has an open active lease
+    val cReview = ContextCrystal(
+      schemaVersion = "1.0.0",
+      id = "c-review",
+      name = Some("c-review"),
+      createdAt = "2026-09-06T14:00:00Z",
+      updatedAt = "2026-09-06T15:00:00Z",
+      defaultAuthorId = None,
+      goal = Goal("Review Goal", "Review", GoalStatus.ConcludedSuccess, Nil),
+      entities = Nil,
+      dag = DAG(
+        "root-3",
+        List(DAGNode("root-3", Nil, "2026-09-06T14:00:00Z", "usr_1", NodeKind.HumanPrompt, "Init")),
+      ),
+      transientLeases = List(
+        TransientLease(
+          "lease-2",
+          TransientResourceType.GitWorktree,
+          Some("path"),
+          "Uncleaned Lease",
+          DisposalPolicy.Manual,
+          TransientLeaseStatus.Active,
+          "2026-09-06T14:00:00Z",
+        ),
+      ),
+      lessonsLearned = Nil,
+    )
+    store.save(cReview)
+
+    // 4. Verify crystal_triage in tools/list
+    val toolsResp =
+      handler.handle(JsonRpcRequest(id = JsonRpcId.Str("tools-list-3"), method = "tools/list"))
+    val tools = toolsResp.result.get.hcursor.downField("tools").as[List[Tool]].toOption.get
+    assert(tools.exists(_.name == "crystal_triage"), "tools/list must include crystal_triage")
+
+    // 5. tools/call crystal_triage (markdown report)
+    val triageReq = JsonRpcRequest(
+      id = JsonRpcId.Str("call-triage"),
+      method = "tools/call",
+      params = Some(Json.obj("name" -> "crystal_triage".asJson, "arguments" -> Json.obj())),
+    )
+    val triageResp = handler.handle(triageReq)
+    assertEquals(triageResp.error.isEmpty, true)
+    val triageText =
+      triageResp.result.get.hcursor.downField("content").downArray.get[String]("text").toOption.get
+    assert(triageText.contains("c-clean"), "triage must include c-clean")
+    assert(triageText.contains("CandidateForCleanup"), "c-clean must be CandidateForCleanup")
+    assert(triageText.contains("c-active"), "triage must include c-active")
+    assert(triageText.contains("Keep"), "c-active must be Keep")
+    assert(triageText.contains("c-review"), "triage must include c-review")
+    assert(triageText.contains("RequiresReview"), "c-review must be RequiresReview")
+
+    // 6. tools/call crystal_triage (json output)
+    val triageJsonReq = JsonRpcRequest(
+      id = JsonRpcId.Str("call-triage-json"),
+      method = "tools/call",
+      params = Some(
+        Json.obj(
+          "name"      -> "crystal_triage".asJson,
+          "arguments" -> Json.obj("json_output" -> true.asJson),
+        ),
+      ),
+    )
+    val triageJsonResp = handler.handle(triageJsonReq)
+    assertEquals(triageJsonResp.error.isEmpty, true)
+    val triageJsonText = triageJsonResp.result.get.hcursor
+      .downField("content")
+      .downArray
+      .get[String]("text")
+      .toOption
+      .get
+    assert(
+      triageJsonText.contains("\"category\" : \"CandidateForCleanup\""),
+      "JSON output must include CandidateForCleanup",
+    )
+    assert(triageJsonText.contains("\"id\" : \"c-clean\""), "JSON output must include c-clean")

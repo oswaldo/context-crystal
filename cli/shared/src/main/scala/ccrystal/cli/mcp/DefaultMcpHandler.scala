@@ -309,6 +309,20 @@ class DefaultMcpHandler(
               "required" -> List("crystal_id").asJson,
             ),
           ),
+          Tool(
+            name = "crystal_triage",
+            description =
+              "Triage workspace cave crystals for lifecycle hygiene, categorizing them into keep (active), candidates for cleanup (concluded/abandoned with 0 open leases), and requires review.",
+            inputSchema = Json.obj(
+              "type" -> "object".asJson,
+              "properties" -> Json.obj(
+                "json_output" -> Json.obj(
+                  "type" -> "boolean".asJson,
+                  "description" -> "Output structured JSON array instead of markdown report (default: false)".asJson,
+                ),
+              ),
+            ),
+          ),
         )
         JsonRpcResponse(id = request.id, result = Some(ListToolsResult(tools).asJson))
 
@@ -686,6 +700,77 @@ class DefaultMcpHandler(
               List(ToolContent(text = "Missing required 'crystal_id' for crystal_hydrate")),
               isError = true,
             )
+
+      case "crystal_triage" =>
+        val jsonOutput = cursor.get[Boolean]("json_output").toOption.getOrElse(false)
+        store.list() match
+          case Left(err) =>
+            CallToolResult(
+              List(ToolContent(text = s"Failed to list crystals for triage: $err")),
+              isError = true,
+            )
+          case Right(crystals) =>
+            val items = crystals.map { c =>
+              val doneTasks    = c.goal.acceptanceCriteria.count(_.completed)
+              val totalTasks   = c.goal.acceptanceCriteria.size
+              val pendingTasks = totalTasks - doneTasks
+              val activeLeases = c.transientLeases.count(_.status == TransientLeaseStatus.Active)
+              val openLessons  = c.lessonsLearned.count(_.status == LessonStatus.Open)
+              val isConcluded =
+                c.goal.status == GoalStatus.ConcludedSuccess || c.goal.status == GoalStatus.ConcludedAbandoned
+
+              val (category, recommendation) =
+                if isConcluded && pendingTasks == 0 && activeLeases == 0 then
+                  ("CandidateForCleanup", "Safe to delete via crystal_delete")
+                else if c.goal.status == GoalStatus.InProgress then
+                  ("Keep", "Active in-progress track")
+                else ("RequiresReview", "Unclosed leases, open lessons, or incomplete tasks remain")
+
+              Json.obj(
+                "id"             -> c.id.asJson,
+                "status"         -> c.goal.status.toString.asJson,
+                "goal"           -> c.goal.title.asJson,
+                "category"       -> category.asJson,
+                "pendingTasks"   -> pendingTasks.asJson,
+                "totalTasks"     -> totalTasks.asJson,
+                "activeLeases"   -> activeLeases.asJson,
+                "openLessons"    -> openLessons.asJson,
+                "recommendation" -> recommendation.asJson,
+              )
+            }
+
+            if jsonOutput then
+              CallToolResult(List(ToolContent(text = Json.arr(items*).spaces2)), isError = false)
+            else
+              val sb = new java.lang.StringBuilder()
+              sb.append("# Cave Lifecycle & Hygiene Triage Report\n\n")
+              sb.append(s"Total crystals found in workspace: ${crystals.size}\n\n")
+              sb.append(
+                "| Crystal ID | Status | Category | Tasks | Active Leases | Open Lessons | Recommendation |\n",
+              )
+              sb.append("|---|---|---|---|---|---|---|\n")
+              crystals.foreach { c =>
+                val doneTasks    = c.goal.acceptanceCriteria.count(_.completed)
+                val totalTasks   = c.goal.acceptanceCriteria.size
+                val pendingTasks = totalTasks - doneTasks
+                val activeLeases = c.transientLeases.count(_.status == TransientLeaseStatus.Active)
+                val openLessons  = c.lessonsLearned.count(_.status == LessonStatus.Open)
+                val isConcluded =
+                  c.goal.status == GoalStatus.ConcludedSuccess || c.goal.status == GoalStatus.ConcludedAbandoned
+
+                val (category, recommendation) =
+                  if isConcluded && pendingTasks == 0 && activeLeases == 0 then
+                    ("CandidateForCleanup", "Safe to delete via crystal_delete")
+                  else if c.goal.status == GoalStatus.InProgress then
+                    ("Keep", "Active in-progress track")
+                  else
+                    ("RequiresReview", "Unclosed leases, open lessons, or incomplete tasks remain")
+
+                sb.append(
+                  s"| `${c.id}` | ${c.goal.status} | $category | $doneTasks/$totalTasks | $activeLeases | $openLessons | $recommendation |\n",
+                )
+              }
+              CallToolResult(List(ToolContent(text = sb.toString)), isError = false)
 
       case other =>
         CallToolResult(List(ToolContent(text = s"Unknown tool: $other")), isError = true)
