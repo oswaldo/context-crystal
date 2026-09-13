@@ -412,3 +412,79 @@ class DefaultMcpHandlerSuite extends FunSuite:
     val resp = handler.handle(req)
     assertEquals(resp.error.isDefined, true)
     assertEquals(resp.error.get.code, JsonRpcError.MethodNotFound)
+
+  test("DefaultMcpHandler handles crystal_init with tasks and crystal_list tool"):
+    val (handler, store, _) = createFixture()
+
+    // 1. crystal_init with tasks
+    val initReq = JsonRpcRequest(
+      id = JsonRpcId.Str("init-tasks"),
+      method = "tools/call",
+      params = Some(
+        Json.obj(
+          "name" -> "crystal_init".asJson,
+          "arguments" -> Json.obj(
+            "name"  -> "init-tasks-crystal".asJson,
+            "goal"  -> "Goal with tasks".asJson,
+            "tasks" -> List("Task Alpha", "Task Beta").asJson,
+          ),
+        ),
+      ),
+    )
+    val initResp = handler.handle(initReq)
+    assertEquals(initResp.error.isEmpty, true, "init should succeed")
+    val crystal = store.load("init-tasks-crystal").toOption.get
+    assertEquals(crystal.goal.acceptanceCriteria.size, 2)
+    assertEquals(crystal.goal.acceptanceCriteria(0).id, "task-1")
+    assertEquals(crystal.goal.acceptanceCriteria(0).description, "Task Alpha")
+    assertEquals(crystal.goal.acceptanceCriteria(1).id, "task-2")
+    assertEquals(crystal.goal.acceptanceCriteria(1).description, "Task Beta")
+
+    // 2. tools/list includes crystal_list
+    val toolsReq  = JsonRpcRequest(id = JsonRpcId.Str("tools-list"), method = "tools/list")
+    val toolsResp = handler.handle(toolsReq)
+    assertEquals(toolsResp.error.isEmpty, true)
+    val tools = toolsResp.result.get.hcursor.downField("tools").as[List[Tool]].toOption.get
+    assert(tools.exists(_.name == "crystal_list"), "tools/list must include crystal_list")
+
+    // 3. tools/call crystal_list (text output)
+    val listReq = JsonRpcRequest(
+      id = JsonRpcId.Str("call-list"),
+      method = "tools/call",
+      params = Some(
+        Json.obj(
+          "name"      -> "crystal_list".asJson,
+          "arguments" -> Json.obj(),
+        ),
+      ),
+    )
+    val listResp = handler.handle(listReq)
+    assertEquals(listResp.error.isEmpty, true)
+    val listText =
+      listResp.result.get.hcursor.downField("content").downArray.get[String]("text").toOption.get
+    assert(listText.contains("init-tasks-crystal"), "list text output should mention crystal ID")
+    assert(listText.contains("Tasks: 0/2"), "list text output should show task ratio 0/2")
+
+    // 4. tools/call crystal_list (json output)
+    val listJsonReq = JsonRpcRequest(
+      id = JsonRpcId.Str("call-list-json"),
+      method = "tools/call",
+      params = Some(
+        Json.obj(
+          "name"      -> "crystal_list".asJson,
+          "arguments" -> Json.obj("json_output" -> true.asJson),
+        ),
+      ),
+    )
+    val listJsonResp = handler.handle(listJsonReq)
+    assertEquals(listJsonResp.error.isEmpty, true)
+    val listJsonText = listJsonResp.result.get.hcursor
+      .downField("content")
+      .downArray
+      .get[String]("text")
+      .toOption
+      .get
+    assert(
+      listJsonText.contains("\"id\" : \"init-tasks-crystal\""),
+      "list JSON output should include crystal JSON",
+    )

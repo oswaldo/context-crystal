@@ -49,6 +49,25 @@ class DefaultMcpHandler(
             ),
           ),
           Tool(
+            name = "crystal_list",
+            description =
+              "List all crystals in the cave with status, task progress, active leases, and open lessons.",
+            inputSchema = Json.obj(
+              "type" -> "object".asJson,
+              "properties" -> Json.obj(
+                "status" -> Json.obj(
+                  "type" -> "string".asJson,
+                  "enum" -> List("in_progress", "concluded_success", "concluded_abandoned").asJson,
+                  "description" -> "Optional filter by goal status".asJson,
+                ),
+                "json_output" -> Json.obj(
+                  "type" -> "boolean".asJson,
+                  "description" -> "Output structured JSON array instead of text table (default: false)".asJson,
+                ),
+              ),
+            ),
+          ),
+          Tool(
             name = "crystal_init",
             description = "Initialize a new context crystal.",
             inputSchema = Json.obj(
@@ -66,6 +85,11 @@ class DefaultMcpHandler(
                 ),
                 "author" -> Json
                   .obj("type" -> "string".asJson, "description" -> "Optional author name".asJson),
+                "tasks" -> Json.obj(
+                  "type"        -> "array".asJson,
+                  "items"       -> Json.obj("type" -> "string".asJson),
+                  "description" -> "Optional initial acceptance criteria / tasks".asJson,
+                ),
               ),
               "required" -> List("name", "goal").asJson,
             ),
@@ -369,11 +393,23 @@ class DefaultMcpHandler(
                   isError = true,
                 )
 
+      case "crystal_list" =>
+        val statusOpt = cursor.get[String]("status").toOption.flatMap {
+          case "in_progress"                     => Some(GoalStatus.InProgress)
+          case "concluded" | "concluded_success" => Some(GoalStatus.ConcludedSuccess)
+          case "concluded_abandoned"             => Some(GoalStatus.ConcludedAbandoned)
+          case _                                 => None
+        }
+        val jsonOutput = cursor.get[Boolean]("json_output").toOption.getOrElse(false)
+        val cmd        = CliCommand.ListCrystals(status = statusOpt, jsonOutput = jsonOutput)
+        runCommandToResult(cmd)
+
       case "crystal_init" =>
         val nameOpt   = cursor.get[String]("name").toOption
         val goalOpt   = cursor.get[String]("goal").toOption
         val intentOpt = cursor.get[String]("intent").toOption
         val authorOpt = cursor.get[String]("author").toOption
+        val tasksOpt  = cursor.get[List[String]]("tasks").toOption.getOrElse(Nil)
         (nameOpt, goalOpt) match
           case (Some(cName), Some(cGoal)) =>
             val cmd = CliCommand.Init(
@@ -383,6 +419,7 @@ class DefaultMcpHandler(
               author = authorOpt,
               authorKind = Some(EntityKind.Human),
               createdAt = None,
+              tasks = tasksOpt,
             )
             runCommandToResult(cmd)
           case _ =>
