@@ -2,10 +2,10 @@
 
 ## Phase 1: Core & CLI Foundation (Atomic Tasks in Init & Crystal List Ergonomics)
 
-- [ ] Task: Add optional `tasks: List[String]` to `CliCommand.Init` and generate acceptance criteria in `Runner`
-  - [ ] Write failing unit test in `cli/shared/src/test/scala/ccrystal/cli/RunnerSuite.scala`
-  - [ ] Update `CliCommand.Init` definition and `Runner.run` to instantiate `AcceptanceCriterion` elements
-  - [ ] Verify test passes cleanly
+- [x] Task: Add optional `tasks: List[String]` to `CliCommand.Init` and generate acceptance criteria in `Runner` [c596fb4]
+  - [x] Write failing unit test in `cli/shared/src/test/scala/ccrystal/cli/RunnerSuite.scala`
+  - [x] Update `CliCommand.Init` definition and `Runner.run` to instantiate `AcceptanceCriterion` elements
+  - [x] Verify test passes cleanly
 - [ ] Task: Implement `crystal_list` and extended `crystal_init` tools in `DefaultMcpHandler`
   - [ ] Write failing unit test in `cli/shared/src/test/scala/ccrystal/cli/mcp/DefaultMcpHandlerSuite.scala`
   - [ ] Expose `crystal_list` in `tools/list` and wire execution to `CliCommand.ListCrystals`
