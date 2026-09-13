@@ -488,3 +488,91 @@ class DefaultMcpHandlerSuite extends FunSuite:
       listJsonText.contains("\"id\" : \"init-tasks-crystal\""),
       "list JSON output should include crystal JSON",
     )
+
+  test("DefaultMcpHandler handles crystal_hydrate tool with selective beam shaping"):
+    val (handler, _, _) = createFixture()
+
+    // 1. Initialize and populate crystal
+    val initReq = JsonRpcRequest(
+      id = JsonRpcId.Str("init-hydrate"),
+      method = "tools/call",
+      params = Some(
+        Json.obj(
+          "name" -> "crystal_init".asJson,
+          "arguments" -> Json.obj(
+            "name"  -> "hydrate-test".asJson,
+            "goal"  -> "Test Hydrate Tool".asJson,
+            "tasks" -> List("Task 1", "Task 2").asJson,
+          ),
+        ),
+      ),
+    )
+    assertEquals(handler.handle(initReq).error.isEmpty, true)
+
+    val batchReq = JsonRpcRequest(
+      id = JsonRpcId.Str("batch-nodes"),
+      method = "tools/call",
+      params = Some(
+        Json.obj(
+          "name" -> "crystal_batch".asJson,
+          "arguments" -> Json.obj(
+            "commands" -> "node add hydrate-test -k checkpoint -s 'Node 1'; node add hydrate-test -k checkpoint -s 'Node 2'".asJson,
+          ),
+        ),
+      ),
+    )
+    assertEquals(handler.handle(batchReq).error.isEmpty, true)
+
+    // 2. Verify crystal_hydrate in tools/list
+    val toolsResp =
+      handler.handle(JsonRpcRequest(id = JsonRpcId.Str("tools-list-2"), method = "tools/list"))
+    val tools = toolsResp.result.get.hcursor.downField("tools").as[List[Tool]].toOption.get
+    assert(tools.exists(_.name == "crystal_hydrate"), "tools/list must include crystal_hydrate")
+
+    // 3. tools/call crystal_hydrate with tail 1
+    val hydTailReq = JsonRpcRequest(
+      id = JsonRpcId.Str("call-hyd-tail"),
+      method = "tools/call",
+      params = Some(
+        Json.obj(
+          "name" -> "crystal_hydrate".asJson,
+          "arguments" -> Json.obj(
+            "crystal_id" -> "hydrate-test".asJson,
+            "tail"       -> 1.asJson,
+          ),
+        ),
+      ),
+    )
+    val hydTailResp = handler.handle(hydTailReq)
+    assertEquals(hydTailResp.error.isEmpty, true)
+    val hydTailText =
+      hydTailResp.result.get.hcursor.downField("content").downArray.get[String]("text").toOption.get
+    assert(
+      hydTailText.contains("=== CONTEXT CRYSTAL CAST: hydrate-test ==="),
+      "must contain cast header",
+    )
+    assert(hydTailText.contains("Node 2"), "tail 1 must include Node 2")
+
+    // 4. tools/call crystal_hydrate with summary_only
+    val hydSumReq = JsonRpcRequest(
+      id = JsonRpcId.Str("call-hyd-sum"),
+      method = "tools/call",
+      params = Some(
+        Json.obj(
+          "name" -> "crystal_hydrate".asJson,
+          "arguments" -> Json.obj(
+            "crystal_id"   -> "hydrate-test".asJson,
+            "summary_only" -> true.asJson,
+          ),
+        ),
+      ),
+    )
+    val hydSumResp = handler.handle(hydSumReq)
+    assertEquals(hydSumResp.error.isEmpty, true)
+    val hydSumText =
+      hydSumResp.result.get.hcursor.downField("content").downArray.get[String]("text").toOption.get
+    assert(hydSumText.contains("Test Hydrate Tool"), "must contain goal")
+    assert(
+      !hydSumText.contains("State Transitions"),
+      "summary_only must exclude State Transitions header",
+    )

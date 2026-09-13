@@ -274,6 +274,41 @@ class DefaultMcpHandler(
               "required" -> List("action").asJson,
             ),
           ),
+          Tool(
+            name = "crystal_hydrate",
+            description =
+              "Hydrate context beam from a crystal with selective shaping (tail, slice range from/to, depth, or summary only).",
+            inputSchema = Json.obj(
+              "type" -> "object".asJson,
+              "properties" -> Json.obj(
+                "crystal_id" -> Json.obj(
+                  "type"        -> "string".asJson,
+                  "description" -> "Target crystal identifier".asJson,
+                ),
+                "tail" -> Json.obj(
+                  "type"        -> "integer".asJson,
+                  "description" -> "Number of recent transitions to include in slice".asJson,
+                ),
+                "from" -> Json.obj(
+                  "type"        -> "string".asJson,
+                  "description" -> "Starting anchor or node ID/prefix for transition slice".asJson,
+                ),
+                "to" -> Json.obj(
+                  "type"        -> "string".asJson,
+                  "description" -> "Ending anchor or node ID/prefix for transition slice".asJson,
+                ),
+                "depth" -> Json.obj(
+                  "type"        -> "integer".asJson,
+                  "description" -> "Maximum traversal depth (default: 10, alias for tail)".asJson,
+                ),
+                "summary_only" -> Json.obj(
+                  "type" -> "boolean".asJson,
+                  "description" -> "Exclude DAG transitions and hydrate living state summary only (default: false)".asJson,
+                ),
+              ),
+              "required" -> List("crystal_id").asJson,
+            ),
+          ),
         )
         JsonRpcResponse(id = request.id, result = Some(ListToolsResult(tools).asJson))
 
@@ -625,6 +660,30 @@ class DefaultMcpHandler(
           case other =>
             CallToolResult(
               List(ToolContent(text = s"Missing or invalid action for crystal_artifact: $other")),
+              isError = true,
+            )
+
+      case "crystal_hydrate" =>
+        val crystalIdOpt = cursor.get[String]("crystal_id").toOption
+        crystalIdOpt match
+          case Some(cId) =>
+            val fromOpt        = cursor.get[String]("from").toOption
+            val toOpt          = cursor.get[String]("to").toOption
+            val tailOpt        = cursor.get[Int]("tail").toOption
+            val depthOpt       = cursor.get[Int]("depth").toOption
+            val summaryOnlyOpt = cursor.get[Boolean]("summary_only").toOption.getOrElse(false)
+            val cmd = CliCommand.Cast(
+              crystalId = cId,
+              from = fromOpt,
+              to = toOpt,
+              tail = tailOpt,
+              depth = depthOpt.getOrElse(10),
+              summaryOnly = summaryOnlyOpt,
+            )
+            runCommandToResult(cmd)
+          case None =>
+            CallToolResult(
+              List(ToolContent(text = "Missing required 'crystal_id' for crystal_hydrate")),
               isError = true,
             )
 
