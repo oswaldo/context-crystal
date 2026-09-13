@@ -30,6 +30,34 @@ enum CliCommand derives CanEqual:
       fidelity: CaptureFidelity = CaptureFidelity.Inferred,
       anchor: Option[String] = None,
       timestamp: Option[String] = None,
+      inputArtifactIds: List[String] = Nil,
+      outputArtifactIds: List[String] = Nil,
+      preconditionArtifactIds: List[String] = Nil,
+  )
+  case ArtifactList(
+      cave: Boolean = false,
+      crystalId: Option[String] = None,
+      jsonOutput: Boolean = false,
+  )
+  case ArtifactRegister(
+      id: String,
+      name: Option[String] = None,
+      substrate: ArtifactSubstrate = ArtifactSubstrate.Virtual,
+      role: ArtifactRole = ArtifactRole.Target,
+      uri: Option[String] = None,
+      mediaType: Option[String] = None,
+      description: Option[String] = None,
+      locationName: Option[String] = None,
+      civicAddress: Option[String] = None,
+      geoUri: Option[String] = None,
+      benchCoordinates: Option[String] = None,
+      cave: Boolean = false,
+      crystalId: Option[String] = None,
+  )
+  case ArtifactInspect(
+      id: String,
+      crystalId: Option[String] = None,
+      jsonOutput: Boolean = false,
   )
   case Slice(
       crystalId: String,

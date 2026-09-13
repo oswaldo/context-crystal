@@ -128,6 +128,9 @@ class Runner(
           fidelity,
           anchorOpt,
           timestampOpt,
+          inputArtifactIds,
+          outputArtifactIds,
+          preconditionArtifactIds,
         ) =>
       store.load(crystalId).flatMap { crystal =>
         val now      = Instant.now().toString
@@ -137,6 +140,8 @@ class Runner(
           else parentIds
         val nodeId  = s"node-${crystal.dag.nodes.size + 1}"
         val actorId = authorOpt.orElse(crystal.defaultAuthorId).getOrElse("usr_operator")
+        val allArtifactIds =
+          (inputArtifactIds ++ outputArtifactIds ++ preconditionArtifactIds).distinct
         val newNode = DAGNode(
           id = nodeId,
           parentIds = parents,
@@ -145,7 +150,10 @@ class Runner(
           kind = kind,
           contentSummary = summary,
           anchor = anchorOpt,
-          artifactIds = Nil,
+          artifactIds = allArtifactIds,
+          inputArtifactIds = inputArtifactIds,
+          outputArtifactIds = outputArtifactIds,
+          preconditionArtifactIds = preconditionArtifactIds,
           fidelity = fidelity,
         )
 
@@ -159,7 +167,15 @@ class Runner(
           _ <- store.save(updatedCrystal)
         yield
           val anchorMsg = anchorOpt.fold("")(a => s" <anchor: $a>")
-          s"Appended node '$nodeId' [$kind]$anchorMsg [${fidelity.toString.toLowerCase}] (Author: $actorId) to $crystalId: $summary"
+          val artParts = List(
+            Option.when(inputArtifactIds.nonEmpty)(s"inputs: ${inputArtifactIds.mkString(",")}"),
+            Option.when(outputArtifactIds.nonEmpty)(s"outputs: ${outputArtifactIds.mkString(",")}"),
+            Option.when(preconditionArtifactIds.nonEmpty)(
+              s"preconditions: ${preconditionArtifactIds.mkString(",")}",
+            ),
+          ).flatten
+          val artMsg = if artParts.nonEmpty then s" [${artParts.mkString("; ")}]" else ""
+          s"Appended node '$nodeId' [$kind]$anchorMsg$artMsg [${fidelity.toString.toLowerCase}] (Author: $actorId) to $crystalId: $summary"
       }
 
     case CliCommand.EntityList =>
@@ -261,6 +277,115 @@ class Runner(
           sb.append(s"- [${l.status}] ${l.id} (${l.resourceType}): ${l.description}\n")
         }
         sb.toString
+      }
+
+    case CliCommand.ArtifactList(cave, crystalIdOpt, jsonOutput) =>
+      val targetScope = if cave then None else crystalIdOpt
+      store.listArtifacts(targetScope).map { artifacts =>
+        if jsonOutput then artifacts.asJson.spaces2
+        else
+          val scopeDesc = targetScope match
+            case Some(cId) => s"crystal '$cId'"
+            case None      => "cave registry"
+          val sb = new java.lang.StringBuilder()
+          sb.append(s"=== Artifacts in $scopeDesc (${artifacts.size} total) ===\n")
+          if artifacts.isEmpty then sb.append("No artifacts registered.\n")
+          else
+            artifacts.foreach { art =>
+              val locStr = art.location
+                .map(l => s" @ ${l.name}${l.benchCoordinates.map(b => s" ($b)").getOrElse("")}")
+                .getOrElse("")
+              val uriStr = art.uri.map(u => s" <$u>").getOrElse("")
+              sb.append(s"- ${art.id} [${art.substrate}/${art.role}] '${art.name}'$locStr$uriStr\n")
+            }
+          sb.toString
+      }
+
+    case CliCommand.ArtifactRegister(
+          id,
+          nameOpt,
+          substrate,
+          role,
+          uriOpt,
+          mediaTypeOpt,
+          descOpt,
+          locNameOpt,
+          civicAddrOpt,
+          geoUriOpt,
+          benchCoordsOpt,
+          cave,
+          crystalIdOpt,
+        ) =>
+      val location =
+        if (
+            locNameOpt.isDefined || civicAddrOpt.isDefined || geoUriOpt.isDefined || benchCoordsOpt.isDefined
+          )
+        then
+          Some(
+            PhysicalLocation(
+              name = locNameOpt.getOrElse(id),
+              civicAddress = civicAddrOpt,
+              geoUri = geoUriOpt,
+              benchCoordinates = benchCoordsOpt,
+            ),
+          )
+        else None
+
+      val artifact = Artifact(
+        id = id,
+        name = nameOpt.getOrElse(id),
+        substrate = substrate,
+        role = role,
+        uri = uriOpt,
+        mediaType = mediaTypeOpt,
+        description = descOpt,
+        location = location,
+        metadata = Map.empty,
+      )
+
+      if crystalIdOpt.isDefined && !cave then
+        val cId = crystalIdOpt.get
+        store.load(cId).flatMap { crystal =>
+          val updatedArtifacts = crystal.artifacts.filterNot(_.id == id) :+ artifact
+          val updatedCrystal = crystal.copy(
+            updatedAt = Instant.now().toString,
+            artifacts = updatedArtifacts,
+          )
+          store.save(updatedCrystal).map { _ =>
+            s"Registered artifact '$id' [${artifact.substrate}/${artifact.role}] in crystal '$cId'."
+          }
+        }
+      else
+        store.registerArtifact(artifact).map { art =>
+          s"Registered artifact '${art.id}' [${art.substrate}/${art.role}] in cave registry."
+        }
+
+    case CliCommand.ArtifactInspect(id, crystalIdOpt, jsonOutput) =>
+      store.getArtifact(id, crystalIdOpt).flatMap {
+        case Some(art) =>
+          if jsonOutput then Right(art.asJson.spaces2)
+          else
+            val sb = new java.lang.StringBuilder()
+            sb.append(s"=== Artifact: ${art.id} ===\n")
+            sb.append(s"Name: ${art.name}\n")
+            sb.append(s"Substrate: ${art.substrate}\n")
+            sb.append(s"Role: ${art.role}\n")
+            art.uri.foreach(u => sb.append(s"URI: $u\n"))
+            art.mediaType.foreach(m => sb.append(s"Media Type: $m\n"))
+            art.description.foreach(d => sb.append(s"Description: $d\n"))
+            art.location.foreach { loc =>
+              sb.append(s"Location Name: ${loc.name}\n")
+              loc.civicAddress.foreach(a => sb.append(s"Civic Address: $a\n"))
+              loc.geoUri.foreach(g => sb.append(s"Geo URI: $g\n"))
+              loc.benchCoordinates.foreach(b => sb.append(s"Bench Coords: $b\n"))
+            }
+            if art.metadata.nonEmpty then sb.append(s"Metadata: ${art.metadata.asJson.noSpaces}\n")
+            Right(sb.toString)
+        case None =>
+          val scopeMsg = crystalIdOpt
+            .map(c => s" in crystal '$c' or cave")
+            .getOrElse(" in cave registry")
+          Left(s"Artifact '$id' not found$scopeMsg")
       }
 
     case castCmd: CliCommand.Cast =>

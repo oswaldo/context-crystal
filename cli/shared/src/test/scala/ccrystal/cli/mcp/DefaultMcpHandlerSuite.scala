@@ -300,6 +300,109 @@ class DefaultMcpHandlerSuite extends FunSuite:
     val promptResult = promptResp.result.get.hcursor.as[GetPromptResult].toOption.get
     assertEquals(promptResult.messages.head.content.text.contains("Second milestone reached"), true)
 
+  test("DefaultMcpHandler supports crystal_artifact tool and artifact resources"):
+    val (handler, store, _) = createFixture()
+
+    // 1. tools/list includes crystal_artifact
+    val listToolsReq  = JsonRpcRequest(id = JsonRpcId.Num(40L), method = "tools/list")
+    val listToolsResp = handler.handle(listToolsReq)
+    assertEquals(listToolsResp.error.isEmpty, true)
+    val toolNames =
+      listToolsResp.result.get.hcursor.downField("tools").as[List[Tool]].toOption.get.map(_.name)
+    assertEquals(
+      toolNames.contains("crystal_artifact"),
+      true,
+      "tools/list contains crystal_artifact",
+    )
+
+    // 2. tools/call crystal_artifact register (cave)
+    val regReq = JsonRpcRequest(
+      id = JsonRpcId.Num(41L),
+      method = "tools/call",
+      params = Some(
+        Json.obj(
+          "name" -> "crystal_artifact".asJson,
+          "arguments" -> Json.obj(
+            "action"        -> "register".asJson,
+            "id"            -> "mcp-art-1".asJson,
+            "name"          -> "MCP Sensor".asJson,
+            "substrate"     -> "physical".asJson,
+            "role"          -> "precondition".asJson,
+            "location_name" -> "Lab 2".asJson,
+            "cave"          -> true.asJson,
+          ),
+        ),
+      ),
+    )
+    val regResp = handler.handle(regReq)
+    assertEquals(regResp.error.isEmpty, true, "registration succeeds")
+
+    // 3. tools/call crystal_artifact inspect
+    val inspectReq = JsonRpcRequest(
+      id = JsonRpcId.Num(42L),
+      method = "tools/call",
+      params = Some(
+        Json.obj(
+          "name" -> "crystal_artifact".asJson,
+          "arguments" -> Json.obj(
+            "action" -> "inspect".asJson,
+            "id"     -> "mcp-art-1".asJson,
+          ),
+        ),
+      ),
+    )
+    val inspectResp = handler.handle(inspectReq)
+    assertEquals(inspectResp.error.isEmpty, true, "inspect succeeds")
+    val inspectContent = inspectResp.result.get.hcursor.as[CallToolResult].toOption.get
+    assertEquals(inspectContent.isError, false)
+    assert(
+      inspectContent.content.head.text.contains("mcp-art-1"),
+      "inspect text contains artifact id",
+    )
+
+    // 4. tools/call crystal_artifact list
+    val listArtReq = JsonRpcRequest(
+      id = JsonRpcId.Num(43L),
+      method = "tools/call",
+      params = Some(
+        Json.obj(
+          "name" -> "crystal_artifact".asJson,
+          "arguments" -> Json.obj(
+            "action" -> "list".asJson,
+            "cave"   -> true.asJson,
+          ),
+        ),
+      ),
+    )
+    val listArtResp = handler.handle(listArtReq)
+    assertEquals(listArtResp.error.isEmpty, true, "list succeeds")
+
+    // 5. resources/list contains ccrystal://artifacts
+    val resListReq  = JsonRpcRequest(id = JsonRpcId.Num(44L), method = "resources/list")
+    val resListResp = handler.handle(resListReq)
+    assertEquals(resListResp.error.isEmpty, true)
+    val resources =
+      resListResp.result.get.hcursor.as[ListResourcesResult].toOption.get.resources.map(_.uri)
+    assertEquals(
+      resources.contains("ccrystal://artifacts"),
+      true,
+      "resources/list includes ccrystal://artifacts",
+    )
+
+    // 6. resources/read ccrystal://artifacts
+    val readArtReq = JsonRpcRequest(
+      id = JsonRpcId.Num(45L),
+      method = "resources/read",
+      params = Some(Json.obj("uri" -> "ccrystal://artifacts".asJson)),
+    )
+    val readArtResp = handler.handle(readArtReq)
+    assertEquals(readArtResp.error.isEmpty, true)
+    val readContent = readArtResp.result.get.hcursor.as[ReadResourceResult].toOption.get
+    assert(
+      readContent.contents.head.text.contains("mcp-art-1"),
+      "registry contains registered artifact",
+    )
+
   test("DefaultMcpHandler returns MethodNotFound for unknown methods"):
     val (handler, _, _) = createFixture()
     val req = JsonRpcRequest(

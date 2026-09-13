@@ -63,6 +63,27 @@ object CommandParser:
       Validated.invalidNel(s"Invalid slice format: $other (must be 'prompt', 'human', or 'json')")
   }
 
+  private given artifactSubstrateArgument: Argument[ArtifactSubstrate] =
+    Argument.from("substrate") {
+      case "virtual"  => Validated.valid(ArtifactSubstrate.Virtual)
+      case "physical" => Validated.valid(ArtifactSubstrate.Physical)
+      case other =>
+        Validated.invalidNel(
+          s"Invalid artifact substrate: $other (must be 'virtual' or 'physical')",
+        )
+    }
+
+  private given artifactRoleArgument: Argument[ArtifactRole] =
+    Argument.from("role") {
+      case "target"       => Validated.valid(ArtifactRole.Target)
+      case "instrument"   => Validated.valid(ArtifactRole.Instrument)
+      case "precondition" => Validated.valid(ArtifactRole.Precondition)
+      case other =>
+        Validated.invalidNel(
+          s"Invalid artifact role: $other (must be 'target', 'instrument', or 'precondition')",
+        )
+    }
+
   // --- Subcommands ---
 
   private val initOpts = (
@@ -115,7 +136,42 @@ object CommandParser:
       .withDefault(CaptureFidelity.Inferred),
     Opts.option[String]("anchor", "Semantic anchor label for node", "a").orNone,
     Opts.option[String]("timestamp", "ISO-8601 timestamp for the event").orNone,
+    Opts.options[String]("input-artifact", "Input artifact IDs").orEmpty,
+    Opts.options[String]("output-artifact", "Output artifact IDs").orEmpty,
+    Opts.options[String]("precondition-artifact", "Precondition artifact IDs").orEmpty,
   ).mapN(CliCommand.NodeAdd.apply)
+
+  private val artifactListOpts = (
+    Opts.flag("cave", "List cave-wide artifacts in Cave Registry").orFalse,
+    Opts.option[String]("crystal", "Filter or list artifacts in specified crystal", "c").orNone,
+    Opts.flag("json", "Output as JSON").orFalse,
+  ).mapN(CliCommand.ArtifactList.apply)
+
+  private val artifactRegisterOpts = (
+    Opts.option[String]("id", "Artifact identifier"),
+    Opts.option[String]("name", "Artifact human-readable name", "n").orNone,
+    Opts
+      .option[ArtifactSubstrate]("substrate", "Artifact substrate (virtual, physical)")
+      .withDefault(ArtifactSubstrate.Virtual),
+    Opts
+      .option[ArtifactRole]("role", "Artifact role (target, instrument, precondition)")
+      .withDefault(ArtifactRole.Target),
+    Opts.option[String]("uri", "URI or location pointer", "u").orNone,
+    Opts.option[String]("media-type", "Media / MIME type").orNone,
+    Opts.option[String]("desc", "Artifact description", "d").orNone,
+    Opts.option[String]("location-name", "Physical location name").orNone,
+    Opts.option[String]("civic-address", "Physical civic address").orNone,
+    Opts.option[String]("geo-uri", "Physical geo URI coordinates").orNone,
+    Opts.option[String]("bench-coords", "Physical bench coordinates").orNone,
+    Opts.flag("cave", "Register artifact in cave registry").orFalse,
+    Opts.option[String]("crystal", "Crystal to register artifact in", "c").orNone,
+  ).mapN(CliCommand.ArtifactRegister.apply)
+
+  private val artifactInspectOpts = (
+    Opts.argument[String]("artifact-id"),
+    Opts.option[String]("crystal", "Crystal scope for artifact", "c").orNone,
+    Opts.flag("json", "Output as JSON").orFalse,
+  ).mapN(CliCommand.ArtifactInspect.apply)
 
   private val sliceOpts = (
     Opts.argument[String]("crystal-id"),
@@ -267,6 +323,20 @@ object CommandParser:
             .subcommand("lease", "Acquire a transient lease")(leaseOpts)
             .orElse(Opts.subcommand("clean", "Clean a transient lease")(leaseCleanOpts))
             .orElse(Opts.subcommand("list", "List transient leases")(leaseListOpts)),
+        ),
+      )
+      .orElse(
+        Opts.subcommand("artifact", "Manage virtual and physical artifacts")(
+          Opts
+            .subcommand("list", "List artifacts in cave or crystal")(artifactListOpts)
+            .orElse(
+              Opts.subcommand("register", "Register a virtual or physical artifact")(
+                artifactRegisterOpts,
+              ),
+            )
+            .orElse(
+              Opts.subcommand("inspect", "Inspect artifact details")(artifactInspectOpts),
+            ),
         ),
       )
       .orElse(Opts.subcommand("cast", "Cast a context beam for LLMs")(castOpts))

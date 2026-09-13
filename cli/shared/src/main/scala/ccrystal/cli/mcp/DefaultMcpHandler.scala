@@ -180,6 +180,76 @@ class DefaultMcpHandler(
               "required" -> List("crystal_id").asJson,
             ),
           ),
+          Tool(
+            name = "crystal_artifact",
+            description =
+              "Register, list, or inspect virtual and physical artifacts across cave or crystal.",
+            inputSchema = Json.obj(
+              "type" -> "object".asJson,
+              "properties" -> Json.obj(
+                "action" -> Json.obj(
+                  "type"        -> "string".asJson,
+                  "enum"        -> List("list", "register", "inspect").asJson,
+                  "description" -> "Action: list, register, or inspect".asJson,
+                ),
+                "id" -> Json.obj(
+                  "type"        -> "string".asJson,
+                  "description" -> "Artifact identifier (required for register/inspect)".asJson,
+                ),
+                "name" -> Json.obj(
+                  "type"        -> "string".asJson,
+                  "description" -> "Artifact human-readable name".asJson,
+                ),
+                "substrate" -> Json.obj(
+                  "type"        -> "string".asJson,
+                  "enum"        -> List("virtual", "physical").asJson,
+                  "description" -> "Substrate: virtual or physical".asJson,
+                ),
+                "role" -> Json.obj(
+                  "type"        -> "string".asJson,
+                  "enum"        -> List("target", "instrument", "precondition").asJson,
+                  "description" -> "Role: target, instrument, or precondition".asJson,
+                ),
+                "uri" -> Json.obj(
+                  "type"        -> "string".asJson,
+                  "description" -> "Artifact URI pointer".asJson,
+                ),
+                "media_type" -> Json.obj(
+                  "type"        -> "string".asJson,
+                  "description" -> "MIME / media type".asJson,
+                ),
+                "description" -> Json.obj(
+                  "type"        -> "string".asJson,
+                  "description" -> "Artifact description".asJson,
+                ),
+                "location_name" -> Json.obj(
+                  "type"        -> "string".asJson,
+                  "description" -> "Physical location name".asJson,
+                ),
+                "civic_address" -> Json.obj(
+                  "type"        -> "string".asJson,
+                  "description" -> "Physical civic address".asJson,
+                ),
+                "geo_uri" -> Json.obj(
+                  "type"        -> "string".asJson,
+                  "description" -> "Geo coordinates URI".asJson,
+                ),
+                "bench_coordinates" -> Json.obj(
+                  "type"        -> "string".asJson,
+                  "description" -> "Physical bench coordinates".asJson,
+                ),
+                "crystal_id" -> Json.obj(
+                  "type"        -> "string".asJson,
+                  "description" -> "Optional crystal ID for crystal-scoped operations".asJson,
+                ),
+                "cave" -> Json.obj(
+                  "type"        -> "boolean".asJson,
+                  "description" -> "Target cave registry".asJson,
+                ),
+              ),
+              "required" -> List("action").asJson,
+            ),
+          ),
         )
         JsonRpcResponse(id = request.id, result = Some(ListToolsResult(tools).asJson))
 
@@ -438,6 +508,89 @@ class DefaultMcpHandler(
               isError = true,
             )
 
+      case "crystal_artifact" =>
+        val actionOpt = cursor.get[String]("action").toOption
+        actionOpt match
+          case Some("list") =>
+            val crystalIdOpt = cursor.get[String]("crystal_id").toOption
+            val caveOpt      = cursor.get[Boolean]("cave").toOption
+            val cmd = CliCommand.ArtifactList(
+              cave = caveOpt.getOrElse(crystalIdOpt.isEmpty),
+              crystalId = crystalIdOpt,
+              jsonOutput = false,
+            )
+            runCommandToResult(cmd)
+
+          case Some("register") =>
+            val idOpt = cursor.get[String]("id").toOption
+            idOpt match
+              case Some(id) =>
+                val nameOpt = cursor.get[String]("name").toOption
+                val substrateStr =
+                  cursor.get[String]("substrate").toOption.getOrElse("virtual").toLowerCase
+                val substrate =
+                  if substrateStr == "physical" then ArtifactSubstrate.Physical
+                  else ArtifactSubstrate.Virtual
+                val roleStr = cursor.get[String]("role").toOption.getOrElse("target").toLowerCase
+                val role = roleStr match
+                  case "instrument"   => ArtifactRole.Instrument
+                  case "precondition" => ArtifactRole.Precondition
+                  case _              => ArtifactRole.Target
+                val uriOpt         = cursor.get[String]("uri").toOption
+                val mediaTypeOpt   = cursor.get[String]("media_type").toOption
+                val descOpt        = cursor.get[String]("description").toOption
+                val locNameOpt     = cursor.get[String]("location_name").toOption
+                val civicAddrOpt   = cursor.get[String]("civic_address").toOption
+                val geoUriOpt      = cursor.get[String]("geo_uri").toOption
+                val benchCoordsOpt = cursor.get[String]("bench_coordinates").toOption
+                val crystalIdOpt   = cursor.get[String]("crystal_id").toOption
+                val caveOpt        = cursor.get[Boolean]("cave").toOption
+                val cmd = CliCommand.ArtifactRegister(
+                  id = id,
+                  name = nameOpt,
+                  substrate = substrate,
+                  role = role,
+                  uri = uriOpt,
+                  mediaType = mediaTypeOpt,
+                  description = descOpt,
+                  locationName = locNameOpt,
+                  civicAddress = civicAddrOpt,
+                  geoUri = geoUriOpt,
+                  benchCoordinates = benchCoordsOpt,
+                  cave = caveOpt.getOrElse(crystalIdOpt.isEmpty),
+                  crystalId = crystalIdOpt,
+                )
+                runCommandToResult(cmd)
+              case None =>
+                CallToolResult(
+                  List(
+                    ToolContent(text = "Missing required argument 'id' for artifact register"),
+                  ),
+                  isError = true,
+                )
+
+          case Some("inspect") =>
+            val idOpt = cursor.get[String]("id").toOption
+            idOpt match
+              case Some(id) =>
+                val crystalIdOpt = cursor.get[String]("crystal_id").toOption
+                runCommandToResult(
+                  CliCommand.ArtifactInspect(id = id, crystalId = crystalIdOpt, jsonOutput = false),
+                )
+              case None =>
+                CallToolResult(
+                  List(
+                    ToolContent(text = "Missing required argument 'id' for artifact inspect"),
+                  ),
+                  isError = true,
+                )
+
+          case other =>
+            CallToolResult(
+              List(ToolContent(text = s"Missing or invalid action for crystal_artifact: $other")),
+              isError = true,
+            )
+
       case other =>
         CallToolResult(List(ToolContent(text = s"Unknown tool: $other")), isError = true)
 
@@ -469,6 +622,12 @@ class DefaultMcpHandler(
             description = Some("Hydrated context beam text/markdown"),
             mimeType = Some("text/markdown"),
           ),
+          Resource(
+            uri = s"ccrystal://${c.id}/artifacts",
+            name = s"Artifacts for ${c.id}",
+            description = Some("Artifacts and physical substrates JSON"),
+            mimeType = Some("application/json"),
+          ),
         )
       }
       entityResource = Resource(
@@ -477,7 +636,13 @@ class DefaultMcpHandler(
         description = Some("Registered cave entities and identities"),
         mimeType = Some("application/json"),
       )
-    yield ListResourcesResult(crystalResources :+ entityResource)
+      artifactResource = Resource(
+        uri = "ccrystal://artifacts",
+        name = "Cave Artifacts Registry",
+        description = Some("Registered cave artifacts and world-state substrates"),
+        mimeType = Some("application/json"),
+      )
+    yield ListResourcesResult(crystalResources :+ entityResource :+ artifactResource)
 
   private def handleResourceRead(paramsOpt: Option[Json]): Either[String, ReadResourceResult] =
     paramsOpt match
@@ -569,6 +734,31 @@ class DefaultMcpHandler(
                       uri = uri,
                       mimeType = Some("text/markdown"),
                       text = beamText,
+                    ),
+                  ),
+                )
+              }
+            else if uri == "ccrystal://artifacts" then
+              store.getArtifactRegistry().map { reg =>
+                ReadResourceResult(
+                  List(
+                    ResourceContents(
+                      uri = uri,
+                      mimeType = Some("application/json"),
+                      text = reg.asJson.spaces2,
+                    ),
+                  ),
+                )
+              }
+            else if uri.startsWith("ccrystal://") && uri.endsWith("/artifacts") then
+              val crystalId = uri.stripPrefix("ccrystal://").stripSuffix("/artifacts")
+              store.load(crystalId).map { c =>
+                ReadResourceResult(
+                  List(
+                    ResourceContents(
+                      uri = uri,
+                      mimeType = Some("application/json"),
+                      text = c.artifacts.asJson.spaces2,
                     ),
                   ),
                 )

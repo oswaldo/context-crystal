@@ -472,3 +472,147 @@ class CommandParserSuite extends FunSuite:
       helpText.contains("avoid full legal names") || helpText.contains("PII"),
       "init --help must warn against PII in --author",
     )
+
+  test("Parses 'artifact list' with and without flags"):
+    val defaultList = List("artifact", "list")
+    val p1          = CommandParser.parse(defaultList)
+    assertEquals(p1.isRight, true, "default artifact list parse")
+    assertEquals(
+      p1.toOption.get,
+      CliCommand.ArtifactList(cave = false, crystalId = None, jsonOutput = false),
+    )
+
+    val caveList = List("artifact", "list", "--cave", "--json")
+    val p2       = CommandParser.parse(caveList)
+    assertEquals(p2.isRight, true, "cave artifact list parse")
+    assertEquals(
+      p2.toOption.get,
+      CliCommand.ArtifactList(cave = true, crystalId = None, jsonOutput = true),
+    )
+
+    val crystalList = List("artifact", "list", "--crystal", "c-1")
+    val p3          = CommandParser.parse(crystalList)
+    assertEquals(p3.isRight, true, "crystal artifact list parse")
+    assertEquals(
+      p3.toOption.get,
+      CliCommand.ArtifactList(cave = false, crystalId = Some("c-1"), jsonOutput = false),
+    )
+
+  test("Parses 'artifact register' with virtual and physical options"):
+    val virtArgs = List(
+      "artifact",
+      "register",
+      "--id",
+      "art-v1",
+      "--name",
+      "Virtual Mock",
+      "--substrate",
+      "virtual",
+      "--role",
+      "instrument",
+      "--uri",
+      "file:///tmp/mock.json",
+      "--cave",
+    )
+    val p1 = CommandParser.parse(virtArgs)
+    assertEquals(p1.isRight, true, "virtual artifact register")
+    assertEquals(
+      p1.toOption.get,
+      CliCommand.ArtifactRegister(
+        id = "art-v1",
+        name = Some("Virtual Mock"),
+        substrate = ArtifactSubstrate.Virtual,
+        role = ArtifactRole.Instrument,
+        uri = Some("file:///tmp/mock.json"),
+        cave = true,
+      ),
+    )
+
+    val physArgs = List(
+      "artifact",
+      "register",
+      "--id",
+      "art-p1",
+      "--name",
+      "Oscilloscope Rig",
+      "--substrate",
+      "physical",
+      "--role",
+      "precondition",
+      "--location-name",
+      "Hardware Lab A",
+      "--civic-address",
+      "Musterstraße 1, Berlin",
+      "--geo-uri",
+      "geo:52.5200,13.4050",
+      "--bench-coords",
+      "Bench-3, Rack-2",
+      "--crystal",
+      "c-hardware",
+    )
+    val p2 = CommandParser.parse(physArgs)
+    assertEquals(p2.isRight, true, "physical artifact register")
+    assertEquals(
+      p2.toOption.get,
+      CliCommand.ArtifactRegister(
+        id = "art-p1",
+        name = Some("Oscilloscope Rig"),
+        substrate = ArtifactSubstrate.Physical,
+        role = ArtifactRole.Precondition,
+        locationName = Some("Hardware Lab A"),
+        civicAddress = Some("Musterstraße 1, Berlin"),
+        geoUri = Some("geo:52.5200,13.4050"),
+        benchCoordinates = Some("Bench-3, Rack-2"),
+        crystalId = Some("c-hardware"),
+      ),
+    )
+
+  test("Parses 'artifact inspect' with and without flags"):
+    val inspectArgs = List("artifact", "inspect", "art-1")
+    val p1          = CommandParser.parse(inspectArgs)
+    assertEquals(p1.isRight, true, "inspect parse")
+    assertEquals(
+      p1.toOption.get,
+      CliCommand.ArtifactInspect("art-1", crystalId = None, jsonOutput = false),
+    )
+
+    val inspectCrystal = List("artifact", "inspect", "art-1", "--crystal", "c-1", "--json")
+    val p2             = CommandParser.parse(inspectCrystal)
+    assertEquals(p2.isRight, true, "inspect crystal parse")
+    assertEquals(
+      p2.toOption.get,
+      CliCommand.ArtifactInspect("art-1", crystalId = Some("c-1"), jsonOutput = true),
+    )
+
+  test("Parses 'node add' with artifact linkage flags"):
+    val nodeArgs = List(
+      "node",
+      "add",
+      "c-1",
+      "--kind",
+      "tool_execution",
+      "--summary",
+      "Execute test rig",
+      "--input-artifact",
+      "art-in-1",
+      "--input-artifact",
+      "art-in-2",
+      "--output-artifact",
+      "art-out-1",
+      "--precondition-artifact",
+      "art-pre-1",
+    )
+    val p = CommandParser.parse(nodeArgs)
+    assertEquals(p.isRight, true, "node add with artifact flags")
+    assertEquals(
+      p.toOption.get,
+      CliCommand.NodeAdd(
+        crystalId = "c-1",
+        kind = NodeKind.ToolExecution,
+        summary = "Execute test rig",
+        parentIds = Nil,
+        inputArtifactIds = List("art-in-1", "art-in-2"),
+        outputArtifactIds = List("art-out-1"),
+        preconditionArtifactIds = List("art-pre-1"),
+      ),
+    )
