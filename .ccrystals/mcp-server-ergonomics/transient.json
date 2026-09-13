@@ -1,0 +1,11 @@
+[
+  {
+    "id" : "lease-1",
+    "resourceType" : "git_worktree",
+    "resourcePath" : "/home/oswaldo/git/ccrystal-worktrees/mcp-server-ergonomics",
+    "description" : "Worktree for track",
+    "disposalPolicy" : "revert_on_conclusion",
+    "status" : "cleaned",
+    "createdAt" : "2026-09-13T12:09:02.223Z"
+  }
+]

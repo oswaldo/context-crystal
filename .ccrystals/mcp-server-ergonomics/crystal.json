@@ -1,0 +1,124 @@
+{
+  "schemaVersion" : "1.0.0",
+  "id" : "mcp-server-ergonomics",
+  "name" : "mcp-server-ergonomics",
+  "createdAt" : "2026-09-13T12:08:25.560Z",
+  "updatedAt" : "2026-09-13T12:10:47.004Z",
+  "parentCrystalId" : null,
+  "origin" : null,
+  "caveId" : null,
+  "defaultAuthorId" : "usr_operator",
+  "goal" : {
+    "title" : "Native MCP Server Ergonomics & Advanced Tooling",
+    "intent" : "Close MCP server gaps and add crystal_list, crystal_hydrate, and crystal_triage",
+    "status" : "in_progress",
+    "acceptanceCriteria" : [
+      {
+        "id" : "task-1",
+        "description" : "Phase 1: CLI & MCP Foundation (Init tasks & crystal_list)",
+        "completed" : true
+      },
+      {
+        "id" : "task-2",
+        "description" : "Phase 2: crystal_hydrate & crystal_triage tools",
+        "completed" : true
+      },
+      {
+        "id" : "task-3",
+        "description" : "Phase 3: Integration tests & tool schemas",
+        "completed" : true
+      },
+      {
+        "id" : "task-4",
+        "description" : "Phase 4: Release binary & dogfooding",
+        "completed" : true
+      }
+    ],
+    "metadata" : {
+      
+    }
+  },
+  "entities" : [
+    {
+      "id" : "usr_operator",
+      "kind" : "human",
+      "name" : "Operator",
+      "metadata" : {
+        
+      },
+      "publicKey" : null,
+      "endpoints" : {
+        
+      }
+    }
+  ],
+  "activeMask" : null,
+  "dag" : {
+    "rootNodeId" : "node-mcp-server-ergonomics-init",
+    "nodes" : [
+      {
+        "id" : "node-mcp-server-ergonomics-init",
+        "parentIds" : [
+        ],
+        "timestamp" : "2026-09-13T12:08:25.560Z",
+        "actorId" : "usr_operator",
+        "kind" : "human_prompt",
+        "contentSummary" : "Initialized crystal 'mcp-server-ergonomics' with goal: Native MCP Server Ergonomics & Advanced Tooling",
+        "anchor" : null,
+        "artifactIds" : [
+        ],
+        "inputArtifactIds" : [
+        ],
+        "outputArtifactIds" : [
+        ],
+        "preconditionArtifactIds" : [
+        ],
+        "fidelity" : "inferred",
+        "metadata" : {
+          
+        }
+      },
+      {
+        "id" : "node-2",
+        "parentIds" : [
+          "node-mcp-server-ergonomics-init"
+        ],
+        "timestamp" : "2026-09-13T12:10:47.004Z",
+        "actorId" : "usr_operator",
+        "kind" : "checkpoint",
+        "contentSummary" : "Completed all 4 phases of Native MCP Server Ergonomics track",
+        "anchor" : null,
+        "artifactIds" : [
+        ],
+        "inputArtifactIds" : [
+        ],
+        "outputArtifactIds" : [
+        ],
+        "preconditionArtifactIds" : [
+        ],
+        "fidelity" : "inferred",
+        "metadata" : {
+          
+        }
+      }
+    ]
+  },
+  "transientLeases" : [
+    {
+      "id" : "lease-1",
+      "resourceType" : "git_worktree",
+      "resourcePath" : "/home/oswaldo/git/ccrystal-worktrees/mcp-server-ergonomics",
+      "description" : "Worktree for track",
+      "disposalPolicy" : "revert_on_conclusion",
+      "status" : "cleaned",
+      "createdAt" : "2026-09-13T12:09:02.223Z"
+    }
+  ],
+  "lessonsLearned" : [
+  ],
+  "artifacts" : [
+  ],
+  "metadata" : {
+    
+  }
+}

@@ -25,6 +25,18 @@
       "endpoints" : {
         
       }
+    },
+    "usr_operator" : {
+      "id" : "usr_operator",
+      "kind" : "human",
+      "name" : "Operator",
+      "metadata" : {
+        
+      },
+      "publicKey" : null,
+      "endpoints" : {
+        
+      }
     }
   },
   "metadata" : {
