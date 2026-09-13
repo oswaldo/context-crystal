@@ -13,10 +13,10 @@
 - [x] Task: Verify cross-platform store compatibility across JVM, Native, and JS targets [80f88ab]
 - [x] Task: Phase Verification & Checkpoint (Refer to workflow.md) [80f88ab]
 
-## Phase 3: Context Hydration Beam Projection (Red-Green TDD)
-- [ ] Task: Write failing unit tests in `ContextHydratorSuite` for projecting active Targets, available Instruments, and Preconditions into context beams
-- [ ] Task: Update `ContextHydrator` to render the `## Artifacts & World State` section in markdown casts
-- [ ] Task: Phase Verification & Checkpoint (Refer to workflow.md)
+## Phase 3: Context Hydration Beam Projection (Red-Green TDD) [checkpoint: 15e5e18]
+- [x] Task: Write failing unit tests in `ContextHydratorSuite` for projecting active Targets, available Instruments, and Preconditions into context beams [15e5e18]
+- [x] Task: Update `ContextHydrator` to render the `## Artifacts & World State` section in markdown casts [15e5e18]
+- [x] Task: Phase Verification & Checkpoint (Refer to workflow.md) [15e5e18]
 
 ## Phase 4: CLI Interface & Native MCP Server Integration (Red-Green TDD)
 - [ ] Task: Write failing tests in `CommandParserSuite` and `RunnerSuite` for `ccrystal artifact` (`list`, `register`, `inspect`) and `ccrystal node add` artifact options
