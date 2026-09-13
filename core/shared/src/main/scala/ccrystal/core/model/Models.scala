@@ -77,11 +77,38 @@ case class DAGNode(
     contentSummary: String,
     anchor: Option[String] = None,
     artifactIds: List[String] = Nil,
+    inputArtifactIds: List[String] = Nil,
+    outputArtifactIds: List[String] = Nil,
+    preconditionArtifactIds: List[String] = Nil,
     fidelity: CaptureFidelity = CaptureFidelity.Inferred,
     metadata: Map[String, String] = Map.empty,
 ) derives CanEqual
 
 object DAGNode:
+  def apply(
+      id: String,
+      parentIds: List[String],
+      timestamp: String,
+      actorId: String,
+      kind: NodeKind,
+      contentSummary: String,
+  ): DAGNode =
+    DAGNode(
+      id = id,
+      parentIds = parentIds,
+      timestamp = timestamp,
+      actorId = actorId,
+      kind = kind,
+      contentSummary = contentSummary,
+      anchor = None,
+      artifactIds = Nil,
+      inputArtifactIds = Nil,
+      outputArtifactIds = Nil,
+      preconditionArtifactIds = Nil,
+      fidelity = CaptureFidelity.Inferred,
+      metadata = Map.empty,
+    )
+
   def apply(
       id: String,
       parentIds: List[String],
@@ -100,6 +127,39 @@ object DAGNode:
       contentSummary = contentSummary,
       anchor = None,
       artifactIds = artifactIds,
+      inputArtifactIds = Nil,
+      outputArtifactIds = Nil,
+      preconditionArtifactIds = Nil,
+      fidelity = CaptureFidelity.Inferred,
+      metadata = Map.empty,
+    )
+
+  def apply(
+      id: String,
+      parentIds: List[String],
+      timestamp: String,
+      actorId: String,
+      kind: NodeKind,
+      contentSummary: String,
+      anchor: Option[String],
+      artifactIds: List[String],
+      fidelity: CaptureFidelity,
+      metadata: Map[String, String],
+  ): DAGNode =
+    DAGNode(
+      id = id,
+      parentIds = parentIds,
+      timestamp = timestamp,
+      actorId = actorId,
+      kind = kind,
+      contentSummary = contentSummary,
+      anchor = anchor,
+      artifactIds = artifactIds,
+      inputArtifactIds = Nil,
+      outputArtifactIds = Nil,
+      preconditionArtifactIds = Nil,
+      fidelity = fidelity,
+      metadata = metadata,
     )
 
 case class DAG(
@@ -156,12 +216,76 @@ case class LessonLearned(
     actionAuditTrail: List[ActionAuditEntry] = Nil,
 ) derives CanEqual
 
+enum ArtifactSubstrate derives CanEqual:
+  case Virtual
+  case Physical
+
+enum ArtifactRole derives CanEqual:
+  case Target
+  case Instrument
+  case Precondition
+
+case class PhysicalLocation(
+    name: String,
+    civicAddress: Option[String] = None,
+    geoUri: Option[String] = None,
+    benchCoordinates: Option[String] = None,
+) derives CanEqual
+
 case class Artifact(
     id: String,
-    uri: String,
-    mediaType: String,
+    name: String,
+    substrate: ArtifactSubstrate = ArtifactSubstrate.Virtual,
+    role: ArtifactRole = ArtifactRole.Target,
+    uri: Option[String] = None,
+    mediaType: Option[String] = None,
     description: Option[String] = None,
-    sha256: Option[String] = None,
+    location: Option[PhysicalLocation] = None,
+    metadata: Map[String, String] = Map.empty,
+) derives CanEqual
+
+object Artifact:
+  def apply(
+      id: String,
+      uri: String,
+      mediaType: String,
+      description: Option[String],
+  ): Artifact =
+    Artifact(
+      id = id,
+      name = id,
+      substrate = ArtifactSubstrate.Virtual,
+      role = ArtifactRole.Target,
+      uri = Some(uri),
+      mediaType = Some(mediaType),
+      description = description,
+      location = None,
+      metadata = Map.empty,
+    )
+
+  def apply(
+      id: String,
+      uri: String,
+      mediaType: String,
+      description: Option[String],
+      sha256: Option[String],
+  ): Artifact =
+    Artifact(
+      id = id,
+      name = id,
+      substrate = ArtifactSubstrate.Virtual,
+      role = ArtifactRole.Target,
+      uri = Some(uri),
+      mediaType = Some(mediaType),
+      description = description,
+      location = None,
+      metadata = sha256.map(h => Map("sha256" -> h)).getOrElse(Map.empty),
+    )
+
+case class CaveArtifactRegistry(
+    caveId: Option[String] = None,
+    artifacts: Map[String, Artifact] = Map.empty,
+    metadata: Map[String, String] = Map.empty,
 ) derives CanEqual
 
 case class CrystalOrigin(

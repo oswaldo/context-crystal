@@ -184,6 +184,18 @@
           "type": "array",
           "items": { "type": "string" }
         },
+        "inputArtifactIds": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "outputArtifactIds": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "preconditionArtifactIds": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
         "fidelity": {
           "type": "string",
           "enum": ["inferred", "intercepted"],
@@ -243,15 +255,48 @@
         }
       }
     },
+    "ArtifactSubstrate": {
+      "type": "string",
+      "enum": ["virtual", "physical"]
+    },
+    "ArtifactRole": {
+      "type": "string",
+      "enum": ["target", "instrument", "precondition"]
+    },
+    "PhysicalLocation": {
+      "type": "object",
+      "required": ["name"],
+      "properties": {
+        "name": { "type": "string" },
+        "civicAddress": { "type": "string" },
+        "geoUri": { "type": "string" },
+        "benchCoordinates": { "type": "string" }
+      }
+    },
     "Artifact": {
       "type": "object",
-      "required": ["id", "uri", "mediaType"],
+      "required": ["id", "name"],
       "properties": {
         "id": { "type": "string" },
+        "name": { "type": "string" },
+        "substrate": {
+          "$ref": "#/$defs/ArtifactSubstrate",
+          "default": "virtual"
+        },
+        "role": {
+          "$ref": "#/$defs/ArtifactRole",
+          "default": "target"
+        },
         "uri": { "type": "string" },
         "mediaType": { "type": "string" },
         "description": { "type": "string" },
-        "sha256": { "type": "string" }
+        "location": {
+          "$ref": "#/$defs/PhysicalLocation"
+        },
+        "metadata": {
+          "type": "object",
+          "additionalProperties": { "type": "string" }
+        }
       }
     }
   }

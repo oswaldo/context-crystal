@@ -294,3 +294,165 @@ class ModelCodecSuite extends FunSuite:
     )
 
     assertEquals(decode[DAGNode](legacyJson), Right(expectedNode))
+
+  test("ArtifactSubstrate enum serialization"):
+    assertEquals(ArtifactSubstrate.Virtual.asJson.asString, Some("virtual"))
+    assertEquals(ArtifactSubstrate.Physical.asJson.asString, Some("physical"))
+    assertEquals(decode[ArtifactSubstrate]("\"virtual\""), Right(ArtifactSubstrate.Virtual))
+    assertEquals(decode[ArtifactSubstrate]("\"physical\""), Right(ArtifactSubstrate.Physical))
+
+  test("ArtifactRole enum serialization"):
+    assertEquals(ArtifactRole.Target.asJson.asString, Some("target"))
+    assertEquals(ArtifactRole.Instrument.asJson.asString, Some("instrument"))
+    assertEquals(ArtifactRole.Precondition.asJson.asString, Some("precondition"))
+    assertEquals(decode[ArtifactRole]("\"target\""), Right(ArtifactRole.Target))
+    assertEquals(decode[ArtifactRole]("\"instrument\""), Right(ArtifactRole.Instrument))
+    assertEquals(decode[ArtifactRole]("\"precondition\""), Right(ArtifactRole.Precondition))
+
+  test("Round-trip serialization of PhysicalLocation"):
+    val location = PhysicalLocation(
+      name = "Hardware Bench A",
+      civicAddress = Some("Musterstraße 1, Berlin"),
+      geoUri = Some("geo:52.5200,13.4050"),
+      benchCoordinates = Some("Rack-04 / Shelf-B / Bench-12"),
+    )
+    val json = location.asJson.noSpaces
+    assertEquals(decode[PhysicalLocation](json), Right(location))
+
+  test("Round-trip serialization of Virtual and Physical Artifacts"):
+    val virtualArtifact = Artifact(
+      id = "art-core-models",
+      name = "Core Models Scala Source",
+      substrate = ArtifactSubstrate.Virtual,
+      role = ArtifactRole.Target,
+      uri = Some("file:///home/example/ccrystal/Models.scala"),
+      mediaType = Some("text/x-scala"),
+      description = Some("Scala 3 source defining core domain ADTs"),
+      location = None,
+      metadata = Map("version" -> "1.1"),
+    )
+
+    val physicalArtifact = Artifact(
+      id = "art-rig-01",
+      name = "CAN-bus Hardware Test Rig",
+      substrate = ArtifactSubstrate.Physical,
+      role = ArtifactRole.Instrument,
+      uri = Some("urn:hardware:can-rig:01"),
+      mediaType = None,
+      description = Some("Bench test rig with logic analyzer"),
+      location = Some(
+        PhysicalLocation(
+          name = "Electronics Lab 2",
+          civicAddress = Some("Musterstraße 1, Berlin"),
+          geoUri = Some("geo:52.5200,13.4050"),
+          benchCoordinates = Some("Bench-07"),
+        ),
+      ),
+      metadata = Map("calibrated" -> "true"),
+    )
+
+    assertEquals(decode[Artifact](virtualArtifact.asJson.noSpaces), Right(virtualArtifact))
+    assertEquals(decode[Artifact](physicalArtifact.asJson.noSpaces), Right(physicalArtifact))
+
+  test("Legacy Artifact payloads deserialize cleanly with default substrate and role"):
+    val legacyJson =
+      """
+        |{
+        |  "id": "art-legacy",
+        |  "uri": "https://example.com/schema.json",
+        |  "mediaType": "application/json",
+        |  "description": "Legacy schema"
+        |}
+        |""".stripMargin
+
+    val expected = Artifact(
+      id = "art-legacy",
+      name = "art-legacy",
+      substrate = ArtifactSubstrate.Virtual,
+      role = ArtifactRole.Target,
+      uri = Some("https://example.com/schema.json"),
+      mediaType = Some("application/json"),
+      description = Some("Legacy schema"),
+      location = None,
+      metadata = Map.empty,
+    )
+    assertEquals(decode[Artifact](legacyJson), Right(expected))
+
+  test("Round-trip serialization of DAGNode with directional artifact linkages"):
+    val node = DAGNode(
+      id = "node-artifact-causal-1",
+      parentIds = List("root"),
+      timestamp = "2026-09-13T10:00:00Z",
+      actorId = "usr_oswaldo",
+      kind = NodeKind.ToolExecution,
+      contentSummary = "Flashed firmware to physical test rig",
+      anchor = Some("flash_firmware"),
+      artifactIds = List("art-firmware-bin"),
+      inputArtifactIds = List("art-firmware-bin"),
+      outputArtifactIds = List("art-flash-log"),
+      preconditionArtifactIds = List("art-rig-01"),
+      fidelity = CaptureFidelity.Intercepted,
+      metadata = Map("duration_ms" -> "3420"),
+    )
+
+    assertEquals(decode[DAGNode](node.asJson.noSpaces), Right(node))
+
+  test("Legacy DAGNode without directional artifact links deserializes cleanly"):
+    val legacyJson =
+      """
+        |{
+        |  "id": "node-legacy-artifacts",
+        |  "parentIds": [],
+        |  "timestamp": "2026-09-13T10:00:00Z",
+        |  "actorId": "usr_oswaldo",
+        |  "kind": "tool_execution",
+        |  "contentSummary": "Ran tests",
+        |  "artifactIds": ["art-1"]
+        |}
+        |""".stripMargin
+
+    val expected = DAGNode(
+      id = "node-legacy-artifacts",
+      parentIds = Nil,
+      timestamp = "2026-09-13T10:00:00Z",
+      actorId = "usr_oswaldo",
+      kind = NodeKind.ToolExecution,
+      contentSummary = "Ran tests",
+      anchor = None,
+      artifactIds = List("art-1"),
+      inputArtifactIds = Nil,
+      outputArtifactIds = Nil,
+      preconditionArtifactIds = Nil,
+      fidelity = CaptureFidelity.Inferred,
+      metadata = Map.empty,
+    )
+
+    assertEquals(decode[DAGNode](legacyJson), Right(expected))
+
+  test("Round-trip serialization of CaveArtifactRegistry"):
+    val registry = CaveArtifactRegistry(
+      caveId = Some("cave-berlin-lab"),
+      artifacts = Map(
+        "art-rig-01" -> Artifact(
+          id = "art-rig-01",
+          name = "CAN-bus Hardware Test Rig",
+          substrate = ArtifactSubstrate.Physical,
+          role = ArtifactRole.Instrument,
+          uri = Some("urn:hardware:can-rig:01"),
+          mediaType = None,
+          description = Some("Bench test rig"),
+          location = Some(
+            PhysicalLocation(
+              name = "Electronics Lab",
+              civicAddress = Some("Musterstraße 1, Berlin"),
+              geoUri = Some("geo:52.5200,13.4050"),
+              benchCoordinates = Some("Bench-07"),
+            ),
+          ),
+          metadata = Map.empty,
+        ),
+      ),
+      metadata = Map("owner" -> "Hardware Guild"),
+    )
+
+    assertEquals(decode[CaveArtifactRegistry](registry.asJson.noSpaces), Right(registry))

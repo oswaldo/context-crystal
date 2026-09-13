@@ -138,11 +138,36 @@ given Decoder[CaptureFidelity] = Decoder.decodeString.emap {
   case other         => Left(s"Invalid CaptureFidelity: $other")
 }
 
+given Encoder[ArtifactSubstrate] = Encoder.encodeString.contramap {
+  case ArtifactSubstrate.Virtual  => "virtual"
+  case ArtifactSubstrate.Physical => "physical"
+}
+
+given Decoder[ArtifactSubstrate] = Decoder.decodeString.emap {
+  case "virtual"  => Right(ArtifactSubstrate.Virtual)
+  case "physical" => Right(ArtifactSubstrate.Physical)
+  case other      => Left(s"Invalid ArtifactSubstrate: $other")
+}
+
+given Encoder[ArtifactRole] = Encoder.encodeString.contramap {
+  case ArtifactRole.Target       => "target"
+  case ArtifactRole.Instrument   => "instrument"
+  case ArtifactRole.Precondition => "precondition"
+}
+
+given Decoder[ArtifactRole] = Decoder.decodeString.emap {
+  case "target"       => Right(ArtifactRole.Target)
+  case "instrument"   => Right(ArtifactRole.Instrument)
+  case "precondition" => Right(ArtifactRole.Precondition)
+  case other          => Left(s"Invalid ArtifactRole: $other")
+}
+
 given Codec[AcceptanceCriterion] = deriveCodec
 given Codec[Goal]                = deriveCodec
 given Codec[Entity]              = deriveCodec
 given Codec[EntityRegistry]      = deriveCodec
 given Codec[Mask]                = deriveCodec
+given Codec[PhysicalLocation]    = deriveCodec
 given Codec[DAGNode] = Codec.from(
   Decoder.instance { c =>
     for
@@ -154,6 +179,18 @@ given Codec[DAGNode] = Codec.from(
       contentSummary <- c.downField("contentSummary").as[String]
       anchor         <- c.downField("anchor").as[Option[String]]
       artifactIds    <- c.downField("artifactIds").as[Option[List[String]]].map(_.getOrElse(Nil))
+      inputArtifactIds <- c
+        .downField("inputArtifactIds")
+        .as[Option[List[String]]]
+        .map(_.getOrElse(Nil))
+      outputArtifactIds <- c
+        .downField("outputArtifactIds")
+        .as[Option[List[String]]]
+        .map(_.getOrElse(Nil))
+      preconditionArtifactIds <- c
+        .downField("preconditionArtifactIds")
+        .as[Option[List[String]]]
+        .map(_.getOrElse(Nil))
       fidelity <- c
         .downField("fidelity")
         .as[Option[CaptureFidelity]]
@@ -163,16 +200,19 @@ given Codec[DAGNode] = Codec.from(
         .as[Option[Map[String, String]]]
         .map(_.getOrElse(Map.empty))
     yield DAGNode(
-      id,
-      parentIds,
-      timestamp,
-      actorId,
-      kind,
-      contentSummary,
-      anchor,
-      artifactIds,
-      fidelity,
-      metadata,
+      id = id,
+      parentIds = parentIds,
+      timestamp = timestamp,
+      actorId = actorId,
+      kind = kind,
+      contentSummary = contentSummary,
+      anchor = anchor,
+      artifactIds = artifactIds,
+      inputArtifactIds = inputArtifactIds,
+      outputArtifactIds = outputArtifactIds,
+      preconditionArtifactIds = preconditionArtifactIds,
+      fidelity = fidelity,
+      metadata = metadata,
     )
   },
   deriveEncoder[DAGNode],
@@ -181,6 +221,38 @@ given Codec[DAG]              = deriveCodec
 given Codec[TransientLease]   = deriveCodec
 given Codec[ActionAuditEntry] = deriveCodec
 given Codec[LessonLearned]    = deriveCodec
-given Codec[Artifact]         = deriveCodec
-given Codec[CrystalOrigin]    = deriveCodec
-given Codec[ContextCrystal]   = deriveCodec
+given Codec[Artifact] = Codec.from(
+  Decoder.instance { c =>
+    for
+      id   <- c.downField("id").as[String]
+      name <- c.downField("name").as[Option[String]].map(_.getOrElse(id))
+      substrate <- c
+        .downField("substrate")
+        .as[Option[ArtifactSubstrate]]
+        .map(_.getOrElse(ArtifactSubstrate.Virtual))
+      role <- c.downField("role").as[Option[ArtifactRole]].map(_.getOrElse(ArtifactRole.Target))
+      uri  <- c.downField("uri").as[Option[String]]
+      mediaType   <- c.downField("mediaType").as[Option[String]]
+      description <- c.downField("description").as[Option[String]]
+      location    <- c.downField("location").as[Option[PhysicalLocation]]
+      metadata <- c
+        .downField("metadata")
+        .as[Option[Map[String, String]]]
+        .map(_.getOrElse(Map.empty))
+    yield Artifact(
+      id = id,
+      name = name,
+      substrate = substrate,
+      role = role,
+      uri = uri,
+      mediaType = mediaType,
+      description = description,
+      location = location,
+      metadata = metadata,
+    )
+  },
+  deriveEncoder[Artifact],
+)
+given Codec[CaveArtifactRegistry] = deriveCodec
+given Codec[CrystalOrigin]        = deriveCodec
+given Codec[ContextCrystal]       = deriveCodec
