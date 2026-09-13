@@ -1,6 +1,6 @@
 # Implementation Plan: Native MCP Server Ergonomics & Advanced Tooling
 
-## Phase 1: Core & CLI Foundation (Atomic Tasks in Init & Crystal List Ergonomics)
+## Phase 1: Core & CLI Foundation (Atomic Tasks in Init & Crystal List Ergonomics) [checkpoint: 605fd11]
 
 - [x] Task: Add optional `tasks: List[String]` to `CliCommand.Init` and generate acceptance criteria in `Runner` [c596fb4]
   - [x] Write failing unit test in `cli/shared/src/test/scala/ccrystal/cli/RunnerSuite.scala`
@@ -11,7 +11,7 @@
   - [x] Expose `crystal_list` in `tools/list` and wire execution to `CliCommand.ListCrystals`
   - [x] Update `crystal_init` in `tools/list` with optional `tasks` array and wire execution to `CliCommand.Init`
   - [x] Verify test passes cleanly
-- [ ] Task: Phase 1 Verification & Checkpoint (Refer to workflow.md)
+- [x] Task: Phase 1 Verification & Checkpoint (Refer to workflow.md) [605fd11]
 
 ## Phase 2: Beam Shaping & Cave Triage MCP Tools
 
