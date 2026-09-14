@@ -42,3 +42,6 @@
 
 - [x] **Track: Native MCP Server Ergonomics & Advanced Tooling (crystal_list, atomic crystal_init, crystal_hydrate, crystal_triage)**  
   *Link: [conductor/tracks/mcp_server_ergonomics_and_tools_20260913/index.md](./tracks/mcp_server_ergonomics_and_tools_20260913/index.md)*
+
+- [~] **Track: Public Documentation Portal & Launch Readiness (Scala.js / Laminar on gh-pages)**  
+  *Link: [conductor/tracks/public_portal_and_launch_readiness_20260914/index.md](./tracks/public_portal_and_launch_readiness_20260914/index.md)*
