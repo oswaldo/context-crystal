@@ -1,17 +1,17 @@
 # Implementation Plan: Public Documentation Portal & Launch Readiness
 
-## Phase 1: Workspace & Orphan Worktree Topology Initialization
+## Phase 1: Workspace & Orphan Worktree Topology Initialization [checkpoint: e223b91]
 
-- [ ] Task: Create orphan branch `gh-pages` and attach isolated worktree at `../ccrystal-worktrees/context-crystal-gh-pages`
-  - [ ] Add detached worktree: `git worktree add --detach ../ccrystal-worktrees/context-crystal-gh-pages`
-  - [ ] Switch to orphan branch: `git checkout --orphan gh-pages && git rm -rf .`
-  - [ ] Verify clean, decoupled working directory
-- [ ] Task: Scaffold Scala CLI project structure and build configuration
-  - [ ] Create `site/project.scala` configured for Scala 3.3 LTS, Scala.js ES module, and Laminar 17
-  - [ ] Create `preview/project.scala` and `preview/PreviewServer.scala` with Cask preview server
-  - [ ] Create base `index.html` and foundational `styles.css` with cybernetic palette
-  - [ ] Verify build via `scala-cli package site --js-mode release -o main.js --force`
-- [ ] Task: Phase 1 Verification & Checkpoint (Refer to workflow.md)
+- [x] Task: Create orphan branch `gh-pages` and attach isolated worktree at `~/git/context-crystal-gh-pages` [e223b91]
+  - [x] Add detached worktree: `git worktree add --detach ~/git/context-crystal-gh-pages`
+  - [x] Switch to orphan branch: `git checkout --orphan gh-pages && git rm -rf .`
+  - [x] Verify clean, decoupled working directory
+- [x] Task: Scaffold Scala CLI project structure and build configuration [e223b91]
+  - [x] Create `site/project.scala` configured for Scala 3.3 LTS, Scala.js ES module, and Laminar 17
+  - [x] Create `preview/project.scala` and `preview/PreviewServer.scala` with Cask preview server
+  - [x] Create base `index.html` and foundational `styles.css` with cybernetic palette
+  - [x] Verify build via `scala-cli package site --js-mode release -o main.js --force`
+- [x] Task: Phase 1 Verification & Checkpoint (Refer to workflow.md) [e223b91]
 
 ## Phase 2: Core Portal UI Components & Cybernetic Modernist Design
 
