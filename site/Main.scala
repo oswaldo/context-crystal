@@ -11,5 +11,16 @@ object Main:
   def appElement: HtmlElement =
     div(
       className := "portal-root",
-      h1("Context Crystal Launch Portal"),
+      Header.render(),
+      mainTag(
+        className := "portal-main container",
+        child <-- State.activeTab.signal.map {
+          case Tab.Manifesto      => TabManifesto.render()
+          case Tab.Explorer       => TabExplorer.render()
+          case Tab.Quickstart     => TabQuickstart.render()
+          case Tab.Mcp            => TabMcp.render()
+          case Tab.AgentIngestion => TabAgentIngestion.render()
+        },
+      ),
+      Footer.render(),
     )

@@ -22,6 +22,9 @@ case class MinimalRoutes()(implicit cc: castor.Context, log: cask.Logger) extend
   @cask.staticFiles("/llms-full.txt")
   def llmsFull() = "llms-full.txt"
 
+  @cask.staticFiles("/robots.txt")
+  def robots() = "robots.txt"
+
   initialize()
 
 object Serve extends cask.Main:

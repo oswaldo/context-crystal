@@ -1,0 +1,133 @@
+# Context Crystal: Comprehensive Machine-Readable Corpus (llms-full.txt)
+
+> **Context Crystal** — Sovereign, Deterministic, Local-First Context and DAG Lifecycle Engine.
+> Version: 0.1.0-alpha
+> License: MIT
+> Specification: JSON Schema v1 (`spec/v1/context-crystal.json`) with JSON-LD semantics.
+> Repository: https://github.com/oswaldo/context-crystal
+
+---
+
+## 1. Core Architectural Concepts
+
+### 1.1 The Cave (.ccrystals/)
+A workspace container housing:
+- `crystal.json`: Canonical state file for each active crystal.
+- `entities.json`: Shared multi-entity authorship registry.
+- `artifacts.json`: Shared cave-level virtual and physical artifact inventory.
+- Derived Markdown views (`tasks.md`, `lessons-learned.md`, `transient.json`) auto-projected for human inspection.
+- Companion store support via `CCRYSTAL_STORE` environment variable or `.ccrystal-store` pointer file.
+
+### 1.2 The Directed Acyclic Graph (DAG)
+Causal state transitions recorded immutably:
+- `nodeId`: Deterministic or random UUID / prefix identifier.
+- `parentIds`: Parents in the causal lattice.
+- `timestamp`: Explicit ISO-8601 UTC event timestamp.
+- `authorId`: Entity attribution (`usr_operator`, `agt_antigravity`).
+- `kind`: `init`, `prompt`, `reasoning`, `action`, `checkpoint`, `tool_call`, `tool_result`, `error`, `resolution`.
+- `captureFidelity`: `inferred` (synthesized by agent) or `intercepted` (deterministic kernel event).
+- `anchor`: Optional human-readable semantic label for sub-DAG slicing.
+- `inputArtifactIds`, `outputArtifactIds`, `preconditionArtifactIds`: Explicit links to artifacts.
+
+### 1.3 Transient Resource Leases
+Guaranteed elimination of agent debris:
+- `resourceType`: `git_worktree`, `mock_service`, `temp_directory`, `configuration_patch`.
+- `disposalPolicy`: `revert_on_conclusion`, `delete_after_test`, `replace_in_final_cut`, `manual`.
+- Invariant: A crystal goal cannot be marked Concluded while active leases remain uncleaned or unpromoted.
+
+### 1.4 Artifact & World-State Ontology
+Bridging digital deliberation with physical and virtual reality:
+- `substrate`: `virtual` (code repos, schemas, APIs) or `physical` (hardware benches, test rigs).
+- `role`: `target` (deliverable), `instrument` (measurement tool), `precondition` (required environment).
+- Physical location: Civic address, RFC 5870 `geo:` URI, bench/room coordinates.
+
+---
+
+## 2. Verified CLI Command Reference
+
+```bash
+# General AI Guidance
+ccrystal --for-ai
+
+# Crystal Lifecycle
+ccrystal init <id> -g "<title>" -i "<intent>" [-t "<task>"]...
+ccrystal list [--status in_progress|concluded] [--json]
+ccrystal delete <id> [--force]
+ccrystal refresh <id>
+
+# Tasks (Acceptance Criteria)
+ccrystal task add <id> -d "<description>"
+ccrystal task done <id> -t <task-id>
+
+# DAG Transitions
+ccrystal node add <id> -k <kind> -s "<summary>" [--author <id>] [--fidelity <fidelity>] [--anchor <label>]
+
+# Context Hydration & Beam Shaping
+ccrystal hydrate <id> [--tail <N>] [--from <anchor>] [--to <anchor>] [--depth <N>] [--summary-only]
+ccrystal cast <id> ... (alias for hydrate)
+
+# Transient Leases
+ccrystal transient lease <id> -t <type> [-p <path>] -d "<desc>" --policy <policy>
+ccrystal transient clean <id> -l <lease-id>
+
+# Slicing & Cleavage
+ccrystal slice <id> [--from <anchor>] [--to <anchor>] [--fork-to <child-id>] [--prune]
+
+# Entity Registry
+ccrystal entity list
+ccrystal entity register --id <id> --name "<name>" --kind <human|agent>
+ccrystal entity deregister <id> [--force]
+
+# Lessons Learned
+ccrystal lesson add <id> -f "<friction>" -r "<root-cause>" -a "<action>"
+ccrystal lesson resolve <id> -l <lesson-id>
+ccrystal lesson list <id>
+
+# Artifact Registry
+ccrystal artifact list [--cave] [--crystal <id>]
+ccrystal artifact register --id <id> --name "<name>" --substrate <virtual|physical> --role <target|instrument|precondition> [--uri <uri>] [--location-name <name>] [--geo-uri <geo>] [--bench-coords <coords>]
+ccrystal artifact inspect <id>
+
+# Batch Execution (Universal Escape Hatch)
+ccrystal batch "cmd1; cmd2; cmd3"
+
+# Native MCP Server
+ccrystal mcp
+```
+
+---
+
+## 3. Model Context Protocol (MCP) Tools
+
+Native stdio JSON-RPC 2.0 endpoint started via `ccrystal mcp`.
+
+| Tool Name | Key Arguments | Purpose |
+|---|---|---|
+| `crystal_init` | `id`, `goal_title`, `intent`, `tasks?` | Instantiate crystal with atomic criteria |
+| `crystal_list` | `status?`, `json_output?` | List cave crystals with optional filter |
+| `crystal_hydrate` | `crystal_id`, `tail?`, `from?`, `to?`, `summary_only?` | Context beam shaping for LLM prompts |
+| `crystal_triage` | `json_output?` | Automated hygiene categorization |
+| `crystal_artifact` | `action`, `id?`, `name?`, `substrate?`, `role?`, `uri?` | Manage virtual/physical artifacts |
+| `crystal_checkpoint` | `crystal_id`, `summary`, `fidelity?` | Append DAG checkpoint node |
+| `crystal_task_transition` | `crystal_id`, `task_id`, `status` | Transition acceptance criterion |
+| `crystal_transient_lease` | `crystal_id`, `resource_type`, `path?`, `policy` | Acquire ephemeral resource lease |
+| `crystal_slice_fork` | `source_id`, `fork_to`, `from?`, `to?`, `prune?` | Cleave and fork sub-DAG into child |
+| `crystal_delete` | `crystal_id`, `force?` | Permanent deletion with impact check |
+| `crystal_batch` | `commands` | Multi-command recipe separated by `;` |
+
+### MCP Resources
+- `ccrystal://artifacts`: Cave-level artifact registry
+- `ccrystal://{crystal_id}/artifacts`: Crystal-scoped deliverables and instruments
+- `ccrystal://entities`: Workspace entity registry
+
+---
+
+## 4. Entity Behavioral Guidelines & PII Protection
+
+1. **Synthetic PII Invariant:** Never emit real personal data or identifiable company credentials.
+   - Use RFC 2606 reserved domains (`example.com`, `example.org`).
+   - Use standard neutral fictitious entities (`Acme Corp`, `Example Industries`).
+   - Use standard neutral cultural placeholders (e.g. *John Doe*, *Max Mustermann*, *Fulano de Tal*).
+2. **Dual-Credential Security & Push Gate:**
+   - Commit signing key (`user.signingkey`): AI entities create local cryptographically signed commits within worktrees.
+   - Remote transport key (`git push`): Remotely authenticated via passphrase or hardware security token (YubiKey) held strictly by the human operator. Autonomous entities NEVER execute `git push` autonomously.

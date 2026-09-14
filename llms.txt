@@ -1,0 +1,62 @@
+# Context Crystal: Machine-Readable Guide for AI Entities (llms.txt)
+
+> **Context Crystal** is a sovereign, deterministic, local-first context and DAG lifecycle engine.
+> Sub-5ms native binary (Scala Native + Immix GC). 0 LLM tokens consumed for context management.
+> Standard: JSON Schema v1 (`spec/v1/context-crystal.json`) with JSON-LD semantics.
+
+## Core Philosophy for AI Agents
+- **Never rely on chat memory:** Treat chat windows as ephemeral. Check crystals at turn inception (`ccrystal list` or `crystal_list`).
+- **Context Beam Hydration:** Cast living context before making multi-step edits (`ccrystal hydrate <id> --tail 5` or `crystal_hydrate`).
+- **Zero Agent Debris:** Register an explicit transient lease for every temporary git worktree or mock config (`ccrystal transient lease` or `crystal_transient_lease`). Clean or promote leases before marking goals concluded.
+- **Atomic Multi-Command Batching:** Compose atomic update recipes separated by semicolons (`ccrystal batch "cmd1; cmd2"` or `crystal_batch`).
+
+## Installation
+Single-line curl installer:
+```bash
+curl -fsSL https://raw.githubusercontent.com/oswaldo/context-crystal/main/install.sh | sh
+```
+
+## Essential CLI Subcommands
+```bash
+# Initialize crystal with atomic tasks
+ccrystal init <id> -g "<goal-title>" -i "<intent>" -t "<task-1>" -t "<task-2>"
+
+# List cave crystals
+ccrystal list [--status in_progress|concluded] [--json]
+
+# Hydrate context beam
+ccrystal hydrate <id> [--tail <N>] [--from <sel>] [--to <sel>] [--summary-only]
+
+# Transition task
+ccrystal task done <id> -t <task-id>
+ccrystal task add <id> -d "<description>"
+
+# Append causal DAG node
+ccrystal node add <id> -k <checkpoint|prompt|action|resolution> -s "<summary>" --fidelity inferred
+
+# Manage transient resource leases
+ccrystal transient lease <id> -t <git_worktree|mock_service> -p <path> -d "<desc>" --policy revert_on_conclusion
+ccrystal transient clean <id> -l <lease-id>
+
+# Slice and fork sub-DAG
+ccrystal slice <id> --from <anchor> --fork-to <child-id> [--prune]
+
+# Start native Model Context Protocol (MCP) server
+ccrystal mcp
+```
+
+## Native MCP Server Tools (stdio JSON-RPC 2.0)
+1. `crystal_init`: Instantiate crystal with goal, intent, and optional `tasks: string[]`.
+2. `crystal_list`: Query cave crystals with optional status filter.
+3. `crystal_hydrate`: Beam shaping with `tail`, `from`, `to`, `depth`, `summary_only`.
+4. `crystal_triage`: Automated cave hygiene (`CandidateForCleanup`, `Keep`, `RequiresReview`).
+5. `crystal_artifact`: Register, list, or inspect virtual and physical artifacts.
+6. `crystal_checkpoint`: Append immutable DAG checkpoint node.
+7. `crystal_task_transition`: Complete or update acceptance criteria.
+8. `crystal_transient_lease`: Acquire temporary resource lease.
+9. `crystal_slice_fork`: Cleave sub-DAG into child crystal.
+10. `crystal_delete`: Delete crystal with cascade entity preview.
+11. `crystal_batch`: Execute semicolon-delimited CLI recipes atomically.
+
+## Full Corpus Link
+For full JSON schemas, ontology models, and exhaustive CLI documentation, see `/llms-full.txt`.
