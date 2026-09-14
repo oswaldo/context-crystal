@@ -1,0 +1,20 @@
+[
+  {
+    "id" : "lease-1",
+    "resourceType" : "git_worktree",
+    "resourcePath" : "/home/oswaldo/git/ccrystal-worktrees/context-crystal-gh-pages",
+    "description" : "Isolated orphan worktree for gh-pages website",
+    "disposalPolicy" : "manual",
+    "status" : "cleaned",
+    "createdAt" : "2026-09-14T21:52:09.760Z"
+  },
+  {
+    "id" : "lease-2",
+    "resourceType" : "git_worktree",
+    "resourcePath" : "/home/oswaldo/git/context-crystal-gh-pages",
+    "description" : "Orphan gh-pages worktree peer directory",
+    "disposalPolicy" : "manual",
+    "status" : "cleaned",
+    "createdAt" : "2026-09-14T21:56:20.517Z"
+  }
+]

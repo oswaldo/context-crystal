@@ -22,27 +22,21 @@
 
 ---
 
-## 2. Immediate Next Agenda: Public Documentation Website & Launch Preparation
+## 2. Active Track: Public Documentation Portal & Launch Readiness
 
-The next candidate milestone is **Track 8: Public Documentation Website, Interactive Showcase & Launch Preparation**:
+Active implementation on orphan branch `gh-pages` (`~/git/context-crystal-gh-pages`):
 
-1. **Context & Vision:** Build the official public portal, documentation site, and launchpad for Context Crystal (deployed via GitHub Pages / Codeberg Pages).
-2. **Components:**
-   - Static docs framework (VitePress / Starlight) with custom branding and interactive architecture diagrams.
-   - Interactive terminal demos (vhs/asciinema) demonstrating zero-token speed, cleavage/slicing, and provenance audit trails.
-   - Public developer guide, schema explorer (`spec/v1/context-crystal.json`), and quickstart installer guide.
+- Pure functional Scala 3 / Scala.js + Laminar 17 reactive web portal.
+- Cybernetic modernist UI with 5 curated tabs (Manifesto, Live DAG Explorer, Install/Quickstart, MCP Reference, Agent Ingestion).
+- Canonical `/llms.txt` and `/llms-full.txt` machine-readable endpoints.
+- Lightweight local Cask preview server.
 
 ---
 
 ## 3. Backlog & Future Track Roadmap
 
-- **Track 8: Public Documentation Website, Interactive Showcase & Launch Preparation:**
-  - *Context & Vision:* Build the official public portal, documentation site, and launchpad for Context Crystal (deployed via GitHub Pages / Codeberg Pages).
-  - *Components:*
-    - Static docs framework (e.g., VitePress or Starlight) with custom branding, clear value proposition, and interactive architecture diagrams.
-    - Interactive terminal demos (vhs/asciinema) demonstrating zero-token speed, cleavage/slicing, and provenance audit trails.
-    - Public developer guide, schema explorer (`spec/v1/context-crystal.json`), and quickstart installer guide.
-    - Strategic launch coordination (aligned with `tmp/strategic-analysis.md`).
+- **Post-MLP Portal Search & Extended Docs Engine:**
+  - Evaluate client-side search engines (e.g. Pagefind WASM integration or Typelevel Laika static documentation compiler) as documentation volume expands beyond initial launch tabs.
 - **Track 9: Crystal Comms & Lock-Free Multi-Entity Mailboxes:** Filesystem-based inbox/outbox signaling (`.ccrystals/_comms/<entity-id>/inbox/`) and `Entity.endpoints` resolution.
 - **Track 10: Lifecycle Housekeeping, Melting & Archiving:** CLI commands for state classification (`--solid`, `--stale`), sub-DAG summarization (`ccrystal melt`), and garbage collection (`ccrystal archive`).
 - **Track 11: Experimental 3D Context Lattice Visualizer:** Interactive Three.js/WebGL spatial navigation supporting thematic views (celestial clouds, subterranean cave lattices, archival library books).
