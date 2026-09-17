@@ -1,0 +1,47 @@
+# Implementation Plan: Crystal Lifecycle Conclusion & Agent MCP Ergonomics
+
+## Phase 1: Core CLI & Batch Goal Conclusion [checkpoint: ]
+
+- [ ] Task: Extend `CliCommand` with `GoalTransition` and implement `CommandParser` for `conclude`, `abandon`, and `goal status`
+  - [ ] Write failing unit tests in `cli/shared/src/test/scala/ccrystal/cli/CommandParserSuite.scala`
+  - [ ] Add `CliCommand.GoalTransition(crystalId: String, status: GoalStatus, summary: Option[String] = None)`
+  - [ ] Add command parsers for `conclude`, `abandon`, and `goal status` in `CommandParser.scala`
+  - [ ] Verify tests pass cleanly
+- [ ] Task: Implement `Runner` execution logic and automatic resolution DAG node creation
+  - [ ] Write failing unit tests in `cli/shared/src/test/scala/ccrystal/cli/RunnerSuite.scala`
+  - [ ] Implement `GoalTransition` handler in `Runner.scala` updating `goal.status` and appending a `NodeKind.Resolution` node if summary is provided
+  - [ ] Verify tests pass cleanly
+- [ ] Task: Support `conclude` and `abandon` in `BatchExecutor`
+  - [ ] Write failing unit tests in `cli/shared/src/test/scala/ccrystal/cli/BatchExecutorSuite.scala`
+  - [ ] Ensure `BatchExecutor` parses and executes compound recipes including `conclude` and `abandon`
+  - [ ] Verify tests pass cleanly
+- [ ] Task: Phase 1 Verification & Checkpoint (Refer to workflow.md)
+
+## Phase 2: Native MCP Server `crystal_goal_transition` Tool [checkpoint: ]
+
+- [ ] Task: Implement `crystal_goal_transition` tool in `DefaultMcpHandler`
+  - [ ] Write failing unit tests in `cli/shared/src/test/scala/ccrystal/cli/mcp/DefaultMcpHandlerSuite.scala`
+  - [ ] Expose `crystal_goal_transition` in `tools/list` with schema (`crystal_id`, `status`, optional `summary`)
+  - [ ] Implement execution in `tools/call` routing through `Runner.run(CliCommand.GoalTransition(...))`
+  - [ ] Verify unit tests pass cleanly
+- [ ] Task: Phase 2 Verification & Checkpoint (Refer to workflow.md)
+
+## Phase 3: MCP Instructions Deployment, Agent Skill & Documentation [checkpoint: ]
+
+- [ ] Task: Author canonical `resources/mcp/instructions.md` and deploy to Antigravity MCP directory
+  - [ ] Create `resources/mcp/instructions.md` with CLI paths, lifecycle transition workflows, and batch best practices
+  - [ ] Deploy `instructions.md` and `crystal_goal_transition.json` to `/home/oswaldo/.gemini/antigravity-cli/mcp/context-crystal/`
+- [ ] Task: Update Agent Skill (`SKILL.md`) and AI Documentation
+  - [ ] Update `.agents/skills/context-crystal/SKILL.md` to document `conclude`, `abandon`, and `crystal_goal_transition`
+  - [ ] Update `docs/for_ais.md` and `conductor/product.md` with goal transition lifecycle guidance
+- [ ] Task: Phase 3 Verification & Checkpoint (Refer to workflow.md)
+
+## Phase 4: Full Cross-Platform Verification, Formatting & Release Installation [checkpoint: ]
+
+- [ ] Task: Full test suite verification across JVM and Native targets
+  - [ ] Run `sbt test` across core and cli modules
+  - [ ] Run formatting and linter checks (`scalafmtCheckAll`, `markdownlint`)
+- [ ] Task: Compile and install release native binary with Thin LTO into `~/.local/bin/ccrystal`
+  - [ ] Execute release build and copy with atomic replacement (`cp --remove-destination`)
+- [ ] Task: Clean up `suggestion.md` from repository root
+- [ ] Task: Phase 4 Verification & Checkpoint (Refer to workflow.md)

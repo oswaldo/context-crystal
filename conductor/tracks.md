@@ -45,3 +45,6 @@
 
 - [x] **Track: Public Documentation Portal & Launch Readiness (Scala.js / Laminar on gh-pages)**  
   *Link: [conductor/tracks/public_portal_and_launch_readiness_20260914/index.md](./tracks/public_portal_and_launch_readiness_20260914/index.md)*
+
+- [ ] **Track: Crystal Lifecycle Conclusion & Agent MCP Ergonomics**  
+  *Link: [conductor/tracks/crystal_conclusion_and_mcp_instructions_20260917/index.md](./tracks/crystal_conclusion_and_mcp_instructions_20260917/index.md)*
