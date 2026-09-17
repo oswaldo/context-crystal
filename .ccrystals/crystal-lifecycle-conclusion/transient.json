@@ -1,0 +1,11 @@
+[
+  {
+    "id" : "lease-1",
+    "resourceType" : "git_worktree",
+    "resourcePath" : null,
+    "description" : "Worktree at ../ccrystal-worktrees/crystal_conclusion_and_mcp_instructions_20260917",
+    "disposalPolicy" : "manual",
+    "status" : "cleaned",
+    "createdAt" : "2026-09-17T20:57:37.009Z"
+  }
+]

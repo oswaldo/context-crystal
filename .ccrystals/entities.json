@@ -37,6 +37,18 @@
       "endpoints" : {
         
       }
+    },
+    "usr_antigravity" : {
+      "id" : "usr_antigravity",
+      "kind" : "human",
+      "name" : "antigravity",
+      "metadata" : {
+        
+      },
+      "publicKey" : null,
+      "endpoints" : {
+        
+      }
     }
   },
   "metadata" : {

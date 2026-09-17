@@ -1,0 +1,129 @@
+{
+  "schemaVersion" : "1.0.0",
+  "id" : "crystal-lifecycle-conclusion",
+  "name" : "crystal-lifecycle-conclusion",
+  "createdAt" : "2026-09-17T20:57:33.556Z",
+  "updatedAt" : "2026-09-17T22:45:40.024Z",
+  "parentCrystalId" : null,
+  "origin" : null,
+  "caveId" : null,
+  "defaultAuthorId" : "usr_antigravity",
+  "goal" : {
+    "title" : "Implement crystal lifecycle conclusion and deploy MCP instructions",
+    "intent" : "Provide CLI conclude/abandon subcommands, crystal_goal_transition MCP tool, resolution DAG nodes, and deploy instructions.md for agents",
+    "status" : "concluded_success",
+    "acceptanceCriteria" : [
+      {
+        "id" : "task-1",
+        "description" : "Task 1.1-1.3: CLI Goal Transition & Provenance Resolution Node",
+        "completed" : true
+      },
+      {
+        "id" : "task-2",
+        "description" : "Task 1.4: BatchExecutor support for conclude and abandon",
+        "completed" : true
+      },
+      {
+        "id" : "task-3",
+        "description" : "Task 2.1-2.3: MCP crystal_goal_transition tool and schema",
+        "completed" : true
+      },
+      {
+        "id" : "task-4",
+        "description" : "Task 3.1-3.3: MCP instructions.md authoring, deployment, and skill updates",
+        "completed" : true
+      },
+      {
+        "id" : "task-5",
+        "description" : "Task 4.1-4.3: Cross-platform test verification, release build and installation",
+        "completed" : true
+      }
+    ],
+    "metadata" : {
+      
+    }
+  },
+  "entities" : [
+    {
+      "id" : "usr_antigravity",
+      "kind" : "human",
+      "name" : "antigravity",
+      "metadata" : {
+        
+      },
+      "publicKey" : null,
+      "endpoints" : {
+        
+      }
+    }
+  ],
+  "activeMask" : null,
+  "dag" : {
+    "rootNodeId" : "node-crystal-lifecycle-conclusion-init",
+    "nodes" : [
+      {
+        "id" : "node-crystal-lifecycle-conclusion-init",
+        "parentIds" : [
+        ],
+        "timestamp" : "2026-09-17T20:57:33.556Z",
+        "actorId" : "usr_antigravity",
+        "kind" : "human_prompt",
+        "contentSummary" : "Initialized crystal 'crystal-lifecycle-conclusion' with goal: Implement crystal lifecycle conclusion and deploy MCP instructions",
+        "anchor" : null,
+        "artifactIds" : [
+        ],
+        "inputArtifactIds" : [
+        ],
+        "outputArtifactIds" : [
+        ],
+        "preconditionArtifactIds" : [
+        ],
+        "fidelity" : "inferred",
+        "metadata" : {
+          
+        }
+      },
+      {
+        "id" : "node-2",
+        "parentIds" : [
+          "node-crystal-lifecycle-conclusion-init"
+        ],
+        "timestamp" : "2026-09-17T22:45:40.024Z",
+        "actorId" : "usr_antigravity",
+        "kind" : "resolution",
+        "contentSummary" : "Successfully implemented crystal lifecycle conclusion (conclude/abandon subcommands, crystal_goal_transition MCP tool), wire-level MCP instructions, and curated multi-runtime ergonomics template pack",
+        "anchor" : null,
+        "artifactIds" : [
+        ],
+        "inputArtifactIds" : [
+        ],
+        "outputArtifactIds" : [
+        ],
+        "preconditionArtifactIds" : [
+        ],
+        "fidelity" : "inferred",
+        "metadata" : {
+          
+        }
+      }
+    ]
+  },
+  "transientLeases" : [
+    {
+      "id" : "lease-1",
+      "resourceType" : "git_worktree",
+      "resourcePath" : null,
+      "description" : "Worktree at ../ccrystal-worktrees/crystal_conclusion_and_mcp_instructions_20260917",
+      "disposalPolicy" : "manual",
+      "status" : "cleaned",
+      "createdAt" : "2026-09-17T20:57:37.009Z"
+    }
+  ],
+  "lessonsLearned" : [
+  ],
+  "artifacts" : [
+  ],
+  "metadata" : {
+    
+  }
+}
