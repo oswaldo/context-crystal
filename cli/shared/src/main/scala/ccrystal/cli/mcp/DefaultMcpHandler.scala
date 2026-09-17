@@ -138,6 +138,28 @@ class DefaultMcpHandler(
             ),
           ),
           Tool(
+            name = "crystal_goal_transition",
+            description =
+              "Transition a crystal's top-level goal status (conclude successfully, abandon, or reopen) with optional resolution summary or reason.",
+            inputSchema = Json.obj(
+              "type" -> "object".asJson,
+              "properties" -> Json.obj(
+                "crystal_id" -> Json
+                  .obj("type" -> "string".asJson, "description" -> "Crystal identifier".asJson),
+                "status" -> Json.obj(
+                  "type" -> "string".asJson,
+                  "enum" -> List("in_progress", "concluded_success", "concluded_abandoned").asJson,
+                  "description" -> "Target goal status (in_progress, concluded_success, concluded_abandoned)".asJson,
+                ),
+                "summary" -> Json.obj(
+                  "type"        -> "string".asJson,
+                  "description" -> "Optional resolution summary or abandonment reason".asJson,
+                ),
+              ),
+              "required" -> List("crystal_id", "status").asJson,
+            ),
+          ),
+          Tool(
             name = "crystal_transient_lease",
             description = "Create, clean, or promote a transient resource lease.",
             inputSchema = Json.obj(
@@ -516,6 +538,38 @@ class DefaultMcpHandler(
           case _ =>
             CallToolResult(
               List(ToolContent(text = "Missing or invalid arguments for crystal_task_transition")),
+              isError = true,
+            )
+
+      case "crystal_goal_transition" =>
+        val crystalIdOpt = cursor.get[String]("crystal_id").toOption
+        val statusStrOpt = cursor.get[String]("status").toOption
+        val summaryOpt   = cursor.get[String]("summary").toOption
+        (crystalIdOpt, statusStrOpt) match
+          case (Some(cId), Some(statusStr)) =>
+            val goalStatusOpt = statusStr match
+              case "in_progress"                       => Some(GoalStatus.InProgress)
+              case "concluded" | "concluded_success"   => Some(GoalStatus.ConcludedSuccess)
+              case "abandoned" | "concluded_abandoned" => Some(GoalStatus.ConcludedAbandoned)
+              case _                                   => None
+            goalStatusOpt match
+              case Some(status) =>
+                runCommandToResult(
+                  CliCommand.GoalTransition(crystalId = cId, status = status, summary = summaryOpt),
+                )
+              case None =>
+                CallToolResult(
+                  List(
+                    ToolContent(
+                      text =
+                        s"Invalid goal status: $statusStr (must be 'in_progress', 'concluded_success', or 'concluded_abandoned')",
+                    ),
+                  ),
+                  isError = true,
+                )
+          case _ =>
+            CallToolResult(
+              List(ToolContent(text = "Missing required arguments 'crystal_id' and 'status'")),
               isError = true,
             )
 

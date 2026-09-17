@@ -715,3 +715,134 @@ class DefaultMcpHandlerSuite extends FunSuite:
       "JSON output must include CandidateForCleanup",
     )
     assert(triageJsonText.contains("\"id\" : \"c-clean\""), "JSON output must include c-clean")
+
+  test("DefaultMcpHandler exposes and executes crystal_goal_transition"):
+    val store   = new InMemoryCrystalStore()
+    val runner  = new Runner(store)
+    val handler = new DefaultMcpHandler(store, runner)
+
+    val rootNode = DAGNode(
+      "root-1",
+      Nil,
+      "2026-09-17T20:00:00Z",
+      "usr_tester",
+      NodeKind.HumanPrompt,
+      "Initial task",
+    )
+    val crystal = ContextCrystal(
+      schemaVersion = "1.0.0",
+      id = "c-target",
+      name = Some("c-target"),
+      createdAt = "2026-09-17T20:00:00Z",
+      updatedAt = "2026-09-17T20:00:00Z",
+      defaultAuthorId = Some("usr_tester"),
+      goal = Goal("Target Goal", "Intent", GoalStatus.InProgress, Nil),
+      entities = List(Entity("usr_tester", EntityKind.Human, "Tester")),
+      dag = DAG(rootNode.id, List(rootNode)),
+    )
+    store.save(crystal).toOption.get
+
+    // 1. Verify in tools/list
+    val toolsResp =
+      handler.handle(JsonRpcRequest(id = JsonRpcId.Str("tools-list-goal"), method = "tools/list"))
+    val tools = toolsResp.result.get.hcursor.downField("tools").as[List[Tool]].toOption.get
+    assert(
+      tools.exists(_.name == "crystal_goal_transition"),
+      "tools/list must include crystal_goal_transition",
+    )
+
+    // 2. Conclude crystal with summary
+    val concludeReq = JsonRpcRequest(
+      id = JsonRpcId.Str("call-conclude"),
+      method = "tools/call",
+      params = Some(
+        Json.obj(
+          "name" -> "crystal_goal_transition".asJson,
+          "arguments" -> Json.obj(
+            "crystal_id" -> "c-target".asJson,
+            "status"     -> "concluded_success".asJson,
+            "summary"    -> "Feature completed and acceptance criteria satisfied".asJson,
+          ),
+        ),
+      ),
+    )
+    val concludeResp = handler.handle(concludeReq)
+    assertEquals(concludeResp.error.isEmpty, true, "conclude tool call succeeds")
+    val concludeText =
+      concludeResp.result.get.hcursor
+        .downField("content")
+        .downArray
+        .get[String]("text")
+        .toOption
+        .get
+    assert(concludeText.contains("concluded successfully"), "conclude text confirmation")
+    assert(concludeText.contains("appended resolution node"), "resolution node mentioned")
+
+    val updated1 = store.load("c-target").toOption.get
+    assertEquals(updated1.goal.status, GoalStatus.ConcludedSuccess)
+    assertEquals(updated1.dag.nodes.size, 2)
+    assertEquals(updated1.dag.nodes.last.kind, NodeKind.Resolution)
+    assertEquals(
+      updated1.dag.nodes.last.contentSummary,
+      "Feature completed and acceptance criteria satisfied",
+    )
+
+    // 3. Abandon crystal with reason
+    val abandonReq = JsonRpcRequest(
+      id = JsonRpcId.Str("call-abandon"),
+      method = "tools/call",
+      params = Some(
+        Json.obj(
+          "name" -> "crystal_goal_transition".asJson,
+          "arguments" -> Json.obj(
+            "crystal_id" -> "c-target".asJson,
+            "status"     -> "concluded_abandoned".asJson,
+            "summary"    -> "Requirements changed, abandoning crystal".asJson,
+          ),
+        ),
+      ),
+    )
+    val abandonResp = handler.handle(abandonReq)
+    assertEquals(abandonResp.error.isEmpty, true, "abandon tool call succeeds")
+    val updated2 = store.load("c-target").toOption.get
+    assertEquals(updated2.goal.status, GoalStatus.ConcludedAbandoned)
+
+    // 4. Reopen as in_progress without summary
+    val reopenReq = JsonRpcRequest(
+      id = JsonRpcId.Str("call-reopen"),
+      method = "tools/call",
+      params = Some(
+        Json.obj(
+          "name" -> "crystal_goal_transition".asJson,
+          "arguments" -> Json.obj(
+            "crystal_id" -> "c-target".asJson,
+            "status"     -> "in_progress".asJson,
+          ),
+        ),
+      ),
+    )
+    val reopenResp = handler.handle(reopenReq)
+    assertEquals(reopenResp.error.isEmpty, true, "reopen tool call succeeds")
+    val updated3 = store.load("c-target").toOption.get
+    assertEquals(updated3.goal.status, GoalStatus.InProgress)
+    // Node count remains 3 (no new resolution node on reopen without summary)
+    assertEquals(updated3.dag.nodes.size, 3)
+
+    // 5. Invalid status returns isError = true
+    val invalidReq = JsonRpcRequest(
+      id = JsonRpcId.Str("call-invalid"),
+      method = "tools/call",
+      params = Some(
+        Json.obj(
+          "name" -> "crystal_goal_transition".asJson,
+          "arguments" -> Json.obj(
+            "crystal_id" -> "c-target".asJson,
+            "status"     -> "unknown_status".asJson,
+          ),
+        ),
+      ),
+    )
+    val invalidResp = handler.handle(invalidReq)
+    assertEquals(invalidResp.error.isEmpty, true)
+    val callResult = invalidResp.result.get.as[CallToolResult].toOption.get
+    assertEquals(callResult.isError, true, "invalid status returns isError = true")
