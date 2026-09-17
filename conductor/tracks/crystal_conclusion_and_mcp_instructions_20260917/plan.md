@@ -43,7 +43,7 @@
   - [x] Create `docs/runtimes/README.md` documenting project structure best practices across agent runtimes
 - [x] Task: Phase 3 Verification & Checkpoint (Refer to workflow.md)
 
-## Phase 4: Full Cross-Platform Verification, Formatting & Release Installation [checkpoint: ]
+## Phase 4: Full Cross-Platform Verification, Formatting & Release Installation [checkpoint: 890709d]
 
 - [x] Task: Full test suite verification across JVM and Native targets
   - [x] Run `sbt test` across core and cli modules

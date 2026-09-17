@@ -11,8 +11,6 @@
 - [x] **Track: Cave Entities and Authorship Tracking**  
   *Link: [conductor/tracks/cave_entities_authorship_20260830/index.md](./tracks/cave_entities_authorship_20260830/index.md)*
 
-
-
 - [x] **Track: Data Provenance & Capture Fidelity**  
   *Link: [conductor/tracks/capture_fidelity_20260906/index.md](./tracks/capture_fidelity_20260906/index.md)*
 
@@ -46,5 +44,5 @@
 - [x] **Track: Public Documentation Portal & Launch Readiness (Scala.js / Laminar on gh-pages)**  
   *Link: [conductor/tracks/public_portal_and_launch_readiness_20260914/index.md](./tracks/public_portal_and_launch_readiness_20260914/index.md)*
 
-- [ ] **Track: Crystal Lifecycle Conclusion & Agent MCP Ergonomics**  
+- [x] **Track: Crystal Lifecycle Conclusion & Agent MCP Ergonomics**  
   *Link: [conductor/tracks/crystal_conclusion_and_mcp_instructions_20260917/index.md](./tracks/crystal_conclusion_and_mcp_instructions_20260917/index.md)*
