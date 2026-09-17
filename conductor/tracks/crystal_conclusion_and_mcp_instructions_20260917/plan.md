@@ -26,7 +26,7 @@
   - [x] Verify unit tests pass cleanly
 - [x] Task: Phase 2 Verification & Checkpoint (Refer to workflow.md)
 
-## Phase 3: MCP Instructions Deployment, Agent Skill & Documentation [checkpoint: 209da0c]
+## Phase 3: Multi-Runtime Ergonomics & MCP Wire-Level Instructions [checkpoint: 5b2dcaa]
 
 - [x] Task: Author canonical `resources/mcp/instructions.md` and deploy to Antigravity MCP directory [209da0c]
   - [x] Create `resources/mcp/instructions.md` with CLI paths, lifecycle transition workflows, and batch best practices
@@ -34,6 +34,13 @@
 - [x] Task: Update Agent Skill (`SKILL.md`) and AI Documentation [209da0c]
   - [x] Update `.agents/skills/context-crystal/SKILL.md` to document `conclude`, `abandon`, and `crystal_goal_transition`
   - [x] Update `docs/for_ais.md` and `conductor/product.md` with goal transition lifecycle guidance
+- [x] Task: Implement wire-level MCP protocol instructions in `InitializeResult` (official MCP 2024-11-05 spec) [5b2dcaa]
+  - [x] Write failing unit tests in `core/shared/src/test/scala/ccrystal/core/mcp/McpCodecSuite.scala`
+  - [x] Add `instructions: Option[String] = None` to `InitializeResult` in `McpModels.scala` and update `McpCodecs.scala`
+  - [x] Populate wire-level `instructions` in `DefaultMcpHandler.scala` and verify in `DefaultMcpHandlerSuite.scala`
+- [x] Task: Curate production-grade multi-runtime templates in `docs/runtimes/` [5b2dcaa]
+  - [x] Create `docs/runtimes/CLAUDE.md` (Claude Code), `cursor.mdc` (Cursor), `windsurf.md` (Windsurf), `copilot.md` (GitHub Copilot), and `AGENTS.md` (open agents)
+  - [x] Create `docs/runtimes/README.md` documenting project structure best practices across agent runtimes
 - [x] Task: Phase 3 Verification & Checkpoint (Refer to workflow.md)
 
 ## Phase 4: Full Cross-Platform Verification, Formatting & Release Installation [checkpoint: ]
