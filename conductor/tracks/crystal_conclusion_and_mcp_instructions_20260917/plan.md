@@ -2,20 +2,20 @@
 
 ## Phase 1: Core CLI & Batch Goal Conclusion [checkpoint: ]
 
-- [ ] Task: Extend `CliCommand` with `GoalTransition` and implement `CommandParser` for `conclude`, `abandon`, and `goal status`
-  - [ ] Write failing unit tests in `cli/shared/src/test/scala/ccrystal/cli/CommandParserSuite.scala`
-  - [ ] Add `CliCommand.GoalTransition(crystalId: String, status: GoalStatus, summary: Option[String] = None)`
-  - [ ] Add command parsers for `conclude`, `abandon`, and `goal status` in `CommandParser.scala`
-  - [ ] Verify tests pass cleanly
-- [ ] Task: Implement `Runner` execution logic and automatic resolution DAG node creation
-  - [ ] Write failing unit tests in `cli/shared/src/test/scala/ccrystal/cli/RunnerSuite.scala`
-  - [ ] Implement `GoalTransition` handler in `Runner.scala` updating `goal.status` and appending a `NodeKind.Resolution` node if summary is provided
-  - [ ] Verify tests pass cleanly
-- [ ] Task: Support `conclude` and `abandon` in `BatchExecutor`
-  - [ ] Write failing unit tests in `cli/shared/src/test/scala/ccrystal/cli/BatchExecutorSuite.scala`
-  - [ ] Ensure `BatchExecutor` parses and executes compound recipes including `conclude` and `abandon`
-  - [ ] Verify tests pass cleanly
-- [ ] Task: Phase 1 Verification & Checkpoint (Refer to workflow.md)
+- [x] Task: Extend `CliCommand` with `GoalTransition` and implement `CommandParser` for `conclude`, `abandon`, and `goal status` [6197035]
+  - [x] Write failing unit tests in `cli/shared/src/test/scala/ccrystal/cli/CommandParserSuite.scala`
+  - [x] Add `CliCommand.GoalTransition(crystalId: String, status: GoalStatus, summary: Option[String] = None)`
+  - [x] Add command parsers for `conclude`, `abandon`, and `goal status` in `CommandParser.scala`
+  - [x] Verify tests pass cleanly
+- [x] Task: Implement `Runner` execution logic and automatic resolution DAG node creation [6197035]
+  - [x] Write failing unit tests in `cli/shared/src/test/scala/ccrystal/cli/RunnerSuite.scala`
+  - [x] Implement `GoalTransition` handler in `Runner.scala` updating `goal.status` and appending a `NodeKind.Resolution` node if summary is provided
+  - [x] Verify tests pass cleanly
+- [x] Task: Support `conclude` and `abandon` in `BatchExecutor` [6197035]
+  - [x] Write failing unit tests in `cli/shared/src/test/scala/ccrystal/cli/BatchExecutorSuite.scala`
+  - [x] Ensure `BatchExecutor` parses and executes compound recipes including `conclude` and `abandon`
+  - [x] Verify tests pass cleanly
+- [x] Task: Phase 1 Verification & Checkpoint (Refer to workflow.md)
 
 ## Phase 2: Native MCP Server `crystal_goal_transition` Tool [checkpoint: ]
 
