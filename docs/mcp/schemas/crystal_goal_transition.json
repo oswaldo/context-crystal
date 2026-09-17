@@ -1,0 +1,30 @@
+{
+  "name": "crystal_goal_transition",
+  "description": "Transition a crystal's top-level goal status (conclude successfully, abandon, or reopen) with optional resolution summary or reason.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "crystal_id": {
+        "type": "string",
+        "description": "Crystal identifier"
+      },
+      "status": {
+        "type": "string",
+        "enum": [
+          "in_progress",
+          "concluded_success",
+          "concluded_abandoned"
+        ],
+        "description": "Target goal status (in_progress, concluded_success, concluded_abandoned)"
+      },
+      "summary": {
+        "type": "string",
+        "description": "Optional resolution summary or abandonment reason"
+      }
+    },
+    "required": [
+      "crystal_id",
+      "status"
+    ]
+  }
+}

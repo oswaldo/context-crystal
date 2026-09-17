@@ -194,6 +194,8 @@ When the user communicates in natural language, translate their intent into the 
 | *"What crystals are in progress?"*, *"Which is closer to done?"* | Inspect crystal status and completion ratios | `ccrystal list --status in_progress` (or MCP `crystal_list`) |
 | *"Triage workspace cave"*, *"What crystals can we clean?"* | Classify cave crystals for lifecycle hygiene | `crystal_triage` |
 | *"Complete task X"* | Mark acceptance criterion done | `ccrystal task done <id> -t <task-id>` |
+| *"Conclude crystal X"*, *"We're finished with this project"* | Conclude crystal goal and record resolution node | `ccrystal conclude <id> [-s '<summary>']` (or MCP `crystal_goal_transition`) |
+| *"Abandon crystal X"*, *"This approach didn't pan out"* | Abandon crystal goal and record resolution node | `ccrystal abandon <id> [-r '<reason>']` (or MCP `crystal_goal_transition`) |
 | *"Register artifact / tool X"*, *"Add physical device / hardware rig"* | Register virtual or physical artifact in cave or crystal | `ccrystal artifact register --id <id> --name '<name>' --substrate <virtual\|physical> --role <target\|instrument\|precondition> [--uri <uri>] [--location-name '<loc>'] [--bench-coords '<coords>']` |
 | *"What artifacts are available?"*, *"List tools / hardware"* | List artifacts across cave or within a crystal | `ccrystal artifact list [--cave] [--crystal <id>]` |
 | *"Inspect artifact X"*, *"Check test rig location / details"* | Inspect metadata, substrate, and physical location of artifact | `ccrystal artifact inspect <id> [--crystal <id>]` |
@@ -222,7 +224,7 @@ ccrystal batch "node add my-feature -k checkpoint -s 'Schema finalized' --fideli
 ### Recipe 3: Conclusion & Transient Cleanup Gate
 
 ```bash
-ccrystal batch "task done my-feature -t task-3; node add my-feature -k resolution -s 'OAuth2 flow verified with 100% test coverage' --fidelity inferred; transient clean my-feature -l lease-1; lesson add my-feature -f 'PKCE code challenge salt collision' -r 'Used weak PRNG in mock' -a 'Always use java.security.SecureRandom'"
+ccrystal batch "task done my-feature -t task-3; conclude my-feature -s 'OAuth2 flow verified with 100% test coverage'; transient clean my-feature -l lease-1; lesson add my-feature -f 'PKCE code challenge salt collision' -r 'Used weak PRNG in mock' -a 'Always use java.security.SecureRandom'"
 ```
 
 ### Recipe 4: Automated Scratch Cleanup & Regeneration

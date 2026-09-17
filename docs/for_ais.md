@@ -23,3 +23,7 @@ By communicating state through a shared crystal rather than unbounded chat trans
 ## 5. Proactive Task Inception Invariant
 
 Before embarking on any non-trivial or multi-step engineering effort, always perform an inception check: query existing crystals (`ccrystal list` or MCP `resources/list`) to avoid orphaned work. If an existing crystal corresponds to the current objective, attach to it and hydrate context; if not, initialize a new crystal before modifying code. When operating in temporary workspaces or worktrees, register a transient resource lease (`git_worktree`) to ensure clean lifecycle disposal.
+
+## 6. Goal Conclusion & Cave Hygiene Invariant
+
+When all tasks and acceptance criteria are satisfied, transition the crystal's goal status to `concluded_success` (or `concluded_abandoned` if superseded) via `ccrystal conclude <id> [-s "resolution summary"]` (or MCP `crystal_goal_transition`). Providing a summary automatically generates a `resolution` DAG node preserving completion provenance. Once concluded and transient leases are cleared, the crystal becomes eligible for cleanup during cave triage (`crystal_triage`).
