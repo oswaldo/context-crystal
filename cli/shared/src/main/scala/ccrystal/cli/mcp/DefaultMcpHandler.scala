@@ -17,6 +17,13 @@ class DefaultMcpHandler(
   override def handle(request: JsonRpcRequest): JsonRpcResponse =
     request.method match
       case "initialize" =>
+        val instructions =
+          """Context Crystal Operational Guidelines for AI Entities:
+            |1. Tool Priority: Prioritize native MCP tools (crystal_batch, crystal_init, crystal_goal_transition, crystal_hydrate) over running CLI commands via subshells.
+            |2. Atomic Batching: Use crystal_batch for compound transitions (e.g. 'node add -s "..." <id>; task done -t task-1 <id>') to minimize turn roundtrips.
+            |3. Goal Lifecycle: Once all tasks are complete, always transition goal status using crystal_goal_transition (status: 'concluded_success' or 'concluded_abandoned') with a summary to record provenance in a resolution DAG node.
+            |4. Invariants: Always use fidelity 'inferred' for agent reasoning. Never delete crystals without explicit operator confirmation. Clean or promote all transient resource leases before concluding work.""".stripMargin
+
         val result = InitializeResult(
           protocolVersion = "2024-11-05",
           capabilities = ServerCapabilities(
@@ -25,6 +32,7 @@ class DefaultMcpHandler(
             prompts = Some(Json.obj()),
           ),
           serverInfo = ServerInfo(name = "context-crystal", version = "1.0.0"),
+          instructions = Some(instructions),
         )
         JsonRpcResponse(id = request.id, result = Some(result.asJson))
 

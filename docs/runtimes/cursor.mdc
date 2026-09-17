@@ -1,0 +1,43 @@
+---
+description: Operational rules for Context Crystal persistent state and causal DAG tracking in Cursor
+globs: *
+alwaysApply: true
+---
+
+# Context Crystal Rules for Cursor
+
+When working in this project, use Context Crystal (`ccrystal`) or the Context Crystal MCP server to maintain auditable, drift-free context.
+
+## 1. Lifecycle Invariants
+
+1. **Check for Active Crystals:**
+   Before modifying code, check existing crystals:
+   ```bash
+   ccrystal list --status in_progress
+   ```
+   Or via MCP: `crystal_list({ status: "in_progress" })`.
+
+2. **Hydrate State:**
+   If resuming work:
+   ```bash
+   ccrystal hydrate <crystal-id> --tail 5
+   ```
+   Or via MCP: `crystal_hydrate({ crystal_id: "<crystal-id>", tail: 5 })`.
+
+3. **Atomic Progress Updates:**
+   Use compound batching to record milestones:
+   ```bash
+   ccrystal batch "node add <id> -k checkpoint -s 'Refactored parser'; task done <id> -t task-1"
+   ```
+   Or via MCP: `crystal_batch({ commands: "..." })`.
+
+4. **Goal Conclusion:**
+   When acceptance criteria are met, conclude the crystal:
+   ```bash
+   ccrystal conclude <id> -s "All criteria verified and tests pass"
+   ```
+   Or via MCP: `crystal_goal_transition({ crystal_id: "<id>", status: "concluded_success", summary: "..." })`.
+
+5. **PII Protection & Dual-Key:**
+   - Never write personal data into `.ccrystals/`.
+   - Never run `git push` autonomously; prompt the human operator to push.

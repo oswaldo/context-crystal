@@ -66,6 +66,7 @@ case class InitializeResult(
     protocolVersion: String,
     capabilities: ServerCapabilities,
     serverInfo: ServerInfo,
+    instructions: Option[String] = None,
 ) derives CanEqual
 
 case class Tool(

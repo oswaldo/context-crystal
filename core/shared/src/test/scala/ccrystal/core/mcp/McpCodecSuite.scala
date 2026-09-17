@@ -70,6 +70,25 @@ class McpCodecSuite extends FunSuite:
     val resultJson = initResult.asJson.noSpaces
     assertEquals(decode[InitializeResult](resultJson).toOption, Some(initResult))
 
+    // With instructions field (official MCP 2024-11-05 wire spec)
+    val initResultWithInstr = initResult.copy(
+      instructions = Some("Use crystal_batch for compound transitions. Always conclude goals."),
+    )
+    val withInstrJson = initResultWithInstr.asJson.noSpaces
+    assert(
+      withInstrJson.contains(
+        "\"instructions\":\"Use crystal_batch for compound transitions. Always conclude goals.\"",
+      ),
+      "instructions in json",
+    )
+    assertEquals(decode[InitializeResult](withInstrJson).toOption, Some(initResultWithInstr))
+
+    // Backward compatibility: JSON without instructions decodes to instructions = None
+    val legacyJson =
+      """{"protocolVersion":"2024-11-05","capabilities":{},"serverInfo":{"name":"test","version":"0.1"}}"""
+    val decodedLegacy = decode[InitializeResult](legacyJson).toOption.get
+    assertEquals(decodedLegacy.instructions, None)
+
   test("Tools list and call codecs"):
     val tool = Tool(
       name = "crystal_batch",

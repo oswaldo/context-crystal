@@ -33,6 +33,17 @@ class DefaultMcpHandlerSuite extends FunSuite:
       result.hcursor.downField("serverInfo").get[String]("name").toOption,
       Some("context-crystal"),
     )
+    val instructions = result.hcursor.get[String]("instructions").toOption
+    assertEquals(
+      instructions.isDefined,
+      true,
+      "instructions should be present on initialize result",
+    )
+    assert(instructions.get.contains("crystal_batch"), "instructions mentions crystal_batch")
+    assert(
+      instructions.get.contains("crystal_goal_transition"),
+      "instructions mentions crystal_goal_transition",
+    )
 
   test("DefaultMcpHandler handles ping"):
     val (handler, _, _) = createFixture()

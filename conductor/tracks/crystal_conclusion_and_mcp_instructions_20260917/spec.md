@@ -41,15 +41,25 @@ Context Crystal tracks the lifecycle of goals through `GoalStatus` (`InProgress`
   - Appends resolution DAG node if `summary` is present.
   - Returns human-readable confirmation in `CallToolResult`.
 
-### 2.4 Agent MCP Server Instructions (`instructions.md`)
-- **Canonical Resource:** Author `resources/mcp/instructions.md` containing:
-  - Binary installation details (`~/.local/bin/ccrystal`).
-  - Recommended MCP tool first & batching preference (`crystal_batch`).
-  - Standard lifecycle state flow (`init` -> `task add` -> `checkpoint`/`node add` -> `task done` -> `conclude` -> `triage` -> `delete`).
-  - Key invariants: `--fidelity inferred`, PII protection, and zero unprompted deletions.
-- **Target Deployment:** Install to `~/.gemini/antigravity-cli/mcp/context-crystal/instructions.md` and ensure installation script or build task synchronizes it.
+### 2.4 Wire-Level MCP Protocol Instructions (`InitializeResult.instructions`)
+- **MCP Wire Spec Standard (2024-11-05):** Extend `InitializeResult` in `ccrystal.core.mcp.McpModels` with `instructions: Option[String] = None`.
+- **Codec Roundtrip:** Update Circe encoders and decoders in `McpCodecs` to serialize and deserialize `instructions` bidirectionally.
+- **Server Initialization:** `DefaultMcpHandler` populates `instructions` with concise, universal operational guidelines during the `initialize` handshake, ensuring all standard MCP clients (Claude Desktop, Zed, Cursor, etc.) receive operational context directly over the wire without relying on host-specific filesystem conventions.
 
-### 2.5 Agent Skill & Documentation Updates
+### 2.5 Multi-Runtime Scaffolding & Project Structure Templates (`docs/runtimes/`)
+- Curate copy-pasteable, production-grade instruction snippets and configuration guides for major agent runtimes:
+  - `docs/runtimes/CLAUDE.md`: For Anthropic Claude Code CLI.
+  - `docs/runtimes/cursor.mdc`: For Cursor IDE (`.cursor/rules/context-crystal.mdc` or `.cursorrules`).
+  - `docs/runtimes/windsurf.md`: For Codeium Windsurf / Cascade (`.windsurfrules`).
+  - `docs/runtimes/copilot.md`: For GitHub Copilot Workspace / Edits (`.github/copilot-instructions.md`).
+  - `docs/runtimes/AGENTS.md`: For open agentic entity runtimes (Linux Foundation / OpenAgents standard).
+  - `docs/runtimes/README.md`: Architectural guide detailing how projects should be structured across multi-agent runtimes.
+
+### 2.6 Agent MCP Server Instructions (`instructions.md`)
+- Author `docs/mcp/instructions.md` containing operational conventions, batch recipes, and lifecycle flow.
+- Deploy to `~/.gemini/antigravity-cli/mcp/context-crystal/instructions.md` for the Antigravity host runtime.
+
+### 2.7 Agent Skill & Documentation Updates
 - Update `.agents/skills/context-crystal/SKILL.md` to document the new `conclude` and `abandon` commands and `crystal_goal_transition` tool.
 - Update `docs/for_ais.md` and `conductor/product.md` where appropriate.
 
@@ -62,10 +72,14 @@ Context Crystal tracks the lifecycle of goals through `GoalStatus` (`InProgress`
 
 ## 4. Acceptance Criteria
 
-- [ ] Unit & integration tests in `RunnerSuite` / `CommandParserSuite` covering `conclude`, `abandon`, and `goal status`.
-- [ ] Unit tests in `DefaultMcpHandlerSuite` for `crystal_goal_transition`.
-- [ ] Batch execution tests covering compound recipes ending in `conclude`.
-- [ ] Provenance resolution node creation verified in tests.
-- [ ] Tool schema `crystal_goal_transition.json` generated and installed to `~/.gemini/antigravity-cli/mcp/context-crystal/`.
-- [ ] `instructions.md` deployed to `~/.gemini/antigravity-cli/mcp/context-crystal/instructions.md`.
+- [x] Unit & integration tests in `RunnerSuite` / `CommandParserSuite` covering `conclude`, `abandon`, and `goal status`.
+- [x] Unit tests in `DefaultMcpHandlerSuite` for `crystal_goal_transition`.
+- [x] Batch execution tests covering compound recipes ending in `conclude`.
+- [x] Provenance resolution node creation verified in tests.
+- [ ] `InitializeResult.instructions` codec roundtrip unit tests in `McpCodecSuite`.
+- [ ] `DefaultMcpHandler` `initialize` returns wire-level `instructions` verified in `DefaultMcpHandlerSuite`.
+- [x] Tool schema `crystal_goal_transition.json` generated and installed to `~/.gemini/antigravity-cli/mcp/context-crystal/`.
+- [x] `instructions.md` deployed to `~/.gemini/antigravity-cli/mcp/context-crystal/instructions.md`.
+- [ ] Curated multi-runtime templates created in `docs/runtimes/`.
+- [ ] Full test suite passes across Native, JVM, and JS targets.
 - [ ] Cross-project tests pass across JVM and Native targets.
