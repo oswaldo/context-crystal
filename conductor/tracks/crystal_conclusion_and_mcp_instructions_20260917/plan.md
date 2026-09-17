@@ -1,6 +1,6 @@
 # Implementation Plan: Crystal Lifecycle Conclusion & Agent MCP Ergonomics
 
-## Phase 1: Core CLI & Batch Goal Conclusion [checkpoint: ]
+## Phase 1: Core CLI & Batch Goal Conclusion [checkpoint: 7daa10b]
 
 - [x] Task: Extend `CliCommand` with `GoalTransition` and implement `CommandParser` for `conclude`, `abandon`, and `goal status` [6197035]
   - [x] Write failing unit tests in `cli/shared/src/test/scala/ccrystal/cli/CommandParserSuite.scala`
@@ -17,14 +17,14 @@
   - [x] Verify tests pass cleanly
 - [x] Task: Phase 1 Verification & Checkpoint (Refer to workflow.md)
 
-## Phase 2: Native MCP Server `crystal_goal_transition` Tool [checkpoint: ]
+## Phase 2: Native MCP Server `crystal_goal_transition` Tool [checkpoint: f6e2ac9]
 
-- [ ] Task: Implement `crystal_goal_transition` tool in `DefaultMcpHandler`
-  - [ ] Write failing unit tests in `cli/shared/src/test/scala/ccrystal/cli/mcp/DefaultMcpHandlerSuite.scala`
-  - [ ] Expose `crystal_goal_transition` in `tools/list` with schema (`crystal_id`, `status`, optional `summary`)
-  - [ ] Implement execution in `tools/call` routing through `Runner.run(CliCommand.GoalTransition(...))`
-  - [ ] Verify unit tests pass cleanly
-- [ ] Task: Phase 2 Verification & Checkpoint (Refer to workflow.md)
+- [x] Task: Implement `crystal_goal_transition` tool in `DefaultMcpHandler` [f6e2ac9]
+  - [x] Write failing unit tests in `cli/shared/src/test/scala/ccrystal/cli/mcp/DefaultMcpHandlerSuite.scala`
+  - [x] Expose `crystal_goal_transition` in `tools/list` with schema (`crystal_id`, `status`, optional `summary`)
+  - [x] Implement execution in `tools/call` routing through `Runner.run(CliCommand.GoalTransition(...))`
+  - [x] Verify unit tests pass cleanly
+- [x] Task: Phase 2 Verification & Checkpoint (Refer to workflow.md)
 
 ## Phase 3: MCP Instructions Deployment, Agent Skill & Documentation [checkpoint: ]
 
