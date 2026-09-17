@@ -45,10 +45,10 @@
 
 ## Phase 4: Full Cross-Platform Verification, Formatting & Release Installation [checkpoint: ]
 
-- [ ] Task: Full test suite verification across JVM and Native targets
-  - [ ] Run `sbt test` across core and cli modules
-  - [ ] Run formatting and linter checks (`scalafmtCheckAll`, `markdownlint`)
-- [ ] Task: Compile and install release native binary with Thin LTO into `~/.local/bin/ccrystal`
-  - [ ] Execute release build and copy with atomic replacement (`cp --remove-destination`)
-- [ ] Task: Clean up `suggestion.md` from repository root
-- [ ] Task: Phase 4 Verification & Checkpoint (Refer to workflow.md)
+- [x] Task: Full test suite verification across JVM and Native targets
+  - [x] Run `sbt test` across core and cli modules
+  - [x] Run formatting and linter checks (`scalafmtCheckAll`, `markdownlint`)
+- [x] Task: Compile and install release native binary with Thin LTO into `~/.local/bin/ccrystal`
+  - [x] Execute release build and copy with atomic replacement (`cp --remove-destination`)
+- [x] Task: Clean up `suggestion.md` from repository root
+- [x] Task: Phase 4 Verification & Checkpoint (Refer to workflow.md)
