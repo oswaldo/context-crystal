@@ -22,6 +22,11 @@ enum CliCommand derives CanEqual:
   case TaskAdd(crystalId: String, description: String)
   case TaskDone(crystalId: String, taskId: String)
   case TaskList(crystalId: String)
+  case GoalTransition(
+      crystalId: String,
+      status: GoalStatus,
+      summary: Option[String] = None,
+  )
   case NodeAdd(
       crystalId: String,
       kind: NodeKind,

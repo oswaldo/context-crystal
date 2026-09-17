@@ -639,3 +639,59 @@ class CommandParserSuite extends FunSuite:
         preconditionArtifactIds = List("art-pre-1"),
       ),
     )
+
+  test("Parses 'conclude' command with and without summary"):
+    val p1 = CommandParser.parse(List("conclude", "c-1"))
+    assertEquals(p1.isRight, true, "conclude without summary")
+    assertEquals(
+      p1.toOption.get,
+      CliCommand.GoalTransition("c-1", GoalStatus.ConcludedSuccess, None),
+    )
+
+    val p2 = CommandParser.parse(List("conclude", "c-1", "-s", "Completed all tasks successfully"))
+    assertEquals(p2.isRight, true, "conclude with summary")
+    assertEquals(
+      p2.toOption.get,
+      CliCommand.GoalTransition(
+        "c-1",
+        GoalStatus.ConcludedSuccess,
+        Some("Completed all tasks successfully"),
+      ),
+    )
+
+  test("Parses 'abandon' command with and without reason"):
+    val p1 = CommandParser.parse(List("abandon", "c-1"))
+    assertEquals(p1.isRight, true, "abandon without reason")
+    assertEquals(
+      p1.toOption.get,
+      CliCommand.GoalTransition("c-1", GoalStatus.ConcludedAbandoned, None),
+    )
+
+    val p2 =
+      CommandParser.parse(List("abandon", "c-1", "-r", "Superseded by architecture overhaul"))
+    assertEquals(p2.isRight, true, "abandon with reason")
+    assertEquals(
+      p2.toOption.get,
+      CliCommand.GoalTransition(
+        "c-1",
+        GoalStatus.ConcludedAbandoned,
+        Some("Superseded by architecture overhaul"),
+      ),
+    )
+
+  test("Parses 'goal status' command with different statuses and optional summary"):
+    val p1 = CommandParser.parse(List("goal", "status", "c-1", "--status", "concluded_success"))
+    assertEquals(p1.isRight, true, "goal status concluded_success")
+    assertEquals(
+      p1.toOption.get,
+      CliCommand.GoalTransition("c-1", GoalStatus.ConcludedSuccess, None),
+    )
+
+    val p2 = CommandParser.parse(
+      List("goal", "status", "c-1", "--status", "in_progress", "-s", "Reopened for minor fix"),
+    )
+    assertEquals(p2.isRight, true, "goal status in_progress with summary")
+    assertEquals(
+      p2.toOption.get,
+      CliCommand.GoalTransition("c-1", GoalStatus.InProgress, Some("Reopened for minor fix")),
+    )

@@ -122,6 +122,44 @@ class Runner(
         sb.toString
       }
 
+    case CliCommand.GoalTransition(crystalId, newStatus, summaryOpt) =>
+      store.load(crystalId).flatMap { crystal =>
+        val now = Instant.now().toString
+        val (updatedDag, resolutionMsg) = summaryOpt match
+          case Some(summary) =>
+            val parents = crystal.dag.nodes.lastOption.map(n => List(n.id)).getOrElse(Nil)
+            val nodeId  = s"node-${crystal.dag.nodes.size + 1}"
+            val actorId = crystal.defaultAuthorId.getOrElse("usr_operator")
+            val resolutionNode = DAGNode(
+              id = nodeId,
+              parentIds = parents,
+              timestamp = now,
+              actorId = actorId,
+              fidelity = CaptureFidelity.Inferred,
+              kind = NodeKind.Resolution,
+              contentSummary = summary,
+            )
+            (
+              crystal.dag.copy(nodes = crystal.dag.nodes :+ resolutionNode),
+              s" and appended resolution node '$nodeId'",
+            )
+          case None =>
+            (crystal.dag, "")
+
+        val updated = crystal.copy(
+          updatedAt = now,
+          goal = crystal.goal.copy(status = newStatus),
+          dag = updatedDag,
+        )
+        store.save(updated).map { _ =>
+          val statusDesc = newStatus match
+            case GoalStatus.ConcludedSuccess   => "concluded successfully"
+            case GoalStatus.ConcludedAbandoned => "concluded as abandoned"
+            case GoalStatus.InProgress         => "transitioned to in_progress"
+          s"Crystal '$crystalId' $statusDesc$resolutionMsg"
+        }
+      }
+
     case CliCommand.NodeAdd(
           crystalId,
           kind,

@@ -84,6 +84,17 @@ object CommandParser:
         )
     }
 
+  private given goalStatusArgument: Argument[GoalStatus] =
+    Argument.from("goal-status") {
+      case "in_progress"                       => Validated.valid(GoalStatus.InProgress)
+      case "concluded" | "concluded_success"   => Validated.valid(GoalStatus.ConcludedSuccess)
+      case "abandoned" | "concluded_abandoned" => Validated.valid(GoalStatus.ConcludedAbandoned)
+      case other =>
+        Validated.invalidNel(
+          s"Invalid goal status: $other (must be 'in_progress', 'concluded_success', or 'concluded_abandoned')",
+        )
+    }
+
   // --- Subcommands ---
 
   private val initOpts = (
@@ -125,6 +136,28 @@ object CommandParser:
   ).mapN(CliCommand.TaskDone.apply)
 
   private val taskListOpts = Opts.argument[String]("crystal-id").map(CliCommand.TaskList.apply)
+
+  private val concludeOpts = (
+    Opts.argument[String]("crystal-id"),
+    Opts.option[String]("summary", "Optional resolution summary", "s").orNone,
+  ).mapN((id, summary) => CliCommand.GoalTransition(id, GoalStatus.ConcludedSuccess, summary))
+
+  private val abandonOpts = (
+    Opts.argument[String]("crystal-id"),
+    Opts
+      .option[String]("reason", "Optional abandonment reason", "r")
+      .orElse(Opts.option[String]("summary", "Optional abandonment reason", "s"))
+      .orNone,
+  ).mapN((id, reason) => CliCommand.GoalTransition(id, GoalStatus.ConcludedAbandoned, reason))
+
+  private val goalStatusOpts = (
+    Opts.argument[String]("crystal-id"),
+    Opts.option[GoalStatus](
+      "status",
+      "Goal status (in_progress, concluded_success, concluded_abandoned)",
+    ),
+    Opts.option[String]("summary", "Optional status transition summary", "s").orNone,
+  ).mapN((id, status, summary) => CliCommand.GoalTransition(id, status, summary))
 
   private val nodeAddOpts = (
     Opts.argument[String]("crystal-id"),
@@ -273,94 +306,91 @@ object CommandParser:
     )
     .as(CliCommand.ForAi)
 
-  private val mainCommand = Command("ccrystal", "Context Crystal CLI")(
-    forAiOpt
-      .orElse(Opts.subcommand("init", "Initialize a new crystal")(initOpts))
-      .orElse(Opts.subcommand("list", "List crystals")(listOpts))
+  private val taskCmd = Opts.subcommand("task", "Manage tasks")(
+    Opts
+      .subcommand("add", "Add task")(taskAddOpts)
+      .orElse(Opts.subcommand("done", "Complete task")(taskDoneOpts))
+      .orElse(Opts.subcommand("list", "List tasks")(taskListOpts)),
+  )
+
+  private val goalCmd = Opts.subcommand("goal", "Manage crystal goal lifecycle")(
+    Opts.subcommand("status", "Transition crystal goal status")(goalStatusOpts),
+  )
+
+  private val nodeCmd = Opts.subcommand("node", "Manage DAG nodes")(
+    Opts.subcommand("add", "Add DAG transition node")(nodeAddOpts),
+  )
+
+  private val entityCmd = Opts.subcommand("entity", "Manage cave entity registry")(
+    Opts
+      .subcommand("list", "List all registered entities in cave")(entityListOpts)
+      .orElse(Opts.subcommand("register", "Register a new entity in cave")(entityRegisterOpts))
       .orElse(
-        Opts.subcommand("task", "Manage tasks")(
-          Opts
-            .subcommand("add", "Add task")(taskAddOpts)
-            .orElse(Opts.subcommand("done", "Complete task")(taskDoneOpts))
-            .orElse(Opts.subcommand("list", "List tasks")(taskListOpts)),
+        Opts.subcommand("deregister", "Deregister an entity with cascading deletion")(
+          entityDeregisterOpts,
         ),
       )
       .orElse(
-        Opts.subcommand("node", "Manage DAG nodes")(
-          Opts.subcommand("add", "Add DAG transition node")(nodeAddOpts),
-        ),
-      )
-      .orElse(
-        Opts.subcommand("entity", "Manage cave entity registry")(
-          Opts
-            .subcommand("list", "List all registered entities in cave")(entityListOpts)
-            .orElse(
-              Opts.subcommand("register", "Register a new entity in cave")(entityRegisterOpts),
-            )
-            .orElse(
-              Opts.subcommand("deregister", "Deregister an entity with cascading deletion")(
-                entityDeregisterOpts,
-              ),
-            )
-            .orElse(
-              Opts.subcommand(
-                "conventions",
-                "Display canonical entity naming schemes and PII conventions",
-              )(entityConventionsOpts),
-            ),
-        ),
-      )
-      .orElse(
-        Opts.subcommand("lesson", "Manage lessons learned")(
-          Opts
-            .subcommand("add", "Log a lesson learned")(lessonAddOpts)
-            .orElse(Opts.subcommand("action", "Action a lesson learned")(lessonActionOpts))
-            .orElse(Opts.subcommand("list", "List lessons learned")(lessonListOpts)),
-        ),
-      )
-      .orElse(
-        Opts.subcommand("transient", "Manage transient leases")(
-          Opts
-            .subcommand("lease", "Acquire a transient lease")(leaseOpts)
-            .orElse(Opts.subcommand("clean", "Clean a transient lease")(leaseCleanOpts))
-            .orElse(Opts.subcommand("list", "List transient leases")(leaseListOpts)),
-        ),
-      )
-      .orElse(
-        Opts.subcommand("artifact", "Manage virtual and physical artifacts")(
-          Opts
-            .subcommand("list", "List artifacts in cave or crystal")(artifactListOpts)
-            .orElse(
-              Opts.subcommand("register", "Register a virtual or physical artifact")(
-                artifactRegisterOpts,
-              ),
-            )
-            .orElse(
-              Opts.subcommand("inspect", "Inspect artifact details")(artifactInspectOpts),
-            ),
-        ),
-      )
-      .orElse(Opts.subcommand("cast", "Cast a context beam for LLMs")(castOpts))
-      .orElse(Opts.subcommand("hydrate", "Hydrate context for LLMs (alias for cast)")(hydrateOpts))
-      .orElse(
-        Opts.subcommand(
-          "refresh",
-          "Re-project derived views (tasks.md, lessons-learned.md) from crystal.json",
-        )(refreshOpts),
-      )
-      .orElse(Opts.subcommand("slice", "Extract crystal fragments or slice sub-DAGs")(sliceOpts))
-      .orElse(
-        Opts.subcommand(
-          "delete",
-          "Permanently delete a crystal and cascade orphaned entities",
-        )(deleteOpts),
-      )
-      .orElse(
-        Opts.subcommand(
-          "mcp",
-          "Start the Model Context Protocol (MCP) server",
-        )(mcpOpts),
+        Opts
+          .subcommand("conventions", "Display canonical entity naming schemes and PII conventions")(
+            entityConventionsOpts,
+          ),
       ),
+  )
+
+  private val lessonCmd = Opts.subcommand("lesson", "Manage lessons learned")(
+    Opts
+      .subcommand("add", "Log a lesson learned")(lessonAddOpts)
+      .orElse(Opts.subcommand("action", "Action a lesson learned")(lessonActionOpts))
+      .orElse(Opts.subcommand("list", "List lessons learned")(lessonListOpts)),
+  )
+
+  private val transientCmd = Opts.subcommand("transient", "Manage transient leases")(
+    Opts
+      .subcommand("lease", "Acquire a transient lease")(leaseOpts)
+      .orElse(Opts.subcommand("clean", "Clean a transient lease")(leaseCleanOpts))
+      .orElse(Opts.subcommand("list", "List transient leases")(leaseListOpts)),
+  )
+
+  private val artifactCmd = Opts.subcommand("artifact", "Manage virtual and physical artifacts")(
+    Opts
+      .subcommand("list", "List artifacts in cave or crystal")(artifactListOpts)
+      .orElse(
+        Opts.subcommand("register", "Register a virtual or physical artifact")(artifactRegisterOpts),
+      )
+      .orElse(Opts.subcommand("inspect", "Inspect artifact details")(artifactInspectOpts)),
+  )
+
+  private val subcommands: List[Opts[CliCommand]] = List(
+    forAiOpt,
+    Opts.subcommand("init", "Initialize a new crystal")(initOpts),
+    Opts.subcommand("list", "List crystals")(listOpts),
+    taskCmd,
+    Opts.subcommand("conclude", "Conclude a crystal with optional resolution summary")(
+      concludeOpts,
+    ),
+    Opts.subcommand("abandon", "Abandon a crystal with optional reason")(abandonOpts),
+    goalCmd,
+    nodeCmd,
+    entityCmd,
+    lessonCmd,
+    transientCmd,
+    artifactCmd,
+    Opts.subcommand("cast", "Cast a context beam for LLMs")(castOpts),
+    Opts.subcommand("hydrate", "Hydrate context for LLMs (alias for cast)")(hydrateOpts),
+    Opts.subcommand(
+      "refresh",
+      "Re-project derived views (tasks.md, lessons-learned.md) from crystal.json",
+    )(refreshOpts),
+    Opts.subcommand("slice", "Extract crystal fragments or slice sub-DAGs")(sliceOpts),
+    Opts.subcommand("delete", "Permanently delete a crystal and cascade orphaned entities")(
+      deleteOpts,
+    ),
+    Opts.subcommand("mcp", "Start the Model Context Protocol (MCP) server")(mcpOpts),
+  )
+
+  private val mainCommand = Command("ccrystal", "Context Crystal CLI")(
+    subcommands.reduceLeft(_.orElse(_)),
   )
 
   def parse(args: List[String]): Either[String, CliCommand] =
