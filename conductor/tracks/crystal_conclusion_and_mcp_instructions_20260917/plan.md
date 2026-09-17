@@ -26,15 +26,15 @@
   - [x] Verify unit tests pass cleanly
 - [x] Task: Phase 2 Verification & Checkpoint (Refer to workflow.md)
 
-## Phase 3: MCP Instructions Deployment, Agent Skill & Documentation [checkpoint: ]
+## Phase 3: MCP Instructions Deployment, Agent Skill & Documentation [checkpoint: 209da0c]
 
-- [ ] Task: Author canonical `resources/mcp/instructions.md` and deploy to Antigravity MCP directory
-  - [ ] Create `resources/mcp/instructions.md` with CLI paths, lifecycle transition workflows, and batch best practices
-  - [ ] Deploy `instructions.md` and `crystal_goal_transition.json` to `/home/oswaldo/.gemini/antigravity-cli/mcp/context-crystal/`
-- [ ] Task: Update Agent Skill (`SKILL.md`) and AI Documentation
-  - [ ] Update `.agents/skills/context-crystal/SKILL.md` to document `conclude`, `abandon`, and `crystal_goal_transition`
-  - [ ] Update `docs/for_ais.md` and `conductor/product.md` with goal transition lifecycle guidance
-- [ ] Task: Phase 3 Verification & Checkpoint (Refer to workflow.md)
+- [x] Task: Author canonical `resources/mcp/instructions.md` and deploy to Antigravity MCP directory [209da0c]
+  - [x] Create `resources/mcp/instructions.md` with CLI paths, lifecycle transition workflows, and batch best practices
+  - [x] Deploy `instructions.md` and `crystal_goal_transition.json` to `/home/oswaldo/.gemini/antigravity-cli/mcp/context-crystal/`
+- [x] Task: Update Agent Skill (`SKILL.md`) and AI Documentation [209da0c]
+  - [x] Update `.agents/skills/context-crystal/SKILL.md` to document `conclude`, `abandon`, and `crystal_goal_transition`
+  - [x] Update `docs/for_ais.md` and `conductor/product.md` with goal transition lifecycle guidance
+- [x] Task: Phase 3 Verification & Checkpoint (Refer to workflow.md)
 
 ## Phase 4: Full Cross-Platform Verification, Formatting & Release Installation [checkpoint: ]
 
