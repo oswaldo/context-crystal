@@ -3,7 +3,7 @@
 **Track ID:** `lifecycle_housekeeping_and_archiving_20260919`  
 **Workflow:** Red-Green TDD, Pure-Functional Scala 3, Cross-Platform (JVM, Native, JS)
 
-## Phase 1: Cold Storage Archiving Core SPI & FsCrystalStore
+## Phase 1: Cold Storage Archiving Core SPI & FsCrystalStore [checkpoint: 4a91626]
 
 - [x] Task: Write failing unit tests for crystal archive and unarchive in `core` (MUnit Red Phase) [6db9c4d]
   - [x] Test `archive` moving `.ccrystals/<id>.json` to `.ccrystals/archive/<id>.json`
@@ -15,7 +15,7 @@
   - [x] Implement filesystem directory/file relocation in `FsCrystalStore`
   - [x] Update `listCrystals` filtering and path discovery
   - [x] Run unit tests across JVM, Native, and JS to verify green state
-- [~] Task: Phase 1 Verification & Checkpoint (Refer to workflow.md)
+- [x] Task: Phase 1 Verification & Checkpoint (Refer to workflow.md) [4a91626]
 
 ## Phase 2: Sub-DAG Melting & Squashing Engine
 
