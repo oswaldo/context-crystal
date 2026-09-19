@@ -1,0 +1,267 @@
+{
+  "schemaVersion" : "1.0.0",
+  "id" : "lifecycle-housekeeping-and-archiving",
+  "name" : "lifecycle-housekeeping-and-archiving",
+  "createdAt" : "2026-09-17T23:05:38.708Z",
+  "updatedAt" : "2026-09-19T20:34:46.945Z",
+  "parentCrystalId" : null,
+  "origin" : null,
+  "caveId" : null,
+  "defaultAuthorId" : "usr_agt_antigravity",
+  "goal" : {
+    "title" : "Lifecycle Housekeeping, Melting & Archiving",
+    "intent" : "Implement crystal archiving (.ccrystals/archive/), sub-DAG summarization (ccrystal melt), aging state classification (Active, Solid, Stale), and hygiene CLI/MCP tools.",
+    "status" : "concluded_success",
+    "acceptanceCriteria" : [
+      {
+        "id" : "task-1",
+        "description" : "Phase 1: Core models & storage SPI for crystal archiving (.ccrystals/archive/) and unarchiving",
+        "completed" : true
+      },
+      {
+        "id" : "task-2",
+        "description" : "Phase 2: Sub-DAG summarization & squashing engine (ccrystal melt / crystal_melt)",
+        "completed" : true
+      },
+      {
+        "id" : "task-3",
+        "description" : "Phase 3: Aging state classification (--solid, --stale) and retention thresholds in triage",
+        "completed" : true
+      },
+      {
+        "id" : "task-4",
+        "description" : "Phase 4: CLI subcommands & Native MCP server integration",
+        "completed" : true
+      },
+      {
+        "id" : "task-5",
+        "description" : "Phase 5: Cross-platform verification (JVM, Native, JS) and release binary compilation",
+        "completed" : true
+      }
+    ],
+    "metadata" : {
+      
+    }
+  },
+  "entities" : [
+    {
+      "id" : "usr_agt_antigravity",
+      "kind" : "human",
+      "name" : "agt_antigravity",
+      "metadata" : {
+        
+      },
+      "publicKey" : null,
+      "endpoints" : {
+        
+      }
+    }
+  ],
+  "activeMask" : null,
+  "dag" : {
+    "rootNodeId" : "node-lifecycle-housekeeping-and-archiving-init",
+    "nodes" : [
+      {
+        "id" : "node-lifecycle-housekeeping-and-archiving-init",
+        "parentIds" : [
+        ],
+        "timestamp" : "2026-09-17T23:05:38.708Z",
+        "actorId" : "usr_agt_antigravity",
+        "kind" : "human_prompt",
+        "contentSummary" : "Initialized crystal 'lifecycle-housekeeping-and-archiving' with goal: Lifecycle Housekeeping, Melting & Archiving",
+        "anchor" : null,
+        "artifactIds" : [
+        ],
+        "inputArtifactIds" : [
+        ],
+        "outputArtifactIds" : [
+        ],
+        "preconditionArtifactIds" : [
+        ],
+        "fidelity" : "inferred",
+        "metadata" : {
+          
+        }
+      },
+      {
+        "id" : "node-2",
+        "parentIds" : [
+          "node-lifecycle-housekeeping-and-archiving-init"
+        ],
+        "timestamp" : "2026-09-19T15:32:43.475Z",
+        "actorId" : "usr_agt_antigravity",
+        "kind" : "checkpoint",
+        "contentSummary" : "Scaffolded Conductor Track 'lifecycle_housekeeping_and_archiving_20260919' in isolated worktree at ../ccrystal-worktrees/lifecycle-housekeeping-and-archiving with lease lease-1; spec and plan committed (4f60af2).",
+        "anchor" : "track-scaffolded",
+        "artifactIds" : [
+        ],
+        "inputArtifactIds" : [
+        ],
+        "outputArtifactIds" : [
+        ],
+        "preconditionArtifactIds" : [
+        ],
+        "fidelity" : "inferred",
+        "metadata" : {
+          
+        }
+      },
+      {
+        "id" : "node-3",
+        "parentIds" : [
+          "node-2"
+        ],
+        "timestamp" : "2026-09-19T15:42:48.093Z",
+        "actorId" : "usr_agt_antigravity",
+        "kind" : "checkpoint",
+        "contentSummary" : "Phase 1 complete: Core models and storage SPI for cold storage crystal archiving (.ccrystals/archive/) and unarchiving implemented and verified across JVM, Native, and JS (4a91626).",
+        "anchor" : "phase_1_complete",
+        "artifactIds" : [
+        ],
+        "inputArtifactIds" : [
+        ],
+        "outputArtifactIds" : [
+        ],
+        "preconditionArtifactIds" : [
+        ],
+        "fidelity" : "inferred",
+        "metadata" : {
+          
+        }
+      },
+      {
+        "id" : "node-4",
+        "parentIds" : [
+          "node-3"
+        ],
+        "timestamp" : "2026-09-19T18:49:27.509Z",
+        "actorId" : "usr_agt_antigravity",
+        "kind" : "checkpoint",
+        "contentSummary" : "Phase 2 complete: Sub-DAG melting & squashing engine (CrystalMelter) implemented with zero-LLM deterministic bulleted summary, custom agent overrides, artifact aggregation, and boundary edge rewiring, verified across JVM, Native, and JS (b076735).",
+        "anchor" : "phase_2_complete",
+        "artifactIds" : [
+        ],
+        "inputArtifactIds" : [
+        ],
+        "outputArtifactIds" : [
+        ],
+        "preconditionArtifactIds" : [
+        ],
+        "fidelity" : "inferred",
+        "metadata" : {
+          
+        }
+      },
+      {
+        "id" : "node-5",
+        "parentIds" : [
+          "node-4"
+        ],
+        "timestamp" : "2026-09-19T20:10:47.447Z",
+        "actorId" : "usr_agt_antigravity",
+        "kind" : "checkpoint",
+        "contentSummary" : "Phase 3 complete: AgingState classification (Active, Solid, Stale) and CrystalTriage heuristics implemented in core shared, verified across JVM, Native, and JS (1f5aeaf).",
+        "anchor" : "phase_3_complete",
+        "artifactIds" : [
+        ],
+        "inputArtifactIds" : [
+        ],
+        "outputArtifactIds" : [
+        ],
+        "preconditionArtifactIds" : [
+        ],
+        "fidelity" : "inferred",
+        "metadata" : {
+          
+        }
+      },
+      {
+        "id" : "node-6",
+        "parentIds" : [
+          "node-5"
+        ],
+        "timestamp" : "2026-09-19T20:24:24.661Z",
+        "actorId" : "usr_agt_antigravity",
+        "kind" : "checkpoint",
+        "contentSummary" : "Phase 4 complete: CLI subcommands archive, unarchive, melt, list --archived, and triage wired with full cross-platform compliance (checkpoint 5b4faa2)",
+        "anchor" : "phase_4_complete",
+        "artifactIds" : [
+        ],
+        "inputArtifactIds" : [
+        ],
+        "outputArtifactIds" : [
+        ],
+        "preconditionArtifactIds" : [
+        ],
+        "fidelity" : "inferred",
+        "metadata" : {
+          
+        }
+      },
+      {
+        "id" : "node-7",
+        "parentIds" : [
+          "node-6"
+        ],
+        "timestamp" : "2026-09-19T20:34:36.597Z",
+        "actorId" : "usr_agt_antigravity",
+        "kind" : "checkpoint",
+        "contentSummary" : "Phase 5 complete: MCP tools crystal_archive, crystal_unarchive, crystal_melt, and crystal_triage integrated; Thin LTO release binary compiled and installed to ~/.local/bin/ccrystal (checkpoint cbfc904)",
+        "anchor" : "phase_5_complete",
+        "artifactIds" : [
+        ],
+        "inputArtifactIds" : [
+        ],
+        "outputArtifactIds" : [
+        ],
+        "preconditionArtifactIds" : [
+        ],
+        "fidelity" : "inferred",
+        "metadata" : {
+          
+        }
+      },
+      {
+        "id" : "node-8",
+        "parentIds" : [
+          "node-7"
+        ],
+        "timestamp" : "2026-09-19T20:34:46.945Z",
+        "actorId" : "usr_agt_antigravity",
+        "kind" : "resolution",
+        "contentSummary" : "Successfully implemented Lifecycle Housekeeping, Melting & Archiving track across all 5 phases with 100% test passing on JVM, Native, and JS targets and optimized Thin LTO binary installation.",
+        "anchor" : null,
+        "artifactIds" : [
+        ],
+        "inputArtifactIds" : [
+        ],
+        "outputArtifactIds" : [
+        ],
+        "preconditionArtifactIds" : [
+        ],
+        "fidelity" : "inferred",
+        "metadata" : {
+          
+        }
+      }
+    ]
+  },
+  "transientLeases" : [
+    {
+      "id" : "lease-1",
+      "resourceType" : "git_worktree",
+      "resourcePath" : null,
+      "description" : "Isolated git worktree at ../ccrystal-worktrees/lifecycle-housekeeping-and-archiving",
+      "disposalPolicy" : "manual",
+      "status" : "cleaned",
+      "createdAt" : "2026-09-19T15:20:32.604Z"
+    }
+  ],
+  "lessonsLearned" : [
+  ],
+  "artifacts" : [
+  ],
+  "metadata" : {
+    
+  }
+}

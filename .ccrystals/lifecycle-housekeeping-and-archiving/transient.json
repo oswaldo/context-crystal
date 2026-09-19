@@ -1,0 +1,11 @@
+[
+  {
+    "id" : "lease-1",
+    "resourceType" : "git_worktree",
+    "resourcePath" : null,
+    "description" : "Isolated git worktree at ../ccrystal-worktrees/lifecycle-housekeeping-and-archiving",
+    "disposalPolicy" : "manual",
+    "status" : "cleaned",
+    "createdAt" : "2026-09-19T15:20:32.604Z"
+  }
+]

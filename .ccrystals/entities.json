@@ -2,30 +2,6 @@
   "caveId" : null,
   "authorshipMode" : "tracked",
   "entities" : {
-    "agt_antigravity" : {
-      "id" : "agt_antigravity",
-      "kind" : "agent",
-      "name" : "Antigravity",
-      "metadata" : {
-        
-      },
-      "publicKey" : null,
-      "endpoints" : {
-        
-      }
-    },
-    "usr_oswaldo" : {
-      "id" : "usr_oswaldo",
-      "kind" : "human",
-      "name" : "Oswaldo",
-      "metadata" : {
-        
-      },
-      "publicKey" : null,
-      "endpoints" : {
-        
-      }
-    },
     "usr_operator" : {
       "id" : "usr_operator",
       "kind" : "human",
@@ -38,10 +14,46 @@
         
       }
     },
+    "usr_agt_antigravity" : {
+      "id" : "usr_agt_antigravity",
+      "kind" : "human",
+      "name" : "agt_antigravity",
+      "metadata" : {
+        
+      },
+      "publicKey" : null,
+      "endpoints" : {
+        
+      }
+    },
+    "agt_antigravity" : {
+      "id" : "agt_antigravity",
+      "kind" : "agent",
+      "name" : "Antigravity",
+      "metadata" : {
+        
+      },
+      "publicKey" : null,
+      "endpoints" : {
+        
+      }
+    },
     "usr_antigravity" : {
       "id" : "usr_antigravity",
       "kind" : "human",
       "name" : "antigravity",
+      "metadata" : {
+        
+      },
+      "publicKey" : null,
+      "endpoints" : {
+        
+      }
+    },
+    "usr_oswaldo" : {
+      "id" : "usr_oswaldo",
+      "kind" : "human",
+      "name" : "Oswaldo",
       "metadata" : {
         
       },
