@@ -23,48 +23,30 @@
 
 ---
 
-## 2. Active Track: Public Documentation Portal & Launch Readiness
+## 2. Active Track: Universal Agent Runtime Matrix & Automated Onboarding (`universal_agent_onboarding_20260920`)
 
-Active implementation on orphan branch `gh-pages` (`~/git/context-crystal-gh-pages`):
-
-- Pure functional Scala 3 / Scala.js + Laminar 17 reactive web portal.
-- Cybernetic modernist UI with 5 curated tabs (Manifesto, Live DAG Explorer, Install/Quickstart, MCP Reference, Agent Ingestion).
-- Canonical `/llms.txt` and `/llms-full.txt` machine-readable endpoints.
-- Lightweight local Cask preview server.
+- **Objective:** Cross-harness interoperability and one-step machine onboarding.
+- **Commands:** `ccrystal agent doctor` (non-destructive inspection) and `ccrystal agent install` (defensive, reversible auto-configuration).
+- **Supported Harnesses:** Google Antigravity, Claude Code / Desktop, Cursor, Windsurf, Zed.
+- **Defensive Safety Invariant:** Mandatory `.ccrystal.bak` creation before any file edits, explicit CLI notification of backup locations and rollback instructions, zero new external dependencies (pure Circe AST).
+- **Target Platforms:** Linux and macOS via Scala Native (optimized Thin LTO binaries) + cross-platform JVM runner.
 
 ---
 
 ## 3. Backlog & Future Track Roadmap
 
-- **Post-MLP Portal Search & Extended Docs Engine:**
-  - Evaluate client-side search engines (e.g. Pagefind WASM integration or Typelevel Laika static documentation compiler) as documentation volume expands beyond initial launch tabs.
-- **Track 9: Crystal Comms & Lock-Free Multi-Entity Mailboxes:** Filesystem-based inbox/outbox signaling (`.ccrystals/_comms/<entity-id>/inbox/`) and `Entity.endpoints` resolution.
-- **Track 11: Experimental 3D Context Lattice Visualizer:** Interactive Three.js/WebGL spatial navigation supporting thematic views (celestial clouds, subterranean cave lattices, archival library books).
-- **Track 12: Bidirectional Schema Tooling & Code Generation Strategy:**
-  - *Context & Decision:* `spec/v1/context-crystal.json` is our canonical interchange specification. To avoid brittle reflection in Scala Native and maintain our pure-functional invariants (`derives CanEqual`, immutability), we retain hand-crafted Scala 3 ADTs with strict contract test validation in the near term. This dedicated track will explore automated, zero-reflection code generation or code-first schema derivation (e.g. Smithy4s / Tapir).
 - **Track 13: Distribution, Packaging & Native CLI Installer:**
-  - Standardized installation script (`curl -fsSL ... | sh`), release binary packaging for multi-architecture targets (Linux x86_64, macOS aarch64), and Homebrew/Nix packaging for frictionless global CLI adoption.
+  - Standardized installation script (`curl -fsSL ... | sh`), release binary packaging for multi-architecture targets (Linux x86_64, macOS aarch64), and Homebrew/Nix packaging so users can install and run `ccrystal` globally without cloning the repo.
+- **Track 9: Crystal Comms & Lock-Free Multi-Entity Mailboxes:**
+  - Filesystem-based inbox/outbox signaling (`.ccrystals/_comms/<entity-id>/inbox/`) and `Entity.endpoints` resolution for multi-agent coordination without lock contention.
 - **Track 14: Strict Functional Quality & Invariant Hardening (Disallow var, null, throws):**
-  - *Context & Vision:* Improve code quality and eliminate runtime failure classes across `core` and `cli` by strictly disallowing mutable state (`var`), nullable types (`null`), and exceptions (`throw` / `throws`).
-  - *Refactoring & Tooling:* Introduce scalafix lint rules and compiler warning configurations (e.g., `-Werror`, `-Wnonunit-statement`, strict `Option`/`Either`/ADT return types) to enforce total pure-functional invariants and refactor any lingering mutable/nullable test scaffolding.
+  - Compiler warning configurations (`-Werror`, `-Wnonunit-statement`), scalafix lint rules, and elimination of mutable state / null / throw across `core` and `cli`.
 - **Track 15: Context Armor & Threat Modeling (Prompt Injection Defenses & Structural Sandboxing):**
-  - *Context & Threat Model:* As LLM applications face indirect prompt injection, supply chain tampering, and delimiter hijacking through untrusted tool outputs or repository artifacts, Context Crystal serves as an essential line of defense for context integrity.
-  - *Mitigations & Architecture:*
-    - Structural Sandboxing & Delimiter Escaping: Wrap untrusted node summaries and tool execution outputs in strict data boundaries with delimiter neutralization, preventing synthetic section injection (e.g. escaping fake `=== END CAST ===` or prompt override tokens).
-    - Untrusted Data Provenance Stamping: Explicitly annotate tool outputs and external artifacts as untrusted data boundaries in prompt beams.
-    - Cryptographic Verification: Leverage `AuthorshipMode.Signed` to verify authorized human/agent origins and prevent node spoofing.
-    - Zero-Reflection Codec Hardening: Strict Circe AST validation preventing deserialization and malformed JSON bombs.
-- **Track 16: Artifact & World-State Ontology (Virtual & Physical Substrates):**
-  - *Context & Vision:* Elevate artifacts, physical environments, and ambient invariants to first-class citizens alongside Entities and DAG transitions. Bridges the gap between conversational deliberation and physical/virtual reality.
-  - *Components:*
-    - **Schema & Core Models (`spec/v1.1`):** `ArtifactSubstrate` (`Virtual`, `Physical`), `ArtifactRole` (`Target`, `Instrument`, `Precondition`), `PhysicalLocation` (civic address, RFC 5870 `geo:`, room/bench coordinates), optional standard `uri`.
-    - **Causal DAG Links:** Directional artifact tracking on `DAGNode` (`inputArtifactIds`, `outputArtifactIds`, `preconditionArtifactIds`).
-    - **Cave Artifact Registry (`.ccrystals/artifacts.json` & `crystal://artifacts`):** Long-lived shared assets (lab environments, tooling profiles, canonical repositories).
-    - **Beam Shaping Integration:** Projecting active deliverables, available instruments, and environmental invariants directly into the prompt beam during context hydration.
-- **Track 18: Universal Agent Runtime Matrix, Packaging & Distribution:**
-  - *Context & Problem Statement:* Disparate AI agent harnesses (Google Antigravity, Claude Code, Cursor, Windsurf, Zed, OpenAI Swarm/Codex, LangChain/LangGraph) utilize disparate discovery paths, configuration files (`instructions.md`, `.cursorrules`, `CLAUDE.md`, `.agents/skills`), and tool schemas. There is currently no cross-vendor standard for agent toolchain discovery.
-  - *Vision & Deliverables:*
-    - **Cross-Runtime Adapter Matrix:** Standardized adapters and discovery recipes for Google Antigravity, Claude Desktop / Claude Code, Cursor, Windsurf, Zed, and OpenAI-compatible tool callers.
-    - **Automated Agent Onboarding CLI (`ccrystal agent install / doctor`):** Interactive or flag-driven CLI subcommand that detects installed agent harnesses on the local machine, configures their MCP server manifests (`mcp.json`, `settings.json`, `claude_desktop_config.json`), and installs canonical sidecar prompt instructions without manual JSON editing.
-    - **Universal Distribution Packaging:** Official multi-architecture distribution bundles (Homebrew tap formula, Arch AUR package, Nix flake, and VSCode / Cursor extension wrapper) complementing the standalone `curl -fsSL ... | sh` installer.
+  - Structural sandboxing, delimiter escaping for untrusted node summaries and tool outputs, untrusted data provenance stamping, and cryptographic verification.
+- **Track 12: Bidirectional Schema Tooling & Code Generation Strategy:**
+  - Automated, zero-reflection code generation or code-first schema derivation (Smithy4s / Tapir).
+- **Track 11: Experimental 3D Context Lattice Visualizer:**
+  - Interactive Three.js/WebGL spatial navigation supporting thematic views (celestial clouds, subterranean cave lattices, archival library books).
+- **Post-MLP Portal Search & Extended Docs Engine:**
+  - Client-side search engines (Pagefind WASM or Typelevel Laika) for the public documentation portal.
 - **Maintenance / Chore (Completed / Locked):** Upgraded to Scala 3.9.0 LTS and sbt-scala-native 0.5.12 with zero warnings. sbt 2.0.8 compatibility locked at sbt 1.10.7 pending community sbt 2.x cross-publishing of required plugins (sbt-crossproject, sbt-updates, scalafix, scalafmt).
