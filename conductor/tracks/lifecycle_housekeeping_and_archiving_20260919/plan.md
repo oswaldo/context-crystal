@@ -32,7 +32,7 @@
   - [x] Run unit tests across JVM, Native, and JS to verify green state
 - [x] Task: Phase 2 Verification & Checkpoint (Refer to workflow.md) [b076735]
 
-## Phase 3: Aging State Classification & Triage Heuristics
+## Phase 3: Aging State Classification & Triage Heuristics [checkpoint: 1f5aeaf]
 
 - [x] Task: Write failing unit tests for crystal aging classification in `core` (MUnit Red Phase) [bdadc9e]
   - [x] Test `AgingState` enum (`Active`, `Solid`, `Stale`) derivation based on timestamps, leases, and completion
@@ -41,7 +41,7 @@
   - [x] Add `AgingState` enum with `CanEqual`
   - [x] Integrate aging computation into `CrystalTriage`
   - [x] Run tests across JVM, Native, and JS
-- [~] Task: Phase 3 Verification & Checkpoint (Refer to workflow.md)
+- [x] Task: Phase 3 Verification & Checkpoint (Refer to workflow.md) [1f5aeaf]
 
 ## Phase 4: CLI Subcommands & Decline Parser Wiring
 
