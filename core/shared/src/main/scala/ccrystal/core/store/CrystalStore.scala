@@ -5,7 +5,11 @@ import ccrystal.core.model.*
 trait CrystalStore:
   def save(crystal: ContextCrystal): Either[String, Unit]
   def load(id: String): Either[String, ContextCrystal]
-  def list(): Either[String, List[ContextCrystal]]
+  def list(): Either[String, List[ContextCrystal]] = list(includeArchived = false)
+  def list(includeArchived: Boolean): Either[String, List[ContextCrystal]]
+  def archive(id: String): Either[String, Unit]
+  def unarchive(id: String): Either[String, Unit]
+  def isArchived(id: String): Boolean
   def exists(id: String): Boolean
   def getEntityRegistry(): Either[String, EntityRegistry]
   def saveEntityRegistry(registry: EntityRegistry): Either[String, Unit]

@@ -43,9 +43,43 @@ class FsCrystalStore(val rootPath: Path) extends CrystalStore:
       Right(())
     catch case ex: Throwable => Left(s"Failed to save crystal ${crystal.id}: ${ex.getMessage}")
 
+  override def isArchived(id: String): Boolean =
+    Files.exists(archiveCrystalDir(id).resolve("crystal.json"))
+
+  override def archive(id: String): Either[String, Unit] =
+    try
+      val srcDir  = crystalDir(id)
+      val destDir = archiveCrystalDir(id)
+      if isArchived(id) then Left(s"Crystal '$id' is already archived")
+      else if !exists(id) then Left(s"Crystal '$id' does not exist in active cave")
+      else if Files.exists(destDir) then
+        Left(s"Cannot archive crystal '$id': target directory $destDir already exists")
+      else
+        Files.createDirectories(archiveDir)
+        Files.move(srcDir, destDir)
+        Right(())
+    catch case ex: Throwable => Left(s"Failed to archive crystal '$id': ${ex.getMessage}")
+
+  override def unarchive(id: String): Either[String, Unit] =
+    try
+      val srcDir  = archiveCrystalDir(id)
+      val destDir = crystalDir(id)
+      if !isArchived(id) then Left(s"Crystal '$id' is not archived")
+      else if exists(id) then
+        Left(s"Cannot unarchive crystal '$id': active crystal already exists at $destDir")
+      else
+        Files.move(srcDir, destDir)
+        Right(())
+    catch case ex: Throwable => Left(s"Failed to unarchive crystal '$id': ${ex.getMessage}")
+
   override def load(id: String): Either[String, ContextCrystal] =
     try
-      val file = crystalDir(id).resolve("crystal.json")
+      val activeFile  = crystalDir(id).resolve("crystal.json")
+      val archiveFile = archiveCrystalDir(id).resolve("crystal.json")
+      val file =
+        if Files.exists(activeFile) then activeFile
+        else if Files.exists(archiveFile) then archiveFile
+        else activeFile
       if !Files.exists(file) then Left(s"Crystal '$id' not found at $file")
       else
         val content = new String(Files.readAllBytes(file), StandardCharsets.UTF_8)
@@ -54,18 +88,35 @@ class FsCrystalStore(val rootPath: Path) extends CrystalStore:
         )
     catch case ex: Throwable => Left(s"Failed to load crystal '$id': ${ex.getMessage}")
 
-  override def list(): Either[String, List[ContextCrystal]] =
+  override def list(): Either[String, List[ContextCrystal]] = list(includeArchived = false)
+
+  override def list(includeArchived: Boolean): Either[String, List[ContextCrystal]] =
     try
       if !Files.exists(rootPath) then Right(Nil)
       else
-        val dirs = Files
+        val activeDirs = Files
           .list(rootPath)
           .iterator()
           .asScala
-          .filter(Files.isDirectory(_))
+          .filter { p =>
+            Files.isDirectory(p) &&
+            p.getFileName.toString != "archive" &&
+            !p.getFileName.toString.startsWith("_")
+          }
           .toList
 
-        val crystals = dirs.flatMap { dir =>
+        val archiveDirs =
+          if includeArchived && Files.exists(archiveDir) then
+            Files
+              .list(archiveDir)
+              .iterator()
+              .asScala
+              .filter(Files.isDirectory(_))
+              .toList
+          else Nil
+
+        val allDirs = activeDirs ++ archiveDirs
+        val crystals = allDirs.flatMap { dir =>
           val jsonFile = dir.resolve("crystal.json")
           if Files.exists(jsonFile) then
             val content = new String(Files.readAllBytes(jsonFile), StandardCharsets.UTF_8)
@@ -322,6 +373,12 @@ class FsCrystalStore(val rootPath: Path) extends CrystalStore:
 
   private def crystalDir(id: String): Path =
     rootPath.resolve(id)
+
+  private def archiveDir: Path =
+    rootPath.resolve("archive")
+
+  private def archiveCrystalDir(id: String): Path =
+    archiveDir.resolve(id)
 
   private val AutoGenWarning =
     "> [!NOTE]\n> **Auto-Generated View:** This file is projected from `crystal.json` (the single source of truth). Do not edit manually; use `ccrystal` CLI commands to update state.\n\n"

@@ -13,11 +13,32 @@ class InMemoryCrystalStore extends CrystalStore:
     crystals.put(crystal.id, crystal)
     Right(())
 
+  val archivedCrystals = mutable.Set[String]()
+
   def load(id: String): Either[String, ContextCrystal] =
     crystals.get(id).toRight(s"Crystal not found: $id")
 
-  def list(): Either[String, List[ContextCrystal]] =
-    Right(crystals.values.toList)
+  override def list(): Either[String, List[ContextCrystal]] = list(includeArchived = false)
+
+  def list(includeArchived: Boolean): Either[String, List[ContextCrystal]] =
+    if includeArchived then Right(crystals.values.toList)
+    else Right(crystals.filterNot((id, _) => archivedCrystals.contains(id)).values.toList)
+
+  def archive(id: String): Either[String, Unit] =
+    if !crystals.contains(id) then Left(s"Crystal '$id' not found")
+    else if archivedCrystals.contains(id) then Left(s"Crystal '$id' is already archived")
+    else
+      archivedCrystals.add(id)
+      Right(())
+
+  def unarchive(id: String): Either[String, Unit] =
+    if !crystals.contains(id) || !archivedCrystals.contains(id) then
+      Left(s"Crystal '$id' is not archived")
+    else
+      archivedCrystals.remove(id)
+      Right(())
+
+  def isArchived(id: String): Boolean = archivedCrystals.contains(id)
 
   def exists(id: String): Boolean = crystals.contains(id)
 

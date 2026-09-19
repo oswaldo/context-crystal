@@ -46,8 +46,16 @@ class FsCrystalStoreArchivingSuite extends FunSuite:
     assert(archiveRes.isRight, s"archive should succeed: $archiveRes")
 
     assert(store.isArchived("c-arch"), "crystal should be marked as archived")
-    assert(!Files.exists(tempDir.resolve(".ccrystals").resolve("c-arch")), "active directory should not exist")
-    assert(Files.exists(tempDir.resolve(".ccrystals").resolve("archive").resolve("c-arch").resolve("crystal.json")), "archive crystal.json should exist")
+    assert(
+      !Files.exists(tempDir.resolve(".ccrystals").resolve("c-arch")),
+      "active directory should not exist",
+    )
+    assert(
+      Files.exists(
+        tempDir.resolve(".ccrystals").resolve("archive").resolve("c-arch").resolve("crystal.json"),
+      ),
+      "archive crystal.json should exist",
+    )
 
   test("unarchive restores archived crystal back to active directory"):
     val store   = FsCrystalStore(tempDir.resolve(".ccrystals").toString)
@@ -60,8 +68,14 @@ class FsCrystalStoreArchivingSuite extends FunSuite:
     assert(unarchiveRes.isRight, s"unarchive should succeed: $unarchiveRes")
 
     assert(!store.isArchived("c-restore"), "crystal should no longer be archived")
-    assert(Files.exists(tempDir.resolve(".ccrystals").resolve("c-restore").resolve("crystal.json")), "active crystal.json should exist")
-    assert(!Files.exists(tempDir.resolve(".ccrystals").resolve("archive").resolve("c-restore")), "archive directory should no longer exist")
+    assert(
+      Files.exists(tempDir.resolve(".ccrystals").resolve("c-restore").resolve("crystal.json")),
+      "active crystal.json should exist",
+    )
+    assert(
+      !Files.exists(tempDir.resolve(".ccrystals").resolve("archive").resolve("c-restore")),
+      "archive directory should no longer exist",
+    )
 
   test("list filters out archived crystals unless includeArchived is true"):
     val store    = FsCrystalStore(tempDir.resolve(".ccrystals").toString)
