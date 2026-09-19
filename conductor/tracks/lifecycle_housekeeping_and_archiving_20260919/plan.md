@@ -37,11 +37,11 @@
 - [x] Task: Write failing unit tests for crystal aging classification in `core` (MUnit Red Phase) [bdadc9e]
   - [x] Test `AgingState` enum (`Active`, `Solid`, `Stale`) derivation based on timestamps, leases, and completion
   - [x] Test triage report filtering by aging state (`--solid`, `--stale`)
-- [~] Task: Implement aging heuristics and filter methods in `core` (Green Phase)
-  - [ ] Add `AgingState` enum with `CanEqual`
-  - [ ] Integrate aging computation into `CrystalTriage`
-  - [ ] Run tests across JVM, Native, and JS
-- [ ] Task: Phase 3 Verification & Checkpoint (Refer to workflow.md)
+- [x] Task: Implement aging heuristics and filter methods in `core` (Green Phase) [1f5aeaf]
+  - [x] Add `AgingState` enum with `CanEqual`
+  - [x] Integrate aging computation into `CrystalTriage`
+  - [x] Run tests across JVM, Native, and JS
+- [~] Task: Phase 3 Verification & Checkpoint (Refer to workflow.md)
 
 ## Phase 4: CLI Subcommands & Decline Parser Wiring
 
