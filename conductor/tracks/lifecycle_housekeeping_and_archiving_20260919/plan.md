@@ -1,0 +1,68 @@
+# Implementation Plan: Lifecycle Housekeeping, Melting & Archiving
+
+**Track ID:** `lifecycle_housekeeping_and_archiving_20260919`  
+**Workflow:** Red-Green TDD, Pure-Functional Scala 3, Cross-Platform (JVM, Native, JS)
+
+## Phase 1: Cold Storage Archiving Core SPI & FsCrystalStore
+
+- [ ] Task: Write failing unit tests for crystal archive and unarchive in `core` (MUnit Red Phase)
+  - [ ] Test `archive` moving `.ccrystals/<id>.json` to `.ccrystals/archive/<id>.json`
+  - [ ] Test `unarchive` restoring `.ccrystals/archive/<id>.json` back to active cave
+  - [ ] Test `listCrystals` with and without `includeArchived`
+  - [ ] Test error conditions (archiving non-existent crystal, unarchiving active crystal, collisions)
+- [ ] Task: Implement `archive`, `unarchive`, and `includeArchived` in `CrystalStore` & `FsCrystalStore` (Green Phase)
+  - [ ] Add SPI methods on `CrystalStore` trait
+  - [ ] Implement filesystem directory/file relocation in `FsCrystalStore`
+  - [ ] Update `listCrystals` filtering and path discovery
+  - [ ] Run unit tests across JVM, Native, and JS to verify green state
+- [ ] Task: Phase 1 Verification & Checkpoint (Refer to workflow.md)
+
+## Phase 2: Sub-DAG Melting & Squashing Engine
+
+- [ ] Task: Write failing unit tests for sub-DAG melting in `core` (MUnit Red Phase)
+  - [ ] Test linear chain squashing with zero-LLM deterministic bulleted summary
+  - [ ] Test custom agent summary override parameter
+  - [ ] Test artifact aggregation (union of `artifactIds`, `inputArtifactIds`, etc.)
+  - [ ] Test boundary edge reconnection (incoming parents to outgoing children)
+  - [ ] Test invalid range errors (non-existent nodes, disjoint paths)
+- [ ] Task: Implement `melt` engine and graph squashing algorithms in `core` (Green Phase)
+  - [ ] Implement topological path resolver between `fromNode` and `toNode`
+  - [ ] Construct consolidated `DAGNode` with kind `checkpoint` and merged artifacts
+  - [ ] Rewire DAG nodes and update `CrystalStore`
+  - [ ] Run unit tests across JVM, Native, and JS to verify green state
+- [ ] Task: Phase 2 Verification & Checkpoint (Refer to workflow.md)
+
+## Phase 3: Aging State Classification & Triage Heuristics
+
+- [ ] Task: Write failing unit tests for crystal aging classification in `core` (MUnit Red Phase)
+  - [ ] Test `AgingState` enum (`Active`, `Solid`, `Stale`) derivation based on timestamps, leases, and completion
+  - [ ] Test triage report filtering by aging state (`--solid`, `--stale`)
+- [ ] Task: Implement aging heuristics and filter methods in `core` (Green Phase)
+  - [ ] Add `AgingState` enum with `CanEqual`
+  - [ ] Integrate aging computation into `CrystalTriage`
+  - [ ] Run tests across JVM, Native, and JS
+- [ ] Task: Phase 3 Verification & Checkpoint (Refer to workflow.md)
+
+## Phase 4: CLI Subcommands & Decline Parser Wiring
+
+- [ ] Task: Write failing integration tests for CLI commands in `cli` (MUnit Red Phase)
+  - [ ] Test `ccrystal archive <id>` and `ccrystal unarchive <id>`
+  - [ ] Test `ccrystal melt <id> --from <node> --to <node> [--summary <text>]`
+  - [ ] Test `ccrystal list --archived` and `ccrystal triage --solid` / `--stale`
+- [ ] Task: Implement CLI commands and decline options in `cli` (Green Phase)
+  - [ ] Wire subcommands in `CommandParser.scala`
+  - [ ] Implement command execution logic in `Runner.scala`
+  - [ ] Verify CLI tests pass cleanly
+- [ ] Task: Phase 4 Verification & Checkpoint (Refer to workflow.md)
+
+## Phase 5: Native MCP Server Integration, Verification & Release Binary
+
+- [ ] Task: Implement and test MCP tools (`crystal_archive`, `crystal_unarchive`, `crystal_melt`) and filter updates
+  - [ ] Add MCP tool definitions and schemas in `context-crystal` server
+  - [ ] Update `crystal_list` and `crystal_triage` MCP tool parameters
+  - [ ] Add unit/integration tests for MCP handlers
+- [ ] Task: Complete cross-platform test matrix (JVM, Native, JS), format, and lint
+  - [ ] Run `sbt "scalafmtCheckAll"` and `sbt "scalafixAll"`
+  - [ ] Run full test suite: `sbt test`
+  - [ ] Compile and install optimized release binary with Thin LTO to `~/.local/bin/ccrystal`
+- [ ] Task: Phase 5 Verification & Checkpoint (Refer to workflow.md)

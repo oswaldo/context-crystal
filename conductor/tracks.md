@@ -46,3 +46,6 @@
 
 - [x] **Track: Crystal Lifecycle Conclusion & Agent MCP Ergonomics**  
   *Link: [conductor/tracks/crystal_conclusion_and_mcp_instructions_20260917/index.md](./tracks/crystal_conclusion_and_mcp_instructions_20260917/index.md)*
+
+- [ ] **Track: Lifecycle Housekeeping, Melting & Archiving**  
+  *Link: [conductor/tracks/lifecycle_housekeeping_and_archiving_20260919/index.md](./tracks/lifecycle_housekeeping_and_archiving_20260919/index.md)*
