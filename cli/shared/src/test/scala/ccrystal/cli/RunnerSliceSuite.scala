@@ -42,6 +42,26 @@ class InMemoryCrystalStore extends CrystalStore:
 
   def exists(id: String): Boolean = crystals.contains(id)
 
+  def melt(
+      crystalId: String,
+      fromSelector: String,
+      toSelector: String,
+      customSummary: Option[String] = None,
+      anchor: Option[String] = None,
+  ): Either[String, DAGNode] =
+    for
+      crystal <- load(crystalId)
+      res <- ccrystal.core.dag.CrystalMelter.meltWithNode(
+        crystal,
+        fromSelector,
+        toSelector,
+        customSummary,
+        anchor = anchor,
+      )
+      (updated, node) = res
+      _ <- save(updated)
+    yield node
+
   def getEntityRegistry(): Either[String, EntityRegistry] = Right(registry)
 
   def saveEntityRegistry(reg: EntityRegistry): Either[String, Unit] =

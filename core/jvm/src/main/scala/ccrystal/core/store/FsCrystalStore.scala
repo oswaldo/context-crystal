@@ -72,6 +72,26 @@ class FsCrystalStore(val rootPath: Path) extends CrystalStore:
         Right(())
     catch case ex: Throwable => Left(s"Failed to unarchive crystal '$id': ${ex.getMessage}")
 
+  override def melt(
+      crystalId: String,
+      fromSelector: String,
+      toSelector: String,
+      customSummary: Option[String] = None,
+      anchor: Option[String] = None,
+  ): Either[String, DAGNode] =
+    for
+      crystal <- load(crystalId)
+      res <- ccrystal.core.dag.CrystalMelter.meltWithNode(
+        crystal,
+        fromSelector,
+        toSelector,
+        customSummary,
+        anchor = anchor,
+      )
+      (updated, node) = res
+      _ <- save(updated)
+    yield node
+
   override def load(id: String): Either[String, ContextCrystal] =
     try
       val activeFile  = crystalDir(id).resolve("crystal.json")

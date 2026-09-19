@@ -77,7 +77,10 @@ class CrystalMelterSuite extends FunSuite:
     val meltedNode = updated.dag.nodes(1)
     assertEquals(meltedNode.parentIds, List("n-1"))
     assertEquals(meltedNode.kind, NodeKind.Checkpoint)
-    assert(meltedNode.contentSummary.contains("Melted 3 nodes (n-2..n-4):"), "summary should contain count")
+    assert(
+      meltedNode.contentSummary.contains("Melted 3 nodes (n-2..n-4):"),
+      "summary should contain count",
+    )
     assert(meltedNode.contentSummary.contains("Investigate issue"), "summary should list n2")
     assert(meltedNode.contentSummary.contains("Run diagnostics"), "summary should list n3")
     assert(meltedNode.contentSummary.contains("Apply patch"), "summary should list n4")
@@ -96,7 +99,7 @@ class CrystalMelterSuite extends FunSuite:
       anchor = Some("diag_squashed"),
     )
     assert(res.isRight)
-    val updated = res.toOption.get
+    val updated    = res.toOption.get
     val meltedNode = updated.dag.nodes(1)
 
     assertEquals(meltedNode.contentSummary, "Investigated and diagnosed root cause in single pass.")
@@ -105,7 +108,7 @@ class CrystalMelterSuite extends FunSuite:
   test("melt aggregates all directional artifact links without duplicates"):
     val res = CrystalMelter.melt(crystal, fromSelector = "n-2", toSelector = "n-4")
     assert(res.isRight)
-    val updated = res.toOption.get
+    val updated    = res.toOption.get
     val meltedNode = updated.dag.nodes(1)
 
     assertEquals(meltedNode.artifactIds.sorted, List("art-1", "art-2"))
@@ -116,7 +119,7 @@ class CrystalMelterSuite extends FunSuite:
   test("melt updates rootNodeId when melting from the root node"):
     val res = CrystalMelter.melt(crystal, fromSelector = "n-1", toSelector = "n-3")
     assert(res.isRight)
-    val updated = res.toOption.get
+    val updated    = res.toOption.get
     val meltedNode = updated.dag.nodes.head
 
     assertEquals(updated.dag.rootNodeId, meltedNode.id)
@@ -124,7 +127,8 @@ class CrystalMelterSuite extends FunSuite:
     assertEquals(updated.dag.nodes.size, 3)
 
   test("melt rejects invalid selectors and inverted ranges"):
-    val errMissingFrom = CrystalMelter.melt(crystal, fromSelector = "unknown-node", toSelector = "n-3")
+    val errMissingFrom =
+      CrystalMelter.melt(crystal, fromSelector = "unknown-node", toSelector = "n-3")
     assert(errMissingFrom.isLeft, "missing from selector should fail")
 
     val errMissingTo = CrystalMelter.melt(crystal, fromSelector = "n-2", toSelector = "missing-to")

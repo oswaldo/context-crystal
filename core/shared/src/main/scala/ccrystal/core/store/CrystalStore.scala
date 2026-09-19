@@ -11,6 +11,13 @@ trait CrystalStore:
   def unarchive(id: String): Either[String, Unit]
   def isArchived(id: String): Boolean
   def exists(id: String): Boolean
+  def melt(
+      crystalId: String,
+      fromSelector: String,
+      toSelector: String,
+      customSummary: Option[String] = None,
+      anchor: Option[String] = None,
+  ): Either[String, DAGNode]
   def getEntityRegistry(): Either[String, EntityRegistry]
   def saveEntityRegistry(registry: EntityRegistry): Either[String, Unit]
   def registerEntity(entity: Entity): Either[String, Entity]
