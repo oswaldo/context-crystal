@@ -34,10 +34,10 @@
 
 ## Phase 3: Aging State Classification & Triage Heuristics
 
-- [ ] Task: Write failing unit tests for crystal aging classification in `core` (MUnit Red Phase)
-  - [ ] Test `AgingState` enum (`Active`, `Solid`, `Stale`) derivation based on timestamps, leases, and completion
-  - [ ] Test triage report filtering by aging state (`--solid`, `--stale`)
-- [ ] Task: Implement aging heuristics and filter methods in `core` (Green Phase)
+- [x] Task: Write failing unit tests for crystal aging classification in `core` (MUnit Red Phase) [bdadc9e]
+  - [x] Test `AgingState` enum (`Active`, `Solid`, `Stale`) derivation based on timestamps, leases, and completion
+  - [x] Test triage report filtering by aging state (`--solid`, `--stale`)
+- [~] Task: Implement aging heuristics and filter methods in `core` (Green Phase)
   - [ ] Add `AgingState` enum with `CanEqual`
   - [ ] Integrate aging computation into `CrystalTriage`
   - [ ] Run tests across JVM, Native, and JS
