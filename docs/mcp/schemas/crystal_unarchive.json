@@ -1,0 +1,1 @@
+{"name":"crystal_unarchive","description":"Restore an archived crystal from cold storage (.ccrystals/archive/) back to the active cave.","parameters":{"properties":{"crystal_id":{"description":"Identifier of the crystal to restore","type":"string"}},"required":["crystal_id"],"type":"object"}}

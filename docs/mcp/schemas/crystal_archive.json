@@ -1,0 +1,1 @@
+{"name":"crystal_archive","description":"Archive a concluded or inactive crystal to cold storage (.ccrystals/archive/) to reduce cave bloat while preserving all state and artifacts.","parameters":{"properties":{"crystal_id":{"description":"Identifier of the crystal to archive","type":"string"}},"required":["crystal_id"],"type":"object"}}

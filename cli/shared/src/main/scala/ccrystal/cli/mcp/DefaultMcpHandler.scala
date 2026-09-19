@@ -72,6 +72,10 @@ class DefaultMcpHandler(
                   "type" -> "boolean".asJson,
                   "description" -> "Output structured JSON array instead of text table (default: false)".asJson,
                 ),
+                "include_archived" -> Json.obj(
+                  "type"        -> "boolean".asJson,
+                  "description" -> "Include crystals in cold storage (default: false)".asJson,
+                ),
               ),
             ),
           ),
@@ -342,15 +346,85 @@ class DefaultMcpHandler(
           Tool(
             name = "crystal_triage",
             description =
-              "Triage workspace cave crystals for lifecycle hygiene, categorizing them into keep (active), candidates for cleanup (concluded/abandoned with 0 open leases), and requires review.",
+              "Triage workspace cave crystals for lifecycle hygiene and aging, categorizing them into keep (active), candidates for cleanup (concluded/abandoned with 0 open leases), and requires review.",
             inputSchema = Json.obj(
               "type" -> "object".asJson,
               "properties" -> Json.obj(
+                "aging" -> Json.obj(
+                  "type"        -> "string".asJson,
+                  "enum"        -> List("active", "solid", "stale").asJson,
+                  "description" -> "Optional filter by aging classification state".asJson,
+                ),
+                "include_archived" -> Json.obj(
+                  "type" -> "boolean".asJson,
+                  "description" -> "Include archived crystals from cold storage (default: true)".asJson,
+                ),
                 "json_output" -> Json.obj(
                   "type" -> "boolean".asJson,
                   "description" -> "Output structured JSON array instead of markdown report (default: false)".asJson,
                 ),
               ),
+            ),
+          ),
+          Tool(
+            name = "crystal_archive",
+            description =
+              "Archive a concluded or inactive crystal to cold storage (.ccrystals/archive/) to reduce cave bloat while preserving all state and artifacts.",
+            inputSchema = Json.obj(
+              "type" -> "object".asJson,
+              "properties" -> Json.obj(
+                "crystal_id" -> Json.obj(
+                  "type"        -> "string".asJson,
+                  "description" -> "Identifier of the crystal to archive".asJson,
+                ),
+              ),
+              "required" -> List("crystal_id").asJson,
+            ),
+          ),
+          Tool(
+            name = "crystal_unarchive",
+            description =
+              "Restore an archived crystal from cold storage (.ccrystals/archive/) back to the active cave.",
+            inputSchema = Json.obj(
+              "type" -> "object".asJson,
+              "properties" -> Json.obj(
+                "crystal_id" -> Json.obj(
+                  "type"        -> "string".asJson,
+                  "description" -> "Identifier of the crystal to restore".asJson,
+                ),
+              ),
+              "required" -> List("crystal_id").asJson,
+            ),
+          ),
+          Tool(
+            name = "crystal_melt",
+            description =
+              "Melt and squash intermediate sub-DAG transitions into a single consolidated checkpoint node with aggregated artifact links (Zero-LLM deterministic squashing by default).",
+            inputSchema = Json.obj(
+              "type" -> "object".asJson,
+              "properties" -> Json.obj(
+                "crystal_id" -> Json.obj(
+                  "type"        -> "string".asJson,
+                  "description" -> "Identifier of the target crystal".asJson,
+                ),
+                "from" -> Json.obj(
+                  "type"        -> "string".asJson,
+                  "description" -> "Starting node ID or anchor to melt".asJson,
+                ),
+                "to" -> Json.obj(
+                  "type"        -> "string".asJson,
+                  "description" -> "Ending node ID or anchor to melt".asJson,
+                ),
+                "summary" -> Json.obj(
+                  "type" -> "string".asJson,
+                  "description" -> "Optional manual summary override for the consolidated node".asJson,
+                ),
+                "anchor" -> Json.obj(
+                  "type"        -> "string".asJson,
+                  "description" -> "Optional anchor label for the consolidated node".asJson,
+                ),
+              ),
+              "required" -> List("crystal_id", "from", "to").asJson,
             ),
           ),
         )
@@ -479,8 +553,13 @@ class DefaultMcpHandler(
           case "concluded_abandoned"             => Some(GoalStatus.ConcludedAbandoned)
           case _                                 => None
         }
-        val jsonOutput = cursor.get[Boolean]("json_output").toOption.getOrElse(false)
-        val cmd        = CliCommand.ListCrystals(status = statusOpt, jsonOutput = jsonOutput)
+        val jsonOutput      = cursor.get[Boolean]("json_output").toOption.getOrElse(false)
+        val includeArchived = cursor.get[Boolean]("include_archived").toOption.getOrElse(false)
+        val cmd = CliCommand.ListCrystals(
+          status = statusOpt,
+          jsonOutput = jsonOutput,
+          includeArchived = includeArchived,
+        )
         runCommandToResult(cmd)
 
       case "crystal_init" =>
@@ -764,75 +843,63 @@ class DefaultMcpHandler(
             )
 
       case "crystal_triage" =>
-        val jsonOutput = cursor.get[Boolean]("json_output").toOption.getOrElse(false)
-        store.list() match
-          case Left(err) =>
+        val jsonOutput      = cursor.get[Boolean]("json_output").toOption.getOrElse(false)
+        val includeArchived = cursor.get[Boolean]("include_archived").toOption.getOrElse(true)
+        val agingOpt = cursor.get[String]("aging").toOption.flatMap {
+          case "active" => Some(AgingState.Active)
+          case "solid"  => Some(AgingState.Solid)
+          case "stale"  => Some(AgingState.Stale)
+          case _        => None
+        }
+        val cmd = CliCommand.Triage(
+          filterAging = agingOpt,
+          includeArchived = includeArchived,
+          jsonOutput = jsonOutput,
+        )
+        runCommandToResult(cmd)
+
+      case "crystal_archive" =>
+        cursor.get[String]("crystal_id").toOption match
+          case Some(id) =>
+            val cmd = CliCommand.Archive(id)
+            runCommandToResult(cmd)
+          case None =>
             CallToolResult(
-              List(ToolContent(text = s"Failed to list crystals for triage: $err")),
+              List(ToolContent(text = "Missing required 'crystal_id' for crystal_archive")),
               isError = true,
             )
-          case Right(crystals) =>
-            val items = crystals.map { c =>
-              val doneTasks    = c.goal.acceptanceCriteria.count(_.completed)
-              val totalTasks   = c.goal.acceptanceCriteria.size
-              val pendingTasks = totalTasks - doneTasks
-              val activeLeases = c.transientLeases.count(_.status == TransientLeaseStatus.Active)
-              val openLessons  = c.lessonsLearned.count(_.status == LessonStatus.Open)
-              val isConcluded =
-                c.goal.status == GoalStatus.ConcludedSuccess || c.goal.status == GoalStatus.ConcludedAbandoned
 
-              val (category, recommendation) =
-                if isConcluded && pendingTasks == 0 && activeLeases == 0 then
-                  ("CandidateForCleanup", "Safe to delete via crystal_delete")
-                else if c.goal.status == GoalStatus.InProgress then
-                  ("Keep", "Active in-progress track")
-                else ("RequiresReview", "Unclosed leases, open lessons, or incomplete tasks remain")
+      case "crystal_unarchive" =>
+        cursor.get[String]("crystal_id").toOption match
+          case Some(id) =>
+            val cmd = CliCommand.Unarchive(id)
+            runCommandToResult(cmd)
+          case None =>
+            CallToolResult(
+              List(ToolContent(text = "Missing required 'crystal_id' for crystal_unarchive")),
+              isError = true,
+            )
 
-              Json.obj(
-                "id"             -> c.id.asJson,
-                "status"         -> c.goal.status.toString.asJson,
-                "goal"           -> c.goal.title.asJson,
-                "category"       -> category.asJson,
-                "pendingTasks"   -> pendingTasks.asJson,
-                "totalTasks"     -> totalTasks.asJson,
-                "activeLeases"   -> activeLeases.asJson,
-                "openLessons"    -> openLessons.asJson,
-                "recommendation" -> recommendation.asJson,
-              )
-            }
+      case "crystal_melt" =>
+        val crystalIdOpt = cursor.get[String]("crystal_id").toOption
+        val fromOpt      = cursor.get[String]("from").toOption
+        val toOpt        = cursor.get[String]("to").toOption
+        val summaryOpt   = cursor.get[String]("summary").toOption
+        val anchorOpt    = cursor.get[String]("anchor").toOption
 
-            if jsonOutput then
-              CallToolResult(List(ToolContent(text = Json.arr(items*).spaces2)), isError = false)
-            else
-              val sb = new java.lang.StringBuilder()
-              sb.append("# Cave Lifecycle & Hygiene Triage Report\n\n")
-              sb.append(s"Total crystals found in workspace: ${crystals.size}\n\n")
-              sb.append(
-                "| Crystal ID | Status | Category | Tasks | Active Leases | Open Lessons | Recommendation |\n",
-              )
-              sb.append("|---|---|---|---|---|---|---|\n")
-              crystals.foreach { c =>
-                val doneTasks    = c.goal.acceptanceCriteria.count(_.completed)
-                val totalTasks   = c.goal.acceptanceCriteria.size
-                val pendingTasks = totalTasks - doneTasks
-                val activeLeases = c.transientLeases.count(_.status == TransientLeaseStatus.Active)
-                val openLessons  = c.lessonsLearned.count(_.status == LessonStatus.Open)
-                val isConcluded =
-                  c.goal.status == GoalStatus.ConcludedSuccess || c.goal.status == GoalStatus.ConcludedAbandoned
-
-                val (category, recommendation) =
-                  if isConcluded && pendingTasks == 0 && activeLeases == 0 then
-                    ("CandidateForCleanup", "Safe to delete via crystal_delete")
-                  else if c.goal.status == GoalStatus.InProgress then
-                    ("Keep", "Active in-progress track")
-                  else
-                    ("RequiresReview", "Unclosed leases, open lessons, or incomplete tasks remain")
-
-                sb.append(
-                  s"| `${c.id}` | ${c.goal.status} | $category | $doneTasks/$totalTasks | $activeLeases | $openLessons | $recommendation |\n",
-                )
-              }
-              CallToolResult(List(ToolContent(text = sb.toString)), isError = false)
+        (crystalIdOpt, fromOpt, toOpt) match
+          case (Some(cId), Some(from), Some(to)) =>
+            val cmd = CliCommand.Melt(cId, from, to, summaryOpt, anchorOpt)
+            runCommandToResult(cmd)
+          case _ =>
+            CallToolResult(
+              List(
+                ToolContent(
+                  text = "Missing required 'crystal_id', 'from', or 'to' for crystal_melt",
+                ),
+              ),
+              isError = true,
+            )
 
       case other =>
         CallToolResult(List(ToolContent(text = s"Unknown tool: $other")), isError = true)

@@ -857,3 +857,123 @@ class DefaultMcpHandlerSuite extends FunSuite:
     assertEquals(invalidResp.error.isEmpty, true)
     val callResult = invalidResp.result.get.as[CallToolResult].toOption.get
     assertEquals(callResult.isError, true, "invalid status returns isError = true")
+
+  test("DefaultMcpHandler exposes and executes crystal_archive and crystal_unarchive tools"):
+    val (handler, store, _) = createFixture()
+
+    // 1. tools/list contains crystal_archive and crystal_unarchive
+    val listReq  = JsonRpcRequest(id = JsonRpcId.Num(100L), method = "tools/list")
+    val listResp = handler.handle(listReq)
+    assertEquals(listResp.error.isEmpty, true)
+    val toolNames =
+      listResp.result.get.hcursor.downField("tools").as[List[Tool]].toOption.get.map(_.name)
+    assertEquals(toolNames.contains("crystal_archive"), true, "crystal_archive in tools/list")
+    assertEquals(toolNames.contains("crystal_unarchive"), true, "crystal_unarchive in tools/list")
+    assertEquals(toolNames.contains("crystal_melt"), true, "crystal_melt in tools/list")
+
+    // 2. Initialize a crystal
+    val initReq = JsonRpcRequest(
+      id = JsonRpcId.Num(101L),
+      method = "tools/call",
+      params = Some(
+        Json.obj(
+          "name"      -> "crystal_init".asJson,
+          "arguments" -> Json.obj("name" -> "c-mcp-arch".asJson, "goal" -> "Test Archiving".asJson),
+        ),
+      ),
+    )
+    handler.handle(initReq)
+    assertEquals(store.exists("c-mcp-arch"), true)
+    assertEquals(store.isArchived("c-mcp-arch"), false)
+
+    // 3. Archive crystal via MCP
+    val archReq = JsonRpcRequest(
+      id = JsonRpcId.Num(102L),
+      method = "tools/call",
+      params = Some(
+        Json.obj(
+          "name"      -> "crystal_archive".asJson,
+          "arguments" -> Json.obj("crystal_id" -> "c-mcp-arch".asJson),
+        ),
+      ),
+    )
+    val archResp = handler.handle(archReq)
+    assertEquals(archResp.error.isEmpty, true)
+    val archResult = archResp.result.get.as[CallToolResult].toOption.get
+    assertEquals(archResult.isError, false, "archive call succeeds")
+    assertEquals(store.isArchived("c-mcp-arch"), true, "store confirms crystal is archived")
+
+    // 4. Unarchive crystal via MCP
+    val unarchReq = JsonRpcRequest(
+      id = JsonRpcId.Num(103L),
+      method = "tools/call",
+      params = Some(
+        Json.obj(
+          "name"      -> "crystal_unarchive".asJson,
+          "arguments" -> Json.obj("crystal_id" -> "c-mcp-arch".asJson),
+        ),
+      ),
+    )
+    val unarchResp = handler.handle(unarchReq)
+    assertEquals(unarchResp.error.isEmpty, true)
+    val unarchResult = unarchResp.result.get.as[CallToolResult].toOption.get
+    assertEquals(unarchResult.isError, false, "unarchive call succeeds")
+    assertEquals(store.isArchived("c-mcp-arch"), false, "store confirms crystal is active")
+
+  test("DefaultMcpHandler executes crystal_melt tool"):
+    val (handler, store, _) = createFixture()
+
+    val initReq = JsonRpcRequest(
+      id = JsonRpcId.Num(110L),
+      method = "tools/call",
+      params = Some(
+        Json.obj(
+          "name"      -> "crystal_init".asJson,
+          "arguments" -> Json.obj("name" -> "c-mcp-melt".asJson, "goal" -> "Test Melting".asJson),
+        ),
+      ),
+    )
+    handler.handle(initReq)
+
+    val n1 = store.load("c-mcp-melt").toOption.get.dag.rootNodeId
+    val addReq = JsonRpcRequest(
+      id = JsonRpcId.Num(111L),
+      method = "tools/call",
+      params = Some(
+        Json.obj(
+          "name" -> "crystal_checkpoint".asJson,
+          "arguments" -> Json.obj(
+            "crystal_id" -> "c-mcp-melt".asJson,
+            "summary"    -> "Step 2".asJson,
+            "anchor"     -> "step_2".asJson,
+          ),
+        ),
+      ),
+    )
+    handler.handle(addReq)
+    val crystalBefore = store.load("c-mcp-melt").toOption.get
+    assertEquals(crystalBefore.dag.nodes.size, 2)
+
+    val meltReq = JsonRpcRequest(
+      id = JsonRpcId.Num(112L),
+      method = "tools/call",
+      params = Some(
+        Json.obj(
+          "name" -> "crystal_melt".asJson,
+          "arguments" -> Json.obj(
+            "crystal_id" -> "c-mcp-melt".asJson,
+            "from"       -> n1.asJson,
+            "to"         -> "step_2".asJson,
+            "summary"    -> "Consolidated step 1 and 2".asJson,
+            "anchor"     -> "squashed_root".asJson,
+          ),
+        ),
+      ),
+    )
+    val meltResp = handler.handle(meltReq)
+    assertEquals(meltResp.error.isEmpty, true)
+    val meltResult = meltResp.result.get.as[CallToolResult].toOption.get
+    assertEquals(meltResult.isError, false, "melt tool call succeeds")
+
+    val crystalAfter = store.load("c-mcp-melt").toOption.get
+    assertEquals(crystalAfter.dag.nodes.size, 1)
