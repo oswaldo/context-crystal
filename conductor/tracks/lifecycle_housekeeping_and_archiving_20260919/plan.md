@@ -5,12 +5,12 @@
 
 ## Phase 1: Cold Storage Archiving Core SPI & FsCrystalStore
 
-- [ ] Task: Write failing unit tests for crystal archive and unarchive in `core` (MUnit Red Phase)
-  - [ ] Test `archive` moving `.ccrystals/<id>.json` to `.ccrystals/archive/<id>.json`
-  - [ ] Test `unarchive` restoring `.ccrystals/archive/<id>.json` back to active cave
-  - [ ] Test `listCrystals` with and without `includeArchived`
-  - [ ] Test error conditions (archiving non-existent crystal, unarchiving active crystal, collisions)
-- [ ] Task: Implement `archive`, `unarchive`, and `includeArchived` in `CrystalStore` & `FsCrystalStore` (Green Phase)
+- [x] Task: Write failing unit tests for crystal archive and unarchive in `core` (MUnit Red Phase) [6db9c4d]
+  - [x] Test `archive` moving `.ccrystals/<id>.json` to `.ccrystals/archive/<id>.json`
+  - [x] Test `unarchive` restoring `.ccrystals/archive/<id>.json` back to active cave
+  - [x] Test `listCrystals` with and without `includeArchived`
+  - [x] Test error conditions (archiving non-existent crystal, unarchiving active crystal, collisions)
+- [~] Task: Implement `archive`, `unarchive`, and `includeArchived` in `CrystalStore` & `FsCrystalStore` (Green Phase)
   - [ ] Add SPI methods on `CrystalStore` trait
   - [ ] Implement filesystem directory/file relocation in `FsCrystalStore`
   - [ ] Update `listCrystals` filtering and path discovery
