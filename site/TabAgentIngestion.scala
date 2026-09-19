@@ -71,7 +71,8 @@ You have access to Context Crystal (`ccrystal` CLI and native MCP server).
 - Context Beam Hydration: Hydrate living context before major edits (`ccrystal hydrate <id> --tail 5`).
 - Zero Agent Debris: Always register transient leases for temporary worktrees (`ccrystal transient lease`) and ensure they are cleaned or promoted before goal conclusion.
 - Atomic Transitions: Batch context updates atomically using `ccrystal batch` or `crystal_batch`.
-- Cold Storage Over Deletion: Conclude goals when done (`ccrystal conclude`), squash intermediate nodes (`ccrystal melt`), and archive solid crystals (`ccrystal archive`) rather than destructive deletion."""
+- Cold Storage Over Deletion: Conclude goals when done (`ccrystal conclude`), squash intermediate nodes (`ccrystal melt`), and archive solid crystals (`ccrystal archive`) rather than destructive deletion.
+- Authoritative Discovery: Use `ccrystal --help` or `ccrystal <subcommand> --help` as guaranteed ground truth for CLI flags, and `ccrystal --for-ai` for protocol rules."""
             ),
           ),
           button(
@@ -90,7 +91,8 @@ You have access to Context Crystal (`ccrystal` CLI and native MCP server).
 - Context Beam Hydration: Hydrate living context before major edits (`ccrystal hydrate <id> --tail 5`).
 - Zero Agent Debris: Always register transient leases for temporary worktrees (`ccrystal transient lease`) and ensure they are cleaned or promoted before goal conclusion.
 - Atomic Transitions: Batch context updates atomically using `ccrystal batch` or `crystal_batch`.
-- Cold Storage Over Deletion: Conclude goals when done (`ccrystal conclude`), squash intermediate nodes (`ccrystal melt`), and archive solid crystals (`ccrystal archive`) rather than destructive deletion.""",
+- Cold Storage Over Deletion: Conclude goals when done (`ccrystal conclude`), squash intermediate nodes (`ccrystal melt`), and archive solid crystals (`ccrystal archive`) rather than destructive deletion.
+- Authoritative Discovery: Use `ccrystal --help` or `ccrystal <subcommand> --help` as guaranteed ground truth for CLI flags, and `ccrystal --for-ai` for protocol rules.""",
               )
             },
           ),
