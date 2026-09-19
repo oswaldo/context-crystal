@@ -10,12 +10,12 @@
   - [x] Test `unarchive` restoring `.ccrystals/archive/<id>.json` back to active cave
   - [x] Test `listCrystals` with and without `includeArchived`
   - [x] Test error conditions (archiving non-existent crystal, unarchiving active crystal, collisions)
-- [~] Task: Implement `archive`, `unarchive`, and `includeArchived` in `CrystalStore` & `FsCrystalStore` (Green Phase)
-  - [ ] Add SPI methods on `CrystalStore` trait
-  - [ ] Implement filesystem directory/file relocation in `FsCrystalStore`
-  - [ ] Update `listCrystals` filtering and path discovery
-  - [ ] Run unit tests across JVM, Native, and JS to verify green state
-- [ ] Task: Phase 1 Verification & Checkpoint (Refer to workflow.md)
+- [x] Task: Implement `archive`, `unarchive`, and `includeArchived` in `CrystalStore` & `FsCrystalStore` (Green Phase) [4a91626]
+  - [x] Add SPI methods on `CrystalStore` trait
+  - [x] Implement filesystem directory/file relocation in `FsCrystalStore`
+  - [x] Update `listCrystals` filtering and path discovery
+  - [x] Run unit tests across JVM, Native, and JS to verify green state
+- [~] Task: Phase 1 Verification & Checkpoint (Refer to workflow.md)
 
 ## Phase 2: Sub-DAG Melting & Squashing Engine
 
