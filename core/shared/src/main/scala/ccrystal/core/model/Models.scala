@@ -7,6 +7,11 @@ enum GoalStatus derives CanEqual:
   case ConcludedSuccess
   case ConcludedAbandoned
 
+enum AgingState derives CanEqual:
+  case Active
+  case Solid
+  case Stale
+
 case class AcceptanceCriterion(
     id: String,
     description: String,

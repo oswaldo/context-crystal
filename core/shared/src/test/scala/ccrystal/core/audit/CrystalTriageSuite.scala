@@ -22,7 +22,10 @@ class CrystalTriageSuite extends FunSuite:
       defaultAuthorId = Some("usr_1"),
       goal = Goal(s"Goal $id", "Intent", status, tasks),
       entities = List(Entity("usr_1", EntityKind.Human, "User 1")),
-      dag = DAG("root", List(DAGNode("root", Nil, "2026-08-01T10:00:00Z", "usr_1", NodeKind.HumanPrompt, "Init"))),
+      dag = DAG(
+        "root",
+        List(DAGNode("root", Nil, "2026-08-01T10:00:00Z", "usr_1", NodeKind.HumanPrompt, "Init")),
+      ),
       transientLeases = leases,
       lessonsLearned = lessons,
     )
@@ -55,7 +58,8 @@ class CrystalTriageSuite extends FunSuite:
       status = GoalStatus.InProgress,
       updatedAt = "2026-09-17T10:00:00Z",
     )
-    val itemRecent = CrystalTriage.triage(recent, isArchived = false, nowIso = "2026-09-19T00:00:00Z")
+    val itemRecent =
+      CrystalTriage.triage(recent, isArchived = false, nowIso = "2026-09-19T00:00:00Z")
     assertEquals(itemRecent.agingState, AgingState.Active)
     assertEquals(itemRecent.category, "Keep")
 
@@ -66,10 +70,13 @@ class CrystalTriageSuite extends FunSuite:
       updatedAt = "2026-07-01T10:00:00Z",
       leases = List(activeLease),
     )
-    val itemLease = CrystalTriage.triage(withLease, isArchived = false, nowIso = "2026-09-19T00:00:00Z")
+    val itemLease =
+      CrystalTriage.triage(withLease, isArchived = false, nowIso = "2026-09-19T00:00:00Z")
     assertEquals(itemLease.agingState, AgingState.Active)
 
-  test("classifyAging identifies Stale crystals (untouched > 30 days or incomplete with open lessons)"):
+  test(
+    "classifyAging identifies Stale crystals (untouched > 30 days or incomplete with open lessons)",
+  ):
     // In-progress crystal untouched for >30 days without active leases
     val stale = makeCrystal(
       id = "c-stale",

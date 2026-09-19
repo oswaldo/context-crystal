@@ -18,6 +18,19 @@ given Decoder[GoalStatus] = Decoder.decodeString.emap {
   case other                 => Left(s"Invalid GoalStatus: $other")
 }
 
+given Encoder[AgingState] = Encoder.encodeString.contramap {
+  case AgingState.Active => "active"
+  case AgingState.Solid  => "solid"
+  case AgingState.Stale  => "stale"
+}
+
+given Decoder[AgingState] = Decoder.decodeString.emap {
+  case "active" => Right(AgingState.Active)
+  case "solid"  => Right(AgingState.Solid)
+  case "stale"  => Right(AgingState.Stale)
+  case other    => Left(s"Invalid AgingState: $other")
+}
+
 given Encoder[EntityKind] = Encoder.encodeString.contramap {
   case EntityKind.Human  => "human"
   case EntityKind.Agent  => "agent"
