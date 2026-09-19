@@ -20,6 +20,7 @@ This skill equips AI coding entities (Antigravity, Claude Code, Cursor, Windsurf
 - **Atomic Multi-Command Batching & Native MCP Preference:** Autonomous agents interacting with Context Crystal should prioritize native MCP tools (`crystal_batch`, `crystal_list`, `crystal_hydrate`, `crystal_triage`, `crystal_init`, `crystal_checkpoint`, `crystal_task_transition`, `crystal_goal_transition`, `crystal_transient_lease`, `crystal_slice_fork`, `crystal_melt`, `crystal_archive`, `crystal_unarchive`, `crystal_delete`, `crystal_artifact`) and resources (`ccrystal://artifacts`, `ccrystal://{id}/artifacts`) over shell subprocesses. For multi-step transitions, compose a single `crystal_batch` recipe or `ccrystal batch` command to execute atomically with minimal turn roundtrips.
 - **Preservation of Clean Repositories:** Context Crystal fully supports out-of-tree companion context repositories (`CCRYSTAL_STORE`). Respect user repository policies to prevent polluting production code with local tracking files.
 - **Mandatory Task Inception Gate:** When starting any non-trivial or multi-step engineering task, the agent MUST immediately inspect existing crystals (`ccrystal list` or MCP `crystal_list`). If an existing crystal relates to the session context or feature track, attach to it and hydrate context (`ccrystal hydrate` or MCP `crystal_hydrate`) before making code edits. If none exists, initialize a new crystal with atomic acceptance criteria (`crystal_init` with `tasks` or `ccrystal init -t ...`). Never proceed through multi-turn refactors or feature tracks without active crystal anchoring.
+- **Authoritative CLI Ground Truth (`--help` & `--for-ai`):** Because `ccrystal`'s CLI parser is statically generated via Decline ADTs, running `ccrystal --help` and `ccrystal <subcommand> --help` is the **guaranteed source of truth** for all available subcommands, flags, defaults, and syntax. When choosing between MCP and CLI, or when discovering newly implemented capabilities that might not yet be exposed in a specific agent's MCP schema, the entity should run `ccrystal --help` or `ccrystal <subcommand> --help` to verify current options. Additionally, `ccrystal --for-ai` emits agent-specific operational rules, naming conventions, and PII invariants on demand.
 
 ---
 
@@ -52,14 +53,20 @@ If `ccrystal` is not present in PATH:
    - **Monorepo Fallback (When in Context Crystal repository):**
 
      ```bash
-     sbt "cliNative/nativeLink" && cp ./cli/native/target/scala-3.3.4/ccrystal-cli "$HOME/.local/bin/ccrystal" && chmod +x "$HOME/.local/bin/ccrystal"
+     sbt "cliNative/nativeLink" && cp ./cli/native/target/scala-3.9.0/ccrystal-cli "$HOME/.local/bin/ccrystal" && chmod +x "$HOME/.local/bin/ccrystal"
      ```
 
-3. Test availability:
+3. Test availability and discover ground-truth capabilities:
 
    ```bash
    ccrystal --help
    ```
+
+### Authoritative Ground Truth Discovery (`--help` & `--for-ai`)
+
+- **Zero-Drift CLI Reference:** Always treat `ccrystal --help` and `ccrystal <subcommand> --help` as the live, authoritative contract for command-line syntax and flags. Because Decline compiles CLI parsers directly from source ADTs, `--help` never drifts from binary reality.
+- **MCP vs. CLI Decision:** While native MCP tools are preferred for turn-efficiency, any agent weighing whether to call MCP or CLI—or checking whether a newly implemented capability (such as melting, cold storage archiving, or triage filters) is accessible—should run `ccrystal --help` or `ccrystal <subcommand> --help` as the definitive source of truth.
+- **Protocol & Invariant Guidance:** For machine-oriented protocol guidelines, PII rules, and entity handle conventions, run `ccrystal --for-ai`.
 
 ---
 
