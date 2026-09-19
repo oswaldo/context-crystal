@@ -17,6 +17,7 @@
 - **Track 10 (`cli_ai_guidance_and_pii_conventions_20260908`):** Complete `[x]` (CLI AI guidance flag `--for-ai`, PII protection invariants, canonical entity naming schemes).
 - **Track 11 (`collaborator_readiness_20260912`):** Complete `[x]` (Toolchain, hardware baselines, dual-key cryptographic security, Linux x86_64, macOS Apple Silicon, strict equality clues, and CI matrix).
 - **Track 16 (`artifact_world_state_ontology_20260913`):** Complete `[x]` (Artifact & world-state ontology, virtual & physical substrates, roles, locations, directional DAG links, Cave Artifact Registry, CLI commands, native MCP server integration, and beam projection).
+- **Track 10 (`lifecycle_housekeeping_and_archiving_20260919`):** Complete `[x]` (Cold storage archiving `.ccrystals/archive/`, zero-LLM deterministic sub-DAG melting `ccrystal melt`, aging classification heuristics `Active`/`Solid`/`Stale`, CLI subcommands `archive`, `unarchive`, `melt`, `triage`, and native MCP server tools).
 - **Binary Location:** `./cli/native/target/scala-3.9.0/ccrystal-cli` (installed in `~/.local/bin/ccrystal` with Thin LTO)
 - **Codeberg Remote:** Clean, up-to-date with linear Conventional Commits history and Git Notes.
 
@@ -38,7 +39,6 @@ Active implementation on orphan branch `gh-pages` (`~/git/context-crystal-gh-pag
 - **Post-MLP Portal Search & Extended Docs Engine:**
   - Evaluate client-side search engines (e.g. Pagefind WASM integration or Typelevel Laika static documentation compiler) as documentation volume expands beyond initial launch tabs.
 - **Track 9: Crystal Comms & Lock-Free Multi-Entity Mailboxes:** Filesystem-based inbox/outbox signaling (`.ccrystals/_comms/<entity-id>/inbox/`) and `Entity.endpoints` resolution.
-- **Track 10: Lifecycle Housekeeping, Melting & Archiving:** CLI commands for state classification (`--solid`, `--stale`), sub-DAG summarization (`ccrystal melt`), and garbage collection (`ccrystal archive`).
 - **Track 11: Experimental 3D Context Lattice Visualizer:** Interactive Three.js/WebGL spatial navigation supporting thematic views (celestial clouds, subterranean cave lattices, archival library books).
 - **Track 12: Bidirectional Schema Tooling & Code Generation Strategy:**
   - *Context & Decision:* `spec/v1/context-crystal.json` is our canonical interchange specification. To avoid brittle reflection in Scala Native and maintain our pure-functional invariants (`derives CanEqual`, immutability), we retain hand-crafted Scala 3 ADTs with strict contract test validation in the near term. This dedicated track will explore automated, zero-reflection code generation or code-first schema derivation (e.g. Smithy4s / Tapir).
