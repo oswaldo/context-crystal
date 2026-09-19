@@ -25,12 +25,12 @@
   - [x] Test artifact aggregation (union of `artifactIds`, `inputArtifactIds`, etc.)
   - [x] Test boundary edge reconnection (incoming parents to outgoing children)
   - [x] Test invalid range errors (non-existent nodes, disjoint paths)
-- [~] Task: Implement `melt` engine and graph squashing algorithms in `core` (Green Phase)
-  - [ ] Implement topological path resolver between `fromNode` and `toNode`
-  - [ ] Construct consolidated `DAGNode` with kind `checkpoint` and merged artifacts
-  - [ ] Rewire DAG nodes and update `CrystalStore`
-  - [ ] Run unit tests across JVM, Native, and JS to verify green state
-- [ ] Task: Phase 2 Verification & Checkpoint (Refer to workflow.md)
+- [x] Task: Implement `melt` engine and graph squashing algorithms in `core` (Green Phase) [b076735]
+  - [x] Implement topological path resolver between `fromNode` and `toNode`
+  - [x] Construct consolidated `DAGNode` with kind `checkpoint` and merged artifacts
+  - [x] Rewire DAG nodes and update `CrystalStore`
+  - [x] Run unit tests across JVM, Native, and JS to verify green state
+- [~] Task: Phase 2 Verification & Checkpoint (Refer to workflow.md)
 
 ## Phase 3: Aging State Classification & Triage Heuristics
 
