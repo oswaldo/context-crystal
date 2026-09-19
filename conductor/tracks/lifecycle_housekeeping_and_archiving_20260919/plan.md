@@ -55,14 +55,14 @@
   - [x] Verify CLI tests pass cleanly
 - [x] Task: Phase 4 Verification & Checkpoint (Refer to workflow.md) [5b4faa2]
 
-## Phase 5: Native MCP Server Integration, Verification & Release Binary
+## Phase 5: Native MCP Server Integration, Verification & Release Binary [checkpoint: cbfc904]
 
-- [ ] Task: Implement and test MCP tools (`crystal_archive`, `crystal_unarchive`, `crystal_melt`) and filter updates
-  - [ ] Add MCP tool definitions and schemas in `context-crystal` server
-  - [ ] Update `crystal_list` and `crystal_triage` MCP tool parameters
-  - [ ] Add unit/integration tests for MCP handlers
-- [ ] Task: Complete cross-platform test matrix (JVM, Native, JS), format, and lint
-  - [ ] Run `sbt "scalafmtCheckAll"` and `sbt "scalafixAll"`
-  - [ ] Run full test suite: `sbt test`
-  - [ ] Compile and install optimized release binary with Thin LTO to `~/.local/bin/ccrystal`
-- [ ] Task: Phase 5 Verification & Checkpoint (Refer to workflow.md)
+- [x] Task: Implement and test MCP tools (`crystal_archive`, `crystal_unarchive`, `crystal_melt`) and filter updates [cbfc904]
+  - [x] Add MCP tool definitions and schemas in `context-crystal` server
+  - [x] Update `crystal_list` and `crystal_triage` MCP tool parameters
+  - [x] Add unit/integration tests for MCP handlers
+- [x] Task: Complete cross-platform test matrix (JVM, Native, JS), format, and lint [cbfc904]
+  - [x] Run `sbt "scalafmtCheckAll"` and `sbt "scalafixAll"`
+  - [x] Run full test suite: `sbt test`
+  - [x] Compile and install optimized release binary with Thin LTO to `~/.local/bin/ccrystal`
+- [x] Task: Phase 5 Verification & Checkpoint (Refer to workflow.md) [cbfc904]
