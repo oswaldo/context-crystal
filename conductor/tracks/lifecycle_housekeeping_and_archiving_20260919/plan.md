@@ -43,17 +43,17 @@
   - [x] Run tests across JVM, Native, and JS
 - [x] Task: Phase 3 Verification & Checkpoint (Refer to workflow.md) [1f5aeaf]
 
-## Phase 4: CLI Subcommands & Decline Parser Wiring
+## Phase 4: CLI Subcommands & Decline Parser Wiring [checkpoint: 5b4faa2]
 
-- [~] Task: Write failing integration tests for CLI commands in `cli` (MUnit Red Phase)
-  - [ ] Test `ccrystal archive <id>` and `ccrystal unarchive <id>`
-  - [ ] Test `ccrystal melt <id> --from <node> --to <node> [--summary <text>]`
-  - [ ] Test `ccrystal list --archived` and `ccrystal triage --solid` / `--stale`
-- [ ] Task: Implement CLI commands and decline options in `cli` (Green Phase)
-  - [ ] Wire subcommands in `CommandParser.scala`
-  - [ ] Implement command execution logic in `Runner.scala`
-  - [ ] Verify CLI tests pass cleanly
-- [ ] Task: Phase 4 Verification & Checkpoint (Refer to workflow.md)
+- [x] Task: Write failing integration tests for CLI commands in `cli` (MUnit Red Phase) [7bf5d7b]
+  - [x] Test `ccrystal archive <id>` and `ccrystal unarchive <id>`
+  - [x] Test `ccrystal melt <id> --from <node> --to <node> [--summary <text>]`
+  - [x] Test `ccrystal list --archived` and `ccrystal triage --solid` / `--stale`
+- [x] Task: Implement CLI commands and decline options in `cli` (Green Phase) [5b4faa2]
+  - [x] Wire subcommands in `CommandParser.scala`
+  - [x] Implement command execution logic in `Runner.scala`
+  - [x] Verify CLI tests pass cleanly
+- [x] Task: Phase 4 Verification & Checkpoint (Refer to workflow.md) [5b4faa2]
 
 ## Phase 5: Native MCP Server Integration, Verification & Release Binary
 
