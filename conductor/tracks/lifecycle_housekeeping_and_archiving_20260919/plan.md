@@ -17,7 +17,7 @@
   - [x] Run unit tests across JVM, Native, and JS to verify green state
 - [x] Task: Phase 1 Verification & Checkpoint (Refer to workflow.md) [4a91626]
 
-## Phase 2: Sub-DAG Melting & Squashing Engine
+## Phase 2: Sub-DAG Melting & Squashing Engine [checkpoint: b076735]
 
 - [x] Task: Write failing unit tests for sub-DAG melting in `core` (MUnit Red Phase) [82dd5e6]
   - [x] Test linear chain squashing with zero-LLM deterministic bulleted summary
@@ -30,7 +30,7 @@
   - [x] Construct consolidated `DAGNode` with kind `checkpoint` and merged artifacts
   - [x] Rewire DAG nodes and update `CrystalStore`
   - [x] Run unit tests across JVM, Native, and JS to verify green state
-- [~] Task: Phase 2 Verification & Checkpoint (Refer to workflow.md)
+- [x] Task: Phase 2 Verification & Checkpoint (Refer to workflow.md) [b076735]
 
 ## Phase 3: Aging State Classification & Triage Heuristics
 
