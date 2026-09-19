@@ -49,8 +49,9 @@ All new features and non-trivial fixes follow Conductor:
    - Implement the minimal code required to pass tests.
    - Commit atomically with Conventional Commits (`feat:`, `test:`, `fix:`, `chore(conductor):`).
 4. **Review & Verification:** Run the full test suite across Native, JVM, and JS targets before completing phase checkpoints.
-5. **Cave Hygiene & Retrospective Gate:** At the end of every track:
-   - Perform cave hygiene triage (`ccrystal list` or MCP `triage_cave`). Prompt the operator to confirm purging completed/concluded crystals to prevent cave bloat.
+5. **Cave Hygiene, Documentation & Retrospective Gate:** At the end of every track:
+   - Perform cave hygiene triage (`ccrystal triage` or MCP `crystal_triage`). Recommend melting active child crystals and moving concluded crystals to cold storage (`ccrystal archive` or MCP `crystal_archive`) rather than destructive deletion to prevent cave bloat while preserving lineage.
+   - Run the Documentation & Portal Synchronization Gate: Assess whether any changes impact `README.md`, `skills/context-crystal/SKILL.md`, `docs/mcp/instructions.md`, or the sibling documentation portal (`../context-crystal-gh-pages`). Universal collaborator guidance and reproducible patterns should be committed, while personal machine configurations, local directory layouts, or private credentials must strictly remain uncommitted.
    - Run the Operational Learning Gate: Explicitly ask whether any friction, tool patterns, or build learnings should be codified into `AGENTS.md` or `skills/context-crystal/SKILL.md`.
 6. **Clean Merge, Push Gate & Worktree Teardown:** Fast-forward merge into `main` and update the local release installation (following the optimized release build instructions in [README.md](README.md#prerequisites--installation)). Halt for operator review before pushing: confirm the operator is satisfied with the progress, has reviewed the changes, and ran local tests; prompt the operator to push with their locked transport key. Only tear down the worktree after the user confirms or the push to remote is detected.
 
@@ -84,10 +85,10 @@ sbt "scalafmtAll; scalafixAll"
 sbt "scalafmtCheckAll"
 
 # Run formatting and fix round for Markdown documentation
-npx markdownlint-cli --fix "README.md" "docs/*.md" "skills/**/SKILL.md"
+npx markdownlint-cli --fix "README.md" "AGENTS.md" "docs/*.md" "skills/**/SKILL.md"
 
 # Verify Markdown formatting and linter compliance
-npx markdownlint-cli "README.md" "docs/*.md" "skills/**/SKILL.md"
+npx markdownlint-cli "README.md" "AGENTS.md" "docs/*.md" "skills/**/SKILL.md"
 
 # Verify shell scripts (ShellCheck)
 npx shellcheck skills/**/*.sh
@@ -130,3 +131,4 @@ npx shellcheck skills/**/*.sh
   - Personas / Individual Names: Standard neutral cultural placeholders (e.g., *Max Mustermann* / *Erika Mustermann* in German contexts; *Fulano de Tal* / *Beltrano da Silva* in Brazilian contexts; *John Doe* / *Jane Roe* in Anglo contexts; *Jean Dupont* / *Marie Durand* in French contexts).
   - Addresses & Coordinates: Standard fictitious civic references (e.g., *Musterstraße 1, Berlin*; *Rua das Flores 123, São Paulo*). Never use real corporate, private, or identifiable residential addresses.
 - **Forward & Backward Compatibility Invariant:** When designing or developing new features, schema updates, CLI subcommands, or codecs, always strive for bidirectional compatibility. Ensure existing crystals, legacy schemas, and older CLI invocations continue to parse and execute predictably, while new fields, subcommands, or formats degrade gracefully without breaking older tools or downstream agents.
+- **Cold Storage Over Deletion:** Concluded or completed crystals with architectural or historical significance should be archived to cold storage (`ccrystal archive <id>` or MCP `crystal_archive`) rather than permanently deleted. Reserve destructive deletion (`ccrystal delete <id>` or MCP `crystal_delete`) for ephemeral test runs, scratch crystals, or corrupted state.

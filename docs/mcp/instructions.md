@@ -26,9 +26,12 @@ flowchart LR
     Init[crystal_init] --> Work[Tasks & Nodes]
     Work --> Lease[crystal_transient_lease]
     Lease --> Work
+    Work --> Melt[crystal_melt]
+    Melt --> Work
     Work --> Conclude[crystal_goal_transition]
     Conclude --> Triage[crystal_triage]
-    Triage --> Delete[crystal_delete]
+    Triage --> Archive[crystal_archive]
+    Triage -.-> Delete[crystal_delete]
 ```
 
 1. **Inception (`crystal_init`):**
@@ -41,12 +44,16 @@ flowchart LR
    Register temporary working state (e.g. `git_worktree`). Always clean or promote leases before concluding work.
 4. **Selective Context Hydration (`crystal_hydrate`):**
    Project tailored context beams into LLM context using `tail`, `from`, `to`, or `summary_only`.
-5. **Conclusion (`crystal_goal_transition`):**
+5. **Sub-DAG Melting (`crystal_melt`):**
+   For long-running tracks or large lattices, collapse chains of fine-grained intermediary steps into a single consolidated checkpoint node with aggregated artifact links to save prompt beam tokens deterministically.
+6. **Conclusion (`crystal_goal_transition`):**
    Once all criteria are met, transition goal status to `concluded_success` (or `concluded_abandoned` if aborted/superseded) with a `summary`. Context Crystal automatically records a `resolution` DAG node preserving completion provenance.
-6. **Hygiene & Triage (`crystal_triage`):**
-   Inspect cave health. Crystals with status `concluded_success` or `concluded_abandoned` and 0 active leases are classified as `CandidateForCleanup`.
-7. **Destructive Cleanup (`crystal_delete`):**
-   Permanently delete concluded crystals only after prompting the operator for confirmation. Never perform unprompted deletions.
+7. **Hygiene & Triage (`crystal_triage`):**
+   Inspect cave health. Classify crystals into `Active`, `Solid`, and `Stale`. Crystals with status `concluded_success` or `concluded_abandoned` and 0 active leases are classified as `Solid` and `CandidateForCleanup`.
+8. **Cold Storage Archiving (`crystal_archive`):**
+   **Preferred non-destructive cleanup:** Move concluded crystals into cold storage (`.ccrystals/archive/`). All state and artifacts are preserved, and crystals can be restored anytime with `crystal_unarchive`.
+9. **Destructive Cleanup (`crystal_delete`):**
+   Permanently delete crystals only when explicitly instructed by the operator for scratch spikes or unneeded throwaway work. Never perform unprompted deletions.
 
 ---
 

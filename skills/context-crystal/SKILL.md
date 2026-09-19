@@ -17,7 +17,7 @@ This skill equips AI coding entities (Antigravity, Claude Code, Cursor, Windsurf
 - **Context Over Session:** Context and goals exist independently of any individual chat session, IDE window, or token budget.
 - **Agent as Operator (Zero Human Learning Curve):** The human operator should never need to learn CLI flags, subcommands, or manual installation routines. The agent autonomously interprets user intent, manages binary installation, and executes atomic batched updates behind the scenes.
 - **Fidelity Guarantee:** In the absence of an OS-level deterministic kernel interceptor, all agent-synthesized DAG transitions MUST specify `--fidelity inferred`.
-- **Atomic Multi-Command Batching & Native MCP Preference:** Autonomous agents interacting with Context Crystal should prioritize native MCP tools (`crystal_batch`, `crystal_list`, `crystal_hydrate`, `crystal_triage`, `crystal_init`, `crystal_checkpoint`, `crystal_task_transition`, `crystal_transient_lease`, `crystal_slice_fork`, `crystal_delete`, `crystal_artifact`) and resources (`ccrystal://artifacts`, `ccrystal://{id}/artifacts`) over shell subprocesses. For multi-step transitions, compose a single `crystal_batch` recipe or `ccrystal batch` command to execute atomically with minimal turn roundtrips.
+- **Atomic Multi-Command Batching & Native MCP Preference:** Autonomous agents interacting with Context Crystal should prioritize native MCP tools (`crystal_batch`, `crystal_list`, `crystal_hydrate`, `crystal_triage`, `crystal_init`, `crystal_checkpoint`, `crystal_task_transition`, `crystal_goal_transition`, `crystal_transient_lease`, `crystal_slice_fork`, `crystal_melt`, `crystal_archive`, `crystal_unarchive`, `crystal_delete`, `crystal_artifact`) and resources (`ccrystal://artifacts`, `ccrystal://{id}/artifacts`) over shell subprocesses. For multi-step transitions, compose a single `crystal_batch` recipe or `ccrystal batch` command to execute atomically with minimal turn roundtrips.
 - **Preservation of Clean Repositories:** Context Crystal fully supports out-of-tree companion context repositories (`CCRYSTAL_STORE`). Respect user repository policies to prevent polluting production code with local tracking files.
 - **Mandatory Task Inception Gate:** When starting any non-trivial or multi-step engineering task, the agent MUST immediately inspect existing crystals (`ccrystal list` or MCP `crystal_list`). If an existing crystal relates to the session context or feature track, attach to it and hydrate context (`ccrystal hydrate` or MCP `crystal_hydrate`) before making code edits. If none exists, initialize a new crystal with atomic acceptance criteria (`crystal_init` with `tasks` or `ccrystal init -t ...`). Never proceed through multi-turn refactors or feature tracks without active crystal anchoring.
 
@@ -200,6 +200,10 @@ When the user communicates in natural language, translate their intent into the 
 | *"What artifacts are available?"*, *"List tools / hardware"* | List artifacts across cave or within a crystal | `ccrystal artifact list [--cave] [--crystal <id>]` |
 | *"Inspect artifact X"*, *"Check test rig location / details"* | Inspect metadata, substrate, and physical location of artifact | `ccrystal artifact inspect <id> [--crystal <id>]` |
 | *"Execute test using rig X"*, *"Link artifact inputs / outputs"* | Record transition with directional artifact links | `ccrystal node add <id> -k tool_execution -s '<summary>' --input-artifact <in-id> --output-artifact <out-id> --precondition-artifact <pre-id>` |
+| *"Melt intermediate steps in crystal X"*, *"Squash nodes from N1 to N2"* | Deterministically squash sub-DAG path into single checkpoint | `ccrystal melt <id> --from <from> --to <to> [--summary '<text>']` (or MCP `crystal_melt`) |
+| *"Archive crystal X"*, *"Move completed crystal to cold storage"* | Move concluded/inactive crystal to cold storage (`.ccrystals/archive/`) | `ccrystal archive <id>` (or MCP `crystal_archive`) |
+| *"Restore crystal X from archive"* | Restore archived crystal back to active cave | `ccrystal unarchive <id>` (or MCP `crystal_unarchive`) |
+| *"Triage solid / stale crystals"*, *"Filter cave hygiene"* | Triage crystals with aging filters (`--solid`, `--stale`, `--active`) | `ccrystal triage [--solid\|--stale]` (or MCP `crystal_triage`) |
 | *"Delete crystal X"*, *"Remove scratch session"* | Permanently delete crystal and cascade orphaned entities | `ccrystal delete <id>` (or `ccrystal delete <id> -f` when automated) |
 | *"Deregister entity X"*, *"Remove actor from cave"* | Deregister entity and cascade-delete associated crystals | `ccrystal entity deregister <entity-id>` (or `-f` when automated) |
 
@@ -239,6 +243,12 @@ ccrystal batch "delete scratch-spike -f; init scratch-spike -g 'Spike 2' -i 'Fre
 ccrystal batch "artifact register --id rig-sensor-1 --name 'Oscilloscope Station' --substrate physical --role precondition --location-name 'Hardware Lab' --bench-coords 'Bench-4' --cave; node add my-feature -k tool_execution -s 'Executed signal sampling' --precondition-artifact rig-sensor-1 --output-artifact waveform-dump-1"
 ```
 
+### Recipe 6: Sub-DAG Melting & Cold Storage Archiving
+
+```bash
+ccrystal batch "melt my-feature --from init-node --to milestone-1 -s 'Scaffolding & DB schema finalized'; archive completed-spike"
+```
+
 ---
 
 ## 7. Privacy, PII Protection & Public Repository Sovereignty
@@ -273,36 +283,35 @@ ccrystal batch "artifact register --id rig-sensor-1 --name 'Oscilloscope Station
 
 ---
 
-## 8. Cave Lifecycle Hygiene & Review Protocol (Triage)
+## 8. Cave Lifecycle Hygiene, Aging & Archiving Protocol (Triage)
 
-Over weeks or months of continuous delivery, crystals accumulate in the workspace cave (`.ccrystals/`). As projects evolve, old spike crystals, completed features, or abandoned experiments consume space and clutter context listings.
+Over weeks or months of continuous delivery, crystals accumulate in the workspace cave (`.ccrystals/`). As projects evolve, completed features, concluded tracks, or abandoned experiments consume space and clutter context listings.
 
-Because cleaning up workspace crystals requires cognitive evaluation rather than blind automation, AI entities must support operators in reviewing the cave through the following triage protocol:
+AI entities support operators in maintaining optimal cave hygiene through deterministic aging classification and cold storage archiving:
 
 ### A. Triage Triggers
 
-- **Explicit Operator Request:** When the user asks to "review the cave", "clean up old crystals", "triage workspace crystals", or "free up context clutter". Use the `crystal_triage` MCP tool.
-- **Cave Bloat Heuristic:** When `ccrystal list` or MCP `crystal_triage` reports multiple completed or stale goals ready for cleanup.
+- **Explicit Operator Request:** When the user asks to "review the cave", "clean up old crystals", "triage workspace crystals", or "free up context clutter". Use the `crystal_triage` MCP tool or `ccrystal triage`.
+- **Cave Bloat Heuristic:** When `ccrystal list` or MCP `crystal_list` reports multiple completed or stale goals ready for housekeeping.
 
-### B. Triage Categorization Matrix
+### B. Aging Classification & Categorization Matrix
 
-Inspect each crystal and categorize it into one of three buckets:
+Context Crystal deterministically classifies crystals into three aging states:
 
-1. **Candidates for Permanent Deletion (Safe Cleanup):**
+1. **Solid (Clean Concluded State — Primary Candidate for Archiving):**
    - Goal status is `concluded_success` or `concluded_abandoned`.
-   - All tasks are completed (`100%`).
+   - All tasks completed (`100%`).
    - Active transient leases: `0`.
    - Open lessons: `0` (or lessons already incorporated into codebase documentation/ADRs).
-2. **Stale Spikes (Review & Action Needed):**
-   - Goal status is `in_progress`, but no DAG nodes or updates have occurred in over 30 days.
-   - Unclosed transient leases or open unharvested lessons remain.
-   - Recommendation: Prompt operator whether to abandon, harvest lessons, and purge, or keep.
-3. **Protected (Active Work):**
-   - Active feature or bugfix tracks currently in development.
-   - Never recommend deletion for active tracks without explicit operator instruction.
+   - **Recommendation:** Safe to archive to cold storage via `ccrystal archive <id>` (or MCP `crystal_archive`). This removes the crystal from the active cave while preserving 100% of state, history, and artifacts under `.ccrystals/archive/<id>/`.
+2. **Stale (Review & Action Needed):**
+   - Incomplete / `in_progress` with no activity for >30 days, or abandoned with unresolved transient leases or incomplete acceptance criteria.
+   - **Recommendation:** Prompt operator whether to clean leases, harvest lessons, and archive/delete, or resume work.
+3. **Active (Protected Work in Flight):**
+   - Active feature or bugfix tracks currently in development (updated within last 14 days or with active leases).
+   - **Recommendation:** Keep active in workspace cave.
 
-### C. Presentation & Execution Safety
+### C. Cold Storage Archiving vs. Permanent Deletion
 
-- **Present Inventory Table:** Always present a clear table with columns: `Crystal ID`, `Status`, `Goal Title`, `Pending Tasks`, `Active Leases`, `Recommendation`.
-- **Never Assume Deletion:** Destructive cleanup is irreversible. The AI entity MUST request explicit confirmation from the operator specifying the crystal IDs to be deleted.
-- **Execute Deletion:** Once confirmed by the operator, invoke `ccrystal delete <crystal-id> --force` (or use the MCP `crystal_delete` tool with `force: true`), summarizing the removed files and cascaded entity records.
+- **Default to Cold Storage Archiving:** Unless the operator explicitly asks to permanently destroy a throwaway spike or scratch session, **always prefer archiving** (`ccrystal archive <id>` / MCP `crystal_archive`) over deletion. Archived crystals can be inspected at any time with `ccrystal list --archived` and restored seamlessly via `ccrystal unarchive <id>`.
+- **Permanent Deletion Safety Gate:** Permanent deletion (`ccrystal delete <id>` / MCP `crystal_delete`) is irrecoverable and cascades to all associated nodes and leases. The AI entity MUST request explicit confirmation from the operator specifying the crystal IDs to be deleted, never deleting unprompted.

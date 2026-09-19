@@ -81,7 +81,8 @@ Context Crystal adapts to your team's workflow without polluting your code:
 5. **Selective Context Hydration & Beam Shaping (`ccrystal cast/hydrate --from`):** Reconstitutes living state (Goal, Tasks, Leases, Lessons) while focusing the state transition beam on a specific milestone (`--from <anchor|id>`, `--to <anchor|id>`, `--tail <N>`), keeping prompts lean without permanent forking.
 6. **Continuous Improvement & Lessons Learned:** Built-in ledger tracking friction, root causes, and verified action audit trails.
 7. **Sub-Millisecond Atomic Batching:** Pipelined CLI execution (`ccrystal batch "..."`) combines multi-step state transitions into a single roundtrip, eliminating agent latency and token waste.
-8. **Deterministic Zero-LLM Housekeeping:** Compiled via **Scala Native (LLVM)** into a sub-10ms, self-contained binary that inspects, hydrates, and audits contexts with zero token cost.
+8. **Deterministic Zero-LLM Housekeeping & Melting:** Sub-DAG topological melting (`ccrystal melt`) collapses intermediate transition chains into consolidated checkpoint nodes with aggregated artifact links, preserving key decisions while drastically reducing prompt token overhead with zero LLM dependency.
+9. **Cold Storage Archiving & Cave Hygiene Triage:** Classify workspace health into `Active`, `Solid`, and `Stale` states (`ccrystal triage --solid/--stale`). Move completed crystals to cold storage (`ccrystal archive`) to keep active context listings lean while preserving full history and artifacts.
 
 ---
 
@@ -100,11 +101,18 @@ Context Crystal includes ready-to-use skills and instruction adapters for major 
 
 Context Crystal includes an embedded, zero-overhead MCP server built directly into the native binary. It connects Claude Desktop, Cursor, Zed, Windsurf, and agent harnesses to your workspace crystals with zero Python or Node.js runtime dependencies.
 
-- **Compound Atomic Tools:** Features `crystal_batch` for executing multi-operation recipes in a single roundtrip, plus `crystal_init`, `crystal_checkpoint`, `crystal_task_transition`, `crystal_transient_lease`, `crystal_slice_fork`, and `crystal_delete`.
+- **Compound Atomic Tools (14 tools):**
+  - **Batching & Inception:** `crystal_batch`, `crystal_init`.
+  - **Transitions & Provenance:** `crystal_checkpoint`, `crystal_task_transition`, `crystal_goal_transition`.
+  - **Artifacts & Leases:** `crystal_artifact`, `crystal_transient_lease`.
+  - **Context Shaping & Slicing:** `crystal_hydrate`, `crystal_slice_fork`.
+  - **Housekeeping & Lifecycle:** `crystal_list`, `crystal_triage`, `crystal_melt`, `crystal_archive`, `crystal_unarchive`, `crystal_delete`.
 - **Dynamic Context Resources (`ccrystal://`):**
   - `ccrystal://{id}/state`: Living state container JSON (Goal status, pending tasks, active leases, open lessons).
   - `ccrystal://{id}/dag`: Normalized DAG nodes and parent lineage JSON.
   - `ccrystal://{id}/hydrate`: Synthesized Markdown context beam formatted for immediate LLM prompt injection (supports `?from=...&to=...&tail=...` query parameters).
+  - `ccrystal://artifacts`: Global cave artifact registry.
+  - `ccrystal://{id}/artifacts`: Crystal-scoped referenced artifacts.
   - `ccrystal://entities`: Registered cave identities and authors.
 - **Prompt Beams & Triage:** Hydrate shaped context beams directly via `hydrate_context` (accepting `from`, `to`, `tail`, `depth`) and review cave lifecycle hygiene via `triage_cave`.
 
@@ -200,7 +208,16 @@ ccrystal slice auth-refactor --from node-1 --to node-3 --fork-to auth-edge-cases
 # 8. Selective Context Hydration & Beam Shaping
 ccrystal hydrate auth-refactor --from v1-checkpoint --tail 5
 
-# 9. Dual-Audience Guidance & Entity Conventions
+# 9. Deterministic Sub-DAG Melting (Squash intermediate node chains)
+ccrystal melt auth-refactor --from node-auth-refactor-init --to checkpoint-1 --summary "Finalized initial auth spec & scaffolding"
+
+# 10. Cave Hygiene Triage & Cold Storage Archiving
+ccrystal triage --solid          # Inspect concluded crystals ready for cleanup
+ccrystal archive auth-refactor   # Move completed crystal to cold storage (.ccrystals/archive/)
+ccrystal unarchive auth-refactor # Restore crystal to active cave
+ccrystal list --archived         # List active and archived crystals
+
+# 11. Dual-Audience Guidance & Entity Conventions
 ccrystal --for-ai               # Operational invariants, PII rules, and entity schemes for AI agents
 ccrystal entity conventions     # Display canonical entity prefixes (usr_, agt_, mdl_, tool_, sys_)
 ```
