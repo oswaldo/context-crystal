@@ -4,9 +4,9 @@
 - [x] Task: Agent Harness ADTs & Platform Path Resolution (TDD) (69c6dd9)
   - [x] Write unit tests for `AgentHarness` ADT, config file path resolution across Linux and macOS (with JVM fallback), and MCP server configuration structures.
   - [x] Implement `AgentHarness` ADT and pure path resolution utilities in `core` / `cli`.
-- [ ] Task: Safe Non-Destructive JSON Patching Engine & Reversible Backup Protocol (TDD)
-  - [ ] Write unit tests for defensive merging using Circe AST (`mcpServers` / `context_servers`), preserving existing tool configurations, formatting, and handling missing/empty parent objects.
-  - [ ] Implement `HarnessConfigPatcher` with zero external dependencies beyond Circe, generating atomic `.ccrystal.bak` files and surfacing rollback paths in execution receipts.
+- [x] Task: Safe Non-Destructive JSON Patching Engine & Reversible Backup Protocol (TDD) (342abd4)
+  - [x] Write unit tests for defensive merging using Circe AST (`mcpServers` / `context_servers`), preserving existing tool configurations, formatting, and handling missing/empty parent objects.
+  - [x] Implement `HarnessConfigPatcher` with zero external dependencies beyond Circe, generating atomic `.ccrystal.bak` files and surfacing rollback paths in execution receipts.
 - [ ] Task: Phase 1 Verification & Checkpoint (Refer to workflow.md)
 
 ## Phase 2: Diagnostic Engine (`ccrystal agent doctor`)
