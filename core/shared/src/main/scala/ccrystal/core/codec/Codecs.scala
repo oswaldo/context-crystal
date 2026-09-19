@@ -266,6 +266,7 @@ given Codec[Artifact] = Codec.from(
   },
   deriveEncoder[Artifact],
 )
-given Codec[CaveArtifactRegistry] = deriveCodec
-given Codec[CrystalOrigin]        = deriveCodec
-given Codec[ContextCrystal]       = deriveCodec
+given Codec[CaveArtifactRegistry]                  = deriveCodec
+given Codec[CrystalOrigin]                         = deriveCodec
+given Codec[ContextCrystal]                        = deriveCodec
+given Codec[ccrystal.core.audit.CrystalTriageItem] = deriveCodec

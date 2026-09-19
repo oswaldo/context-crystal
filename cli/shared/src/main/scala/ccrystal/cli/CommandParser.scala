@@ -95,6 +95,17 @@ object CommandParser:
         )
     }
 
+  private given agingStateArgument: Argument[AgingState] =
+    Argument.from("aging-state") {
+      case "active" => Validated.valid(AgingState.Active)
+      case "solid"  => Validated.valid(AgingState.Solid)
+      case "stale"  => Validated.valid(AgingState.Stale)
+      case other =>
+        Validated.invalidNel(
+          s"Invalid aging state: $other (must be 'active', 'solid', or 'stale')",
+        )
+    }
+
   // --- Subcommands ---
 
   private val initOpts = (
@@ -123,6 +134,10 @@ object CommandParser:
         case _             => None
       }),
     Opts.flag("json", "Output as JSON").orFalse,
+    (
+      Opts.flag("archived", "Include archived crystals in list").orFalse,
+      Opts.flag("all", "Include all crystals (including archived)").orFalse,
+    ).mapN(_ || _),
   ).mapN(CliCommand.ListCrystals.apply)
 
   private val taskAddOpts = (
@@ -361,6 +376,33 @@ object CommandParser:
       .orElse(Opts.subcommand("inspect", "Inspect artifact details")(artifactInspectOpts)),
   )
 
+  private val archiveOpts = Opts.argument[String]("crystal-id").map(CliCommand.Archive.apply)
+
+  private val unarchiveOpts = Opts.argument[String]("crystal-id").map(CliCommand.Unarchive.apply)
+
+  private val meltOpts = (
+    Opts.argument[String]("crystal-id"),
+    Opts.option[String]("from", "Start node ID or anchor to melt"),
+    Opts.option[String]("to", "End node ID or anchor to melt"),
+    Opts
+      .option[String]("summary", "Optional custom summary override for melted checkpoint node", "s")
+      .orNone,
+    Opts.option[String]("anchor", "Optional anchor label for melted checkpoint node", "a").orNone,
+  ).mapN(CliCommand.Melt.apply)
+
+  private val triageOpts = (
+    Opts
+      .flag("solid", "Filter to solid crystals")
+      .as(Some(AgingState.Solid))
+      .orElse(Opts.flag("stale", "Filter to stale crystals").as(Some(AgingState.Stale)))
+      .orElse(Opts.flag("active", "Filter to active crystals").as(Some(AgingState.Active)))
+      .orElse(
+        Opts.option[AgingState]("aging", "Filter by aging state (active, solid, stale)").orNone,
+      ),
+    Opts.flag("no-archived", "Exclude archived crystals from triage").orFalse.map(!_),
+    Opts.flag("json", "Output triage report as JSON").orFalse,
+  ).mapN((aging, inclArchived, json) => CliCommand.Triage(aging, inclArchived, json))
+
   private val subcommands: List[Opts[CliCommand]] = List(
     forAiOpt,
     Opts.subcommand("init", "Initialize a new crystal")(initOpts),
@@ -385,6 +427,17 @@ object CommandParser:
     Opts.subcommand("slice", "Extract crystal fragments or slice sub-DAGs")(sliceOpts),
     Opts.subcommand("delete", "Permanently delete a crystal and cascade orphaned entities")(
       deleteOpts,
+    ),
+    Opts.subcommand("archive", "Archive a crystal to cold storage (.ccrystals/archive/)")(
+      archiveOpts,
+    ),
+    Opts.subcommand("unarchive", "Restore an archived crystal to active cave")(unarchiveOpts),
+    Opts.subcommand(
+      "melt",
+      "Melt and squash intermediate sub-DAG nodes into a single checkpoint node",
+    )(meltOpts),
+    Opts.subcommand("triage", "Triage workspace crystals for lifecycle hygiene and aging")(
+      triageOpts,
     ),
     Opts.subcommand("mcp", "Start the Model Context Protocol (MCP) server")(mcpOpts),
   )

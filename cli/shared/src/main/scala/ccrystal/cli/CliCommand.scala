@@ -18,7 +18,11 @@ enum CliCommand derives CanEqual:
       createdAt: Option[String] = None,
       tasks: List[String] = Nil,
   )
-  case ListCrystals(status: Option[GoalStatus], jsonOutput: Boolean)
+  case ListCrystals(
+      status: Option[GoalStatus],
+      jsonOutput: Boolean,
+      includeArchived: Boolean = false,
+  )
   case TaskAdd(crystalId: String, description: String)
   case TaskDone(crystalId: String, taskId: String)
   case TaskList(crystalId: String)
@@ -108,6 +112,20 @@ enum CliCommand derives CanEqual:
   case Refresh(crystalId: Option[String], all: Boolean)
   case Batch(scriptOrChain: String)
   case Delete(crystalId: String, force: Boolean = false)
+  case Archive(crystalId: String)
+  case Unarchive(crystalId: String)
+  case Melt(
+      crystalId: String,
+      from: String,
+      to: String,
+      summary: Option[String] = None,
+      anchor: Option[String] = None,
+  )
+  case Triage(
+      filterAging: Option[AgingState] = None,
+      includeArchived: Boolean = true,
+      jsonOutput: Boolean = false,
+  )
   case Mcp(transport: String = "stdio")
   case ForAi
 

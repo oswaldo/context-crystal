@@ -154,18 +154,41 @@ class CliHousekeepingSuite extends FunSuite:
         "n1",
         List(
           DAGNode("n1", Nil, "2026-09-06T10:00:00Z", "usr_bob", NodeKind.HumanPrompt, "Init"),
-          DAGNode("n2", List("n1"), "2026-09-06T10:01:00Z", "usr_bob", NodeKind.ToolExecution, "Step 1"),
-          DAGNode("n3", List("n2"), "2026-09-06T10:02:00Z", "usr_bob", NodeKind.Checkpoint, "Step 2"),
+          DAGNode(
+            "n2",
+            List("n1"),
+            "2026-09-06T10:01:00Z",
+            "usr_bob",
+            NodeKind.ToolExecution,
+            "Step 1",
+          ),
+          DAGNode(
+            "n3",
+            List("n2"),
+            "2026-09-06T10:02:00Z",
+            "usr_bob",
+            NodeKind.Checkpoint,
+            "Step 2",
+          ),
         ),
       ),
     )
     store.save(crystal)
 
     val meltRes = runner.run(
-      CliCommand.Melt("c-melt-test", "n1", "n3", Some("Squashed step 1 and 2"), Some("squashed_root")),
+      CliCommand.Melt(
+        "c-melt-test",
+        "n1",
+        "n3",
+        Some("Squashed step 1 and 2"),
+        Some("squashed_root"),
+      ),
     )
     assert(meltRes.isRight, "Melt command should succeed")
-    assert(meltRes.toOption.get.contains("Melted sub-DAG in 'c-melt-test'"), "Output contains melted summary")
+    assert(
+      meltRes.toOption.get.contains("Melted sub-DAG in 'c-melt-test'"),
+      "Output contains melted summary",
+    )
 
     val reloaded = store.load("c-melt-test").toOption.get
     assertEquals(reloaded.dag.nodes.size, 1)
@@ -185,7 +208,10 @@ class CliHousekeepingSuite extends FunSuite:
       defaultAuthorId = Some("usr_bob"),
       goal = Goal("Solid goal", "Intent", GoalStatus.ConcludedSuccess, Nil),
       entities = List(entity),
-      dag = DAG("n1", List(DAGNode("n1", Nil, "2026-09-06T10:00:00Z", "usr_bob", NodeKind.HumanPrompt, "Init"))),
+      dag = DAG(
+        "n1",
+        List(DAGNode("n1", Nil, "2026-09-06T10:00:00Z", "usr_bob", NodeKind.HumanPrompt, "Init")),
+      ),
     )
     val activeCrystal = ContextCrystal(
       schemaVersion = "1.0.0",
@@ -195,12 +221,16 @@ class CliHousekeepingSuite extends FunSuite:
       defaultAuthorId = Some("usr_bob"),
       goal = Goal("Active goal", "Intent", GoalStatus.InProgress, Nil),
       entities = List(entity),
-      dag = DAG("n1", List(DAGNode("n1", Nil, "2026-09-18T10:00:00Z", "usr_bob", NodeKind.HumanPrompt, "Init"))),
+      dag = DAG(
+        "n1",
+        List(DAGNode("n1", Nil, "2026-09-18T10:00:00Z", "usr_bob", NodeKind.HumanPrompt, "Init")),
+      ),
     )
     store.save(solidCrystal)
     store.save(activeCrystal)
 
-    val solidRes = runner.run(CliCommand.Triage(filterAging = Some(AgingState.Solid), jsonOutput = false))
+    val solidRes =
+      runner.run(CliCommand.Triage(filterAging = Some(AgingState.Solid), jsonOutput = false))
     assert(solidRes.isRight, "Triage --solid should succeed")
     val solidOut = solidRes.toOption.get
     assert(solidOut.contains("c-solid"), "Output must contain c-solid")

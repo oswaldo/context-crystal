@@ -63,8 +63,8 @@ class Runner(
         _ <- store.save(crystal)
       yield s"Initialized crystal '$name' at .ccrystals/$name (Author: ${resolvedAuthor.name} [${resolvedAuthor.id}])"
 
-    case CliCommand.ListCrystals(statusOpt, jsonOutput) =>
-      store.list().map { crystals =>
+    case CliCommand.ListCrystals(statusOpt, jsonOutput, includeArchived) =>
+      store.list(includeArchived).map { crystals =>
         val filtered = statusOpt match
           case Some(st) => crystals.filter(_.goal.status == st)
           case None     => crystals
@@ -78,8 +78,9 @@ class Runner(
             val total        = c.goal.acceptanceCriteria.size
             val openLessons  = c.lessonsLearned.count(_.status == LessonStatus.Open)
             val activeLeases = c.transientLeases.count(_.status == TransientLeaseStatus.Active)
+            val archivedTag  = if store.isArchived(c.id) then " (archived)" else ""
             sb.append(
-              s"- ${c.id} [${c.goal.status}] Tasks: $done/$total | Active Leases: $activeLeases | Open Lessons: $openLessons\n",
+              s"- ${c.id} [${c.goal.status}]$archivedTag Tasks: $done/$total | Active Leases: $activeLeases | Open Lessons: $openLessons\n",
             )
           }
           sb.toString
@@ -530,6 +531,50 @@ class Runner(
           if !confirmed then Right(s"Deletion of crystal '$crystalId' cancelled.")
           else executeDelete(crystalId)
         else executeDelete(crystalId)
+      }
+
+    case CliCommand.Archive(crystalId) =>
+      store.archive(crystalId).map { _ =>
+        s"Archived crystal '$crystalId' to cold storage (.ccrystals/archive/$crystalId)"
+      }
+
+    case CliCommand.Unarchive(crystalId) =>
+      store.unarchive(crystalId).map { _ =>
+        s"Unarchived crystal '$crystalId' back to active cave"
+      }
+
+    case CliCommand.Melt(crystalId, from, to, summaryOpt, anchorOpt) =>
+      store.melt(crystalId, from, to, summaryOpt, anchorOpt).map { node =>
+        s"Melted sub-DAG in '$crystalId' into checkpoint node '${node.id}'"
+      }
+
+    case CliCommand.Triage(filterAgingOpt, includeArchived, jsonOutput) =>
+      store.list(includeArchived).map { crystals =>
+        val allItems = crystals.map { c =>
+          val isArchived = store.isArchived(c.id)
+          ccrystal.core.audit.CrystalTriage.triage(c, isArchived)
+        }
+        val filtered = ccrystal.core.audit.CrystalTriage.filterByAging(allItems, filterAgingOpt)
+
+        if jsonOutput then
+          import ccrystal.core.codec.given
+          filtered.asJson.spaces2
+        else
+          val sb = new java.lang.StringBuilder()
+          sb.append("# Cave Lifecycle & Hygiene Triage Report\n\n")
+          sb.append(
+            s"Total crystals found in workspace: ${crystals.size} (Filtered: ${filtered.size})\n\n",
+          )
+          sb.append(
+            "| Crystal ID | Status | Aging | Category | Tasks | Leases | Lessons | Recommendation |\n",
+          )
+          sb.append("|---|---|---|---|---|---|---|---|\n")
+          filtered.foreach { item =>
+            sb.append(
+              s"| `${item.id}` | ${item.status} | ${item.agingState} | ${item.category} | ${item.totalTasks - item.pendingTasks}/${item.totalTasks} | ${item.activeLeases} | ${item.openLessons} | ${item.recommendation} |\n",
+            )
+          }
+          sb.toString
       }
 
     case CliCommand.EntityDeregister(entityId, force) =>
