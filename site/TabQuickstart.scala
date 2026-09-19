@@ -179,6 +179,22 @@ mkdir -p ~/.local/bin && cp --remove-destination ./cli/native/target/scala-3.9.0
               pre(code("ccrystal batch \"task done my-track -t task-2; transient clean my-track -l lease-1; node add my-track -k checkpoint -s 'Completed OAuth2 milestone' --fidelity inferred\"")),
             ),
           ),
+          div(
+            className := "terminal-step-item",
+            div(className := "step-label", "6. Deterministic Zero-LLM Melting (Sub-DAG Squashing):"),
+            div(
+              className := "code-snippet-box mini",
+              pre(code("ccrystal melt my-track --from init-node --to milestone-1 -s \"Scaffolding & DB schema finalized\"")),
+            ),
+          ),
+          div(
+            className := "terminal-step-item",
+            div(className := "step-label", "7. Conclude, Triage & Cold Storage Archiving:"),
+            div(
+              className := "code-snippet-box mini",
+              pre(code("ccrystal batch \"conclude my-track -s success -r 'Shipped to production'; archive my-track\"")),
+            ),
+          ),
         ),
       ),
     )

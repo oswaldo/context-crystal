@@ -15,6 +15,7 @@ A workspace container housing:
 - `crystal.json`: Canonical state file for each active crystal.
 - `entities.json`: Shared multi-entity authorship registry.
 - `artifacts.json`: Shared cave-level virtual and physical artifact inventory.
+- `.ccrystals/archive/<id>/`: Cold storage repository for concluded, frozen crystals preserving full lineage.
 - Derived Markdown views (`tasks.md`, `lessons-learned.md`, `transient.json`) auto-projected for human inspection.
 - Companion store support via `CCRYSTAL_STORE` environment variable or `.ccrystal-store` pointer file.
 
@@ -51,16 +52,23 @@ ccrystal --for-ai
 
 # Crystal Lifecycle
 ccrystal init <id> -g "<title>" -i "<intent>" [-t "<task>"]...
-ccrystal list [--status in_progress|concluded] [--json]
+ccrystal list [--status in_progress|concluded] [--archived] [--json]
+ccrystal conclude <id> -s <in_progress|concluded_success|concluded_abandoned> [-r "<reason>"]
 ccrystal delete <id> [--force]
 ccrystal refresh <id>
+
+# Cave Hygiene & Archiving
+ccrystal triage [--solid|--stale|--active] [--json]
+ccrystal archive <id>
+ccrystal unarchive <id>
 
 # Tasks (Acceptance Criteria)
 ccrystal task add <id> -d "<description>"
 ccrystal task done <id> -t <task-id>
 
-# DAG Transitions
+# DAG Transitions & Deterministic Melting
 ccrystal node add <id> -k <kind> -s "<summary>" [--author <id>] [--fidelity <fidelity>] [--anchor <label>]
+ccrystal melt <id> --from <anchor> --to <anchor> [-s "<summary>"]
 
 # Context Hydration & Beam Shaping
 ccrystal hydrate <id> [--tail <N>] [--from <anchor>] [--to <anchor>] [--depth <N>] [--summary-only]
@@ -106,12 +114,16 @@ Native stdio JSON-RPC 2.0 endpoint started via `ccrystal mcp`.
 | `crystal_init` | `id`, `goal_title`, `intent`, `tasks?` | Instantiate crystal with atomic criteria |
 | `crystal_list` | `status?`, `json_output?` | List cave crystals with optional filter |
 | `crystal_hydrate` | `crystal_id`, `tail?`, `from?`, `to?`, `summary_only?` | Context beam shaping for LLM prompts |
-| `crystal_triage` | `json_output?` | Automated hygiene categorization |
+| `crystal_triage` | `filter?`, `json_output?` | Deterministic aging hygiene categorization |
 | `crystal_artifact` | `action`, `id?`, `name?`, `substrate?`, `role?`, `uri?` | Manage virtual/physical artifacts |
 | `crystal_checkpoint` | `crystal_id`, `summary`, `fidelity?` | Append DAG checkpoint node |
 | `crystal_task_transition` | `crystal_id`, `task_id`, `status` | Transition acceptance criterion |
+| `crystal_goal_transition` | `crystal_id`, `status`, `reason?` | Transition crystal goal lifecycle state |
 | `crystal_transient_lease` | `crystal_id`, `resource_type`, `path?`, `policy` | Acquire ephemeral resource lease |
 | `crystal_slice_fork` | `source_id`, `fork_to`, `from?`, `to?`, `prune?` | Cleave and fork sub-DAG into child |
+| `crystal_melt` | `crystal_id`, `from`, `to`, `summary?` | Deterministically squash sub-DAG segment into checkpoint |
+| `crystal_archive` | `crystal_id` | Move concluded crystal to cold storage archive |
+| `crystal_unarchive` | `crystal_id` | Restore archived crystal to workspace cave |
 | `crystal_delete` | `crystal_id`, `force?` | Permanent deletion with impact check |
 | `crystal_batch` | `commands` | Multi-command recipe separated by `;` |
 

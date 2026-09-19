@@ -86,14 +86,14 @@ object TabMcp:
         ),
       ),
 
-      // 11 Native MCP Tools Table
+      // 15 Native MCP Tools Table
       sectionTag(
         className := "qs-card",
         div(
           className := "qs-card-header",
           span(className := "qs-step-number", "2"),
           div(
-            h3("The 11 Native MCP Tools"),
+            h3("The 15 Native MCP Tools"),
             p("First-class protocol capabilities designed specifically for autonomous AI pairs:"),
           ),
         ),
@@ -126,8 +126,8 @@ object TabMcp:
               ),
               tr(
                 td(code("crystal_triage")),
-                td(code("json_output?")),
-                td("Automated cave hygiene: classifies crystals into CandidateForCleanup, Keep, or RequiresReview."),
+                td(code("filter?, json_output?")),
+                td("Deterministic cave hygiene: classifies crystals into solid, stale, or active aging buckets."),
               ),
               tr(
                 td(code("crystal_artifact")),
@@ -145,6 +145,11 @@ object TabMcp:
                 td("Transitions an acceptance criterion to completed, in_progress, or blocked."),
               ),
               tr(
+                td(code("crystal_goal_transition")),
+                td(code("crystal_id, status, reason?")),
+                td("Concludes or transitions crystal lifecycle goal (in_progress, concluded_success, concluded_abandoned)."),
+              ),
+              tr(
                 td(code("crystal_transient_lease")),
                 td(code("crystal_id, resource_type, path?, desc, policy")),
                 td("Registers an ephemeral resource lease (git_worktree, mock) with cleanup policy."),
@@ -153,6 +158,21 @@ object TabMcp:
                 td(code("crystal_slice_fork")),
                 td(code("source_id, fork_to, from?, to?, prune?")),
                 td("Cleaves sub-DAG at a semantic anchor and forks into a dedicated child crystal."),
+              ),
+              tr(
+                td(code("crystal_melt")),
+                td(code("crystal_id, from, to, summary?")),
+                td("Deterministically squashes linear sub-DAG segment into single checkpoint without LLM drift."),
+              ),
+              tr(
+                td(code("crystal_archive")),
+                td(code("crystal_id")),
+                td("Moves concluded crystal into cold storage (.ccrystals/archive/) while preserving history."),
+              ),
+              tr(
+                td(code("crystal_unarchive")),
+                td(code("crystal_id")),
+                td("Restores archived crystal from cold storage back to active workspace cave."),
               ),
               tr(
                 td(code("crystal_delete")),

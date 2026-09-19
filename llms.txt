@@ -9,6 +9,7 @@
 - **Context Beam Hydration:** Cast living context before making multi-step edits (`ccrystal hydrate <id> --tail 5` or `crystal_hydrate`).
 - **Zero Agent Debris:** Register an explicit transient lease for every temporary git worktree or mock config (`ccrystal transient lease` or `crystal_transient_lease`). Clean or promote leases before marking goals concluded.
 - **Atomic Multi-Command Batching:** Compose atomic update recipes separated by semicolons (`ccrystal batch "cmd1; cmd2"` or `crystal_batch`).
+- **Cold Storage Over Deletion:** Conclude goals cleanly (`ccrystal conclude`), squash intermediate nodes (`ccrystal melt`), and archive solid crystals to cold storage (`ccrystal archive`) rather than destructive deletion.
 
 ## Installation
 Single-line curl installer:
@@ -22,7 +23,7 @@ curl -fsSL https://raw.githubusercontent.com/oswaldo/context-crystal/main/instal
 ccrystal init <id> -g "<goal-title>" -i "<intent>" -t "<task-1>" -t "<task-2>"
 
 # List cave crystals
-ccrystal list [--status in_progress|concluded] [--json]
+ccrystal list [--status in_progress|concluded] [--archived] [--json]
 
 # Hydrate context beam
 ccrystal hydrate <id> [--tail <N>] [--from <sel>] [--to <sel>] [--summary-only]
@@ -31,8 +32,14 @@ ccrystal hydrate <id> [--tail <N>] [--from <sel>] [--to <sel>] [--summary-only]
 ccrystal task done <id> -t <task-id>
 ccrystal task add <id> -d "<description>"
 
+# Conclude goal lifecycle
+ccrystal conclude <id> -s success|abandoned [-r "<reason>"]
+
 # Append causal DAG node
 ccrystal node add <id> -k <checkpoint|prompt|action|resolution> -s "<summary>" --fidelity inferred
+
+# Deterministic sub-DAG melting (zero-LLM squashing)
+ccrystal melt <id> --from <anchor> --to <anchor> [-s "<summary>"]
 
 # Manage transient resource leases
 ccrystal transient lease <id> -t <git_worktree|mock_service> -p <path> -d "<desc>" --policy revert_on_conclusion
@@ -40,6 +47,11 @@ ccrystal transient clean <id> -l <lease-id>
 
 # Slice and fork sub-DAG
 ccrystal slice <id> --from <anchor> --fork-to <child-id> [--prune]
+
+# Cave hygiene triage & cold storage archiving
+ccrystal triage [--solid|--stale|--active]
+ccrystal archive <id>
+ccrystal unarchive <id>
 
 # Start native Model Context Protocol (MCP) server
 ccrystal mcp
@@ -49,14 +61,19 @@ ccrystal mcp
 1. `crystal_init`: Instantiate crystal with goal, intent, and optional `tasks: string[]`.
 2. `crystal_list`: Query cave crystals with optional status filter.
 3. `crystal_hydrate`: Beam shaping with `tail`, `from`, `to`, `depth`, `summary_only`.
-4. `crystal_triage`: Automated cave hygiene (`CandidateForCleanup`, `Keep`, `RequiresReview`).
+4. `crystal_triage`: Deterministic cave hygiene (`solid`, `stale`, `active`).
 5. `crystal_artifact`: Register, list, or inspect virtual and physical artifacts.
 6. `crystal_checkpoint`: Append immutable DAG checkpoint node.
 7. `crystal_task_transition`: Complete or update acceptance criteria.
-8. `crystal_transient_lease`: Acquire temporary resource lease.
-9. `crystal_slice_fork`: Cleave sub-DAG into child crystal.
-10. `crystal_delete`: Delete crystal with cascade entity preview.
-11. `crystal_batch`: Execute semicolon-delimited CLI recipes atomically.
+8. `crystal_goal_transition`: Conclude or transition crystal goal status.
+9. `crystal_transient_lease`: Acquire temporary resource lease.
+10. `crystal_slice_fork`: Cleave sub-DAG into child crystal.
+11. `crystal_melt`: Deterministically squash linear sub-DAG segment into checkpoint.
+12. `crystal_archive`: Move concluded crystal to cold storage archive.
+13. `crystal_unarchive`: Restore archived crystal from cold storage back to cave.
+14. `crystal_delete`: Delete crystal with cascade entity preview.
+15. `crystal_batch`: Execute semicolon-delimited CLI recipes atomically.
 
 ## Full Corpus Link
 For full JSON schemas, ontology models, and exhaustive CLI documentation, see `/llms-full.txt`.
+

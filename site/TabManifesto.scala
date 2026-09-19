@@ -180,7 +180,7 @@ object TabManifesto:
               ),
               tr(
                 td(strong("Agent Protocol")),
-                td(span(className := "pill green", "Native Stdio MCP Server (11 Tools)")),
+                td(span(className := "pill green", "Native Stdio MCP Server (15 Tools)")),
                 td("Custom vendor SDKs"),
                 td("None (isolated manual chat)"),
               ),
@@ -189,6 +189,12 @@ object TabManifesto:
                 td(span(className := "pill green", "Mandatory Transient Leases")),
                 td("Unmanaged orphaned files"),
                 td("Manual developer cleanup"),
+              ),
+              tr(
+                td(strong("Lifecycle & Compaction")),
+                td(span(className := "pill green", "Zero-LLM Melting & Cold Storage Archive")),
+                td("Hallucinatory LLM re-summarization"),
+                td("Context bloat or manual wipe"),
               ),
             ),
           ),
