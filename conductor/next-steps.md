@@ -61,4 +61,10 @@ Active implementation on orphan branch `gh-pages` (`~/git/context-crystal-gh-pag
     - **Causal DAG Links:** Directional artifact tracking on `DAGNode` (`inputArtifactIds`, `outputArtifactIds`, `preconditionArtifactIds`).
     - **Cave Artifact Registry (`.ccrystals/artifacts.json` & `crystal://artifacts`):** Long-lived shared assets (lab environments, tooling profiles, canonical repositories).
     - **Beam Shaping Integration:** Projecting active deliverables, available instruments, and environmental invariants directly into the prompt beam during context hydration.
+- **Track 18: Universal Agent Runtime Matrix, Packaging & Distribution:**
+  - *Context & Problem Statement:* Disparate AI agent harnesses (Google Antigravity, Claude Code, Cursor, Windsurf, Zed, OpenAI Swarm/Codex, LangChain/LangGraph) utilize disparate discovery paths, configuration files (`instructions.md`, `.cursorrules`, `CLAUDE.md`, `.agents/skills`), and tool schemas. There is currently no cross-vendor standard for agent toolchain discovery.
+  - *Vision & Deliverables:*
+    - **Cross-Runtime Adapter Matrix:** Standardized adapters and discovery recipes for Google Antigravity, Claude Desktop / Claude Code, Cursor, Windsurf, Zed, and OpenAI-compatible tool callers.
+    - **Automated Agent Onboarding CLI (`ccrystal agent install / doctor`):** Interactive or flag-driven CLI subcommand that detects installed agent harnesses on the local machine, configures their MCP server manifests (`mcp.json`, `settings.json`, `claude_desktop_config.json`), and installs canonical sidecar prompt instructions without manual JSON editing.
+    - **Universal Distribution Packaging:** Official multi-architecture distribution bundles (Homebrew tap formula, Arch AUR package, Nix flake, and VSCode / Cursor extension wrapper) complementing the standalone `curl -fsSL ... | sh` installer.
 - **Maintenance / Chore (Completed / Locked):** Upgraded to Scala 3.9.0 LTS and sbt-scala-native 0.5.12 with zero warnings. sbt 2.0.8 compatibility locked at sbt 1.10.7 pending community sbt 2.x cross-publishing of required plugins (sbt-crossproject, sbt-updates, scalafix, scalafmt).
