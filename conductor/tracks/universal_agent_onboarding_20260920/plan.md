@@ -10,9 +10,9 @@
 - [x] Task: Phase 1 Verification & Checkpoint (Refer to workflow.md) (342abd4)
 
 ## Phase 2: Diagnostic Engine (`ccrystal agent doctor`)
-- [ ] Task: Diagnostic Evaluator & Report Generation (TDD)
-  - [ ] Write unit tests evaluating `ccrystal` binary in `$PATH`, cave store permissions, and harness configuration status (`Configured`, `MissingConfig`, `NotInstalled`, `Corrupted`).
-  - [ ] Implement `AgentDoctor` evaluator returning typed `DoctorReport`.
+- [x] Task: Diagnostic Evaluator & Report Generation (TDD) (15ae088)
+  - [x] Write unit tests for evaluating binary availability, store status, and harness configuration status.
+  - [x] Implement `AgentDoctor` evaluator returning typed `DoctorReport`.
 - [ ] Task: CLI Command `ccrystal agent doctor` (TDD)
   - [ ] Write unit tests for decline CLI options (`agent doctor [--json] [--verbose]`) and rendering.
   - [ ] Implement decline parser command and formatted ANSI table + JSON outputs.
