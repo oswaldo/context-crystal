@@ -45,7 +45,7 @@
 
 ## Phase 4: CLI Subcommands & Decline Parser Wiring
 
-- [ ] Task: Write failing integration tests for CLI commands in `cli` (MUnit Red Phase)
+- [~] Task: Write failing integration tests for CLI commands in `cli` (MUnit Red Phase)
   - [ ] Test `ccrystal archive <id>` and `ccrystal unarchive <id>`
   - [ ] Test `ccrystal melt <id> --from <node> --to <node> [--summary <text>]`
   - [ ] Test `ccrystal list --archived` and `ccrystal triage --solid` / `--stale`
