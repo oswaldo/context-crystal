@@ -19,13 +19,13 @@
 
 ## Phase 2: Sub-DAG Melting & Squashing Engine
 
-- [ ] Task: Write failing unit tests for sub-DAG melting in `core` (MUnit Red Phase)
-  - [ ] Test linear chain squashing with zero-LLM deterministic bulleted summary
-  - [ ] Test custom agent summary override parameter
-  - [ ] Test artifact aggregation (union of `artifactIds`, `inputArtifactIds`, etc.)
-  - [ ] Test boundary edge reconnection (incoming parents to outgoing children)
-  - [ ] Test invalid range errors (non-existent nodes, disjoint paths)
-- [ ] Task: Implement `melt` engine and graph squashing algorithms in `core` (Green Phase)
+- [x] Task: Write failing unit tests for sub-DAG melting in `core` (MUnit Red Phase) [82dd5e6]
+  - [x] Test linear chain squashing with zero-LLM deterministic bulleted summary
+  - [x] Test custom agent summary override parameter
+  - [x] Test artifact aggregation (union of `artifactIds`, `inputArtifactIds`, etc.)
+  - [x] Test boundary edge reconnection (incoming parents to outgoing children)
+  - [x] Test invalid range errors (non-existent nodes, disjoint paths)
+- [~] Task: Implement `melt` engine and graph squashing algorithms in `core` (Green Phase)
   - [ ] Implement topological path resolver between `fromNode` and `toNode`
   - [ ] Construct consolidated `DAGNode` with kind `checkpoint` and merged artifacts
   - [ ] Rewire DAG nodes and update `CrystalStore`
