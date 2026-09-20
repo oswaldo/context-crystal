@@ -18,14 +18,14 @@
   - [x] Implement decline parser command and formatted ANSI table + JSON outputs.
 - [x] Task: Phase 2 Verification & Checkpoint (Refer to workflow.md) (950f3fa)
 
-## Phase 3: Automated Onboarding Engine (`ccrystal agent install`)
+## Phase 3: Automated Onboarding Engine (`ccrystal agent install`) [checkpoint: 2b1a449]
 - [x] Task: Defensive Automated Configuration Installer (TDD) (227d43d)
   - [x] Write unit tests for installer execution: atomic `.tmp` swap, creation of `.bak` backups, rollback verification, `--dry-run` previews, and target filtering.
   - [x] Implement `AgentInstaller` engine with clear CLI logging of backup locations and rollback instructions.
 - [x] Task: CLI Command `ccrystal agent install` (TDD) (54569e3)
   - [x] Write unit tests for CLI wiring of `agent install [--target <harness>] [--dry-run] [--force]`.
   - [x] Implement decline subcommand and attach to main CLI router.
-- [ ] Task: Phase 3 Verification & Checkpoint (Refer to workflow.md)
+- [x] Task: Phase 3 Verification & Checkpoint (Refer to workflow.md) (2b1a449)
 
 ## Phase 4: Cross-Platform Verification, Safety Audits & Documentation
 - [ ] Task: Cross-Platform Verification Suite
