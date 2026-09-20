@@ -53,5 +53,5 @@
 - [x] **Track: Universal Agent Runtime Matrix & Automated Onboarding**  
   *Link: [conductor/tracks/universal_agent_onboarding_20260920/index.md](./tracks/universal_agent_onboarding_20260920/index.md)*
 
-- [ ] **Track: Storage Isolation, Atomic Swaps & Optimistic Concurrency Control (OCC)**  
+- [~] **Track: Storage Isolation, Atomic Swaps & Optimistic Concurrency Control (OCC)**  
   *Link: [conductor/tracks/store_hardening_and_concurrency_20260920/index.md](./tracks/store_hardening_and_concurrency_20260920/index.md)*
