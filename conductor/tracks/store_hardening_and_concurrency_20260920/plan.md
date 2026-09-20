@@ -1,14 +1,14 @@
 # Implementation Plan: Storage Isolation, Atomic Swaps & Optimistic Concurrency Control (OCC)
 
-## Phase 1: Atomic File Swaps & Zero-Torn-Read Inode Engine (TDD)
+## Phase 1: Atomic File Swaps & Zero-Torn-Read Inode Engine (TDD) [checkpoint: 658f8ae]
 
-- [x] Task: Atomic Inode Replacement Unit Tests (TDD)
+- [x] Task: Atomic Inode Replacement Unit Tests (TDD) (658f8ae)
   - [x] Write unit tests asserting that `FsCrystalStore.save` uses temporary file staging and atomic replacement (`REPLACE_EXISTING`).
   - [x] Write tests verifying that concurrent reads during write loops observe only complete, valid JSON files.
-- [x] Task: Implement Atomic File Replacement in `FsCrystalStore`
+- [x] Task: Implement Atomic File Replacement in `FsCrystalStore` (658f8ae)
   - [x] Introduce internal atomic file writing helper in `FsCrystalStore` for `crystal.json`, `tasks.md`, `lessons-learned.md`, and `transient.json`.
   - [x] Ensure non-destructive cleanup of temporary files upon write failures.
-- [ ] Task: Phase 1 Verification & Checkpoint (Refer to workflow.md)
+- [x] Task: Phase 1 Verification & Checkpoint (Refer to workflow.md) (658f8ae)
 
 ## Phase 2: Storage-Isolated Transactional API & OCC Rebase (TDD)
 
