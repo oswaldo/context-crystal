@@ -23,16 +23,16 @@
   - [x] Refactor MCP handlers (`DefaultMcpHandler`) to route mutations through `store.update`.
 - [x] Task: Phase 2 Verification & Checkpoint (Refer to workflow.md) (4b60903)
 
-## Phase 3: AgentInstaller CAS Protection & Ephemeral Mutex Serialization (TDD)
+## Phase 3: AgentInstaller CAS Protection & Ephemeral Mutex Serialization (TDD) [checkpoint: 4e9f981]
 
-- [ ] Task: AgentInstaller External Drift Unit Tests (TDD)
-  - [ ] Write unit tests asserting `AgentInstaller` detects file drift between inspection and write.
-  - [ ] Verify that external edits abort installation and preserve untouched `.ccrystal.bak`.
-- [ ] Task: Implement Pre-Read Fingerprinting & CAS in `AgentInstaller`
-  - [ ] Add SHA-256 fingerprint extraction in `FileSystemInspector` and validate in `AgentInstaller` before atomic write.
-- [ ] Task: Ephemeral Mutex Lockfile in `FsCrystalStore`
-  - [ ] Implement short-lived `.lock` mutex file with PID + timestamp and 5-second staleness auto-expiration.
-- [ ] Task: Phase 3 Verification & Checkpoint (Refer to workflow.md)
+- [x] Task: AgentInstaller External Drift Unit Tests (TDD) (4e9f981)
+  - [x] Write unit tests asserting `AgentInstaller` detects file drift between inspection and write.
+  - [x] Verify that external edits abort installation and preserve untouched `.ccrystal.bak`.
+- [x] Task: Implement Pre-Read Fingerprinting & CAS in `AgentInstaller` (4e9f981)
+  - [x] Add pure ContentFingerprint validation in `AgentInstaller` before atomic write.
+- [x] Task: Ephemeral Mutex Lockfile in `FsCrystalStore` (4e9f981)
+  - [x] Implement short-lived `.lock` mutex file with PID + timestamp and 5-second staleness auto-expiration.
+- [x] Task: Phase 3 Verification & Checkpoint (Refer to workflow.md) (4e9f981)
 
 ## Phase 4: Concurrency Stress Verification, Documentation & Release Build
 
