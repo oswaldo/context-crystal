@@ -13,9 +13,9 @@
 - [x] Task: Diagnostic Evaluator & Report Generation (TDD) (15ae088)
   - [x] Write unit tests for evaluating binary availability, store status, and harness configuration status.
   - [x] Implement `AgentDoctor` evaluator returning typed `DoctorReport`.
-- [ ] Task: CLI Command `ccrystal agent doctor` (TDD)
-  - [ ] Write unit tests for decline CLI options (`agent doctor [--json] [--verbose]`) and rendering.
-  - [ ] Implement decline parser command and formatted ANSI table + JSON outputs.
+- [x] Task: CLI Command `ccrystal agent doctor` (TDD) (950f3fa)
+  - [x] Write unit tests for decline CLI options (`agent doctor [--json] [--verbose]`) and rendering.
+  - [x] Implement decline parser command and formatted ANSI table + JSON outputs.
 - [ ] Task: Phase 2 Verification & Checkpoint (Refer to workflow.md)
 
 ## Phase 3: Automated Onboarding Engine (`ccrystal agent install`)
