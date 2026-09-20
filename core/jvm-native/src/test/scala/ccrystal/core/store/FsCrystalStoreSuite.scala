@@ -341,9 +341,5 @@ class FsCrystalStoreSuite extends FunSuite:
       val loadRes = store.load(crystalId)
       if loadRes.isLeft then readFailures += 1
 
-    assertEquals(
-      readFailures,
-      0,
-      "Concurrent readers should never observe torn or unparseable JSON",
-    )
+    assertEquals(readFailures, 0, "Concurrent readers should never observe torn or unparseable JSON")
   }
