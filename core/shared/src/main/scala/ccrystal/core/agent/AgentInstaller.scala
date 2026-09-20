@@ -1,5 +1,7 @@
 package ccrystal.core.agent
 
+import ccrystal.core.store.ContentFingerprint
+
 trait FileSystemOperator extends FileSystemInspector:
   def createDirectories(path: String): Either[String, Unit]
   def writeFile(path: String, content: String): Either[String, Unit]
@@ -76,8 +78,10 @@ class AgentInstaller(
                 HarnessInstallReceipt(harness, path, InstallActionKind.Installed, None, None)
 
         case _ =>
-          val existing    = operator.readFile(path).getOrElse("")
-          val fileExisted = operator.fileExists(path)
+          val maybeExisting      = operator.readFile(path)
+          val fileExisted        = maybeExisting.isDefined
+          val existing           = maybeExisting.getOrElse("")
+          val initialFingerprint = ContentFingerprint.compute(existing)
 
           HarnessConfigPatcher.patchJson(existing, harness, force) match
             case Left(err) =>
@@ -101,26 +105,46 @@ class AgentInstaller(
 
                 if dryRun then HarnessInstallReceipt(harness, path, actionKind, bakPath, rollback)
                 else
-                  val parent = parentDir(path)
-                  val res = for
-                    _ <- operator.createDirectories(parent)
-                    _ <- bakPath match
-                      case Some(b) => operator.copyFile(path, b)
-                      case None    => Right(())
-                    _ <- operator.atomicWrite(path, patch.patchedContent)
-                  yield ()
+                  val currentExists = operator.fileExists(path)
+                  val driftDetected =
+                    if fileExisted then
+                      !currentExists || {
+                        val currentContent = operator.readFile(path).getOrElse("")
+                        ContentFingerprint.compute(currentContent) != initialFingerprint
+                      }
+                    else currentExists
 
-                  res match
-                    case Left(err) =>
-                      HarnessInstallReceipt(
-                        harness,
-                        path,
-                        InstallActionKind.Failed(err),
-                        None,
-                        None,
-                      )
-                    case Right(_) =>
-                      HarnessInstallReceipt(harness, path, actionKind, bakPath, rollback)
+                  if driftDetected then
+                    HarnessInstallReceipt(
+                      harness,
+                      path,
+                      InstallActionKind.Failed(
+                        s"Concurrent modification detected on $path; operation aborted to prevent overwriting external changes",
+                      ),
+                      None,
+                      None,
+                    )
+                  else
+                    val parent = parentDir(path)
+                    val res = for
+                      _ <- operator.createDirectories(parent)
+                      _ <- bakPath match
+                        case Some(b) => operator.copyFile(path, b)
+                        case None    => Right(())
+                      _ <- operator.atomicWrite(path, patch.patchedContent)
+                    yield ()
+
+                    res match
+                      case Left(err) =>
+                        HarnessInstallReceipt(
+                          harness,
+                          path,
+                          InstallActionKind.Failed(err),
+                          None,
+                          None,
+                        )
+                      case Right(_) =>
+                        HarnessInstallReceipt(harness, path, actionKind, bakPath, rollback)
 
   private def parentDir(path: String): String =
     val lastSlash = path.lastIndexOf('/')

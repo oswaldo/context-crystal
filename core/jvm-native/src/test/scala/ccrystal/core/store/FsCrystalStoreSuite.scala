@@ -462,3 +462,56 @@ class FsCrystalStoreSuite extends FunSuite:
     assertEquals(finalCrystal.entities.map(_.id), List("e-concurrent"))
     assertEquals(finalCrystal.dag.nodes.map(_.id), List("root", "node-2"))
   }
+
+  test("FsCrystalStore.withCrystalLock creates .lock, serializes, and cleans up on completion") {
+    val store    = FsCrystalStore(tempDir.resolve(".ccrystals").toString)
+    val testDir  = tempDir.resolve(".ccrystals").resolve("lock-test-crystal")
+    val lockFile = testDir.resolve(".lock")
+
+    var observedLockDuringBlock = false
+    var lockContentSnippet      = ""
+
+    val res = store.withCrystalLock(testDir) {
+      observedLockDuringBlock = java.nio.file.Files.exists(lockFile)
+      if observedLockDuringBlock then
+        val bytes = java.nio.file.Files.readAllBytes(lockFile)
+        lockContentSnippet = new String(bytes, java.nio.charset.StandardCharsets.UTF_8)
+      Right("execution-done")
+    }
+
+    assertEquals(res, Right("execution-done"))
+    assertEquals(observedLockDuringBlock, true, "Lock file must exist during block execution")
+    assert(lockContentSnippet.contains("pid="), "Lock file must contain pid")
+    assert(lockContentSnippet.contains("timestamp="), "Lock file must contain timestamp")
+    assertEquals(
+      java.nio.file.Files.exists(lockFile),
+      false,
+      "Lock file must be deleted upon block completion",
+    )
+  }
+
+  test("FsCrystalStore.withCrystalLock reclaims stale lock (> 5000ms old)") {
+    val store   = FsCrystalStore(tempDir.resolve(".ccrystals").toString)
+    val testDir = tempDir.resolve(".ccrystals").resolve("stale-lock-test-crystal")
+    java.nio.file.Files.createDirectories(testDir)
+    val lockFile = testDir.resolve(".lock")
+
+    // Seed a stale lock file with timestamp 10 seconds in the past
+    val staleTs      = System.currentTimeMillis() - 10000L
+    val staleContent = s"pid=99999\ntimestamp=$staleTs\n"
+    java.nio.file.Files.write(
+      lockFile,
+      staleContent.getBytes(java.nio.charset.StandardCharsets.UTF_8),
+    )
+
+    val res = store.withCrystalLock(testDir) {
+      Right("stale-reclaimed")
+    }
+
+    assertEquals(res, Right("stale-reclaimed"))
+    assertEquals(
+      java.nio.file.Files.exists(lockFile),
+      false,
+      "Lock file must be cleaned up after stale recovery",
+    )
+  }
