@@ -49,16 +49,6 @@ object DefaultFileSystemOperator extends FileSystemOperator:
       val targetPath = Paths.get(path)
       val tempPath   = Paths.get(s"$path.tmp-${System.currentTimeMillis()}")
       Files.write(tempPath, content.getBytes(StandardCharsets.UTF_8))
-      try
-        Files.move(
-          tempPath,
-          targetPath,
-          StandardCopyOption.REPLACE_EXISTING,
-          StandardCopyOption.ATOMIC_MOVE,
-        )
-        Right(())
-      catch
-        case _: java.nio.file.AtomicMoveNotSupportedException =>
-          Files.move(tempPath, targetPath, StandardCopyOption.REPLACE_EXISTING)
-          Right(())
+      Files.move(tempPath, targetPath, StandardCopyOption.REPLACE_EXISTING)
+      Right(())
     catch case e: Throwable => Left(s"Failed to write file atomically to '$path': ${e.getMessage}")
