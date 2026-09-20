@@ -34,11 +34,11 @@
   - [x] Implement short-lived `.lock` mutex file with PID + timestamp and 5-second staleness auto-expiration.
 - [x] Task: Phase 3 Verification & Checkpoint (Refer to workflow.md) (4e9f981)
 
-## Phase 4: Concurrency Stress Verification, Documentation & Release Build
+## Phase 4: Concurrency Stress Verification, Documentation & Release Build [checkpoint: 984e079]
 
-- [ ] Task: Cross-Platform Concurrency Stress Suite
-  - [ ] Run automated multi-thread and multi-process concurrent stress tests across JVM and Native targets.
-- [ ] Task: Documentation, Optimized Release Binary & Host Dogfooding
-  - [ ] Update `README.md`, `conductor/next-steps.md`, and architecture documentation.
-  - [ ] Compile release binary with Thin LTO and verify live.
-- [ ] Task: Phase 4 Verification & Checkpoint (Refer to workflow.md)
+- [x] Task: Cross-Platform Concurrency Stress Suite (984e079)
+  - [x] Run automated multi-thread and multi-process concurrent stress tests across JVM and Native targets.
+- [x] Task: Documentation, Optimized Release Binary & Host Dogfooding (984e079)
+  - [x] Update `README.md`, `conductor/next-steps.md`, and architecture documentation.
+  - [x] Compile release binary with Thin LTO and verify live.
+- [x] Task: Phase 4 Verification & Checkpoint (Refer to workflow.md) (984e079)
