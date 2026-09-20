@@ -9,14 +9,14 @@
   - [x] Implement `HarnessConfigPatcher` with zero external dependencies beyond Circe, generating atomic `.ccrystal.bak` files and surfacing rollback paths in execution receipts.
 - [x] Task: Phase 1 Verification & Checkpoint (Refer to workflow.md) (342abd4)
 
-## Phase 2: Diagnostic Engine (`ccrystal agent doctor`)
+## Phase 2: Diagnostic Engine (`ccrystal agent doctor`) [checkpoint: 950f3fa]
 - [x] Task: Diagnostic Evaluator & Report Generation (TDD) (15ae088)
   - [x] Write unit tests for evaluating binary availability, store status, and harness configuration status.
   - [x] Implement `AgentDoctor` evaluator returning typed `DoctorReport`.
 - [x] Task: CLI Command `ccrystal agent doctor` (TDD) (950f3fa)
   - [x] Write unit tests for decline CLI options (`agent doctor [--json] [--verbose]`) and rendering.
   - [x] Implement decline parser command and formatted ANSI table + JSON outputs.
-- [ ] Task: Phase 2 Verification & Checkpoint (Refer to workflow.md)
+- [x] Task: Phase 2 Verification & Checkpoint (Refer to workflow.md) (950f3fa)
 
 ## Phase 3: Automated Onboarding Engine (`ccrystal agent install`)
 - [ ] Task: Defensive Automated Configuration Installer (TDD)
