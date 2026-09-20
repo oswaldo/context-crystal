@@ -1,0 +1,216 @@
+{
+  "schemaVersion" : "1.0.0",
+  "id" : "universal-agent-onboarding",
+  "name" : "universal-agent-onboarding",
+  "createdAt" : "2026-09-19T22:36:34.465Z",
+  "updatedAt" : "2026-09-20T00:41:32.971Z",
+  "parentCrystalId" : null,
+  "origin" : null,
+  "caveId" : null,
+  "defaultAuthorId" : "usr_agt_antigravity",
+  "goal" : {
+    "title" : "Universal Agent Runtime Matrix & Automated Onboarding",
+    "intent" : "Add cross-runtime agent detection and automated onboarding commands (ccrystal agent doctor, ccrystal agent install) across Google Antigravity, Claude Code, Cursor, Windsurf, and Zed.",
+    "status" : "concluded_success",
+    "acceptanceCriteria" : [
+      {
+        "id" : "task-1",
+        "description" : "Phase 1: Agent Runtime Detection & Harness Models",
+        "completed" : true
+      },
+      {
+        "id" : "task-2",
+        "description" : "Phase 2: CLI Subcommands (agent doctor & install)",
+        "completed" : true
+      },
+      {
+        "id" : "task-3",
+        "description" : "Phase 3: Cross-Platform Tests & Validation",
+        "completed" : true
+      },
+      {
+        "id" : "task-4",
+        "description" : "Phase 4: Release Binary, Documentation & Dogfooding",
+        "completed" : true
+      }
+    ],
+    "metadata" : {
+      
+    }
+  },
+  "entities" : [
+    {
+      "id" : "usr_agt_antigravity",
+      "kind" : "human",
+      "name" : "agt_antigravity",
+      "metadata" : {
+        
+      },
+      "publicKey" : null,
+      "endpoints" : {
+        
+      }
+    }
+  ],
+  "activeMask" : null,
+  "dag" : {
+    "rootNodeId" : "node-universal-agent-onboarding-init",
+    "nodes" : [
+      {
+        "id" : "node-universal-agent-onboarding-init",
+        "parentIds" : [
+        ],
+        "timestamp" : "2026-09-19T22:36:34.465Z",
+        "actorId" : "usr_agt_antigravity",
+        "kind" : "human_prompt",
+        "contentSummary" : "Initialized crystal 'universal-agent-onboarding' with goal: Universal Agent Runtime Matrix & Automated Onboarding",
+        "anchor" : null,
+        "artifactIds" : [
+        ],
+        "inputArtifactIds" : [
+        ],
+        "outputArtifactIds" : [
+        ],
+        "preconditionArtifactIds" : [
+        ],
+        "fidelity" : "inferred",
+        "metadata" : {
+          
+        }
+      },
+      {
+        "id" : "node-2",
+        "parentIds" : [
+          "node-universal-agent-onboarding-init"
+        ],
+        "timestamp" : "2026-09-19T23:02:26.209Z",
+        "actorId" : "usr_agt_antigravity",
+        "kind" : "checkpoint",
+        "contentSummary" : "Phase 1 Complete: Agent Harness ADTs, platform path resolution across Linux/macOS/Windows, and defensive Circe AST patcher with .ccrystal.bak rollback support.",
+        "anchor" : "phase-1-models-and-patcher",
+        "artifactIds" : [
+        ],
+        "inputArtifactIds" : [
+        ],
+        "outputArtifactIds" : [
+        ],
+        "preconditionArtifactIds" : [
+        ],
+        "fidelity" : "inferred",
+        "metadata" : {
+          
+        }
+      },
+      {
+        "id" : "node-3",
+        "parentIds" : [
+          "node-2"
+        ],
+        "timestamp" : "2026-09-20T00:19:41.608Z",
+        "actorId" : "usr_agt_antigravity",
+        "kind" : "checkpoint",
+        "contentSummary" : "Phase 2 Complete: Diagnostic Engine ('ccrystal agent doctor') with ANSI table formatting, JSON machine-readable output (--json), and in-memory FileSystemInspector abstraction.",
+        "anchor" : "phase-2-agent-doctor",
+        "artifactIds" : [
+        ],
+        "inputArtifactIds" : [
+        ],
+        "outputArtifactIds" : [
+        ],
+        "preconditionArtifactIds" : [
+        ],
+        "fidelity" : "inferred",
+        "metadata" : {
+          
+        }
+      },
+      {
+        "id" : "node-4",
+        "parentIds" : [
+          "node-3"
+        ],
+        "timestamp" : "2026-09-20T00:34:39.806Z",
+        "actorId" : "usr_agt_antigravity",
+        "kind" : "checkpoint",
+        "contentSummary" : "Phase 3 Complete: Automated Onboarding Engine ('ccrystal agent install') with atomic .tmp swapping, mandatory .ccrystal.bak creation, explicit rollback instructions, and --dry-run simulation.",
+        "anchor" : "phase-3-agent-installer",
+        "artifactIds" : [
+        ],
+        "inputArtifactIds" : [
+        ],
+        "outputArtifactIds" : [
+        ],
+        "preconditionArtifactIds" : [
+        ],
+        "fidelity" : "inferred",
+        "metadata" : {
+          
+        }
+      },
+      {
+        "id" : "node-5",
+        "parentIds" : [
+          "node-4"
+        ],
+        "timestamp" : "2026-09-20T00:41:32.970Z",
+        "actorId" : "usr_agt_antigravity",
+        "kind" : "checkpoint",
+        "contentSummary" : "Phase 4 Complete: Full test suite verification across Native/JVM/JS, documentation updated, Thin LTO release binary compiled, and agent doctor/install live verified on host.",
+        "anchor" : "phase-4-verification",
+        "artifactIds" : [
+        ],
+        "inputArtifactIds" : [
+        ],
+        "outputArtifactIds" : [
+        ],
+        "preconditionArtifactIds" : [
+        ],
+        "fidelity" : "inferred",
+        "metadata" : {
+          
+        }
+      },
+      {
+        "id" : "node-6",
+        "parentIds" : [
+          "node-5"
+        ],
+        "timestamp" : "2026-09-20T00:41:32.971Z",
+        "actorId" : "usr_agt_antigravity",
+        "kind" : "resolution",
+        "contentSummary" : "Universal Agent Runtime Matrix successfully delivered with non-destructive diagnostic evaluator (ccrystal agent doctor) and defensive automated onboarding engine (ccrystal agent install) across 6 major agent environments.",
+        "anchor" : null,
+        "artifactIds" : [
+        ],
+        "inputArtifactIds" : [
+        ],
+        "outputArtifactIds" : [
+        ],
+        "preconditionArtifactIds" : [
+        ],
+        "fidelity" : "inferred",
+        "metadata" : {
+          
+        }
+      }
+    ]
+  },
+  "transientLeases" : [
+    {
+      "id" : "lease-1",
+      "resourceType" : "git_worktree",
+      "resourcePath" : null,
+      "description" : "Dedicated track worktree at ../ccrystal-worktrees/universal-agent-onboarding",
+      "disposalPolicy" : "manual",
+      "status" : "cleaned",
+      "createdAt" : "2026-09-19T22:53:40.789Z"
+    }
+  ],
+  "lessonsLearned" : [
+  ],
+  "artifacts" : [
+  ],
+  "metadata" : {
+    
+  }
+}
