@@ -137,3 +137,19 @@ class HarnessConfigPatcherSuite extends FunSuite:
       "To revert: mv '/home/testuser/.cursor/mcp.json.ccrystal.bak' '/home/testuser/.cursor/mcp.json'",
     )
   }
+
+  test("patchJson strips leading comments (JSONC)") {
+    val jsonc =
+      """// Zed Settings
+        |{
+        |  // Theme setting
+        |  "theme": "One Dark"
+        |}""".stripMargin
+
+    val result = HarnessConfigPatcher.patchJson(jsonc, AgentHarness.Zed)
+    assert(result.isRight, "Patch should succeed for JSON with comments")
+    val patch = result.toOption.get
+    assertEquals(patch.modified, true)
+    val parsed = parse(patch.patchedContent).toOption.get
+    assertEquals(parsed.hcursor.downField("theme").as[String].toOption, Some("One Dark"))
+  }

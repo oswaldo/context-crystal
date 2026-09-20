@@ -68,6 +68,21 @@ If `ccrystal` is not present in PATH:
 - **MCP vs. CLI Decision:** While native MCP tools are preferred for turn-efficiency, any agent weighing whether to call MCP or CLI—or checking whether a newly implemented capability (such as melting, cold storage archiving, or triage filters) is accessible—should run `ccrystal --help` or `ccrystal <subcommand> --help` as the definitive source of truth.
 - **Protocol & Invariant Guidance:** For machine-oriented protocol guidelines, PII rules, and entity handle conventions, run `ccrystal --for-ai`.
 
+### Agent Runtime Onboarding & Diagnostics (`ccrystal agent`)
+
+Agents can autonomously diagnose host environment health and configure MCP integration across detected harnesses:
+
+```bash
+# Non-destructive environment and harness configuration check
+ccrystal agent doctor
+
+# Auto-configure Context Crystal across all detected harnesses (with automatic .ccrystal.bak backups)
+ccrystal agent install
+
+# Or preview configuration without disk changes
+ccrystal agent install --dry-run
+```
+
 ---
 
 ## 3. Storage Location Discovery (Clean vs In-Tree Repos)

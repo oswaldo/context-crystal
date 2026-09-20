@@ -28,9 +28,9 @@
 - [x] Task: Phase 3 Verification & Checkpoint (Refer to workflow.md) (2b1a449)
 
 ## Phase 4: Cross-Platform Verification, Safety Audits & Documentation
-- [ ] Task: Cross-Platform Verification Suite
-  - [ ] Run test suite across JVM and Native (`sbt "coreJVM/test; cliJVM/test; coreNative/test; cliNative/test"`).
-- [ ] Task: Documentation, Release Binary & Host Dogfooding
-  - [ ] Update `README.md`, `skills/context-crystal/SKILL.md`, and docs portal.
-  - [ ] Compile optimized release binary with Thin LTO and verify `ccrystal agent doctor` live on host environment.
+- [x] Task: Cross-Platform Verification Suite (e4878a5)
+  - [x] Run test suite across JVM and Native (`sbt "coreJVM/test; cliJVM/test; coreNative/test; cliNative/test"`).
+- [x] Task: Documentation, Release Binary & Host Dogfooding
+  - [x] Update `README.md`, `skills/context-crystal/SKILL.md`, and docs portal.
+  - [x] Compile optimized release binary with Thin LTO and verify `ccrystal agent doctor` live on host environment.
 - [ ] Task: Phase 4 Verification & Checkpoint (Refer to workflow.md)

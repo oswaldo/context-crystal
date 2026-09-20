@@ -220,6 +220,13 @@ ccrystal list --archived         # List active and archived crystals
 # 11. Dual-Audience Guidance & Entity Conventions
 ccrystal --for-ai               # Operational invariants, PII rules, and entity schemes for AI agents
 ccrystal entity conventions     # Display canonical entity prefixes (usr_, agt_, mdl_, tool_, sys_)
+
+# 12. Universal Agent Runtime Onboarding & Diagnostics
+ccrystal agent doctor                  # Check environment, PATH, and harness configurations
+ccrystal agent doctor --json           # Machine-readable JSON diagnostic report
+ccrystal agent install --dry-run       # Preview automated MCP registration without disk changes
+ccrystal agent install                 # Safely auto-configure detected agent harnesses with .ccrystal.bak backups
+ccrystal agent install --target cursor # Auto-configure specific harness (cursor, claude-code, zed, etc.)
 ```
 
 ---

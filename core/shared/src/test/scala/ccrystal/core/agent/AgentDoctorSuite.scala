@@ -112,3 +112,28 @@ class AgentDoctorSuite extends FunSuite:
     val decoded = json.as[DoctorReport]
     assertEquals(decoded, Right(report))
   }
+
+  test("AgentDoctor handles JSON with comments (JSONC)") {
+    val zedPath = resolver.configPath(AgentHarness.Zed)
+    val jsoncConfig =
+      """// Zed user settings
+        |{
+        |  "context_servers": {
+        |    "context-crystal": {
+        |      "command": "ccrystal",
+        |      "args": ["mcp"]
+        |    }
+        |  }
+        |}""".stripMargin
+
+    val inspector = MockFileSystemInspector(
+      files = Map(zedPath -> jsoncConfig),
+      directories = Set("/home/testuser/.config/zed"),
+    )
+
+    val doctor = AgentDoctor(inspector, resolver)
+    val report = doctor.diagnose("/tmp/.ccrystals")
+
+    val zedDiag = report.harnesses.find(_.harness == AgentHarness.Zed).get
+    assertEquals(zedDiag.status, HarnessStatus.Configured)
+  }

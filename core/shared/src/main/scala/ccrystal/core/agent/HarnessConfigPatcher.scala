@@ -30,6 +30,15 @@ object HarnessConfigPatcher:
   def rollbackInstruction(originalPath: String, backupPath: String): String =
     s"To revert: mv '$backupPath' '$originalPath'"
 
+  def stripJsonComments(content: String): String =
+    content.linesIterator
+      .map { line =>
+        val trimmed = line.trim
+        if trimmed.startsWith("//") then ""
+        else line
+      }
+      .mkString("\n")
+
   def patchJson(
       existingContent: String,
       harness: AgentHarness,
@@ -52,7 +61,8 @@ object HarnessConfigPatcher:
           )
       Right(PatchResult(printer.print(newJson), modified = true, backupSuggested = false))
     else
-      parse(trimmed) match
+      val sanitized = stripJsonComments(trimmed)
+      parse(sanitized) match
         case Left(parsingFailure) =>
           Left(PatchError.MalformedJson(parsingFailure.message))
         case Right(json) =>

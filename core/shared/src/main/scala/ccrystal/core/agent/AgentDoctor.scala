@@ -132,7 +132,7 @@ class AgentDoctor(
         case None =>
           HarnessDiagnosis(harness, path, HarnessStatus.Corrupted, Some("Unable to read file"))
         case Some(content) =>
-          parse(content) match
+          parse(HarnessConfigPatcher.stripJsonComments(content)) match
             case Left(err) =>
               HarnessDiagnosis(harness, path, HarnessStatus.Corrupted, Some(err.message))
             case Right(json) =>
