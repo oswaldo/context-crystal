@@ -677,8 +677,27 @@ class Runner(
       if jsonOutput then Right(ccrystal.cli.agent.AgentDoctorRenderer.renderJson(report))
       else Right(ccrystal.cli.agent.AgentDoctorRenderer.renderText(report, verbose))
 
-    case CliCommand.AgentInstallCmd(target, dryRun, force) =>
-      Right("Agent install execution is scheduled for Phase 3.")
+    case CliCommand.AgentInstallCmd(targetOpt, dryRun, force) =>
+      val targetHarness = targetOpt.flatMap(ccrystal.core.agent.AgentHarness.fromString)
+      if targetOpt.isDefined && targetHarness.isEmpty then
+        Left(
+          s"Unknown harness '${targetOpt.get}'. Valid harnesses: ${ccrystal.core.agent.AgentHarness.all.map(_.id).mkString(", ")}",
+        )
+      else
+        val doctor = new ccrystal.core.agent.AgentDoctor(
+          ccrystal.cli.agent.DefaultFileSystemOperator,
+          ccrystal.core.agent.HarnessPathResolver.default,
+        )
+        val installer = new ccrystal.core.agent.AgentInstaller(
+          ccrystal.cli.agent.DefaultFileSystemOperator,
+          ccrystal.core.agent.HarnessPathResolver.default,
+        )
+        val storePath = store match
+          case fs: ccrystal.core.store.FsCrystalStore => fs.rootPath.toAbsolutePath.toString
+          case _                                      => ".ccrystals"
+        val report  = doctor.diagnose(storePath)
+        val summary = installer.install(report, targetHarness, dryRun, force)
+        Right(ccrystal.cli.agent.AgentInstallerRenderer.renderText(summary))
 
   private def getPreviewLimit: Int =
     sys.env.get("CCRYSTAL_DELETION_PREVIEW_LIMIT").flatMap(_.toIntOption).getOrElse(10)
