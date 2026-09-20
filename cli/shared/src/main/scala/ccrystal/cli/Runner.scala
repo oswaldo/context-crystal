@@ -87,30 +87,38 @@ class Runner(
       }
 
     case CliCommand.TaskAdd(crystalId, desc) =>
-      store.load(crystalId).flatMap { crystal =>
-        val taskId = s"task-${crystal.goal.acceptanceCriteria.size + 1}"
-        val newAc  = AcceptanceCriterion(taskId, desc, completed = false)
-        val updatedGoal = crystal.goal.copy(
-          acceptanceCriteria = crystal.goal.acceptanceCriteria :+ newAc,
-        )
-        val updated = crystal.copy(
-          updatedAt = Instant.now().toString,
-          goal = updatedGoal,
-        )
-        store.save(updated).map(_ => s"Added task '$taskId' to $crystalId: $desc")
-      }
+      var assignedTaskId = ""
+      store
+        .update(crystalId) { crystal =>
+          val taskId = s"task-${crystal.goal.acceptanceCriteria.size + 1}"
+          assignedTaskId = taskId
+          val newAc = AcceptanceCriterion(taskId, desc, completed = false)
+          val updatedGoal = crystal.goal.copy(
+            acceptanceCriteria = crystal.goal.acceptanceCriteria :+ newAc,
+          )
+          Right(
+            crystal.copy(
+              updatedAt = Instant.now().toString,
+              goal = updatedGoal,
+            ),
+          )
+        }
+        .map(_ => s"Added task '$assignedTaskId' to $crystalId: $desc")
 
     case CliCommand.TaskDone(crystalId, taskId) =>
-      store.load(crystalId).flatMap { crystal =>
-        val updatedAcs = crystal.goal.acceptanceCriteria.map { ac =>
-          if ac.id == taskId then ac.copy(completed = true) else ac
+      store
+        .update(crystalId) { crystal =>
+          val updatedAcs = crystal.goal.acceptanceCriteria.map { ac =>
+            if ac.id == taskId then ac.copy(completed = true) else ac
+          }
+          Right(
+            crystal.copy(
+              updatedAt = Instant.now().toString,
+              goal = crystal.goal.copy(acceptanceCriteria = updatedAcs),
+            ),
+          )
         }
-        val updated = crystal.copy(
-          updatedAt = Instant.now().toString,
-          goal = crystal.goal.copy(acceptanceCriteria = updatedAcs),
-        )
-        store.save(updated).map(_ => s"Marked task '$taskId' as completed in $crystalId")
-      }
+        .map(_ => s"Marked task '$taskId' as completed in $crystalId")
 
     case CliCommand.TaskList(crystalId) =>
       store.load(crystalId).map { crystal =>
@@ -124,42 +132,47 @@ class Runner(
       }
 
     case CliCommand.GoalTransition(crystalId, newStatus, summaryOpt) =>
-      store.load(crystalId).flatMap { crystal =>
-        val now = Instant.now().toString
-        val (updatedDag, resolutionMsg) = summaryOpt match
-          case Some(summary) =>
-            val parents = crystal.dag.nodes.lastOption.map(n => List(n.id)).getOrElse(Nil)
-            val nodeId  = s"node-${crystal.dag.nodes.size + 1}"
-            val actorId = crystal.defaultAuthorId.getOrElse("usr_operator")
-            val resolutionNode = DAGNode(
-              id = nodeId,
-              parentIds = parents,
-              timestamp = now,
-              actorId = actorId,
-              fidelity = CaptureFidelity.Inferred,
-              kind = NodeKind.Resolution,
-              contentSummary = summary,
-            )
-            (
-              crystal.dag.copy(nodes = crystal.dag.nodes :+ resolutionNode),
-              s" and appended resolution node '$nodeId'",
-            )
-          case None =>
-            (crystal.dag, "")
+      var resolutionMsg = ""
+      store
+        .update(crystalId) { crystal =>
+          val now = Instant.now().toString
+          val (updatedDag, resMsg) = summaryOpt match
+            case Some(summary) =>
+              val parents = crystal.dag.nodes.lastOption.map(n => List(n.id)).getOrElse(Nil)
+              val nodeId  = s"node-${crystal.dag.nodes.size + 1}"
+              val actorId = crystal.defaultAuthorId.getOrElse("usr_operator")
+              val resolutionNode = DAGNode(
+                id = nodeId,
+                parentIds = parents,
+                timestamp = now,
+                actorId = actorId,
+                fidelity = CaptureFidelity.Inferred,
+                kind = NodeKind.Resolution,
+                contentSummary = summary,
+              )
+              (
+                crystal.dag.copy(nodes = crystal.dag.nodes :+ resolutionNode),
+                s" and appended resolution node '$nodeId'",
+              )
+            case None =>
+              (crystal.dag, "")
 
-        val updated = crystal.copy(
-          updatedAt = now,
-          goal = crystal.goal.copy(status = newStatus),
-          dag = updatedDag,
-        )
-        store.save(updated).map { _ =>
+          resolutionMsg = resMsg
+          Right(
+            crystal.copy(
+              updatedAt = now,
+              goal = crystal.goal.copy(status = newStatus),
+              dag = updatedDag,
+            ),
+          )
+        }
+        .map { _ =>
           val statusDesc = newStatus match
             case GoalStatus.ConcludedSuccess   => "concluded successfully"
             case GoalStatus.ConcludedAbandoned => "concluded as abandoned"
             case GoalStatus.InProgress         => "transitioned to in_progress"
           s"Crystal '$crystalId' $statusDesc$resolutionMsg"
         }
-      }
 
     case CliCommand.NodeAdd(
           crystalId,
@@ -174,51 +187,57 @@ class Runner(
           outputArtifactIds,
           preconditionArtifactIds,
         ) =>
-      store.load(crystalId).flatMap { crystal =>
-        val now      = Instant.now().toString
-        val nodeTime = timestampOpt.getOrElse(now)
-        val parents =
-          if parentIds.isEmpty then crystal.dag.nodes.lastOption.map(n => List(n.id)).getOrElse(Nil)
-          else parentIds
-        val nodeId  = s"node-${crystal.dag.nodes.size + 1}"
-        val actorId = authorOpt.orElse(crystal.defaultAuthorId).getOrElse("usr_operator")
-        val allArtifactIds =
-          (inputArtifactIds ++ outputArtifactIds ++ preconditionArtifactIds).distinct
-        val newNode = DAGNode(
-          id = nodeId,
-          parentIds = parents,
-          timestamp = nodeTime,
-          actorId = actorId,
-          kind = kind,
-          contentSummary = summary,
-          anchor = anchorOpt,
-          artifactIds = allArtifactIds,
-          inputArtifactIds = inputArtifactIds,
-          outputArtifactIds = outputArtifactIds,
-          preconditionArtifactIds = preconditionArtifactIds,
-          fidelity = fidelity,
-        )
-
-        for
-          cDag       <- CrystalDAG.fromDAG(crystal.dag)
-          updatedDag <- cDag.addNode(newNode)
-          updatedCrystal = crystal.copy(
-            updatedAt = now,
-            dag = updatedDag.raw,
+      var resultMsg = ""
+      store
+        .update(crystalId) { crystal =>
+          val now      = Instant.now().toString
+          val nodeTime = timestampOpt.getOrElse(now)
+          val parents =
+            if parentIds.isEmpty then
+              crystal.dag.nodes.lastOption.map(n => List(n.id)).getOrElse(Nil)
+            else parentIds
+          val nodeId  = s"node-${crystal.dag.nodes.size + 1}"
+          val actorId = authorOpt.orElse(crystal.defaultAuthorId).getOrElse("usr_operator")
+          val allArtifactIds =
+            (inputArtifactIds ++ outputArtifactIds ++ preconditionArtifactIds).distinct
+          val newNode = DAGNode(
+            id = nodeId,
+            parentIds = parents,
+            timestamp = nodeTime,
+            actorId = actorId,
+            kind = kind,
+            contentSummary = summary,
+            anchor = anchorOpt,
+            artifactIds = allArtifactIds,
+            inputArtifactIds = inputArtifactIds,
+            outputArtifactIds = outputArtifactIds,
+            preconditionArtifactIds = preconditionArtifactIds,
+            fidelity = fidelity,
           )
-          _ <- store.save(updatedCrystal)
-        yield
-          val anchorMsg = anchorOpt.fold("")(a => s" <anchor: $a>")
-          val artParts = List(
-            Option.when(inputArtifactIds.nonEmpty)(s"inputs: ${inputArtifactIds.mkString(",")}"),
-            Option.when(outputArtifactIds.nonEmpty)(s"outputs: ${outputArtifactIds.mkString(",")}"),
-            Option.when(preconditionArtifactIds.nonEmpty)(
-              s"preconditions: ${preconditionArtifactIds.mkString(",")}",
-            ),
-          ).flatten
-          val artMsg = if artParts.nonEmpty then s" [${artParts.mkString("; ")}]" else ""
-          s"Appended node '$nodeId' [$kind]$anchorMsg$artMsg [${fidelity.toString.toLowerCase}] (Author: $actorId) to $crystalId: $summary"
-      }
+
+          for
+            cDag       <- CrystalDAG.fromDAG(crystal.dag)
+            updatedDag <- cDag.addNode(newNode)
+          yield
+            val anchorMsg = anchorOpt.fold("")(a => s" <anchor: $a>")
+            val artParts = List(
+              Option.when(inputArtifactIds.nonEmpty)(s"inputs: ${inputArtifactIds.mkString(",")}"),
+              Option.when(outputArtifactIds.nonEmpty)(
+                s"outputs: ${outputArtifactIds.mkString(",")}",
+              ),
+              Option.when(preconditionArtifactIds.nonEmpty)(
+                s"preconditions: ${preconditionArtifactIds.mkString(",")}",
+              ),
+            ).flatten
+            val artMsg = if artParts.nonEmpty then s" [${artParts.mkString("; ")}]" else ""
+            resultMsg =
+              s"Appended node '$nodeId' [$kind]$anchorMsg$artMsg [${fidelity.toString.toLowerCase}] (Author: $actorId) to $crystalId: $summary"
+            crystal.copy(
+              updatedAt = now,
+              dag = updatedDag.raw,
+            )
+        }
+        .map(_ => resultMsg)
 
     case CliCommand.EntityList =>
       store.getEntityRegistry().map { reg =>
@@ -240,33 +259,41 @@ class Runner(
       }
 
     case CliCommand.LessonAdd(crystalId, friction, rootCause, action) =>
-      store.load(crystalId).flatMap { crystal =>
-        val lessonId  = s"lesson-${crystal.lessonsLearned.size + 1}"
-        val newLesson = LessonLearned(lessonId, friction, rootCause, action, LessonStatus.Open)
-        val updated = crystal.copy(
-          updatedAt = Instant.now().toString,
-          lessonsLearned = crystal.lessonsLearned :+ newLesson,
-        )
-        store.save(updated).map(_ => s"Logged lesson '$lessonId' in $crystalId: $friction")
-      }
+      var assignedLessonId = ""
+      store
+        .update(crystalId) { crystal =>
+          val lessonId = s"lesson-${crystal.lessonsLearned.size + 1}"
+          assignedLessonId = lessonId
+          val newLesson = LessonLearned(lessonId, friction, rootCause, action, LessonStatus.Open)
+          Right(
+            crystal.copy(
+              updatedAt = Instant.now().toString,
+              lessonsLearned = crystal.lessonsLearned :+ newLesson,
+            ),
+          )
+        }
+        .map(_ => s"Logged lesson '$assignedLessonId' in $crystalId: $friction")
 
     case CliCommand.LessonAction(crystalId, lessonId, actionText, actorId) =>
-      store.load(crystalId).flatMap { crystal =>
-        val now = Instant.now().toString
-        val updatedLessons = crystal.lessonsLearned.map { l =>
-          if l.id == lessonId then
-            l.copy(
-              status = LessonStatus.Actioned,
-              actionAuditTrail = l.actionAuditTrail :+ ActionAuditEntry(now, actionText, actorId),
-            )
-          else l
+      store
+        .update(crystalId) { crystal =>
+          val now = Instant.now().toString
+          val updatedLessons = crystal.lessonsLearned.map { l =>
+            if l.id == lessonId then
+              l.copy(
+                status = LessonStatus.Actioned,
+                actionAuditTrail = l.actionAuditTrail :+ ActionAuditEntry(now, actionText, actorId),
+              )
+            else l
+          }
+          Right(
+            crystal.copy(
+              updatedAt = now,
+              lessonsLearned = updatedLessons,
+            ),
+          )
         }
-        val updated = crystal.copy(
-          updatedAt = now,
-          lessonsLearned = updatedLessons,
-        )
-        store.save(updated).map(_ => s"Actioned lesson '$lessonId' in $crystalId: $actionText")
-      }
+        .map(_ => s"Actioned lesson '$lessonId' in $crystalId: $actionText")
 
     case CliCommand.LessonList(crystalId) =>
       store.load(crystalId).map { crystal =>
@@ -279,37 +306,45 @@ class Runner(
       }
 
     case CliCommand.TransientLeaseCmd(crystalId, rType, path, desc, policy, acquiredAtOpt) =>
-      store.load(crystalId).flatMap { crystal =>
-        val now       = Instant.now().toString
-        val leaseTime = acquiredAtOpt.getOrElse(now)
-        val leaseId   = s"lease-${crystal.transientLeases.size + 1}"
-        val newLease = TransientLease(
-          leaseId,
-          rType,
-          path,
-          desc,
-          policy,
-          TransientLeaseStatus.Active,
-          leaseTime,
-        )
-        val updated = crystal.copy(
-          updatedAt = now,
-          transientLeases = crystal.transientLeases :+ newLease,
-        )
-        store.save(updated).map(_ => s"Registered transient lease '$leaseId' in $crystalId: $desc")
-      }
+      var assignedLeaseId = ""
+      store
+        .update(crystalId) { crystal =>
+          val now       = Instant.now().toString
+          val leaseTime = acquiredAtOpt.getOrElse(now)
+          val leaseId   = s"lease-${crystal.transientLeases.size + 1}"
+          assignedLeaseId = leaseId
+          val newLease = TransientLease(
+            leaseId,
+            rType,
+            path,
+            desc,
+            policy,
+            TransientLeaseStatus.Active,
+            leaseTime,
+          )
+          Right(
+            crystal.copy(
+              updatedAt = now,
+              transientLeases = crystal.transientLeases :+ newLease,
+            ),
+          )
+        }
+        .map(_ => s"Registered transient lease '$assignedLeaseId' in $crystalId: $desc")
 
     case CliCommand.TransientClean(crystalId, leaseId) =>
-      store.load(crystalId).flatMap { crystal =>
-        val updatedLeases = crystal.transientLeases.map { lease =>
-          if lease.id == leaseId then lease.copy(status = TransientLeaseStatus.Cleaned) else lease
+      store
+        .update(crystalId) { crystal =>
+          val updatedLeases = crystal.transientLeases.map { lease =>
+            if lease.id == leaseId then lease.copy(status = TransientLeaseStatus.Cleaned) else lease
+          }
+          Right(
+            crystal.copy(
+              updatedAt = Instant.now().toString,
+              transientLeases = updatedLeases,
+            ),
+          )
         }
-        val updated = crystal.copy(
-          updatedAt = Instant.now().toString,
-          transientLeases = updatedLeases,
-        )
-        store.save(updated).map(_ => s"Cleaned transient lease '$leaseId' in $crystalId")
-      }
+        .map(_ => s"Cleaned transient lease '$leaseId' in $crystalId")
 
     case CliCommand.TransientList(crystalId) =>
       store.load(crystalId).map { crystal =>
@@ -387,16 +422,19 @@ class Runner(
 
       if crystalIdOpt.isDefined && !cave then
         val cId = crystalIdOpt.get
-        store.load(cId).flatMap { crystal =>
-          val updatedArtifacts = crystal.artifacts.filterNot(_.id == id) :+ artifact
-          val updatedCrystal = crystal.copy(
-            updatedAt = Instant.now().toString,
-            artifacts = updatedArtifacts,
-          )
-          store.save(updatedCrystal).map { _ =>
+        store
+          .update(cId) { crystal =>
+            val updatedArtifacts = crystal.artifacts.filterNot(_.id == id) :+ artifact
+            Right(
+              crystal.copy(
+                updatedAt = Instant.now().toString,
+                artifacts = updatedArtifacts,
+              ),
+            )
+          }
+          .map { _ =>
             s"Registered artifact '$id' [${artifact.substrate}/${artifact.role}] in crystal '$cId'."
           }
-        }
       else
         store.registerArtifact(artifact).map { art =>
           s"Registered artifact '${art.id}' [${art.substrate}/${art.role}] in cave registry."
@@ -473,15 +511,18 @@ class Runner(
                 _ <- store.save(child)
                 _ <-
                   if prune then
-                    val updatedParent = crystal.copy(
-                      updatedAt = now,
-                      metadata = crystal.metadata ++ Map(
-                        "fracture_cleavage_to" -> forkName,
-                        "fracture_anchor"      -> slice.entryNode.id,
-                        "fractured_at"         -> now,
-                      ),
-                    )
-                    store.save(updatedParent)
+                    store.update(crystalId) { parent =>
+                      Right(
+                        parent.copy(
+                          updatedAt = now,
+                          metadata = parent.metadata ++ Map(
+                            "fracture_cleavage_to" -> forkName,
+                            "fracture_anchor"      -> slice.entryNode.id,
+                            "fractured_at"         -> now,
+                          ),
+                        ),
+                      )
+                    }
                   else Right(())
               yield s"Sliced fragment (${slice.slicedNodes.size} node(s)) and forked to new crystal '$forkName' at .ccrystals/$forkName"
 

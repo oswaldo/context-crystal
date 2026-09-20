@@ -5,6 +5,10 @@ import ccrystal.core.model.*
 trait CrystalStore:
   def save(crystal: ContextCrystal): Either[String, Unit]
   def load(id: String): Either[String, ContextCrystal]
+  def update(id: String)(
+      f: ContextCrystal => Either[String, ContextCrystal],
+  ): Either[String, ContextCrystal] =
+    load(id).flatMap(f).flatMap(updated => save(updated).map(_ => updated))
   def list(): Either[String, List[ContextCrystal]] = list(includeArchived = false)
   def list(includeArchived: Boolean): Either[String, List[ContextCrystal]]
   def archive(id: String): Either[String, Unit]

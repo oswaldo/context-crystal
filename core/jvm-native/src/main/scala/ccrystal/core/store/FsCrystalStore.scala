@@ -55,6 +55,46 @@ class FsCrystalStore(val rootPath: Path) extends CrystalStore:
       Right(())
     catch case ex: Throwable => Left(s"Failed to save crystal ${crystal.id}: ${ex.getMessage}")
 
+  override def update(id: String)(
+      f: ContextCrystal => Either[String, ContextCrystal],
+  ): Either[String, ContextCrystal] =
+    val maxRetries = 5
+    def attempt(retryCount: Int): Either[String, ContextCrystal] =
+      val activeFile = crystalDir(id).resolve("crystal.json")
+      if !Files.exists(activeFile) then Left(s"Crystal '$id' not found at ${activeFile.toString}")
+      else
+        try
+          val rawBytes           = Files.readAllBytes(activeFile)
+          val rawContent         = new String(rawBytes, StandardCharsets.UTF_8)
+          val initialFingerprint = ContentFingerprint.compute(rawContent)
+
+          decode[ContextCrystal](rawContent) match
+            case Left(err) =>
+              Left(s"JSON parse error loading crystal $id: ${err.getMessage}")
+            case Right(loaded) =>
+              f(loaded) match
+                case Left(err) => Left(err)
+                case Right(updatedCrystal) =>
+                  val currentBytes       = Files.readAllBytes(activeFile)
+                  val currentContent     = new String(currentBytes, StandardCharsets.UTF_8)
+                  val currentFingerprint = ContentFingerprint.compute(currentContent)
+
+                  if currentFingerprint == initialFingerprint then
+                    save(updatedCrystal).map(_ => updatedCrystal)
+                  else if retryCount < maxRetries then
+                    try Thread.sleep(retryCount * 5L)
+                    catch case _: Throwable => ()
+                    attempt(retryCount + 1)
+                  else
+                    Left(
+                      s"Concurrent modification detected on crystal '$id': conflict could not be reconciled after $maxRetries attempts",
+                    )
+        catch
+          case ex: Throwable =>
+            Left(s"Failed during atomic update of crystal $id: ${ex.getMessage}")
+
+    attempt(1)
+
   override def isArchived(id: String): Boolean =
     Files.exists(archiveCrystalDir(id).resolve("crystal.json"))
 
@@ -91,18 +131,25 @@ class FsCrystalStore(val rootPath: Path) extends CrystalStore:
       customSummary: Option[String] = None,
       anchor: Option[String] = None,
   ): Either[String, DAGNode] =
-    for
-      crystal <- load(crystalId)
-      res <- ccrystal.core.dag.CrystalMelter.meltWithNode(
-        crystal,
-        fromSelector,
-        toSelector,
-        customSummary,
-        anchor = anchor,
-      )
-      (updated, node) = res
-      _ <- save(updated)
-    yield node
+    var producedNode: Option[DAGNode] = None
+    update(crystalId) { crystal =>
+      ccrystal.core.dag.CrystalMelter
+        .meltWithNode(
+          crystal,
+          fromSelector,
+          toSelector,
+          customSummary,
+          anchor = anchor,
+        )
+        .map { case (updated, node) =>
+          producedNode = Some(node)
+          updated
+        }
+    }.flatMap { _ =>
+      producedNode match
+        case Some(node) => Right(node)
+        case None       => Left(s"Failed to produce melted DAGNode for crystal '$crystalId'")
+    }
 
   override def load(id: String): Either[String, ContextCrystal] =
     try

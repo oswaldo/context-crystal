@@ -12,9 +12,9 @@ class ContentFingerprintSuite extends FunSuite:
   }
 
   test("ContentFingerprint detects subtle differences") {
-    val a = """{"id": "test-1", "value": 42}"""
-    val b = """{"id": "test-1", "value": 43}"""
-    val c = """{"id": "test-1", "value": 42 }""" // whitespace difference
+    val a  = """{"id": "test-1", "value": 42}"""
+    val b  = """{"id": "test-1", "value": 43}"""
+    val c  = """{"id": "test-1", "value": 42 }""" // whitespace difference
     val ha = ContentFingerprint.compute(a)
     val hb = ContentFingerprint.compute(b)
     val hc = ContentFingerprint.compute(c)

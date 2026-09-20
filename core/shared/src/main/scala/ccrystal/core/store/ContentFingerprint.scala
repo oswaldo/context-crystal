@@ -15,10 +15,10 @@ object ContentFingerprint:
     */
   def compute(content: String): String =
     val bytes = content.getBytes(StandardCharsets.UTF_8)
-    var h1 = FnvOffsetBasis1
-    var h2 = FnvOffsetBasis2
-    var i = 0
-    val len = bytes.length
+    var h1    = FnvOffsetBasis1
+    var h2    = FnvOffsetBasis2
+    var i     = 0
+    val len   = bytes.length
     while i < len do
       val b = bytes(i).toLong & 0xffL
       h1 = (h1 ^ b) * FnvPrime1

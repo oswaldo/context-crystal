@@ -341,5 +341,124 @@ class FsCrystalStoreSuite extends FunSuite:
       val loadRes = store.load(crystalId)
       if loadRes.isLeft then readFailures += 1
 
-    assertEquals(readFailures, 0, "Concurrent readers should never observe torn or unparseable JSON")
+    assertEquals(
+      readFailures,
+      0,
+      "Concurrent readers should never observe torn or unparseable JSON",
+    )
+  }
+
+  test("FsCrystalStore.update atomically modifies existing crystal") {
+    val store     = FsCrystalStore(tempDir.resolve(".ccrystals").toString)
+    val crystalId = "c-update-test"
+    val base = ContextCrystal(
+      schemaVersion = "1.0.0",
+      id = crystalId,
+      createdAt = "2026-09-20T10:00:00Z",
+      updatedAt = "2026-09-20T10:00:00Z",
+      goal = Goal("Update Goal", "Verify update method", GoalStatus.InProgress, Nil),
+      entities = Nil,
+      dag = DAG(
+        "root",
+        List(DAGNode("root", Nil, "2026-09-20T10:00:00Z", "u-1", NodeKind.HumanPrompt, "Init")),
+      ),
+    )
+    assert(store.save(base).isRight)
+
+    val updatedRes = store.update(crystalId) { crystal =>
+      val newNode = DAGNode(
+        "node-2",
+        List("root"),
+        "2026-09-20T10:01:00Z",
+        "u-1",
+        NodeKind.ToolExecution,
+        "Added node",
+      )
+      Right(crystal.copy(dag = DAG(crystal.dag.rootNodeId, crystal.dag.nodes :+ newNode)))
+    }
+
+    assert(updatedRes.isRight)
+    val resultCrystal = updatedRes.toOption.get
+    assertEquals(resultCrystal.dag.nodes.map(_.id), List("root", "node-2"))
+
+    val reloaded = store.load(crystalId)
+    assert(reloaded.isRight)
+    assertEquals(reloaded.toOption.get.dag.nodes.map(_.id), List("root", "node-2"))
+  }
+
+  test("FsCrystalStore.update fails fast if transformation returns Left") {
+    val store     = FsCrystalStore(tempDir.resolve(".ccrystals").toString)
+    val crystalId = "c-update-fail"
+    val base = ContextCrystal(
+      schemaVersion = "1.0.0",
+      id = crystalId,
+      createdAt = "2026-09-20T10:00:00Z",
+      updatedAt = "2026-09-20T10:00:00Z",
+      goal = Goal("Fail Goal", "Test failure", GoalStatus.InProgress, Nil),
+      entities = Nil,
+      dag = DAG(
+        "root",
+        List(DAGNode("root", Nil, "2026-09-20T10:00:00Z", "u-1", NodeKind.HumanPrompt, "Init")),
+      ),
+    )
+    assert(store.save(base).isRight)
+
+    val res = store.update(crystalId) { _ =>
+      Left("Custom business logic validation failed")
+    }
+
+    assertEquals(res, Left("Custom business logic validation failed"))
+    // Verify disk content unchanged
+    val reloaded = store.load(crystalId).toOption.get
+    assertEquals(reloaded.dag.nodes.map(_.id), List("root"))
+  }
+
+  test("FsCrystalStore.update detects concurrent modification and automatically rebases") {
+    val store     = FsCrystalStore(tempDir.resolve(".ccrystals").toString)
+    val crystalId = "c-rebase-test"
+    val base = ContextCrystal(
+      schemaVersion = "1.0.0",
+      id = crystalId,
+      createdAt = "2026-09-20T10:00:00Z",
+      updatedAt = "2026-09-20T10:00:00Z",
+      goal = Goal("Rebase Goal", "Verify OCC rebase", GoalStatus.InProgress, Nil),
+      entities = Nil,
+      dag = DAG(
+        "root",
+        List(DAGNode("root", Nil, "2026-09-20T10:00:00Z", "u-1", NodeKind.HumanPrompt, "Init")),
+      ),
+    )
+    assert(store.save(base).isRight)
+
+    var attemptCount = 0
+
+    val updateRes = store.update(crystalId) { crystal =>
+      attemptCount += 1
+      if attemptCount == 1 then
+        // Simulate concurrent modification by another agent on disk during attempt 1
+        val concurrent = crystal.copy(
+          entities = List(Entity("e-concurrent", EntityKind.Agent, "Parallel Agent")),
+        )
+        assert(store.save(concurrent).isRight, "Concurrent save must succeed")
+
+      // Add our node to whatever crystal state we received
+      val nextId = s"node-${crystal.dag.nodes.length + 1}"
+      val newNode = DAGNode(
+        nextId,
+        List("root"),
+        "2026-09-20T10:01:00Z",
+        "u-1",
+        NodeKind.ToolExecution,
+        "Added by updater",
+      )
+      Right(crystal.copy(dag = DAG(crystal.dag.rootNodeId, crystal.dag.nodes :+ newNode)))
+    }
+
+    assert(updateRes.isRight, "Update should succeed after automatic rebase")
+    assertEquals(attemptCount, 2, "Should have required exactly 2 attempts due to CAS retry")
+
+    val finalCrystal = updateRes.toOption.get
+    // Both the concurrent entity and our new node should be present!
+    assertEquals(finalCrystal.entities.map(_.id), List("e-concurrent"))
+    assertEquals(finalCrystal.dag.nodes.map(_.id), List("root", "node-2"))
   }
