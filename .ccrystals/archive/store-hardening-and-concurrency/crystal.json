@@ -1,0 +1,193 @@
+{
+  "schemaVersion" : "1.0.0",
+  "id" : "store-hardening-and-concurrency",
+  "name" : "store-hardening-and-concurrency",
+  "createdAt" : "2026-09-20T01:13:26.688Z",
+  "updatedAt" : "2026-09-20T02:07:58.695Z",
+  "parentCrystalId" : null,
+  "origin" : null,
+  "caveId" : null,
+  "defaultAuthorId" : "usr_operator",
+  "goal" : {
+    "title" : "Storage Isolation, Atomic Swaps & Optimistic Concurrency Control (OCC)",
+    "intent" : "Harden persistence and configuration engines against concurrent multi-entity corruption with atomic inode swaps, storage-isolated update(id)(f) API, and OCC CAS verification",
+    "status" : "concluded_success",
+    "acceptanceCriteria" : [
+      {
+        "id" : "task-1",
+        "description" : "Phase 1: Atomic File Swaps & Zero-Torn-Read Inode Engine",
+        "completed" : true
+      },
+      {
+        "id" : "task-2",
+        "description" : "Phase 2: Storage-Isolated Transactional API & OCC Rebase",
+        "completed" : true
+      },
+      {
+        "id" : "task-3",
+        "description" : "Phase 3: AgentInstaller CAS Protection & Ephemeral Mutex Serialization",
+        "completed" : true
+      },
+      {
+        "id" : "task-4",
+        "description" : "Phase 4: Concurrency Stress Verification, Documentation & Release Build",
+        "completed" : true
+      }
+    ],
+    "metadata" : {
+      
+    }
+  },
+  "entities" : [
+    {
+      "id" : "usr_operator",
+      "kind" : "human",
+      "name" : "Operator",
+      "metadata" : {
+        
+      },
+      "publicKey" : null,
+      "endpoints" : {
+        
+      }
+    }
+  ],
+  "activeMask" : null,
+  "dag" : {
+    "rootNodeId" : "node-store-hardening-and-concurrency-init",
+    "nodes" : [
+      {
+        "id" : "node-store-hardening-and-concurrency-init",
+        "parentIds" : [
+        ],
+        "timestamp" : "2026-09-20T01:13:26.688Z",
+        "actorId" : "usr_operator",
+        "kind" : "human_prompt",
+        "contentSummary" : "Initialized crystal 'store-hardening-and-concurrency' with goal: Storage Isolation, Atomic Swaps & Optimistic Concurrency Control (OCC)",
+        "anchor" : null,
+        "artifactIds" : [
+        ],
+        "inputArtifactIds" : [
+        ],
+        "outputArtifactIds" : [
+        ],
+        "preconditionArtifactIds" : [
+        ],
+        "fidelity" : "inferred",
+        "metadata" : {
+          
+        }
+      },
+      {
+        "id" : "node-2",
+        "parentIds" : [
+          "node-store-hardening-and-concurrency-init"
+        ],
+        "timestamp" : "2026-09-20T01:22:46.508Z",
+        "actorId" : "usr_operator",
+        "kind" : "checkpoint",
+        "contentSummary" : "Phase 1 Complete: Consolidated jvm-native sources (eliminating 1,000+ duplicate lines) and implemented atomic temporary inode replacement across all persistent store artifacts to prevent torn reads.",
+        "anchor" : "phase-1-atomic-swaps",
+        "artifactIds" : [
+        ],
+        "inputArtifactIds" : [
+        ],
+        "outputArtifactIds" : [
+        ],
+        "preconditionArtifactIds" : [
+        ],
+        "fidelity" : "inferred",
+        "metadata" : {
+          
+        }
+      },
+      {
+        "id" : "node-3",
+        "parentIds" : [
+          "node-2"
+        ],
+        "timestamp" : "2026-09-20T01:38:41.394Z",
+        "actorId" : "usr_operator",
+        "kind" : "checkpoint",
+        "contentSummary" : "Phase 2 Complete: Introduced storage-isolated transactional update(id)(f) API on CrystalStore trait with pure ContentFingerprint OCC CAS and auto-rebase retries in FsCrystalStore. Refactored all CLI runners to use store.update.",
+        "anchor" : "phase-2-occ-update",
+        "artifactIds" : [
+        ],
+        "inputArtifactIds" : [
+        ],
+        "outputArtifactIds" : [
+        ],
+        "preconditionArtifactIds" : [
+        ],
+        "fidelity" : "inferred",
+        "metadata" : {
+          
+        }
+      },
+      {
+        "id" : "node-4",
+        "parentIds" : [
+          "node-3"
+        ],
+        "timestamp" : "2026-09-20T02:02:39.055Z",
+        "actorId" : "usr_operator",
+        "kind" : "tool_execution",
+        "contentSummary" : "Completed Phase 3: AgentInstaller CAS validation and ephemeral mutex lockfile in FsCrystalStore",
+        "anchor" : null,
+        "artifactIds" : [
+        ],
+        "inputArtifactIds" : [
+        ],
+        "outputArtifactIds" : [
+        ],
+        "preconditionArtifactIds" : [
+        ],
+        "fidelity" : "inferred",
+        "metadata" : {
+          
+        }
+      },
+      {
+        "id" : "node-5",
+        "parentIds" : [
+          "node-4"
+        ],
+        "timestamp" : "2026-09-20T02:07:58.695Z",
+        "actorId" : "usr_operator",
+        "kind" : "resolution",
+        "contentSummary" : "Storage isolation, atomic inode swaps, optimistic concurrency control (OCC) rebase retry loop, defensive agent install drift detection, and ephemeral mutex lockfile successfully implemented and verified across JVM, Native, and JS targets",
+        "anchor" : null,
+        "artifactIds" : [
+        ],
+        "inputArtifactIds" : [
+        ],
+        "outputArtifactIds" : [
+        ],
+        "preconditionArtifactIds" : [
+        ],
+        "fidelity" : "inferred",
+        "metadata" : {
+          
+        }
+      }
+    ]
+  },
+  "transientLeases" : [
+    {
+      "id" : "lease-1",
+      "resourceType" : "git_worktree",
+      "resourcePath" : "../ccrystal-worktrees/store-hardening-and-concurrency",
+      "description" : "Dedicated track worktree for storage isolation and concurrency hardening",
+      "disposalPolicy" : "manual",
+      "status" : "cleaned",
+      "createdAt" : "2026-09-20T01:13:49.061Z"
+    }
+  ],
+  "lessonsLearned" : [
+  ],
+  "artifacts" : [
+  ],
+  "metadata" : {
+    
+  }
+}

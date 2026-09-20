@@ -1,0 +1,11 @@
+[
+  {
+    "id" : "lease-1",
+    "resourceType" : "git_worktree",
+    "resourcePath" : "../ccrystal-worktrees/store-hardening-and-concurrency",
+    "description" : "Dedicated track worktree for storage isolation and concurrency hardening",
+    "disposalPolicy" : "manual",
+    "status" : "cleaned",
+    "createdAt" : "2026-09-20T01:13:49.061Z"
+  }
+]
