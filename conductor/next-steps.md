@@ -17,26 +17,22 @@
 - **Track 10 (`cli_ai_guidance_and_pii_conventions_20260908`):** Complete `[x]` (CLI AI guidance flag `--for-ai`, PII protection invariants, canonical entity naming schemes).
 - **Track 11 (`collaborator_readiness_20260912`):** Complete `[x]` (Toolchain, hardware baselines, dual-key cryptographic security, Linux x86_64, macOS Apple Silicon, strict equality clues, and CI matrix).
 - **Track 16 (`artifact_world_state_ontology_20260913`):** Complete `[x]` (Artifact & world-state ontology, virtual & physical substrates, roles, locations, directional DAG links, Cave Artifact Registry, CLI commands, native MCP server integration, and beam projection).
-- **Track 10 (`lifecycle_housekeeping_and_archiving_20260919`):** Complete `[x]` (Cold storage archiving `.ccrystals/archive/`, zero-LLM deterministic sub-DAG melting `ccrystal melt`, aging classification heuristics `Active`/`Solid`/`Stale`, CLI subcommands `archive`, `unarchive`, `melt`, `triage`, and native MCP server tools).
+- **Track 17 (`universal_agent_onboarding_20260920`):** Complete `[x]` (Universal Agent Runtime Matrix: `ccrystal agent doctor` non-destructive diagnostic evaluator and `ccrystal agent install` defensive auto-configuration engine supporting Google Antigravity, Claude Code, Claude Desktop, Cursor, Windsurf, and Zed with automatic `.ccrystal.bak` creation and rollback instructions, JSONC comment support, and native Thin LTO release binary).
 - **Binary Location:** `./cli/native/target/scala-3.9.0/ccrystal-cli` (installed in `~/.local/bin/ccrystal` with Thin LTO)
 - **Codeberg Remote:** Clean, up-to-date with linear Conventional Commits history and Git Notes.
 
 ---
 
-## 2. Active Track: Universal Agent Runtime Matrix & Automated Onboarding (`universal_agent_onboarding_20260920`)
+## 2. Next Active Track: Distribution, Packaging & Native CLI Installer
 
-- **Objective:** Cross-harness interoperability and one-step machine onboarding.
-- **Commands:** `ccrystal agent doctor` (non-destructive inspection) and `ccrystal agent install` (defensive, reversible auto-configuration).
-- **Supported Harnesses:** Google Antigravity, Claude Code / Desktop, Cursor, Windsurf, Zed.
-- **Defensive Safety Invariant:** Mandatory `.ccrystal.bak` creation before any file edits, explicit CLI notification of backup locations and rollback instructions, zero new external dependencies (pure Circe AST).
-- **Target Platforms:** Linux and macOS via Scala Native (optimized Thin LTO binaries) + cross-platform JVM runner.
+- **Objective:** Enable global installation and execution of Context Crystal without cloning the source repository.
+- **Components:** Standardized multi-platform bootstrap installer (`curl -fsSL ... | sh`), GitHub/Codeberg release binary packaging for Linux (x86_64, aarch64) and macOS (aarch64 Apple Silicon, x86_64 Intel) compiled with Thin LTO, and Homebrew / Nix formula definitions.
+- **Priority:** High impact, immediately follows Universal Agent Runtime Onboarding.
 
 ---
 
 ## 3. Backlog & Future Track Roadmap
 
-- **Track 13: Distribution, Packaging & Native CLI Installer:**
-  - Standardized installation script (`curl -fsSL ... | sh`), release binary packaging for multi-architecture targets (Linux x86_64, macOS aarch64), and Homebrew/Nix packaging so users can install and run `ccrystal` globally without cloning the repo.
 - **Track 9: Crystal Comms & Lock-Free Multi-Entity Mailboxes:**
   - Filesystem-based inbox/outbox signaling (`.ccrystals/_comms/<entity-id>/inbox/`) and `Entity.endpoints` resolution for multi-agent coordination without lock contention.
 - **Track 14: Strict Functional Quality & Invariant Hardening (Disallow var, null, throws):**

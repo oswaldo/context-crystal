@@ -50,5 +50,5 @@
 - [x] **Track: Lifecycle Housekeeping, Melting & Archiving**  
   *Link: [conductor/tracks/lifecycle_housekeeping_and_archiving_20260919/index.md](./tracks/lifecycle_housekeeping_and_archiving_20260919/index.md)*
 
-- [~] **Track: Universal Agent Runtime Matrix & Automated Onboarding**  
+- [x] **Track: Universal Agent Runtime Matrix & Automated Onboarding**  
   *Link: [conductor/tracks/universal_agent_onboarding_20260920/index.md](./tracks/universal_agent_onboarding_20260920/index.md)*
