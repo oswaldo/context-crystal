@@ -127,6 +127,12 @@ enum CliCommand derives CanEqual:
       jsonOutput: Boolean = false,
   )
   case Mcp(transport: String = "stdio")
+  case AgentDoctorCmd(jsonOutput: Boolean = false, verbose: Boolean = false)
+  case AgentInstallCmd(
+      target: Option[String] = None,
+      dryRun: Boolean = false,
+      force: Boolean = false,
+  )
   case ForAi
 
   def castSliceParams: SliceParams = this match

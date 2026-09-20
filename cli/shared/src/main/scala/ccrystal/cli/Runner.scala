@@ -665,6 +665,21 @@ class Runner(
           |Note: This instruction was meant for non-humans (AI assistants and autonomous agents). For human CLI usage, run 'ccrystal --help'.""".stripMargin.trim,
       )
 
+    case CliCommand.AgentDoctorCmd(jsonOutput, verbose) =>
+      val doctor = new ccrystal.core.agent.AgentDoctor(
+        ccrystal.cli.agent.DefaultFileSystemInspector,
+        ccrystal.core.agent.HarnessPathResolver.default,
+      )
+      val storePath = store match
+        case fs: ccrystal.core.store.FsCrystalStore => fs.rootPath.toAbsolutePath.toString
+        case _                                      => ".ccrystals"
+      val report = doctor.diagnose(storePath)
+      if jsonOutput then Right(ccrystal.cli.agent.AgentDoctorRenderer.renderJson(report))
+      else Right(ccrystal.cli.agent.AgentDoctorRenderer.renderText(report, verbose))
+
+    case CliCommand.AgentInstallCmd(target, dryRun, force) =>
+      Right("Agent install execution is scheduled for Phase 3.")
+
   private def getPreviewLimit: Int =
     sys.env.get("CCRYSTAL_DELETION_PREVIEW_LIMIT").flatMap(_.toIntOption).getOrElse(10)
 

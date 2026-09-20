@@ -403,6 +403,36 @@ object CommandParser:
     Opts.flag("json", "Output triage report as JSON").orFalse,
   ).mapN((aging, inclArchived, json) => CliCommand.Triage(aging, inclArchived, json))
 
+  private val agentDoctorOpts = (
+    Opts.flag("json", "Output diagnostic report as JSON").orFalse,
+    Opts.flag("verbose", "Show detailed path resolutions and permissions").orFalse,
+  ).mapN(CliCommand.AgentDoctorCmd.apply)
+
+  private val agentInstallOpts = (
+    Opts
+      .option[String](
+        "target",
+        "Target agent harness (antigravity, claude-code, claude-desktop, cursor, windsurf, zed)",
+        "t",
+      )
+      .orNone,
+    Opts.flag("dry-run", "Preview configuration changes without writing to disk").orFalse,
+    Opts.flag("force", "Overwrite existing context-crystal configuration").orFalse,
+  ).mapN(CliCommand.AgentInstallCmd.apply)
+
+  private val agentCmd =
+    Opts.subcommand("agent", "Manage AI agent runtime harnesses and onboarding")(
+      Opts
+        .subcommand("doctor", "Diagnose environment and agent harness configurations")(
+          agentDoctorOpts,
+        )
+        .orElse(
+          Opts.subcommand("install", "Install and configure Context Crystal in agent harnesses")(
+            agentInstallOpts,
+          ),
+        ),
+    )
+
   private val subcommands: List[Opts[CliCommand]] = List(
     forAiOpt,
     Opts.subcommand("init", "Initialize a new crystal")(initOpts),
@@ -439,6 +469,7 @@ object CommandParser:
     Opts.subcommand("triage", "Triage workspace crystals for lifecycle hygiene and aging")(
       triageOpts,
     ),
+    agentCmd,
     Opts.subcommand("mcp", "Start the Model Context Protocol (MCP) server")(mcpOpts),
   )
 
