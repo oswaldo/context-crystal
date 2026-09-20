@@ -239,14 +239,24 @@ Context Crystal is built as a high-performance cross-compiled Scala 3 monorepo:
 ├── spec/          # Vendor-neutral JSON Schema v1 specification & compliance suite
 ├── core/          # Pure functional models, DAG engine, codecs, and FsCrystalStore SPI
 │   ├── shared/    # Cross-platform core logic (Scala 3)
-│   ├── jvm/       # JVM target
-│   ├── native/    # Scala Native (LLVM) target
+│   ├── jvm-native/# Shared filesystem engine, POSIX locks & OCC rebase (JVM & Native)
+│   ├── jvm/       # JVM target-specific platform primitives
+│   ├── native/    # Scala Native (LLVM) target-specific platform primitives
 │   └── js/        # Scala.js target
-├── cli/           # Decline-based command-line interface
+├── cli/           # Decline-based command-line interface & native MCP server
 ├── skills/        # Canonical agent skills and IDE/CLI adapters (Antigravity, Claude, Cursor)
 ├── docs/          # Cybernetic philosophy & operational guidelines (for_devs.md, for_ais.md)
 └── conductor/     # Conductor Spec-Driven Development (SDD) tracks & system tenets
 ```
+
+### Storage Isolation & Concurrency Control
+
+Context Crystal is engineered for safe simultaneous collaboration across multiple human developers and autonomous AI agents:
+
+- **Atomic Inode Replacement:** File writes stage to `.<target>.tmp-<time>-<nano>` in the target directory and perform an atomic swap via POSIX `rename(2)` (`REPLACE_EXISTING`), eliminating torn reads.
+- **Optimistic Concurrency Control (OCC):** The storage-isolated `CrystalStore.update(id)(f)` API executes pure functional transformations with deterministic 128-bit `ContentFingerprint` validation and automatic bounded rebase retries.
+- **Defensive Agent Installation:** `ccrystal agent install` checks pre-read fingerprints to detect external file modifications, preventing data loss or clobbering of concurrent user edits.
+- **Ephemeral Mutex Serialization:** Short-lived `.lock` mutex files with PID tracking and 5-second staleness auto-expiration prevent filesystem races during multi-entity write operations.
 
 ### Running Tests
 

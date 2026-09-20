@@ -515,3 +515,72 @@ class FsCrystalStoreSuite extends FunSuite:
       "Lock file must be cleaned up after stale recovery",
     )
   }
+
+  test("FsCrystalStore.update parallel multi-threaded stress preserves all concurrent updates") {
+    val store     = FsCrystalStore(tempDir.resolve(".ccrystals").toString)
+    val crystalId = "c-stress-test"
+    val base = ContextCrystal(
+      schemaVersion = "1.0.0",
+      id = crystalId,
+      createdAt = "2026-09-20T10:00:00Z",
+      updatedAt = "2026-09-20T10:00:00Z",
+      goal = Goal("Stress Goal", "Verify parallel OCC updates", GoalStatus.InProgress, Nil),
+      entities = Nil,
+      dag = DAG(
+        "root",
+        List(DAGNode("root", Nil, "2026-09-20T10:00:00Z", "u-1", NodeKind.HumanPrompt, "Init")),
+      ),
+    )
+    assert(store.save(base).isRight)
+
+    val workerCount = 8
+    val errors      = new java.util.concurrent.ConcurrentLinkedQueue[String]()
+
+    val threads = (1 to workerCount).map { workerId =>
+      val runnable: Runnable = new Runnable {
+        override def run(): Unit =
+          val updateRes = store.update(crystalId) { crystal =>
+            val newNode = DAGNode(
+              id = s"node-worker-$workerId",
+              parentIds = List(crystal.dag.nodes.last.id),
+              timestamp = "2026-09-20T10:01:00Z",
+              actorId = s"worker-$workerId",
+              kind = NodeKind.ToolExecution,
+              contentSummary = s"Worker $workerId contribution",
+            )
+            Right(crystal.copy(dag = DAG(crystal.dag.rootNodeId, crystal.dag.nodes :+ newNode)))
+          }
+          updateRes match
+            case Left(err) => val _ = errors.add(s"Worker $workerId failed: $err")
+            case Right(_)  => ()
+      }
+      new Thread(runnable)
+    }
+
+    threads.foreach(_.start())
+    threads.foreach(_.join())
+
+    val errorList = errors.toArray.toList
+    assertEquals(
+      errorList.isEmpty,
+      true,
+      s"Workers encountered errors: ${errorList.mkString(", ")}",
+    )
+
+    val finalCrystal = store.load(crystalId).toOption.get
+    val nodeIds      = finalCrystal.dag.nodes.map(_.id)
+    assertEquals(nodeIds.length, workerCount + 1, "All worker nodes must be present")
+    (1 to workerCount).foreach { workerId =>
+      assert(
+        nodeIds.contains(s"node-worker-$workerId"),
+        s"Node for worker $workerId must be present",
+      )
+    }
+
+    val lockFile = tempDir.resolve(".ccrystals").resolve(crystalId).resolve(".lock")
+    assertEquals(
+      java.nio.file.Files.exists(lockFile),
+      false,
+      "Lock file must not remain after stress test",
+    )
+  }

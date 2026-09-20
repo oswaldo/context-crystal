@@ -18,23 +18,13 @@
 - **Track 11 (`collaborator_readiness_20260912`):** Complete `[x]` (Toolchain, hardware baselines, dual-key cryptographic security, Linux x86_64, macOS Apple Silicon, strict equality clues, and CI matrix).
 - **Track 16 (`artifact_world_state_ontology_20260913`):** Complete `[x]` (Artifact & world-state ontology, virtual & physical substrates, roles, locations, directional DAG links, Cave Artifact Registry, CLI commands, native MCP server integration, and beam projection).
 - **Track 17 (`universal_agent_onboarding_20260920`):** Complete `[x]` (Universal Agent Runtime Matrix: `ccrystal agent doctor` non-destructive diagnostic evaluator and `ccrystal agent install` defensive auto-configuration engine supporting Google Antigravity, Claude Code, Claude Desktop, Cursor, Windsurf, and Zed with automatic `.ccrystal.bak` creation and rollback instructions, JSONC comment support, and native Thin LTO release binary).
+- **Track 18 (`store_hardening_and_concurrency_20260920`):** Complete `[x]` (Storage Isolation, Atomic Swaps & Optimistic Concurrency Control: zero-torn-read inode engine via temporary file staging and POSIX atomic renames, pure 128-bit `ContentFingerprint` CAS rebase retry loop on `CrystalStore.update(id)(f)`, defensive drift detection in `AgentInstaller`, and ephemeral `.lock` mutex serialization with PID tracking and 5s staleness auto-expiration).
 - **Binary Location:** `./cli/native/target/scala-3.9.0/ccrystal-cli` (installed in `~/.local/bin/ccrystal` with Thin LTO)
 - **Codeberg Remote:** Clean, up-to-date with linear Conventional Commits history and Git Notes.
 
 ---
 
-## 2. Active Track: Storage Isolation, Atomic Swaps & Optimistic Concurrency Control (OCC) (`store_hardening_and_concurrency_20260920`)
-
-- **Objective:** Eliminate torn reads and clobbered updates in multi-entity environments (human + concurrent AI agents).
-- **Core Features:**
-  - Atomic temporary file staging and inode replacement (`REPLACE_EXISTING`) across `FsCrystalStore`.
-  - High-level transactional update API (`CrystalStore.update(id)(f)`) isolating concurrency control behind traits for seamless enterprise portability (e.g. PostgreSQL).
-  - Pre-read SHA-256 fingerprint validation in `AgentInstaller` to abort cleanly on external config drift.
-  - Ephemeral per-crystal `.lock` mutex file with PID, timestamp, and staleness auto-expiration.
-
----
-
-## 3. Next Track: Distribution, Packaging & Native CLI Installer
+## 2. Next Track: Distribution, Packaging & Native CLI Installer
 
 - **Objective:** Enable global installation and execution of Context Crystal without cloning the source repository.
 - **Components:** Standardized multi-platform bootstrap installer (`curl -fsSL ... | sh`), GitHub/Codeberg release binary packaging for Linux (x86_64, aarch64) and macOS (aarch64 Apple Silicon, x86_64 Intel) compiled with Thin LTO, and Homebrew / Nix formula definitions.
