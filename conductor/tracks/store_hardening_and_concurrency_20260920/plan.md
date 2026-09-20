@@ -10,18 +10,18 @@
   - [x] Ensure non-destructive cleanup of temporary files upon write failures.
 - [x] Task: Phase 1 Verification & Checkpoint (Refer to workflow.md) (658f8ae)
 
-## Phase 2: Storage-Isolated Transactional API & OCC Rebase (TDD)
+## Phase 2: Storage-Isolated Transactional API & OCC Rebase (TDD) [checkpoint: 4b60903]
 
-- [ ] Task: `CrystalStore.update` Unit Tests with Simulated Race Conditions (TDD)
-  - [ ] Write unit tests simulating concurrent modification conflicts during `update`.
-  - [ ] Verify automatic rebase retry succeeds when parallel mutations occur on the same crystal.
-- [ ] Task: Implement `update` on `CrystalStore` & `FsCrystalStore`
-  - [ ] Add `def update(id: String)(f: ContextCrystal => Either[String, ContextCrystal]): Either[String, ContextCrystal]` to `CrystalStore`.
-  - [ ] Implement SHA-256 content fingerprinting (CAS) and bounded retry loop in `FsCrystalStore`.
-- [ ] Task: Refactor High-Level Callers to `store.update`
-  - [ ] Refactor CLI runners (`node add`, `task done`, `goal complete`, `transient lease`, `artifact link`, etc.) to use `store.update`.
-  - [ ] Refactor MCP handlers (`DefaultMcpHandler`) to route mutations through `store.update`.
-- [ ] Task: Phase 2 Verification & Checkpoint (Refer to workflow.md)
+- [x] Task: `CrystalStore.update` Unit Tests with Simulated Race Conditions (TDD) (4b60903)
+  - [x] Write unit tests simulating concurrent modification conflicts during `update`.
+  - [x] Verify automatic rebase retry succeeds when parallel mutations occur on the same crystal.
+- [x] Task: Implement `update` on `CrystalStore` & `FsCrystalStore` (4b60903)
+  - [x] Add `def update(id: String)(f: ContextCrystal => Either[String, ContextCrystal]): Either[String, ContextCrystal]` to `CrystalStore`.
+  - [x] Implement SHA-256 content fingerprinting (CAS) and bounded retry loop in `FsCrystalStore`.
+- [x] Task: Refactor High-Level Callers to `store.update` (4b60903)
+  - [x] Refactor CLI runners (`node add`, `task done`, `goal complete`, `transient lease`, `artifact link`, etc.) to use `store.update`.
+  - [x] Refactor MCP handlers (`DefaultMcpHandler`) to route mutations through `store.update`.
+- [x] Task: Phase 2 Verification & Checkpoint (Refer to workflow.md) (4b60903)
 
 ## Phase 3: AgentInstaller CAS Protection & Ephemeral Mutex Serialization (TDD)
 
