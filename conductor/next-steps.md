@@ -23,15 +23,26 @@
 
 ---
 
-## 2. Next Active Track: Distribution, Packaging & Native CLI Installer
+## 2. Active Track: Storage Isolation, Atomic Swaps & Optimistic Concurrency Control (OCC) (`store_hardening_and_concurrency_20260920`)
 
-- **Objective:** Enable global installation and execution of Context Crystal without cloning the source repository.
-- **Components:** Standardized multi-platform bootstrap installer (`curl -fsSL ... | sh`), GitHub/Codeberg release binary packaging for Linux (x86_64, aarch64) and macOS (aarch64 Apple Silicon, x86_64 Intel) compiled with Thin LTO, and Homebrew / Nix formula definitions.
-- **Priority:** High impact, immediately follows Universal Agent Runtime Onboarding.
+- **Objective:** Eliminate torn reads and clobbered updates in multi-entity environments (human + concurrent AI agents).
+- **Core Features:**
+  - Atomic temporary file staging and inode replacement (`REPLACE_EXISTING`) across `FsCrystalStore`.
+  - High-level transactional update API (`CrystalStore.update(id)(f)`) isolating concurrency control behind traits for seamless enterprise portability (e.g. PostgreSQL).
+  - Pre-read SHA-256 fingerprint validation in `AgentInstaller` to abort cleanly on external config drift.
+  - Ephemeral per-crystal `.lock` mutex file with PID, timestamp, and staleness auto-expiration.
 
 ---
 
-## 3. Backlog & Future Track Roadmap
+## 3. Next Track: Distribution, Packaging & Native CLI Installer
+
+- **Objective:** Enable global installation and execution of Context Crystal without cloning the source repository.
+- **Components:** Standardized multi-platform bootstrap installer (`curl -fsSL ... | sh`), GitHub/Codeberg release binary packaging for Linux (x86_64, aarch64) and macOS (aarch64 Apple Silicon, x86_64 Intel) compiled with Thin LTO, and Homebrew / Nix formula definitions.
+- **Priority:** High impact, immediately follows Storage Hardening.
+
+---
+
+## 4. Backlog & Future Track Roadmap
 
 - **Track 9: Crystal Comms & Lock-Free Multi-Entity Mailboxes:**
   - Filesystem-based inbox/outbox signaling (`.ccrystals/_comms/<entity-id>/inbox/`) and `Entity.endpoints` resolution for multi-agent coordination without lock contention.
