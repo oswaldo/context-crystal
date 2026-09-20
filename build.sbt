@@ -37,8 +37,14 @@ lazy val core = crossProject(JVMPlatform, NativePlatform, JSPlatform)
       "-language:strictEquality"
     )
   )
-  .jvmSettings()
-  .nativeSettings()
+  .jvmSettings(
+    Compile / unmanagedSourceDirectories += (ThisBuild / baseDirectory).value / "core" / "jvm-native" / "src" / "main" / "scala",
+    Test / unmanagedSourceDirectories += (ThisBuild / baseDirectory).value / "core" / "jvm-native" / "src" / "test" / "scala"
+  )
+  .nativeSettings(
+    Compile / unmanagedSourceDirectories += (ThisBuild / baseDirectory).value / "core" / "jvm-native" / "src" / "main" / "scala",
+    Test / unmanagedSourceDirectories += (ThisBuild / baseDirectory).value / "core" / "jvm-native" / "src" / "test" / "scala"
+  )
   .jsSettings(
     scalaJSLinkerConfig ~= { _.withModuleKind(ModuleKind.CommonJSModule) }
   )

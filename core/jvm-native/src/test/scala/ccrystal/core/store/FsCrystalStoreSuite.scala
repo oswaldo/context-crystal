@@ -4,6 +4,7 @@ import munit.FunSuite
 import ccrystal.core.model.*
 import java.nio.file.{Files, Path}
 import java.util.Comparator
+import scala.jdk.CollectionConverters.*
 
 class FsCrystalStoreSuite extends FunSuite:
 
@@ -261,3 +262,88 @@ class FsCrystalStoreSuite extends FunSuite:
       Some("CAN-bus Hardware Test Rig"),
       "fetchedRig name matches",
     )
+
+  test("FsCrystalStore.save atomically replaces files without leaving temporary debris") {
+    val store = FsCrystalStore(tempDir.resolve(".ccrystals").toString)
+    val crystal = ContextCrystal(
+      schemaVersion = "1.0.0",
+      id = "c-atomic-check",
+      createdAt = "2026-09-20T10:00:00Z",
+      updatedAt = "2026-09-20T10:00:00Z",
+      goal = Goal("Atomic Test", "Verify atomic saves", GoalStatus.InProgress, Nil),
+      entities = Nil,
+      dag = DAG(
+        "root",
+        List(DAGNode("root", Nil, "2026-09-20T10:00:00Z", "u-1", NodeKind.HumanPrompt, "Init")),
+      ),
+    )
+
+    val saveRes = store.save(crystal)
+    assert(saveRes.isRight, "save should succeed")
+
+    val cDir = tempDir.resolve(".ccrystals").resolve("c-atomic-check")
+    assert(Files.exists(cDir.resolve("crystal.json")), "crystal.json must exist")
+    assert(Files.exists(cDir.resolve("tasks.md")), "tasks.md must exist")
+    assert(Files.exists(cDir.resolve("lessons-learned.md")), "lessons-learned.md must exist")
+    assert(Files.exists(cDir.resolve("transient.json")), "transient.json must exist")
+
+    val debris = Files
+      .list(cDir)
+      .iterator()
+      .asScala
+      .filter(_.getFileName.toString.contains(".tmp"))
+      .toList
+    assertEquals(debris, Nil, "No temporary debris files should remain after save")
+  }
+
+  test("FsCrystalStore writes atomically ensuring readers never observe torn JSON") {
+    val store     = FsCrystalStore(tempDir.resolve(".ccrystals").toString)
+    val crystalId = "c-torn-read-test"
+    val baseCrystal = ContextCrystal(
+      schemaVersion = "1.0.0",
+      id = crystalId,
+      createdAt = "2026-09-20T10:00:00Z",
+      updatedAt = "2026-09-20T10:00:00Z",
+      goal = Goal("Torn Read Test", "Verify zero torn reads", GoalStatus.InProgress, Nil),
+      entities = Nil,
+      dag = DAG(
+        "root",
+        List(DAGNode("root", Nil, "2026-09-20T10:00:00Z", "u-1", NodeKind.HumanPrompt, "Init")),
+      ),
+    )
+
+    assert(store.save(baseCrystal).isRight)
+
+    val iterations   = 30
+    var readFailures = 0
+
+    for i <- 1 to iterations do
+      val formattedI = f"$i%02d"
+      val updated = baseCrystal.copy(
+        updatedAt = s"2026-09-20T10:00:${formattedI}Z",
+        dag = DAG(
+          "root",
+          (1 to 15).map { n =>
+            DAGNode(
+              s"n-$n",
+              Nil,
+              "2026-09-20T10:00:00Z",
+              "u-1",
+              NodeKind.HumanPrompt,
+              s"Node $n in iteration $i " * 10,
+            )
+          }.toList,
+        ),
+      )
+      val saveRes = store.save(updated)
+      assert(saveRes.isRight)
+
+      val loadRes = store.load(crystalId)
+      if loadRes.isLeft then readFailures += 1
+
+    assertEquals(
+      readFailures,
+      0,
+      "Concurrent readers should never observe torn or unparseable JSON",
+    )
+  }

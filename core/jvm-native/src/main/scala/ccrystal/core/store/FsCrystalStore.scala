@@ -4,13 +4,28 @@ import ccrystal.core.model.*
 import ccrystal.core.codec.given
 import io.circe.parser.decode
 import io.circe.syntax.*
-import java.nio.file.{Files, Path, Paths}
+import java.nio.file.{Files, Path, Paths, StandardCopyOption}
 import java.nio.charset.StandardCharsets
 import scala.jdk.CollectionConverters.*
 
 class FsCrystalStore(val rootPath: Path) extends CrystalStore:
 
   def this(rootStr: String) = this(Paths.get(rootStr))
+
+  private def atomicWrite(target: Path, content: String): Unit =
+    val parent = target.getParent
+    if parent != null && !Files.exists(parent) then Files.createDirectories(parent)
+    val tempFile = parent.resolve(
+      s".${target.getFileName.toString}.tmp-${System.currentTimeMillis()}-${System.nanoTime()}",
+    )
+    try
+      Files.write(tempFile, content.getBytes(StandardCharsets.UTF_8))
+      Files.move(tempFile, target, StandardCopyOption.REPLACE_EXISTING)
+    catch
+      case ex: Throwable =>
+        try Files.deleteIfExists(tempFile)
+        catch case _: Throwable => ()
+        throw ex
 
   override def exists(id: String): Boolean =
     Files.exists(crystalDir(id).resolve("crystal.json"))
@@ -23,22 +38,19 @@ class FsCrystalStore(val rootPath: Path) extends CrystalStore:
 
       // 1. Write crystal.json (Source of Truth)
       val jsonContent = crystal.asJson.spaces2
-      Files.write(dir.resolve("crystal.json"), jsonContent.getBytes(StandardCharsets.UTF_8))
+      atomicWrite(dir.resolve("crystal.json"), jsonContent)
 
       // 2. Write tasks.md (Derived view)
       val tasksContent = generateTasksMarkdown(crystal)
-      Files.write(dir.resolve("tasks.md"), tasksContent.getBytes(StandardCharsets.UTF_8))
+      atomicWrite(dir.resolve("tasks.md"), tasksContent)
 
       // 3. Write lessons-learned.md (Derived view)
       val lessonsContent = generateLessonsMarkdown(crystal)
-      Files.write(
-        dir.resolve("lessons-learned.md"),
-        lessonsContent.getBytes(StandardCharsets.UTF_8),
-      )
+      atomicWrite(dir.resolve("lessons-learned.md"), lessonsContent)
 
       // 4. Write transient.json
       val transientContent = crystal.transientLeases.asJson.spaces2
-      Files.write(dir.resolve("transient.json"), transientContent.getBytes(StandardCharsets.UTF_8))
+      atomicWrite(dir.resolve("transient.json"), transientContent)
 
       Right(())
     catch case ex: Throwable => Left(s"Failed to save crystal ${crystal.id}: ${ex.getMessage}")
@@ -162,7 +174,7 @@ class FsCrystalStore(val rootPath: Path) extends CrystalStore:
       Files.createDirectories(rootPath)
       val file        = rootPath.resolve("entities.json")
       val jsonContent = registry.asJson.spaces2
-      Files.write(file, jsonContent.getBytes(StandardCharsets.UTF_8))
+      atomicWrite(file, jsonContent)
       Right(())
     catch case ex: Throwable => Left(s"Failed to save entity registry: ${ex.getMessage}")
 
@@ -188,7 +200,7 @@ class FsCrystalStore(val rootPath: Path) extends CrystalStore:
       Files.createDirectories(rootPath)
       val file        = rootPath.resolve("artifacts.json")
       val jsonContent = registry.asJson.spaces2
-      Files.write(file, jsonContent.getBytes(StandardCharsets.UTF_8))
+      atomicWrite(file, jsonContent)
       Right(())
     catch case ex: Throwable => Left(s"Failed to save artifact registry: ${ex.getMessage}")
 

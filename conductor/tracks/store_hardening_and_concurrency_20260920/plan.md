@@ -2,12 +2,12 @@
 
 ## Phase 1: Atomic File Swaps & Zero-Torn-Read Inode Engine (TDD)
 
-- [ ] Task: Atomic Inode Replacement Unit Tests (TDD)
-  - [ ] Write unit tests asserting that `FsCrystalStore.save` uses temporary file staging and atomic replacement (`REPLACE_EXISTING`).
-  - [ ] Write tests verifying that concurrent reads during write loops observe only complete, valid JSON files.
-- [ ] Task: Implement Atomic File Replacement in `FsCrystalStore`
-  - [ ] Introduce internal atomic file writing helper in `FsCrystalStore` for `crystal.json`, `tasks.md`, `lessons-learned.md`, and `transient.json`.
-  - [ ] Ensure non-destructive cleanup of temporary files upon write failures.
+- [x] Task: Atomic Inode Replacement Unit Tests (TDD)
+  - [x] Write unit tests asserting that `FsCrystalStore.save` uses temporary file staging and atomic replacement (`REPLACE_EXISTING`).
+  - [x] Write tests verifying that concurrent reads during write loops observe only complete, valid JSON files.
+- [x] Task: Implement Atomic File Replacement in `FsCrystalStore`
+  - [x] Introduce internal atomic file writing helper in `FsCrystalStore` for `crystal.json`, `tasks.md`, `lessons-learned.md`, and `transient.json`.
+  - [x] Ensure non-destructive cleanup of temporary files upon write failures.
 - [ ] Task: Phase 1 Verification & Checkpoint (Refer to workflow.md)
 
 ## Phase 2: Storage-Isolated Transactional API & OCC Rebase (TDD)
