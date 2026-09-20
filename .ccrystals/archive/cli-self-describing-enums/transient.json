@@ -1,0 +1,11 @@
+[
+  {
+    "id" : "lease-1",
+    "resourceType" : "git_worktree",
+    "resourcePath" : "../ccrystal-worktrees/cli-self-describing-enums",
+    "description" : "Dedicated worktree for CLI self-describing enums",
+    "disposalPolicy" : "delete_after_test",
+    "status" : "cleaned",
+    "createdAt" : "2026-09-20T02:12:06.074Z"
+  }
+]

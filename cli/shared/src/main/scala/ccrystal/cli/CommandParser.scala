@@ -7,103 +7,133 @@ import ccrystal.core.model.*
 
 object CommandParser:
 
-  private given nodeKindArgument: Argument[NodeKind] = Argument.from("node-kind") {
-    case "human_prompt"    => Validated.valid(NodeKind.HumanPrompt)
-    case "agent_reasoning" => Validated.valid(NodeKind.AgentReasoning)
-    case "tool_execution"  => Validated.valid(NodeKind.ToolExecution)
-    case "checkpoint"      => Validated.valid(NodeKind.Checkpoint)
-    case "branch"          => Validated.valid(NodeKind.Branch)
-    case "resolution"      => Validated.valid(NodeKind.Resolution)
-    case other             => Validated.invalidNel(s"Invalid node kind: $other")
+  private def normalize(s: String): String =
+    s.trim
+      .replaceAll("([a-z0-9])([A-Z])", "$1_$2")
+      .toLowerCase
+      .replace('-', '_')
+
+  private given nodeKindArgument: Argument[NodeKind] = Argument.from("node-kind") { s =>
+    normalize(s) match
+      case "human_prompt"    => Validated.valid(NodeKind.HumanPrompt)
+      case "agent_reasoning" => Validated.valid(NodeKind.AgentReasoning)
+      case "tool_execution"  => Validated.valid(NodeKind.ToolExecution)
+      case "checkpoint"      => Validated.valid(NodeKind.Checkpoint)
+      case "branch"          => Validated.valid(NodeKind.Branch)
+      case "resolution"      => Validated.valid(NodeKind.Resolution)
+      case _ =>
+        Validated.invalidNel(
+          s"Invalid node kind: '$s' (valid: human_prompt, agent_reasoning, tool_execution, checkpoint, branch, resolution)",
+        )
   }
 
   private given resourceTypeArgument: Argument[TransientResourceType] =
-    Argument.from("resource-type") {
-      case "git_worktree" => Validated.valid(TransientResourceType.GitWorktree)
-      case "env_override" => Validated.valid(TransientResourceType.EnvOverride)
-      case "debug_config" => Validated.valid(TransientResourceType.DebugConfig)
-      case "dummy_asset"  => Validated.valid(TransientResourceType.DummyAsset)
-      case "mock_service" => Validated.valid(TransientResourceType.MockService)
-      case other          => Validated.invalidNel(s"Invalid resource type: $other")
+    Argument.from("resource-type") { s =>
+      normalize(s) match
+        case "git_worktree" => Validated.valid(TransientResourceType.GitWorktree)
+        case "env_override" => Validated.valid(TransientResourceType.EnvOverride)
+        case "debug_config" => Validated.valid(TransientResourceType.DebugConfig)
+        case "dummy_asset"  => Validated.valid(TransientResourceType.DummyAsset)
+        case "mock_service" => Validated.valid(TransientResourceType.MockService)
+        case _ =>
+          Validated.invalidNel(
+            s"Invalid resource type: '$s' (valid: git_worktree, env_override, debug_config, dummy_asset, mock_service)",
+          )
     }
 
   private given disposalPolicyArgument: Argument[DisposalPolicy] =
-    Argument.from("disposal-policy") {
-      case "revert_on_conclusion" => Validated.valid(DisposalPolicy.RevertOnConclusion)
-      case "delete_after_test"    => Validated.valid(DisposalPolicy.DeleteAfterTest)
-      case "replace_in_final_cut" => Validated.valid(DisposalPolicy.ReplaceInFinalCut)
-      case "manual"               => Validated.valid(DisposalPolicy.Manual)
-      case other                  => Validated.invalidNel(s"Invalid disposal policy: $other")
+    Argument.from("disposal-policy") { s =>
+      normalize(s) match
+        case "revert_on_conclusion" => Validated.valid(DisposalPolicy.RevertOnConclusion)
+        case "delete_after_test"    => Validated.valid(DisposalPolicy.DeleteAfterTest)
+        case "replace_in_final_cut" => Validated.valid(DisposalPolicy.ReplaceInFinalCut)
+        case "manual"               => Validated.valid(DisposalPolicy.Manual)
+        case _ =>
+          Validated.invalidNel(
+            s"Invalid disposal policy: '$s' (valid: revert_on_conclusion, delete_after_test, replace_in_final_cut, manual)",
+          )
     }
 
-  private given entityKindArgument: Argument[EntityKind] = Argument.from("entity-kind") {
-    case "human"  => Validated.valid(EntityKind.Human)
-    case "agent"  => Validated.valid(EntityKind.Agent)
-    case "model"  => Validated.valid(EntityKind.Model)
-    case "system" => Validated.valid(EntityKind.System)
-    case "tool"   => Validated.valid(EntityKind.Tool)
-    case other    => Validated.invalidNel(s"Invalid entity kind: $other")
+  private given entityKindArgument: Argument[EntityKind] = Argument.from("entity-kind") { s =>
+    normalize(s) match
+      case "human"  => Validated.valid(EntityKind.Human)
+      case "agent"  => Validated.valid(EntityKind.Agent)
+      case "model"  => Validated.valid(EntityKind.Model)
+      case "system" => Validated.valid(EntityKind.System)
+      case "tool"   => Validated.valid(EntityKind.Tool)
+      case _ =>
+        Validated.invalidNel(
+          s"Invalid entity kind: '$s' (valid: human, agent, model, system, tool)",
+        )
   }
 
   private given captureFidelityArgument: Argument[CaptureFidelity] =
-    Argument.from("capture-fidelity") {
-      case "inferred"    => Validated.valid(CaptureFidelity.Inferred)
-      case "intercepted" => Validated.valid(CaptureFidelity.Intercepted)
-      case other =>
-        Validated.invalidNel(
-          s"Invalid capture fidelity: $other (must be 'inferred' or 'intercepted')",
-        )
+    Argument.from("capture-fidelity") { s =>
+      normalize(s) match
+        case "inferred"    => Validated.valid(CaptureFidelity.Inferred)
+        case "intercepted" => Validated.valid(CaptureFidelity.Intercepted)
+        case _ =>
+          Validated.invalidNel(
+            s"Invalid capture fidelity: '$s' (valid: inferred, intercepted)",
+          )
     }
 
-  private given sliceFormatArgument: Argument[SliceFormat] = Argument.from("format") {
-    case "prompt" => Validated.valid(SliceFormat.Prompt)
-    case "human"  => Validated.valid(SliceFormat.Human)
-    case "json"   => Validated.valid(SliceFormat.Json)
-    case other =>
-      Validated.invalidNel(s"Invalid slice format: $other (must be 'prompt', 'human', or 'json')")
+  private given sliceFormatArgument: Argument[SliceFormat] = Argument.from("format") { s =>
+    normalize(s) match
+      case "prompt" => Validated.valid(SliceFormat.Prompt)
+      case "human"  => Validated.valid(SliceFormat.Human)
+      case "json"   => Validated.valid(SliceFormat.Json)
+      case _ =>
+        Validated.invalidNel(
+          s"Invalid slice format: '$s' (valid: prompt, human, json)",
+        )
   }
 
   private given artifactSubstrateArgument: Argument[ArtifactSubstrate] =
-    Argument.from("substrate") {
-      case "virtual"  => Validated.valid(ArtifactSubstrate.Virtual)
-      case "physical" => Validated.valid(ArtifactSubstrate.Physical)
-      case other =>
-        Validated.invalidNel(
-          s"Invalid artifact substrate: $other (must be 'virtual' or 'physical')",
-        )
+    Argument.from("substrate") { s =>
+      normalize(s) match
+        case "virtual"  => Validated.valid(ArtifactSubstrate.Virtual)
+        case "physical" => Validated.valid(ArtifactSubstrate.Physical)
+        case _ =>
+          Validated.invalidNel(
+            s"Invalid artifact substrate: '$s' (valid: virtual, physical)",
+          )
     }
 
   private given artifactRoleArgument: Argument[ArtifactRole] =
-    Argument.from("role") {
-      case "target"       => Validated.valid(ArtifactRole.Target)
-      case "instrument"   => Validated.valid(ArtifactRole.Instrument)
-      case "precondition" => Validated.valid(ArtifactRole.Precondition)
-      case other =>
-        Validated.invalidNel(
-          s"Invalid artifact role: $other (must be 'target', 'instrument', or 'precondition')",
-        )
+    Argument.from("role") { s =>
+      normalize(s) match
+        case "target"       => Validated.valid(ArtifactRole.Target)
+        case "instrument"   => Validated.valid(ArtifactRole.Instrument)
+        case "precondition" => Validated.valid(ArtifactRole.Precondition)
+        case _ =>
+          Validated.invalidNel(
+            s"Invalid artifact role: '$s' (valid: target, instrument, precondition)",
+          )
     }
 
   private given goalStatusArgument: Argument[GoalStatus] =
-    Argument.from("goal-status") {
-      case "in_progress"                       => Validated.valid(GoalStatus.InProgress)
-      case "concluded" | "concluded_success"   => Validated.valid(GoalStatus.ConcludedSuccess)
-      case "abandoned" | "concluded_abandoned" => Validated.valid(GoalStatus.ConcludedAbandoned)
-      case other =>
-        Validated.invalidNel(
-          s"Invalid goal status: $other (must be 'in_progress', 'concluded_success', or 'concluded_abandoned')",
-        )
+    Argument.from("goal-status") { s =>
+      normalize(s) match
+        case "in_progress"                       => Validated.valid(GoalStatus.InProgress)
+        case "concluded" | "concluded_success"   => Validated.valid(GoalStatus.ConcludedSuccess)
+        case "abandoned" | "concluded_abandoned" => Validated.valid(GoalStatus.ConcludedAbandoned)
+        case _ =>
+          Validated.invalidNel(
+            s"Invalid goal status: '$s' (valid: in_progress, concluded_success, concluded_abandoned)",
+          )
     }
 
   private given agingStateArgument: Argument[AgingState] =
-    Argument.from("aging-state") {
-      case "active" => Validated.valid(AgingState.Active)
-      case "solid"  => Validated.valid(AgingState.Solid)
-      case "stale"  => Validated.valid(AgingState.Stale)
-      case other =>
-        Validated.invalidNel(
-          s"Invalid aging state: $other (must be 'active', 'solid', or 'stale')",
-        )
+    Argument.from("aging-state") { s =>
+      normalize(s) match
+        case "active" => Validated.valid(AgingState.Active)
+        case "solid"  => Validated.valid(AgingState.Solid)
+        case "stale"  => Validated.valid(AgingState.Stale)
+        case _ =>
+          Validated.invalidNel(
+            s"Invalid aging state: '$s' (valid: active, solid, stale)",
+          )
     }
 
   // --- Subcommands ---
@@ -119,7 +149,9 @@ object CommandParser:
         "u",
       )
       .orNone,
-    Opts.option[EntityKind]("author-kind", "Author entity kind").orNone,
+    Opts
+      .option[EntityKind]("author-kind", "Author entity kind (human, agent, model, system, tool)")
+      .orNone,
     Opts.option[String]("created-at", "ISO-8601 creation timestamp").orNone,
     Opts.options[String]("task", "Initial acceptance criterion / task", "t").orEmpty,
   ).mapN(CliCommand.Init.apply)
@@ -176,7 +208,11 @@ object CommandParser:
 
   private val nodeAddOpts = (
     Opts.argument[String]("crystal-id"),
-    Opts.option[NodeKind]("kind", "Node kind", "k"),
+    Opts.option[NodeKind](
+      "kind",
+      "Node kind (human_prompt, agent_reasoning, tool_execution, checkpoint, branch, resolution)",
+      "k",
+    ),
     Opts.option[String]("summary", "Content summary", "s"),
     Opts.options[String]("parent", "Parent node IDs", "p").orEmpty,
     Opts.option[String]("author", "Author/Actor entity ID", "u").orNone,
@@ -243,7 +279,11 @@ object CommandParser:
       "Entity handle or name (e.g. 'john'; clean alphanumeric handle, avoid PII or accents)",
       "n",
     ),
-    Opts.option[EntityKind]("kind", "Entity kind", "k"),
+    Opts.option[EntityKind](
+      "kind",
+      "Entity kind (human, agent, model, system, tool)",
+      "k",
+    ),
   ).mapN(CliCommand.EntityRegister.apply)
 
   private val entityConventionsOpts = Opts.unit.map(_ => CliCommand.EntityConventions)
@@ -276,10 +316,17 @@ object CommandParser:
 
   private val leaseOpts = (
     Opts.argument[String]("crystal-id"),
-    Opts.option[TransientResourceType]("type", "Resource type", "t"),
+    Opts.option[TransientResourceType](
+      "type",
+      "Resource type (git_worktree, env_override, debug_config, dummy_asset, mock_service)",
+      "t",
+    ),
     Opts.option[String]("path", "Path of resource", "p").orNone,
     Opts.option[String]("desc", "Description", "d"),
-    Opts.option[DisposalPolicy]("policy", "Disposal policy"),
+    Opts.option[DisposalPolicy](
+      "policy",
+      "Disposal policy (revert_on_conclusion, delete_after_test, replace_in_final_cut, manual)",
+    ),
     Opts.option[String]("acquired-at", "ISO-8601 acquisition timestamp").orNone,
   ).mapN(CliCommand.TransientLeaseCmd.apply)
 

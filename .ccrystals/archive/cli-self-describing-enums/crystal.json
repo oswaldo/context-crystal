@@ -1,0 +1,147 @@
+{
+  "schemaVersion" : "1.0.0",
+  "id" : "cli-self-describing-enums",
+  "name" : "cli-self-describing-enums",
+  "createdAt" : "2026-09-20T02:12:00.075Z",
+  "updatedAt" : "2026-09-20T02:23:31.289Z",
+  "parentCrystalId" : null,
+  "origin" : null,
+  "caveId" : null,
+  "defaultAuthorId" : "usr_operator",
+  "goal" : {
+    "title" : "CLI Self-Describing Enums and Pragmatic Help Invariants",
+    "intent" : "Ensure all CLI enum arguments accept flexible delimiters, show allowed values in --help and error messages, and codify the Help Quality Invariant in AGENTS.md and SKILL.md",
+    "status" : "concluded_success",
+    "acceptanceCriteria" : [
+      {
+        "id" : "task-1",
+        "description" : "Add flexible enum normalization (kebab, snake, case-insensitive) and explicit valid options list to CommandParser",
+        "completed" : true
+      },
+      {
+        "id" : "task-2",
+        "description" : "Update CLI help text to display allowed enum choices for kind, type, policy, format, substrate, role",
+        "completed" : true
+      },
+      {
+        "id" : "task-3",
+        "description" : "Add Self-Describing CLI Enums invariant to AGENTS.md and document allowed values in SKILL.md and --for-ai",
+        "completed" : true
+      },
+      {
+        "id" : "task-4",
+        "description" : "Run full test suite, compile Thin LTO binary, and install to ~/.local/bin/ccrystal",
+        "completed" : true
+      }
+    ],
+    "metadata" : {
+      
+    }
+  },
+  "entities" : [
+    {
+      "id" : "usr_operator",
+      "kind" : "human",
+      "name" : "Operator",
+      "metadata" : {
+        
+      },
+      "publicKey" : null,
+      "endpoints" : {
+        
+      }
+    }
+  ],
+  "activeMask" : null,
+  "dag" : {
+    "rootNodeId" : "node-cli-self-describing-enums-init",
+    "nodes" : [
+      {
+        "id" : "node-cli-self-describing-enums-init",
+        "parentIds" : [
+        ],
+        "timestamp" : "2026-09-20T02:12:00.075Z",
+        "actorId" : "usr_operator",
+        "kind" : "human_prompt",
+        "contentSummary" : "Initialized crystal 'cli-self-describing-enums' with goal: CLI Self-Describing Enums and Pragmatic Help Invariants",
+        "anchor" : null,
+        "artifactIds" : [
+        ],
+        "inputArtifactIds" : [
+        ],
+        "outputArtifactIds" : [
+        ],
+        "preconditionArtifactIds" : [
+        ],
+        "fidelity" : "inferred",
+        "metadata" : {
+          
+        }
+      },
+      {
+        "id" : "node-2",
+        "parentIds" : [
+          "node-cli-self-describing-enums-init"
+        ],
+        "timestamp" : "2026-09-20T02:23:31.288Z",
+        "actorId" : "usr_operator",
+        "kind" : "checkpoint",
+        "contentSummary" : "All self-describing enum tasks complete, verified across all targets, Thin LTO release installed",
+        "anchor" : null,
+        "artifactIds" : [
+        ],
+        "inputArtifactIds" : [
+        ],
+        "outputArtifactIds" : [
+        ],
+        "preconditionArtifactIds" : [
+        ],
+        "fidelity" : "inferred",
+        "metadata" : {
+          
+        }
+      },
+      {
+        "id" : "node-3",
+        "parentIds" : [
+          "node-2"
+        ],
+        "timestamp" : "2026-09-20T02:23:31.289Z",
+        "actorId" : "usr_operator",
+        "kind" : "resolution",
+        "contentSummary" : "Self-describing CLI enums, flexible case/delimiter normalization, help quality invariant, and documentation complete",
+        "anchor" : null,
+        "artifactIds" : [
+        ],
+        "inputArtifactIds" : [
+        ],
+        "outputArtifactIds" : [
+        ],
+        "preconditionArtifactIds" : [
+        ],
+        "fidelity" : "inferred",
+        "metadata" : {
+          
+        }
+      }
+    ]
+  },
+  "transientLeases" : [
+    {
+      "id" : "lease-1",
+      "resourceType" : "git_worktree",
+      "resourcePath" : "../ccrystal-worktrees/cli-self-describing-enums",
+      "description" : "Dedicated worktree for CLI self-describing enums",
+      "disposalPolicy" : "delete_after_test",
+      "status" : "cleaned",
+      "createdAt" : "2026-09-20T02:12:06.074Z"
+    }
+  ],
+  "lessonsLearned" : [
+  ],
+  "artifacts" : [
+  ],
+  "metadata" : {
+    
+  }
+}

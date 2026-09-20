@@ -703,6 +703,18 @@ class Runner(
           |- **Atomic Batching:** For multi-step transitions, compose a single chained command or `ccrystal batch` script to minimize turn roundtrips.
           |- **Transient Resource Leases:** Register temporary worktrees, debug configs, and test assets as transient leases (`ccrystal transient lease`) and clean them upon conclusion.
           |
+          |## 4. CLI Argument Enums & Normalization
+          |All CLI enum options accept case-insensitive, kebab-case, PascalCase, or snake_case inputs:
+          |- **Node Kinds (`--kind`):** `human_prompt`, `agent_reasoning`, `tool_execution`, `checkpoint`, `branch`, `resolution`
+          |- **Transient Resource Types (`--type`):** `git_worktree`, `env_override`, `debug_config`, `dummy_asset`, `mock_service`
+          |- **Disposal Policies (`--policy`):** `revert_on_conclusion`, `delete_after_test`, `replace_in_final_cut`, `manual`
+          |- **Entity Kinds (`--kind`, `-k`):** `human`, `agent`, `model`, `system`, `tool`
+          |- **Capture Fidelity (`--fidelity`):** `inferred`, `intercepted`
+          |- **Goal Statuses (`--status`):** `in_progress`, `concluded_success`, `concluded_abandoned`
+          |- **Artifact Roles (`--role`):** `target`, `instrument`, `precondition`
+          |- **Artifact Substrates (`--substrate`):** `virtual`, `physical`
+          |- **Aging States (`--state`):** `active`, `solid`, `stale`
+          |
           |Note: This instruction was meant for non-humans (AI assistants and autonomous agents). For human CLI usage, run 'ccrystal --help'.""".stripMargin.trim,
       )
 

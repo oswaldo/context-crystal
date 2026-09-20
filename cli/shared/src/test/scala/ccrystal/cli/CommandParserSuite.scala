@@ -690,8 +690,56 @@ class CommandParserSuite extends FunSuite:
     val p2 = CommandParser.parse(
       List("goal", "status", "c-1", "--status", "in_progress", "-s", "Reopened for minor fix"),
     )
-    assertEquals(p2.isRight, true, "goal status in_progress with summary")
+    assertEquals(p2.isRight, true, "goal status in_progress")
     assertEquals(
       p2.toOption.get,
       CliCommand.GoalTransition("c-1", GoalStatus.InProgress, Some("Reopened for minor fix")),
+    )
+
+  test("Parses enums with flexible normalization (kebab-case, PascalCase, snake_case)"):
+    val pKebab = CommandParser.parse(
+      List("node", "add", "c-1", "--kind", "tool-execution", "--summary", "Ran tests"),
+    )
+    assertEquals(pKebab.isRight, true, "kebab-case node kind")
+    assertEquals(
+      pKebab.toOption.get,
+      CliCommand.NodeAdd("c-1", NodeKind.ToolExecution, "Ran tests", Nil),
+    )
+
+    val pPascal = CommandParser.parse(
+      List("node", "add", "c-1", "--kind", "ToolExecution", "--summary", "Ran tests"),
+    )
+    assertEquals(pPascal.isRight, true, "PascalCase node kind")
+    assertEquals(
+      pPascal.toOption.get,
+      CliCommand.NodeAdd("c-1", NodeKind.ToolExecution, "Ran tests", Nil),
+    )
+
+    val pLease = CommandParser.parse(
+      List(
+        "transient",
+        "lease",
+        "c-1",
+        "--type",
+        "git-worktree",
+        "--policy",
+        "delete-after-test",
+        "--desc",
+        "Worktree",
+      ),
+    )
+    assertEquals(pLease.isRight, true, "kebab-case transient lease enum arguments")
+    val leaseCmd = pLease.toOption.get.asInstanceOf[CliCommand.TransientLeaseCmd]
+    assertEquals(leaseCmd.resourceType, TransientResourceType.GitWorktree)
+    assertEquals(leaseCmd.policy, DisposalPolicy.DeleteAfterTest)
+
+  test("Enum parse failure outputs actionable list of valid options"):
+    val res = CommandParser.parse(
+      List("node", "add", "c-1", "--kind", "invalid-kind", "--summary", "Ran tests"),
+    )
+    assertEquals(res.isLeft, true)
+    val help = res.swap.toOption.get
+    assert(
+      help.contains("valid: human_prompt, agent_reasoning, tool_execution"),
+      s"Error message must list valid node kinds, got: $help",
     )

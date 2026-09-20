@@ -67,6 +67,16 @@ If `ccrystal` is not present in PATH:
 - **Zero-Drift CLI Reference:** Always treat `ccrystal --help` and `ccrystal <subcommand> --help` as the live, authoritative contract for command-line syntax and flags. Because Decline compiles CLI parsers directly from source ADTs, `--help` never drifts from binary reality.
 - **MCP vs. CLI Decision:** While native MCP tools are preferred for turn-efficiency, any agent weighing whether to call MCP or CLI—or checking whether a newly implemented capability (such as melting, cold storage archiving, or triage filters) is accessible—should run `ccrystal --help` or `ccrystal <subcommand> --help` as the definitive source of truth.
 - **Protocol & Invariant Guidance:** For machine-oriented protocol guidelines, PII rules, and entity handle conventions, run `ccrystal --for-ai`.
+- **Self-Describing CLI Enums & Normalization:** All CLI enum arguments accept case-insensitive, `kebab-case`, `PascalCase`, or `snake_case` forms interchangeably:
+  - **Node Kinds (`--kind`, `-k`):** `human_prompt`, `agent_reasoning`, `tool_execution`, `checkpoint`, `branch`, `resolution`
+  - **Transient Resource Types (`--type`, `-t`):** `git_worktree`, `env_override`, `debug_config`, `dummy_asset`, `mock_service`
+  - **Disposal Policies (`--policy`):** `revert_on_conclusion`, `delete_after_test`, `replace_in_final_cut`, `manual`
+  - **Entity Kinds (`--kind`, `-k`):** `human`, `agent`, `model`, `system`, `tool`
+  - **Capture Fidelity (`--fidelity`):** `inferred`, `intercepted`
+  - **Goal Statuses (`--status`):** `in_progress`, `concluded_success`, `concluded_abandoned`
+  - **Artifact Roles (`--role`):** `target`, `instrument`, `precondition`
+  - **Artifact Substrates (`--substrate`):** `virtual`, `physical`
+  - **Aging States (`--state`):** `active`, `solid`, `stale`
 
 ### Agent Runtime Onboarding & Diagnostics (`ccrystal agent`)
 
