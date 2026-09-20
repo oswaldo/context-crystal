@@ -22,9 +22,9 @@
 - [x] Task: Defensive Automated Configuration Installer (TDD) (227d43d)
   - [x] Write unit tests for installer execution: atomic `.tmp` swap, creation of `.bak` backups, rollback verification, `--dry-run` previews, and target filtering.
   - [x] Implement `AgentInstaller` engine with clear CLI logging of backup locations and rollback instructions.
-- [ ] Task: CLI Command `ccrystal agent install` (TDD)
-  - [ ] Write unit tests for CLI wiring of `agent install [--target <harness>] [--dry-run] [--force]`.
-  - [ ] Implement decline subcommand and attach to main CLI router.
+- [x] Task: CLI Command `ccrystal agent install` (TDD) (54569e3)
+  - [x] Write unit tests for CLI wiring of `agent install [--target <harness>] [--dry-run] [--force]`.
+  - [x] Implement decline subcommand and attach to main CLI router.
 - [ ] Task: Phase 3 Verification & Checkpoint (Refer to workflow.md)
 
 ## Phase 4: Cross-Platform Verification, Safety Audits & Documentation
