@@ -55,3 +55,6 @@
 
 - [x] **Track: Storage Isolation, Atomic Swaps & Optimistic Concurrency Control (OCC)**  
   *Link: [conductor/tracks/store_hardening_and_concurrency_20260920/index.md](./tracks/store_hardening_and_concurrency_20260920/index.md)*
+
+- [x] **Track: macOS Onboarding & Portability Improvements**  
+  *Link: [conductor/tracks/macos_onboarding_improvements_20260923/index.md](./tracks/macos_onboarding_improvements_20260923/index.md)*
