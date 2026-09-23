@@ -153,15 +153,20 @@ The script automatically detects your OS and architecture (`linux-x86_64`, `maco
 
 If you prefer building from source, ensure you have:
 
-- **Java Development Kit (JDK):** Version 21+ (managed via Coursier `cs setup` or SDKMAN)
+- **Java Development Kit (JDK):** Version 21+ (verified on JDK 21 LTS and bleeding-edge OpenJDK 26 on macOS Apple Silicon)
 - **Build Tool:** `sbt` 1.10+
 - **Compiler:** Scala 3.9+
-- **Native Linker:** `clang` (for Scala Native LLVM target)
+- **Native Linker:** `clang` (for Scala Native LLVM target; included with Xcode CommandLineTools on macOS)
 
 > [!TIP]
 > **Collaborator Quickstart & Hardware Baseline:**
 >
-> - **Toolchain:** We recommend bootstrapping your environment with [Coursier](https://get-coursier.io/) (`cs setup`).
+> - **Idiomatic Bleeding-Edge Setup:** We recommend bootstrapping your environment with [Coursier](https://get-coursier.io/):
+>   ```bash
+>   # Single command installs bleeding-edge JDK 26, sbt, scalafmt, scala-cli, and configures PATH
+>   cs setup --jvm 26 -y
+>   ```
+> - **Shell PATH:** Ensure `~/.local/bin` and Coursier's application bin directory (`~/Library/Application Support/Coursier/bin` on macOS) are exported in your `~/.zshrc` or profile.
 > - **Memory Baseline:** Scala Native Thin LTO linking benefits from 8 GB+ RAM. A [`.jvmopts`](.jvmopts) baseline (`-Xmx4g`) is included in the repository. On lightweight machines, run `sbt "coreJVM/test; cliJVM/test"` for fast local iteration.
 > - **Contributing:** See **[docs/contributing.md](docs/contributing.md)** for our dual-key cryptographic policy and local verification workflow.
 
@@ -172,9 +177,10 @@ sbt "cliNative/nativeLink"
 # 2. Optimized release build with Thin LTO (~25s, dead-code elimination, peak runtime performance)
 sbt 'set cli.native / nativeConfig ~= { _.withMode(scala.scalanative.build.Mode.releaseFast).withLTO(scala.scalanative.build.LTO.thin) }; cliNative/nativeLink'
 
-# Install into local user PATH
+# Install into local user PATH (portable across macOS BSD and Linux GNU)
 mkdir -p ~/.local/bin
-cp --remove-destination ./cli/native/target/scala-3.9.0/ccrystal-cli ~/.local/bin/ccrystal
+rm -f ~/.local/bin/ccrystal
+cp ./cli/native/target/scala-3.9.0/ccrystal-cli ~/.local/bin/ccrystal
 chmod +x ~/.local/bin/ccrystal
 strip ~/.local/bin/ccrystal
 ```
