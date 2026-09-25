@@ -133,6 +133,44 @@ else
     fail "Corrupted binary was unexpectedly placed in destination"
 fi
 
+# Test 4: Atomic inode replacement
+echo "==> Running Test 4: Atomic inode replacement"
+INODE_DIR="$TEST_TEMP_DIR/inode_test"
+mkdir -p "$INODE_DIR"
+echo "legacy binary content" > "$INODE_DIR/ccrystal"
+get_inode() {
+    file="$1"
+    if stat -c %i "$file" >/dev/null 2>&1; then
+        stat -c %i "$file"
+    elif stat -f %i "$file" >/dev/null 2>&1; then
+        stat -f %i "$file"
+    else
+        find "$file" -prune -exec ls -i {} + | awk '{print $1}'
+    fi
+}
+
+OLD_INODE=$(get_inode "$INODE_DIR/ccrystal")
+
+CCRYSTAL_BASE_URL="file://$MOCK_RELEASE_DIR" \
+    "$INSTALL_SCRIPT" --to "$INODE_DIR" --version "$MOCK_VERSION" > "$TEST_TEMP_DIR/test4.log" 2>&1
+
+NEW_INODE=$(get_inode "$INODE_DIR/ccrystal")
+if [ "$OLD_INODE" != "$NEW_INODE" ]; then
+    pass "Destination inode was replaced atomically (old: $OLD_INODE, new: $NEW_INODE)"
+else
+    fail "Destination inode was truncated in-place rather than replaced atomically"
+fi
+
+# Test 5: Unknown argument rejection
+echo "==> Running Test 5: Unknown argument rejection"
+EXIT_CODE=0
+"$INSTALL_SCRIPT" --unsupported-flag > "$TEST_TEMP_DIR/test5.log" 2>&1 || EXIT_CODE=$?
+if [ "$EXIT_CODE" -ne 0 ]; then
+    pass "Installer rejected unknown argument (exit code $EXIT_CODE)"
+else
+    fail "Installer should have failed on unknown argument"
+fi
+
 # Summary
 echo ""
 echo "================================="
