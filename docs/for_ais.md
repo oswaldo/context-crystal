@@ -31,3 +31,15 @@ When all tasks and acceptance criteria are satisfied, transition the crystal's g
 ## 7. Secret Sanitization Invariant
 
 Under no circumstances should you record raw credentials, private API keys, passwords, bearer tokens, or sensitive certificates into crystals, DAG nodes, task descriptions, or artifacts. When capturing tool executions or terminal outputs, you must proactively scrub and redact sensitive headers (e.g., replacing `Bearer <token>` with `Bearer <REDACTED>`). Always prefer external pointer references (e.g., `env:SECRET_KEY` or vault URIs) over literal values. Treat `.ccrystals/` stores as public-facing audit trails.
+
+## 8. Compaction & Session Resume Invariant (Anti-Amnesia)
+
+When resuming after context window compaction or beginning a turn with truncated chat history, never rely exclusively on conversational summary notes. Immediately verify ground truth by querying `ccrystal list` (or MCP `crystal_list`). If an active crystal was in progress, hydrate its living context beam (`ccrystal hydrate <id>` or MCP `crystal_hydrate`) to restore the navigational map, active tasks, and active transient leases into immediate working memory.
+
+## 9. Topic Drift & Scope Transition Heuristic (The Three-Tier Rule)
+
+When session discourse or operator directives shift away from the active crystal's goal nucleus, evaluate the transition against three architectural tiers:
+
+1. **Sub-inquiry or Architectural Branch:** If the work is an offshoot or exploratory spike of the active goal, cleave and fork a sub-DAG slice or child dendrite (`ccrystal slice <id> --fork-to <child-id>` or MCP `crystal_slice_fork`).
+2. **Distinct Non-Trivial Goal:** If the prior goal is concluded or superseded and the new focus is a substantial multi-step task, cleanly conclude the prior crystal (`ccrystal conclude` or MCP `crystal_goal_transition`), resolve all transient leases, and initialize a new dedicated crystal (`crystal_init` or `ccrystal init`).
+3. **Ephemeral / Informational Q&A:** If the request is a brief factual inquiry, architectural explanation, or single-turn lookup (e.g., "what does OCC stand for?"), answer directly and statelessly without mutating crystals or creating workspace cave bloat.
