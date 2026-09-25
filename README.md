@@ -1,6 +1,8 @@
 # Context Crystal — GitHub Pages & Public Launch Portal
 
-This worktree contains the source code for the Context Crystal public web portal and documentation showcase. It is managed in the independent `gh-pages` orphan branch, completely decoupled from the application source code in `main`.
+This worktree contains the source code for the Context Crystal public web
+portal and documentation showcase. It is managed in the independent `gh-pages`
+orphan branch, completely decoupled from the application source code in `main`.
 
 ## Development
 

@@ -143,3 +143,11 @@ Native stdio JSON-RPC 2.0 endpoint started via `ccrystal mcp`.
 2. **Dual-Credential Security & Push Gate:**
    - Commit signing key (`user.signingkey`): AI entities create local cryptographically signed commits within worktrees.
    - Remote transport key (`git push`): Remotely authenticated via passphrase or hardware security token (YubiKey) held strictly by the human operator. Autonomous entities NEVER execute `git push` autonomously.
+3. **Secret Sanitization Invariant (Pointers Over Values):**
+   - Never record raw secrets, passwords, or private API keys into DAG nodes or envelopes.
+   - Use environment variable pointers (`env:VAR_NAME`) and zero-secret postures.
+4. **Proud Human-in-the-Loop Craftsmanship:**
+   - Strictly reject runaway agent swarms and synthetic slop.
+   - All state transitions, architecture, and code modifications are engineered in deliberate human partnership.
+5. **Atomic Storage & OCC Invariant:**
+   - All disk mutations execute via atomic POSIX `rename(2)` / `REPLACE_EXISTING` swaps with 128-bit `ContentFingerprint` CAS rebase loops, preventing concurrent race conditions.

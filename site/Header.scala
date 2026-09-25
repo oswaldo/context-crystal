@@ -41,7 +41,7 @@ object Header:
             href := "https://github.com/oswaldo/context-crystal",
             target := "_blank",
             rel := "noopener noreferrer",
-            span(className := "github-icon", "★"),
+            Icons.github(16),
             span("GitHub"),
           ),
         ),

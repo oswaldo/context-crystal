@@ -10,12 +10,18 @@
 - **Zero Agent Debris:** Register an explicit transient lease for every temporary git worktree or mock config (`ccrystal transient lease` or `crystal_transient_lease`). Clean or promote leases before marking goals concluded.
 - **Atomic Multi-Command Batching:** Compose atomic update recipes separated by semicolons (`ccrystal batch "cmd1; cmd2"` or `crystal_batch`).
 - **Cold Storage Over Deletion:** Conclude goals cleanly (`ccrystal conclude`), squash intermediate nodes (`ccrystal melt`), and archive solid crystals to cold storage (`ccrystal archive`) rather than destructive deletion.
+- **Proud Human-in-the-Loop Craftsmanship:** Reject runaway agent swarms and synthetic slop. Coordinate transparently with human operators, preserve intentional commit lineage, and verify state before conclusion.
 - **Authoritative Discovery:** Run `ccrystal --help` or `ccrystal <subcommand> --help` as the compiled ground truth for CLI flags and syntax, and `ccrystal --for-ai` for protocol rules.
 
 ## Installation
 Single-line curl installer:
 ```bash
 curl -fsSL https://raw.githubusercontent.com/oswaldo/context-crystal/main/install.sh | sh
+```
+
+Homebrew Tap (macOS & Linux):
+```bash
+brew tap oswaldo/tap && brew install ccrystal
 ```
 
 ## Essential CLI Subcommands

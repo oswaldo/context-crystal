@@ -22,14 +22,14 @@ object TabManifesto:
         ),
         p(
           className := "hero-lead",
-          "Context Crystal cures session amnesia and eliminates agent debris. A local-first, zero-token lifecycle and context beam engine engineered for biological software architects and computational AI swarms.",
+          "Context Crystal cures session amnesia and eliminates agent debris. A local-first, zero-token lifecycle and context beam engine engineered for software architects and autonomous AI entities collaborating with deliberate human craftsmanship.",
         ),
         div(
           className := "hero-cta-group",
           button(
             typ := "button",
             className := "btn-primary",
-            span("⚡ Install in 5 Seconds"),
+            span("◇ Install in 5 Seconds"),
             onClick.mapTo(Tab.Quickstart) --> State.activeTab.writer,
           ),
           button(
@@ -83,19 +83,19 @@ object TabManifesto:
           className := "cards-grid three-col",
           div(
             className := "feature-card",
-            div(className := "card-icon", "⏳"),
+            div(className := "card-icon", Icons.clock(32)),
             h3("Session Amnesia"),
             p("Chat windows reset. Context is trapped in ephemeral IDE windows or proprietary cloud caches. Starting a new agent turn or switching machines loses hard-won architectural decisions and progress."),
           ),
           div(
             className := "feature-card",
-            div(className := "card-icon", "🌪️"),
+            div(className := "card-icon", Icons.debris(32)),
             h3("Agent Debris Deficit"),
             p("Autonomous coding agents create temporary git worktrees, mock configurations, and scratch test harnesses that linger indefinitely as orphaned technical debt when turns end or crash."),
           ),
           div(
             className := "feature-card",
-            div(className := "card-icon", "💸"),
+            div(className := "card-icon", Icons.tokenBurn(32)),
             h3("Token Inflation & Drift"),
             p("Re-summarizing entire conversations with an LLM burns valuable context budget and introduces hallucinatory drift into ground truth. Semantic vector similarity fails to represent exact causal state sequences."),
           ),
@@ -195,6 +195,18 @@ object TabManifesto:
                 td(span(className := "pill green", "Zero-LLM Melting & Cold Storage Archive")),
                 td("Hallucinatory LLM re-summarization"),
                 td("Context bloat or manual wipe"),
+              ),
+              tr(
+                td(strong("Storage & Concurrency")),
+                td(span(className := "pill green", "Transactional OCC & Atomic Inode Swaps")),
+                td("Eventual consistency or network locks"),
+                td("Volatile RAM or SQLite lock contention"),
+              ),
+              tr(
+                td(strong("Engineering Philosophy")),
+                td(span(className := "pill cyan", "Human-in-the-Loop Craftsmanship")),
+                td("Unsupervised runaway swarms"),
+                td("Disposable ad-hoc prompts"),
               ),
             ),
           ),

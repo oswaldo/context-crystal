@@ -88,7 +88,7 @@ object TabExplorer:
           className := "pane-col pane-beam",
           div(
             className := "pane-header",
-            span(className := "pane-title", "⚡ Hydrated Context Beam (ccrystal hydrate)"),
+            span(className := "pane-title", "◈ Hydrated Context Beam (ccrystal hydrate)"),
             button(
               typ := "button",
               className := "terminal-copy-btn",

@@ -32,7 +32,7 @@ object TabMcp:
           // Claude Desktop
           div(
             className := "feature-card client-config-card",
-            div(className := "client-header", span(className := "client-icon", "🟣"), strong("Claude Desktop")),
+            div(className := "client-header", Icons.claude(20), strong("Claude Desktop")),
             p(className := "config-path", "~/.config/Claude/claude_desktop_config.json"),
             pre(
               code(
@@ -50,7 +50,7 @@ object TabMcp:
           // Cursor
           div(
             className := "feature-card client-config-card",
-            div(className := "client-header", span(className := "client-icon", "🟦"), strong("Cursor IDE")),
+            div(className := "client-header", Icons.cursor(20), strong("Cursor IDE")),
             p(className := "config-path", ".cursor/mcp.json"),
             pre(
               code(
@@ -68,7 +68,7 @@ object TabMcp:
           // Zed
           div(
             className := "feature-card client-config-card",
-            div(className := "client-header", span(className := "client-icon", "⚡"), strong("Zed Editor")),
+            div(className := "client-header", Icons.zed(20), strong("Zed Editor")),
             p(className := "config-path", "~/.config/zed/settings.json"),
             pre(
               code(
