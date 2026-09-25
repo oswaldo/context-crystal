@@ -33,11 +33,11 @@
 
 ## Phase 3: Homebrew Tap Distribution (`Formula/ccrystal.rb`)
 
-- [ ] Task: Create Homebrew formula definition
-  - [ ] Author `Formula/ccrystal.rb` supporting multi-platform binary bottle stanzas (macOS aarch64, macOS x86_64, Linux aarch64, Linux x86_64)
-  - [ ] Add post-install PATH and self-test verification stanzas (`ccrystal --version`)
-- [ ] Task: Formula validation & audit
-  - [ ] Validate Ruby syntax and Homebrew formula lint rules
+- [x] Task: Create Homebrew formula definition (7f649df)
+  - [x] Author `Formula/ccrystal.rb` supporting multi-platform binary bottle stanzas (macOS aarch64, macOS x86_64, Linux aarch64, Linux x86_64)
+  - [x] Add post-install PATH and self-test verification stanzas (`ccrystal --help`)
+- [x] Task: Formula validation & audit (7f649df)
+  - [x] Validate Ruby syntax and Homebrew formula lint rules
 - [ ] Task: Phase 3 Verification & Checkpoint (Refer to workflow.md)
 
 ---
