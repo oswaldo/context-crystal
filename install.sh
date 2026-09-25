@@ -195,11 +195,10 @@ main() {
     info "Installed $BINARY_NAME to $INSTALL_DIR/$BINARY_NAME"
 
     # Self-verification
-    if "$INSTALL_DIR/$BINARY_NAME" --version >/dev/null 2>&1; then
-        INSTALLED_VERSION=$("$INSTALL_DIR/$BINARY_NAME" --version 2>&1 | head -n 1)
-        printf '\033[0;32m==>\033[0m \033[0;32m✓\033[0m Verification successful: %s\n' "$INSTALLED_VERSION"
+    if "$INSTALL_DIR/$BINARY_NAME" --help >/dev/null 2>&1; then
+        printf '\033[0;32m==>\033[0m \033[0;32m✓\033[0m Installation verified successfully!\n'
     else
-        warn "Binary installed, but '$BINARY_NAME --version' exited with a non-zero status. Verify dynamic linker libraries."
+        warn "Binary installed, but '$BINARY_NAME --help' exited with a non-zero status. Verify dynamic linker libraries."
     fi
 
     # Check PATH
