@@ -18,7 +18,7 @@ As work progresses in AI-assisted environments, information coalesces like atoms
 
 ## 2. Core Tenets
 
-1. **Context Over Session:** Context and goals exist independently of any individual chat session, IDE window, or tool lifecycle.
+1. **Context Over Session (The Navigational Map & Compass):** Context and goals exist independently of any individual chat session, IDE window, or tool lifecycle. A crystal is not an "agent memory" (RAG/vector DB) simulating cognitive recall, but a portable, externalized navigational artifact: a map of where the task has been (verified milestones, executed tools, resolved friction) and a compass pointer to where it is heading (goal nucleus, active tasks, pending leases). Crystals are self-contained and inert at rest; active use and hydration turn them into meaningful, high-bandwidth context.
 2. **Neutral Entity Architecture & Decoupled Personas:** Grounded in cybernetics (Norbert Wiener, Ross Ashby), participants are modeled as self-governing **Entities** (human or machine) operating on explicit feedback loops rather than theatrical roleplay or simulated org charts. Persona masks remain strictly decoupled. (See [docs/for_devs.md](../docs/for_devs.md) and [docs/for_ais.md](../docs/for_ais.md)).
 3. **Goal-Oriented Progression to Conclusion:** Context is structured not merely as conversational history, but as a verifiable progression driving a defined goal to a terminal, conclusive state.
 4. **Immutable Lineage & Provenance (Capture Fidelity Tiers):** Every transformation, tool interaction, human intervention, and AI contribution is captured in an auditable, verifiable record with explicit fidelity guarantees—distinguishing between *inferred* data (agent synthesis/reasoning) and *intercepted* data (deterministic, verbatim 1:1 factual capture). For filesystem stores, Git serves as the primary tamper-evident provenance substrate.
@@ -33,6 +33,7 @@ As work progresses in AI-assisted environments, information coalesces like atoms
 13. **Agent-as-Operator & Self-Bootstrapping UX:** Zero human cognitive overhead. Developers never need to learn CLI flags, subcommands, or manual installation procedures; agents autonomously detect missing binaries, execute self-bootstrapping installation recipes, and manage state transitions via atomic batches.
 14. **First-Class Artifacts & World-State Grounding:** Decouples deliberation from reality by formalizing artifacts across virtual (files, code, commits, APIs) and physical (devices, materials, civic/bench locations) substrates. Explicitly distinguishes between targets (the goal/product), instruments (the tools/apparatus), and preconditions (ambient environmental invariants like voltage, architecture, or runtime constraints) to guarantee causal clarity in the state transition DAG.
 15. **Bidirectional Compatibility (Forward & Backward):** All schema evolutions, serialization formats, codecs, and CLI interfaces must rigorously prioritize backward and forward compatibility. Existing crystals and workflows must remain readable and functional as the engine evolves, while newer schema extensions must degrade gracefully when encountered by older or minimal implementations.
+16. **Secret Sanitization & Zero-Leak Invariant:** Context crystals capture operational lineage without compromising system security. Crystals may contain pointers to secrets (e.g., `env:VAR_NAME`, secret vault URIs) and deliberate on security architecture, but must NEVER store raw secret values, API keys, private keys, or credentials. Automated secret scanners (such as Betterleaks or Gitleaks) should be employed to guard context stores against accidental credential exposure.
 
 ---
 
@@ -103,6 +104,7 @@ The architectural philosophy of Context Crystal aligns with emerging industry st
 To maintain high focus and interoperability, Context Crystal explicitly excludes:
 
 - **Planning & Methodology Enforcement:** Does not mandate or enforce specific planning schemas (e.g., Conductor, OpenSpec, SpecKit); it serves as the underlying context and state interchange format for all of them.
-- **Long-Term Memory Search & Storage:** Vector databases, embedding indexes, semantic search engines, and knowledge vaults are considered external consumer/producer tools.
+- **Long-Term Memory Search & Storage:** Vector databases, embedding indexes, semantic search engines, and knowledge vaults are considered external consumer/producer tools. Context Crystal is an operational state transition lattice (a navigational map and compass), not an associative memory recall engine.
+- **Secret & Credential Vaulting:** Context Crystal is not a secrets manager, key vault, or credential broker. Crystals must never store raw secrets, passwords, or tokens; credentials belong in external secure storage, with crystals maintaining only external pointer references or sanitized telemetry.
 - **Agent Runtime & Orchestration:** Model switching loops, autonomous execution loops, and scheduler daemons are the responsibility of the host engine/harness.
 - **Direct LLM Execution:** The core specification and schema do not make direct LLM API calls or enforce prompt templating formats.

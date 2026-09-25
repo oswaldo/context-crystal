@@ -15,3 +15,20 @@ By decoupling persistent context from ephemeral chat sessions and persona masks,
 ## 4. Pragmatic Human-Machine Symbiosis
 
 You remain the strategic steersman (the original Greek meaning of *kybernetes*). Context Crystal handles the bookkeeping, lineage, and structural state so you and machine entities can collaborate on complex codebases with surgical focus, zero hallucinated ceremonies, and minimal mental friction.
+
+## 5. Navigational Map & Compass: Context vs. Memory
+
+Engineering does not need an AI "memory" simulating associative recall or querying bloated vector databases. Engineering requires an objective navigational map and compass:
+
+- **Where have we been:** A tamper-evident DAG of milestones, executed tools, decisions, and resolved friction.
+- **Where are we going:** A nucleus goal with unambiguous acceptance criteria and active transient leases.
+
+Crystals are self-contained and inert at rest. Active use—when an entity attaches to and hydrates the crystal—turns the state lattice into meaningful, high-bandwidth context. If a session drops or a handoff occurs, a human steersman or a new agent can resume immediately without loss of trajectory or conversational archeology.
+
+## 6. Secret Sanitization & Context Security
+
+Context crystals are often committed to version control or pushed to companion repositories (`CCRYSTAL_STORE`). Raw credentials, passwords, private keys, or API tokens must never enter the state DAG or artifacts:
+
+- **Pointers over values:** Store references (e.g. `env:API_KEY` or secret vault URIs) rather than literal tokens.
+- **Scrubbing & scanning:** Ensure automated agents redact authorization headers (such as `Authorization: Bearer <token>`) from tool outputs.
+- **Automated defenses:** We recommend running high-speed secret scanners (such as Betterleaks or Gitleaks) across your context stores to catch accidental credential leaks before publication.

@@ -27,3 +27,7 @@ Before embarking on any non-trivial or multi-step engineering effort, always per
 ## 6. Goal Conclusion & Cave Hygiene Invariant
 
 When all tasks and acceptance criteria are satisfied, transition the crystal's goal status to `concluded_success` (or `concluded_abandoned` if superseded) via `ccrystal conclude <id> [-s "resolution summary"]` (or MCP `crystal_goal_transition`). Providing a summary automatically generates a `resolution` DAG node preserving completion provenance. Once concluded and transient leases are cleared, the crystal becomes eligible for cleanup during cave triage (`crystal_triage`).
+
+## 7. Secret Sanitization Invariant
+
+Under no circumstances should you record raw credentials, private API keys, passwords, bearer tokens, or sensitive certificates into crystals, DAG nodes, task descriptions, or artifacts. When capturing tool executions or terminal outputs, you must proactively scrub and redact sensitive headers (e.g., replacing `Bearer <token>` with `Bearer <REDACTED>`). Always prefer external pointer references (e.g., `env:SECRET_KEY` or vault URIs) over literal values. Treat `.ccrystals/` stores as public-facing audit trails.

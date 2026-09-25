@@ -13,12 +13,13 @@ Context Crystal decouples **context**, **goals**, **transient resources**, and *
 
 ## Why Context Crystal?
 
-Modern AI-assisted engineering suffers from two critical bottlenecks:
+Modern AI-assisted engineering suffers from three critical bottlenecks:
 
-1. **The Session Boundary Problem:** Work is trapped in ephemeral chat windows. When a context window fills, a session restarts, or work hands off across developers and agents, nuance evaporates. Summaries suffer from lossy compaction, prompt drift, and hallucinated progress.
-2. **Repository Pollution:** Most persistent context tools force clutter—cloning dotfiles, agent scratchpads, private entity identities, and conversational logs directly into the target code tree, degrading git history and violating open-source contribution policies.
+1. **The Navigational Void (Context vs. Memory):** Tools frequently conflate "context" with "memory" (vector databases, RAG retrieval, associative search, or endless chat transcripts). While memory attempts to simulate cognitive recall, engineering requires a **navigational map and compass**: a deterministic record of *where we have been* (verified milestones, executed tools, resolved friction) and *where we are going* (goal nucleus, active acceptance criteria). Crystals are self-contained and inert at rest; active use and hydration turn them into meaningful, high-bandwidth context.
+2. **The Session Boundary Problem:** Work is trapped in ephemeral chat windows. When a context window fills, a session restarts, or work hands off between human steersmen and autonomous agents, nuance evaporates. Summaries suffer from lossy compaction, prompt drift, and hallucinated progress.
+3. **Repository Pollution & Accidental Exposure:** Persistent context tools often clutter codebases with dotfiles, agent scratchpads, private identities, and conversational logs. Worse, unmonitored agent logs risk permanently committing sensitive credentials or authorization tokens into git history.
 
-**Context Crystal solves both:** It provides a deterministic, machine-readable state transition DAG that persists across tool sessions, while guaranteeing a **100% clean codebase** through decoupled out-of-tree storage.
+**Context Crystal solves all three:** It provides a deterministic, machine-readable state transition DAG that acts as an auditable map and compass across sessions, guarantees a **100% clean codebase** through decoupled out-of-tree storage, and enforces a strict zero-secret posture.
 
 ---
 
@@ -83,6 +84,7 @@ Context Crystal adapts to your team's workflow without polluting your code:
 7. **Sub-Millisecond Atomic Batching:** Pipelined CLI execution (`ccrystal batch "..."`) combines multi-step state transitions into a single roundtrip, eliminating agent latency and token waste.
 8. **Deterministic Zero-LLM Housekeeping & Melting:** Sub-DAG topological melting (`ccrystal melt`) collapses intermediate transition chains into consolidated checkpoint nodes with aggregated artifact links, preserving key decisions while drastically reducing prompt token overhead with zero LLM dependency.
 9. **Cold Storage Archiving & Cave Hygiene Triage:** Classify workspace health into `Active`, `Solid`, and `Stale` states (`ccrystal triage --solid/--stale`). Move completed crystals to cold storage (`ccrystal archive`) to keep active context listings lean while preserving full history and artifacts.
+10. **Secret Sanitization & Zero-Leak Invariant:** Context crystals capture operational lineage without compromising security. Enforces a strict *pointers over values* invariant (referencing `env:VAR` or vault keys rather than literal credentials) with automated scanning recommendations (such as Betterleaks or Gitleaks) to prevent sensitive token exposure in context repositories.
 
 ---
 
