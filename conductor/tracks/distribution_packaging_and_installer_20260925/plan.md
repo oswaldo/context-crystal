@@ -1,6 +1,6 @@
 # Implementation Plan: Distribution, Packaging & Native CLI Installer
 
-## Phase 1: Bootstrap Installer Hardening (`install.sh`)
+## Phase 1: Bootstrap Installer Hardening (`install.sh`) [checkpoint: 0a188be]
 
 - [x] Task: Automated test harness for `install.sh` (51903e7)
   - [x] Write integration test script (`test/install_test.sh`) asserting POSIX syntax, argument parsing (`--to`, `--version`, `--help`), SHA256 checksum validation, and atomic inode replacement
@@ -12,7 +12,7 @@
 - [x] Task: Lint and verify installer script (0095d4e)
   - [x] Run `npx shellcheck install.sh test/install_test.sh` with zero warnings
   - [x] Execute local test harness verifying all positive and failure branches
-- [ ] Task: Phase 1 Verification & Checkpoint (Refer to workflow.md)
+- [x] Task: Phase 1 Verification & Checkpoint (Refer to workflow.md) (0a188be)
 
 ---
 
