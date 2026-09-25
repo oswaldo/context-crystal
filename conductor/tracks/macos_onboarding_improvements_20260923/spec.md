@@ -23,6 +23,7 @@ However, real-world onboarding revealed two friction points for collaborators:
 ## 2. Functional Requirements
 
 ### 2.1 Documentation & Guide Updates
+
 - **README.md:**
   - Update "Collaborator Quickstart & Hardware Baseline" to provide the single, idiomatic bleeding-edge command:
     `cs setup --jvm 26 -y`
@@ -33,6 +34,7 @@ However, real-world onboarding revealed two friction points for collaborators:
   - Clarify the "Atomic Binary Inode Replacement" invariant for cross-platform BSD/GNU compatibility.
 
 ### 2.2 Verification & Hygiene Invariants
+
 - Zero test regressions on JVM and Native platforms.
 - Strict compliance with markdownlint rules (`npx markdownlint-cli`).
 - Strict compliance with Scalafmt (`sbt scalafmtCheckAll`).

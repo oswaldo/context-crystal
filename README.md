@@ -153,10 +153,10 @@ The script automatically detects your OS and architecture (`linux-x86_64`, `maco
 
 If you prefer building from source, ensure you have:
 
-- **Java Development Kit (JDK):** Version 21+ (verified on JDK 21 LTS and bleeding-edge OpenJDK 26 on macOS Apple Silicon)
+- **Java Development Kit (JDK):** Version 21+ (verified on JDK 21 LTS and bleeding-edge OpenJDK 26 across Linux x86_64 and macOS Apple Silicon)
 - **Build Tool:** `sbt` 1.10+
 - **Compiler:** Scala 3.9+
-- **Native Linker:** `clang` (for Scala Native LLVM target; included with Xcode CommandLineTools on macOS)
+- **Native Linker:** `clang` (for Scala Native LLVM target; `sudo apt install clang` / `sudo dnf install clang` on Linux, or included with Xcode CommandLineTools on macOS)
 
 > [!TIP]
 > **Collaborator Quickstart & Hardware Baseline:**
@@ -168,7 +168,7 @@ If you prefer building from source, ensure you have:
 >   cs setup --jvm 26 -y
 >   ```
 >
-> - **Shell PATH:** Ensure `~/.local/bin` and Coursier's application bin directory (`~/Library/Application Support/Coursier/bin` on macOS) are exported in your `~/.zshrc` or profile.
+> - **Shell PATH:** Ensure `~/.local/bin` and Coursier's application bin directory (`~/.local/share/coursier/bin` on Linux, or `~/Library/Application Support/Coursier/bin` on macOS) are exported in your `~/.bashrc`, `~/.zshrc`, or shell profile.
 > - **Memory Baseline:** Scala Native Thin LTO linking benefits from 8 GB+ RAM. A [`.jvmopts`](.jvmopts) baseline (`-Xmx4g`) is included in the repository. On lightweight machines, run `sbt "coreJVM/test; cliJVM/test"` for fast local iteration.
 > - **Contributing:** See **[docs/contributing.md](docs/contributing.md)** for our dual-key cryptographic policy and local verification workflow.
 

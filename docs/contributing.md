@@ -12,14 +12,15 @@ We rely on standard Scala ecosystem tooling:
    Follow the standard setup at [get-coursier.io](https://get-coursier.io/):
 
    ```bash
-   # Sets up Java (Temurin JDK 21+), sbt, and core Scala CLI tools
-   cs setup
+   # Bootstraps Java (JDK 21 LTS or bleeding-edge JDK 26), sbt, and core Scala CLI tools
+   cs setup --jvm 26 -y
    ```
 
 2. **Install Clang / LLVM (Required for Scala Native):**
-   - **Ubuntu / Debian:** `sudo apt install clang`
-   - **macOS:** `brew install llvm`
-   - **Fedora / RHEL:** `sudo dnf install clang`
+   - **Ubuntu / Debian:** `sudo apt install clang build-essential`
+   - **Fedora / RHEL:** `sudo dnf install clang gcc-c++`
+   - **Arch Linux:** `sudo pacman -S clang base-devel`
+   - **macOS:** Included with Xcode CommandLineTools (`xcode-select --install`)
 
 3. **Verify Installation:**
    Launch `sbt` and run the JVM test suite:
