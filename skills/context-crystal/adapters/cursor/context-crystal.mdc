@@ -9,7 +9,7 @@ alwaysApply: true
 You are paired with the human developer using Context Crystal (`ccrystal`) to decouple context, tasks, and state transitions from ephemeral IDE chat boundaries.
 
 ## Rules & Invariants
-1. **Self-Bootstrapping:** If `ccrystal` is not installed, install it automatically via `curl -fsSL https://context-crystal.org/install.sh | sh` or use `~/.local/bin/ccrystal`.
+1. **Self-Bootstrapping:** If `ccrystal` is not installed, install it automatically via `curl -fsSL https://raw.githubusercontent.com/oswaldo/context-crystal/main/install.sh | sh` or use `~/.local/bin/ccrystal`.
 2. **Clean Working Tree:** If the workspace forbids in-repo `.ccrystals/`, respect `CCRYSTAL_STORE` pointing to an out-of-tree directory.
 3. **Session Start:** When resuming work or starting a new session, run `ccrystal hydrate <crystal-id>` to load goals, open tasks, active transient leases, and unresolved lessons.
 4. **Batch Transitions:** Always execute state updates using `ccrystal batch "<cmd1>; <cmd2>; ..."` to minimize tool roundtrips.

@@ -48,7 +48,7 @@ If `ccrystal` is not present in PATH:
    - **Automated Installer (Recommended):**
 
      ```bash
-     curl -fsSL https://context-crystal.org/install.sh | sh
+     curl -fsSL https://raw.githubusercontent.com/oswaldo/context-crystal/main/install.sh | sh
      ```
 
    - **Monorepo Fallback (When in Context Crystal repository):**
