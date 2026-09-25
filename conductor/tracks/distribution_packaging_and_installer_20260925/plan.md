@@ -18,15 +18,15 @@
 
 ## Phase 2: Multi-Platform Release CI Workflow (`.github/workflows/release.yml`)
 
-- [ ] Task: Define GitHub Actions release workflow matrix
-  - [ ] Configure matrix runners for `linux-x86_64`, `linux-aarch64` (via buildx/QEMU), `macos-aarch64` (macOS 14), and `macos-x86_64` (macOS 15)
-  - [ ] Configure sbt Thin LTO compilation (`Mode.releaseFast`, `LTO.thin`, binary stripping)
-- [ ] Task: Archive packaging & integrity manifest generation
-  - [ ] Bundle binaries with `LICENSE` and `README.md` into `ccrystal-v{version}-{platform}.tar.gz`
-  - [ ] Generate consolidated `SHA256SUMS` manifest across all matrix builds
-- [ ] Task: Publication & release workflow verification
-  - [ ] Configure automated GitHub Release creation with release notes, tarballs, and checksums
-  - [ ] Author local dry-run packaging script to verify archive structure and checksum calculation
+- [x] Task: Define GitHub Actions release workflow matrix (3bccd22)
+  - [x] Configure matrix runners for `linux-x86_64`, `linux-aarch64` (via buildx/QEMU), `macos-aarch64` (macOS 14), and `macos-x86_64` (macOS 15)
+  - [x] Configure sbt Thin LTO compilation (`Mode.releaseFast`, `LTO.thin`, binary stripping)
+- [x] Task: Archive packaging & integrity manifest generation (3bccd22)
+  - [x] Bundle binaries with `LICENSE` and `README.md` into `ccrystal-v{version}-{platform}.tar.gz`
+  - [x] Generate consolidated `SHA256SUMS` manifest across all matrix builds
+- [x] Task: Publication & release workflow verification (3bccd22)
+  - [x] Configure automated GitHub Release creation with release notes, tarballs, and checksums
+  - [x] Author local dry-run packaging script to verify archive structure and checksum calculation
 - [ ] Task: Phase 2 Verification & Checkpoint (Refer to workflow.md)
 
 ---
