@@ -19,18 +19,16 @@
 - **Track 16 (`artifact_world_state_ontology_20260913`):** Complete `[x]` (Artifact & world-state ontology, virtual & physical substrates, roles, locations, directional DAG links, Cave Artifact Registry, CLI commands, native MCP server integration, and beam projection).
 - **Track 17 (`universal_agent_onboarding_20260920`):** Complete `[x]` (Universal Agent Runtime Matrix: `ccrystal agent doctor` non-destructive diagnostic evaluator and `ccrystal agent install` defensive auto-configuration engine supporting Google Antigravity, Claude Code, Claude Desktop, Cursor, Windsurf, and Zed with automatic `.ccrystal.bak` creation and rollback instructions, JSONC comment support, and native Thin LTO release binary).
 - **Track 18 (`store_hardening_and_concurrency_20260920`):** Complete `[x]` (Storage Isolation, Atomic Swaps & Optimistic Concurrency Control: zero-torn-read inode engine via temporary file staging and POSIX atomic renames, pure 128-bit `ContentFingerprint` CAS rebase retry loop on `CrystalStore.update(id)(f)`, defensive drift detection in `AgentInstaller`, and ephemeral `.lock` mutex serialization with PID tracking and 5s staleness auto-expiration).
+- **Track 19 (`distribution_packaging_and_installer_20260925`):** Complete `[x]` (Distribution, Packaging & Native CLI Installer: hardened `install.sh` bootstrap with `.tar.gz` extraction, `SHA256SUMS` verification, argument parsing, atomic inode swaps, GitHub Actions release matrix with Thin LTO binaries for Linux & macOS, official Homebrew formula `Formula/ccrystal.rb`, and Craftsmanship / Human-in-the-Loop manifesto).
 - **Binary Location:** `./cli/native/target/scala-3.9.0/ccrystal-cli` (installed in `~/.local/bin/ccrystal` with Thin LTO)
 - **Codeberg Remote:** Clean, up-to-date with linear Conventional Commits history and Git Notes.
 
 ---
 
-## 2. Active Track: Distribution, Packaging & Native CLI Installer
+## 2. Next Track: Crystal Comms & Lock-Free Multi-Entity Mailboxes
 
-- **Track ID:** `distribution_packaging_and_installer_20260925`
-- **Objective:** Enable global installation and execution of Context Crystal without cloning the source repository.
-- **Components:** Hardened multi-platform bootstrap installer (`curl -fsSL ... | sh`), GitHub/Codeberg release binary packaging for Linux (`x86_64`, `aarch64`) and macOS (`aarch64` Apple Silicon, `x86_64` Intel) compiled with Thin LTO, Homebrew Tap formula (`Formula/ccrystal.rb`), and explicit human-in-the-loop craftsmanship declaration.
-- **Specification:** [conductor/tracks/distribution_packaging_and_installer_20260925/spec.md](./tracks/distribution_packaging_and_installer_20260925/spec.md)
-- **Plan:** [conductor/tracks/distribution_packaging_and_installer_20260925/plan.md](./tracks/distribution_packaging_and_installer_20260925/plan.md)
+- **Objective:** Filesystem-based inbox/outbox signaling (`.ccrystals/_comms/<entity-id>/inbox/`) and `Entity.endpoints` resolution for multi-agent coordination without lock contention.
+- **Priority:** High impact, establishes multi-entity communication channels for coordinated workflows.
 
 ---
 
