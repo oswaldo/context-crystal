@@ -58,3 +58,6 @@
 
 - [x] **Track: macOS Onboarding & Portability Improvements**  
   *Link: [conductor/tracks/macos_onboarding_improvements_20260923/index.md](./tracks/macos_onboarding_improvements_20260923/index.md)*
+
+- [ ] **Track: Distribution, Packaging & Native CLI Installer**  
+  *Link: [conductor/tracks/distribution_packaging_and_installer_20260925/index.md](./tracks/distribution_packaging_and_installer_20260925/index.md)*

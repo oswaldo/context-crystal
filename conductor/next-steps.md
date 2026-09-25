@@ -24,11 +24,13 @@
 
 ---
 
-## 2. Next Track: Distribution, Packaging & Native CLI Installer
+## 2. Active Track: Distribution, Packaging & Native CLI Installer
 
+- **Track ID:** `distribution_packaging_and_installer_20260925`
 - **Objective:** Enable global installation and execution of Context Crystal without cloning the source repository.
-- **Components:** Standardized multi-platform bootstrap installer (`curl -fsSL ... | sh`), GitHub/Codeberg release binary packaging for Linux (x86_64, aarch64) and macOS (aarch64 Apple Silicon, x86_64 Intel) compiled with Thin LTO, and Homebrew / Nix formula definitions.
-- **Priority:** High impact, immediately follows Storage Hardening.
+- **Components:** Hardened multi-platform bootstrap installer (`curl -fsSL ... | sh`), GitHub/Codeberg release binary packaging for Linux (`x86_64`, `aarch64`) and macOS (`aarch64` Apple Silicon, `x86_64` Intel) compiled with Thin LTO, Homebrew Tap formula (`Formula/ccrystal.rb`), and explicit human-in-the-loop craftsmanship declaration.
+- **Specification:** [conductor/tracks/distribution_packaging_and_installer_20260925/spec.md](./tracks/distribution_packaging_and_installer_20260925/spec.md)
+- **Plan:** [conductor/tracks/distribution_packaging_and_installer_20260925/plan.md](./tracks/distribution_packaging_and_installer_20260925/plan.md)
 
 ---
 
