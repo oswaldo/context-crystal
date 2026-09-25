@@ -21,6 +21,7 @@ project/project/
 tmp/
 scratch/
 .cache/
+dist/
 
 # OS & Editor Artifacts
 .DS_Store
