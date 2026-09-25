@@ -2,12 +2,12 @@
 
 ## Phase 1: Bootstrap Installer Hardening (`install.sh`)
 
-- [ ] Task: Automated test harness for `install.sh`
-  - [ ] Write integration test script (`test/install_test.sh`) asserting POSIX syntax, argument parsing (`--to`, `--version`, `--help`), SHA256 checksum validation, and atomic inode replacement
+- [x] Task: Automated test harness for `install.sh` (51903e7)
+  - [x] Write integration test script (`test/install_test.sh`) asserting POSIX syntax, argument parsing (`--to`, `--version`, `--help`), SHA256 checksum validation, and atomic inode replacement
 - [ ] Task: Refactor & harden `install.sh`
   - [ ] Support downloading and unpacking compressed `.tar.gz` release archives
   - [ ] Implement cryptographic checksum verification against `SHA256SUMS`
-  - [ ] Add dual-hosting release resolution: GitHub Releases primary with automatic fallback to Codeberg Releases
+  - [ ] Add robust GitHub Releases API query with fallback for tag/version resolution
   - [ ] Support `--to <dir>` / `CCRYSTAL_INSTALL_DIR` custom target directory override and non-destructive PATH guidance
 - [ ] Task: Lint and verify installer script
   - [ ] Run `npx shellcheck install.sh test/install_test.sh` with zero warnings
@@ -24,9 +24,9 @@
 - [ ] Task: Archive packaging & integrity manifest generation
   - [ ] Bundle binaries with `LICENSE` and `README.md` into `ccrystal-v{version}-{platform}.tar.gz`
   - [ ] Generate consolidated `SHA256SUMS` manifest across all matrix builds
-- [ ] Task: Publication & mirror sync
+- [ ] Task: Publication & release workflow verification
   - [ ] Configure automated GitHub Release creation with release notes, tarballs, and checksums
-  - [ ] Add Codeberg Release mirror sync step
+  - [ ] Author local dry-run packaging script to verify archive structure and checksum calculation
 - [ ] Task: Phase 2 Verification & Checkpoint (Refer to workflow.md)
 
 ---

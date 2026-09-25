@@ -20,9 +20,9 @@ This track establishes:
 
 ### 2.1 Universal Bootstrap Installer (`install.sh`)
 
-- **Transport & Execution:** Invoked via `curl -fsSL https://context-crystal.org/install.sh | sh` or `curl -fsSL https://raw.githubusercontent.com/oswaldo/context-crystal/main/install.sh | sh`.
+- **Transport & Execution:** Invoked via `curl -fsSL https://raw.githubusercontent.com/oswaldo/context-crystal/main/install.sh | sh`.
 - **Target Location:** Defaults to `~/.local/bin/ccrystal`, adhering to XDG standards without requiring `sudo`/root privileges. Supports custom target directory via `--to <dir>` or `CCRYSTAL_INSTALL_DIR=<dir>`.
-- **Version Resolution:** Supports explicit version via `--version <v>` or `CCRYSTAL_VERSION=<v>`, defaulting to latest release query with fallback to Codeberg if GitHub is unreachable.
+- **Version Resolution:** Supports explicit version via `--version <v>` or `CCRYSTAL_VERSION=<v>`, defaulting to latest release query via GitHub Releases API.
 - **Archive Extraction & Inode Safety:** Downloads `.tar.gz` archive, validates against `SHA256SUMS`, unpacks to a temporary directory, and performs atomic inode replacement (`rm -f <target> && cp <temp> <target> && chmod +x <target>`) to prevent `Text file busy` errors if an active background MCP server is running.
 - **PATH Verification:** Inspects `$PATH` non-destructively; if `~/.local/bin` is absent, prints clear shell setup snippets (`export PATH="$HOME/.local/bin:$PATH"` for bash/zsh/fish) without quietly mutating user rc files.
 - **Self-Verification:** Executes newly placed binary with `--version` and `--help` to confirm dynamic linker dependencies (e.g. `libssl`, `libidn2`) resolve correctly on the host system.
@@ -41,7 +41,7 @@ This track establishes:
   - `LICENSE`
   - `README.md`
 - **Integrity Manifest:** Automated generation of `SHA256SUMS` covering all released tarballs.
-- **Dual-Hosting Deployment:** Publishes assets to GitHub Releases and syncs/mirrors to Codeberg Releases.
+- **Public Hosting Deployment:** Publishes release assets and manifests directly to GitHub Releases.
 
 ### 2.3 Homebrew Tap Distribution
 
@@ -62,6 +62,7 @@ This track establishes:
 - **Zero-Mutation Safety:** The installer script must never modify shell profile files (`~/.bashrc`, `~/.zshrc`) automatically; it must print copy-paste instructions if PATH adjustments are required.
 - **POSIX Shell Compliance:** `install.sh` must be strictly POSIX `/bin/sh` compliant, passing `shellcheck` with zero warnings.
 - **Atomic File Swaps:** Always unlink destination before copying to avoid breaking active MCP server processes running in the background.
+- **Forge Privacy & Public Surface:** Codeberg is preserved exclusively as a private developer upstream and experimental staging forge; public installation scripts, packaging formulas, and documentation must exclusively target GitHub Releases.
 
 ---
 
@@ -69,7 +70,7 @@ This track establishes:
 
 - [ ] `install.sh` supports `--version`, `--to`, `--help`, checks SHA256 checksums, and passes `shellcheck`.
 - [ ] `.github/workflows/release.yml` compiles Thin LTO release binaries for Linux (`x86_64`, `aarch64`) and macOS (`aarch64`, `x86_64`), strips them, generates `SHA256SUMS`, and packages `.tar.gz` archives.
-- [ ] Codeberg mirror integration or fallback instructions are defined and tested.
+- [ ] Automated GitHub Release publication attaches all platform tarballs and `SHA256SUMS`.
 - [ ] Homebrew formula `Formula/ccrystal.rb` is tested and verified.
 - [ ] `README.md` and documentation portal installation guides are updated to promote the 1-line curl installer and brew tap.
 - [ ] Craftsmanship and human-in-the-loop manifesto articulated in `README.md` and `conductor/product.md`.
