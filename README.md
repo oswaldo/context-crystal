@@ -23,6 +23,42 @@ Modern AI-assisted engineering suffers from three critical bottlenecks:
 
 ---
 
+## Installation & Quickstart
+
+Context Crystal binaries are pre-compiled with LLVM Thin Link-Time Optimization (Thin LTO) for maximum runtime speed and minimal disk footprint.
+
+### 1. Universal POSIX Bootstrap (macOS & Linux)
+
+Install the latest release binary into `~/.local/bin/ccrystal` with a single command:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/oswaldo/context-crystal/main/install.sh | sh
+```
+
+To install into a custom directory or pin a specific release version:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/oswaldo/context-crystal/main/install.sh | sh -s -- --to /usr/local/bin --version v0.1.0
+```
+
+### 2. Homebrew (macOS & Linux)
+
+```bash
+brew tap oswaldo/tap
+brew install ccrystal
+```
+
+### 3. Platform Support Matrix
+
+| Platform | Tier | Architecture | Status |
+| :--- | :--- | :--- | :--- |
+| **Linux** | Tier 1 | `x86_64`, `aarch64` | Fully supported (pre-compiled Thin LTO binaries) |
+| **macOS** | Tier 1 | Apple Silicon (`aarch64`), Intel (`x86_64`) | Fully supported (pre-compiled Thin LTO binaries) |
+| **Windows (WSL)** | Tier 1 | `x86_64` (WSL / Ubuntu) | Fully supported via WSL (Windows Subsystem for Linux) |
+| **Windows (Native)** | Roadmap | `x86_64`, `arm64` | Planned for post-1.0 track (native MSVC toolchain validation) |
+
+---
+
 ## Zero-Learning-Curve: Agent-as-Operator
 
 **Human developers never need to memorize `ccrystal` commands, flags, or installation scripts.**
@@ -290,6 +326,10 @@ We model human and machine collaborators not as theatrical roleplaying personas,
 - 👨‍💻 **[For Developers](docs/for_devs.md):** Why shedding anthropomorphic overhead lowers cognitive fatigue and accelerates flow.
 - 🤖 **[For AI Entities](docs/for_ais.md):** How immutable context lattices prevent attention degradation and prompt drift.
 - 📖 **[System Tenets & Specification](conductor/product.md):** Detailed architectural tenets, including capture fidelity, transient leasing, and decoupled storage.
+
+### Craftsmanship: Proudly Human-in-the-Loop (Not AI Slop)
+
+Context Crystal firmly rejects the paradigm of unsupervised brute-force agent swarms and synthetic slop. It is proudly **human-in-the-loop** — conceived, architected, audited, and reviewed with care, love, and rigor in deliberate partnership with computational intelligence. We treat AI not as a reckless replacement for human judgment and discernment, but as a cognitive amplifier operating under rigorous human stewardship, using its extraordinary capabilities for what they were genuinely destined to achieve.
 
 ---
 
