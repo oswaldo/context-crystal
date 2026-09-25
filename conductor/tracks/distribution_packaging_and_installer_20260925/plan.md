@@ -44,11 +44,11 @@
 
 ## Phase 4: Documentation, Craftsmanship Manifesto & Platform Matrix
 
-- [ ] Task: Author the "Human in the Loop / Craftsmanship & AI Partnership" declaration
-  - [ ] Add a dedicated section in `README.md` and `conductor/product.md` articulating that Context Crystal is not unguided "AI slop", but proudly human-in-the-loop — engineered, audited, and stewarded with care and love in deliberate partnership with computational intelligence
-- [ ] Task: Update installation and platform matrix documentation
-  - [ ] Update `README.md` and documentation portal with 1-line curl installer, Homebrew tap instructions, and `--to` options
-  - [ ] Document platform tier support (Linux & macOS fully supported; Windows disclaimer recommending WSL until native MSVC runner validation)
-- [ ] Task: Markdown linting & formatting compliance
-  - [ ] Run `npx markdownlint-cli --fix "README.md" "docs/*.md"` and verify clean diffs
+- [x] Task: Author the "Human in the Loop / Craftsmanship & AI Partnership" declaration (7b027c0)
+  - [x] Add a dedicated section in `README.md` and `conductor/product.md` articulating that Context Crystal is not unguided "AI slop", but proudly human-in-the-loop — engineered, audited, and stewarded with care and love in deliberate partnership with computational intelligence
+- [x] Task: Update installation and platform matrix documentation (7b027c0)
+  - [x] Update `README.md` and documentation portal with 1-line curl installer, Homebrew tap instructions, and `--to` options
+  - [x] Document platform tier support (Linux & macOS fully supported; Windows disclaimer recommending WSL until native MSVC runner validation)
+- [x] Task: Markdown linting & formatting compliance (7b027c0)
+  - [x] Run `npx markdownlint-cli --fix "README.md" "docs/*.md"` and verify clean diffs
 - [ ] Task: Phase 4 Verification & Checkpoint (Refer to workflow.md)
