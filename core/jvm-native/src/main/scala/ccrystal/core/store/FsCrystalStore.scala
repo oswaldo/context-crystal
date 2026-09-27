@@ -6,7 +6,16 @@ import io.circe.parser.decode
 import io.circe.syntax.*
 import java.nio.file.{Files, Path, Paths, StandardCopyOption, StandardOpenOption}
 import java.nio.charset.StandardCharsets
+import java.util.concurrent.ConcurrentHashMap
+import java.util.concurrent.locks.ReentrantLock
 import scala.jdk.CollectionConverters.*
+
+object FsCrystalStore:
+  private val processLocks = new ConcurrentHashMap[String, ReentrantLock]()
+
+  private[store] def getProcessLock(dir: Path): ReentrantLock =
+    val key = dir.toAbsolutePath.normalize().toString
+    processLocks.computeIfAbsent(key, _ => new ReentrantLock())
 
 class FsCrystalStore(val rootPath: Path) extends CrystalStore:
 
@@ -31,53 +40,58 @@ class FsCrystalStore(val rootPath: Path) extends CrystalStore:
   private val MaxLockAttempts: Int  = 50
 
   private[store] def withCrystalLock[T](dir: Path)(block: => Either[String, T]): Either[String, T] =
-    if !Files.exists(dir) then Files.createDirectories(dir)
-    val lockFile = dir.resolve(".lock")
-    val pid      = ProcessPlatform.currentPid()
+    val pLock = FsCrystalStore.getProcessLock(dir)
+    pLock.lock()
+    try
+      if !Files.exists(dir) then Files.createDirectories(dir)
+      val lockFile = dir.resolve(".lock")
+      val pid      = ProcessPlatform.currentPid()
 
-    def acquire(attemptCount: Int): Boolean =
-      val now         = System.currentTimeMillis()
-      val lockContent = s"pid=$pid\ntimestamp=$now\n"
-      try
-        Files.write(
-          lockFile,
-          lockContent.getBytes(StandardCharsets.UTF_8),
-          StandardOpenOption.CREATE_NEW,
-          StandardOpenOption.WRITE,
-        )
-        true
-      catch
-        case _: Throwable =>
-          val isStale =
-            try
-              if Files.exists(lockFile) then
-                val rawBytes = Files.readAllBytes(lockFile)
-                val rawStr   = new String(rawBytes, StandardCharsets.UTF_8)
-                rawStr.linesIterator.find(_.startsWith("timestamp=")).flatMap { l =>
-                  l.stripPrefix("timestamp=").trim.toLongOption
-                } match
-                  case Some(ts) => (now - ts) > LockStalenessMs
-                  case None =>
-                    (now - Files.getLastModifiedTime(lockFile).toMillis) > LockStalenessMs
-              else false
-            catch case _: Throwable => false
+      def acquire(attemptCount: Int): Boolean =
+        val now         = System.currentTimeMillis()
+        val lockContent = s"pid=$pid\ntimestamp=$now\n"
+        try
+          Files.write(
+            lockFile,
+            lockContent.getBytes(StandardCharsets.UTF_8),
+            StandardOpenOption.CREATE_NEW,
+            StandardOpenOption.WRITE,
+          )
+          true
+        catch
+          case _: Throwable =>
+            val isStale =
+              try
+                if Files.exists(lockFile) then
+                  val rawBytes = Files.readAllBytes(lockFile)
+                  val rawStr   = new String(rawBytes, StandardCharsets.UTF_8)
+                  rawStr.linesIterator.find(_.startsWith("timestamp=")).flatMap { l =>
+                    l.stripPrefix("timestamp=").trim.toLongOption
+                  } match
+                    case Some(ts) => (now - ts) > LockStalenessMs
+                    case None =>
+                      (now - Files.getLastModifiedTime(lockFile).toMillis) > LockStalenessMs
+                else false
+              catch case _: Throwable => false
 
-          if isStale then
-            try Files.deleteIfExists(lockFile)
-            catch case _: Throwable => ()
+            if isStale then
+              try Files.deleteIfExists(lockFile)
+              catch case _: Throwable => ()
 
-          if attemptCount < MaxLockAttempts then
-            try Thread.sleep(10L + (attemptCount % 5) * 5L)
-            catch case _: Throwable => ()
-            acquire(attemptCount + 1)
-          else false
+            if attemptCount < MaxLockAttempts then
+              try Thread.sleep(10L + (attemptCount % 5) * 5L)
+              catch case _: Throwable => ()
+              acquire(attemptCount + 1)
+            else false
 
-    if acquire(1) then
-      try block
-      finally
-        try Files.deleteIfExists(lockFile)
-        catch case _: Throwable => ()
-    else Left(s"Failed to acquire lock on crystal directory '$dir' after $MaxLockAttempts attempts")
+      if acquire(1) then
+        try block
+        finally
+          try Files.deleteIfExists(lockFile)
+          catch case _: Throwable => ()
+      else
+        Left(s"Failed to acquire lock on crystal directory '$dir' after $MaxLockAttempts attempts")
+    finally pLock.unlock()
 
   private def saveDirect(dir: Path, crystal: ContextCrystal): Either[String, Unit] =
     try
@@ -117,7 +131,7 @@ class FsCrystalStore(val rootPath: Path) extends CrystalStore:
   ): Either[String, ContextCrystal] =
     val dir        = crystalDir(id)
     val activeFile = dir.resolve("crystal.json")
-    val maxRetries = 10
+    val maxRetries = 25
 
     def attempt(retryCount: Int): Either[String, ContextCrystal] =
       if !Files.exists(activeFile) then Left(s"Crystal '$id' not found at ${activeFile.toString}")
@@ -148,7 +162,7 @@ class FsCrystalStore(val rootPath: Path) extends CrystalStore:
                     case Right(success) => Right(success)
                     case Left(err) if err == "OCC_CONFLICT" =>
                       if retryCount < maxRetries then
-                        try Thread.sleep(retryCount * 5L)
+                        try Thread.sleep(retryCount * 5L + scala.util.Random.nextInt(10))
                         catch case _: Throwable => ()
                         attempt(retryCount + 1)
                       else
@@ -156,6 +170,7 @@ class FsCrystalStore(val rootPath: Path) extends CrystalStore:
                           s"Concurrent modification detected on crystal '$id': conflict could not be reconciled after $maxRetries attempts",
                         )
                     case Left(otherErr) => Left(otherErr)
+
         catch
           case ex: Throwable =>
             Left(s"Failed during atomic update of crystal $id: ${ex.getMessage}")
