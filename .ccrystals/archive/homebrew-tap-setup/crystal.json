@@ -1,0 +1,124 @@
+{
+  "schemaVersion" : "1.0.0",
+  "id" : "homebrew-tap-setup",
+  "name" : "homebrew-tap-setup",
+  "createdAt" : "2026-09-27T21:28:53.086Z",
+  "updatedAt" : "2026-09-27T21:34:29.395Z",
+  "parentCrystalId" : null,
+  "origin" : null,
+  "caveId" : null,
+  "defaultAuthorId" : "usr_antigravity",
+  "goal" : {
+    "title" : "Initialize official Homebrew Tap repository and update documentation",
+    "intent" : "Create oswaldo/homebrew-context-crystal on GitHub with Formula/ccrystal.rb, verify formula, and update README and documentation references.",
+    "status" : "concluded_success",
+    "acceptanceCriteria" : [
+      {
+        "id" : "task-1",
+        "description" : "Create public repository oswaldo/homebrew-context-crystal",
+        "completed" : false
+      },
+      {
+        "id" : "task-2",
+        "description" : "Publish Formula/ccrystal.rb and README in homebrew-context-crystal",
+        "completed" : false
+      },
+      {
+        "id" : "task-3",
+        "description" : "Update references in README.md, AGENTS.md, and docs/contributing.md",
+        "completed" : false
+      },
+      {
+        "id" : "task-4",
+        "description" : "Verify formula and documentation consistency",
+        "completed" : false
+      }
+    ],
+    "metadata" : {
+      
+    }
+  },
+  "entities" : [
+    {
+      "id" : "usr_antigravity",
+      "kind" : "human",
+      "name" : "Antigravity",
+      "metadata" : {
+        
+      },
+      "publicKey" : null,
+      "endpoints" : {
+        
+      }
+    }
+  ],
+  "activeMask" : null,
+  "dag" : {
+    "rootNodeId" : "node-homebrew-tap-setup-init",
+    "nodes" : [
+      {
+        "id" : "node-homebrew-tap-setup-init",
+        "parentIds" : [
+        ],
+        "timestamp" : "2026-09-27T21:28:53.086Z",
+        "actorId" : "usr_antigravity",
+        "kind" : "human_prompt",
+        "contentSummary" : "Initialized crystal 'homebrew-tap-setup' with goal: Initialize official Homebrew Tap repository and update documentation",
+        "anchor" : null,
+        "artifactIds" : [
+        ],
+        "inputArtifactIds" : [
+        ],
+        "outputArtifactIds" : [
+        ],
+        "preconditionArtifactIds" : [
+        ],
+        "fidelity" : "inferred",
+        "metadata" : {
+          
+        }
+      },
+      {
+        "id" : "node-2",
+        "parentIds" : [
+          "node-homebrew-tap-setup-init"
+        ],
+        "timestamp" : "2026-09-27T21:34:29.395Z",
+        "actorId" : "usr_antigravity",
+        "kind" : "resolution",
+        "contentSummary" : "Created and hardened oswaldo/homebrew-context-crystal on GitHub with Formula/ccrystal.rb, disabled issues/wikis/projects/discussions, synchronized documentation across context-crystal and gh-pages.",
+        "anchor" : null,
+        "artifactIds" : [
+        ],
+        "inputArtifactIds" : [
+        ],
+        "outputArtifactIds" : [
+        ],
+        "preconditionArtifactIds" : [
+        ],
+        "fidelity" : "inferred",
+        "metadata" : {
+          
+        }
+      }
+    ]
+  },
+  "transientLeases" : [
+    {
+      "id" : "lease-1",
+      "resourceType" : "git_worktree",
+      "resourcePath" : null,
+      "description" : "Isolated worktree for homebrew-tap documentation synchronization",
+      "disposalPolicy" : "manual",
+      "status" : "cleaned",
+      "createdAt" : "2026-09-27T21:31:16.907Z"
+    }
+  ],
+  "lessonsLearned" : [
+  ],
+  "artifacts" : [
+  ],
+  "metadata" : {
+    
+  }
+}
