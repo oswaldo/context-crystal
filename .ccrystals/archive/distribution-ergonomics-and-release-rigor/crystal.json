@@ -1,0 +1,129 @@
+{
+  "schemaVersion" : "1.0.0",
+  "id" : "distribution-ergonomics-and-release-rigor",
+  "name" : "distribution-ergonomics-and-release-rigor",
+  "createdAt" : "2026-09-27T21:53:14.612Z",
+  "updatedAt" : "2026-09-27T22:03:05.892Z",
+  "parentCrystalId" : null,
+  "origin" : null,
+  "caveId" : null,
+  "defaultAuthorId" : "usr_antigravity",
+  "goal" : {
+    "title" : "Distribution ergonomics, Coursier support, release checklist rigor, and portal agent card deduplication",
+    "intent" : "Implement Coursier application channel descriptor (apps.json), roadmap --version CLI flag, encode comprehensive release checklist into AGENTS.md and contributing docs, and consolidate agent runtime descriptions on the documentation portal.",
+    "status" : "concluded_success",
+    "acceptanceCriteria" : [
+      {
+        "id" : "task-1",
+        "description" : "Add apps.json for Coursier (cs install) distribution",
+        "completed" : false
+      },
+      {
+        "id" : "task-2",
+        "description" : "Evaluate and roadmap/implement --version flag in CLI",
+        "completed" : false
+      },
+      {
+        "id" : "task-3",
+        "description" : "Harden release checklist in AGENTS.md and docs/contributing.md",
+        "completed" : false
+      },
+      {
+        "id" : "task-4",
+        "description" : "Consolidate repetitive agent runtime blocks in gh-pages portal",
+        "completed" : false
+      },
+      {
+        "id" : "task-5",
+        "description" : "Verify and synchronize documentation across repos",
+        "completed" : false
+      }
+    ],
+    "metadata" : {
+      
+    }
+  },
+  "entities" : [
+    {
+      "id" : "usr_antigravity",
+      "kind" : "human",
+      "name" : "Antigravity",
+      "metadata" : {
+        
+      },
+      "publicKey" : null,
+      "endpoints" : {
+        
+      }
+    }
+  ],
+  "activeMask" : null,
+  "dag" : {
+    "rootNodeId" : "node-distribution-ergonomics-and-release-rigor-init",
+    "nodes" : [
+      {
+        "id" : "node-distribution-ergonomics-and-release-rigor-init",
+        "parentIds" : [
+        ],
+        "timestamp" : "2026-09-27T21:53:14.612Z",
+        "actorId" : "usr_antigravity",
+        "kind" : "human_prompt",
+        "contentSummary" : "Initialized crystal 'distribution-ergonomics-and-release-rigor' with goal: Distribution ergonomics, Coursier support, release checklist rigor, and portal agent card deduplication",
+        "anchor" : null,
+        "artifactIds" : [
+        ],
+        "inputArtifactIds" : [
+        ],
+        "outputArtifactIds" : [
+        ],
+        "preconditionArtifactIds" : [
+        ],
+        "fidelity" : "inferred",
+        "metadata" : {
+          
+        }
+      },
+      {
+        "id" : "node-2",
+        "parentIds" : [
+          "node-distribution-ergonomics-and-release-rigor-init"
+        ],
+        "timestamp" : "2026-09-27T22:03:05.892Z",
+        "actorId" : "usr_antigravity",
+        "kind" : "resolution",
+        "contentSummary" : "Implemented Coursier apps.json channel descriptor, added Track 21 (--version / -v) to Conductor roadmap, codified end-to-end multi-channel release checklist into AGENTS.md and docs/contributing.md, consolidated redundant agent runtime blocks in gh-pages portal, and verified builds.",
+        "anchor" : null,
+        "artifactIds" : [
+        ],
+        "inputArtifactIds" : [
+        ],
+        "outputArtifactIds" : [
+        ],
+        "preconditionArtifactIds" : [
+        ],
+        "fidelity" : "inferred",
+        "metadata" : {
+          
+        }
+      }
+    ]
+  },
+  "transientLeases" : [
+    {
+      "id" : "lease-1",
+      "resourceType" : "git_worktree",
+      "resourcePath" : null,
+      "description" : "Dedicated track worktree ../ccrystal-worktrees/dist-ergonomics-release-rigor",
+      "disposalPolicy" : "manual",
+      "status" : "cleaned",
+      "createdAt" : "2026-09-27T21:53:29.833Z"
+    }
+  ],
+  "lessonsLearned" : [
+  ],
+  "artifacts" : [
+  ],
+  "metadata" : {
+    
+  }
+}

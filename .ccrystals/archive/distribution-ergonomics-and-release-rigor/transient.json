@@ -1,0 +1,11 @@
+[
+  {
+    "id" : "lease-1",
+    "resourceType" : "git_worktree",
+    "resourcePath" : null,
+    "description" : "Dedicated track worktree ../ccrystal-worktrees/dist-ergonomics-release-rigor",
+    "disposalPolicy" : "manual",
+    "status" : "cleaned",
+    "createdAt" : "2026-09-27T21:53:29.833Z"
+  }
+]
