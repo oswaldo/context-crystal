@@ -29,7 +29,17 @@ class FsCrystalStore(val rootPath: Path) extends CrystalStore:
     )
     try
       Files.write(tempFile, content.getBytes(StandardCharsets.UTF_8))
-      Files.move(tempFile, target, StandardCopyOption.REPLACE_EXISTING)
+      try
+        Files.move(
+          tempFile,
+          target,
+          StandardCopyOption.REPLACE_EXISTING,
+          StandardCopyOption.ATOMIC_MOVE,
+        )
+      catch
+        case _: Throwable =>
+          Files.move(tempFile, target, StandardCopyOption.REPLACE_EXISTING)
+
     catch
       case ex: Throwable =>
         try Files.deleteIfExists(tempFile)
@@ -134,7 +144,12 @@ class FsCrystalStore(val rootPath: Path) extends CrystalStore:
     val maxRetries = 25
 
     def attempt(retryCount: Int): Either[String, ContextCrystal] =
-      if !Files.exists(activeFile) then Left(s"Crystal '$id' not found at ${activeFile.toString}")
+      if !Files.exists(activeFile) then
+        if retryCount < maxRetries then
+          try Thread.sleep(retryCount * 5L + scala.util.Random.nextInt(10))
+          catch case _: Throwable => ()
+          attempt(retryCount + 1)
+        else Left(s"Crystal '$id' not found at ${activeFile.toString}")
       else
         try
           val rawBytes           = Files.readAllBytes(activeFile)
@@ -172,8 +187,13 @@ class FsCrystalStore(val rootPath: Path) extends CrystalStore:
                     case Left(otherErr) => Left(otherErr)
 
         catch
+          case _: Throwable if retryCount < maxRetries =>
+            try Thread.sleep(retryCount * 5L + scala.util.Random.nextInt(10))
+            catch case _: Throwable => ()
+            attempt(retryCount + 1)
           case ex: Throwable =>
             Left(s"Failed during atomic update of crystal $id: ${ex.getMessage}")
+
 
     attempt(1)
 
