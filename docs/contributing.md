@@ -93,3 +93,38 @@ All daily coding and testing stays 100% inside standard `sbt`:
   ```
 
   *(CI will fail pull requests if unlinted or unformatted changes are detected).*
+
+---
+
+## 4. Documentation Portal & Web Showcase (`gh-pages`)
+
+The documentation showcase and interactive portal are decoupled from `main` and maintained on the `gh-pages` branch (typically checked out as a sibling worktree at `../context-crystal-gh-pages`).
+
+### Local Preview
+
+1. **Prerequisites:** [Scala CLI](https://scala-cli.virtuslab.org/) (`cs install scala-cli` or via standard Coursier setup).
+2. **Build static bundle (Scala.js):**
+
+   ```bash
+   cd ../context-crystal-gh-pages
+   scala-cli package site --js-mode release -o main.js --force
+   ```
+
+3. **Run local preview server:**
+
+   ```bash
+   scala-cli run preview
+   ```
+
+   Then open `http://localhost:8080` in your browser (or use `python3 -m http.server 8080`).
+
+### Publishing Changes
+
+1. Verify diff and commit changes within the `../context-crystal-gh-pages` worktree.
+2. Push to the GitHub remote (`github`) using your transport key:
+
+   ```bash
+   git -C ../context-crystal-gh-pages push github gh-pages
+   ```
+
+3. The live portal is served at **`https://oswaldo.github.io/context-crystal/`**.
