@@ -141,7 +141,7 @@ When cutting a new release (e.g., tagging `vX.Y.Z` or triggering `.github/workfl
    - Update each platform stanza (`on_macos`, `on_linux`) with the cryptographic checksums from `SHA256SUMS`.
    - Ensure the formula specifies the correct license (`MIT`).
 3. **Synchronize Homebrew Tap:**
-   - Ensure the public tap repository (`github.com/oswaldo/homebrew-tap`) is created on GitHub.
+   - Ensure the public tap repository (`github.com/oswaldo/homebrew-context-crystal`) is created on GitHub.
    - Push the updated `Formula/ccrystal.rb` to the tap repository.
 4. **Clean-Room Smoke Verification:**
    - Execute an isolated verification of both official installation methods on target platforms prior to public announcement:
@@ -151,8 +151,7 @@ When cutting a new release (e.g., tagging `vX.Y.Z` or triggering `.github/workfl
    curl -fsSL https://raw.githubusercontent.com/oswaldo/context-crystal/main/install.sh | sh
    ~/.local/bin/ccrystal --help
 
-   # 2. Homebrew tap
-   brew tap oswaldo/tap
-   brew install ccrystal
+   # 2. Homebrew
+   brew install oswaldo/context-crystal/ccrystal
    ccrystal --help
    ```

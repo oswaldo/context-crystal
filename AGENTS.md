@@ -155,5 +155,5 @@ npx shellcheck skills/**/*.sh
   Every push should be an assured green build.
 - **Release Verification & Homebrew Tap Synchronization Invariant:** All automated or manual release workflows that cut new release tags must synchronize public distribution channels before publication or announcement:
   - The official Homebrew formula definition (`Formula/ccrystal.rb`) must be updated with the exact release tag version, correct license identifier, and cryptographic checksums extracted from the official `SHA256SUMS` manifest (never leave placeholder tags or zeroed mock hashes).
-  - Downstream distribution tap repositories (such as `oswaldo/homebrew-tap` on GitHub) must be created, initialized, and populated with the updated formula.
+  - Downstream distribution tap repositories (such as `oswaldo/homebrew-context-crystal` on GitHub) must be created, initialized, and populated with the updated formula.
   - Multi-platform installation pathways (`install.sh` POSIX bootstrap, `brew install`, and direct binary release archives) must undergo a clean-room smoke test (verifying installation, binary execution, and basic DAG state lifecycle) prior to public announcement.

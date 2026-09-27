@@ -44,7 +44,13 @@ curl -fsSL https://raw.githubusercontent.com/oswaldo/context-crystal/main/instal
 ### 2. Homebrew (macOS & Linux)
 
 ```bash
-brew tap oswaldo/tap
+brew install oswaldo/context-crystal/ccrystal
+```
+
+Or add the tap repository first:
+
+```bash
+brew tap oswaldo/context-crystal
 brew install ccrystal
 ```
 

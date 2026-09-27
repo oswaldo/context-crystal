@@ -10,7 +10,7 @@ This track establishes:
 
 1. A hardened multi-platform POSIX bootstrap installer (`curl -fsSL ... | sh`).
 2. Automated GitHub and Codeberg release workflows packaging optimized Thin LTO binaries into standardized `.tar.gz` archives with cryptographic checksums (`SHA256SUMS`).
-3. An official Homebrew Tap formula (`brew install oswaldo/tap/ccrystal`).
+3. An official Homebrew Tap formula (`brew install oswaldo/context-crystal/ccrystal`).
 4. Comprehensive platform tiering (Linux x86_64, Linux aarch64, macOS Apple Silicon aarch64, macOS Intel x86_64) with clear platform guidelines and Windows disclaimer/roadmap.
 5. Explicit human-in-the-loop craftsmanship declaration in documentation and manifestos.
 
@@ -46,7 +46,7 @@ This track establishes:
 ### 2.3 Homebrew Tap Distribution
 
 - **Formula Definition:** Create `Formula/ccrystal.rb` supporting both macOS (Apple Silicon + Intel) and Linux.
-- **Installation Command:** `brew tap oswaldo/tap && brew install ccrystal` (or direct formula install).
+- **Installation Command:** `brew install oswaldo/context-crystal/ccrystal` (or `brew tap oswaldo/context-crystal && brew install ccrystal`).
 - **Bottle / Archive Strategy:** Downloads pre-compiled tarballs matching host OS/arch and validates SHA256 hashes.
 
 ### 2.4 Cross-Platform Strategy & Windows Policy
