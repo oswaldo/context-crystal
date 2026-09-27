@@ -19,9 +19,9 @@ Single-line curl installer:
 curl -fsSL https://raw.githubusercontent.com/oswaldo/context-crystal/main/install.sh | sh
 ```
 
-Homebrew Tap (macOS & Linux):
+Homebrew (macOS & Linux):
 ```bash
-brew tap oswaldo/tap && brew install ccrystal
+brew install oswaldo/context-crystal/ccrystal
 ```
 
 ## Essential CLI Subcommands

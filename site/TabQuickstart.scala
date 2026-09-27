@@ -51,7 +51,7 @@ object TabQuickstart:
             p("Install and manage updates via Homebrew package manager:"),
             div(
               className := "code-snippet-box",
-              pre(code("brew tap oswaldo/tap && brew install ccrystal")),
+              pre(code("brew install oswaldo/context-crystal/ccrystal")),
               button(
                 typ := "button",
                 className := "snippet-copy-btn",
@@ -60,7 +60,7 @@ object TabQuickstart:
                   case _ => "Copy"
                 },
                 onClick --> { _ =>
-                  State.copyToClipboard("qs-brew", "brew tap oswaldo/tap && brew install ccrystal")
+                  State.copyToClipboard("qs-brew", "brew install oswaldo/context-crystal/ccrystal")
                 },
               ),
             ),

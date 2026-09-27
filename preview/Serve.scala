@@ -28,7 +28,9 @@ case class MinimalRoutes()(implicit cc: castor.Context, log: cask.Logger) extend
   initialize()
 
 object Serve extends cask.Main:
+  override def host: String = "0.0.0.0"
+  override def port: Int = 8080
   val allRoutes = Seq(MinimalRoutes())
-  println("Server started at http://localhost:8080")
+  println(s"Server started at http://0.0.0.0:$port")
   println("Press Ctrl+C to stop")
 end Serve

@@ -27,3 +27,16 @@ scala-cli run preview
 ```
 
 Then open `http://localhost:8080` in your browser.
+
+### Publishing
+
+To publish changes to GitHub Pages:
+
+1. Commit any modified files in this worktree.
+2. Push the `gh-pages` branch to the `github` remote:
+
+```bash
+git push github gh-pages
+```
+
+The portal is automatically published and served at [https://oswaldo.github.io/context-crystal/](https://oswaldo.github.io/context-crystal/).
