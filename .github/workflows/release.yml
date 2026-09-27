@@ -24,20 +24,24 @@ jobs:
         include:
           - os: ubuntu-latest
             target: linux-x86_64
+            lto: scala.scalanative.build.LTO.thin
             install_deps: |
               sudo apt-get update
               sudo apt-get install -y clang libssl-dev libidn2-dev
           - os: ubuntu-24.04-arm
             target: linux-aarch64
+            lto: scala.scalanative.build.LTO.thin
             install_deps: |
               sudo apt-get update
               sudo apt-get install -y clang libssl-dev libidn2-dev
           - os: macos-14 # Apple Silicon (M-series)
             target: macos-aarch64
+            lto: scala.scalanative.build.LTO.none
             install_deps: |
               brew install openssl libidn2 llvm
           - os: macos-15 # Intel Mac
             target: macos-x86_64
+            lto: scala.scalanative.build.LTO.none
             install_deps: |
               brew install openssl libidn2 llvm
     steps:
@@ -80,9 +84,10 @@ jobs:
           echo "CPPFLAGS=-I$OPENSSL_ROOT/include -I$LIBIDN2_ROOT/include" >> "$GITHUB_ENV"
           echo "PKG_CONFIG_PATH=$OPENSSL_ROOT/lib/pkgconfig:$LIBIDN2_ROOT/lib/pkgconfig" >> "$GITHUB_ENV"
 
-      - name: Compile Optimized Native Release Binary (Thin LTO)
+      - name: Compile Optimized Native Release Binary
         run: |
-          sbt 'set cli.native / nativeConfig ~= { _.withMode(scala.scalanative.build.Mode.releaseFast).withLTO(scala.scalanative.build.LTO.thin) }; cliNative/nativeLink'
+          sbt 'set cli.native / nativeConfig ~= { _.withMode(scala.scalanative.build.Mode.releaseFast).withLTO(${{ matrix.lto }}) }; cliNative/nativeLink'
+
 
       - name: Strip Binary
         run: |
