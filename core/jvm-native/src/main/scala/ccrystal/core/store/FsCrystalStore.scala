@@ -194,7 +194,6 @@ class FsCrystalStore(val rootPath: Path) extends CrystalStore:
           case ex: Throwable =>
             Left(s"Failed during atomic update of crystal $id: ${ex.getMessage}")
 
-
     attempt(1)
 
   override def isArchived(id: String): Boolean =
