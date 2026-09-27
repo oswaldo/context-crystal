@@ -106,14 +106,14 @@ object TabQuickstart:
               ),
               tr(
                 td(strong("macOS Apple Silicon (aarch64)")),
-                td(code("ccrystal-v{version}-darwin-arm64.tar.gz")),
-                td("Thin LTO, Immix GC, Native M-series"),
+                td(code("ccrystal-v{version}-macos-aarch64.tar.gz")),
+                td("Thin LTO, Immix GC, Native M-series (macOS 14, 15, 26)"),
                 td(a(href := "https://github.com/oswaldo/context-crystal/releases/latest", target := "_blank", className := "btn-download", "Download ↗")),
               ),
               tr(
                 td(strong("macOS Intel (x86_64)")),
-                td(code("ccrystal-v{version}-darwin-x86_64.tar.gz")),
-                td("Thin LTO, Immix GC, Darwin POSIX"),
+                td(code("ccrystal-v{version}-macos-x86_64.tar.gz")),
+                td("Thin LTO, Immix GC, Intel 64-bit POSIX"),
                 td(a(href := "https://github.com/oswaldo/context-crystal/releases/latest", target := "_blank", className := "btn-download", "Download ↗")),
               ),
               tr(

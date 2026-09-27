@@ -1,7 +1,7 @@
 # Context Crystal: Comprehensive Machine-Readable Corpus (llms-full.txt)
 
 > **Context Crystal** — Sovereign, Deterministic, Local-First Context and DAG Lifecycle Engine.
-> Version: 0.1.0-alpha
+> Version: 1.0.0
 > License: MIT
 > Specification: JSON Schema v1 (`spec/v1/context-crystal.json`) with JSON-LD semantics.
 > Repository: https://github.com/oswaldo/context-crystal
