@@ -29,8 +29,9 @@ We operate on a **cybernetic, neutral entity model**:
   ```
 
 - All feature implementations, temporary files, build caches, and test runs occur within the worktree.
-- We prefer to keep a linear history. Once a track passes review, rebase your branch on `main` and perform a fast-forward merge. Avoid merge commits.
-- Clean up the worktree only after the user confirms or after verifying that the changes have been pushed to remote:
+- We prefer to keep a linear history. Once a track passes review, rebase your branch on `main`. Because direct pushes to `main` are blocked by branch protection across upstream forges (Codeberg and GitHub), push the track branch to remote (`git push origin track/<track-name>`) and open a Pull Request.
+- Every PR requires an approving review from a second pair of human eyes and green CI. Once merged on the forge via fast-forward/rebase, pull the updated `main` into the primary clone (`git pull --ff-only`).
+- Clean up the worktree only after the PR is merged and local `main` is updated:
 
   ```bash
   git worktree remove ../ccrystal-worktrees/<track-name>
@@ -53,7 +54,7 @@ All new features and non-trivial fixes follow Conductor:
    - Perform cave hygiene triage (`ccrystal triage` or MCP `crystal_triage`). Recommend melting active child crystals and moving concluded crystals to cold storage (`ccrystal archive` or MCP `crystal_archive`) rather than destructive deletion to prevent cave bloat while preserving lineage.
    - Run the Documentation & Portal Synchronization Gate: Assess whether any changes impact `README.md`, `skills/context-crystal/SKILL.md`, `docs/mcp/instructions.md`, or the sibling documentation portal (`../context-crystal-gh-pages`). Universal collaborator guidance and reproducible patterns should be committed, while personal machine configurations, local directory layouts, or private credentials must strictly remain uncommitted.
    - Run the Operational Learning Gate: Explicitly ask whether any friction, tool patterns, or build learnings should be codified into `AGENTS.md` or `skills/context-crystal/SKILL.md`.
-6. **Clean Merge, Push Gate & Worktree Teardown:** Fast-forward merge into `main` and update the local release installation (following the optimized release build instructions in [README.md](README.md#prerequisites--installation)). Halt for operator review before pushing: confirm the operator is satisfied with the progress, has reviewed the changes, and ran local tests; prompt the operator to push with their locked transport key. Only tear down the worktree after the user confirms or the push to remote is detected.
+6. **PR Review, Push Gate & Worktree Teardown:** Direct pushes and local merges to `main` are blocked on both Codeberg and GitHub. Push the track branch to the remote forge with your transport key (`git push origin track/<track-name>`), open a Pull Request, and obtain an approving review from a second collaborator after a green CI matrix run. Once merged on the forge via fast-forward/rebase, fast-forward local `main` (`git pull --ff-only`), update the local release installation (following the optimized release build instructions in [README.md](README.md#prerequisites--installation)), and tear down the track worktree.
 
 ---
 
@@ -117,6 +118,11 @@ npx shellcheck skills/**/*.sh
     4. Instruct the operator to perform the push themselves using their locked transport key.
   - **Worktree Teardown Gating:** Worktrees must not be removed prematurely; prune or remove the track worktree only after the user confirms or after the pushed state is verified on the remote.
   - **Safety Rationale:** Defense-in-depth ("move fast, but safely") ensuring that even under rogue or hallucinated agent execution, remote repositories are never mutated without total developer awareness, verification, and deliberate manual confirmation.
+- **Protected Main & Peer-Reviewed PR Invariant:** Direct pushes and local merges to `main` are strictly blocked across upstream forges (Codeberg and GitHub). All contributions must originate from isolated track worktrees, be pushed as feature/track branches (`track/<track-name>`), and merge into `main` exclusively through Pull Requests that satisfy:
+  - At least one approved review by a second pair of human eyes (e.g., peer review between collaborators).
+  - 100% green CI run across all platform test matrices (Linux, macOS) and linters.
+  - Linear history (rebase or fast-forward merge; zero merge commits).
+  - Cryptographically signed commits (`user.signingkey`).
 - **MUnit Strict Equality Clues:** Under `-language:strictEquality`, avoid bare `assert(cond)` which can trigger ambiguous overload errors in MUnit; prefer `assertEquals(actual, expected)` or provide explicit clue strings: `assert(cond, "clue")`.
 - **Atomic Binary Inode Replacement:** Always use `rm -f ~/.local/bin/ccrystal && cp ...` (or `install`) when updating installed native binaries in `~/.local/bin/ccrystal`. Avoid GNU-only flags like `cp --remove-destination` which fail on macOS BSD coreutils. Pre-unlinking the destination inode prevents `Text file busy` errors if a background process (like the active MCP server engine) is currently executing the binary. Ensure the binary was compiled using the optimized release configuration documented in [README.md](README.md#prerequisites--installation) (`Mode.releaseFast` with Thin LTO).
 - **MCP Tool First / Batch Preference:** Autonomous agents interacting with Context Crystal should prioritize native MCP tools (`crystal_batch`, `crystal_init`, etc.) over invoking CLI commands via subshells. For multi-step context transitions, compose a single `crystal_batch` recipe to execute atomically with minimal turn roundtrips. When determining CLI options or discovering newly introduced subcommands/flags that may not yet be represented in an MCP client's static schema, `ccrystal --help` and `ccrystal <subcommand> --help` serve as the guaranteed zero-drift source of truth (statically compiled from Decline ADTs).

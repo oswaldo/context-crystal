@@ -66,6 +66,17 @@ To permit autonomous AI tools (such as Google Conductor or Antigravity) to write
 
 - **Rule:** AI agents must **never** execute `git push` autonomously. Remote transport pushes must be initiated manually by the human developer.
 
+### C. Branch Protection & Peer-Reviewed Pull Requests
+
+Direct pushes and merges to `main` are strictly blocked across upstream forges (Codeberg and GitHub):
+
+- **PR-Only Delivery:** All changes must be pushed as branch commits (`track/<track-name>` or feature branches) and submitted via Pull Requests.
+- **Mandatory Requirements for Merge:**
+  1. An approved review by a second pair of human eyes (`required_approving_review_count = 1`).
+  2. A fully green CI run across Linux, macOS, and lint matrices.
+  3. Linear history (rebase or fast-forward merge; no merge commits).
+  4. Cryptographically signed commits (`commit.gpgsign = true`).
+
 ---
 
 ## 3. Inner Dev Loop & Pre-Push Verification
