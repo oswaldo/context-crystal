@@ -1,0 +1,124 @@
+{
+  "schemaVersion" : "1.0.0",
+  "id" : "context-map-and-secret-guard",
+  "name" : "context-map-and-secret-guard",
+  "createdAt" : "2026-09-25T16:02:45.989Z",
+  "updatedAt" : "2026-09-25T17:12:36.411Z",
+  "parentCrystalId" : null,
+  "origin" : null,
+  "caveId" : null,
+  "defaultAuthorId" : "usr_agt_antigravity",
+  "goal" : {
+    "title" : "Refine conceptual positioning (Navigational Map & Compass vs Memory) and codify Secret Sanitization & Threat Modeling (Betterleaks)",
+    "intent" : "Update README, product architecture, agent skills, developer docs, and roadmap with navigation paradigm and secret protection invariants.",
+    "status" : "concluded_success",
+    "acceptanceCriteria" : [
+      {
+        "id" : "task-1",
+        "description" : "Clarify Navigational Map & Compass paradigm in README.md and conductor/product.md",
+        "completed" : true
+      },
+      {
+        "id" : "task-2",
+        "description" : "Codify Secret Sanitization Invariant across skills, docs, and AGENTS.md",
+        "completed" : true
+      },
+      {
+        "id" : "task-3",
+        "description" : "Expand Track 15 in conductor/next-steps.md with Betterleaks pre-crystallization guard",
+        "completed" : true
+      },
+      {
+        "id" : "task-4",
+        "description" : "Run markdown linting and verification gate",
+        "completed" : true
+      }
+    ],
+    "metadata" : {
+      
+    }
+  },
+  "entities" : [
+    {
+      "id" : "usr_agt_antigravity",
+      "kind" : "human",
+      "name" : "agt_antigravity",
+      "metadata" : {
+        
+      },
+      "publicKey" : null,
+      "endpoints" : {
+        
+      }
+    }
+  ],
+  "activeMask" : null,
+  "dag" : {
+    "rootNodeId" : "node-context-map-and-secret-guard-init",
+    "nodes" : [
+      {
+        "id" : "node-context-map-and-secret-guard-init",
+        "parentIds" : [
+        ],
+        "timestamp" : "2026-09-25T16:02:45.989Z",
+        "actorId" : "usr_agt_antigravity",
+        "kind" : "human_prompt",
+        "contentSummary" : "Initialized crystal 'context-map-and-secret-guard' with goal: Refine conceptual positioning (Navigational Map & Compass vs Memory) and codify Secret Sanitization & Threat Modeling (Betterleaks)",
+        "anchor" : null,
+        "artifactIds" : [
+        ],
+        "inputArtifactIds" : [
+        ],
+        "outputArtifactIds" : [
+        ],
+        "preconditionArtifactIds" : [
+        ],
+        "fidelity" : "inferred",
+        "metadata" : {
+          
+        }
+      },
+      {
+        "id" : "node-2",
+        "parentIds" : [
+          "node-context-map-and-secret-guard-init"
+        ],
+        "timestamp" : "2026-09-25T17:12:36.411Z",
+        "actorId" : "usr_agt_antigravity",
+        "kind" : "resolution",
+        "contentSummary" : "Successfully codified the Navigational Map & Compass paradigm (decoupling task progression from cognitive memory concepts) and the Secret Sanitization Invariant across README, product architecture, agent skills, developer/entity documentation, and the Conductor roadmap (Track 15: Betterleaks pre-crystallization guard).",
+        "anchor" : null,
+        "artifactIds" : [
+        ],
+        "inputArtifactIds" : [
+        ],
+        "outputArtifactIds" : [
+        ],
+        "preconditionArtifactIds" : [
+        ],
+        "fidelity" : "inferred",
+        "metadata" : {
+          
+        }
+      }
+    ]
+  },
+  "transientLeases" : [
+    {
+      "id" : "lease-1",
+      "resourceType" : "git_worktree",
+      "resourcePath" : null,
+      "description" : "Worktree ../ccrystal-worktrees/context-map-and-secret-guard on branch track/context-map-and-secret-guard",
+      "disposalPolicy" : "manual",
+      "status" : "cleaned",
+      "createdAt" : "2026-09-25T16:02:51.363Z"
+    }
+  ],
+  "lessonsLearned" : [
+  ],
+  "artifacts" : [
+  ],
+  "metadata" : {
+    
+  }
+}

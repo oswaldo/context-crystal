@@ -1,0 +1,189 @@
+{
+  "schemaVersion" : "1.0.0",
+  "id" : "portal-documentation-sync",
+  "name" : "portal-documentation-sync",
+  "createdAt" : "2026-09-25T22:28:40.005Z",
+  "updatedAt" : "2026-09-27T14:53:29.459Z",
+  "parentCrystalId" : null,
+  "origin" : null,
+  "caveId" : null,
+  "defaultAuthorId" : "usr_operator",
+  "goal" : {
+    "title" : "Synchronize gh-pages documentation portal with distribution packaging and craftsmanship manifesto",
+    "intent" : "Update gh-pages portal for official distribution packages, Homebrew Tap, OCC details, remove hallucinated domain, replace emojis with official SVGs, and serve preview",
+    "status" : "concluded_success",
+    "acceptanceCriteria" : [
+      {
+        "id" : "task-1",
+        "description" : "Audit and verify absence of context-crystal.org in gh-pages",
+        "completed" : true
+      },
+      {
+        "id" : "task-2",
+        "description" : "Modernize emojis to accurate project SVGs (Claude, Cursor, Zed, GitHub) and cybernetic glyphs",
+        "completed" : true
+      },
+      {
+        "id" : "task-3",
+        "description" : "Synchronize distribution instructions, Homebrew Tap, and tarball packages",
+        "completed" : true
+      },
+      {
+        "id" : "task-4",
+        "description" : "Incorporate Craftsmanship Manifesto and OCC architectural invariants",
+        "completed" : true
+      },
+      {
+        "id" : "task-5",
+        "description" : "Launch background preview server for multi-device local network inspection",
+        "completed" : true
+      },
+      {
+        "id" : "task-6",
+        "description" : "Operator deep review and push to origin/gh-pages",
+        "completed" : true
+      }
+    ],
+    "metadata" : {
+      
+    }
+  },
+  "entities" : [
+    {
+      "id" : "usr_operator",
+      "kind" : "human",
+      "name" : "Operator",
+      "metadata" : {
+        
+      },
+      "publicKey" : null,
+      "endpoints" : {
+        
+      }
+    }
+  ],
+  "activeMask" : null,
+  "dag" : {
+    "rootNodeId" : "node-portal-documentation-sync-init",
+    "nodes" : [
+      {
+        "id" : "node-portal-documentation-sync-init",
+        "parentIds" : [
+        ],
+        "timestamp" : "2026-09-25T22:28:40.005Z",
+        "actorId" : "usr_operator",
+        "kind" : "human_prompt",
+        "contentSummary" : "Initialized crystal 'portal-documentation-sync' with goal: Synchronize gh-pages documentation portal with distribution packaging and craftsmanship manifesto",
+        "anchor" : null,
+        "artifactIds" : [
+        ],
+        "inputArtifactIds" : [
+        ],
+        "outputArtifactIds" : [
+        ],
+        "preconditionArtifactIds" : [
+        ],
+        "fidelity" : "inferred",
+        "metadata" : {
+          
+        }
+      },
+      {
+        "id" : "node-2",
+        "parentIds" : [
+          "node-portal-documentation-sync-init"
+        ],
+        "timestamp" : "2026-09-25T22:28:49.881Z",
+        "actorId" : "usr_operator",
+        "kind" : "checkpoint",
+        "contentSummary" : "Updated gh-pages portal, rebuilt main.js with scala-cli, committed 268385e, launched Cask preview on 0.0.0.0:8080",
+        "anchor" : null,
+        "artifactIds" : [
+        ],
+        "inputArtifactIds" : [
+        ],
+        "outputArtifactIds" : [
+        ],
+        "preconditionArtifactIds" : [
+        ],
+        "fidelity" : "inferred",
+        "metadata" : {
+          
+        }
+      },
+      {
+        "id" : "node-3",
+        "parentIds" : [
+          "node-2"
+        ],
+        "timestamp" : "2026-09-25T22:37:57.067Z",
+        "actorId" : "usr_operator",
+        "kind" : "checkpoint",
+        "contentSummary" : "Terminated local preview daemon, cleaned lease-2; leaving crystal open with active worktree lease-1 for operator review",
+        "anchor" : null,
+        "artifactIds" : [
+        ],
+        "inputArtifactIds" : [
+        ],
+        "outputArtifactIds" : [
+        ],
+        "preconditionArtifactIds" : [
+        ],
+        "fidelity" : "inferred",
+        "metadata" : {
+          
+        }
+      },
+      {
+        "id" : "node-4",
+        "parentIds" : [
+          "node-3"
+        ],
+        "timestamp" : "2026-09-27T14:53:29.459Z",
+        "actorId" : "usr_operator",
+        "kind" : "resolution",
+        "contentSummary" : "success",
+        "anchor" : null,
+        "artifactIds" : [
+        ],
+        "inputArtifactIds" : [
+        ],
+        "outputArtifactIds" : [
+        ],
+        "preconditionArtifactIds" : [
+        ],
+        "fidelity" : "inferred",
+        "metadata" : {
+          
+        }
+      }
+    ]
+  },
+  "transientLeases" : [
+    {
+      "id" : "lease-1",
+      "resourceType" : "git_worktree",
+      "resourcePath" : "/home/oswaldo/git/context-crystal-gh-pages",
+      "description" : "gh-pages documentation portal branch worktree",
+      "disposalPolicy" : "manual",
+      "status" : "cleaned",
+      "createdAt" : "2026-09-25T22:28:49.877Z"
+    },
+    {
+      "id" : "lease-2",
+      "resourceType" : "mock_service",
+      "resourcePath" : "http://0.0.0.0:8080",
+      "description" : "Cask HTTP preview server running as daemon",
+      "disposalPolicy" : "delete_after_test",
+      "status" : "cleaned",
+      "createdAt" : "2026-09-25T22:28:49.878Z"
+    }
+  ],
+  "lessonsLearned" : [
+  ],
+  "artifacts" : [
+  ],
+  "metadata" : {
+    
+  }
+}

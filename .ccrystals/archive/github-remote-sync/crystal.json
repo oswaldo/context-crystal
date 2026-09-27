@@ -1,0 +1,138 @@
+{
+  "schemaVersion" : "1.0.0",
+  "id" : "github-remote-sync",
+  "name" : "github-remote-sync",
+  "createdAt" : "2026-09-25T22:41:03.773Z",
+  "updatedAt" : "2026-09-27T14:53:29.474Z",
+  "parentCrystalId" : null,
+  "origin" : null,
+  "caveId" : null,
+  "defaultAuthorId" : "usr_oswaldo",
+  "goal" : {
+    "title" : "Resolve GitHub SSH transport key authentication and synchronize github/main",
+    "intent" : "Complete remote publication to github/main for commits 04b9fb8 and f699a68 after adding ~/.ssh/id_ed25519.pub as an Authentication Key in GitHub account settings or re-authenticating with gh auth login.",
+    "status" : "concluded_success",
+    "acceptanceCriteria" : [
+      {
+        "id" : "task-1",
+        "description" : "Add ~/.ssh/id_ed25519.pub as Authentication Key on GitHub (https://github.com/settings/ssh/new) or run gh auth login",
+        "completed" : true
+      },
+      {
+        "id" : "task-2",
+        "description" : "Verify SSH transport authentication with 'ssh -T git@github.com'",
+        "completed" : true
+      },
+      {
+        "id" : "task-3",
+        "description" : "Push local main to github remote with 'git push github main'",
+        "completed" : true
+      },
+      {
+        "id" : "task-4",
+        "description" : "Verify commit parity between origin/main and github/main",
+        "completed" : true
+      }
+    ],
+    "metadata" : {
+      
+    }
+  },
+  "entities" : [
+    {
+      "id" : "usr_oswaldo",
+      "kind" : "human",
+      "name" : "oswaldo",
+      "metadata" : {
+        
+      },
+      "publicKey" : null,
+      "endpoints" : {
+        
+      }
+    }
+  ],
+  "activeMask" : null,
+  "dag" : {
+    "rootNodeId" : "node-github-remote-sync-init",
+    "nodes" : [
+      {
+        "id" : "node-github-remote-sync-init",
+        "parentIds" : [
+        ],
+        "timestamp" : "2026-09-25T22:41:03.773Z",
+        "actorId" : "usr_oswaldo",
+        "kind" : "human_prompt",
+        "contentSummary" : "Initialized crystal 'github-remote-sync' with goal: Resolve GitHub SSH transport key authentication and synchronize github/main",
+        "anchor" : null,
+        "artifactIds" : [
+        ],
+        "inputArtifactIds" : [
+        ],
+        "outputArtifactIds" : [
+        ],
+        "preconditionArtifactIds" : [
+        ],
+        "fidelity" : "inferred",
+        "metadata" : {
+          
+        }
+      },
+      {
+        "id" : "node-2",
+        "parentIds" : [
+          "node-github-remote-sync-init"
+        ],
+        "timestamp" : "2026-09-25T22:41:09.223Z",
+        "actorId" : "usr_oswaldo",
+        "kind" : "checkpoint",
+        "contentSummary" : "Origin (Codeberg) is fully pushed and up to date. Local main is at 04b9fb8 (ahead of github/main by 5 commits: f699a68, 04b9fb8, and 3 macos onboarding PR commits). SSH to github failed with Permission denied (publickey) because ~/.ssh/id_ed25519.pub (SHA256:fZHtH9TBXCGoxd15EjJhPtdnVyfU1eNlJwQ6hpI+L8A) is not registered as an Authentication Key in GitHub settings for user oswaldo. To resume: add key at https://github.com/settings/ssh/new (type: Authentication Key), test with 'ssh -T git@github.com', then run 'git push github main'.",
+        "anchor" : "awaiting-github-key-registration",
+        "artifactIds" : [
+        ],
+        "inputArtifactIds" : [
+        ],
+        "outputArtifactIds" : [
+        ],
+        "preconditionArtifactIds" : [
+        ],
+        "fidelity" : "inferred",
+        "metadata" : {
+          
+        }
+      },
+      {
+        "id" : "node-3",
+        "parentIds" : [
+          "node-2"
+        ],
+        "timestamp" : "2026-09-27T14:53:29.474Z",
+        "actorId" : "usr_oswaldo",
+        "kind" : "resolution",
+        "contentSummary" : "success",
+        "anchor" : null,
+        "artifactIds" : [
+        ],
+        "inputArtifactIds" : [
+        ],
+        "outputArtifactIds" : [
+        ],
+        "preconditionArtifactIds" : [
+        ],
+        "fidelity" : "inferred",
+        "metadata" : {
+          
+        }
+      }
+    ]
+  },
+  "transientLeases" : [
+  ],
+  "lessonsLearned" : [
+  ],
+  "artifacts" : [
+  ],
+  "metadata" : {
+    
+  }
+}

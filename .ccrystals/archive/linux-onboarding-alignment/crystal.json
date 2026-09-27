@@ -1,0 +1,147 @@
+{
+  "schemaVersion" : "1.0.0",
+  "id" : "linux-onboarding-alignment",
+  "name" : "linux-onboarding-alignment",
+  "createdAt" : "2026-09-25T16:06:03.741Z",
+  "updatedAt" : "2026-09-25T17:12:44Z",
+  "parentCrystalId" : null,
+  "origin" : null,
+  "caveId" : null,
+  "defaultAuthorId" : "usr_oswaldo",
+  "goal" : {
+    "title" : "Cross-platform onboarding parity: document Linux Coursier PATH, clang packages, and verification baseline",
+    "intent" : "Extend the macOS onboarding improvements from origin/track/macos-onboarding-improvements so that README.md and contributing docs treat Linux and macOS with equal precision.",
+    "status" : "concluded_success",
+    "acceptanceCriteria" : [
+      {
+        "id" : "task-1",
+        "description" : "Create dedicated worktree ../ccrystal-worktrees/linux-onboarding-alignment tracking origin/track/macos-onboarding-improvements",
+        "completed" : true
+      },
+      {
+        "id" : "task-2",
+        "description" : "Update README.md with Linux Coursier bin PATH (~/.local/share/coursier/bin), clang package commands, and Linux verification baseline",
+        "completed" : true
+      },
+      {
+        "id" : "task-3",
+        "description" : "Synchronize docs and verify zero markdownlint warnings",
+        "completed" : true
+      },
+      {
+        "id" : "task-4",
+        "description" : "Commit changes atomically and prepare for rebase onto main once Codeberg PR is merged",
+        "completed" : true
+      }
+    ],
+    "metadata" : {
+      
+    }
+  },
+  "entities" : [
+    {
+      "id" : "usr_oswaldo",
+      "kind" : "human",
+      "name" : "oswaldo",
+      "metadata" : {
+        
+      },
+      "publicKey" : null,
+      "endpoints" : {
+        
+      }
+    }
+  ],
+  "activeMask" : null,
+  "dag" : {
+    "rootNodeId" : "node-linux-onboarding-alignment-init",
+    "nodes" : [
+      {
+        "id" : "node-linux-onboarding-alignment-init",
+        "parentIds" : [
+        ],
+        "timestamp" : "2026-09-25T16:06:03.741Z",
+        "actorId" : "usr_oswaldo",
+        "kind" : "human_prompt",
+        "contentSummary" : "Initialized crystal 'linux-onboarding-alignment' with goal: Cross-platform onboarding parity: document Linux Coursier PATH, clang packages, and verification baseline",
+        "anchor" : null,
+        "artifactIds" : [
+        ],
+        "inputArtifactIds" : [
+        ],
+        "outputArtifactIds" : [
+        ],
+        "preconditionArtifactIds" : [
+        ],
+        "fidelity" : "inferred",
+        "metadata" : {
+          
+        }
+      },
+      {
+        "id" : "node-2",
+        "parentIds" : [
+          "node-linux-onboarding-alignment-init"
+        ],
+        "timestamp" : "2026-09-25T16:12:08.266Z",
+        "actorId" : "usr_oswaldo",
+        "kind" : "checkpoint",
+        "contentSummary" : "Harmonized Linux and macOS toolchain prerequisites in README.md and docs/contributing.md, fixed spec heading formatting, committed signed commit f699a68 in worktree track/linux-onboarding-alignment.",
+        "anchor" : "linux-onboarding-docs-harmonized",
+        "artifactIds" : [
+        ],
+        "inputArtifactIds" : [
+        ],
+        "outputArtifactIds" : [
+        ],
+        "preconditionArtifactIds" : [
+        ],
+        "fidelity" : "inferred",
+        "metadata" : {
+          
+        }
+      },
+      {
+        "id" : "node-3",
+        "parentIds" : [
+          "node-2"
+        ],
+        "timestamp" : "2026-09-25T17:12:44Z",
+        "actorId" : "usr_oswaldo",
+        "kind" : "resolution",
+        "contentSummary" : "Successfully harmonized Linux and macOS toolchain prerequisites and PATH guidance across README.md and docs/contributing.md. Merged to main and updated optimized native release binary.",
+        "anchor" : null,
+        "artifactIds" : [
+        ],
+        "inputArtifactIds" : [
+        ],
+        "outputArtifactIds" : [
+        ],
+        "preconditionArtifactIds" : [
+        ],
+        "fidelity" : "inferred",
+        "metadata" : {
+          
+        }
+      }
+    ]
+  },
+  "transientLeases" : [
+    {
+      "id" : "lease-1",
+      "resourceType" : "git_worktree",
+      "resourcePath" : null,
+      "description" : "Git worktree at ../ccrystal-worktrees/linux-onboarding-alignment on branch track/linux-onboarding-alignment",
+      "disposalPolicy" : "manual",
+      "status" : "cleaned",
+      "createdAt" : "2026-09-25T16:06:17.834Z"
+    }
+  ],
+  "lessonsLearned" : [
+  ],
+  "artifacts" : [
+  ],
+  "metadata" : {
+    
+  }
+}

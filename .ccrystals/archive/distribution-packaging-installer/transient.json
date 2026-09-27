@@ -1,0 +1,11 @@
+[
+  {
+    "id" : "lease-1",
+    "resourceType" : "git_worktree",
+    "resourcePath" : null,
+    "description" : "Isolated git worktree at ../ccrystal-worktrees/distribution-packaging-installer on branch track/distribution-packaging-installer",
+    "disposalPolicy" : "manual",
+    "status" : "cleaned",
+    "createdAt" : "2026-09-25T20:55:00.909Z"
+  }
+]

@@ -1,0 +1,11 @@
+[
+  {
+    "id" : "lease-1",
+    "resourceType" : "git_worktree",
+    "resourcePath" : null,
+    "description" : "Worktree ../ccrystal-worktrees/context-map-and-secret-guard on branch track/context-map-and-secret-guard",
+    "disposalPolicy" : "manual",
+    "status" : "cleaned",
+    "createdAt" : "2026-09-25T16:02:51.363Z"
+  }
+]

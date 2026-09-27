@@ -1,0 +1,11 @@
+[
+  {
+    "id" : "lease-1",
+    "resourceType" : "git_worktree",
+    "resourcePath" : null,
+    "description" : "Git worktree at ../ccrystal-worktrees/linux-onboarding-alignment on branch track/linux-onboarding-alignment",
+    "disposalPolicy" : "manual",
+    "status" : "cleaned",
+    "createdAt" : "2026-09-25T16:06:17.834Z"
+  }
+]
