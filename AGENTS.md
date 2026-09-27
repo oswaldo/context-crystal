@@ -153,7 +153,10 @@ npx shellcheck skills/**/*.sh
   ```
 
   Every push should be an assured green build.
-- **Release Verification & Homebrew Tap Synchronization Invariant:** All automated or manual release workflows that cut new release tags must synchronize public distribution channels before publication or announcement:
-  - The official Homebrew formula definition (`Formula/ccrystal.rb`) must be updated with the exact release tag version, correct license identifier, and cryptographic checksums extracted from the official `SHA256SUMS` manifest (never leave placeholder tags or zeroed mock hashes).
-  - Downstream distribution tap repositories (such as `oswaldo/homebrew-context-crystal` on GitHub) must be created, initialized, and populated with the updated formula.
-  - Multi-platform installation pathways (`install.sh` POSIX bootstrap, `brew install`, and direct binary release archives) must undergo a clean-room smoke test (verifying installation, binary execution, and basic DAG state lifecycle) prior to public announcement.
+- **Release Verification & Multi-Channel Distribution Invariant:** All automated or manual release workflows that cut new release tags must synchronize all public distribution channels and documentation before publication or announcement:
+  - **Release Manifests & Assets:** Official `.tar.gz` bundles and cryptographic `SHA256SUMS` manifest must be generated and published on GitHub Releases.
+  - **Homebrew Formula & Tap:** The official formula (`Formula/ccrystal.rb`) must be updated with the exact release version, MIT license, and cryptographic checksums; downstream distribution tap `oswaldo/homebrew-context-crystal` must be synchronized.
+  - **Coursier Application Channel:** The in-repo Coursier channel descriptor (`apps.json`) must be updated with the matching release tag version.
+  - **Documentation & Web Showcase Portal:** Update installation quickstart snippets in `README.md`, `llms.txt`, and `../context-crystal-gh-pages`, recompile `main.js`, and commit to `gh-pages`.
+  - **Collaborative Release Notes & Human Gate:** Entities must draft comprehensive release notes highlighting architectural progress and user capabilities, present them to the human operator, and obtain explicit sign-off before tagging or pushing.
+  - **Clean-Room Smoke Verification:** Multi-platform installation pathways (`install.sh` POSIX bootstrap, `brew install`, and `cs install`) must undergo an isolated smoke test verifying installation, binary execution, and basic DAG state lifecycle prior to public announcement.

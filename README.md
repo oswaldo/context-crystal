@@ -54,7 +54,22 @@ brew tap oswaldo/context-crystal
 brew install ccrystal
 ```
 
-### 3. Platform Support Matrix
+### 3. Coursier (Scala Toolchain)
+
+For Scala developers and environments managed via [Coursier](https://get-coursier.io/):
+
+```bash
+cs install --channel gh:oswaldo/context-crystal:main ccrystal
+```
+
+Or add the repository channel permanently:
+
+```bash
+cs channel --add gh:oswaldo/context-crystal:main
+cs install ccrystal
+```
+
+### 4. Platform Support Matrix
 
 | Platform | Tier | Architecture | Status |
 | :--- | :--- | :--- | :--- |

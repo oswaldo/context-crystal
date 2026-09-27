@@ -6,6 +6,7 @@ set -e
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 REPO_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
 FORMULA_FILE="$REPO_ROOT/Formula/ccrystal.rb"
+APPS_FILE="$REPO_ROOT/apps.json"
 
 VERSION="${1:-}"
 CHECKSUMS_FILE="${2:-$REPO_ROOT/dist/SHA256SUMS}"
@@ -53,7 +54,7 @@ class Ccrystal < Formula
   desc "Deterministic context preservation, DAG provenance, and runtime orchestration"
   homepage "https://github.com/oswaldo/context-crystal"
   version "$RAW_VERSION"
-  license "Apache-2.0"
+  license "MIT"
 
   on_macos do
     if Hardware::CPU.arm?
@@ -90,4 +91,26 @@ if command -v ruby >/dev/null 2>&1; then
     info "Ruby syntax validation passed for $FORMULA_FILE"
 fi
 
-info "Formula update complete."
+info "Updating $APPS_FILE for version $RAW_VERSION..."
+
+cat << EOF > "$APPS_FILE"
+{
+  "ccrystal": {
+    "repositories": [
+      "central"
+    ],
+    "dependencies": [
+      "org.scala-lang:scala3-library_3:3.3.4"
+    ],
+    "launcherType": "prebuilt",
+    "prebuiltBinaries": {
+      "x86_64-pc-linux": "tgz+https://github.com/oswaldo/context-crystal/releases/download/v$RAW_VERSION/ccrystal-v$RAW_VERSION-linux-x86_64.tar.gz!ccrystal",
+      "aarch64-pc-linux": "tgz+https://github.com/oswaldo/context-crystal/releases/download/v$RAW_VERSION/ccrystal-v$RAW_VERSION-linux-aarch64.tar.gz!ccrystal",
+      "x86_64-apple-darwin": "tgz+https://github.com/oswaldo/context-crystal/releases/download/v$RAW_VERSION/ccrystal-v$RAW_VERSION-macos-x86_64.tar.gz!ccrystal",
+      "aarch64-apple-darwin": "tgz+https://github.com/oswaldo/context-crystal/releases/download/v$RAW_VERSION/ccrystal-v$RAW_VERSION-macos-aarch64.tar.gz!ccrystal"
+    }
+  }
+}
+EOF
+
+info "Distribution manifests update complete."

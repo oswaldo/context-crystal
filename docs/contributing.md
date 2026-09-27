@@ -141,10 +141,20 @@ When cutting a new release (e.g., tagging `vX.Y.Z` or triggering `.github/workfl
    - Update each platform stanza (`on_macos`, `on_linux`) with the cryptographic checksums from `SHA256SUMS`.
    - Ensure the formula specifies the correct license (`MIT`).
 3. **Synchronize Homebrew Tap:**
-   - Ensure the public tap repository (`github.com/oswaldo/homebrew-context-crystal`) is created on GitHub.
-   - Push the updated `Formula/ccrystal.rb` to the tap repository.
-4. **Clean-Room Smoke Verification:**
-   - Execute an isolated verification of both official installation methods on target platforms prior to public announcement:
+   - Ensure the public tap repository (`github.com/oswaldo/homebrew-context-crystal`) is up to date with `Formula/ccrystal.rb`.
+   - Push the updated formula to the tap repository.
+4. **Synchronize Coursier Channel (`apps.json`):**
+   - Update version tags in `apps.json` to point to the new release tag `vX.Y.Z`.
+   - Validate with `cs install --channel file://$(pwd)/apps.json ccrystal`.
+5. **Synchronize Web Portal (`context-crystal-gh-pages`):**
+   - Update quickstart version references in `site/TabQuickstart.scala` and `llms.txt`.
+   - Recompile the static bundle: `scala-cli --power package site --js-mode release -o main.js --force`.
+   - Commit and push to `gh-pages`.
+6. **Collaborative Release Notes & Human Approval Gate:**
+   - Draft comprehensive release notes highlighting architectural progress, user-facing capabilities, and upgrade steps.
+   - Present to the human steersman/operator for explicit review and cryptographic push sign-off.
+7. **Clean-Room Smoke Verification:**
+   - Execute an isolated verification of official installation methods on target platforms prior to public announcement:
 
    ```bash
    # 1. Universal POSIX bootstrap
@@ -153,5 +163,9 @@ When cutting a new release (e.g., tagging `vX.Y.Z` or triggering `.github/workfl
 
    # 2. Homebrew
    brew install oswaldo/context-crystal/ccrystal
+   ccrystal --help
+
+   # 3. Coursier (cs)
+   cs install --channel gh:oswaldo/context-crystal:main ccrystal
    ccrystal --help
    ```
