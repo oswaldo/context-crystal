@@ -712,8 +712,8 @@ $p.constructor = $c_Lccrystal_site_Footer$;
 function $h_Lccrystal_site_Footer$() {
 }
 $h_Lccrystal_site_Footer$.prototype = $p;
-$p.cf = (function() {
-  return $m_Lcom_raquo_laminar_api_package$().a.rN().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("portal-footer"), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("container footer-inner"), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("footer-brand-block"), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("footer-logo"), $m_Lcom_raquo_laminar_api_package$().a.G().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("crystal-glyph"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "\u25c8", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.G().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Context Crystal", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.W().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("footer-manifesto-quote"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "\"Context is not a vector database. It is a sovereign, deterministic DAG.\"", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.W().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("footer-subquote"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Engineered for biological software architects and computational AI entities pair-programming in high-stakes codebases.", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("footer-links-grid"), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("footer-col"), $m_Lcom_raquo_laminar_api_package$().a.fy().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Specifications & Standards", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.hR().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.cd().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.b7().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.b9().k("https://github.com/oswaldo/context-crystal/blob/main/spec/v1/context-crystal.json"), $m_Lcom_raquo_laminar_api_package$().a.bd().k("_blank"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "JSON Schema v1", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.cd().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.b7().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.b9().k("https://github.com/oswaldo/context-crystal/blob/main/spec/v1/context-crystal.json"), $m_Lcom_raquo_laminar_api_package$().a.bd().k("_blank"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "JSON-LD Context", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.cd().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.b7().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.b9().k("https://github.com/oswaldo/context-crystal/blob/main/skills/context-crystal/SKILL.md"), $m_Lcom_raquo_laminar_api_package$().a.bd().k("_blank"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Universal Agent Skill", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))])))])))]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("footer-col"), $m_Lcom_raquo_laminar_api_package$().a.fy().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Engine & Protocols", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.hR().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.cd().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.b7().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.b9().k("https://github.com/oswaldo/context-crystal/blob/main/cli/shared/src/main/scala/ccrystal/cli/mcp/DefaultMcpHandler.scala"), $m_Lcom_raquo_laminar_api_package$().a.bd().k("_blank"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Native MCP Server Engine", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.cd().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.b7().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.b9().k("https://github.com/oswaldo/context-crystal/blob/main/install.sh"), $m_Lcom_raquo_laminar_api_package$().a.bd().k("_blank"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Single-Line Installer", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.cd().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.b7().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.b9().k("llms.txt"), $m_Lcom_raquo_laminar_api_package$().a.bd().k("_blank"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "llms.txt (Machine Ingestion)", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.cd().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.b7().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.b9().k("llms-full.txt"), $m_Lcom_raquo_laminar_api_package$().a.bd().k("_blank"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "llms-full.txt (Full Corpus)", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))])))])))]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("footer-col"), $m_Lcom_raquo_laminar_api_package$().a.fy().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Open Source", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.hR().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.cd().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.b7().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.b9().k("https://github.com/oswaldo/context-crystal"), $m_Lcom_raquo_laminar_api_package$().a.bd().k("_blank"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "GitHub Repository", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.cd().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.b7().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.b9().k("https://github.com/oswaldo/context-crystal/releases"), $m_Lcom_raquo_laminar_api_package$().a.bd().k("_blank"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Release Binaries", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.cd().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.b7().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.b9().k("https://github.com/oswaldo/context-crystal/blob/main/LICENSE"), $m_Lcom_raquo_laminar_api_package$().a.bd().k("_blank"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "MIT License", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))])))])))])))])))]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("container footer-bottom"), $m_Lcom_raquo_laminar_api_package$().a.W().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Copyright \u00a9 2026 Oswaldo C. Dantas J\u00fanior & Context Crystal Contributors. Pure functional Scala 3 Native & Scala.js.", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))])))])));
+$p.cj = (function() {
+  return $m_Lcom_raquo_laminar_api_package$().a.rN().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("portal-footer"), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("container footer-inner"), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("footer-brand-block"), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("footer-logo"), $m_Lcom_raquo_laminar_api_package$().a.G().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("crystal-glyph"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "\u25c8", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.G().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Context Crystal", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.R().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("footer-manifesto-quote"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "\"Context is not a vector database. It is a sovereign, deterministic DAG.\"", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.R().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("footer-subquote"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Engineered for biological software architects and computational AI entities pair-programming in high-stakes codebases.", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("footer-links-grid"), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("footer-col"), $m_Lcom_raquo_laminar_api_package$().a.eU().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Specifications & Standards", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.hR().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.ch().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.b6().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.b8().k("https://github.com/oswaldo/context-crystal/blob/main/spec/v1/context-crystal.json"), $m_Lcom_raquo_laminar_api_package$().a.bd().k("_blank"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "JSON Schema v1", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.ch().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.b6().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.b8().k("https://github.com/oswaldo/context-crystal/blob/main/spec/v1/context-crystal.json"), $m_Lcom_raquo_laminar_api_package$().a.bd().k("_blank"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "JSON-LD Context", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.ch().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.b6().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.b8().k("https://github.com/oswaldo/context-crystal/blob/main/skills/context-crystal/SKILL.md"), $m_Lcom_raquo_laminar_api_package$().a.bd().k("_blank"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Universal Agent Skill", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))])))])))]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("footer-col"), $m_Lcom_raquo_laminar_api_package$().a.eU().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Engine & Protocols", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.hR().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.ch().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.b6().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.b8().k("https://github.com/oswaldo/context-crystal/blob/main/cli/shared/src/main/scala/ccrystal/cli/mcp/DefaultMcpHandler.scala"), $m_Lcom_raquo_laminar_api_package$().a.bd().k("_blank"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Native MCP Server Engine", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.ch().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.b6().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.b8().k("https://github.com/oswaldo/context-crystal/blob/main/install.sh"), $m_Lcom_raquo_laminar_api_package$().a.bd().k("_blank"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Single-Line Installer", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.ch().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.b6().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.b8().k("llms.txt"), $m_Lcom_raquo_laminar_api_package$().a.bd().k("_blank"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "llms.txt (Machine Ingestion)", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.ch().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.b6().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.b8().k("llms-full.txt"), $m_Lcom_raquo_laminar_api_package$().a.bd().k("_blank"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "llms-full.txt (Full Corpus)", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))])))])))]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("footer-col"), $m_Lcom_raquo_laminar_api_package$().a.eU().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Open Source", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.hR().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.ch().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.b6().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.b8().k("https://github.com/oswaldo/context-crystal"), $m_Lcom_raquo_laminar_api_package$().a.bd().k("_blank"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "GitHub Repository", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.ch().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.b6().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.b8().k("https://github.com/oswaldo/context-crystal/releases"), $m_Lcom_raquo_laminar_api_package$().a.bd().k("_blank"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Release Binaries", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.ch().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.b6().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.b8().k("https://github.com/oswaldo/context-crystal/blob/main/LICENSE"), $m_Lcom_raquo_laminar_api_package$().a.bd().k("_blank"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "MIT License", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))])))])))])))])))]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("container footer-bottom"), $m_Lcom_raquo_laminar_api_package$().a.R().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Copyright \u00a9 2026 Oswaldo C. Dantas J\u00fanior & Context Crystal Contributors. Pure functional Scala 3 Native & Scala.js.", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))])))])));
 });
 var $d_Lccrystal_site_Footer$ = new $TypeData().i($c_Lccrystal_site_Footer$, "ccrystal.site.Footer$", ({
   cy: 1
@@ -734,7 +734,7 @@ $p.constructor = $c_Lccrystal_site_Header$;
 function $h_Lccrystal_site_Header$() {
 }
 $h_Lccrystal_site_Header$.prototype = $p;
-$p.cf = (function() {
+$p.cj = (function() {
   var $x_22 = $m_Lcom_raquo_laminar_api_package$().a.sb();
   var $x_21 = $m_sr_ScalaRunTime$();
   var $x_20 = $m_Lcom_raquo_laminar_api_package$().a.g.f("portal-header");
@@ -749,9 +749,9 @@ $p.cf = (function() {
   var $x_11 = $m_sci_Nil$();
   var $x_10 = $m_s_Predef$();
   var xs = $m_Lccrystal_site_Tab$().tD();
-  var f = ((tab) => $m_Lcom_raquo_laminar_api_package$().a.cD().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.cz().k("button"), $m_Lcom_raquo_laminar_api_package$().a.g.jp(new $c_Lcom_raquo_airstream_misc_MapSignal($m_Lccrystal_site_State$().f5.aN, new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((tab$2) => ((active) => (((active === null) ? (tab$2 === null) : (active === tab$2)) ? "nav-pill active" : "nav-pill")))(tab)), $m_s_None$()), $m_Lcom_raquo_laminar_api_package$().a.hz()), $m_Lcom_raquo_laminar_api_package$().a.G().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("nav-pill-icon"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, tab.en, $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.G().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("nav-pill-text"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, tab.eo, $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), new $c_Lcom_raquo_laminar_modifiers_EventListener(($m_Lcom_raquo_laminar_api_package$(), $m_Lcom_raquo_laminar_keys_EventProcessor$().cc($m_Lcom_raquo_laminar_api_package$().a.cy(), false, false)).gK(new $c_sjsr_AnonFunction0_$$Lambda$92a2e254bbb9c06a0a02fc31abab59c51c18ecc1(((tab$3) => (() => tab$3))(tab))), new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((sink) => ((_$1) => {
-    sink.dq(_$1);
-  }))($m_Lccrystal_site_State$().f5.du)))]))));
+  var f = ((tab) => $m_Lcom_raquo_laminar_api_package$().a.cd().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.c0().k("button"), $m_Lcom_raquo_laminar_api_package$().a.g.jp(new $c_Lcom_raquo_airstream_misc_MapSignal($m_Lccrystal_site_State$().f7.ax, new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((tab$2) => ((active) => (((active === null) ? (tab$2 === null) : (active === tab$2)) ? "nav-pill active" : "nav-pill")))(tab)), $m_s_None$()), $m_Lcom_raquo_laminar_api_package$().a.hz()), $m_Lcom_raquo_laminar_api_package$().a.G().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("nav-pill-icon"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, tab.ep, $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.G().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("nav-pill-text"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, tab.eq, $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), new $c_Lcom_raquo_laminar_modifiers_EventListener(($m_Lcom_raquo_laminar_api_package$(), $m_Lcom_raquo_laminar_keys_EventProcessor$().bL($m_Lcom_raquo_laminar_api_package$().a.bX(), false, false)).gK(new $c_sjsr_AnonFunction0_$$Lambda$92a2e254bbb9c06a0a02fc31abab59c51c18ecc1(((tab$3) => (() => tab$3))(tab))), new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((sink) => ((_$1) => {
+    sink.dr(_$1);
+  }))($m_Lccrystal_site_State$().f7.dv)))]))));
   var len = xs.b.length;
   var ys = new ($d_Lcom_raquo_laminar_nodes_ReactiveHtmlElement.r().C)(len);
   if ((len > 0)) {
@@ -825,7 +825,7 @@ $p.cf = (function() {
       throw new $c_s_MatchError(xs);
     }
   }
-  return $x_22.d($x_21.c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$x_20, $x_19.d($x_18.c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$x_17, $x_16, $x_15.d($x_14.c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$x_13, $f_Lcom_raquo_laminar_api_Implicits__nodeSeqToModifier__O__Lcom_raquo_laminar_modifiers_RenderableSeq__Lcom_raquo_laminar_modifiers_Modifier($x_12, $x_11.eh($x_10.km(ys)), $m_Lcom_raquo_laminar_modifiers_RenderableSeq$collectionSeqRenderable$())]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("header-actions"), $m_Lcom_raquo_laminar_api_package$().a.b7().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("btn-github"), $m_Lcom_raquo_laminar_api_package$().a.b9().k("https://github.com/oswaldo/context-crystal"), $m_Lcom_raquo_laminar_api_package$().a.bd().k("_blank"), $m_Lcom_raquo_laminar_api_package$().a.t2().f("noopener noreferrer"), $m_Lccrystal_site_Icons$().s8(16), $m_Lcom_raquo_laminar_api_package$().a.G().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "GitHub", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))])))])))])))])));
+  return $x_22.d($x_21.c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$x_20, $x_19.d($x_18.c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$x_17, $x_16, $x_15.d($x_14.c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$x_13, $f_Lcom_raquo_laminar_api_Implicits__nodeSeqToModifier__O__Lcom_raquo_laminar_modifiers_RenderableSeq__Lcom_raquo_laminar_modifiers_Modifier($x_12, $x_11.ej($x_10.km(ys)), $m_Lcom_raquo_laminar_modifiers_RenderableSeq$collectionSeqRenderable$())]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("header-actions"), $m_Lcom_raquo_laminar_api_package$().a.b6().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("btn-github"), $m_Lcom_raquo_laminar_api_package$().a.b8().k("https://github.com/oswaldo/context-crystal"), $m_Lcom_raquo_laminar_api_package$().a.bd().k("_blank"), $m_Lcom_raquo_laminar_api_package$().a.t2().f("noopener noreferrer"), $m_Lccrystal_site_Icons$().s8(16), $m_Lcom_raquo_laminar_api_package$().a.G().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "GitHub", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))])))])))])))])));
 });
 var $d_Lccrystal_site_Header$ = new $TypeData().i($c_Lccrystal_site_Header$, "ccrystal.site.Header$", ({
   cz: 1
@@ -847,25 +847,25 @@ function $h_Lccrystal_site_Icons$() {
 }
 $h_Lccrystal_site_Icons$.prototype = $p;
 $p.r9 = (function(size) {
-  return $m_Lcom_raquo_laminar_api_package$().a.t().ej().aT($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.t().f2().k("0 0 24 24"), $m_Lcom_raquo_laminar_api_package$().a.t().f3().k((size + "px")), $m_Lcom_raquo_laminar_api_package$().a.t().eT().k((size + "px")), $m_Lcom_raquo_laminar_api_package$().a.t().eO().k("currentColor"), $m_Lcom_raquo_laminar_api_package$().a.t().dw.f("client-brand-svg claude-icon"), $m_Lcom_raquo_laminar_api_package$().a.t().ce().aT($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.t().cb().k("M13.5 2.5c-.3-.6-1.1-.8-1.7-.5l-1.3.8-1.3-.8c-.6-.3-1.4-.1-1.7.5l-1 1.7-1.8.4c-.7.1-1.2.7-1.1 1.4l.2 1.9-1.4 1.3c-.5.5-.6 1.3-.2 1.9l1 1.6-.6 1.8c-.2.7.1 1.4.7 1.7l1.7.8.4 1.8c.2.7.8 1.1 1.5 1l1.9-.3 1.3 1.4c.5.5 1.3.6 1.9.2l1.6-1 1.8.6c.7.2 1.4-.1 1.7-.7l.8-1.7 1.8-.4c.7-.2 1.1-.8 1-1.5l-.3-1.9 1.4-1.3c.5-.5.6-1.3.2-1.9l-1-1.6.6-1.8c.2-.7-.1-1.4-.7-1.7l-1.7-.8-.4-1.8c-.2-.7-.8-1.1-1.5-1l-1.9.3-1.3-1.4z M12 6.5a5.5 5.5 0 110 11 5.5 5.5 0 010-11z")])))])));
+  return $m_Lcom_raquo_laminar_api_package$().a.t().el().aT($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.t().f4().k("0 0 24 24"), $m_Lcom_raquo_laminar_api_package$().a.t().f5().k((size + "px")), $m_Lcom_raquo_laminar_api_package$().a.t().eV().k((size + "px")), $m_Lcom_raquo_laminar_api_package$().a.t().eP().k("currentColor"), $m_Lcom_raquo_laminar_api_package$().a.t().dx.f("client-brand-svg claude-icon"), $m_Lcom_raquo_laminar_api_package$().a.t().ci().aT($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.t().cg().k("M13.5 2.5c-.3-.6-1.1-.8-1.7-.5l-1.3.8-1.3-.8c-.6-.3-1.4-.1-1.7.5l-1 1.7-1.8.4c-.7.1-1.2.7-1.1 1.4l.2 1.9-1.4 1.3c-.5.5-.6 1.3-.2 1.9l1 1.6-.6 1.8c-.2.7.1 1.4.7 1.7l1.7.8.4 1.8c.2.7.8 1.1 1.5 1l1.9-.3 1.3 1.4c.5.5 1.3.6 1.9.2l1.6-1 1.8.6c.7.2 1.4-.1 1.7-.7l.8-1.7 1.8-.4c.7-.2 1.1-.8 1-1.5l-.3-1.9 1.4-1.3c.5-.5.6-1.3.2-1.9l-1-1.6.6-1.8c.2-.7-.1-1.4-.7-1.7l-1.7-.8-.4-1.8c-.2-.7-.8-1.1-1.5-1l-1.9.3-1.3-1.4z M12 6.5a5.5 5.5 0 110 11 5.5 5.5 0 010-11z")])))])));
 });
 $p.rr = (function(size) {
-  return $m_Lcom_raquo_laminar_api_package$().a.t().ej().aT($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.t().f2().k("0 0 24 24"), $m_Lcom_raquo_laminar_api_package$().a.t().f3().k((size + "px")), $m_Lcom_raquo_laminar_api_package$().a.t().eT().k((size + "px")), $m_Lcom_raquo_laminar_api_package$().a.t().eO().k("none"), $m_Lcom_raquo_laminar_api_package$().a.t().hO().k("currentColor"), $m_Lcom_raquo_laminar_api_package$().a.t().hQ().k("1.8"), $m_Lcom_raquo_laminar_api_package$().a.t().hP().k("round"), $m_Lcom_raquo_laminar_api_package$().a.t().dw.f("client-brand-svg cursor-icon"), $m_Lcom_raquo_laminar_api_package$().a.t().ce().aT($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.t().cb().k("M12 2.5 L20.5 7.4 L12 12.3 L3.5 7.4 Z")]))), $m_Lcom_raquo_laminar_api_package$().a.t().ce().aT($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.t().cb().k("M3.5 7.4 L3.5 16.6 L12 21.5 L12 12.3 Z")]))), $m_Lcom_raquo_laminar_api_package$().a.t().ce().aT($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.t().cb().k("M20.5 7.4 L20.5 16.6 L12 21.5 L12 12.3 Z")])))])));
+  return $m_Lcom_raquo_laminar_api_package$().a.t().el().aT($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.t().f4().k("0 0 24 24"), $m_Lcom_raquo_laminar_api_package$().a.t().f5().k((size + "px")), $m_Lcom_raquo_laminar_api_package$().a.t().eV().k((size + "px")), $m_Lcom_raquo_laminar_api_package$().a.t().eP().k("none"), $m_Lcom_raquo_laminar_api_package$().a.t().hO().k("currentColor"), $m_Lcom_raquo_laminar_api_package$().a.t().hQ().k("1.8"), $m_Lcom_raquo_laminar_api_package$().a.t().hP().k("round"), $m_Lcom_raquo_laminar_api_package$().a.t().dx.f("client-brand-svg cursor-icon"), $m_Lcom_raquo_laminar_api_package$().a.t().ci().aT($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.t().cg().k("M12 2.5 L20.5 7.4 L12 12.3 L3.5 7.4 Z")]))), $m_Lcom_raquo_laminar_api_package$().a.t().ci().aT($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.t().cg().k("M3.5 7.4 L3.5 16.6 L12 21.5 L12 12.3 Z")]))), $m_Lcom_raquo_laminar_api_package$().a.t().ci().aT($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.t().cg().k("M20.5 7.4 L20.5 16.6 L12 21.5 L12 12.3 Z")])))])));
 });
 $p.tG = (function(size) {
-  return $m_Lcom_raquo_laminar_api_package$().a.t().ej().aT($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.t().f2().k("0 0 24 24"), $m_Lcom_raquo_laminar_api_package$().a.t().f3().k((size + "px")), $m_Lcom_raquo_laminar_api_package$().a.t().eT().k((size + "px")), $m_Lcom_raquo_laminar_api_package$().a.t().eO().k("currentColor"), $m_Lcom_raquo_laminar_api_package$().a.t().dw.f("client-brand-svg zed-icon"), $m_Lcom_raquo_laminar_api_package$().a.t().ce().aT($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.t().cb().k("M3.5 5.5h17v3.2L10.2 15.3H20.5v3.2H3.5v-3.2L13.8 8.7H3.5V5.5z")])))])));
+  return $m_Lcom_raquo_laminar_api_package$().a.t().el().aT($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.t().f4().k("0 0 24 24"), $m_Lcom_raquo_laminar_api_package$().a.t().f5().k((size + "px")), $m_Lcom_raquo_laminar_api_package$().a.t().eV().k((size + "px")), $m_Lcom_raquo_laminar_api_package$().a.t().eP().k("currentColor"), $m_Lcom_raquo_laminar_api_package$().a.t().dx.f("client-brand-svg zed-icon"), $m_Lcom_raquo_laminar_api_package$().a.t().ci().aT($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.t().cg().k("M3.5 5.5h17v3.2L10.2 15.3H20.5v3.2H3.5v-3.2L13.8 8.7H3.5V5.5z")])))])));
 });
 $p.s8 = (function(size) {
-  return $m_Lcom_raquo_laminar_api_package$().a.t().ej().aT($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.t().f2().k("0 0 24 24"), $m_Lcom_raquo_laminar_api_package$().a.t().f3().k((size + "px")), $m_Lcom_raquo_laminar_api_package$().a.t().eT().k((size + "px")), $m_Lcom_raquo_laminar_api_package$().a.t().eO().k("currentColor"), $m_Lcom_raquo_laminar_api_package$().a.t().dw.f("github-svg-icon"), $m_Lcom_raquo_laminar_api_package$().a.t().ce().aT($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.t().cb().k("M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z")])))])));
+  return $m_Lcom_raquo_laminar_api_package$().a.t().el().aT($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.t().f4().k("0 0 24 24"), $m_Lcom_raquo_laminar_api_package$().a.t().f5().k((size + "px")), $m_Lcom_raquo_laminar_api_package$().a.t().eV().k((size + "px")), $m_Lcom_raquo_laminar_api_package$().a.t().eP().k("currentColor"), $m_Lcom_raquo_laminar_api_package$().a.t().dx.f("github-svg-icon"), $m_Lcom_raquo_laminar_api_package$().a.t().ci().aT($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.t().cg().k("M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z")])))])));
 });
 $p.rc = (function(size) {
-  return $m_Lcom_raquo_laminar_api_package$().a.t().ej().aT($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.t().f2().k("0 0 24 24"), $m_Lcom_raquo_laminar_api_package$().a.t().f3().k((size + "px")), $m_Lcom_raquo_laminar_api_package$().a.t().eT().k((size + "px")), $m_Lcom_raquo_laminar_api_package$().a.t().eO().k("none"), $m_Lcom_raquo_laminar_api_package$().a.t().hO().k("currentColor"), $m_Lcom_raquo_laminar_api_package$().a.t().hQ().k("2"), $m_Lcom_raquo_laminar_api_package$().a.t().kh().k("round"), $m_Lcom_raquo_laminar_api_package$().a.t().hP().k("round"), $m_Lcom_raquo_laminar_api_package$().a.t().dw.f("card-svg-icon amnesia-icon"), $m_Lcom_raquo_laminar_api_package$().a.t().r8().aT($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.t().rs().k("12"), $m_Lcom_raquo_laminar_api_package$().a.t().rt().k("12"), $m_Lcom_raquo_laminar_api_package$().a.t().sZ().k("9")]))), $m_Lcom_raquo_laminar_api_package$().a.t().sX().aT($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.t().sW().k("12,7 12,12 15,14")])))])));
+  return $m_Lcom_raquo_laminar_api_package$().a.t().el().aT($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.t().f4().k("0 0 24 24"), $m_Lcom_raquo_laminar_api_package$().a.t().f5().k((size + "px")), $m_Lcom_raquo_laminar_api_package$().a.t().eV().k((size + "px")), $m_Lcom_raquo_laminar_api_package$().a.t().eP().k("none"), $m_Lcom_raquo_laminar_api_package$().a.t().hO().k("currentColor"), $m_Lcom_raquo_laminar_api_package$().a.t().hQ().k("2"), $m_Lcom_raquo_laminar_api_package$().a.t().kh().k("round"), $m_Lcom_raquo_laminar_api_package$().a.t().hP().k("round"), $m_Lcom_raquo_laminar_api_package$().a.t().dx.f("card-svg-icon amnesia-icon"), $m_Lcom_raquo_laminar_api_package$().a.t().r8().aT($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.t().rs().k("12"), $m_Lcom_raquo_laminar_api_package$().a.t().rt().k("12"), $m_Lcom_raquo_laminar_api_package$().a.t().sZ().k("9")]))), $m_Lcom_raquo_laminar_api_package$().a.t().sX().aT($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.t().sW().k("12,7 12,12 15,14")])))])));
 });
 $p.rv = (function(size) {
-  return $m_Lcom_raquo_laminar_api_package$().a.t().ej().aT($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.t().f2().k("0 0 24 24"), $m_Lcom_raquo_laminar_api_package$().a.t().f3().k((size + "px")), $m_Lcom_raquo_laminar_api_package$().a.t().eT().k((size + "px")), $m_Lcom_raquo_laminar_api_package$().a.t().eO().k("none"), $m_Lcom_raquo_laminar_api_package$().a.t().hO().k("currentColor"), $m_Lcom_raquo_laminar_api_package$().a.t().hQ().k("2"), $m_Lcom_raquo_laminar_api_package$().a.t().kh().k("round"), $m_Lcom_raquo_laminar_api_package$().a.t().hP().k("round"), $m_Lcom_raquo_laminar_api_package$().a.t().dw.f("card-svg-icon debris-icon"), $m_Lcom_raquo_laminar_api_package$().a.t().ce().aT($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.t().cb().k("M3 6h18")]))), $m_Lcom_raquo_laminar_api_package$().a.t().ce().aT($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.t().cb().k("M8 6V4a2 2 0 012-2h4a2 2 0 012 2v2")]))), $m_Lcom_raquo_laminar_api_package$().a.t().ce().aT($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.t().cb().k("M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6")]))), $m_Lcom_raquo_laminar_api_package$().a.t().ce().aT($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.t().cb().k("M10 11v6")]))), $m_Lcom_raquo_laminar_api_package$().a.t().ce().aT($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.t().cb().k("M14 11v6")])))])));
+  return $m_Lcom_raquo_laminar_api_package$().a.t().el().aT($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.t().f4().k("0 0 24 24"), $m_Lcom_raquo_laminar_api_package$().a.t().f5().k((size + "px")), $m_Lcom_raquo_laminar_api_package$().a.t().eV().k((size + "px")), $m_Lcom_raquo_laminar_api_package$().a.t().eP().k("none"), $m_Lcom_raquo_laminar_api_package$().a.t().hO().k("currentColor"), $m_Lcom_raquo_laminar_api_package$().a.t().hQ().k("2"), $m_Lcom_raquo_laminar_api_package$().a.t().kh().k("round"), $m_Lcom_raquo_laminar_api_package$().a.t().hP().k("round"), $m_Lcom_raquo_laminar_api_package$().a.t().dx.f("card-svg-icon debris-icon"), $m_Lcom_raquo_laminar_api_package$().a.t().ci().aT($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.t().cg().k("M3 6h18")]))), $m_Lcom_raquo_laminar_api_package$().a.t().ci().aT($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.t().cg().k("M8 6V4a2 2 0 012-2h4a2 2 0 012 2v2")]))), $m_Lcom_raquo_laminar_api_package$().a.t().ci().aT($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.t().cg().k("M19 6l-1 14a2 2 0 01-2 2H8a2 2 0 01-2-2L5 6")]))), $m_Lcom_raquo_laminar_api_package$().a.t().ci().aT($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.t().cg().k("M10 11v6")]))), $m_Lcom_raquo_laminar_api_package$().a.t().ci().aT($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.t().cg().k("M14 11v6")])))])));
 });
 $p.tv = (function(size) {
-  return $m_Lcom_raquo_laminar_api_package$().a.t().ej().aT($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.t().f2().k("0 0 24 24"), $m_Lcom_raquo_laminar_api_package$().a.t().f3().k((size + "px")), $m_Lcom_raquo_laminar_api_package$().a.t().eT().k((size + "px")), $m_Lcom_raquo_laminar_api_package$().a.t().eO().k("none"), $m_Lcom_raquo_laminar_api_package$().a.t().hO().k("currentColor"), $m_Lcom_raquo_laminar_api_package$().a.t().hQ().k("2"), $m_Lcom_raquo_laminar_api_package$().a.t().kh().k("round"), $m_Lcom_raquo_laminar_api_package$().a.t().hP().k("round"), $m_Lcom_raquo_laminar_api_package$().a.t().dw.f("card-svg-icon burn-icon"), $m_Lcom_raquo_laminar_api_package$().a.t().ce().aT($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.t().cb().k("M12 2c0 4-4 6-4 10a4 4 0 008 0c0-4-4-6-4-10z")]))), $m_Lcom_raquo_laminar_api_package$().a.t().ce().aT($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.t().cb().k("M12 14a2 2 0 00-2 2c0 1.1.9 2 2 2s2-.9 2-2a2 2 0 00-2-2z")])))])));
+  return $m_Lcom_raquo_laminar_api_package$().a.t().el().aT($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.t().f4().k("0 0 24 24"), $m_Lcom_raquo_laminar_api_package$().a.t().f5().k((size + "px")), $m_Lcom_raquo_laminar_api_package$().a.t().eV().k((size + "px")), $m_Lcom_raquo_laminar_api_package$().a.t().eP().k("none"), $m_Lcom_raquo_laminar_api_package$().a.t().hO().k("currentColor"), $m_Lcom_raquo_laminar_api_package$().a.t().hQ().k("2"), $m_Lcom_raquo_laminar_api_package$().a.t().kh().k("round"), $m_Lcom_raquo_laminar_api_package$().a.t().hP().k("round"), $m_Lcom_raquo_laminar_api_package$().a.t().dx.f("card-svg-icon burn-icon"), $m_Lcom_raquo_laminar_api_package$().a.t().ci().aT($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.t().cg().k("M12 2c0 4-4 6-4 10a4 4 0 008 0c0-4-4-6-4-10z")]))), $m_Lcom_raquo_laminar_api_package$().a.t().ci().aT($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.t().cg().k("M12 14a2 2 0 00-2 2c0 1.1.9 2 2 2s2-.9 2-2a2 2 0 00-2-2z")])))])));
 });
 var $d_Lccrystal_site_Icons$ = new $TypeData().i($c_Lccrystal_site_Icons$, "ccrystal.site.Icons$", ({
   cA: 1
@@ -903,35 +903,35 @@ $p.su = (function(args) {
   var this$2 = $m_Lcom_raquo_laminar_api_package$().a;
   var container = new $c_sjsr_AnonFunction0_$$Lambda$92a2e254bbb9c06a0a02fc31abab59c51c18ecc1(((appContainer$lzy1$2) => (() => $p_Lccrystal_site_Main$__appContainer$1__sr_LazyRef__Lorg_scalajs_dom_Element(this, appContainer$lzy1$2)))(appContainer$lzy1));
   var rootNode = new $c_sjsr_AnonFunction0_$$Lambda$92a2e254bbb9c06a0a02fc31abab59c51c18ecc1((() => $m_Lccrystal_site_Main$().qR()));
-  var p = $m_Lcom_raquo_laminar_keys_EventProcessor$().cc(this$2.mg.sU(), false, false);
-  $f_Lcom_raquo_airstream_core_BaseObservable__foreach__F1__Lcom_raquo_airstream_ownership_Owner__Lcom_raquo_airstream_ownership_Subscription(new $c_Lcom_raquo_airstream_misc_CollectStream($m_Lcom_raquo_airstream_web_DomEventStream$().qW(document, p.ev.fW, p.fV), p.fU), new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((_$2) => {
+  var p = $m_Lcom_raquo_laminar_keys_EventProcessor$().bL(this$2.mg.sU(), false, false);
+  $f_Lcom_raquo_airstream_core_BaseObservable__foreach__F1__Lcom_raquo_airstream_ownership_Owner__Lcom_raquo_airstream_ownership_Subscription(new $c_Lcom_raquo_airstream_misc_CollectStream($m_Lcom_raquo_airstream_web_DomEventStream$().qW(document, p.ex.fW, p.fV), p.fU), new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((_$2) => {
     new $c_Lcom_raquo_laminar_nodes_RootNode(container.Y(), rootNode.Y());
   })), this$2.tA());
 });
 $p.qR = (function() {
-  return $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("portal-root"), $m_Lccrystal_site_Header$().cf(), $m_Lcom_raquo_laminar_api_package$().a.sv().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("portal-main container"), ($m_Lcom_raquo_laminar_api_package$(), $m_Lcom_raquo_laminar_inserters_ChildInserter$().oV(new $c_Lcom_raquo_airstream_misc_MapSignal($m_Lccrystal_site_State$().f5.aN, new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((x$1) => {
+  return $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("portal-root"), $m_Lccrystal_site_Header$().cj(), $m_Lcom_raquo_laminar_api_package$().a.sv().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("portal-main container"), ($m_Lcom_raquo_laminar_api_package$(), $m_Lcom_raquo_laminar_inserters_ChildInserter$().oV(new $c_Lcom_raquo_airstream_misc_MapSignal($m_Lccrystal_site_State$().f7.ax, new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((x$1) => {
     var x = $s_Lccrystal_site_Tab$__Manifesto__Lccrystal_site_Tab();
     if (((x === null) ? (x$1 === null) : (x === x$1))) {
-      return $m_Lccrystal_site_TabManifesto$().cf();
+      return $m_Lccrystal_site_TabManifesto$().cj();
     }
     var x$3 = $s_Lccrystal_site_Tab$__Explorer__Lccrystal_site_Tab();
     if (((x$3 === null) ? (x$1 === null) : (x$3 === x$1))) {
-      return $m_Lccrystal_site_TabExplorer$().cf();
+      return $m_Lccrystal_site_TabExplorer$().cj();
     }
     var x$5 = $s_Lccrystal_site_Tab$__Quickstart__Lccrystal_site_Tab();
     if (((x$5 === null) ? (x$1 === null) : (x$5 === x$1))) {
-      return $m_Lccrystal_site_TabQuickstart$().cf();
+      return $m_Lccrystal_site_TabQuickstart$().cj();
     }
     var x$7 = $s_Lccrystal_site_Tab$__Mcp__Lccrystal_site_Tab();
     if (((x$7 === null) ? (x$1 === null) : (x$7 === x$1))) {
-      return $m_Lccrystal_site_TabMcp$().cf();
+      return $m_Lccrystal_site_TabMcp$().cj();
     }
     var x$9 = $s_Lccrystal_site_Tab$__AgentIngestion__Lccrystal_site_Tab();
     if (((x$9 === null) ? (x$1 === null) : (x$9 === x$1))) {
-      return $m_Lccrystal_site_TabAgentIngestion$().cf();
+      return $m_Lccrystal_site_TabAgentIngestion$().cj();
     }
     throw new $c_s_MatchError(x$1);
-  })), $m_s_None$()), $m_Lcom_raquo_laminar_modifiers_RenderableNode$().iv, (void 0)))]))), $m_Lccrystal_site_Footer$().cf()])));
+  })), $m_s_None$()), $m_Lcom_raquo_laminar_modifiers_RenderableNode$().iv, (void 0)))]))), $m_Lccrystal_site_Footer$().cj()])));
 });
 var $d_Lccrystal_site_Main$ = new $TypeData().i($c_Lccrystal_site_Main$, "ccrystal.site.Main$", ({
   cB: 1
@@ -945,11 +945,11 @@ function $m_Lccrystal_site_Main$() {
 }
 /** @constructor */
 function $c_Lccrystal_site_State$() {
-  this.f5 = null;
-  this.cN = null;
+  this.f7 = null;
+  this.ck = null;
   $n_Lccrystal_site_State$ = this;
-  this.f5 = $m_Lcom_raquo_laminar_api_package$().a.fc.gq($s_Lccrystal_site_Tab$__Manifesto__Lccrystal_site_Tab());
-  this.cN = $m_Lcom_raquo_laminar_api_package$().a.fc.gq($m_s_None$());
+  this.f7 = $m_Lcom_raquo_laminar_api_package$().a.fe.gq($s_Lccrystal_site_Tab$__Manifesto__Lccrystal_site_Tab());
+  this.ck = $m_Lcom_raquo_laminar_api_package$().a.fe.gq($m_s_None$());
 }
 $p = $c_Lccrystal_site_State$.prototype = new $h_O();
 $p.constructor = $c_Lccrystal_site_State$;
@@ -957,11 +957,11 @@ $p.constructor = $c_Lccrystal_site_State$;
 function $h_Lccrystal_site_State$() {
 }
 $h_Lccrystal_site_State$.prototype = $p;
-$p.fw = (function(id, text) {
+$p.ec = (function(id, text) {
   var \u03b41$ = window.navigator.clipboard.writeText(text);
   \u03b41$.then(((_$1) => {
-    $f_Lcom_raquo_airstream_state_Var__set__O__V($m_Lccrystal_site_State$().cN, new $c_s_Some(id));
-    return (window.setTimeout((() => ($f_Lcom_raquo_airstream_core_WritableSignal__tryNow__s_util_Try($m_Lccrystal_site_State$().cN.aN).Q().bm(id) ? ($f_Lcom_raquo_airstream_state_Var__set__O__V($m_Lccrystal_site_State$().cN, $m_s_None$()), (void 0)) : (void 0))), 2000.0) | 0);
+    $f_Lcom_raquo_airstream_state_Var__set__O__V($m_Lccrystal_site_State$().ck, new $c_s_Some(id));
+    return (window.setTimeout((() => ($f_Lcom_raquo_airstream_core_WritableSignal__tryNow__s_util_Try($m_Lccrystal_site_State$().ck.ax).Q().bm(id) ? ($f_Lcom_raquo_airstream_state_Var__set__O__V($m_Lccrystal_site_State$().ck, $m_s_None$()), (void 0)) : (void 0))), 2000.0) | 0);
   }));
 });
 var $d_Lccrystal_site_State$ = new $TypeData().i($c_Lccrystal_site_State$, "ccrystal.site.State$", ({
@@ -983,9 +983,9 @@ $p.constructor = $c_Lccrystal_site_TabAgentIngestion$;
 function $h_Lccrystal_site_TabAgentIngestion$() {
 }
 $h_Lccrystal_site_TabAgentIngestion$.prototype = $p;
-$p.cf = (function() {
-  return $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("tab-content tab-agent-ingestion"), $m_Lcom_raquo_laminar_api_package$().a.bC().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("agent-intro"), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("mcp-badge"), $m_Lcom_raquo_laminar_api_package$().a.G().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Machine-Readable Standard \u2022 Autonomous Ingestion \u2022 Zero Human Learning Curve", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.eS().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Autonomous AI Agent Ingestion (`llms.txt`)", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.W().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Context Crystal adheres to the emergent `/llms.txt` standard. Autonomous coding agents (Claude, ChatGPT, Perplexity, Devin, Cursor, Windsurf) can ingest our canonical operational rules, CLI flags, and MCP schemas directly.", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.bC().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("qs-card"), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("qs-card-header"), $m_Lcom_raquo_laminar_api_package$().a.G().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("qs-step-number"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "1", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.bL().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Machine-Readable Endpoints", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.W().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Standardized plain-text documentation endpoints hosted at the root of this portal:", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))])))]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("cards-grid two-col"), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("feature-card endpoint-card"), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("endpoint-header"), $m_Lcom_raquo_laminar_api_package$().a.G().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("file-tag"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "CONCISE", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.I().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "/llms.txt", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.W().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Optimized for LLM context limits. Contains the core operational philosophy, essential CLI commands, MCP tool mappings, and behavioral invariants.", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("endpoint-actions"), $m_Lcom_raquo_laminar_api_package$().a.b7().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.b9().k("llms.txt"), $m_Lcom_raquo_laminar_api_package$().a.bd().k("_blank"), $m_Lcom_raquo_laminar_api_package$().a.g.f("btn-mini active"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "View llms.txt \u2197", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))])))]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("feature-card endpoint-card"), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("endpoint-header"), $m_Lcom_raquo_laminar_api_package$().a.G().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("file-tag"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "FULL CORPUS", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.I().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "/llms-full.txt", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.W().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Complete reference corpus. Includes the full JSON Schema v1 specification, comprehensive CLI subcommands, and multi-entity authorship protocol rules.", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("endpoint-actions"), $m_Lcom_raquo_laminar_api_package$().a.b7().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.b9().k("llms-full.txt"), $m_Lcom_raquo_laminar_api_package$().a.bd().k("_blank"), $m_Lcom_raquo_laminar_api_package$().a.g.f("btn-mini active"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "View llms-full.txt \u2197", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))])))])))])))]))), $m_Lcom_raquo_laminar_api_package$().a.bC().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("qs-card"), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("qs-card-header"), $m_Lcom_raquo_laminar_api_package$().a.G().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("qs-step-number"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "2", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.bL().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Direct Agent System Prompt / Custom Instructions", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.W().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Paste this directive into your agent harness, Cursor Rules, or custom instructions to instantly activate Context Crystal:", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))])))]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("code-snippet-box"), $m_Lcom_raquo_laminar_api_package$().a.bA().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.I().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "# Context Crystal Operational Directive for AI Entities\nYou have access to Context Crystal (`ccrystal` CLI and native MCP server).\n- State Persistence: Never rely on chat window history. Inspect crystals at turn inception (`ccrystal list` or `crystal_list`).\n- Context Beam Hydration: Hydrate living context before major edits (`ccrystal hydrate <id> --tail 5`).\n- Zero Agent Debris: Always register transient leases for temporary worktrees (`ccrystal transient lease`) and ensure they are cleaned or promoted before goal conclusion.\n- Atomic Transitions: Batch context updates atomically using `ccrystal batch` or `crystal_batch`.\n- Cold Storage Over Deletion: Conclude goals when done (`ccrystal conclude`), squash intermediate nodes (`ccrystal melt`), and archive solid crystals (`ccrystal archive`) rather than destructive deletion.\n- Authoritative Discovery: Use `ccrystal --help` or `ccrystal <subcommand> --help` as guaranteed ground truth for CLI flags, and `ccrystal --for-ai` for protocol rules.", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.cD().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.cz().k("button"), $m_Lcom_raquo_laminar_api_package$().a.g.f("snippet-copy-btn"), ($m_Lcom_raquo_laminar_api_package$(), $m_Lcom_raquo_laminar_inserters_ChildTextInserter$().eK(new $c_Lcom_raquo_airstream_misc_MapSignal($m_Lccrystal_site_State$().cN.aN, new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((x$1) => (((x$1 instanceof $c_s_Some) && (x$1.cA === "agent-directive")) ? "\u2713 Copied" : "Copy Directive"))), $m_s_None$()), $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)), new $c_Lcom_raquo_laminar_modifiers_EventListener(($m_Lcom_raquo_laminar_api_package$(), $m_Lcom_raquo_laminar_keys_EventProcessor$().cc($m_Lcom_raquo_laminar_api_package$().a.cy(), false, false)), new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((_$1) => {
-    $m_Lccrystal_site_State$().fw("agent-directive", "# Context Crystal Operational Directive for AI Entities\nYou have access to Context Crystal (`ccrystal` CLI and native MCP server).\n- State Persistence: Never rely on chat window history. Inspect crystals at turn inception (`ccrystal list` or `crystal_list`).\n- Context Beam Hydration: Hydrate living context before major edits (`ccrystal hydrate <id> --tail 5`).\n- Zero Agent Debris: Always register transient leases for temporary worktrees (`ccrystal transient lease`) and ensure they are cleaned or promoted before goal conclusion.\n- Atomic Transitions: Batch context updates atomically using `ccrystal batch` or `crystal_batch`.\n- Cold Storage Over Deletion: Conclude goals when done (`ccrystal conclude`), squash intermediate nodes (`ccrystal melt`), and archive solid crystals (`ccrystal archive`) rather than destructive deletion.\n- Authoritative Discovery: Use `ccrystal --help` or `ccrystal <subcommand> --help` as guaranteed ground truth for CLI flags, and `ccrystal --for-ai` for protocol rules.");
+$p.cj = (function() {
+  return $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("tab-content tab-agent-ingestion"), $m_Lcom_raquo_laminar_api_package$().a.bC().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("agent-intro"), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("mcp-badge"), $m_Lcom_raquo_laminar_api_package$().a.G().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Machine-Readable Standard \u2022 Autonomous Ingestion \u2022 Zero Human Learning Curve", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.eT().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Autonomous AI Agent Ingestion (`llms.txt`)", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.R().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Context Crystal adheres to the emergent `/llms.txt` standard. Autonomous coding agents (Claude, ChatGPT, Perplexity, Devin, Cursor, Windsurf) can ingest our canonical operational rules, CLI flags, and MCP schemas directly.", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.bC().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("qs-card"), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("qs-card-header"), $m_Lcom_raquo_laminar_api_package$().a.G().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("qs-step-number"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "1", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.bM().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Machine-Readable Endpoints", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.R().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Standardized plain-text documentation endpoints hosted at the root of this portal:", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))])))]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("cards-grid two-col"), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("feature-card endpoint-card"), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("endpoint-header"), $m_Lcom_raquo_laminar_api_package$().a.G().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("file-tag"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "CONCISE", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.I().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "/llms.txt", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.R().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Optimized for LLM context limits. Contains the core operational philosophy, essential CLI commands, MCP tool mappings, and behavioral invariants.", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("endpoint-actions"), $m_Lcom_raquo_laminar_api_package$().a.b6().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.b8().k("llms.txt"), $m_Lcom_raquo_laminar_api_package$().a.bd().k("_blank"), $m_Lcom_raquo_laminar_api_package$().a.g.f("btn-mini active"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "View llms.txt \u2197", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))])))]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("feature-card endpoint-card"), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("endpoint-header"), $m_Lcom_raquo_laminar_api_package$().a.G().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("file-tag"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "FULL CORPUS", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.I().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "/llms-full.txt", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.R().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Complete reference corpus. Includes the full JSON Schema v1 specification, comprehensive CLI subcommands, and multi-entity authorship protocol rules.", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("endpoint-actions"), $m_Lcom_raquo_laminar_api_package$().a.b6().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.b8().k("llms-full.txt"), $m_Lcom_raquo_laminar_api_package$().a.bd().k("_blank"), $m_Lcom_raquo_laminar_api_package$().a.g.f("btn-mini active"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "View llms-full.txt \u2197", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))])))])))])))]))), $m_Lcom_raquo_laminar_api_package$().a.bC().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("qs-card"), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("qs-card-header"), $m_Lcom_raquo_laminar_api_package$().a.G().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("qs-step-number"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "2", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.bM().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Direct Agent System Prompt / Custom Instructions", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.R().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Paste this directive into your agent harness, Cursor Rules, or custom instructions to instantly activate Context Crystal:", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))])))]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("code-snippet-box"), $m_Lcom_raquo_laminar_api_package$().a.bA().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.I().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "# Context Crystal Operational Directive for AI Entities\nYou have access to Context Crystal (`ccrystal` CLI and native MCP server).\n- State Persistence: Never rely on chat window history. Inspect crystals at turn inception (`ccrystal list` or `crystal_list`).\n- Context Beam Hydration: Hydrate living context before major edits (`ccrystal hydrate <id> --tail 5`).\n- Zero Agent Debris: Always register transient leases for temporary worktrees (`ccrystal transient lease`) and ensure they are cleaned or promoted before goal conclusion.\n- Atomic Transitions: Batch context updates atomically using `ccrystal batch` or `crystal_batch`.\n- Cold Storage Over Deletion: Conclude goals when done (`ccrystal conclude`), squash intermediate nodes (`ccrystal melt`), and archive solid crystals (`ccrystal archive`) rather than destructive deletion.\n- Authoritative Discovery: Use `ccrystal --help` or `ccrystal <subcommand> --help` as guaranteed ground truth for CLI flags, and `ccrystal --for-ai` for protocol rules.", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.cd().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.c0().k("button"), $m_Lcom_raquo_laminar_api_package$().a.g.f("snippet-copy-btn"), ($m_Lcom_raquo_laminar_api_package$(), $m_Lcom_raquo_laminar_inserters_ChildTextInserter$().dl(new $c_Lcom_raquo_airstream_misc_MapSignal($m_Lccrystal_site_State$().ck.ax, new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((x$1) => (((x$1 instanceof $c_s_Some) && (x$1.c2 === "agent-directive")) ? "\u2713 Copied" : "Copy Directive"))), $m_s_None$()), $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)), new $c_Lcom_raquo_laminar_modifiers_EventListener(($m_Lcom_raquo_laminar_api_package$(), $m_Lcom_raquo_laminar_keys_EventProcessor$().bL($m_Lcom_raquo_laminar_api_package$().a.bX(), false, false)), new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((_$1) => {
+    $m_Lccrystal_site_State$().ec("agent-directive", "# Context Crystal Operational Directive for AI Entities\nYou have access to Context Crystal (`ccrystal` CLI and native MCP server).\n- State Persistence: Never rely on chat window history. Inspect crystals at turn inception (`ccrystal list` or `crystal_list`).\n- Context Beam Hydration: Hydrate living context before major edits (`ccrystal hydrate <id> --tail 5`).\n- Zero Agent Debris: Always register transient leases for temporary worktrees (`ccrystal transient lease`) and ensure they are cleaned or promoted before goal conclusion.\n- Atomic Transitions: Batch context updates atomically using `ccrystal batch` or `crystal_batch`.\n- Cold Storage Over Deletion: Conclude goals when done (`ccrystal conclude`), squash intermediate nodes (`ccrystal melt`), and archive solid crystals (`ccrystal archive`) rather than destructive deletion.\n- Authoritative Discovery: Use `ccrystal --help` or `ccrystal <subcommand> --help` as guaranteed ground truth for CLI flags, and `ccrystal --for-ai` for protocol rules.");
   })))])))])))])))])));
 });
 var $d_Lccrystal_site_TabAgentIngestion$ = new $TypeData().i($c_Lccrystal_site_TabAgentIngestion$, "ccrystal.site.TabAgentIngestion$", ({
@@ -1002,7 +1002,7 @@ function $p_Lccrystal_site_TabExplorer$__renderDagState__Lccrystal_site_TabExplo
   var $x_36 = $m_Lcom_raquo_laminar_api_package$().a.h();
   var $x_35 = $m_sr_ScalaRunTime$();
   var $x_34 = $m_Lcom_raquo_laminar_api_package$().a.g.f("dag-state-container");
-  var $x_33 = $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("state-card goal-card"), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("state-card-header"), $m_Lcom_raquo_laminar_api_package$().a.G().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("tag-goal"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "GOAL", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.G().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("status-tag in-progress"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "InProgress", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.fy().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Build Resilient OAuth2 Service", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.W().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("intent-text"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Implement stateless JWT authentication with token revocation list and hardware test fixture.", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))])));
+  var $x_33 = $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("state-card goal-card"), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("state-card-header"), $m_Lcom_raquo_laminar_api_package$().a.G().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("tag-goal"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "GOAL", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.G().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("status-tag in-progress"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "InProgress", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.eU().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Build Resilient OAuth2 Service", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.R().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("intent-text"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Implement stateless JWT authentication with token revocation list and hardware test fixture.", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))])));
   var $x_32 = $m_Lcom_raquo_laminar_api_package$().a.h();
   var $x_31 = $m_sr_ScalaRunTime$();
   var $x_30 = $m_Lcom_raquo_laminar_api_package$().a.g.f("state-card tasks-card");
@@ -1018,7 +1018,7 @@ function $p_Lccrystal_site_TabExplorer$__renderDagState__Lccrystal_site_TabExplo
   var $x_21 = $m_Lcom_raquo_laminar_api_package$().a.hR();
   var $x_20 = $m_sr_ScalaRunTime$();
   var $x_19 = $m_Lcom_raquo_laminar_api_package$().a.g.f("task-list");
-  var $x_18 = $m_Lcom_raquo_laminar_api_package$().a.cd();
+  var $x_18 = $m_Lcom_raquo_laminar_api_package$().a.ch();
   var $x_17 = $m_sr_ScalaRunTime$();
   var $x_16 = $m_Lcom_raquo_laminar_api_package$().a.g;
   var x$4 = $s_Lccrystal_site_TabExplorer$Scenario$__Inception__Lccrystal_site_TabExplorer$Scenario();
@@ -1026,17 +1026,17 @@ function $p_Lccrystal_site_TabExplorer$__renderDagState__Lccrystal_site_TabExplo
   var $x_14 = $m_Lcom_raquo_laminar_api_package$().a.G();
   var $x_13 = $m_sr_ScalaRunTime$();
   var x$6 = $s_Lccrystal_site_TabExplorer$Scenario$__Inception__Lccrystal_site_TabExplorer$Scenario();
-  var $x_12 = $x_32.d($x_31.c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$x_30, $x_22, $x_21.d($x_20.c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$x_19, $x_18.d($x_17.c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$x_15, $x_14.d($x_13.c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([((!(sc === x$6)) ? $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "\u2713 ", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e) : $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "\u25fb ", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e))]))), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "task-1: Implement JWT token verification parser", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.cd().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("pending"), $m_Lcom_raquo_laminar_api_package$().a.G().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "\u25fb ", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "task-2: Hook token revocation cache into Redis", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.cd().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("pending"), $m_Lcom_raquo_laminar_api_package$().a.G().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "\u25fb ", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "task-3: End-to-end integration test with token rotation", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))])))])));
+  var $x_12 = $x_32.d($x_31.c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$x_30, $x_22, $x_21.d($x_20.c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$x_19, $x_18.d($x_17.c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$x_15, $x_14.d($x_13.c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([((!(sc === x$6)) ? $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "\u2713 ", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e) : $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "\u25fb ", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e))]))), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "task-1: Implement JWT token verification parser", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.ch().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("pending"), $m_Lcom_raquo_laminar_api_package$().a.G().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "\u25fb ", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "task-2: Hook token revocation cache into Redis", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.ch().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("pending"), $m_Lcom_raquo_laminar_api_package$().a.G().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "\u25fb ", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "task-3: End-to-end integration test with token rotation", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))])))])));
   var x$8 = $s_Lccrystal_site_TabExplorer$Scenario$__Inception__Lccrystal_site_TabExplorer$Scenario();
   if ((!(sc === x$8))) {
-    var $x_11 = $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("state-card lease-card"), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("state-card-header"), $m_Lcom_raquo_laminar_api_package$().a.G().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("tag-lease"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "ACTIVE TRANSIENT LEASE", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.G().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("policy-badge"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "revert_on_conclusion", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("lease-item"), $m_Lcom_raquo_laminar_api_package$().a.b2().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "lease-1 (git_worktree): ", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.G().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "/home/user/git/worktrees/oauth2-spike", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.W().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("lease-notice"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "\u26a0 Invariant: Must be cleaned before crystal goal can be marked Concluded.", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))])));
+    var $x_11 = $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("state-card lease-card"), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("state-card-header"), $m_Lcom_raquo_laminar_api_package$().a.G().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("tag-lease"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "ACTIVE TRANSIENT LEASE", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.G().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("policy-badge"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "revert_on_conclusion", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("lease-item"), $m_Lcom_raquo_laminar_api_package$().a.bc().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "lease-1 (git_worktree): ", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.G().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "/home/user/git/worktrees/oauth2-spike", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.R().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("lease-notice"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "\u26a0 Invariant: Must be cleaned before crystal goal can be marked Concluded.", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))])));
   } else {
     $m_Lcom_raquo_laminar_api_package$();
     var $x_11 = new $c_Lcom_raquo_laminar_nodes_CommentNode("");
   }
   var x$10 = $s_Lccrystal_site_TabExplorer$Scenario$__PhysicalArtifact__Lccrystal_site_TabExplorer$Scenario();
   if ((sc === x$10)) {
-    var $x_10 = $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("state-card artifact-card"), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("state-card-header"), $m_Lcom_raquo_laminar_api_package$().a.G().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("tag-artifact"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "PHYSICAL ARTIFACT", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.G().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("role-badge"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Precondition", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("artifact-name"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "art_bench_01: Hardware Security Dongle Rig", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.W().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("artifact-coords"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Location: Laboratory Alpha, Bench 4B \u2022 geo:52.5200,13.4050", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))])));
+    var $x_10 = $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("state-card artifact-card"), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("state-card-header"), $m_Lcom_raquo_laminar_api_package$().a.G().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("tag-artifact"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "PHYSICAL ARTIFACT", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.G().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("role-badge"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Precondition", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("artifact-name"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "art_bench_01: Hardware Security Dongle Rig", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.R().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("artifact-coords"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Location: Laboratory Alpha, Bench 4B \u2022 geo:52.5200,13.4050", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))])));
   } else {
     $m_Lcom_raquo_laminar_api_package$();
     var $x_10 = new $c_Lcom_raquo_laminar_nodes_CommentNode("");
@@ -1048,16 +1048,16 @@ function $p_Lccrystal_site_TabExplorer$__renderDagState__Lccrystal_site_TabExplo
   var $x_5 = $m_Lcom_raquo_laminar_api_package$().a.h();
   var $x_4 = $m_sr_ScalaRunTime$();
   var $x_3 = $m_Lcom_raquo_laminar_api_package$().a.g.f("dag-node-timeline");
-  var $x_2 = $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("dag-node-item"), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("node-bullet")]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("node-content"), $m_Lcom_raquo_laminar_api_package$().a.b2().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "node-1 [Init]", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.G().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, " Initialized crystal with goal and criteria by usr_operator", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))])))])));
+  var $x_2 = $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("dag-node-item"), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("node-bullet")]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("node-content"), $m_Lcom_raquo_laminar_api_package$().a.bc().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "node-1 [Init]", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.G().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, " Initialized crystal with goal and criteria by usr_operator", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))])))])));
   var x$12 = $s_Lccrystal_site_TabExplorer$Scenario$__Inception__Lccrystal_site_TabExplorer$Scenario();
   if ((!(sc === x$12))) {
-    var $x_1 = $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("dag-node-item"), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("node-bullet green")]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("node-content"), $m_Lcom_raquo_laminar_api_package$().a.b2().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "node-2 [Checkpoint]", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.G().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, " Task 1 complete; acquired git_worktree lease by agt_antigravity", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))])))])));
+    var $x_1 = $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("dag-node-item"), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("node-bullet green")]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("node-content"), $m_Lcom_raquo_laminar_api_package$().a.bc().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "node-2 [Checkpoint]", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.G().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, " Task 1 complete; acquired git_worktree lease by agt_antigravity", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))])))])));
   } else {
     $m_Lcom_raquo_laminar_api_package$();
     var $x_1 = new $c_Lcom_raquo_laminar_nodes_CommentNode("");
   }
   var x$14 = $s_Lccrystal_site_TabExplorer$Scenario$__PhysicalArtifact__Lccrystal_site_TabExplorer$Scenario();
-  return $x_36.d($x_35.c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$x_34, $x_33, $x_12, $x_11, $x_10, $x_9.d($x_8.c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$x_7, $x_6, $x_5.d($x_4.c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$x_3, $x_2, $x_1, ((sc === x$14) ? $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("dag-node-item"), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("node-bullet purple")]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("node-content"), $m_Lcom_raquo_laminar_api_package$().a.b2().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "node-3 [Action]", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.G().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, " Linked physical artifact art_bench_01 as test precondition", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))])))]))) : ($m_Lcom_raquo_laminar_api_package$(), new $c_Lcom_raquo_laminar_nodes_CommentNode("")))])))])))])));
+  return $x_36.d($x_35.c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$x_34, $x_33, $x_12, $x_11, $x_10, $x_9.d($x_8.c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$x_7, $x_6, $x_5.d($x_4.c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$x_3, $x_2, $x_1, ((sc === x$14) ? $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("dag-node-item"), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("node-bullet purple")]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("node-content"), $m_Lcom_raquo_laminar_api_package$().a.bc().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "node-3 [Action]", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.G().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, " Linked physical artifact art_bench_01 as test precondition", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))])))]))) : ($m_Lcom_raquo_laminar_api_package$(), new $c_Lcom_raquo_laminar_nodes_CommentNode("")))])))])))])));
 }
 function $p_Lccrystal_site_TabExplorer$__generatePromptBeam__Lccrystal_site_TabExplorer$Scenario__I__Z__T($thiz, sc, tail, summaryOnly) {
   var sb = $ct_scm_StringBuilder__(new $c_scm_StringBuilder());
@@ -1106,13 +1106,13 @@ function $p_Lccrystal_site_TabExplorer$__generatePromptBeam__Lccrystal_site_TabE
 }
 /** @constructor */
 function $c_Lccrystal_site_TabExplorer$() {
-  this.f6 = null;
+  this.f8 = null;
   this.fK = null;
   this.fJ = null;
   $n_Lccrystal_site_TabExplorer$ = this;
-  this.f6 = $m_Lcom_raquo_laminar_api_package$().a.fc.gq($s_Lccrystal_site_TabExplorer$Scenario$__ActiveSpike__Lccrystal_site_TabExplorer$Scenario());
-  this.fK = $m_Lcom_raquo_laminar_api_package$().a.fc.gq(3);
-  this.fJ = $m_Lcom_raquo_laminar_api_package$().a.fc.gq(false);
+  this.f8 = $m_Lcom_raquo_laminar_api_package$().a.fe.gq($s_Lccrystal_site_TabExplorer$Scenario$__ActiveSpike__Lccrystal_site_TabExplorer$Scenario());
+  this.fK = $m_Lcom_raquo_laminar_api_package$().a.fe.gq(3);
+  this.fJ = $m_Lcom_raquo_laminar_api_package$().a.fe.gq(false);
 }
 $p = $c_Lccrystal_site_TabExplorer$.prototype = new $h_O();
 $p.constructor = $c_Lccrystal_site_TabExplorer$;
@@ -1120,11 +1120,11 @@ $p.constructor = $c_Lccrystal_site_TabExplorer$;
 function $h_Lccrystal_site_TabExplorer$() {
 }
 $h_Lccrystal_site_TabExplorer$.prototype = $p;
-$p.cf = (function() {
+$p.cj = (function() {
   var $x_37 = $m_Lcom_raquo_laminar_api_package$().a.h();
   var $x_36 = $m_sr_ScalaRunTime$();
   var $x_35 = $m_Lcom_raquo_laminar_api_package$().a.g.f("tab-content tab-explorer");
-  var $x_34 = $m_Lcom_raquo_laminar_api_package$().a.bC().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("explorer-intro"), $m_Lcom_raquo_laminar_api_package$().a.eS().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Live Interactive DAG & Context Beam Explorer", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.W().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Experience how Context Crystal models living software intent, maintains immutable causal provenance, enforces clean transient resource leases, and shapes context beams for LLM prompts in real time:", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))])));
+  var $x_34 = $m_Lcom_raquo_laminar_api_package$().a.bC().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("explorer-intro"), $m_Lcom_raquo_laminar_api_package$().a.eT().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Live Interactive DAG & Context Beam Explorer", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.R().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Experience how Context Crystal models living software intent, maintains immutable causal provenance, enforces clean transient resource leases, and shapes context beams for LLM prompts in real time:", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))])));
   var $x_33 = $m_Lcom_raquo_laminar_api_package$().a.h();
   var $x_32 = $m_sr_ScalaRunTime$();
   var $x_31 = $m_Lcom_raquo_laminar_api_package$().a.g.f("explorer-toolbar");
@@ -1139,9 +1139,9 @@ $p.cf = (function() {
   var $x_22 = $m_sci_Nil$();
   var $x_21 = $m_s_Predef$();
   var xs = $m_Lccrystal_site_TabExplorer$Scenario$().tE();
-  var f = ((sc) => $m_Lcom_raquo_laminar_api_package$().a.cD().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.cz().k("button"), $m_Lcom_raquo_laminar_api_package$().a.g.jp(new $c_Lcom_raquo_airstream_misc_MapSignal($m_Lccrystal_site_TabExplorer$().f6.aN, new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((sc$2) => ((curr) => (((curr === null) ? (sc$2 === null) : (curr === sc$2)) ? "btn-scenario active" : "btn-scenario")))(sc)), $m_s_None$()), $m_Lcom_raquo_laminar_api_package$().a.hz()), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, sc.fL, $m_Lcom_raquo_laminar_modifiers_RenderableText$().e), new $c_Lcom_raquo_laminar_modifiers_EventListener(($m_Lcom_raquo_laminar_api_package$(), $m_Lcom_raquo_laminar_keys_EventProcessor$().cc($m_Lcom_raquo_laminar_api_package$().a.cy(), false, false)).gK(new $c_sjsr_AnonFunction0_$$Lambda$92a2e254bbb9c06a0a02fc31abab59c51c18ecc1(((sc$3) => (() => sc$3))(sc))), new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((sink) => ((_$1) => {
-    sink.dq(_$1);
-  }))($m_Lccrystal_site_TabExplorer$().f6.du)))]))));
+  var f = ((sc) => $m_Lcom_raquo_laminar_api_package$().a.cd().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.c0().k("button"), $m_Lcom_raquo_laminar_api_package$().a.g.jp(new $c_Lcom_raquo_airstream_misc_MapSignal($m_Lccrystal_site_TabExplorer$().f8.ax, new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((sc$2) => ((curr) => (((curr === null) ? (sc$2 === null) : (curr === sc$2)) ? "btn-scenario active" : "btn-scenario")))(sc)), $m_s_None$()), $m_Lcom_raquo_laminar_api_package$().a.hz()), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, sc.fL, $m_Lcom_raquo_laminar_modifiers_RenderableText$().e), new $c_Lcom_raquo_laminar_modifiers_EventListener(($m_Lcom_raquo_laminar_api_package$(), $m_Lcom_raquo_laminar_keys_EventProcessor$().bL($m_Lcom_raquo_laminar_api_package$().a.bX(), false, false)).gK(new $c_sjsr_AnonFunction0_$$Lambda$92a2e254bbb9c06a0a02fc31abab59c51c18ecc1(((sc$3) => (() => sc$3))(sc))), new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((sink) => ((_$1) => {
+    sink.dr(_$1);
+  }))($m_Lccrystal_site_TabExplorer$().f8.dv)))]))));
   var len = xs.b.length;
   var ys = new ($d_Lcom_raquo_laminar_nodes_ReactiveHtmlElement.r().C)(len);
   if ((len > 0)) {
@@ -1215,7 +1215,7 @@ $p.cf = (function() {
       throw new $c_s_MatchError(xs);
     }
   }
-  var $x_11 = $x_30.d($x_29.c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$x_28, $x_27, $x_26.d($x_25.c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$x_24, $f_Lcom_raquo_laminar_api_Implicits__nodeSeqToModifier__O__Lcom_raquo_laminar_modifiers_RenderableSeq__Lcom_raquo_laminar_modifiers_Modifier($x_23, $x_22.eh($x_21.km(ys)), $m_Lcom_raquo_laminar_modifiers_RenderableSeq$collectionSeqRenderable$())])))])));
+  var $x_11 = $x_30.d($x_29.c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$x_28, $x_27, $x_26.d($x_25.c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$x_24, $f_Lcom_raquo_laminar_api_Implicits__nodeSeqToModifier__O__Lcom_raquo_laminar_modifiers_RenderableSeq__Lcom_raquo_laminar_modifiers_Modifier($x_23, $x_22.ej($x_21.km(ys)), $m_Lcom_raquo_laminar_modifiers_RenderableSeq$collectionSeqRenderable$())])))])));
   var $x_10 = $m_Lcom_raquo_laminar_api_package$().a.h();
   var $x_9 = $m_sr_ScalaRunTime$();
   var $x_8 = $m_Lcom_raquo_laminar_api_package$().a.g.f("toolbar-group beam-controls");
@@ -1228,9 +1228,9 @@ $p.cf = (function() {
   var this$21 = new $c_sci_$colon$colon(1, new $c_sci_$colon$colon(2, new $c_sci_$colon$colon(3, new $c_sci_$colon$colon(5, $m_sci_Nil$()))));
   var f$1 = ((count) => {
     var count$1 = (count | 0);
-    return $m_Lcom_raquo_laminar_api_package$().a.cD().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.cz().k("button"), $m_Lcom_raquo_laminar_api_package$().a.g.jp(new $c_Lcom_raquo_airstream_misc_MapSignal($m_Lccrystal_site_TabExplorer$().fK.aN, new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((curr$1) => (((curr$1 | 0) === count$1) ? "btn-mini active" : "btn-mini"))), $m_s_None$()), $m_Lcom_raquo_laminar_api_package$().a.hz()), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, ("" + count$1), $m_Lcom_raquo_laminar_modifiers_RenderableText$().e), new $c_Lcom_raquo_laminar_modifiers_EventListener(($m_Lcom_raquo_laminar_api_package$(), $m_Lcom_raquo_laminar_keys_EventProcessor$().cc($m_Lcom_raquo_laminar_api_package$().a.cy(), false, false)).gK(new $c_sjsr_AnonFunction0_$$Lambda$92a2e254bbb9c06a0a02fc31abab59c51c18ecc1((() => count$1))), new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((sink$1) => ((_$1$1) => {
-      sink$1.dq(_$1$1);
-    }))($m_Lccrystal_site_TabExplorer$().fK.du)))])));
+    return $m_Lcom_raquo_laminar_api_package$().a.cd().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.c0().k("button"), $m_Lcom_raquo_laminar_api_package$().a.g.jp(new $c_Lcom_raquo_airstream_misc_MapSignal($m_Lccrystal_site_TabExplorer$().fK.ax, new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((curr$1) => (((curr$1 | 0) === count$1) ? "btn-mini active" : "btn-mini"))), $m_s_None$()), $m_Lcom_raquo_laminar_api_package$().a.hz()), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, ("" + count$1), $m_Lcom_raquo_laminar_modifiers_RenderableText$().e), new $c_Lcom_raquo_laminar_modifiers_EventListener(($m_Lcom_raquo_laminar_api_package$(), $m_Lcom_raquo_laminar_keys_EventProcessor$().bL($m_Lcom_raquo_laminar_api_package$().a.bX(), false, false)).gK(new $c_sjsr_AnonFunction0_$$Lambda$92a2e254bbb9c06a0a02fc31abab59c51c18ecc1((() => count$1))), new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((sink$1) => ((_$1$1) => {
+      sink$1.dr(_$1$1);
+    }))($m_Lccrystal_site_TabExplorer$().fK.dv)))])));
   });
   if ((this$21 === $m_sci_Nil$())) {
     var $x_1 = $m_sci_Nil$();
@@ -1248,18 +1248,18 @@ $p.cf = (function() {
     }
     var $x_1 = h;
   }
-  return $x_37.d($x_36.c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$x_35, $x_34, $x_33.d($x_32.c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$x_31, $x_11, $x_10.d($x_9.c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$x_8, $x_7, $x_6.d($x_5.c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$x_4, $x_3, $f_Lcom_raquo_laminar_api_Implicits__nodeSeqToModifier__O__Lcom_raquo_laminar_modifiers_RenderableSeq__Lcom_raquo_laminar_modifiers_Modifier($x_2, $x_1, $m_Lcom_raquo_laminar_modifiers_RenderableSeq$collectionSeqRenderable$()), $m_Lcom_raquo_laminar_api_package$().a.k2().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("checkbox-toggle"), $m_Lcom_raquo_laminar_api_package$().a.sh().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.cz().k("checkbox"), $m_Lcom_raquo_laminar_api_package$().a.pa().qB(this.fJ.aN), new $c_Lcom_raquo_laminar_modifiers_EventListener(($m_Lcom_raquo_laminar_api_package$(), $m_Lcom_raquo_laminar_keys_EventProcessor$().cc($m_Lcom_raquo_laminar_api_package$().a.pL(), false, false)).sC(), new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((sink$2) => ((_$1$2) => {
-    sink$2.dq(_$1$2);
-  }))(this.fJ.du)))]))), $m_Lcom_raquo_laminar_api_package$().a.G().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, " --summary-only", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))])))])))])))]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("explorer-panes-grid"), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("pane-col pane-dag"), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("pane-header"), $m_Lcom_raquo_laminar_api_package$().a.G().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("pane-title"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "\u25c8 Living Crystal DAG State (.ccrystals/)", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.G().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("crystal-id-badge"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "crystal: oauth2-auth-service", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("pane-body"), ($m_Lcom_raquo_laminar_api_package$(), $m_Lcom_raquo_laminar_inserters_ChildInserter$().oV(new $c_Lcom_raquo_airstream_misc_MapSignal(this.f6.aN, new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((sc$2$1) => $p_Lccrystal_site_TabExplorer$__renderDagState__Lccrystal_site_TabExplorer$Scenario__Lcom_raquo_laminar_nodes_ReactiveHtmlElement($m_Lccrystal_site_TabExplorer$(), sc$2$1))), $m_s_None$()), $m_Lcom_raquo_laminar_modifiers_RenderableNode$().iv, (void 0)))])))]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("pane-col pane-beam"), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("pane-header"), $m_Lcom_raquo_laminar_api_package$().a.G().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("pane-title"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "\u25c8 Hydrated Context Beam (ccrystal hydrate)", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.cD().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.cz().k("button"), $m_Lcom_raquo_laminar_api_package$().a.g.f("terminal-copy-btn"), ($m_Lcom_raquo_laminar_api_package$(), $m_Lcom_raquo_laminar_inserters_ChildTextInserter$().eK(new $c_Lcom_raquo_airstream_misc_MapSignal($m_Lccrystal_site_State$().cN.aN, new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((x$1) => (((x$1 instanceof $c_s_Some) && (x$1.cA === "explorer-beam")) ? "\u2713 Copied" : "Copy Beam"))), $m_s_None$()), $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)), new $c_Lcom_raquo_laminar_modifiers_EventListener(($m_Lcom_raquo_laminar_api_package$(), $m_Lcom_raquo_laminar_keys_EventProcessor$().cc($m_Lcom_raquo_laminar_api_package$().a.cy(), false, false)), new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((_$1$3) => {
-    var sc$1 = $f_Lcom_raquo_airstream_core_WritableSignal__tryNow__s_util_Try($m_Lccrystal_site_TabExplorer$().f6.aN).Q();
-    var tail = ($f_Lcom_raquo_airstream_core_WritableSignal__tryNow__s_util_Try($m_Lccrystal_site_TabExplorer$().fK.aN).Q() | 0);
-    var sumOnly = (!(!$f_Lcom_raquo_airstream_core_WritableSignal__tryNow__s_util_Try($m_Lccrystal_site_TabExplorer$().fJ.aN).Q()));
-    $m_Lccrystal_site_State$().fw("explorer-beam", $p_Lccrystal_site_TabExplorer$__generatePromptBeam__Lccrystal_site_TabExplorer$Scenario__I__Z__T($m_Lccrystal_site_TabExplorer$(), sc$1, tail, sumOnly));
-  })))])))]))), $m_Lcom_raquo_laminar_api_package$().a.bA().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("beam-output-code"), $m_Lcom_raquo_laminar_api_package$().a.I().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([($m_Lcom_raquo_laminar_api_package$(), $m_Lcom_raquo_laminar_inserters_ChildTextInserter$().eK(new $c_Lcom_raquo_airstream_misc_MapSignal($m_Lcom_raquo_airstream_combine_generated_CombinableSignal$().rf(this.f6.aN, this.fK.aN, this.fJ.aN, new $c_Lapp_tulz_tuplez_Composition\uff3fPri7$$anon$5()), new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((x$1$2) => {
+  return $x_37.d($x_36.c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$x_35, $x_34, $x_33.d($x_32.c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$x_31, $x_11, $x_10.d($x_9.c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$x_8, $x_7, $x_6.d($x_5.c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$x_4, $x_3, $f_Lcom_raquo_laminar_api_Implicits__nodeSeqToModifier__O__Lcom_raquo_laminar_modifiers_RenderableSeq__Lcom_raquo_laminar_modifiers_Modifier($x_2, $x_1, $m_Lcom_raquo_laminar_modifiers_RenderableSeq$collectionSeqRenderable$()), $m_Lcom_raquo_laminar_api_package$().a.k2().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("checkbox-toggle"), $m_Lcom_raquo_laminar_api_package$().a.sh().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.c0().k("checkbox"), $m_Lcom_raquo_laminar_api_package$().a.pa().qB(this.fJ.ax), new $c_Lcom_raquo_laminar_modifiers_EventListener(($m_Lcom_raquo_laminar_api_package$(), $m_Lcom_raquo_laminar_keys_EventProcessor$().bL($m_Lcom_raquo_laminar_api_package$().a.pL(), false, false)).sC(), new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((sink$2) => ((_$1$2) => {
+    sink$2.dr(_$1$2);
+  }))(this.fJ.dv)))]))), $m_Lcom_raquo_laminar_api_package$().a.G().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, " --summary-only", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))])))])))])))]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("explorer-panes-grid"), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("pane-col pane-dag"), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("pane-header"), $m_Lcom_raquo_laminar_api_package$().a.G().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("pane-title"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "\u25c8 Living Crystal DAG State (.ccrystals/)", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.G().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("crystal-id-badge"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "crystal: oauth2-auth-service", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("pane-body"), ($m_Lcom_raquo_laminar_api_package$(), $m_Lcom_raquo_laminar_inserters_ChildInserter$().oV(new $c_Lcom_raquo_airstream_misc_MapSignal(this.f8.ax, new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((sc$2$1) => $p_Lccrystal_site_TabExplorer$__renderDagState__Lccrystal_site_TabExplorer$Scenario__Lcom_raquo_laminar_nodes_ReactiveHtmlElement($m_Lccrystal_site_TabExplorer$(), sc$2$1))), $m_s_None$()), $m_Lcom_raquo_laminar_modifiers_RenderableNode$().iv, (void 0)))])))]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("pane-col pane-beam"), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("pane-header"), $m_Lcom_raquo_laminar_api_package$().a.G().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("pane-title"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "\u25c8 Hydrated Context Beam (ccrystal hydrate)", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.cd().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.c0().k("button"), $m_Lcom_raquo_laminar_api_package$().a.g.f("terminal-copy-btn"), ($m_Lcom_raquo_laminar_api_package$(), $m_Lcom_raquo_laminar_inserters_ChildTextInserter$().dl(new $c_Lcom_raquo_airstream_misc_MapSignal($m_Lccrystal_site_State$().ck.ax, new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((x$1) => (((x$1 instanceof $c_s_Some) && (x$1.c2 === "explorer-beam")) ? "\u2713 Copied" : "Copy Beam"))), $m_s_None$()), $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)), new $c_Lcom_raquo_laminar_modifiers_EventListener(($m_Lcom_raquo_laminar_api_package$(), $m_Lcom_raquo_laminar_keys_EventProcessor$().bL($m_Lcom_raquo_laminar_api_package$().a.bX(), false, false)), new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((_$1$3) => {
+    var sc$1 = $f_Lcom_raquo_airstream_core_WritableSignal__tryNow__s_util_Try($m_Lccrystal_site_TabExplorer$().f8.ax).Q();
+    var tail = ($f_Lcom_raquo_airstream_core_WritableSignal__tryNow__s_util_Try($m_Lccrystal_site_TabExplorer$().fK.ax).Q() | 0);
+    var sumOnly = (!(!$f_Lcom_raquo_airstream_core_WritableSignal__tryNow__s_util_Try($m_Lccrystal_site_TabExplorer$().fJ.ax).Q()));
+    $m_Lccrystal_site_State$().ec("explorer-beam", $p_Lccrystal_site_TabExplorer$__generatePromptBeam__Lccrystal_site_TabExplorer$Scenario__I__Z__T($m_Lccrystal_site_TabExplorer$(), sc$1, tail, sumOnly));
+  })))])))]))), $m_Lcom_raquo_laminar_api_package$().a.bA().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("beam-output-code"), $m_Lcom_raquo_laminar_api_package$().a.I().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([($m_Lcom_raquo_laminar_api_package$(), $m_Lcom_raquo_laminar_inserters_ChildTextInserter$().dl(new $c_Lcom_raquo_airstream_misc_MapSignal($m_Lcom_raquo_airstream_combine_generated_CombinableSignal$().rf(this.f8.ax, this.fK.ax, this.fJ.ax, new $c_Lapp_tulz_tuplez_Composition\uff3fPri7$$anon$5()), new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((x$1$2) => {
     if ((x$1$2 !== null)) {
-      var sc$4 = x$1$2.fi;
-      var tail$1 = (x$1$2.fj | 0);
-      var sumOnly$1 = (!(!x$1$2.fk));
+      var sc$4 = x$1$2.fk;
+      var tail$1 = (x$1$2.fl | 0);
+      var sumOnly$1 = (!(!x$1$2.fm));
       return $p_Lccrystal_site_TabExplorer$__generatePromptBeam__Lccrystal_site_TabExplorer$Scenario__I__Z__T($m_Lccrystal_site_TabExplorer$(), sc$4, tail$1, sumOnly$1);
     }
     throw new $c_s_MatchError(x$1$2);
@@ -1284,14 +1284,14 @@ $p.constructor = $c_Lccrystal_site_TabManifesto$;
 function $h_Lccrystal_site_TabManifesto$() {
 }
 $h_Lccrystal_site_TabManifesto$.prototype = $p;
-$p.cf = (function() {
-  return $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("tab-content tab-manifesto"), $m_Lcom_raquo_laminar_api_package$().a.bC().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("hero-section"), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("hero-badge"), $m_Lcom_raquo_laminar_api_package$().a.G().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("badge-pulse")]))), $m_Lcom_raquo_laminar_api_package$().a.G().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Open Source \u2022 Scala Native Sub-5ms Engine \u2022 Model Context Protocol", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.s9().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("hero-title"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Context is not a vector database.", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e), $m_Lcom_raquo_laminar_api_package$().a.r4().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([]))), $m_Lcom_raquo_laminar_api_package$().a.G().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("text-gradient"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "It is a deterministic DAG.", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.W().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("hero-lead"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Context Crystal cures session amnesia and eliminates agent debris. A local-first, zero-token lifecycle and context beam engine engineered for software architects and autonomous AI entities collaborating with deliberate human craftsmanship.", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("hero-cta-group"), $m_Lcom_raquo_laminar_api_package$().a.cD().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.cz().k("button"), $m_Lcom_raquo_laminar_api_package$().a.g.f("btn-primary"), $m_Lcom_raquo_laminar_api_package$().a.G().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "\u25c7 Install in 5 Seconds", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), new $c_Lcom_raquo_laminar_modifiers_EventListener(($m_Lcom_raquo_laminar_api_package$(), $m_Lcom_raquo_laminar_keys_EventProcessor$().cc($m_Lcom_raquo_laminar_api_package$().a.cy(), false, false)).gK(new $c_sjsr_AnonFunction0_$$Lambda$92a2e254bbb9c06a0a02fc31abab59c51c18ecc1((() => $s_Lccrystal_site_Tab$__Quickstart__Lccrystal_site_Tab()))), new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((sink) => ((_$1) => {
-    sink.dq(_$1);
-  }))($m_Lccrystal_site_State$().f5.du)))]))), $m_Lcom_raquo_laminar_api_package$().a.cD().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.cz().k("button"), $m_Lcom_raquo_laminar_api_package$().a.g.f("btn-secondary"), $m_Lcom_raquo_laminar_api_package$().a.G().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "\u2b21 Explore Live Interactive DAG", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), new $c_Lcom_raquo_laminar_modifiers_EventListener(($m_Lcom_raquo_laminar_api_package$(), $m_Lcom_raquo_laminar_keys_EventProcessor$().cc($m_Lcom_raquo_laminar_api_package$().a.cy(), false, false)).gK(new $c_sjsr_AnonFunction0_$$Lambda$92a2e254bbb9c06a0a02fc31abab59c51c18ecc1((() => $s_Lccrystal_site_Tab$__Explorer__Lccrystal_site_Tab()))), new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((sink$1) => ((_$1$1) => {
-    sink$1.dq(_$1$1);
-  }))($m_Lccrystal_site_State$().f5.du)))]))), $m_Lcom_raquo_laminar_api_package$().a.b7().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("btn-tertiary"), $m_Lcom_raquo_laminar_api_package$().a.b9().k("https://github.com/oswaldo/context-crystal"), $m_Lcom_raquo_laminar_api_package$().a.bd().k("_blank"), $m_Lcom_raquo_laminar_api_package$().a.G().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "View on GitHub \u2197", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))])))]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("hero-terminal-card"), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("terminal-header"), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("terminal-dots"), $m_Lcom_raquo_laminar_api_package$().a.G().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("dot red")]))), $m_Lcom_raquo_laminar_api_package$().a.G().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("dot yellow")]))), $m_Lcom_raquo_laminar_api_package$().a.G().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("dot green")])))]))), $m_Lcom_raquo_laminar_api_package$().a.G().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("terminal-title"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "bash \u2014 single-line curl install", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.cD().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.cz().k("button"), $m_Lcom_raquo_laminar_api_package$().a.g.f("terminal-copy-btn"), ($m_Lcom_raquo_laminar_api_package$(), $m_Lcom_raquo_laminar_inserters_ChildTextInserter$().eK(new $c_Lcom_raquo_airstream_misc_MapSignal($m_Lccrystal_site_State$().cN.aN, new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((x$1) => (((x$1 instanceof $c_s_Some) && (x$1.cA === "hero-install")) ? "\u2713 Copied" : "Copy"))), $m_s_None$()), $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)), new $c_Lcom_raquo_laminar_modifiers_EventListener(($m_Lcom_raquo_laminar_api_package$(), $m_Lcom_raquo_laminar_keys_EventProcessor$().cc($m_Lcom_raquo_laminar_api_package$().a.cy(), false, false)), new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((_$1$2) => {
-    $m_Lccrystal_site_State$().fw("hero-install", "curl -fsSL https://raw.githubusercontent.com/oswaldo/context-crystal/main/install.sh | sh");
-  })))])))]))), $m_Lcom_raquo_laminar_api_package$().a.bA().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("terminal-body"), $m_Lcom_raquo_laminar_api_package$().a.I().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "curl -fsSL https://raw.githubusercontent.com/oswaldo/context-crystal/main/install.sh | sh", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))])))])))]))), $m_Lcom_raquo_laminar_api_package$().a.bC().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("section-block"), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("section-header text-center"), $m_Lcom_raquo_laminar_api_package$().a.eS().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "The Three Systemic Failures of Ephemeral AI Context", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.W().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Why flat chat windows, proprietary SQLite silos, and vector embeddings break down in real engineering codebases:", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("cards-grid three-col"), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("feature-card"), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("card-icon"), $m_Lccrystal_site_Icons$().rc(32)]))), $m_Lcom_raquo_laminar_api_package$().a.bL().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Session Amnesia", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.W().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Chat windows reset. Context is trapped in ephemeral IDE windows or proprietary cloud caches. Starting a new agent turn or switching machines loses hard-won architectural decisions and progress.", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("feature-card"), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("card-icon"), $m_Lccrystal_site_Icons$().rv(32)]))), $m_Lcom_raquo_laminar_api_package$().a.bL().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Agent Debris Deficit", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.W().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Autonomous coding agents create temporary git worktrees, mock configurations, and scratch test harnesses that linger indefinitely as orphaned technical debt when turns end or crash.", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("feature-card"), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("card-icon"), $m_Lccrystal_site_Icons$().tv(32)]))), $m_Lcom_raquo_laminar_api_package$().a.bL().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Token Inflation & Drift", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.W().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Re-summarizing entire conversations with an LLM burns valuable context budget and introduces hallucinatory drift into ground truth. Semantic vector similarity fails to represent exact causal state sequences.", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))])))])))]))), $m_Lcom_raquo_laminar_api_package$().a.bC().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("section-block"), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("section-header text-center"), $m_Lcom_raquo_laminar_api_package$().a.eS().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "The Sovereign Context Crystal Architecture", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.W().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "A unified, deterministic ontology connecting intent, causal history, transient resources, and world state:", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("cards-grid two-col"), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("feature-card architecture-card"), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("card-tag"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "THE CAVE CONTAINER", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.bL().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "The Workspace Cave (.ccrystals/)", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.W().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "A sovereign context container residing in your workspace or companion directory (`CCRYSTAL_STORE`). Houses active crystals, the multi-entity authorship registry, and shared artifact catalogs with zero proprietary locks.", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("feature-card architecture-card"), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("card-tag"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "DETERMINISTIC CAUSALITY", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.bL().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Directed Acyclic Graph (DAG)", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.W().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Causal state transitions with cryptographic attribution, explicit event timestamps, capture fidelity (`inferred` vs `intercepted`), and semantic anchors enabling surgical sub-DAG cleavage and branching.", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("feature-card architecture-card"), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("card-tag"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "CLEANLINESS GUARANTEE", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.bL().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Transient Resource Leases", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.W().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Temporary assets (e.g. isolated git worktrees, mock databases) require explicit leases. Context Crystal guarantees leases are cleaned or promoted before goal conclusion, leaving zero agent debris.", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("feature-card architecture-card"), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("card-tag"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "WORLD-STATE GROUNDING", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.bL().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Virtual & Physical Artifacts", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.W().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Bridges digital deliberation with real reality. First-class tracking of target deliverables, test instruments, and physical preconditions (lab benches, geo coordinates, civic addresses).", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))])))])))]))), $m_Lcom_raquo_laminar_api_package$().a.bC().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("section-block comparison-section"), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("section-header text-center"), $m_Lcom_raquo_laminar_api_package$().a.eS().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Verified Ground-Truth Performance", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.W().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Engineered in pure functional Scala 3 Native with zero-reflection codecs and Immix GC:", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("table-wrapper"), $m_Lcom_raquo_laminar_api_package$().a.ki().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("comparison-table"), $m_Lcom_raquo_laminar_api_package$().a.kk().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.a0().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.cL().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Metric / Capability", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.cL().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Context Crystal", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.cL().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Vector DBs / RAG", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.cL().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Ephemeral Chat Windows", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))])))]))), $m_Lcom_raquo_laminar_api_package$().a.kj().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.a0().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.b2().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Execution Overhead", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.G().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("pill green"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "< 5ms Native CLI", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "200ms - 2,000ms API calls", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Session restart required", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.a0().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.b2().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Context Token Cost", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.G().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("pill green"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "0 Tokens for State Ops", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Heavy embedding token burn", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Full window re-prompting", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.a0().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.b2().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Data Format", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.G().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("pill cyan"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Strict JSON Schema v1 & JSON-LD", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Opaque binary vector indices", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Proprietary internal silos", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.a0().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.b2().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Agent Protocol", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.G().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("pill green"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Native Stdio MCP Server (15 Tools)", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Custom vendor SDKs", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "None (isolated manual chat)", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.a0().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.b2().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Debris Elimination", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.G().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("pill green"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Mandatory Transient Leases", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Unmanaged orphaned files", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Manual developer cleanup", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.a0().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.b2().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Lifecycle & Compaction", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.G().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("pill green"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Zero-LLM Melting & Cold Storage Archive", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Hallucinatory LLM re-summarization", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Context bloat or manual wipe", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.a0().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.b2().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Storage & Concurrency", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.G().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("pill green"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Transactional OCC & Atomic Inode Swaps", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Eventual consistency or network locks", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Volatile RAM or SQLite lock contention", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.a0().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.b2().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Engineering Philosophy", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.G().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("pill cyan"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Human-in-the-Loop Craftsmanship", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Unsupervised runaway swarms", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Disposable ad-hoc prompts", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))])))])))])))])))])))])));
+$p.cj = (function() {
+  return $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("tab-content tab-manifesto"), $m_Lcom_raquo_laminar_api_package$().a.bC().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("hero-section"), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("hero-badge"), $m_Lcom_raquo_laminar_api_package$().a.G().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("badge-pulse")]))), $m_Lcom_raquo_laminar_api_package$().a.G().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Open Source \u2022 Scala Native Sub-5ms Engine \u2022 Model Context Protocol", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.s9().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("hero-title"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Context is not a vector database.", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e), $m_Lcom_raquo_laminar_api_package$().a.r4().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([]))), $m_Lcom_raquo_laminar_api_package$().a.G().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("text-gradient"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "It is a deterministic DAG.", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.R().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("hero-lead"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Context Crystal cures session amnesia and eliminates agent debris. A local-first, zero-token lifecycle and context beam engine engineered for software architects and autonomous AI entities collaborating with deliberate human craftsmanship.", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("hero-cta-group"), $m_Lcom_raquo_laminar_api_package$().a.cd().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.c0().k("button"), $m_Lcom_raquo_laminar_api_package$().a.g.f("btn-primary"), $m_Lcom_raquo_laminar_api_package$().a.G().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "\u25c7 Install in 5 Seconds", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), new $c_Lcom_raquo_laminar_modifiers_EventListener(($m_Lcom_raquo_laminar_api_package$(), $m_Lcom_raquo_laminar_keys_EventProcessor$().bL($m_Lcom_raquo_laminar_api_package$().a.bX(), false, false)).gK(new $c_sjsr_AnonFunction0_$$Lambda$92a2e254bbb9c06a0a02fc31abab59c51c18ecc1((() => $s_Lccrystal_site_Tab$__Quickstart__Lccrystal_site_Tab()))), new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((sink) => ((_$1) => {
+    sink.dr(_$1);
+  }))($m_Lccrystal_site_State$().f7.dv)))]))), $m_Lcom_raquo_laminar_api_package$().a.cd().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.c0().k("button"), $m_Lcom_raquo_laminar_api_package$().a.g.f("btn-secondary"), $m_Lcom_raquo_laminar_api_package$().a.G().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "\u2b21 Explore Live Interactive DAG", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), new $c_Lcom_raquo_laminar_modifiers_EventListener(($m_Lcom_raquo_laminar_api_package$(), $m_Lcom_raquo_laminar_keys_EventProcessor$().bL($m_Lcom_raquo_laminar_api_package$().a.bX(), false, false)).gK(new $c_sjsr_AnonFunction0_$$Lambda$92a2e254bbb9c06a0a02fc31abab59c51c18ecc1((() => $s_Lccrystal_site_Tab$__Explorer__Lccrystal_site_Tab()))), new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((sink$1) => ((_$1$1) => {
+    sink$1.dr(_$1$1);
+  }))($m_Lccrystal_site_State$().f7.dv)))]))), $m_Lcom_raquo_laminar_api_package$().a.b6().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("btn-tertiary"), $m_Lcom_raquo_laminar_api_package$().a.b8().k("https://github.com/oswaldo/context-crystal"), $m_Lcom_raquo_laminar_api_package$().a.bd().k("_blank"), $m_Lcom_raquo_laminar_api_package$().a.G().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "View on GitHub \u2197", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))])))]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("hero-terminal-card"), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("terminal-header"), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("terminal-dots"), $m_Lcom_raquo_laminar_api_package$().a.G().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("dot red")]))), $m_Lcom_raquo_laminar_api_package$().a.G().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("dot yellow")]))), $m_Lcom_raquo_laminar_api_package$().a.G().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("dot green")])))]))), $m_Lcom_raquo_laminar_api_package$().a.G().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("terminal-title"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "bash \u2014 single-line curl install", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.cd().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.c0().k("button"), $m_Lcom_raquo_laminar_api_package$().a.g.f("terminal-copy-btn"), ($m_Lcom_raquo_laminar_api_package$(), $m_Lcom_raquo_laminar_inserters_ChildTextInserter$().dl(new $c_Lcom_raquo_airstream_misc_MapSignal($m_Lccrystal_site_State$().ck.ax, new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((x$1) => (((x$1 instanceof $c_s_Some) && (x$1.c2 === "hero-install")) ? "\u2713 Copied" : "Copy"))), $m_s_None$()), $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)), new $c_Lcom_raquo_laminar_modifiers_EventListener(($m_Lcom_raquo_laminar_api_package$(), $m_Lcom_raquo_laminar_keys_EventProcessor$().bL($m_Lcom_raquo_laminar_api_package$().a.bX(), false, false)), new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((_$1$2) => {
+    $m_Lccrystal_site_State$().ec("hero-install", "curl -fsSL https://raw.githubusercontent.com/oswaldo/context-crystal/main/install.sh | sh");
+  })))])))]))), $m_Lcom_raquo_laminar_api_package$().a.bA().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("terminal-body"), $m_Lcom_raquo_laminar_api_package$().a.I().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "curl -fsSL https://raw.githubusercontent.com/oswaldo/context-crystal/main/install.sh | sh", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))])))])))]))), $m_Lcom_raquo_laminar_api_package$().a.bC().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("section-block"), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("section-header text-center"), $m_Lcom_raquo_laminar_api_package$().a.eT().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "The Three Systemic Failures of Ephemeral AI Context", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.R().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Why flat chat windows, proprietary SQLite silos, and vector embeddings break down in real engineering codebases:", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("cards-grid three-col"), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("feature-card"), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("card-icon"), $m_Lccrystal_site_Icons$().rc(32)]))), $m_Lcom_raquo_laminar_api_package$().a.bM().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Session Amnesia", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.R().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Chat windows reset. Context is trapped in ephemeral IDE windows or proprietary cloud caches. Starting a new agent turn or switching machines loses hard-won architectural decisions and progress.", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("feature-card"), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("card-icon"), $m_Lccrystal_site_Icons$().rv(32)]))), $m_Lcom_raquo_laminar_api_package$().a.bM().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Agent Debris Deficit", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.R().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Autonomous coding agents create temporary git worktrees, mock configurations, and scratch test harnesses that linger indefinitely as orphaned technical debt when turns end or crash.", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("feature-card"), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("card-icon"), $m_Lccrystal_site_Icons$().tv(32)]))), $m_Lcom_raquo_laminar_api_package$().a.bM().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Token Inflation & Drift", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.R().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Re-summarizing entire conversations with an LLM burns valuable context budget and introduces hallucinatory drift into ground truth. Semantic vector similarity fails to represent exact causal state sequences.", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))])))])))]))), $m_Lcom_raquo_laminar_api_package$().a.bC().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("section-block"), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("section-header text-center"), $m_Lcom_raquo_laminar_api_package$().a.eT().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "The Sovereign Context Crystal Architecture", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.R().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "A unified, deterministic ontology connecting intent, causal history, transient resources, and world state:", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("cards-grid two-col"), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("feature-card architecture-card"), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("card-tag"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "THE CAVE CONTAINER", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.bM().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "The Workspace Cave (.ccrystals/)", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.R().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "A sovereign context container residing in your workspace or companion directory (`CCRYSTAL_STORE`). Houses active crystals, the multi-entity authorship registry, and shared artifact catalogs with zero proprietary locks.", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("feature-card architecture-card"), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("card-tag"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "DETERMINISTIC CAUSALITY", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.bM().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Directed Acyclic Graph (DAG)", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.R().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Causal state transitions with cryptographic attribution, explicit event timestamps, capture fidelity (`inferred` vs `intercepted`), and semantic anchors enabling surgical sub-DAG cleavage and branching.", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("feature-card architecture-card"), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("card-tag"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "CLEANLINESS GUARANTEE", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.bM().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Transient Resource Leases", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.R().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Temporary assets (e.g. isolated git worktrees, mock databases) require explicit leases. Context Crystal guarantees leases are cleaned or promoted before goal conclusion, leaving zero agent debris.", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("feature-card architecture-card"), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("card-tag"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "WORLD-STATE GROUNDING", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.bM().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Virtual & Physical Artifacts", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.R().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Bridges digital deliberation with real reality. First-class tracking of target deliverables, test instruments, and physical preconditions (lab benches, geo coordinates, civic addresses).", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))])))])))]))), $m_Lcom_raquo_laminar_api_package$().a.bC().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("section-block comparison-section"), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("section-header text-center"), $m_Lcom_raquo_laminar_api_package$().a.eT().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Verified Ground-Truth Performance", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.R().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Engineered in pure functional Scala 3 Native with zero-reflection codecs and Immix GC:", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("table-wrapper"), $m_Lcom_raquo_laminar_api_package$().a.ki().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("comparison-table"), $m_Lcom_raquo_laminar_api_package$().a.kk().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.a0().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.cM().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Metric / Capability", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.cM().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Context Crystal", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.cM().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Vector DBs / RAG", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.cM().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Ephemeral Chat Windows", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))])))]))), $m_Lcom_raquo_laminar_api_package$().a.kj().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.a0().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.bc().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Execution Overhead", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.G().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("pill green"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "< 5ms Native CLI", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "200ms - 2,000ms API calls", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Session restart required", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.a0().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.bc().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Context Token Cost", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.G().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("pill green"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "0 Tokens for State Ops", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Heavy embedding token burn", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Full window re-prompting", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.a0().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.bc().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Data Format", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.G().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("pill cyan"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Strict JSON Schema v1 & JSON-LD", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Opaque binary vector indices", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Proprietary internal silos", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.a0().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.bc().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Agent Protocol", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.G().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("pill green"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Native Stdio MCP Server (15 Tools)", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Custom vendor SDKs", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "None (isolated manual chat)", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.a0().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.bc().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Debris Elimination", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.G().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("pill green"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Mandatory Transient Leases", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Unmanaged orphaned files", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Manual developer cleanup", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.a0().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.bc().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Lifecycle & Compaction", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.G().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("pill green"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Zero-LLM Melting & Cold Storage Archive", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Hallucinatory LLM re-summarization", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Context bloat or manual wipe", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.a0().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.bc().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Storage & Concurrency", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.G().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("pill green"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Transactional OCC & Atomic Inode Swaps", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Eventual consistency or network locks", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Volatile RAM or SQLite lock contention", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.a0().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.bc().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Engineering Philosophy", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.G().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("pill cyan"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Human-in-the-Loop Craftsmanship", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Unsupervised runaway swarms", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Disposable ad-hoc prompts", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))])))])))])))])))])))])));
 });
 var $d_Lccrystal_site_TabManifesto$ = new $TypeData().i($c_Lccrystal_site_TabManifesto$, "ccrystal.site.TabManifesto$", ({
   cP: 1
@@ -1312,8 +1312,10 @@ $p.constructor = $c_Lccrystal_site_TabMcp$;
 function $h_Lccrystal_site_TabMcp$() {
 }
 $h_Lccrystal_site_TabMcp$.prototype = $p;
-$p.cf = (function() {
-  return $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("tab-content tab-mcp"), $m_Lcom_raquo_laminar_api_package$().a.bC().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("mcp-intro"), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("mcp-badge"), $m_Lcom_raquo_laminar_api_package$().a.G().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Model Context Protocol \u2022 Stdio Transport \u2022 JSON-RPC 2.0", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.eS().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Native Model Context Protocol (MCP) Server Engine", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.W().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Context Crystal features an integrated, high-performance stdio MCP server running directly from the native binary (`ccrystal mcp`). No Node.js daemon, Python wrapper, or external orchestrator required.", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.bC().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("qs-card"), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("qs-card-header"), $m_Lcom_raquo_laminar_api_package$().a.G().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("qs-step-number"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "1", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.bL().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Frictionless IDE & Client Setup", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.W().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Add Context Crystal to your preferred AI coding environment:", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))])))]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("cards-grid three-col mcp-clients-grid"), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("feature-card client-config-card"), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("client-header"), $m_Lccrystal_site_Icons$().r9(20), $m_Lcom_raquo_laminar_api_package$().a.b2().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Claude Desktop", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.W().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("config-path"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "~/.config/Claude/claude_desktop_config.json", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.bA().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.I().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "{\n  \"mcpServers\": {\n    \"context-crystal\": {\n      \"command\": \"ccrystal\",\n      \"args\": [\"mcp\"]\n    }\n  }\n}", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))])))]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("feature-card client-config-card"), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("client-header"), $m_Lccrystal_site_Icons$().rr(20), $m_Lcom_raquo_laminar_api_package$().a.b2().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Cursor IDE", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.W().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("config-path"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, ".cursor/mcp.json", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.bA().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.I().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "{\n  \"mcpServers\": {\n    \"context-crystal\": {\n      \"command\": \"ccrystal\",\n      \"args\": [\"mcp\"]\n    }\n  }\n}", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))])))]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("feature-card client-config-card"), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("client-header"), $m_Lccrystal_site_Icons$().tG(20), $m_Lcom_raquo_laminar_api_package$().a.b2().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Zed Editor", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.W().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("config-path"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "~/.config/zed/settings.json", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.bA().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.I().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "{\n  \"context_servers\": {\n    \"context-crystal\": {\n      \"command\": \"ccrystal\",\n      \"args\": [\"mcp\"]\n    }\n  }\n}", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))])))])))])))]))), $m_Lcom_raquo_laminar_api_package$().a.bC().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("qs-card"), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("qs-card-header"), $m_Lcom_raquo_laminar_api_package$().a.G().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("qs-step-number"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "2", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.bL().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "The 15 Native MCP Tools", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.W().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "First-class protocol capabilities designed specifically for autonomous AI pairs:", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))])))]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("table-wrapper"), $m_Lcom_raquo_laminar_api_package$().a.ki().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("mcp-tools-table"), $m_Lcom_raquo_laminar_api_package$().a.kk().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.a0().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.cL().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Tool Name", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.cL().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Parameters", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.cL().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Description & Behavioral Invariant", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))])))]))), $m_Lcom_raquo_laminar_api_package$().a.kj().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.a0().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.I().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "crystal_init", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.I().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "id, goal_title, intent, tasks?", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Atomically instantiates a new crystal with predefined acceptance criteria.", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.a0().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.I().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "crystal_list", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.I().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "status?, json_output?", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Queries crystals in the workspace cave with optional InProgress/Concluded filter.", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.a0().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.I().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "crystal_hydrate", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.I().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "crystal_id, tail?, from?, to?, depth?, summary_only?", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Casts context beam into prompt with precise selective shaping flags.", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.a0().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.I().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "crystal_triage", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.I().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "filter?, json_output?", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Deterministic cave hygiene: classifies crystals into solid, stale, or active aging buckets.", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.a0().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.I().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "crystal_artifact", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.I().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "action, id?, name?, substrate?, role?, uri?, cave?", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Registers, lists, or inspects virtual and physical artifacts across cave or crystal.", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.a0().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.I().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "crystal_checkpoint", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.I().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "crystal_id, summary, fidelity?", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Appends an immutable checkpoint transition node to the active DAG.", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.a0().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.I().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "crystal_task_transition", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.I().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "crystal_id, task_id, status", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Transitions an acceptance criterion to completed, in_progress, or blocked.", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.a0().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.I().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "crystal_goal_transition", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.I().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "crystal_id, status, reason?", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Concludes or transitions crystal lifecycle goal (in_progress, concluded_success, concluded_abandoned).", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.a0().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.I().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "crystal_transient_lease", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.I().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "crystal_id, resource_type, path?, desc, policy", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Registers an ephemeral resource lease (git_worktree, mock) with cleanup policy.", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.a0().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.I().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "crystal_slice_fork", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.I().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "source_id, fork_to, from?, to?, prune?", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Cleaves sub-DAG at a semantic anchor and forks into a dedicated child crystal.", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.a0().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.I().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "crystal_melt", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.I().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "crystal_id, from, to, summary?", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Deterministically squashes linear sub-DAG segment into single checkpoint without LLM drift.", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.a0().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.I().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "crystal_archive", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.I().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "crystal_id", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Moves concluded crystal into cold storage (.ccrystals/archive/) while preserving history.", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.a0().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.I().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "crystal_unarchive", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.I().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "crystal_id", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Restores archived crystal from cold storage back to active workspace cave.", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.a0().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.I().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "crystal_delete", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.I().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "crystal_id, force?", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Destructive lifecycle removal with cascade orphaned entity preview.", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.a0().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.I().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "crystal_batch", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.I().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "commands", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Executes multiple semicolon-delimited CLI commands atomically in a single turn.", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))])))])))])))])))])))])));
+$p.cj = (function() {
+  return $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("tab-content tab-mcp"), $m_Lcom_raquo_laminar_api_package$().a.bC().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("mcp-intro"), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("mcp-badge"), $m_Lcom_raquo_laminar_api_package$().a.G().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Model Context Protocol \u2022 Stdio Transport \u2022 JSON-RPC 2.0", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.eT().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Native Model Context Protocol (MCP) Server Engine", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.R().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Context Crystal features an integrated, high-performance stdio MCP server running directly from the native binary (`ccrystal mcp`). No Node.js daemon, Python wrapper, or external orchestrator required.", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.bC().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("qs-card"), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("qs-card-header"), $m_Lcom_raquo_laminar_api_package$().a.G().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("qs-step-number"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "1", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.bM().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Frictionless IDE & Agent Harness Setup", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.R().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Connect Context Crystal to your preferred AI coding environment:", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))])))]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("cards-grid two-col"), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("feature-card client-config-card"), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("client-header"), $m_Lcom_raquo_laminar_api_package$().a.bc().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Automated Onboarding (Recommended)", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.R().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("config-path"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Claude Desktop \u2022 Cursor \u2022 Windsurf \u2022 Zed \u2022 Google Antigravity \u2022 Claude Code", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.R().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Context Crystal automatically discovers installed IDEs and agent runtimes, updates their configurations, and creates defensive `.ccrystal.bak` rollback snapshots:", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("code-snippet-box"), $m_Lcom_raquo_laminar_api_package$().a.bA().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.I().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "ccrystal agent install --all", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.cd().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.c0().k("button"), $m_Lcom_raquo_laminar_api_package$().a.g.f("snippet-copy-btn"), ($m_Lcom_raquo_laminar_api_package$(), $m_Lcom_raquo_laminar_inserters_ChildTextInserter$().dl(new $c_Lcom_raquo_airstream_misc_MapSignal($m_Lccrystal_site_State$().ck.ax, new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((x$1) => (((x$1 instanceof $c_s_Some) && (x$1.c2 === "agent-install")) ? "\u2713 Copied" : "Copy"))), $m_s_None$()), $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)), new $c_Lcom_raquo_laminar_modifiers_EventListener(($m_Lcom_raquo_laminar_api_package$(), $m_Lcom_raquo_laminar_keys_EventProcessor$().bL($m_Lcom_raquo_laminar_api_package$().a.bX(), false, false)), new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((_$1) => {
+    $m_Lccrystal_site_State$().ec("agent-install", "ccrystal agent install --all");
+  })))])))]))), $m_Lcom_raquo_laminar_api_package$().a.R().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("config-path"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Run diagnostic anytime to inspect health: `ccrystal agent doctor`", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("feature-card client-config-card"), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("client-header"), $m_Lccrystal_site_Icons$().r9(18), $m_Lccrystal_site_Icons$().rr(18), $m_Lccrystal_site_Icons$().tG(18), $m_Lcom_raquo_laminar_api_package$().a.bc().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Manual Configuration", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.R().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("config-path"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Claude Desktop, Cursor, Windsurf, Zed, and Custom Harnesses", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.bA().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.I().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "{\n  \"mcpServers\": {\n    \"context-crystal\": {\n      \"command\": \"ccrystal\",\n      \"args\": [\"mcp\"]\n    }\n  }\n}", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.R().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("config-path"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Config files: Claude (~/.config/Claude/claude_desktop_config.json) \u2022 Cursor (.cursor/mcp.json) \u2022 Windsurf (~/.codeium/windsurf/mcp_config.json) \u2022 Zed (context_servers in settings.json)", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))])))])))]))), $m_Lcom_raquo_laminar_api_package$().a.bC().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("qs-card"), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("qs-card-header"), $m_Lcom_raquo_laminar_api_package$().a.G().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("qs-step-number"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "2", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.bM().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "The 15 Native MCP Tools", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.R().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "First-class protocol capabilities designed specifically for autonomous AI pairs:", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))])))]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("table-wrapper"), $m_Lcom_raquo_laminar_api_package$().a.ki().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("mcp-tools-table"), $m_Lcom_raquo_laminar_api_package$().a.kk().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.a0().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.cM().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Tool Name", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.cM().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Parameters", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.cM().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Description & Behavioral Invariant", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))])))]))), $m_Lcom_raquo_laminar_api_package$().a.kj().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.a0().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.I().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "crystal_init", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.I().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "id, goal_title, intent, tasks?", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Atomically instantiates a new crystal with predefined acceptance criteria.", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.a0().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.I().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "crystal_list", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.I().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "status?, json_output?", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Queries crystals in the workspace cave with optional InProgress/Concluded filter.", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.a0().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.I().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "crystal_hydrate", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.I().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "crystal_id, tail?, from?, to?, depth?, summary_only?", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Casts context beam into prompt with precise selective shaping flags.", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.a0().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.I().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "crystal_triage", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.I().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "filter?, json_output?", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Deterministic cave hygiene: classifies crystals into solid, stale, or active aging buckets.", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.a0().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.I().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "crystal_artifact", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.I().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "action, id?, name?, substrate?, role?, uri?, cave?", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Registers, lists, or inspects virtual and physical artifacts across cave or crystal.", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.a0().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.I().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "crystal_checkpoint", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.I().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "crystal_id, summary, fidelity?", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Appends an immutable checkpoint transition node to the active DAG.", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.a0().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.I().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "crystal_task_transition", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.I().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "crystal_id, task_id, status", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Transitions an acceptance criterion to completed, in_progress, or blocked.", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.a0().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.I().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "crystal_goal_transition", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.I().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "crystal_id, status, reason?", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Concludes or transitions crystal lifecycle goal (in_progress, concluded_success, concluded_abandoned).", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.a0().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.I().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "crystal_transient_lease", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.I().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "crystal_id, resource_type, path?, desc, policy", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Registers an ephemeral resource lease (git_worktree, mock) with cleanup policy.", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.a0().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.I().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "crystal_slice_fork", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.I().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "source_id, fork_to, from?, to?, prune?", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Cleaves sub-DAG at a semantic anchor and forks into a dedicated child crystal.", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.a0().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.I().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "crystal_melt", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.I().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "crystal_id, from, to, summary?", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Deterministically squashes linear sub-DAG segment into single checkpoint without LLM drift.", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.a0().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.I().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "crystal_archive", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.I().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "crystal_id", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Moves concluded crystal into cold storage (.ccrystals/archive/) while preserving history.", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.a0().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.I().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "crystal_unarchive", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.I().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "crystal_id", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Restores archived crystal from cold storage back to active workspace cave.", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.a0().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.I().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "crystal_delete", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.I().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "crystal_id, force?", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Destructive lifecycle removal with cascade orphaned entity preview.", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.a0().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.I().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "crystal_batch", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.I().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "commands", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Executes multiple semicolon-delimited CLI commands atomically in a single turn.", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))])))])))])))])))])))])));
 });
 var $d_Lccrystal_site_TabMcp$ = new $TypeData().i($c_Lccrystal_site_TabMcp$, "ccrystal.site.TabMcp$", ({
   cQ: 1
@@ -1334,14 +1336,16 @@ $p.constructor = $c_Lccrystal_site_TabQuickstart$;
 function $h_Lccrystal_site_TabQuickstart$() {
 }
 $h_Lccrystal_site_TabQuickstart$.prototype = $p;
-$p.cf = (function() {
-  return $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("tab-content tab-quickstart"), $m_Lcom_raquo_laminar_api_package$().a.bC().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("quickstart-intro"), $m_Lcom_raquo_laminar_api_package$().a.eS().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Installation & Developer Quickstart", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.W().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Install the native zero-dependency binary in seconds or build from source using Scala Native.", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.bC().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("qs-card"), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("qs-card-header"), $m_Lcom_raquo_laminar_api_package$().a.G().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("qs-step-number"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "1", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.bL().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Fast Installation (Linux & macOS)", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.W().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Choose your preferred installation method: curl installer or Homebrew Tap.", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))])))]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("install-methods-grid"), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("install-method-box"), $m_Lcom_raquo_laminar_api_package$().a.fy().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Option A: Single-Line Curl Installer (Recommended)", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.W().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Verifies architecture, extracts official tarball, validates SHA256 checksums, and installs into `~/.local/bin/ccrystal`:", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("code-snippet-box"), $m_Lcom_raquo_laminar_api_package$().a.bA().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.I().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "curl -fsSL https://raw.githubusercontent.com/oswaldo/context-crystal/main/install.sh | sh", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.cD().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.cz().k("button"), $m_Lcom_raquo_laminar_api_package$().a.g.f("snippet-copy-btn"), ($m_Lcom_raquo_laminar_api_package$(), $m_Lcom_raquo_laminar_inserters_ChildTextInserter$().eK(new $c_Lcom_raquo_airstream_misc_MapSignal($m_Lccrystal_site_State$().cN.aN, new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((x$1) => (((x$1 instanceof $c_s_Some) && (x$1.cA === "qs-curl")) ? "\u2713 Copied" : "Copy"))), $m_s_None$()), $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)), new $c_Lcom_raquo_laminar_modifiers_EventListener(($m_Lcom_raquo_laminar_api_package$(), $m_Lcom_raquo_laminar_keys_EventProcessor$().cc($m_Lcom_raquo_laminar_api_package$().a.cy(), false, false)), new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((_$1) => {
-    $m_Lccrystal_site_State$().fw("qs-curl", "curl -fsSL https://raw.githubusercontent.com/oswaldo/context-crystal/main/install.sh | sh");
-  })))])))])))]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("install-method-box"), $m_Lcom_raquo_laminar_api_package$().a.fy().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Option B: Homebrew Tap (macOS & Linux)", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.W().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Install and manage updates via Homebrew package manager:", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("code-snippet-box"), $m_Lcom_raquo_laminar_api_package$().a.bA().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.I().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "brew install oswaldo/context-crystal/ccrystal", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.cD().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.cz().k("button"), $m_Lcom_raquo_laminar_api_package$().a.g.f("snippet-copy-btn"), ($m_Lcom_raquo_laminar_api_package$(), $m_Lcom_raquo_laminar_inserters_ChildTextInserter$().eK(new $c_Lcom_raquo_airstream_misc_MapSignal($m_Lccrystal_site_State$().cN.aN, new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((x$1$2) => (((x$1$2 instanceof $c_s_Some) && (x$1$2.cA === "qs-brew")) ? "\u2713 Copied" : "Copy"))), $m_s_None$()), $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)), new $c_Lcom_raquo_laminar_modifiers_EventListener(($m_Lcom_raquo_laminar_api_package$(), $m_Lcom_raquo_laminar_keys_EventProcessor$().cc($m_Lcom_raquo_laminar_api_package$().a.cy(), false, false)), new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((_$2) => {
-    $m_Lccrystal_site_State$().fw("qs-brew", "brew install oswaldo/context-crystal/ccrystal");
-  })))])))])))])))])))]))), $m_Lcom_raquo_laminar_api_package$().a.bC().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("qs-card"), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("qs-card-header"), $m_Lcom_raquo_laminar_api_package$().a.G().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("qs-step-number"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "2", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.bL().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Direct Distribution Packages (GitHub Releases)", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.W().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Every release is packaged as an optimized `.tar.gz` bundle with Thin LTO, stripped binary, and SHA256SUMS integrity verification:", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))])))]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("table-wrapper"), $m_Lcom_raquo_laminar_api_package$().a.ki().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("binary-table"), $m_Lcom_raquo_laminar_api_package$().a.kk().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.a0().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.cL().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Platform / Architecture", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.cL().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Distribution Package", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.cL().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Linking & Optimizations", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.cL().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Download", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))])))]))), $m_Lcom_raquo_laminar_api_package$().a.kj().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.a0().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.b2().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Linux x86_64", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.I().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "ccrystal-v{version}-linux-x86_64.tar.gz", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Thin LTO, Immix GC, Static POSIX", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.b7().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.b9().k("https://github.com/oswaldo/context-crystal/releases/latest"), $m_Lcom_raquo_laminar_api_package$().a.bd().k("_blank"), $m_Lcom_raquo_laminar_api_package$().a.g.f("btn-download"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Download \u2197", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))])))]))), $m_Lcom_raquo_laminar_api_package$().a.a0().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.b2().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Linux aarch64 (ARM64)", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.I().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "ccrystal-v{version}-linux-aarch64.tar.gz", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Thin LTO, Immix GC, ARM64 POSIX", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.b7().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.b9().k("https://github.com/oswaldo/context-crystal/releases/latest"), $m_Lcom_raquo_laminar_api_package$().a.bd().k("_blank"), $m_Lcom_raquo_laminar_api_package$().a.g.f("btn-download"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Download \u2197", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))])))]))), $m_Lcom_raquo_laminar_api_package$().a.a0().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.b2().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "macOS Apple Silicon (aarch64)", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.I().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "ccrystal-v{version}-macos-aarch64.tar.gz", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Thin LTO, Immix GC, Native M-series (macOS 14, 15, 26)", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.b7().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.b9().k("https://github.com/oswaldo/context-crystal/releases/latest"), $m_Lcom_raquo_laminar_api_package$().a.bd().k("_blank"), $m_Lcom_raquo_laminar_api_package$().a.g.f("btn-download"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Download \u2197", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))])))]))), $m_Lcom_raquo_laminar_api_package$().a.a0().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.b2().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "macOS Intel (x86_64)", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.I().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "ccrystal-v{version}-macos-x86_64.tar.gz", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Thin LTO, Immix GC, Intel 64-bit POSIX", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.b7().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.b9().k("https://github.com/oswaldo/context-crystal/releases/latest"), $m_Lcom_raquo_laminar_api_package$().a.bd().k("_blank"), $m_Lcom_raquo_laminar_api_package$().a.g.f("btn-download"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Download \u2197", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))])))]))), $m_Lcom_raquo_laminar_api_package$().a.a0().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.b2().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Windows (WSL2 Tier 2)", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.I().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "ccrystal-v{version}-linux-x86_64.tar.gz", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "WSL2 / Ubuntu Linux Subsystem", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.b7().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.b9().k("https://github.com/oswaldo/context-crystal/releases/latest"), $m_Lcom_raquo_laminar_api_package$().a.bd().k("_blank"), $m_Lcom_raquo_laminar_api_package$().a.g.f("btn-download"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Download \u2197", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))])))]))), $m_Lcom_raquo_laminar_api_package$().a.a0().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.b2().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Integrity Verification", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.I().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "SHA256SUMS", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Cryptographic SHA-256 Digest for all assets", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.b7().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.b9().k("https://github.com/oswaldo/context-crystal/releases/latest"), $m_Lcom_raquo_laminar_api_package$().a.bd().k("_blank"), $m_Lcom_raquo_laminar_api_package$().a.g.f("btn-download"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Verify \u2197", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))])))])))])))])))])))]))), $m_Lcom_raquo_laminar_api_package$().a.bC().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("qs-card"), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("qs-card-header"), $m_Lcom_raquo_laminar_api_package$().a.G().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("qs-step-number"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "3", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.bL().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Compile From Source (Scala Native 3.9 LTS)", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.W().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Requirements: JDK 21+, sbt 1.10+, and Clang/LLVM:", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))])))]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("code-snippet-box"), $m_Lcom_raquo_laminar_api_package$().a.bA().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.I().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "# Clone repository\ngit clone https://github.com/oswaldo/context-crystal.git && cd context-crystal\n\n# Compile & link release native binary with Thin LTO\nsbt 'set cli.native / nativeConfig ~= { _.withMode(scala.scalanative.build.Mode.releaseFast).withLTO(scala.scalanative.build.LTO.thin) }; cliNative/nativeLink'\n\n# Install binary into user PATH (portable across Linux GNU & macOS BSD)\nmkdir -p ~/.local/bin && rm -f ~/.local/bin/ccrystal && cp ./cli/native/target/scala-3.9.0/ccrystal-cli ~/.local/bin/ccrystal && chmod +x ~/.local/bin/ccrystal && strip ~/.local/bin/ccrystal", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.cD().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.cz().k("button"), $m_Lcom_raquo_laminar_api_package$().a.g.f("snippet-copy-btn"), ($m_Lcom_raquo_laminar_api_package$(), $m_Lcom_raquo_laminar_inserters_ChildTextInserter$().eK(new $c_Lcom_raquo_airstream_misc_MapSignal($m_Lccrystal_site_State$().cN.aN, new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((x$1$3) => (((x$1$3 instanceof $c_s_Some) && (x$1$3.cA === "qs-build")) ? "\u2713 Copied" : "Copy"))), $m_s_None$()), $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)), new $c_Lcom_raquo_laminar_modifiers_EventListener(($m_Lcom_raquo_laminar_api_package$(), $m_Lcom_raquo_laminar_keys_EventProcessor$().cc($m_Lcom_raquo_laminar_api_package$().a.cy(), false, false)), new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((_$3) => {
-    $m_Lccrystal_site_State$().fw("qs-build", "sbt 'set cli.native / nativeConfig ~= { _.withMode(scala.scalanative.build.Mode.releaseFast).withLTO(scala.scalanative.build.LTO.thin) }; cliNative/nativeLink'");
-  })))])))])))]))), $m_Lcom_raquo_laminar_api_package$().a.bC().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("qs-card"), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("qs-card-header"), $m_Lcom_raquo_laminar_api_package$().a.G().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("qs-step-number"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "4", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.bL().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "First 5 Minutes: The Core Workflow", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.W().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Verified terminal sequence to initialize, hydrate, and maintain zero debris:", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))])))]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("terminal-steps-flow"), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("terminal-step-item"), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("step-label"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "1. Initialize Crystal with Atomic Tasks:", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("code-snippet-box mini"), $m_Lcom_raquo_laminar_api_package$().a.bA().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.I().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "ccrystal init my-track -g \"Implement OAuth2 JWT Service\" -t \"Write JWT parser\" -t \"Setup revocation list\"", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))])))])))]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("terminal-step-item"), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("step-label"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "2. Hydrate Living Context Beam for Agent Prompts:", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("code-snippet-box mini"), $m_Lcom_raquo_laminar_api_package$().a.bA().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.I().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "ccrystal hydrate my-track --tail 5", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))])))])))]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("terminal-step-item"), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("step-label"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "3. Acquire Transient Resource Lease (Guaranteed Debris Elimination):", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("code-snippet-box mini"), $m_Lcom_raquo_laminar_api_package$().a.bA().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.I().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "ccrystal transient lease my-track -t git_worktree -p ./worktrees/oauth -d \"Track spike worktree\" --policy revert_on_conclusion", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))])))])))]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("terminal-step-item"), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("step-label"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "4. Mark Acceptance Criterion Complete:", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("code-snippet-box mini"), $m_Lcom_raquo_laminar_api_package$().a.bA().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.I().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "ccrystal task done my-track -t task-1", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))])))])))]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("terminal-step-item"), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("step-label"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "5. Atomic Multi-Command Batching:", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("code-snippet-box mini"), $m_Lcom_raquo_laminar_api_package$().a.bA().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.I().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "ccrystal batch \"task done my-track -t task-2; transient clean my-track -l lease-1; node add my-track -k checkpoint -s 'Completed OAuth2 milestone' --fidelity inferred\"", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))])))])))]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("terminal-step-item"), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("step-label"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "6. Deterministic Zero-LLM Melting (Sub-DAG Squashing):", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("code-snippet-box mini"), $m_Lcom_raquo_laminar_api_package$().a.bA().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.I().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "ccrystal melt my-track --from init-node --to milestone-1 -s \"Scaffolding & DB schema finalized\"", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))])))])))]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("terminal-step-item"), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("step-label"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "7. Conclude, Triage & Cold Storage Archiving:", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("code-snippet-box mini"), $m_Lcom_raquo_laminar_api_package$().a.bA().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.I().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "ccrystal batch \"conclude my-track -s success -r 'Shipped to production'; archive my-track\"", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))])))])))])))])))])))])));
+$p.cj = (function() {
+  return $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("tab-content tab-quickstart"), $m_Lcom_raquo_laminar_api_package$().a.bC().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("quickstart-intro"), $m_Lcom_raquo_laminar_api_package$().a.eT().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Installation & Developer Quickstart", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.R().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Install the native zero-dependency binary in seconds or build from source using Scala Native.", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.bC().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("qs-card"), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("qs-card-header"), $m_Lcom_raquo_laminar_api_package$().a.G().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("qs-step-number"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "1", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.bM().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Fast Installation (Linux & macOS)", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.R().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Choose your preferred installation method: curl bootstrap, Homebrew, or Coursier (cs):", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))])))]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("install-methods-grid"), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("install-method-box"), $m_Lcom_raquo_laminar_api_package$().a.eU().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Option A: Single-Line Curl Installer (Recommended)", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.R().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Verifies architecture, extracts official tarball, validates SHA256 checksums, and installs into `~/.local/bin/ccrystal`:", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("code-snippet-box"), $m_Lcom_raquo_laminar_api_package$().a.bA().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.I().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "curl -fsSL https://raw.githubusercontent.com/oswaldo/context-crystal/main/install.sh | sh", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.cd().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.c0().k("button"), $m_Lcom_raquo_laminar_api_package$().a.g.f("snippet-copy-btn"), ($m_Lcom_raquo_laminar_api_package$(), $m_Lcom_raquo_laminar_inserters_ChildTextInserter$().dl(new $c_Lcom_raquo_airstream_misc_MapSignal($m_Lccrystal_site_State$().ck.ax, new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((x$1) => (((x$1 instanceof $c_s_Some) && (x$1.c2 === "qs-curl")) ? "\u2713 Copied" : "Copy"))), $m_s_None$()), $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)), new $c_Lcom_raquo_laminar_modifiers_EventListener(($m_Lcom_raquo_laminar_api_package$(), $m_Lcom_raquo_laminar_keys_EventProcessor$().bL($m_Lcom_raquo_laminar_api_package$().a.bX(), false, false)), new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((_$1) => {
+    $m_Lccrystal_site_State$().ec("qs-curl", "curl -fsSL https://raw.githubusercontent.com/oswaldo/context-crystal/main/install.sh | sh");
+  })))])))])))]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("install-method-box"), $m_Lcom_raquo_laminar_api_package$().a.eU().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Option B: Homebrew (macOS & Linux)", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.R().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Install and manage updates via Homebrew package manager:", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("code-snippet-box"), $m_Lcom_raquo_laminar_api_package$().a.bA().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.I().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "brew install oswaldo/context-crystal/ccrystal", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.cd().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.c0().k("button"), $m_Lcom_raquo_laminar_api_package$().a.g.f("snippet-copy-btn"), ($m_Lcom_raquo_laminar_api_package$(), $m_Lcom_raquo_laminar_inserters_ChildTextInserter$().dl(new $c_Lcom_raquo_airstream_misc_MapSignal($m_Lccrystal_site_State$().ck.ax, new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((x$1$2) => (((x$1$2 instanceof $c_s_Some) && (x$1$2.c2 === "qs-brew")) ? "\u2713 Copied" : "Copy"))), $m_s_None$()), $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)), new $c_Lcom_raquo_laminar_modifiers_EventListener(($m_Lcom_raquo_laminar_api_package$(), $m_Lcom_raquo_laminar_keys_EventProcessor$().bL($m_Lcom_raquo_laminar_api_package$().a.bX(), false, false)), new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((_$2) => {
+    $m_Lccrystal_site_State$().ec("qs-brew", "brew install oswaldo/context-crystal/ccrystal");
+  })))])))])))]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("install-method-box"), $m_Lcom_raquo_laminar_api_package$().a.eU().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Option C: Coursier (Scala Toolchain)", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.R().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Install native release binary via Coursier application manager:", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("code-snippet-box"), $m_Lcom_raquo_laminar_api_package$().a.bA().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.I().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "cs install --channel gh:oswaldo/context-crystal:main ccrystal", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.cd().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.c0().k("button"), $m_Lcom_raquo_laminar_api_package$().a.g.f("snippet-copy-btn"), ($m_Lcom_raquo_laminar_api_package$(), $m_Lcom_raquo_laminar_inserters_ChildTextInserter$().dl(new $c_Lcom_raquo_airstream_misc_MapSignal($m_Lccrystal_site_State$().ck.ax, new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((x$1$3) => (((x$1$3 instanceof $c_s_Some) && (x$1$3.c2 === "qs-cs")) ? "\u2713 Copied" : "Copy"))), $m_s_None$()), $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)), new $c_Lcom_raquo_laminar_modifiers_EventListener(($m_Lcom_raquo_laminar_api_package$(), $m_Lcom_raquo_laminar_keys_EventProcessor$().bL($m_Lcom_raquo_laminar_api_package$().a.bX(), false, false)), new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((_$3) => {
+    $m_Lccrystal_site_State$().ec("qs-cs", "cs install --channel gh:oswaldo/context-crystal:main ccrystal");
+  })))])))])))])))])))]))), $m_Lcom_raquo_laminar_api_package$().a.bC().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("qs-card"), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("qs-card-header"), $m_Lcom_raquo_laminar_api_package$().a.G().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("qs-step-number"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "2", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.bM().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Direct Distribution Packages (GitHub Releases)", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.R().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Every release is packaged as an optimized `.tar.gz` bundle with Thin LTO, stripped binary, and SHA256SUMS integrity verification:", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))])))]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("table-wrapper"), $m_Lcom_raquo_laminar_api_package$().a.ki().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("binary-table"), $m_Lcom_raquo_laminar_api_package$().a.kk().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.a0().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.cM().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Platform / Architecture", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.cM().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Distribution Package", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.cM().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Linking & Optimizations", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.cM().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Download", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))])))]))), $m_Lcom_raquo_laminar_api_package$().a.kj().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.a0().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.bc().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Linux x86_64", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.I().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "ccrystal-v{version}-linux-x86_64.tar.gz", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Thin LTO, Immix GC, Static POSIX", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.b6().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.b8().k("https://github.com/oswaldo/context-crystal/releases/latest"), $m_Lcom_raquo_laminar_api_package$().a.bd().k("_blank"), $m_Lcom_raquo_laminar_api_package$().a.g.f("btn-download"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Download \u2197", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))])))]))), $m_Lcom_raquo_laminar_api_package$().a.a0().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.bc().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Linux aarch64 (ARM64)", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.I().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "ccrystal-v{version}-linux-aarch64.tar.gz", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Thin LTO, Immix GC, ARM64 POSIX", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.b6().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.b8().k("https://github.com/oswaldo/context-crystal/releases/latest"), $m_Lcom_raquo_laminar_api_package$().a.bd().k("_blank"), $m_Lcom_raquo_laminar_api_package$().a.g.f("btn-download"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Download \u2197", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))])))]))), $m_Lcom_raquo_laminar_api_package$().a.a0().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.bc().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "macOS Apple Silicon (aarch64)", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.I().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "ccrystal-v{version}-macos-aarch64.tar.gz", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Thin LTO, Immix GC, Native M-series (macOS 14, 15, 26)", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.b6().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.b8().k("https://github.com/oswaldo/context-crystal/releases/latest"), $m_Lcom_raquo_laminar_api_package$().a.bd().k("_blank"), $m_Lcom_raquo_laminar_api_package$().a.g.f("btn-download"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Download \u2197", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))])))]))), $m_Lcom_raquo_laminar_api_package$().a.a0().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.bc().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "macOS Intel (x86_64)", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.I().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "ccrystal-v{version}-macos-x86_64.tar.gz", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Thin LTO, Immix GC, Intel 64-bit POSIX", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.b6().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.b8().k("https://github.com/oswaldo/context-crystal/releases/latest"), $m_Lcom_raquo_laminar_api_package$().a.bd().k("_blank"), $m_Lcom_raquo_laminar_api_package$().a.g.f("btn-download"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Download \u2197", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))])))]))), $m_Lcom_raquo_laminar_api_package$().a.a0().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.bc().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Windows (WSL2 Tier 2)", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.I().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "ccrystal-v{version}-linux-x86_64.tar.gz", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "WSL2 / Ubuntu Linux Subsystem", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.b6().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.b8().k("https://github.com/oswaldo/context-crystal/releases/latest"), $m_Lcom_raquo_laminar_api_package$().a.bd().k("_blank"), $m_Lcom_raquo_laminar_api_package$().a.g.f("btn-download"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Download \u2197", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))])))]))), $m_Lcom_raquo_laminar_api_package$().a.a0().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.bc().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Integrity Verification", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.I().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "SHA256SUMS", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Cryptographic SHA-256 Digest for all assets", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.p().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.b6().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.b8().k("https://github.com/oswaldo/context-crystal/releases/latest"), $m_Lcom_raquo_laminar_api_package$().a.bd().k("_blank"), $m_Lcom_raquo_laminar_api_package$().a.g.f("btn-download"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Verify \u2197", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))])))])))])))])))])))]))), $m_Lcom_raquo_laminar_api_package$().a.bC().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("qs-card"), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("qs-card-header"), $m_Lcom_raquo_laminar_api_package$().a.G().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("qs-step-number"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "3", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.bM().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Compile From Source (Scala Native 3.9 LTS)", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.R().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Requirements: JDK 21+, sbt 1.10+, and Clang/LLVM:", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))])))]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("code-snippet-box"), $m_Lcom_raquo_laminar_api_package$().a.bA().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.I().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "# Clone repository\ngit clone https://github.com/oswaldo/context-crystal.git && cd context-crystal\n\n# Compile & link release native binary with Thin LTO\nsbt 'set cli.native / nativeConfig ~= { _.withMode(scala.scalanative.build.Mode.releaseFast).withLTO(scala.scalanative.build.LTO.thin) }; cliNative/nativeLink'\n\n# Install binary into user PATH (portable across Linux GNU & macOS BSD)\nmkdir -p ~/.local/bin && rm -f ~/.local/bin/ccrystal && cp ./cli/native/target/scala-3.9.0/ccrystal-cli ~/.local/bin/ccrystal && chmod +x ~/.local/bin/ccrystal && strip ~/.local/bin/ccrystal", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))]))), $m_Lcom_raquo_laminar_api_package$().a.cd().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.c0().k("button"), $m_Lcom_raquo_laminar_api_package$().a.g.f("snippet-copy-btn"), ($m_Lcom_raquo_laminar_api_package$(), $m_Lcom_raquo_laminar_inserters_ChildTextInserter$().dl(new $c_Lcom_raquo_airstream_misc_MapSignal($m_Lccrystal_site_State$().ck.ax, new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((x$1$4) => (((x$1$4 instanceof $c_s_Some) && (x$1$4.c2 === "qs-build")) ? "\u2713 Copied" : "Copy"))), $m_s_None$()), $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)), new $c_Lcom_raquo_laminar_modifiers_EventListener(($m_Lcom_raquo_laminar_api_package$(), $m_Lcom_raquo_laminar_keys_EventProcessor$().bL($m_Lcom_raquo_laminar_api_package$().a.bX(), false, false)), new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((_$4) => {
+    $m_Lccrystal_site_State$().ec("qs-build", "sbt 'set cli.native / nativeConfig ~= { _.withMode(scala.scalanative.build.Mode.releaseFast).withLTO(scala.scalanative.build.LTO.thin) }; cliNative/nativeLink'");
+  })))])))])))]))), $m_Lcom_raquo_laminar_api_package$().a.bC().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("qs-card"), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("qs-card-header"), $m_Lcom_raquo_laminar_api_package$().a.G().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("qs-step-number"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "4", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.bM().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "First 5 Minutes: The Core Workflow", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.R().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "Verified terminal sequence to initialize, hydrate, and maintain zero debris:", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))])))]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("terminal-steps-flow"), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("terminal-step-item"), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("step-label"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "1. Initialize Crystal with Atomic Tasks:", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("code-snippet-box mini"), $m_Lcom_raquo_laminar_api_package$().a.bA().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.I().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "ccrystal init my-track -g \"Implement OAuth2 JWT Service\" -t \"Write JWT parser\" -t \"Setup revocation list\"", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))])))])))]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("terminal-step-item"), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("step-label"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "2. Hydrate Living Context Beam for Agent Prompts:", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("code-snippet-box mini"), $m_Lcom_raquo_laminar_api_package$().a.bA().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.I().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "ccrystal hydrate my-track --tail 5", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))])))])))]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("terminal-step-item"), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("step-label"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "3. Acquire Transient Resource Lease (Guaranteed Debris Elimination):", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("code-snippet-box mini"), $m_Lcom_raquo_laminar_api_package$().a.bA().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.I().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "ccrystal transient lease my-track -t git_worktree -p ./worktrees/oauth -d \"Track spike worktree\" --policy revert_on_conclusion", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))])))])))]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("terminal-step-item"), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("step-label"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "4. Mark Acceptance Criterion Complete:", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("code-snippet-box mini"), $m_Lcom_raquo_laminar_api_package$().a.bA().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.I().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "ccrystal task done my-track -t task-1", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))])))])))]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("terminal-step-item"), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("step-label"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "5. Atomic Multi-Command Batching:", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("code-snippet-box mini"), $m_Lcom_raquo_laminar_api_package$().a.bA().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.I().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "ccrystal batch \"task done my-track -t task-2; transient clean my-track -l lease-1; node add my-track -k checkpoint -s 'Completed OAuth2 milestone' --fidelity inferred\"", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))])))])))]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("terminal-step-item"), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("step-label"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "6. Deterministic Zero-LLM Melting (Sub-DAG Squashing):", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("code-snippet-box mini"), $m_Lcom_raquo_laminar_api_package$().a.bA().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.I().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "ccrystal melt my-track --from init-node --to milestone-1 -s \"Scaffolding & DB schema finalized\"", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))])))])))]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("terminal-step-item"), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("step-label"), $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "7. Conclude, Triage & Cold Storage Archiving:", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)]))), $m_Lcom_raquo_laminar_api_package$().a.h().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.g.f("code-snippet-box mini"), $m_Lcom_raquo_laminar_api_package$().a.bA().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$m_Lcom_raquo_laminar_api_package$().a.I().d($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_Modifier.r().C)([$f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_laminar_modifiers_RenderableText__Lcom_raquo_laminar_nodes_TextNode($m_Lcom_raquo_laminar_api_package$().a, "ccrystal batch \"conclude my-track -s success -r 'Shipped to production'; archive my-track\"", $m_Lcom_raquo_laminar_modifiers_RenderableText$().e)])))])))])))])))])))])))])));
 });
 var $d_Lccrystal_site_TabQuickstart$ = new $TypeData().i($c_Lccrystal_site_TabQuickstart$, "ccrystal.site.TabQuickstart$", ({
   cR: 1
@@ -1378,7 +1382,7 @@ $p.ss = (function(trys, combinator) {
     var values = trys.map(((_$3) => _$3.Q()));
     return new $c_s_util_Success(combinator.i(values));
   } else {
-    var arr = trys.map(((x$1) => ((x$1 instanceof $c_s_util_Failure) ? new $c_s_Some(x$1.e5) : $m_s_None$())));
+    var arr = trys.map(((x$1) => ((x$1 instanceof $c_s_util_Failure) ? new $c_s_Some(x$1.e6) : $m_s_None$())));
     return new $c_s_util_Failure(new $c_Lcom_raquo_airstream_core_AirstreamError$CombinedError($m_sci_IndexedSeq$().jN($ct_sjs_js_WrappedArray__sjs_js_Array__(new $c_sjs_js_WrappedArray(), arr))));
   }
 });
@@ -1465,8 +1469,8 @@ function $f_Lcom_raquo_airstream_core_Named__defaultDisplayName__T($thiz) {
   return (($objectGetClass($thiz).jV() + "@") + $thiz.E());
 }
 function $f_Lcom_raquo_airstream_core_Named__displayName__T($thiz) {
-  var x = $thiz.ee();
-  return ((x === (void 0)) ? $thiz.eb() : x);
+  var x = $thiz.eg();
+  return ((x === (void 0)) ? $thiz.ed() : x);
 }
 /** @constructor */
 function $c_Lcom_raquo_airstream_core_Observer$() {
@@ -1553,7 +1557,7 @@ $p.sD = (function(minRank, observables) {
   var len = (observables.length | 0);
   while ((i < len)) {
     var observable = observables[i];
-    var rank = observable.f0();
+    var rank = observable.f2();
     if ((rank > elem)) {
       var ev$2 = rank;
       elem = ev$2;
@@ -1574,8 +1578,8 @@ function $m_Lcom_raquo_airstream_core_Protected$() {
 }
 /** @constructor */
 function $c_Lcom_raquo_airstream_core_Signal$() {
-  this.f9 = 0;
-  this.f9 = 0;
+  this.fb = 0;
+  this.fb = 0;
 }
 $p = $c_Lcom_raquo_airstream_core_Signal$.prototype = new $h_O();
 $p.constructor = $c_Lcom_raquo_airstream_core_Signal$;
@@ -1584,12 +1588,12 @@ function $h_Lcom_raquo_airstream_core_Signal$() {
 }
 $h_Lcom_raquo_airstream_core_Signal$.prototype = $p;
 $p.pI = (function() {
-  if ((this.f9 === 2147483647)) {
-    this.f9 = 1;
+  if ((this.fb === 2147483647)) {
+    this.fb = 1;
   } else {
-    this.f9 = ((1 + this.f9) | 0);
+    this.fb = ((1 + this.fb) | 0);
   }
-  return this.f9;
+  return this.fb;
 });
 var $d_Lcom_raquo_airstream_core_Signal$ = new $TypeData().i($c_Lcom_raquo_airstream_core_Signal$, "com.raquo.airstream.core.Signal$", ({
   db: 1
@@ -1611,9 +1615,9 @@ function $c_Lcom_raquo_airstream_core_Transaction(code) {
   var x = $m_Lcom_raquo_airstream_core_Transaction$pendingTransactions$().gR();
   this.i2 = ((x === (void 0)) ? 1 : ((1 + x.i2) | 0));
   if ((($m_Lcom_raquo_airstream_core_Transaction$().gX === (-1)) || (this.i2 > $m_Lcom_raquo_airstream_core_Transaction$().gX))) {
-    $m_Lcom_raquo_airstream_core_AirstreamError$().cK(new $c_Lcom_raquo_airstream_core_AirstreamError$TransactionDepthExceeded(this, $m_Lcom_raquo_airstream_core_Transaction$().gX));
+    $m_Lcom_raquo_airstream_core_AirstreamError$().cL(new $c_Lcom_raquo_airstream_core_AirstreamError$TransactionDepthExceeded(this, $m_Lcom_raquo_airstream_core_Transaction$().gX));
   } else if ($m_Lcom_raquo_airstream_core_Transaction$onStart$().bu) {
-    ($m_Lcom_raquo_airstream_core_Transaction$onStart$().ep.push(this) | 0);
+    ($m_Lcom_raquo_airstream_core_Transaction$onStart$().er.push(this) | 0);
   } else {
     $m_Lcom_raquo_airstream_core_Transaction$pendingTransactions$().jr(this);
   }
@@ -1664,16 +1668,16 @@ $p.pb = (function(transaction) {
     transaction.i1.i(transaction);
     var x = transaction.fT;
     if ((x !== (void 0))) {
-      while (((x.dv.length | 0) !== 0)) {
-        if (((x.dv.length | 0) === 0)) {
+      while (((x.dw.length | 0) !== 0)) {
+        if (((x.dw.length | 0) === 0)) {
           throw $ct_jl_Exception__T__(new $c_jl_Exception(), "Unable to dequeue an empty JsPriorityQueue");
         }
-        $f_Lcom_raquo_airstream_combine_CombineObservable__syncFire__Lcom_raquo_airstream_core_Transaction__V(x.dv.shift(), transaction);
+        $f_Lcom_raquo_airstream_combine_CombineObservable__syncFire__Lcom_raquo_airstream_core_Transaction__V(x.dw.shift(), transaction);
       }
     }
   } catch (e) {
     var e$2 = ((e instanceof $c_jl_Throwable) ? e : new $c_sjs_js_JavaScriptException(e));
-    $m_Lcom_raquo_airstream_core_AirstreamError$().cK(e$2);
+    $m_Lcom_raquo_airstream_core_AirstreamError$().cL(e$2);
   }
 });
 var $d_Lcom_raquo_airstream_core_Transaction$ = new $TypeData().i($c_Lcom_raquo_airstream_core_Transaction$, "com.raquo.airstream.core.Transaction$", ({
@@ -1688,10 +1692,10 @@ function $m_Lcom_raquo_airstream_core_Transaction$() {
 }
 function $p_Lcom_raquo_airstream_core_Transaction$onStart$__resolve__V($thiz) {
   if ((($thiz.gY.length | 0) === 0)) {
-    if ((($thiz.ep.length | 0) > 0)) {
+    if ((($thiz.er.length | 0) > 0)) {
       new $c_Lcom_raquo_airstream_core_Transaction(new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((_$3) => {
-        while ((($thiz.ep.length | 0) > 0)) {
-          $m_Lcom_raquo_airstream_core_Transaction$pendingTransactions$().jr($thiz.ep.shift());
+        while ((($thiz.er.length | 0) > 0)) {
+          $m_Lcom_raquo_airstream_core_Transaction$pendingTransactions$().jr($thiz.er.shift());
         }
       })));
     }
@@ -1703,11 +1707,11 @@ function $p_Lcom_raquo_airstream_core_Transaction$onStart$__resolve__V($thiz) {
           callback.i(trx);
         } catch (e) {
           var e$2 = ((e instanceof $c_jl_Throwable) ? e : new $c_sjs_js_JavaScriptException(e));
-          $m_Lcom_raquo_airstream_core_AirstreamError$().cK(e$2);
+          $m_Lcom_raquo_airstream_core_AirstreamError$().cL(e$2);
         }
       }
-      while ((($thiz.ep.length | 0) > 0)) {
-        var _trx = $thiz.ep.shift();
+      while ((($thiz.er.length | 0) > 0)) {
+        var _trx = $thiz.er.shift();
         $m_Lcom_raquo_airstream_core_Transaction$pendingTransactions$().jr(_trx);
       }
     })));
@@ -1717,11 +1721,11 @@ function $p_Lcom_raquo_airstream_core_Transaction$onStart$__resolve__V($thiz) {
 function $c_Lcom_raquo_airstream_core_Transaction$onStart$() {
   this.bu = false;
   this.gY = null;
-  this.ep = null;
+  this.er = null;
   $n_Lcom_raquo_airstream_core_Transaction$onStart$ = this;
   this.bu = false;
   this.gY = $m_Lcom_raquo_ew_JsArray$().br($m_sr_ScalaRunTime$().c(new ($d_F1.r().C)([])));
-  this.ep = $m_Lcom_raquo_ew_JsArray$().br($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_airstream_core_Transaction.r().C)([])));
+  this.er = $m_Lcom_raquo_ew_JsArray$().br($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_airstream_core_Transaction.r().C)([])));
 }
 $p = $c_Lcom_raquo_airstream_core_Transaction$onStart$.prototype = new $h_O();
 $p.constructor = $c_Lcom_raquo_airstream_core_Transaction$onStart$;
@@ -1740,7 +1744,7 @@ function $m_Lcom_raquo_airstream_core_Transaction$onStart$() {
   return $n_Lcom_raquo_airstream_core_Transaction$onStart$;
 }
 function $p_Lcom_raquo_airstream_core_Transaction$pendingTransactions$__maybeChildrenFor__Lcom_raquo_airstream_core_Transaction__O($thiz, transaction) {
-  return $thiz.eq.get(transaction);
+  return $thiz.es.get(transaction);
 }
 function $p_Lcom_raquo_airstream_core_Transaction$pendingTransactions$__pushToStack__Lcom_raquo_airstream_core_Transaction__V($thiz, transaction) {
   $thiz.gZ.unshift(transaction);
@@ -1754,7 +1758,7 @@ function $p_Lcom_raquo_airstream_core_Transaction$pendingTransactions$__enqueueC
   var newChildren = ((maybeChildren === (void 0)) ? $m_Lcom_raquo_ew_JsArray$().br($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_airstream_core_Transaction.r().C)([]))) : maybeChildren);
   newChildren.push(newChild);
   if (noChildrenFound) {
-    $thiz.eq.set(parent, newChildren);
+    $thiz.es.set(parent, newChildren);
   }
 }
 function $p_Lcom_raquo_airstream_core_Transaction$pendingTransactions$__dequeueChild__Lcom_raquo_airstream_core_Transaction__O($thiz, parent) {
@@ -1765,7 +1769,7 @@ function $p_Lcom_raquo_airstream_core_Transaction$pendingTransactions$__dequeueC
   } else {
     var nextChild = x.shift();
     if (((x.length | 0) === 0)) {
-      (!(!$thiz.eq.delete(parent)));
+      (!(!$thiz.es.delete(parent)));
     }
     return nextChild;
   }
@@ -1773,10 +1777,10 @@ function $p_Lcom_raquo_airstream_core_Transaction$pendingTransactions$__dequeueC
 /** @constructor */
 function $c_Lcom_raquo_airstream_core_Transaction$pendingTransactions$() {
   this.gZ = null;
-  this.eq = null;
+  this.es = null;
   $n_Lcom_raquo_airstream_core_Transaction$pendingTransactions$ = this;
   this.gZ = $m_Lcom_raquo_ew_JsArray$().br($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_airstream_core_Transaction.r().C)([])));
-  this.eq = new Map();
+  this.es = new Map();
 }
 $p = $c_Lcom_raquo_airstream_core_Transaction$pendingTransactions$.prototype = new $h_O();
 $p.constructor = $c_Lcom_raquo_airstream_core_Transaction$pendingTransactions$;
@@ -1806,13 +1810,13 @@ $p.rB = (function(transaction) {
     transaction$tailLocal1.i1 = $m_Lcom_raquo_airstream_core_Transaction$().kG;
     var maybeNextTransaction = this.gR();
     if ($m_sr_BoxesRunTime$().A(maybeNextTransaction, (void 0))) {
-      if (((this.eq.size | 0) > 0)) {
+      if (((this.es.size | 0) > 0)) {
         var numChildren = new $c_sr_IntRef(0);
-        this.eq.forEach(((numChildren) => ((transactions, _$4) => {
-          var ev$12 = ((numChildren.eG + (transactions.length | 0)) | 0);
-          numChildren.eG = ev$12;
+        this.es.forEach(((numChildren) => ((transactions, _$4) => {
+          var ev$12 = ((numChildren.eI + (transactions.length | 0)) | 0);
+          numChildren.eI = ev$12;
         }))(numChildren));
-        throw $ct_jl_Exception__T__(new $c_jl_Exception(), (((("Transaction queue error: Stack cleared, but a total of " + numChildren.eG) + " children for ") + (this.eq.size | 0)) + " transactions remain. This is a bug in Airstream."));
+        throw $ct_jl_Exception__T__(new $c_jl_Exception(), (((("Transaction queue error: Stack cleared, but a total of " + numChildren.eI) + " children for ") + (this.es.size | 0)) + " transactions remain. This is a bug in Airstream."));
       } else {
         return (void 0);
       }
@@ -1894,10 +1898,10 @@ function $m_Lcom_raquo_airstream_custom_CustomSource$Config$() {
   return $n_Lcom_raquo_airstream_custom_CustomSource$Config$;
 }
 function $p_Lcom_raquo_airstream_ownership_DynamicOwner__removeSubscriptionNow__Lcom_raquo_airstream_ownership_DynamicSubscription__V($thiz, subscription) {
-  var index = ($thiz.ds.indexOf(subscription) | 0);
+  var index = ($thiz.dt.indexOf(subscription) | 0);
   if ((index !== (-1))) {
-    $thiz.ds.splice(index, 1);
-    if ((!$thiz.bY.j())) {
+    $thiz.dt.splice(index, 1);
+    if ((!$thiz.c1.j())) {
       subscription.pM();
     }
   } else {
@@ -1912,17 +1916,17 @@ function $p_Lcom_raquo_airstream_ownership_DynamicOwner__removePendingSubscripti
 /** @constructor */
 function $c_Lcom_raquo_airstream_ownership_DynamicOwner(onAccessAfterKilled) {
   this.l7 = null;
-  this.ds = null;
-  this.fa = false;
+  this.dt = null;
+  this.fc = false;
   this.h4 = null;
-  this.bY = null;
-  this.fb = 0;
+  this.c1 = null;
+  this.fd = 0;
   this.l7 = onAccessAfterKilled;
-  this.ds = $m_Lcom_raquo_ew_JsArray$().br($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_airstream_ownership_DynamicSubscription.r().C)([])));
-  this.fa = true;
+  this.dt = $m_Lcom_raquo_ew_JsArray$().br($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_airstream_ownership_DynamicSubscription.r().C)([])));
+  this.fc = true;
   this.h4 = $m_Lcom_raquo_ew_JsArray$().br($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_airstream_ownership_DynamicSubscription.r().C)([])));
-  this.bY = $m_s_None$();
-  this.fb = 0;
+  this.c1 = $m_s_None$();
+  this.fd = 0;
 }
 $p = $c_Lcom_raquo_airstream_ownership_DynamicOwner.prototype = new $h_O();
 $p.constructor = $c_Lcom_raquo_airstream_ownership_DynamicOwner;
@@ -1931,23 +1935,23 @@ function $h_Lcom_raquo_airstream_ownership_DynamicOwner() {
 }
 $h_Lcom_raquo_airstream_ownership_DynamicOwner.prototype = $p;
 $p.oK = (function() {
-  if ((!(!this.bY.j()))) {
+  if ((!(!this.c1.j()))) {
     var this$4 = $m_Lcom_raquo_airstream_core_Transaction$onStart$();
     var f = (() => {
       var newOwner = new $c_Lcom_raquo_airstream_ownership_OneTimeOwner(this.l7);
-      this.bY = new $c_s_Some(newOwner);
-      this.fa = false;
-      this.fb = 0;
+      this.c1 = new $c_s_Some(newOwner);
+      this.fc = false;
+      this.fd = 0;
       var i = 0;
-      var originalNumSubs = (this.ds.length | 0);
+      var originalNumSubs = (this.dt.length | 0);
       while ((i < originalNumSubs)) {
-        var ix = ((i + this.fb) | 0);
-        this.ds[ix].pJ(newOwner);
+        var ix = ((i + this.fd) | 0);
+        this.dt[ix].pJ(newOwner);
         i = ((1 + i) | 0);
       }
       $p_Lcom_raquo_airstream_ownership_DynamicOwner__removePendingSubscriptionsNow__V(this);
-      this.fa = true;
-      this.fb = 0;
+      this.fc = true;
+      this.fd = 0;
     });
     $m_Lcom_raquo_airstream_core_Transaction$onStart$();
     var when = true;
@@ -1967,9 +1971,9 @@ $p.oK = (function() {
   }
 });
 $p.ru = (function() {
-  if ((!this.bY.j())) {
-    this.fa = false;
-    var arr = this.ds;
+  if ((!this.c1.j())) {
+    this.fc = false;
+    var arr = this.dt;
     var i = 0;
     var len = (arr.length | 0);
     while ((i < len)) {
@@ -1977,32 +1981,32 @@ $p.ru = (function() {
       i = ((1 + i) | 0);
     }
     $p_Lcom_raquo_airstream_ownership_DynamicOwner__removePendingSubscriptionsNow__V(this);
-    var this$4 = this.bY;
+    var this$4 = this.c1;
     if ((!this$4.j())) {
       this$4.Q().pH();
     }
     $p_Lcom_raquo_airstream_ownership_DynamicOwner__removePendingSubscriptionsNow__V(this);
-    this.fa = true;
-    this.bY = $m_s_None$();
+    this.fc = true;
+    this.c1 = $m_s_None$();
   } else {
     throw $ct_jl_Exception__T__(new $c_jl_Exception(), "Can not deactivate DynamicOwner: it is not active");
   }
 });
 $p.qQ = (function(subscription, prepend) {
   if (prepend) {
-    this.fb = ((1 + this.fb) | 0);
-    this.ds.unshift(subscription);
+    this.fd = ((1 + this.fd) | 0);
+    this.dt.unshift(subscription);
   } else {
-    this.ds.push(subscription);
+    this.dt.push(subscription);
   }
-  var this$1 = this.bY;
+  var this$1 = this.c1;
   if ((!this$1.j())) {
     var x0 = this$1.Q();
     subscription.pJ(x0);
   }
 });
 $p.t9 = (function(subscription) {
-  if (this.fa) {
+  if (this.fc) {
     $p_Lcom_raquo_airstream_ownership_DynamicOwner__removeSubscriptionNow__Lcom_raquo_airstream_ownership_DynamicSubscription__V(this, subscription);
   } else {
     this.h4.push(subscription);
@@ -2149,12 +2153,12 @@ var $d_Lcom_raquo_airstream_ownership_Subscription = new $TypeData().i($c_Lcom_r
 function $c_Lcom_raquo_airstream_ownership_TransferableSubscription(activate, deactivate) {
   this.ld = null;
   this.le = null;
-  this.dt = null;
-  this.er = false;
+  this.du = null;
+  this.et = false;
   this.ld = activate;
   this.le = deactivate;
-  this.dt = $m_s_None$();
-  this.er = false;
+  this.du = $m_s_None$();
+  this.et = false;
 }
 $p = $c_Lcom_raquo_airstream_ownership_TransferableSubscription.prototype = new $h_O();
 $p.constructor = $c_Lcom_raquo_airstream_ownership_TransferableSubscription;
@@ -2163,14 +2167,14 @@ function $h_Lcom_raquo_airstream_ownership_TransferableSubscription() {
 }
 $h_Lcom_raquo_airstream_ownership_TransferableSubscription.prototype = $p;
 $p.sn = (function() {
-  var this$1 = this.dt;
-  return ((!this$1.j()) && (!this$1.Q().h5.bY.j()));
+  var this$1 = this.du;
+  return ((!this$1.j()) && (!this$1.Q().h5.c1.j()));
 });
 $p.tk = (function(nextOwner) {
-  if (this.er) {
+  if (this.et) {
     throw $ct_jl_Exception__T__(new $c_jl_Exception(), "Unable to set owner on DynamicTransferableSubscription while a transfer on this subscription is already in progress.");
   }
-  var this$1 = this.dt;
+  var this$1 = this.du;
   if ((!this$1.j())) {
     var x0 = this$1.Q();
     var x$2 = x0.h5;
@@ -2179,37 +2183,37 @@ $p.tk = (function(nextOwner) {
     var $x_1 = false;
   }
   if ((!$x_1)) {
-    if ((this.sn() && (!nextOwner.bY.j()))) {
-      this.er = true;
+    if ((this.sn() && (!nextOwner.c1.j()))) {
+      this.et = true;
     }
-    var this$3 = this.dt;
+    var this$3 = this.du;
     if ((!this$3.j())) {
       this$3.Q().hJ();
-      this.dt = $m_s_None$();
+      this.du = $m_s_None$();
     }
     var newPilotSubscription = $m_Lcom_raquo_airstream_ownership_DynamicSubscription$().gV(nextOwner, new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((parentOwner) => {
-      if ((!this.er)) {
+      if ((!this.et)) {
         this.ld.Y();
       }
       return new $c_Lcom_raquo_airstream_ownership_Subscription(parentOwner, new $c_sjsr_AnonFunction0_$$Lambda$92a2e254bbb9c06a0a02fc31abab59c51c18ecc1((() => {
-        if ((!this.er)) {
+        if ((!this.et)) {
           this.le.Y();
         }
       })));
     })), false);
-    this.dt = new $c_s_Some(newPilotSubscription);
-    this.er = false;
+    this.du = new $c_s_Some(newPilotSubscription);
+    this.et = false;
   }
 });
 $p.rb = (function() {
-  if (this.er) {
+  if (this.et) {
     throw $ct_jl_Exception__T__(new $c_jl_Exception(), "Unable to clear owner on DynamicTransferableSubscription while a transfer on this subscription is already in progress.");
   }
-  var this$1 = this.dt;
+  var this$1 = this.du;
   if ((!this$1.j())) {
     this$1.Q().hJ();
   }
-  this.dt = $m_s_None$();
+  this.du = $m_s_None$();
 });
 var $d_Lcom_raquo_airstream_ownership_TransferableSubscription = new $TypeData().i($c_Lcom_raquo_airstream_ownership_TransferableSubscription, "com.raquo.airstream.ownership.TransferableSubscription", ({
   du: 1
@@ -2239,9 +2243,9 @@ function $m_Lcom_raquo_airstream_state_Var$() {
 /** @constructor */
 function $c_Lcom_raquo_airstream_util_JsPriorityQueue(getRank) {
   this.ie = null;
-  this.dv = null;
+  this.dw = null;
   this.ie = getRank;
-  this.dv = $m_Lcom_raquo_ew_JsArray$().br($m_sr_ScalaRunTime$().rX(new $ac_O([])));
+  this.dw = $m_Lcom_raquo_ew_JsArray$().br($m_sr_ScalaRunTime$().rX(new $ac_O([])));
 }
 $p = $c_Lcom_raquo_airstream_util_JsPriorityQueue.prototype = new $h_O();
 $p.constructor = $c_Lcom_raquo_airstream_util_JsPriorityQueue;
@@ -2253,17 +2257,17 @@ $p.rD = (function(item) {
   var itemRank = (this.ie.i(item) | 0);
   var insertAtIndex = 0;
   var foundHigherRank = false;
-  while (((insertAtIndex < (this.dv.length | 0)) && (!foundHigherRank))) {
-    if (((this.ie.i(this.dv[insertAtIndex]) | 0) > itemRank)) {
+  while (((insertAtIndex < (this.dw.length | 0)) && (!foundHigherRank))) {
+    if (((this.ie.i(this.dw[insertAtIndex]) | 0) > itemRank)) {
       foundHigherRank = true;
     } else {
       insertAtIndex = ((1 + insertAtIndex) | 0);
     }
   }
-  this.dv.splice(insertAtIndex, 0, item);
+  this.dw.splice(insertAtIndex, 0, item);
 });
 $p.bm = (function(item) {
-  return ((this.dv.indexOf(item) | 0) !== (-1));
+  return ((this.dw.indexOf(item) | 0) !== (-1));
 });
 var $d_Lcom_raquo_airstream_util_JsPriorityQueue = new $TypeData().i($c_Lcom_raquo_airstream_util_JsPriorityQueue, "com.raquo.airstream.util.JsPriorityQueue", ({
   dB: 1
@@ -2354,7 +2358,7 @@ function $c_Lcom_raquo_laminar_DomApi$() {
   this.lp = null;
   $n_Lcom_raquo_laminar_DomApi$ = this;
   document.createElement("template");
-  this.ph($m_Lcom_raquo_laminar_api_package$().a.t().ej());
+  this.ph($m_Lcom_raquo_laminar_api_package$().a.t().el());
   this.lp = new RegExp(" ", "g");
 }
 $p = $c_Lcom_raquo_laminar_DomApi$.prototype = new $h_O();
@@ -2442,10 +2446,10 @@ $p.sr = (function(node, ancestor) {
   }
 });
 $p.qH = (function(element, listener) {
-  element.addEventListener(listener.fd.ev.fW, listener.it, listener.iu);
+  element.addEventListener(listener.ff.ex.fW, listener.it, listener.iu);
 });
 $p.t7 = (function(element, listener) {
-  element.removeEventListener(listener.fd.ev.fW, listener.it, listener.iu);
+  element.removeEventListener(listener.ff.ex.fW, listener.it, listener.iu);
 });
 $p.rp = (function(tag) {
   return document.createElement(tag.iF);
@@ -2455,7 +2459,7 @@ $p.s1 = (function(element, attr) {
   return ((x === (void 0)) ? (void 0) : attr.im.jF(x));
 });
 $p.s2 = (function(element, attr) {
-  var domValue = element.cg.getAttributeNS(null, attr.fX);
+  var domValue = element.cl.getAttributeNS(null, attr.fX);
   return ((domValue !== null) ? domValue : (void 0));
 });
 $p.q3 = (function(element, attr, value) {
@@ -2465,20 +2469,20 @@ $p.tj = (function(element, attr, domValue) {
   if ((domValue === null)) {
     this.t8(element, attr);
   } else {
-    element.cg.setAttribute(attr.fX, domValue);
+    element.cl.setAttribute(attr.fX, domValue);
   }
 });
 $p.t8 = (function(element, attr) {
-  element.cg.removeAttribute(attr.fX);
+  element.cl.removeAttribute(attr.fX);
 });
 $p.s3 = (function(element, prop) {
-  return element.cg[prop.d6];
+  return element.cl[prop.d6];
 });
 $p.q4 = (function(element, prop, value) {
   this.q5(element, prop, prop.io.gC(value));
 });
 $p.q5 = (function(element, prop, value) {
-  element.cg[prop.d6] = value;
+  element.cl[prop.d6] = value;
 });
 $p.ph = (function(tag) {
   return document.createElementNS("http://www.w3.org/2000/svg", tag.iG);
@@ -2488,7 +2492,7 @@ $p.s6 = (function(element, attr) {
   return ((x === (void 0)) ? (void 0) : attr.ip.jF(x));
 });
 $p.s7 = (function(element, attr) {
-  var $x_2 = element.dz;
+  var $x_2 = element.dA;
   var this$2 = attr.h9;
   var $x_1 = $x_2.getAttributeNS((this$2.j() ? null : this$2.Q()), attr.iq);
   var domValue = $x_1;
@@ -2503,15 +2507,15 @@ $p.tl = (function(element, attr, domValue) {
   } else {
     var this$1 = attr.h9;
     if (this$1.j()) {
-      element.dz.setAttribute(attr.h8, domValue);
+      element.dA.setAttribute(attr.h8, domValue);
     } else {
       var x0 = this$1.Q();
-      element.dz.setAttributeNS(x0, attr.h8, domValue);
+      element.dA.setAttributeNS(x0, attr.h8, domValue);
     }
   }
 });
 $p.ta = (function(element, attr) {
-  var $x_1 = element.dz;
+  var $x_1 = element.dA;
   var this$2 = attr.h9;
   $x_1.removeAttributeNS((this$2.j() ? null : this$2.Q()), attr.iq);
 });
@@ -2625,19 +2629,19 @@ function $m_Lcom_raquo_laminar_Seq$() {
 function $f_Lcom_raquo_laminar_api_AirstreamAliases__$init$__V($thiz) {
   $m_Lcom_raquo_airstream_core_Observer$();
   $m_Lcom_raquo_airstream_core_AirstreamError$();
-  $thiz.fc = $m_Lcom_raquo_airstream_state_Var$();
+  $thiz.fe = $m_Lcom_raquo_airstream_state_Var$();
 }
 function $f_Lcom_raquo_laminar_api_LaminarAliases__$init$__V($thiz) {
   $thiz.qe = $m_Lcom_raquo_laminar_modifiers_Modifier$();
 }
 function $f_Lcom_raquo_laminar_api_MountHooks__$init$__V($thiz) {
   $f_Lcom_raquo_laminar_api_MountHooks__onMountCallback__F1__Lcom_raquo_laminar_modifiers_Modifier($thiz, new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((_$1) => {
-    _$1.nu.cg.focus();
+    _$1.nu.cl.focus();
   })));
 }
 function $f_Lcom_raquo_laminar_api_MountHooks__onMountCallback__F1__Lcom_raquo_laminar_modifiers_Modifier($thiz, fn) {
   return new $c_Lcom_raquo_laminar_modifiers_Modifier$$anon$2(new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((element) => {
-    var ignoreNextActivation = new $c_sr_BooleanRef((!element.bU().bY.j()));
+    var ignoreNextActivation = new $c_sr_BooleanRef((!element.bV().c1.j()));
     var activate = new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((c) => {
       if (ignoreNextActivation.hr) {
         var ev$5 = false;
@@ -2646,17 +2650,17 @@ function $f_Lcom_raquo_laminar_api_MountHooks__onMountCallback__F1__Lcom_raquo_l
         fn.i(c);
       }
     }));
-    $m_Lcom_raquo_airstream_ownership_DynamicSubscription$().q7(element.bU(), new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((element$2) => ((owner) => {
+    $m_Lcom_raquo_airstream_ownership_DynamicSubscription$().q7(element.bV(), new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((element$2) => ((owner) => {
       activate.i(new $c_Lcom_raquo_laminar_lifecycle_MountContext(element$2, owner));
     }))(element)), false);
   })), $m_Lcom_raquo_laminar_modifiers_Modifier$());
 }
 /** @constructor */
 function $c_Lcom_raquo_laminar_codecs_package$() {
-  this.b3 = null;
+  this.b2 = null;
   this.nn = null;
   $n_Lcom_raquo_laminar_codecs_package$ = this;
-  this.b3 = new $c_Lcom_raquo_laminar_codecs_package$$anon$2($m_Lcom_raquo_laminar_codecs_package$());
+  this.b2 = new $c_Lcom_raquo_laminar_codecs_package$$anon$2($m_Lcom_raquo_laminar_codecs_package$());
   new $c_Lcom_raquo_laminar_codecs_package$$anon$2($m_Lcom_raquo_laminar_codecs_package$());
   this.nn = new $c_Lcom_raquo_laminar_codecs_package$$anon$2($m_Lcom_raquo_laminar_codecs_package$());
 }
@@ -2680,7 +2684,7 @@ function $f_Lcom_raquo_laminar_defs_complex_ComplexHtmlKeys__$init$__V($thiz) {
   $thiz.g = $f_Lcom_raquo_laminar_defs_complex_ComplexHtmlKeys__stringCompositeHtmlAttr__T__T__Lcom_raquo_laminar_keys_CompositeKey($thiz, "class", " ");
 }
 function $f_Lcom_raquo_laminar_defs_complex_ComplexHtmlKeys__stringCompositeHtmlAttr__T__T__Lcom_raquo_laminar_keys_CompositeKey($thiz, name, separator) {
-  var attr = new $c_Lcom_raquo_laminar_keys_HtmlAttr(name, $m_Lcom_raquo_laminar_codecs_package$().b3);
+  var attr = new $c_Lcom_raquo_laminar_keys_HtmlAttr(name, $m_Lcom_raquo_laminar_codecs_package$().b2);
   return new $c_Lcom_raquo_laminar_keys_CompositeKey(attr.fX, new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((el) => {
     var x = $m_Lcom_raquo_laminar_DomApi$().s1(el, attr);
     return ((x === (void 0)) ? "" : x);
@@ -2689,10 +2693,10 @@ function $f_Lcom_raquo_laminar_defs_complex_ComplexHtmlKeys__stringCompositeHtml
   })), separator);
 }
 function $f_Lcom_raquo_laminar_defs_complex_ComplexSvgKeys__$init$__V($thiz) {
-  $thiz.dw = $f_Lcom_raquo_laminar_defs_complex_ComplexSvgKeys__stringCompositeSvgAttr__T__T__Lcom_raquo_laminar_keys_CompositeKey($thiz, "class", " ");
+  $thiz.dx = $f_Lcom_raquo_laminar_defs_complex_ComplexSvgKeys__stringCompositeSvgAttr__T__T__Lcom_raquo_laminar_keys_CompositeKey($thiz, "class", " ");
 }
 function $f_Lcom_raquo_laminar_defs_complex_ComplexSvgKeys__stringCompositeSvgAttr__T__T__Lcom_raquo_laminar_keys_CompositeKey($thiz, name, separator) {
-  var attr = new $c_Lcom_raquo_laminar_keys_SvgAttr(name, $m_Lcom_raquo_laminar_codecs_package$().b3, $m_s_None$());
+  var attr = new $c_Lcom_raquo_laminar_keys_SvgAttr(name, $m_Lcom_raquo_laminar_codecs_package$().b2, $m_s_None$());
   return new $c_Lcom_raquo_laminar_keys_CompositeKey(attr.h8, new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((el) => {
     var x = $m_Lcom_raquo_laminar_DomApi$().s6(el, attr);
     return ((x === (void 0)) ? "" : x);
@@ -2709,7 +2713,7 @@ function $c_Lcom_raquo_laminar_inputs_InputController$() {
   $m_Lcom_raquo_laminar_api_package$().a.qb();
   $m_Lcom_raquo_ew_JsArray$().br($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_keys_EventProp.r().C)([$m_Lcom_raquo_laminar_api_package$().a.kd(), $m_Lcom_raquo_laminar_api_package$().a.pL()])));
   $m_Lcom_raquo_laminar_api_package$().a.pa();
-  $m_Lcom_raquo_ew_JsArray$().br($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_keys_EventProp.r().C)([$m_Lcom_raquo_laminar_api_package$().a.kd(), $m_Lcom_raquo_laminar_api_package$().a.cy()])));
+  $m_Lcom_raquo_ew_JsArray$().br($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_keys_EventProp.r().C)([$m_Lcom_raquo_laminar_api_package$().a.kd(), $m_Lcom_raquo_laminar_api_package$().a.bX()])));
   this.no = $m_Lcom_raquo_ew_JsArray$().br($m_sr_ScalaRunTime$().c(new ($d_T.r().C)(["value", "checked"])));
 }
 $p = $c_Lcom_raquo_laminar_inputs_InputController$.prototype = new $h_O();
@@ -2739,35 +2743,35 @@ function $h_Lcom_raquo_laminar_inserters_ChildInserter$() {
 $h_Lcom_raquo_laminar_inserters_ChildInserter$.prototype = $p;
 $p.oV = (function(childSource, renderable, initialHooks) {
   return new $c_Lcom_raquo_laminar_inserters_DynamicInserter($m_s_None$(), true, new $c_sjsr_AnonFunction3_$$Lambda$0321b7865d991d5a3e10ec941cd6461a4b204491(((ctx, owner, hooks) => {
-    if ((!ctx.eu)) {
+    if ((!ctx.ew)) {
       ctx.pv();
     }
     return $f_Lcom_raquo_airstream_core_BaseObservable__foreach__F1__Lcom_raquo_airstream_ownership_Owner__Lcom_raquo_airstream_ownership_Subscription(childSource, new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((ctx$2, maybeLastSeenChild) => ((newComponent) => {
-      this.tp(maybeLastSeenChild.ay, newComponent, ctx$2, hooks);
+      this.tp(maybeLastSeenChild.az, newComponent, ctx$2, hooks);
       var ev$3 = newComponent;
-      maybeLastSeenChild.ay = ev$3;
+      maybeLastSeenChild.az = ev$3;
       ev$3 = null;
     }))(ctx, new $c_sr_ObjectRef((void 0)))), owner);
   })), initialHooks);
 });
 $p.tp = (function(maybeLastSeenChild, newChildNode, ctx, hooks) {
-  if ((!ctx.eu)) {
+  if ((!ctx.ew)) {
     ctx.pv();
   }
-  var elem = ctx.es;
+  var elem = ctx.eu;
   var elem$1 = 0;
   elem$1 = elem;
-  var x$1 = (((maybeLastSeenChild === (void 0)) || $m_sr_BoxesRunTime$().A(maybeLastSeenChild.aa(), ctx.dy.aa().nextSibling)) ? maybeLastSeenChild : (void 0));
+  var x$1 = (((maybeLastSeenChild === (void 0)) || $m_sr_BoxesRunTime$().A(maybeLastSeenChild.aa(), ctx.dz.aa().nextSibling)) ? maybeLastSeenChild : (void 0));
   if ((x$1 === (void 0))) {
-    $m_Lcom_raquo_laminar_nodes_ParentNode$().sk(ctx.et, newChildNode, ctx.dy, hooks);
-  } else if (($m_Lcom_raquo_laminar_nodes_ParentNode$().pW(ctx.et, x$1, newChildNode, hooks) || (x$1 === newChildNode))) {
+    $m_Lcom_raquo_laminar_nodes_ParentNode$().sk(ctx.ev, newChildNode, ctx.dz, hooks);
+  } else if (($m_Lcom_raquo_laminar_nodes_ParentNode$().pW(ctx.ev, x$1, newChildNode, hooks) || (x$1 === newChildNode))) {
     var ev$4 = (((-1) + elem$1) | 0);
     elem$1 = ev$4;
   }
   ctx.pV(newChildNode);
-  ctx.dx.clear();
-  ctx.dx.set(newChildNode.aa(), newChildNode);
-  ctx.es = 1;
+  ctx.dy.clear();
+  ctx.dy.set(newChildNode.aa(), newChildNode);
+  ctx.eu = 1;
 });
 var $d_Lcom_raquo_laminar_inserters_ChildInserter$ = new $TypeData().i($c_Lcom_raquo_laminar_inserters_ChildInserter$, "com.raquo.laminar.inserters.ChildInserter$", ({
   e4: 1
@@ -2788,14 +2792,14 @@ $p.constructor = $c_Lcom_raquo_laminar_inserters_ChildTextInserter$;
 function $h_Lcom_raquo_laminar_inserters_ChildTextInserter$() {
 }
 $h_Lcom_raquo_laminar_inserters_ChildTextInserter$.prototype = $p;
-$p.eK = (function(textSource, renderable) {
+$p.dl = (function(textSource, renderable) {
   return new $c_Lcom_raquo_laminar_inserters_DynamicInserter($m_s_None$(), false, new $c_sjsr_AnonFunction3_$$Lambda$0321b7865d991d5a3e10ec941cd6461a4b204491(((ctx, owner, _$1) => $f_Lcom_raquo_airstream_core_BaseObservable__foreach__F1__Lcom_raquo_airstream_ownership_Owner__Lcom_raquo_airstream_ownership_Subscription(textSource, new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((ctx$2, maybeTextNode) => ((newValue) => {
-    var x = maybeTextNode.ay;
+    var x = maybeTextNode.az;
     if ((x === (void 0))) {
       var newTextNode = new $c_Lcom_raquo_laminar_nodes_TextNode(renderable.jw(newValue));
       this.tq(newTextNode, ctx$2);
       var ev$2 = newTextNode;
-      maybeTextNode.ay = ev$2;
+      maybeTextNode.az = ev$2;
       ev$2 = null;
     } else {
       x.ha.textContent = renderable.jw(newValue);
@@ -2803,13 +2807,13 @@ $p.eK = (function(textSource, renderable) {
   }))(ctx, new $c_sr_ObjectRef((void 0)))), owner))), (void 0));
 });
 $p.tq = (function(newTextNode, ctx) {
-  $m_Lcom_raquo_laminar_nodes_ParentNode$().pW(ctx.et, ctx.dy, newTextNode, (void 0));
-  ctx.dy = newTextNode;
-  if (ctx.eu) {
-    ctx.eu = false;
+  $m_Lcom_raquo_laminar_nodes_ParentNode$().pW(ctx.ev, ctx.dz, newTextNode, (void 0));
+  ctx.dz = newTextNode;
+  if (ctx.ew) {
+    ctx.ew = false;
     ctx.pV(newTextNode);
-    ctx.dx.clear();
-    ctx.es = 0;
+    ctx.dy.clear();
+    ctx.eu = 0;
   }
 });
 var $d_Lcom_raquo_laminar_inserters_ChildTextInserter$ = new $TypeData().i($c_Lcom_raquo_laminar_inserters_ChildTextInserter$, "com.raquo.laminar.inserters.ChildTextInserter$", ({
@@ -2824,16 +2828,16 @@ function $m_Lcom_raquo_laminar_inserters_ChildTextInserter$() {
 }
 /** @constructor */
 function $c_Lcom_raquo_laminar_inserters_InsertContext(parentNode, sentinelNode, strictMode, extraNodeCount, extraNodesMap) {
-  this.et = null;
+  this.ev = null;
+  this.dz = null;
+  this.ew = false;
+  this.eu = 0;
   this.dy = null;
-  this.eu = false;
-  this.es = 0;
-  this.dx = null;
-  this.et = parentNode;
-  this.dy = sentinelNode;
-  this.eu = strictMode;
-  this.es = extraNodeCount;
-  this.dx = extraNodesMap;
+  this.ev = parentNode;
+  this.dz = sentinelNode;
+  this.ew = strictMode;
+  this.eu = extraNodeCount;
+  this.dy = extraNodesMap;
 }
 $p = $c_Lcom_raquo_laminar_inserters_InsertContext.prototype = new $h_O();
 $p.constructor = $c_Lcom_raquo_laminar_inserters_InsertContext;
@@ -2842,24 +2846,24 @@ function $h_Lcom_raquo_laminar_inserters_InsertContext() {
 }
 $h_Lcom_raquo_laminar_inserters_InsertContext.prototype = $p;
 $p.pv = (function() {
-  if ((this.eu || (this.es !== 0))) {
-    throw $ct_jl_Exception__T__(new $c_jl_Exception(), ("forceSetStrictMode invoked when not allowed, inside parent = " + $m_Lcom_raquo_laminar_DomApi$().rw(this.et.aa())));
+  if ((this.ew || (this.eu !== 0))) {
+    throw $ct_jl_Exception__T__(new $c_jl_Exception(), ("forceSetStrictMode invoked when not allowed, inside parent = " + $m_Lcom_raquo_laminar_DomApi$().rw(this.ev.aa())));
   }
-  if ((this.dx === null)) {
-    this.dx = new Map();
+  if ((this.dy === null)) {
+    this.dy = new Map();
   }
-  if ((!(!(!(this.dy.aa() instanceof Comment))))) {
-    var contentNode = this.dy;
+  if ((!(!(!(this.dz.aa() instanceof Comment))))) {
+    var contentNode = this.dz;
     var newSentinelNode = new $c_Lcom_raquo_laminar_nodes_CommentNode("");
-    $m_Lcom_raquo_laminar_DomApi$().sj(this.et.aa(), newSentinelNode.ix, contentNode.aa());
-    this.dy = newSentinelNode;
-    this.es = 1;
-    this.dx.set(contentNode.aa(), contentNode);
+    $m_Lcom_raquo_laminar_DomApi$().sj(this.ev.aa(), newSentinelNode.ix, contentNode.aa());
+    this.dz = newSentinelNode;
+    this.eu = 1;
+    this.dy.set(contentNode.aa(), contentNode);
   }
-  this.eu = true;
+  this.ew = true;
 });
 $p.pV = (function(after) {
-  var elem = this.es;
+  var elem = this.eu;
   var elem$1 = 0;
   elem$1 = elem;
   while ((elem$1 > 0)) {
@@ -2868,12 +2872,12 @@ $p.pV = (function(after) {
       var ev$3 = 0;
       elem$1 = ev$3;
     } else {
-      var maybePrevChild = this.dx.get(prevChildRef);
+      var maybePrevChild = this.dy.get(prevChildRef);
       if ((maybePrevChild === (void 0))) {
         var ev$4 = 0;
         elem$1 = ev$4;
       } else if ((maybePrevChild !== (void 0))) {
-        $m_Lcom_raquo_laminar_nodes_ParentNode$().t5(this.et, maybePrevChild);
+        $m_Lcom_raquo_laminar_nodes_ParentNode$().t5(this.ev, maybePrevChild);
         var ev$5 = (((-1) + elem$1) | 0);
         elem$1 = ev$5;
       }
@@ -2894,7 +2898,7 @@ function $h_Lcom_raquo_laminar_inserters_InsertContext$() {
 $h_Lcom_raquo_laminar_inserters_InsertContext$.prototype = $p;
 $p.td = (function(parentNode, strictMode, hooks) {
   var sentinelNode = new $c_Lcom_raquo_laminar_nodes_CommentNode("");
-  $m_Lcom_raquo_laminar_nodes_ParentNode$().eJ(parentNode, sentinelNode, hooks);
+  $m_Lcom_raquo_laminar_nodes_ParentNode$().eL(parentNode, sentinelNode, hooks);
   return this.tz(parentNode, sentinelNode, strictMode);
 });
 $p.tz = (function(parentNode, sentinelNode, strictMode) {
@@ -2920,7 +2924,7 @@ function $h_Lcom_raquo_laminar_keys_CompositeKey$() {
 }
 $h_Lcom_raquo_laminar_keys_CompositeKey$.prototype = $p;
 $p.kb = (function(items, separator) {
-  return ((items === "") ? $m_sci_Nil$() : $m_sci_Nil$().eh($ct_sjs_js_WrappedArray__sjs_js_Array__(new $c_sjs_js_WrappedArray(), items.split(separator).filter(((_$1) => (_$1 !== ""))))));
+  return ((items === "") ? $m_sci_Nil$() : $m_sci_Nil$().ej($ct_sjs_js_WrappedArray__sjs_js_Array__(new $c_sjs_js_WrappedArray(), items.split(separator).filter(((_$1) => (_$1 !== ""))))));
 });
 var $d_Lcom_raquo_laminar_keys_CompositeKey$ = new $TypeData().i($c_Lcom_raquo_laminar_keys_CompositeKey$, "com.raquo.laminar.keys.CompositeKey$", ({
   ec: 1
@@ -2934,11 +2938,11 @@ function $m_Lcom_raquo_laminar_keys_CompositeKey$() {
 }
 /** @constructor */
 function $c_Lcom_raquo_laminar_keys_EventProcessor(eventProp, shouldUseCapture, shouldBePassive, processor) {
-  this.ev = null;
+  this.ex = null;
   this.fV = false;
   this.h7 = false;
   this.fU = null;
-  this.ev = eventProp;
+  this.ex = eventProp;
   this.fV = shouldUseCapture;
   this.h7 = shouldBePassive;
   this.fU = processor;
@@ -2954,7 +2958,7 @@ $p.gK = (function(value) {
     var this$2 = this.fU.i(ev);
     return (this$2.j() ? $m_s_None$() : new $c_s_Some((this$2.Q(), value.Y())));
   }));
-  return new $c_Lcom_raquo_laminar_keys_EventProcessor(this.ev, this.fV, this.h7, newProcessor);
+  return new $c_Lcom_raquo_laminar_keys_EventProcessor(this.ex, this.fV, this.h7, newProcessor);
 });
 $p.sC = (function() {
   var newProcessor = new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((ev) => {
@@ -2967,7 +2971,7 @@ $p.sC = (function() {
       return new $c_s_Some((!(!((x === (void 0)) ? false : x))));
     }
   }));
-  return new $c_Lcom_raquo_laminar_keys_EventProcessor(this.ev, this.fV, this.h7, newProcessor);
+  return new $c_Lcom_raquo_laminar_keys_EventProcessor(this.ex, this.fV, this.h7, newProcessor);
 });
 var $d_Lcom_raquo_laminar_keys_EventProcessor = new $TypeData().i($c_Lcom_raquo_laminar_keys_EventProcessor, "com.raquo.laminar.keys.EventProcessor", ({
   eg: 1
@@ -2981,7 +2985,7 @@ $p.constructor = $c_Lcom_raquo_laminar_keys_EventProcessor$;
 function $h_Lcom_raquo_laminar_keys_EventProcessor$() {
 }
 $h_Lcom_raquo_laminar_keys_EventProcessor$.prototype = $p;
-$p.cc = (function(eventProp, shouldUseCapture, shouldBePassive) {
+$p.bL = (function(eventProp, shouldUseCapture, shouldBePassive) {
   return new $c_Lcom_raquo_laminar_keys_EventProcessor(eventProp, shouldUseCapture, shouldBePassive, new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((_$14) => new $c_s_Some(_$14))));
 });
 var $d_Lcom_raquo_laminar_keys_EventProcessor$ = new $TypeData().i($c_Lcom_raquo_laminar_keys_EventProcessor$, "com.raquo.laminar.keys.EventProcessor$", ({
@@ -3151,51 +3155,51 @@ $p.constructor = $c_Lcom_raquo_laminar_nodes_ParentNode$;
 function $h_Lcom_raquo_laminar_nodes_ParentNode$() {
 }
 $h_Lcom_raquo_laminar_nodes_ParentNode$.prototype = $p;
-$p.eJ = (function(parent, child, hooks) {
+$p.eL = (function(parent, child, hooks) {
   var nextParent = new $c_s_Some(parent);
-  child.em(nextParent);
+  child.eo(nextParent);
   if ((hooks !== (void 0))) {
     hooks.pN(parent, child);
   }
   var appended = $m_Lcom_raquo_laminar_DomApi$().qS(parent.aa(), child.aa());
   if (appended) {
-    child.ei(nextParent);
+    child.ek(nextParent);
   }
   return appended;
 });
 $p.t5 = (function(parent, child) {
   var removed = false;
   if ($m_sr_BoxesRunTime$().A(child.aa().parentNode, parent.aa())) {
-    child.em($m_s_None$());
+    child.eo($m_s_None$());
     removed = $m_Lcom_raquo_laminar_DomApi$().t6(parent.aa(), child.aa());
-    child.ei($m_s_None$());
+    child.ek($m_s_None$());
   }
   return removed;
 });
 $p.sk = (function(parent, newChild, referenceChild, hooks) {
   var nextParent = new $c_s_Some(parent);
-  newChild.em(nextParent);
+  newChild.eo(nextParent);
   if ((hooks !== (void 0))) {
     hooks.pN(parent, newChild);
   }
   var inserted = $m_Lcom_raquo_laminar_DomApi$().si(parent.aa(), newChild.aa(), referenceChild.aa());
-  newChild.ei(nextParent);
+  newChild.ek(nextParent);
   return inserted;
 });
 $p.pW = (function(parent, oldChild, newChild, hooks) {
   var replaced = false;
   if ((oldChild !== newChild)) {
-    if (oldChild.ft().bm(parent)) {
+    if (oldChild.fv().bm(parent)) {
       var newChildNextParent = new $c_s_Some(parent);
-      oldChild.em($m_s_None$());
-      newChild.em(newChildNextParent);
+      oldChild.eo($m_s_None$());
+      newChild.eo(newChildNextParent);
       if ((hooks !== (void 0))) {
         hooks.pN(parent, newChild);
       }
       replaced = $m_Lcom_raquo_laminar_DomApi$().tb(parent.aa(), newChild.aa(), oldChild.aa());
       if (replaced) {
-        oldChild.ei($m_s_None$());
-        newChild.ei(newChildNextParent);
+        oldChild.ek($m_s_None$());
+        newChild.ek(newChildNextParent);
       }
     }
   }
@@ -3221,7 +3225,7 @@ function $h_Lcom_raquo_laminar_nodes_ReactiveElement$() {
 }
 $h_Lcom_raquo_laminar_nodes_ReactiveElement$.prototype = $p;
 $p.ty = (function(element, subscribe) {
-  return $m_Lcom_raquo_airstream_ownership_DynamicSubscription$().gV(element.bU(), new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((owner) => subscribe.i(new $c_Lcom_raquo_laminar_lifecycle_MountContext(element, owner)))), true);
+  return $m_Lcom_raquo_airstream_ownership_DynamicSubscription$().gV(element.bV(), new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((owner) => subscribe.i(new $c_Lcom_raquo_laminar_lifecycle_MountContext(element, owner)))), true);
 });
 var $d_Lcom_raquo_laminar_nodes_ReactiveElement$ = new $TypeData().i($c_Lcom_raquo_laminar_nodes_ReactiveElement$, "com.raquo.laminar.nodes.ReactiveElement$", ({
   eE: 1
@@ -3275,7 +3279,7 @@ function $m_Lcom_raquo_laminar_receivers_ChildTextReceiver$() {
   return $n_Lcom_raquo_laminar_receivers_ChildTextReceiver$;
 }
 function $p_jl_StackTrace$__normalizedLinesToStackTrace__O__Ajl_StackTraceElement($thiz, lines) {
-  var NormalizedFrameLine = $m_jl_StackTrace$StringRE$().cJ("^([^@]*)@(.*?):([0-9]+)(?::([0-9]+))?$");
+  var NormalizedFrameLine = $m_jl_StackTrace$StringRE$().cK("^([^@]*)@(.*?):([0-9]+)(?::([0-9]+))?$");
   var trace = [];
   var i = 0;
   while ((i < (lines.length | 0))) {
@@ -3307,11 +3311,11 @@ function $p_jl_StackTrace$__normalizedLinesToStackTrace__O__Ajl_StackTraceElemen
   return result;
 }
 function $p_jl_StackTrace$__extractClassMethod__T__O($thiz, functionName) {
-  var PatBC = $m_jl_StackTrace$StringRE$().cJ("^(?:Object\\.|\\[object Object\\]\\.|Module\\.)?\\$[bc]_([^\\.]+)(?:\\.prototype)?\\.([^\\.]+)$");
-  var PatS = $m_jl_StackTrace$StringRE$().cJ("^(?:Object\\.|\\[object Object\\]\\.|Module\\.)?\\$(?:ps?|s|f)_((?:_[^_]|[^_])+)__([^\\.]+)$");
-  var PatCT = $m_jl_StackTrace$StringRE$().cJ("^(?:Object\\.|\\[object Object\\]\\.|Module\\.)?\\$ct_((?:_[^_]|[^_])+)__([^\\.]*)$");
-  var PatN = $m_jl_StackTrace$StringRE$().cJ("^new (?:Object\\.|\\[object Object\\]\\.|Module\\.)?\\$c_([^\\.]+)$");
-  var PatM = $m_jl_StackTrace$StringRE$().cJ("^(?:Object\\.|\\[object Object\\]\\.|Module\\.)?\\$m_([^\\.]+)$");
+  var PatBC = $m_jl_StackTrace$StringRE$().cK("^(?:Object\\.|\\[object Object\\]\\.|Module\\.)?\\$[bc]_([^\\.]+)(?:\\.prototype)?\\.([^\\.]+)$");
+  var PatS = $m_jl_StackTrace$StringRE$().cK("^(?:Object\\.|\\[object Object\\]\\.|Module\\.)?\\$(?:ps?|s|f)_((?:_[^_]|[^_])+)__([^\\.]+)$");
+  var PatCT = $m_jl_StackTrace$StringRE$().cK("^(?:Object\\.|\\[object Object\\]\\.|Module\\.)?\\$ct_((?:_[^_]|[^_])+)__([^\\.]*)$");
+  var PatN = $m_jl_StackTrace$StringRE$().cK("^new (?:Object\\.|\\[object Object\\]\\.|Module\\.)?\\$c_([^\\.]+)$");
+  var PatM = $m_jl_StackTrace$StringRE$().cK("^(?:Object\\.|\\[object Object\\]\\.|Module\\.)?\\$m_([^\\.]+)$");
   var matchBC = PatBC.exec(functionName);
   var matchBCOrS = ((matchBC !== null) ? matchBC : PatS.exec(functionName));
   if ((matchBCOrS !== null)) {
@@ -3339,7 +3343,7 @@ function $p_jl_StackTrace$__decodeClassName__T__T($thiz, encodedName) {
   return this$3.split("\uff3f").join("_");
 }
 function $p_jl_StackTrace$__decompressedClasses$lzycompute__O($thiz) {
-  if (((((1 & $thiz.ch) << 24) >> 24) === 0)) {
+  if (((((1 & $thiz.cm) << 24) >> 24) === 0)) {
     var dict = ({});
     dict.O = "java_lang_Object";
     dict.T = "java_lang_String";
@@ -3356,15 +3360,15 @@ function $p_jl_StackTrace$__decompressedClasses$lzycompute__O($thiz) {
       index = ((1 + index) | 0);
     }
     $thiz.iK = dict;
-    $thiz.ch = (((1 | $thiz.ch) << 24) >> 24);
+    $thiz.cm = (((1 | $thiz.cm) << 24) >> 24);
   }
   return $thiz.iK;
 }
 function $p_jl_StackTrace$__decompressedClasses__O($thiz) {
-  return (((((1 & $thiz.ch) << 24) >> 24) === 0) ? $p_jl_StackTrace$__decompressedClasses$lzycompute__O($thiz) : $thiz.iK);
+  return (((((1 & $thiz.cm) << 24) >> 24) === 0) ? $p_jl_StackTrace$__decompressedClasses$lzycompute__O($thiz) : $thiz.iK);
 }
 function $p_jl_StackTrace$__decompressedPrefixes$lzycompute__O($thiz) {
-  if (((((2 & $thiz.ch) << 24) >> 24) === 0)) {
+  if (((((2 & $thiz.cm) << 24) >> 24) === 0)) {
     var dict = ({});
     dict.sjsr_ = "scala_scalajs_runtime_";
     dict.sjs_ = "scala_scalajs_";
@@ -3377,22 +3381,22 @@ function $p_jl_StackTrace$__decompressedPrefixes$lzycompute__O($thiz) {
     dict.jl_ = "java_lang_";
     dict.ju_ = "java_util_";
     $thiz.iL = dict;
-    $thiz.ch = (((2 | $thiz.ch) << 24) >> 24);
+    $thiz.cm = (((2 | $thiz.cm) << 24) >> 24);
   }
   return $thiz.iL;
 }
 function $p_jl_StackTrace$__decompressedPrefixes__O($thiz) {
-  return (((((2 & $thiz.ch) << 24) >> 24) === 0) ? $p_jl_StackTrace$__decompressedPrefixes$lzycompute__O($thiz) : $thiz.iL);
+  return (((((2 & $thiz.cm) << 24) >> 24) === 0) ? $p_jl_StackTrace$__decompressedPrefixes$lzycompute__O($thiz) : $thiz.iL);
 }
 function $p_jl_StackTrace$__compressedPrefixes$lzycompute__O($thiz) {
-  if (((((4 & $thiz.ch) << 24) >> 24) === 0)) {
+  if (((((4 & $thiz.cm) << 24) >> 24) === 0)) {
     $thiz.iJ = Object.keys($p_jl_StackTrace$__decompressedPrefixes__O($thiz));
-    $thiz.ch = (((4 | $thiz.ch) << 24) >> 24);
+    $thiz.cm = (((4 | $thiz.cm) << 24) >> 24);
   }
   return $thiz.iJ;
 }
 function $p_jl_StackTrace$__compressedPrefixes__O($thiz) {
-  return (((((4 & $thiz.ch) << 24) >> 24) === 0) ? $p_jl_StackTrace$__compressedPrefixes$lzycompute__O($thiz) : $thiz.iJ);
+  return (((((4 & $thiz.cm) << 24) >> 24) === 0) ? $p_jl_StackTrace$__compressedPrefixes$lzycompute__O($thiz) : $thiz.iJ);
 }
 function $p_jl_StackTrace$__decodeMethodName__T__T($thiz, encodedName) {
   if ((!(!encodedName.startsWith("init___")))) {
@@ -3406,20 +3410,20 @@ function $p_jl_StackTrace$__normalizeStackTraceLines__O__O($thiz, e) {
   return ((!(!(!(!(!e))))) ? [] : ((!(!(!(!(e.arguments && e.stack))))) ? $p_jl_StackTrace$__extractChrome__O__O($thiz, e) : ((!(!(!(!(e.stack && e.sourceURL))))) ? $p_jl_StackTrace$__extractSafari__O__O($thiz, e) : ((!(!(!(!(e.stack && e.number))))) ? $p_jl_StackTrace$__extractIE__O__O($thiz, e) : ((!(!(!(!(e.stack && e.fileName))))) ? $p_jl_StackTrace$__extractFirefox__O__O($thiz, e) : ((!(!(!(!(e.message && e["opera#sourceloc"]))))) ? ((!(!(!(!(!e.stacktrace))))) ? $p_jl_StackTrace$__extractOpera9__O__O($thiz, e) : ((!(!(!(!((e.message.indexOf("\n") > (-1.0)) && (e.message.split("\n").length > e.stacktrace.split("\n").length)))))) ? $p_jl_StackTrace$__extractOpera9__O__O($thiz, e) : $p_jl_StackTrace$__extractOpera10a__O__O($thiz, e))) : ((!(!(!(!((e.message && e.stack) && e.stacktrace))))) ? ((!(!(!(!(e.stacktrace.indexOf("called from line") < 0.0))))) ? $p_jl_StackTrace$__extractOpera10b__O__O($thiz, e) : $p_jl_StackTrace$__extractOpera11__O__O($thiz, e)) : ((!(!(!(!(e.stack && (!e.fileName)))))) ? $p_jl_StackTrace$__extractChrome__O__O($thiz, e) : $p_jl_StackTrace$__extractOther__O__O($thiz, e)))))))));
 }
 function $p_jl_StackTrace$__extractChrome__O__O($thiz, e) {
-  return (e.stack + "\n").replace($m_jl_StackTrace$StringRE$().cJ("^[\\s\\S]+?\\s+at\\s+"), " at ").replace($m_jl_StackTrace$StringRE$().bW("^\\s+(at eval )?at\\s+", "gm"), "").replace($m_jl_StackTrace$StringRE$().bW("^([^\\(]+?)([\\n])", "gm"), "{anonymous}() ($1)$2").replace($m_jl_StackTrace$StringRE$().bW("^Object.<anonymous>\\s*\\(([^\\)]+)\\)", "gm"), "{anonymous}() ($1)").replace($m_jl_StackTrace$StringRE$().bW("^([^\\(]+|\\{anonymous\\}\\(\\)) \\((.+)\\)$", "gm"), "$1@$2").split("\n").slice(0, (-1));
+  return (e.stack + "\n").replace($m_jl_StackTrace$StringRE$().cK("^[\\s\\S]+?\\s+at\\s+"), " at ").replace($m_jl_StackTrace$StringRE$().bY("^\\s+(at eval )?at\\s+", "gm"), "").replace($m_jl_StackTrace$StringRE$().bY("^([^\\(]+?)([\\n])", "gm"), "{anonymous}() ($1)$2").replace($m_jl_StackTrace$StringRE$().bY("^Object.<anonymous>\\s*\\(([^\\)]+)\\)", "gm"), "{anonymous}() ($1)").replace($m_jl_StackTrace$StringRE$().bY("^([^\\(]+|\\{anonymous\\}\\(\\)) \\((.+)\\)$", "gm"), "$1@$2").split("\n").slice(0, (-1));
 }
 function $p_jl_StackTrace$__extractFirefox__O__O($thiz, e) {
-  return e.stack.replace($m_jl_StackTrace$StringRE$().bW("(?:\\n@:0)?\\s+$", "m"), "").replace($m_jl_StackTrace$StringRE$().bW("^(?:\\((\\S*)\\))?@", "gm"), "{anonymous}($1)@").split("\n");
+  return e.stack.replace($m_jl_StackTrace$StringRE$().bY("(?:\\n@:0)?\\s+$", "m"), "").replace($m_jl_StackTrace$StringRE$().bY("^(?:\\((\\S*)\\))?@", "gm"), "{anonymous}($1)@").split("\n");
 }
 function $p_jl_StackTrace$__extractIE__O__O($thiz, e) {
-  var qual$1 = e.stack.replace($m_jl_StackTrace$StringRE$().bW("^\\s*at\\s+(.*)$", "gm"), "$1").replace($m_jl_StackTrace$StringRE$().bW("^Anonymous function\\s+", "gm"), "{anonymous}() ").replace($m_jl_StackTrace$StringRE$().bW("^([^\\(]+|\\{anonymous\\}\\(\\))\\s+\\((.+)\\)$", "gm"), "$1@$2").split("\n");
+  var qual$1 = e.stack.replace($m_jl_StackTrace$StringRE$().bY("^\\s*at\\s+(.*)$", "gm"), "$1").replace($m_jl_StackTrace$StringRE$().bY("^Anonymous function\\s+", "gm"), "{anonymous}() ").replace($m_jl_StackTrace$StringRE$().bY("^([^\\(]+|\\{anonymous\\}\\(\\))\\s+\\((.+)\\)$", "gm"), "$1@$2").split("\n");
   return qual$1.slice(1);
 }
 function $p_jl_StackTrace$__extractSafari__O__O($thiz, e) {
-  return e.stack.replace($m_jl_StackTrace$StringRE$().bW("\\[native code\\]\\n", "m"), "").replace($m_jl_StackTrace$StringRE$().bW("^(?=\\w+Error\\:).*$\\n", "m"), "").replace($m_jl_StackTrace$StringRE$().bW("^@", "gm"), "{anonymous}()@").split("\n");
+  return e.stack.replace($m_jl_StackTrace$StringRE$().bY("\\[native code\\]\\n", "m"), "").replace($m_jl_StackTrace$StringRE$().bY("^(?=\\w+Error\\:).*$\\n", "m"), "").replace($m_jl_StackTrace$StringRE$().bY("^@", "gm"), "{anonymous}()@").split("\n");
 }
 function $p_jl_StackTrace$__extractOpera9__O__O($thiz, e) {
-  var lineRE = $m_jl_StackTrace$StringRE$().bW("Line (\\d+).*script (?:in )?(\\S+)", "i");
+  var lineRE = $m_jl_StackTrace$StringRE$().bY("Line (\\d+).*script (?:in )?(\\S+)", "i");
   var lines = e.message.split("\n");
   var result = [];
   var i = 2;
@@ -3434,7 +3438,7 @@ function $p_jl_StackTrace$__extractOpera9__O__O($thiz, e) {
   return result;
 }
 function $p_jl_StackTrace$__extractOpera10a__O__O($thiz, e) {
-  var lineRE = $m_jl_StackTrace$StringRE$().bW("Line (\\d+).*script (?:in )?(\\S+)(?:: In function (\\S+))?$", "i");
+  var lineRE = $m_jl_StackTrace$StringRE$().bY("Line (\\d+).*script (?:in )?(\\S+)(?:: In function (\\S+))?$", "i");
   var lines = e.stacktrace.split("\n");
   var result = [];
   var i = 0;
@@ -3451,7 +3455,7 @@ function $p_jl_StackTrace$__extractOpera10a__O__O($thiz, e) {
   return result;
 }
 function $p_jl_StackTrace$__extractOpera10b__O__O($thiz, e) {
-  var lineRE = $m_jl_StackTrace$StringRE$().cJ("^(.*)@(.+):(\\d+)$");
+  var lineRE = $m_jl_StackTrace$StringRE$().cK("^(.*)@(.+):(\\d+)$");
   var lines = e.stacktrace.split("\n");
   var result = [];
   var i = 0;
@@ -3468,7 +3472,7 @@ function $p_jl_StackTrace$__extractOpera10b__O__O($thiz, e) {
   return result;
 }
 function $p_jl_StackTrace$__extractOpera11__O__O($thiz, e) {
-  var lineRE = $m_jl_StackTrace$StringRE$().cJ("^.*line (\\d+), column (\\d+)(?: in (.+))? in (\\S+):$");
+  var lineRE = $m_jl_StackTrace$StringRE$().cK("^.*line (\\d+), column (\\d+)(?: in (.+))? in (\\S+):$");
   var lines = e.stacktrace.split("\n");
   var result = [];
   var i = 0;
@@ -3479,7 +3483,7 @@ function $p_jl_StackTrace$__extractOpera11__O__O($thiz, e) {
       var location = ((((mtch[4] + ":") + mtch[1]) + ":") + mtch[2]);
       var x$3 = mtch[2];
       var fnName0 = ((x$3 !== (void 0)) ? x$3 : "global code");
-      var fnName = fnName0.replace($m_jl_StackTrace$StringRE$().cJ("<anonymous function: (\\S+)>"), "$1").replace($m_jl_StackTrace$StringRE$().cJ("<anonymous function>"), "{anonymous}");
+      var fnName = fnName0.replace($m_jl_StackTrace$StringRE$().cK("<anonymous function: (\\S+)>"), "$1").replace($m_jl_StackTrace$StringRE$().cK("<anonymous function>"), "{anonymous}");
       (result.push(((fnName + "@") + location)) | 0);
     }
     i = ((2 + i) | 0);
@@ -3509,7 +3513,7 @@ function $c_jl_StackTrace$() {
   this.iK = null;
   this.iL = null;
   this.iJ = null;
-  this.ch = 0;
+  this.cm = 0;
 }
 $p = $c_jl_StackTrace$.prototype = new $h_O();
 $p.constructor = $c_jl_StackTrace$;
@@ -3539,10 +3543,10 @@ $p.constructor = $c_jl_StackTrace$StringRE$;
 function $h_jl_StackTrace$StringRE$() {
 }
 $h_jl_StackTrace$StringRE$.prototype = $p;
-$p.cJ = (function(this$) {
+$p.cK = (function(this$) {
   return new RegExp(this$);
 });
-$p.bW = (function(this$, mods) {
+$p.bY = (function(this$, mods) {
   return new RegExp(this$, mods);
 });
 var $d_jl_StackTrace$StringRE$ = new $TypeData().i($c_jl_StackTrace$StringRE$, "java.lang.StackTrace$StringRE$", ({
@@ -3652,7 +3656,7 @@ $p.constructor = $c_jl_reflect_Array$;
 function $h_jl_reflect_Array$() {
 }
 $h_jl_reflect_Array$.prototype = $p;
-$p.cv = (function(array) {
+$p.cA = (function(array) {
   return ((array instanceof $ac_O) ? array.b.length : ((array instanceof $ac_Z) ? array.b.length : ((array instanceof $ac_C) ? array.b.length : ((array instanceof $ac_B) ? array.b.length : ((array instanceof $ac_S) ? array.b.length : ((array instanceof $ac_I) ? array.b.length : ((array instanceof $ac_J) ? array.b.length : ((array instanceof $ac_F) ? array.b.length : ((array instanceof $ac_D) ? array.b.length : $p_jl_reflect_Array$__mismatch__O__E(this, array))))))))));
 });
 var $d_jl_reflect_Array$ = new $TypeData().i($c_jl_reflect_Array$, "java.lang.reflect.Array$", ({
@@ -3917,19 +3921,19 @@ function $m_ju_Arrays$() {
 }
 function $s_RTLong__remainderUnsigned__RTLong__RTLong__RTLong(a, b) {
   var this$1 = $m_RTLong$();
-  return new $c_RTLong(this$1.t4(a.u, a.v, b.u, b.v), this$1.S);
+  return new $c_RTLong(this$1.t4(a.u, a.v, b.u, b.v), this$1.T);
 }
 function $s_RTLong__remainder__RTLong__RTLong__RTLong(a, b) {
   var this$1 = $m_RTLong$();
-  return new $c_RTLong(this$1.t3(a.u, a.v, b.u, b.v), this$1.S);
+  return new $c_RTLong(this$1.t3(a.u, a.v, b.u, b.v), this$1.T);
 }
 function $s_RTLong__divideUnsigned__RTLong__RTLong__RTLong(a, b) {
   var this$1 = $m_RTLong$();
-  return new $c_RTLong(this$1.rA(a.u, a.v, b.u, b.v), this$1.S);
+  return new $c_RTLong(this$1.rA(a.u, a.v, b.u, b.v), this$1.T);
 }
 function $s_RTLong__divide__RTLong__RTLong__RTLong(a, b) {
   var this$1 = $m_RTLong$();
-  return new $c_RTLong(this$1.rz(a.u, a.v, b.u, b.v), this$1.S);
+  return new $c_RTLong(this$1.rz(a.u, a.v, b.u, b.v), this$1.T);
 }
 function $s_RTLong__fromDoubleBits__D__O__RTLong(value, fpBitsDataView) {
   fpBitsDataView.setFloat64(0, value, true);
@@ -3937,7 +3941,7 @@ function $s_RTLong__fromDoubleBits__D__O__RTLong(value, fpBitsDataView) {
 }
 function $s_RTLong__fromDouble__D__RTLong(value) {
   var this$1 = $m_RTLong$();
-  return new $c_RTLong(this$1.pP(value), this$1.S);
+  return new $c_RTLong(this$1.pP(value), this$1.T);
 }
 function $s_RTLong__fromUnsignedInt__I__RTLong(value) {
   return new $c_RTLong(value, 0);
@@ -4120,19 +4124,19 @@ function $p_RTLong$__unsigned_$div__I__I__I__I__I($thiz, alo, ahi, blo, bhi) {
       var aDouble = ((4.294967296E9 * ahi) + (alo >>> 0.0));
       var bDouble = ((4.294967296E9 * bhi) + (blo >>> 0.0));
       var rDouble = (aDouble / bDouble);
-      $thiz.S = ((rDouble / 4.294967296E9) | 0.0);
+      $thiz.T = ((rDouble / 4.294967296E9) | 0.0);
       return (rDouble | 0.0);
     } else {
-      $thiz.S = 0;
+      $thiz.T = 0;
       return 0;
     }
   } else if (((bhi === 0) && ((blo & (((-1) + blo) | 0)) === 0))) {
     var pow = ((31 - Math.clz32(blo)) | 0);
-    $thiz.S = ((ahi >>> pow) | 0);
+    $thiz.T = ((ahi >>> pow) | 0);
     return (((alo >>> pow) | 0) | ((ahi << 1) << ((31 - pow) | 0)));
   } else if (((blo === 0) && ((bhi & (((-1) + bhi) | 0)) === 0))) {
     var pow$2 = ((31 - Math.clz32(bhi)) | 0);
-    $thiz.S = 0;
+    $thiz.T = 0;
     return ((ahi >>> pow$2) | 0);
   } else {
     return $p_RTLong$__unsignedDivModHelper__I__I__I__I__Z__I($thiz, alo, ahi, blo, bhi, true);
@@ -4144,17 +4148,17 @@ function $p_RTLong$__unsigned_$percent__I__I__I__I__I($thiz, alo, ahi, blo, bhi)
       var aDouble = ((4.294967296E9 * ahi) + (alo >>> 0.0));
       var bDouble = ((4.294967296E9 * bhi) + (blo >>> 0.0));
       var rDouble = (aDouble % bDouble);
-      $thiz.S = ((rDouble / 4.294967296E9) | 0.0);
+      $thiz.T = ((rDouble / 4.294967296E9) | 0.0);
       return (rDouble | 0.0);
     } else {
-      $thiz.S = ahi;
+      $thiz.T = ahi;
       return alo;
     }
   } else if (((bhi === 0) && ((blo & (((-1) + blo) | 0)) === 0))) {
-    $thiz.S = 0;
+    $thiz.T = 0;
     return (alo & (((-1) + blo) | 0));
   } else if (((blo === 0) && ((bhi & (((-1) + bhi) | 0)) === 0))) {
-    $thiz.S = (ahi & (((-1) + bhi) | 0));
+    $thiz.T = (ahi & (((-1) + bhi) | 0));
     return alo;
   } else {
     return $p_RTLong$__unsignedDivModHelper__I__I__I__I__Z__I($thiz, alo, ahi, blo, bhi, false);
@@ -4214,24 +4218,24 @@ function $p_RTLong$__unsignedDivModHelper__I__I__I__I__Z__I($thiz, alo, ahi, blo
       var hi$8 = quotHi;
       var lo$9 = ((lo$8 + lo$7) | 0);
       var hi$9 = ((((hi$8 + hi$7) | 0) + ((((lo$8 & lo$7) | ((lo$8 | lo$7) & (~lo$9))) >>> 31) | 0)) | 0);
-      $thiz.S = hi$9;
+      $thiz.T = hi$9;
       return lo$9;
     } else {
       var rem_mod_bDouble = (remDouble % bDouble);
-      $thiz.S = ((rem_mod_bDouble / 4.294967296E9) | 0.0);
+      $thiz.T = ((rem_mod_bDouble / 4.294967296E9) | 0.0);
       return (rem_mod_bDouble | 0.0);
     }
   } else if (askQuotient) {
-    $thiz.S = quotHi;
+    $thiz.T = quotHi;
     return quotLo;
   } else {
-    $thiz.S = remHi;
+    $thiz.T = remHi;
     return remLo;
   }
 }
 /** @constructor */
 function $c_RTLong$() {
-  this.S = 0;
+  this.T = 0;
 }
 $p = $c_RTLong$.prototype = new $h_O();
 $p.constructor = $c_RTLong$;
@@ -4269,15 +4273,15 @@ $p.pQ = (function(lo, hi) {
 });
 $p.pP = (function(value) {
   if ((value < (-9.223372036854776E18))) {
-    this.S = (-2147483648);
+    this.T = (-2147483648);
     return 0;
   } else if ((value >= 9.223372036854776E18)) {
-    this.S = 2147483647;
+    this.T = 2147483647;
     return (-1);
   } else {
     var rawLo = (value | 0.0);
     var rawHi = ((value / 4.294967296E9) | 0.0);
-    this.S = (((value < 0.0) && (rawLo !== 0)) ? (((-1) + rawHi) | 0) : rawHi);
+    this.T = (((value < 0.0) && (rawLo !== 0)) ? (((-1) + rawHi) | 0) : rawHi);
     return rawLo;
   }
 });
@@ -4291,18 +4295,18 @@ $p.rz = (function(alo, ahi, blo, bhi) {
   if ((ahi === (alo >> 31))) {
     if ((bhi === (blo >> 31))) {
       if (((alo === (-2147483648)) && (blo === (-1)))) {
-        this.S = 0;
+        this.T = 0;
         return (-2147483648);
       } else {
         var lo = ((alo / $checkIntDivisor(blo)) | 0);
-        this.S = (lo >> 31);
+        this.T = (lo >> 31);
         return lo;
       }
     } else if (((alo === (-2147483648)) && ((blo === (-2147483648)) && (bhi === 0)))) {
-      this.S = (-1);
+      this.T = (-1);
       return (-1);
     } else {
-      this.S = 0;
+      this.T = 0;
       return 0;
     }
   } else {
@@ -4318,10 +4322,10 @@ $p.rz = (function(alo, ahi, blo, bhi) {
     if (((ahi ^ bhi) >= 0)) {
       return absRLo;
     } else {
-      var hi = this.S;
+      var hi = this.T;
       var lo$1 = ((-absRLo) | 0);
       var hi$1 = ((((-hi) | 0) + ((absRLo | lo$1) >> 31)) | 0);
-      this.S = hi$1;
+      this.T = hi$1;
       return lo$1;
     }
   }
@@ -4332,10 +4336,10 @@ $p.rA = (function(alo, ahi, blo, bhi) {
   }
   if ((ahi === 0)) {
     if ((bhi === 0)) {
-      this.S = 0;
+      this.T = 0;
       return (((alo >>> 0) / ($checkIntDivisor(blo) >>> 0)) | 0);
     } else {
-      this.S = 0;
+      this.T = 0;
       return 0;
     }
   } else {
@@ -4349,13 +4353,13 @@ $p.t3 = (function(alo, ahi, blo, bhi) {
   if ((ahi === (alo >> 31))) {
     if ((bhi === (blo >> 31))) {
       var lo = ((alo % $checkIntDivisor(blo)) | 0);
-      this.S = (lo >> 31);
+      this.T = (lo >> 31);
       return lo;
     } else if (((alo === (-2147483648)) && ((blo === (-2147483648)) && (bhi === 0)))) {
-      this.S = 0;
+      this.T = 0;
       return 0;
     } else {
-      this.S = ahi;
+      this.T = ahi;
       return alo;
     }
   } else {
@@ -4369,10 +4373,10 @@ $p.t3 = (function(alo, ahi, blo, bhi) {
     var rhi$1 = (((bhi ^ sign$1) + (((xlo$1 & (~rlo$1)) >>> 31) | 0)) | 0);
     var absRLo = $p_RTLong$__unsigned_$percent__I__I__I__I__I(this, rlo, rhi, rlo$1, rhi$1);
     if ((ahi < 0)) {
-      var hi = this.S;
+      var hi = this.T;
       var lo$1 = ((-absRLo) | 0);
       var hi$1 = ((((-hi) | 0) + ((absRLo | lo$1) >> 31)) | 0);
-      this.S = hi$1;
+      this.T = hi$1;
       return lo$1;
     } else {
       return absRLo;
@@ -4385,10 +4389,10 @@ $p.t4 = (function(alo, ahi, blo, bhi) {
   }
   if ((ahi === 0)) {
     if ((bhi === 0)) {
-      this.S = 0;
+      this.T = 0;
       return (((alo >>> 0) % ($checkIntDivisor(blo) >>> 0)) | 0);
     } else {
-      this.S = ahi;
+      this.T = ahi;
       return alo;
     }
   } else {
@@ -4481,7 +4485,7 @@ function $h_sc_ArrayOps$() {
 }
 $h_sc_ArrayOps$.prototype = $p;
 $p.rP = (function(this$, f) {
-  var len = $m_jl_reflect_Array$().cv(this$);
+  var len = $m_jl_reflect_Array$().cA(this$);
   var i = 0;
   if ((this$ instanceof $ac_O)) {
     while ((i < len)) {
@@ -4551,7 +4555,7 @@ $p.constructor = $c_sc_Hashing$;
 function $h_sc_Hashing$() {
 }
 $h_sc_Hashing$.prototype = $p;
-$p.cG = (function(hcode) {
+$p.cH = (function(hcode) {
   var h = ((hcode + (~(hcode << 9))) | 0);
   h = (h ^ ((h >>> 14) | 0));
   h = ((h + (h << 4)) | 0);
@@ -4599,7 +4603,7 @@ function $f_sc_IterableOnceOps__isEmpty__Z($thiz) {
 function $f_sc_IterableOnceOps__copyToArray__O__I__I__I($thiz, xs, start, len) {
   var it = $thiz.r();
   var i = start;
-  var y = (($m_jl_reflect_Array$().cv(xs) - start) | 0);
+  var y = (($m_jl_reflect_Array$().cA(xs) - start) | 0);
   var end = ((start + ((len < y) ? len : y)) | 0);
   while (((i < end) && it.x())) {
     $m_sr_ScalaRunTime$().jv(xs, i, it.n());
@@ -4608,7 +4612,7 @@ function $f_sc_IterableOnceOps__copyToArray__O__I__I__I($thiz, xs, start, len) {
   return ((i - start) | 0);
 }
 function $f_sc_IterableOnceOps__mkString__T__T__T__T($thiz, start, sep, end) {
-  return (($thiz.J() === 0) ? (("" + start) + end) : $thiz.e7($ct_scm_StringBuilder__(new $c_scm_StringBuilder()), start, sep, end).b0.B);
+  return (($thiz.J() === 0) ? (("" + start) + end) : $thiz.e8($ct_scm_StringBuilder__(new $c_scm_StringBuilder()), start, sep, end).b0.B);
 }
 function $f_sc_IterableOnceOps__addString__scm_StringBuilder__T__T__T__scm_StringBuilder($thiz, b, start, sep, end) {
   var jsb = b.b0;
@@ -4632,14 +4636,14 @@ function $f_sc_IterableOnceOps__addString__scm_StringBuilder__T__T__T__scm_Strin
 }
 function $f_sc_IterableOnceOps__toArray__s_reflect_ClassTag__O($thiz, evidence$2) {
   if (($thiz.J() >= 0)) {
-    var destination = evidence$2.bM($thiz.J());
-    $thiz.ca(destination, 0, 2147483647);
+    var destination = evidence$2.bN($thiz.J());
+    $thiz.cf(destination, 0, 2147483647);
     return destination;
   } else {
     var capacity = 0;
     var size = 0;
     var jsElems = null;
-    var elementClass = evidence$2.bb();
+    var elementClass = evidence$2.ba();
     capacity = 0;
     size = 0;
     var isCharArrayBuilder = (elementClass === $d_C.l());
@@ -4802,7 +4806,7 @@ function $m_sci_MapNode$() {
   return $n_sci_MapNode$;
 }
 function $p_sci_Node__arrayIndexOutOfBounds__O__I__jl_ArrayIndexOutOfBoundsException($thiz, as, ix) {
-  return $ct_jl_ArrayIndexOutOfBoundsException__T__(new $c_jl_ArrayIndexOutOfBoundsException(), ((ix + " is out of bounds (min 0, max ") + (((-1) + $m_jl_reflect_Array$().cv(as)) | 0)));
+  return $ct_jl_ArrayIndexOutOfBoundsException__T__(new $c_jl_ArrayIndexOutOfBoundsException(), ((ix + " is out of bounds (min 0, max ") + (((-1) + $m_jl_reflect_Array$().cA(as)) | 0)));
 }
 /** @constructor */
 function $c_sci_Node() {
@@ -4857,10 +4861,10 @@ $p.constructor = $c_sci_Node$;
 function $h_sci_Node$() {
 }
 $h_sci_Node$.prototype = $p;
-$p.eW = (function(hash, shift) {
+$p.eY = (function(hash, shift) {
   return (31 & ((hash >>> shift) | 0));
 });
-$p.e9 = (function(mask) {
+$p.ea = (function(mask) {
   return (1 << mask);
 });
 $p.sd = (function(bitmap, bitpos) {
@@ -4884,14 +4888,14 @@ function $c_sci_VectorStatics$() {
   this.jd = null;
   this.bK = null;
   this.cU = null;
-  this.fq = null;
+  this.fs = null;
   this.je = null;
   this.om = null;
   $n_sci_VectorStatics$ = this;
   this.jd = new $ac_O(0);
   this.bK = new ($d_O.r().r().C)(0);
   this.cU = new ($d_O.r().r().r().C)(0);
-  this.fq = new ($d_O.r().r().r().r().C)(0);
+  this.fs = new ($d_O.r().r().r().r().C)(0);
   this.je = new ($d_O.r().r().r().r().r().C)(0);
   this.om = new ($d_O.r().r().r().r().r().r().C)(0);
 }
@@ -4901,7 +4905,7 @@ $p.constructor = $c_sci_VectorStatics$;
 function $h_sci_VectorStatics$() {
 }
 $h_sci_VectorStatics$.prototype = $p;
-$p.fv = (function(a, elem) {
+$p.fx = (function(a, elem) {
   var alen = a.b.length;
   var ac = new $ac_O(((1 + alen) | 0));
   a.H(0, ac, 0, alen);
@@ -4936,7 +4940,7 @@ $p.jK = (function(level, a, f) {
     }
   }
 });
-$p.cx = (function(a, f) {
+$p.cC = (function(a, f) {
   var i = 0;
   while ((i < a.b.length)) {
     var v1 = a.b[i];
@@ -4963,7 +4967,7 @@ $p.sz = (function(a, f, at, v2) {
 });
 $p.ah = (function(n, a, f) {
   if ((n === 1)) {
-    return this.cx(a, f);
+    return this.cC(a, f);
   } else {
     var i = 0;
     while ((i < a.b.length)) {
@@ -5002,10 +5006,10 @@ function $m_sci_VectorStatics$() {
 }
 /** @constructor */
 function $c_scm_HashSet$Node(_key, _hash, _next) {
-  this.eF = null;
+  this.eH = null;
   this.di = 0;
   this.aZ = null;
-  this.eF = _key;
+  this.eH = _key;
   this.di = _hash;
   this.aZ = _next;
 }
@@ -5018,7 +5022,7 @@ $h_scm_HashSet$Node.prototype = $p;
 $p.rL = (function(k, h) {
   var _$this = this;
   while (true) {
-    if (((h === _$this.di) && $m_sr_BoxesRunTime$().A(k, _$this.eF))) {
+    if (((h === _$this.di) && $m_sr_BoxesRunTime$().A(k, _$this.eH))) {
       return _$this;
     } else if (((_$this.aZ === null) || (_$this.di > h))) {
       return null;
@@ -5030,7 +5034,7 @@ $p.rL = (function(k, h) {
 $p.aj = (function(f) {
   var _$this = this;
   while (true) {
-    f.i(_$this.eF);
+    f.i(_$this.eH);
     if ((_$this.aZ !== null)) {
       _$this = _$this.aZ;
       continue;
@@ -5039,7 +5043,7 @@ $p.aj = (function(f) {
   }
 });
 $p.D = (function() {
-  return ((((("Node(" + this.eF) + ", ") + this.di) + ") -> ") + this.aZ);
+  return ((((("Node(" + this.eH) + ", ") + this.di) + ") -> ") + this.aZ);
 });
 var $d_scm_HashSet$Node = new $TypeData().i($c_scm_HashSet$Node, "scala.collection.mutable.HashSet$Node", ({
   hl: 1
@@ -5173,7 +5177,7 @@ $p.constructor = $c_sr_ScalaRunTime$;
 function $h_sr_ScalaRunTime$() {
 }
 $h_sr_ScalaRunTime$.prototype = $p;
-$p.eN = (function(xs, idx) {
+$p.eO = (function(xs, idx) {
   if ((xs instanceof $ac_O)) {
     return xs.b[idx];
   } else if ((xs instanceof $ac_I)) {
@@ -5224,7 +5228,7 @@ $p.jv = (function(xs, idx, value) {
   }
 });
 $p.jq = (function(x) {
-  return $f_sc_IterableOnceOps__mkString__T__T__T__T(x.bB(), (x.aC() + "("), ",", ")");
+  return $f_sc_IterableOnceOps__mkString__T__T__T__T(x.bB(), (x.aD() + "("), ",", ")");
 });
 $p.rX = (function(xs) {
   return ((xs === null) ? null : $m_sci_ArraySeq$().hS(xs));
@@ -5252,12 +5256,12 @@ function $h_sr_Statics$() {
 }
 $h_sr_Statics$.prototype = $p;
 $p.m = (function(hash, data) {
-  var h = this.dp(hash, data);
+  var h = this.dq(hash, data);
   var i = h;
   h = ((i << 13) | ((i >>> 19) | 0));
   return (((-430675100) + Math.imul(5, h)) | 0);
 });
-$p.dp = (function(hash, data) {
+$p.dq = (function(hash, data) {
   var k = data;
   k = Math.imul((-862048943), k);
   var i = k;
@@ -5282,14 +5286,14 @@ $p.fB = (function(lv) {
   var hi = lv.v;
   return ((hi === (lo >> 31)) ? lo : (lo ^ hi));
 });
-$p.cF = (function(dv) {
+$p.cG = (function(dv) {
   var iv = $doubleToInt(dv);
   if ((iv === dv)) {
     return iv;
   } else {
     var this$1 = $m_RTLong$();
     var lo = this$1.pP(dv);
-    var hi = this$1.S;
+    var hi = this$1.T;
     if ((((4.294967296E9 * hi) + (lo >>> 0.0)) === dv)) {
       return (lo ^ hi);
     } else {
@@ -5310,7 +5314,7 @@ $p.a2 = (function(x) {
   if ((x === null)) {
     return 0;
   } else if (((typeof x) === "number")) {
-    return this.cF((+x));
+    return this.cG((+x));
   } else if ((x instanceof $c_RTLong)) {
     var t = $uJ(x);
     return this.fB(new $c_RTLong(t.u, t.v));
@@ -5318,7 +5322,7 @@ $p.a2 = (function(x) {
     return $dp_hashCode__I(x);
   }
 });
-$p.eU = (function(n) {
+$p.eW = (function(n) {
   throw $ct_jl_IndexOutOfBoundsException__T__(new $c_jl_IndexOutOfBoundsException(), ("" + n));
 });
 var $d_sr_Statics$ = new $TypeData().i($c_sr_Statics$, "scala.runtime.Statics$", ({
@@ -5433,7 +5437,7 @@ $p.constructor = $c_s_util_control_NonFatal$;
 function $h_s_util_control_NonFatal$() {
 }
 $h_s_util_control_NonFatal$.prototype = $p;
-$p.eM = (function(t) {
+$p.eN = (function(t) {
   return (!(false || (false || (false || (false || false)))));
 });
 var $d_s_util_control_NonFatal$ = new $TypeData().i($c_s_util_control_NonFatal$, "scala.util.control.NonFatal$", ({
@@ -5456,12 +5460,12 @@ function $h_s_util_hashing_MurmurHash3() {
 }
 $h_s_util_hashing_MurmurHash3.prototype = $p;
 $p.m = (function(hash, data) {
-  var h = this.dp(hash, data);
+  var h = this.dq(hash, data);
   var i = h;
   h = ((i << 13) | ((i >>> 19) | 0));
   return (((-430675100) + Math.imul(5, h)) | 0);
 });
-$p.dp = (function(hash, data) {
+$p.dq = (function(hash, data) {
   var k = data;
   k = Math.imul((-862048943), k);
   var i = k;
@@ -5470,9 +5474,9 @@ $p.dp = (function(hash, data) {
   return (hash ^ k);
 });
 $p.N = (function(hash, length) {
-  return this.bX((hash ^ length));
+  return this.bZ((hash ^ length));
 });
-$p.bX = (function(hash) {
+$p.bZ = (function(hash) {
   var h = hash;
   h = (h ^ ((h >>> 16) | 0));
   h = Math.imul((-2048144789), h);
@@ -5489,17 +5493,17 @@ $p.q8 = (function(x, y, seed) {
   return this.N(h, 2);
 });
 $p.d2 = (function(x, seed, ignorePrefix) {
-  var arr = x.aA();
+  var arr = x.aB();
   if ((arr === 0)) {
-    return $f_T__hashCode__I(x.aC());
+    return $f_T__hashCode__I(x.aD());
   } else {
     var h = seed;
     if ((!ignorePrefix)) {
-      h = this.m(h, $f_T__hashCode__I(x.aC()));
+      h = this.m(h, $f_T__hashCode__I(x.aD()));
     }
     var i = 0;
     while ((i < arr)) {
-      h = this.m(h, $m_sr_Statics$().a2(x.aB(i)));
+      h = this.m(h, $m_sr_Statics$().a2(x.aC(i)));
       i = ((1 + i) | 0);
     }
     return this.N(h, arr);
@@ -5522,7 +5526,7 @@ $p.kl = (function(xs, seed) {
   var h$2 = seed;
   h$2 = this.m(h$2, a);
   h$2 = this.m(h$2, b);
-  h$2 = this.dp(h$2, c);
+  h$2 = this.dq(h$2, c);
   return this.N(h$2, n);
 });
 $p.sV = (function(xs, seed) {
@@ -5557,35 +5561,35 @@ $p.sV = (function(xs, seed) {
     prev = hash;
     i = ((1 + i) | 0);
   }
-  return this.bX(this.m(this.m(h0, rangeDiff), prev));
+  return this.bZ(this.m(this.m(h0, rangeDiff), prev));
 });
 $p.oY = (function(a, seed) {
   var h = seed;
-  var l = $m_jl_reflect_Array$().cv(a);
+  var l = $m_jl_reflect_Array$().cA(a);
   switch (l) {
     case 0: {
       return this.N(h, 0);
       break;
     }
     case 1: {
-      return this.N(this.m(h, $m_sr_Statics$().a2($m_sr_ScalaRunTime$().eN(a, 0))), 1);
+      return this.N(this.m(h, $m_sr_Statics$().a2($m_sr_ScalaRunTime$().eO(a, 0))), 1);
       break;
     }
     default: {
-      var initial = $m_sr_Statics$().a2($m_sr_ScalaRunTime$().eN(a, 0));
+      var initial = $m_sr_Statics$().a2($m_sr_ScalaRunTime$().eO(a, 0));
       h = this.m(h, initial);
       var h0 = h;
-      var prev = $m_sr_Statics$().a2($m_sr_ScalaRunTime$().eN(a, 1));
+      var prev = $m_sr_Statics$().a2($m_sr_ScalaRunTime$().eO(a, 1));
       var rangeDiff = ((prev - initial) | 0);
       var i = 2;
       while ((i < l)) {
         h = this.m(h, prev);
-        var hash = $m_sr_Statics$().a2($m_sr_ScalaRunTime$().eN(a, i));
+        var hash = $m_sr_Statics$().a2($m_sr_ScalaRunTime$().eO(a, i));
         if (((rangeDiff !== ((hash - prev) | 0)) || (rangeDiff === 0))) {
           h = this.m(h, hash);
           i = ((1 + i) | 0);
           while ((i < l)) {
-            h = this.m(h, $m_sr_Statics$().a2($m_sr_ScalaRunTime$().eN(a, i)));
+            h = this.m(h, $m_sr_Statics$().a2($m_sr_ScalaRunTime$().eO(a, i)));
             i = ((1 + i) | 0);
           }
           return this.N(h, l);
@@ -5593,12 +5597,12 @@ $p.oY = (function(a, seed) {
         prev = hash;
         i = ((1 + i) | 0);
       }
-      return this.bX(this.m(this.m(h0, rangeDiff), prev));
+      return this.bZ(this.m(this.m(h0, rangeDiff), prev));
     }
   }
 });
 $p.t0 = (function(start, step, last, seed) {
-  return this.bX(this.m(this.m(this.m(seed, start), step), last));
+  return this.bZ(this.m(this.m(this.m(seed, start), step), last));
 });
 $p.se = (function(a, seed) {
   var h = seed;
@@ -5634,7 +5638,7 @@ $p.se = (function(a, seed) {
         prev = hash;
         i = ((1 + i) | 0);
       }
-      return this.bX(this.m(this.m(h0, rangeDiff), prev));
+      return this.bZ(this.m(this.m(h0, rangeDiff), prev));
     }
   }
 });
@@ -5709,7 +5713,7 @@ $p.p7 = (function(a, seed) {
         prev = hash;
         i = ((1 + i) | 0);
       }
-      return this.bX(this.m(this.m(h0, rangeDiff), prev));
+      return this.bZ(this.m(this.m(h0, rangeDiff), prev));
     }
   }
 });
@@ -5747,7 +5751,7 @@ $p.oZ = (function(a, seed) {
         prev = hash;
         i = ((1 + i) | 0);
       }
-      return this.bX(this.m(this.m(h0, rangeDiff), prev));
+      return this.bZ(this.m(this.m(h0, rangeDiff), prev));
     }
   }
 });
@@ -5785,7 +5789,7 @@ $p.p0 = (function(a, seed) {
         prev = hash;
         i = ((1 + i) | 0);
       }
-      return this.bX(this.m(this.m(h0, rangeDiff), prev));
+      return this.bZ(this.m(this.m(h0, rangeDiff), prev));
     }
   }
 });
@@ -5798,24 +5802,24 @@ $p.p1 = (function(a, seed) {
       break;
     }
     case 1: {
-      return this.N(this.m(h, $m_sr_Statics$().cF(a.b[0])), 1);
+      return this.N(this.m(h, $m_sr_Statics$().cG(a.b[0])), 1);
       break;
     }
     default: {
-      var initial = $m_sr_Statics$().cF(a.b[0]);
+      var initial = $m_sr_Statics$().cG(a.b[0]);
       h = this.m(h, initial);
       var h0 = h;
-      var prev = $m_sr_Statics$().cF(a.b[1]);
+      var prev = $m_sr_Statics$().cG(a.b[1]);
       var rangeDiff = ((prev - initial) | 0);
       var i = 2;
       while ((i < l)) {
         h = this.m(h, prev);
-        var hash = $m_sr_Statics$().cF(a.b[i]);
+        var hash = $m_sr_Statics$().cG(a.b[i]);
         if (((rangeDiff !== ((hash - prev) | 0)) || (rangeDiff === 0))) {
           h = this.m(h, hash);
           i = ((1 + i) | 0);
           while ((i < l)) {
-            h = this.m(h, $m_sr_Statics$().cF(a.b[i]));
+            h = this.m(h, $m_sr_Statics$().cG(a.b[i]));
             i = ((1 + i) | 0);
           }
           return this.N(h, l);
@@ -5823,7 +5827,7 @@ $p.p1 = (function(a, seed) {
         prev = hash;
         i = ((1 + i) | 0);
       }
-      return this.bX(this.m(this.m(h0, rangeDiff), prev));
+      return this.bZ(this.m(this.m(h0, rangeDiff), prev));
     }
   }
 });
@@ -5836,24 +5840,24 @@ $p.p2 = (function(a, seed) {
       break;
     }
     case 1: {
-      return this.N(this.m(h, $m_sr_Statics$().cF(a.b[0])), 1);
+      return this.N(this.m(h, $m_sr_Statics$().cG(a.b[0])), 1);
       break;
     }
     default: {
-      var initial = $m_sr_Statics$().cF(a.b[0]);
+      var initial = $m_sr_Statics$().cG(a.b[0]);
       h = this.m(h, initial);
       var h0 = h;
-      var prev = $m_sr_Statics$().cF(a.b[1]);
+      var prev = $m_sr_Statics$().cG(a.b[1]);
       var rangeDiff = ((prev - initial) | 0);
       var i = 2;
       while ((i < l)) {
         h = this.m(h, prev);
-        var hash = $m_sr_Statics$().cF(a.b[i]);
+        var hash = $m_sr_Statics$().cG(a.b[i]);
         if (((rangeDiff !== ((hash - prev) | 0)) || (rangeDiff === 0))) {
           h = this.m(h, hash);
           i = ((1 + i) | 0);
           while ((i < l)) {
-            h = this.m(h, $m_sr_Statics$().cF(a.b[i]));
+            h = this.m(h, $m_sr_Statics$().cG(a.b[i]));
             i = ((1 + i) | 0);
           }
           return this.N(h, l);
@@ -5861,7 +5865,7 @@ $p.p2 = (function(a, seed) {
         prev = hash;
         i = ((1 + i) | 0);
       }
-      return this.bX(this.m(this.m(h0, rangeDiff), prev));
+      return this.bZ(this.m(this.m(h0, rangeDiff), prev));
     }
   }
 });
@@ -5899,7 +5903,7 @@ $p.p3 = (function(a, seed) {
         prev = hash;
         i = ((1 + i) | 0);
       }
-      return this.bX(this.m(this.m(h0, rangeDiff), prev));
+      return this.bZ(this.m(this.m(h0, rangeDiff), prev));
     }
   }
 });
@@ -5944,7 +5948,7 @@ $p.p4 = (function(a, seed) {
         prev = hash;
         i = ((1 + i) | 0);
       }
-      return this.bX(this.m(this.m(h0, rangeDiff), prev));
+      return this.bZ(this.m(this.m(h0, rangeDiff), prev));
     }
   }
 });
@@ -5982,7 +5986,7 @@ $p.p5 = (function(a, seed) {
         prev = hash;
         i = ((1 + i) | 0);
       }
-      return this.bX(this.m(this.m(h0, rangeDiff), prev));
+      return this.bZ(this.m(this.m(h0, rangeDiff), prev));
     }
   }
 });
@@ -6018,7 +6022,7 @@ $p.p6 = (function(a, seed) {
         prev = 0;
         i = ((1 + i) | 0);
       }
-      return this.bX(this.m(this.m(h0, rangeDiff), prev));
+      return this.bZ(this.m(this.m(h0, rangeDiff), prev));
     }
   }
 });
@@ -6036,7 +6040,7 @@ var $d_Lapp_tulz_tuplez_Composition\uff3fPri7$$anon$5 = new $TypeData().i($c_Lap
   cw: 1
 }));
 function $f_Lcom_raquo_airstream_common_InternalNextErrorObserver__onTry__s_util_Try__Lcom_raquo_airstream_core_Transaction__V($thiz, nextValue, transaction) {
-  nextValue.cu(new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((_$1) => {
+  nextValue.cz(new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((_$1) => {
     $f_Lcom_raquo_airstream_core_WritableStream__fireError__jl_Throwable__Lcom_raquo_airstream_core_Transaction__V($thiz, _$1, transaction);
   })), new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((_$2) => {
     $thiz.hM(_$2, transaction);
@@ -6158,7 +6162,7 @@ $p.f = (function(items) {
   return new $c_Lcom_raquo_laminar_modifiers_CompositeKeySetter(this, ($m_Lcom_raquo_laminar_api_package$().a.hz(), $m_Lcom_raquo_laminar_keys_CompositeKey$().kb(items, this.ik)));
 });
 $p.jp = (function(items, valueMapper) {
-  return new $c_Lcom_raquo_laminar_modifiers_KeyUpdater(this, items.eZ(), new $c_sjsr_AnonFunction3_$$Lambda$0321b7865d991d5a3e10ec941cd6461a4b204491(((element, nextRawItems, thisBinder) => {
+  return new $c_Lcom_raquo_laminar_modifiers_KeyUpdater(this, items.f1(), new $c_sjsr_AnonFunction3_$$Lambda$0321b7865d991d5a3e10ec941cd6461a4b204491(((element, nextRawItems, thisBinder) => {
     var currentNormalizedItems = $f_Lcom_raquo_laminar_nodes_ReactiveElement__compositeValueItems__Lcom_raquo_laminar_keys_CompositeKey__Lcom_raquo_laminar_modifiers_Modifier__sci_List(element, this, thisBinder);
     var nextNormalizedItems = $m_Lcom_raquo_laminar_keys_CompositeKey$().kb(nextRawItems, this.ik);
     var f = ((elem) => currentNormalizedItems.bm(elem));
@@ -6404,7 +6408,7 @@ $p.qB = (function(values) {
   })) : new $c_sjsr_AnonFunction3_$$Lambda$0321b7865d991d5a3e10ec941cd6461a4b204491(((element$2, nextValue$2, reason$2) => {
     $m_Lcom_raquo_laminar_DomApi$().q4(element$2, this, nextValue$2);
   })));
-  return new $c_Lcom_raquo_laminar_modifiers_KeyUpdater(this, values.eZ(), update);
+  return new $c_Lcom_raquo_laminar_modifiers_KeyUpdater(this, values.f1(), update);
 });
 function $isArrayOf_Lcom_raquo_laminar_keys_HtmlProp(obj, depth) {
   return (!(!(((obj && obj.$classData) && (obj.$classData.D === depth)) && obj.$classData.B.n.bn)));
@@ -6449,7 +6453,7 @@ $p.constructor = $c_Lcom_raquo_laminar_modifiers_Modifier$$anon$1;
 function $h_Lcom_raquo_laminar_modifiers_Modifier$$anon$1() {
 }
 $h_Lcom_raquo_laminar_modifiers_Modifier$$anon$1.prototype = $p;
-$p.cs = (function(element) {
+$p.cx = (function(element) {
 });
 var $d_Lcom_raquo_laminar_modifiers_Modifier$$anon$1 = new $TypeData().i($c_Lcom_raquo_laminar_modifiers_Modifier$$anon$1, "com.raquo.laminar.modifiers.Modifier$$anon$1", ({
   es: 1,
@@ -6469,7 +6473,7 @@ $p.constructor = $c_Lcom_raquo_laminar_modifiers_Modifier$$anon$2;
 function $h_Lcom_raquo_laminar_modifiers_Modifier$$anon$2() {
 }
 $h_Lcom_raquo_laminar_modifiers_Modifier$$anon$2.prototype = $p;
-$p.cs = (function(element) {
+$p.cx = (function(element) {
   var this$2 = $m_Lcom_raquo_airstream_core_Transaction$onStart$();
   var f = (() => {
     this.nC.i(element);
@@ -6565,7 +6569,7 @@ $h_Lcom_raquo_laminar_tags_HtmlTag.prototype = $p;
 $p.d = (function(modifiers) {
   var element = this.r5();
   modifiers.aj(new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((modifier) => {
-    modifier.cs(element);
+    modifier.cx(element);
   })));
   return element;
 });
@@ -6590,7 +6594,7 @@ $h_Lcom_raquo_laminar_tags_SvgTag.prototype = $p;
 $p.aT = (function(modifiers) {
   var element = this.r6();
   modifiers.aj(new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((modifier) => {
-    modifier.cs(element);
+    modifier.cx(element);
   })));
   return element;
 });
@@ -6733,16 +6737,16 @@ function $isArrayOf_jl_Number(obj, depth) {
 }
 /** @constructor */
 function $c_jl_StackTraceElement(declaringClass, methodName, fileName, lineNumber, columnNumber) {
-  this.ff = null;
+  this.fh = null;
   this.fY = null;
-  this.fg = null;
-  this.fh = 0;
-  this.fe = 0;
-  this.ff = declaringClass;
+  this.fi = null;
+  this.fj = 0;
+  this.fg = 0;
+  this.fh = declaringClass;
   this.fY = methodName;
-  this.fg = fileName;
-  this.fh = lineNumber;
-  this.fe = columnNumber;
+  this.fi = fileName;
+  this.fj = lineNumber;
+  this.fg = columnNumber;
 }
 $p = $c_jl_StackTraceElement.prototype = new $h_O();
 $p.constructor = $c_jl_StackTraceElement;
@@ -6751,22 +6755,22 @@ function $h_jl_StackTraceElement() {
 }
 $h_jl_StackTraceElement.prototype = $p;
 $p.z = (function(that) {
-  return ((that instanceof $c_jl_StackTraceElement) && (((((this.fg === that.fg) && (this.fh === that.fh)) && (this.fe === that.fe)) && (this.ff === that.ff)) && (this.fY === that.fY)));
+  return ((that instanceof $c_jl_StackTraceElement) && (((((this.fi === that.fi) && (this.fj === that.fj)) && (this.fg === that.fg)) && (this.fh === that.fh)) && (this.fY === that.fY)));
 });
 $p.D = (function() {
   var result = "";
-  if ((this.ff !== "<jscode>")) {
-    result = ((("" + result) + this.ff) + ".");
+  if ((this.fh !== "<jscode>")) {
+    result = ((("" + result) + this.fh) + ".");
   }
   result = (("" + result) + this.fY);
-  if ((this.fg === null)) {
+  if ((this.fi === null)) {
     result = (result + "(Unknown Source)");
   } else {
-    result = ((result + "(") + this.fg);
-    if ((this.fh >= 0)) {
-      result = ((result + ":") + this.fh);
-      if ((this.fe >= 0)) {
-        result = ((result + ":") + this.fe);
+    result = ((result + "(") + this.fi);
+    if ((this.fj >= 0)) {
+      result = ((result + ":") + this.fj);
+      if ((this.fg >= 0)) {
+        result = ((result + ":") + this.fg);
       }
     }
     result = (result + ")");
@@ -6774,7 +6778,7 @@ $p.D = (function() {
   return result;
 });
 $p.E = (function() {
-  return (((($f_T__hashCode__I(this.ff) ^ $f_T__hashCode__I(this.fY)) ^ $f_T__hashCode__I(this.fg)) ^ this.fh) ^ this.fe);
+  return (((($f_T__hashCode__I(this.fh) ^ $f_T__hashCode__I(this.fY)) ^ $f_T__hashCode__I(this.fi)) ^ this.fj) ^ this.fg);
 });
 function $isArrayOf_jl_StackTraceElement(obj, depth) {
   return (!(!(((obj && obj.$classData) && (obj.$classData.D === depth)) && obj.$classData.B.n.by)));
@@ -6906,7 +6910,7 @@ function $p_s_Array$__slowcopy__O__I__O__I__I__V($thiz, src, srcPos, dest, destP
   var j = destPos;
   var srcUntil = ((srcPos + length) | 0);
   while ((i < srcUntil)) {
-    $m_sr_ScalaRunTime$().jv(dest, j, $m_sr_ScalaRunTime$().eN(src, i));
+    $m_sr_ScalaRunTime$().jv(dest, j, $m_sr_ScalaRunTime$().eO(src, i));
     i = ((1 + i) | 0);
     j = ((1 + j) | 0);
   }
@@ -6923,7 +6927,7 @@ $h_s_Array$.prototype = $p;
 $p.pw = (function(it, evidence$3) {
   var n = it.J();
   if ((n > (-1))) {
-    var elements = evidence$3.bM(n);
+    var elements = evidence$3.bN(n);
     var iterator = it.r();
     var i = 0;
     while ((i < n)) {
@@ -6935,7 +6939,7 @@ $p.pw = (function(it, evidence$3) {
     var capacity = 0;
     var size = 0;
     var jsElems = null;
-    var elementClass = evidence$3.bb();
+    var elementClass = evidence$3.ba();
     capacity = 0;
     size = 0;
     var isCharArrayBuilder = (elementClass === $d_C.l());
@@ -6999,7 +7003,7 @@ $p.km = (function(xs) {
   return ((xs === null) ? null : ((xs.b.length === 0) ? $m_scm_ArraySeq$().oq : new $c_scm_ArraySeq$ofRef(xs)));
 });
 function $f_s_PartialFunction__applyOrElse__O__F1__O($thiz, x, default$1) {
-  return ($thiz.cw(x) ? $thiz.i(x) : default$1.i(x));
+  return ($thiz.cB(x) ? $thiz.i(x) : default$1.i(x));
 }
 /** @constructor */
 function $c_sci_List$$anon$1() {
@@ -7035,7 +7039,7 @@ function $f_scm_Growable__addAll__sc_IterableOnce__scm_Growable($thiz, elems) {
   } else {
     var it = elems.r();
     while (it.x()) {
-      $thiz.b8(it.n());
+      $thiz.b7(it.n());
     }
   }
   return $thiz;
@@ -7172,8 +7176,8 @@ var $d_sr_BooleanRef = new $TypeData().i($c_sr_BooleanRef, "scala.runtime.Boolea
 }));
 /** @constructor */
 function $c_sr_IntRef(elem) {
-  this.eG = 0;
-  this.eG = elem;
+  this.eI = 0;
+  this.eI = elem;
 }
 $p = $c_sr_IntRef.prototype = new $h_O();
 $p.constructor = $c_sr_IntRef;
@@ -7182,7 +7186,7 @@ function $h_sr_IntRef() {
 }
 $h_sr_IntRef.prototype = $p;
 $p.D = (function() {
-  return ("" + this.eG);
+  return ("" + this.eI);
 });
 var $d_sr_IntRef = new $TypeData().i($c_sr_IntRef, "scala.runtime.IntRef", ({
   i1: 1,
@@ -7213,8 +7217,8 @@ var $d_sr_LazyRef = new $TypeData().i($c_sr_LazyRef, "scala.runtime.LazyRef", ({
 }));
 /** @constructor */
 function $c_sr_ObjectRef(elem) {
-  this.ay = null;
-  this.ay = elem;
+  this.az = null;
+  this.az = elem;
 }
 $p = $c_sr_ObjectRef.prototype = new $h_O();
 $p.constructor = $c_sr_ObjectRef;
@@ -7223,7 +7227,7 @@ function $h_sr_ObjectRef() {
 }
 $h_sr_ObjectRef.prototype = $p;
 $p.D = (function() {
-  return ("" + this.ay);
+  return ("" + this.az);
 });
 var $d_sr_ObjectRef = new $TypeData().i($c_sr_ObjectRef, "scala.runtime.ObjectRef", ({
   i5: 1,
@@ -7231,15 +7235,15 @@ var $d_sr_ObjectRef = new $TypeData().i($c_sr_ObjectRef, "scala.runtime.ObjectRe
 }));
 /** @constructor */
 function $c_s_util_hashing_MurmurHash3$() {
-  this.az = 0;
-  this.e6 = 0;
+  this.aA = 0;
+  this.e7 = 0;
   this.oH = 0;
   this.jo = 0;
   $n_s_util_hashing_MurmurHash3$ = this;
-  this.az = $f_T__hashCode__I("Seq");
-  this.e6 = $f_T__hashCode__I("Map");
+  this.aA = $f_T__hashCode__I("Seq");
+  this.e7 = $f_T__hashCode__I("Map");
   this.oH = $f_T__hashCode__I("Set");
-  this.jo = this.kl($m_sci_Nil$(), this.e6);
+  this.jo = this.kl($m_sci_Nil$(), this.e7);
 }
 $p = $c_s_util_hashing_MurmurHash3$.prototype = new $h_s_util_hashing_MurmurHash3();
 $p.constructor = $c_s_util_hashing_MurmurHash3$;
@@ -7247,22 +7251,22 @@ $p.constructor = $c_s_util_hashing_MurmurHash3$;
 function $h_s_util_hashing_MurmurHash3$() {
 }
 $h_s_util_hashing_MurmurHash3$.prototype = $p;
-$p.cM = (function(x, y) {
+$p.cN = (function(x, y) {
   return this.q8($m_sr_Statics$().a2(x), $m_sr_Statics$().a2(y), (-889275714));
 });
 $p.q2 = (function(xs) {
-  return ($is_sc_IndexedSeq(xs) ? this.se(xs, this.az) : ((xs instanceof $c_sci_List) ? this.st(xs, this.az) : this.sV(xs, this.az)));
+  return ($is_sc_IndexedSeq(xs) ? this.se(xs, this.aA) : ((xs instanceof $c_sci_List) ? this.st(xs, this.aA) : this.sV(xs, this.aA)));
 });
 $p.sB = (function(xs) {
   if (xs.j()) {
     return this.jo;
   } else {
     var accum = new $c_s_util_hashing_MurmurHash3$accum$1();
-    var h = this.e6;
-    xs.eQ(accum);
+    var h = this.e7;
+    xs.eR(accum);
     h = this.m(h, accum.hv);
     h = this.m(h, accum.hw);
-    h = this.dp(h, accum.hx);
+    h = this.dq(h, accum.hx);
     return this.N(h, accum.hy);
   }
 });
@@ -7298,13 +7302,13 @@ $p.D = (function() {
   return "<function2>";
 });
 $p.qU = (function(k, v) {
-  var h = $m_s_util_hashing_MurmurHash3$().cM(k, v);
+  var h = $m_s_util_hashing_MurmurHash3$().cN(k, v);
   this.hv = ((this.hv + h) | 0);
   this.hw = (this.hw ^ h);
   this.hx = Math.imul(this.hx, (1 | h));
   this.hy = ((1 + this.hy) | 0);
 });
-$p.eL = (function(v1, v2) {
+$p.eM = (function(v1, v2) {
   this.qU(v1, v2);
 });
 var $d_s_util_hashing_MurmurHash3$accum$1 = new $TypeData().i($c_s_util_hashing_MurmurHash3$accum$1, "scala.util.hashing.MurmurHash3$accum$1", ({
@@ -7416,7 +7420,7 @@ function $c_Lcom_raquo_airstream_core_AirstreamError$() {
   this.hY = $m_scm_Buffer$().oX($m_sr_ScalaRunTime$().c(new ($d_F1.r().C)([])));
   this.kz = new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((err) => {
     try {
-      console.error(((this.eR(err) + "\n") + this.s4(err, "\n")));
+      console.error(((this.eS(err) + "\n") + this.s4(err, "\n")));
     } catch (e) {
       var e$2 = ((e instanceof $c_jl_Throwable) ? e : new $c_sjs_js_JavaScriptException(e));
       console.error("Error in AirstreamError.consoleErrorCallback:");
@@ -7436,7 +7440,7 @@ $p.constructor = $c_Lcom_raquo_airstream_core_AirstreamError$;
 function $h_Lcom_raquo_airstream_core_AirstreamError$() {
 }
 $h_Lcom_raquo_airstream_core_AirstreamError$.prototype = $p;
-$p.eR = (function(e) {
+$p.eS = (function(e) {
   try {
     var errorMessage = e.gH();
   } catch (e$2) {
@@ -7452,12 +7456,12 @@ $p.s4 = (function(err, newline) {
   }
 });
 $p.re = (function(causes) {
-  return ("CombinedError: " + $f_sc_IterableOnceOps__mkString__T__T__T__T(causes.eP($m_s_$less$colon$less$().hd).a5(new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((e) => this.eR(e)))), "", "; ", ""));
+  return ("CombinedError: " + $f_sc_IterableOnceOps__mkString__T__T__T__T(causes.eQ($m_s_$less$colon$less$().hd).a5(new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((e) => this.eS(e)))), "", "; ", ""));
 });
 $p.t1 = (function(fn) {
-  this.hY.b8(fn);
+  this.hY.b7(fn);
 });
-$p.cK = (function(err) {
+$p.cL = (function(err) {
   var this$1 = this.hY;
   var it = this$1.r();
   while (it.x()) {
@@ -7490,7 +7494,7 @@ function $m_Lcom_raquo_airstream_core_AirstreamError$() {
   return $n_Lcom_raquo_airstream_core_AirstreamError$;
 }
 function $f_Lcom_raquo_airstream_core_BaseObservable__$init$__V($thiz) {
-  $thiz.cH(true);
+  $thiz.cI(true);
   $thiz.fD((void 0));
 }
 function $f_Lcom_raquo_airstream_core_BaseObservable__foreach__F1__Lcom_raquo_airstream_ownership_Owner__Lcom_raquo_airstream_ownership_Subscription($thiz, onNext, owner) {
@@ -7518,7 +7522,7 @@ function $f_Lcom_raquo_airstream_core_BaseObservable__isStarted__Z($thiz) {
   return ($f_Lcom_raquo_airstream_core_WritableObservable__numAllObservers__I($thiz) > 0);
 }
 function $f_Lcom_raquo_airstream_core_BaseObservable__getOrCreatePendingObserverRemovals__Lcom_raquo_ew_JsArray($thiz) {
-  var x = $thiz.ef();
+  var x = $thiz.eh();
   if ((x === (void 0))) {
     var newArray = $m_Lcom_raquo_ew_JsArray$().br($m_sr_ScalaRunTime$().c(new ($d_F0.r().C)([])));
     $thiz.fD(newArray);
@@ -7538,7 +7542,7 @@ function $f_Lcom_raquo_laminar_api_Implicits__textToTextNode__O__Lcom_raquo_lami
 function $f_Lcom_raquo_laminar_api_Implicits__nodeSeqToModifier__O__Lcom_raquo_laminar_modifiers_RenderableSeq__Lcom_raquo_laminar_modifiers_Modifier($thiz, nodes, renderableSeq) {
   return new $c_Lcom_raquo_laminar_modifiers_Modifier$$anon$2(new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((element) => {
     ($m_Lcom_raquo_laminar_Seq$(), new $c_Lcom_raquo_laminar_Seq(nodes, null, null)).aj(new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((element$2) => ((_$9) => {
-      $m_Lcom_raquo_laminar_nodes_ParentNode$().eJ(element$2, _$9, (void 0));
+      $m_Lcom_raquo_laminar_nodes_ParentNode$().eL(element$2, _$9, (void 0));
     }))(element)));
   })), $m_Lcom_raquo_laminar_modifiers_Modifier$());
 }
@@ -7578,7 +7582,7 @@ $p.constructor = $c_Lcom_raquo_laminar_modifiers_CompositeKeySetter;
 function $h_Lcom_raquo_laminar_modifiers_CompositeKeySetter() {
 }
 $h_Lcom_raquo_laminar_modifiers_CompositeKeySetter.prototype = $p;
-$p.cs = (function(element) {
+$p.cx = (function(element) {
   if ((!this.is.j())) {
     $f_Lcom_raquo_laminar_nodes_ReactiveElement__updateCompositeValue__Lcom_raquo_laminar_keys_CompositeKey__Lcom_raquo_laminar_modifiers_Modifier__sci_List__sci_List__V(element, this.nv, null, this.is, $m_sci_Nil$());
   }
@@ -7590,10 +7594,10 @@ var $d_Lcom_raquo_laminar_modifiers_CompositeKeySetter = new $TypeData().i($c_Lc
 }));
 /** @constructor */
 function $c_Lcom_raquo_laminar_modifiers_EventListener(eventProcessor, callback) {
-  this.fd = null;
+  this.ff = null;
   this.it = null;
   this.iu = null;
-  this.fd = eventProcessor;
+  this.ff = eventProcessor;
   this.it = ((ev) => {
     var processor = eventProcessor.fU;
     var this$2 = processor.i(ev);
@@ -7608,8 +7612,8 @@ function $c_Lcom_raquo_laminar_modifiers_EventListener(eventProcessor, callback)
     if ((outer === null)) {
       throw new $c_jl_NullPointerException();
     }
-    this$3.capture = outer.fd.fV;
-    this$3.passive = outer.fd.h7;
+    this$3.capture = outer.ff.fV;
+    this$3.passive = outer.ff.h7;
     return this$3;
   })();
 }
@@ -7619,7 +7623,7 @@ $p.constructor = $c_Lcom_raquo_laminar_modifiers_EventListener;
 function $h_Lcom_raquo_laminar_modifiers_EventListener() {
 }
 $h_Lcom_raquo_laminar_modifiers_EventListener.prototype = $p;
-$p.cs = (function(element) {
+$p.cx = (function(element) {
   this.r3(element, false);
 });
 $p.r3 = (function(element, unsafePrepend) {
@@ -7634,18 +7638,18 @@ $p.r3 = (function(element, unsafePrepend) {
         }
       })));
     }));
-    var sub = (unsafePrepend ? $m_Lcom_raquo_laminar_nodes_ReactiveElement$().ty(element, subscribe) : $m_Lcom_raquo_airstream_ownership_DynamicSubscription$().gV(element.bU(), new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((owner) => subscribe.i(new $c_Lcom_raquo_laminar_lifecycle_MountContext(element, owner)))), false));
+    var sub = (unsafePrepend ? $m_Lcom_raquo_laminar_nodes_ReactiveElement$().ty(element, subscribe) : $m_Lcom_raquo_airstream_ownership_DynamicSubscription$().gV(element.bV(), new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((owner) => subscribe.i(new $c_Lcom_raquo_laminar_lifecycle_MountContext(element, owner)))), false));
     $f_Lcom_raquo_laminar_nodes_ReactiveElement__addEventListener__Lcom_raquo_laminar_modifiers_EventListener__Z__V(element, this, unsafePrepend);
     return sub;
   } else {
     var activate = new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((_$1) => (void 0)));
-    return $m_Lcom_raquo_airstream_ownership_DynamicSubscription$().q7(element.bU(), new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((owner$1) => {
+    return $m_Lcom_raquo_airstream_ownership_DynamicSubscription$().q7(element.bV(), new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((owner$1) => {
       activate.i(new $c_Lcom_raquo_laminar_lifecycle_MountContext(element, owner$1));
     })), false);
   }
 });
 $p.D = (function() {
-  return (("EventListener(" + this.fd.ev.fW) + ")");
+  return (("EventListener(" + this.ff.ex.fW) + ")");
 });
 var $d_Lcom_raquo_laminar_modifiers_EventListener = new $TypeData().i($c_Lcom_raquo_laminar_modifiers_EventListener, "com.raquo.laminar.modifiers.EventListener", ({
   eo: 1,
@@ -7667,7 +7671,7 @@ $p.constructor = $c_Lcom_raquo_laminar_modifiers_KeySetter;
 function $h_Lcom_raquo_laminar_modifiers_KeySetter() {
 }
 $h_Lcom_raquo_laminar_modifiers_KeySetter.prototype = $p;
-$p.cs = (function(element) {
+$p.cx = (function(element) {
   this.nw.hD(element, this.nx, this.ny);
 });
 var $d_Lcom_raquo_laminar_modifiers_KeySetter = new $TypeData().i($c_Lcom_raquo_laminar_modifiers_KeySetter, "com.raquo.laminar.modifiers.KeySetter", ({
@@ -7690,7 +7694,7 @@ $p.constructor = $c_Lcom_raquo_laminar_modifiers_KeyUpdater;
 function $h_Lcom_raquo_laminar_modifiers_KeyUpdater() {
 }
 $h_Lcom_raquo_laminar_modifiers_KeyUpdater.prototype = $p;
-$p.cs = (function(element) {
+$p.cx = (function(element) {
   this.jx(element);
 });
 $p.jx = (function(element) {
@@ -7699,7 +7703,7 @@ $p.jx = (function(element) {
   var onNext = new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((value) => {
     this.nA.hD(element, value, this);
   }));
-  return $m_Lcom_raquo_airstream_ownership_DynamicSubscription$().tn(element.bU(), observable, onNext);
+  return $m_Lcom_raquo_airstream_ownership_DynamicSubscription$().tn(element.bV(), observable, onNext);
 });
 var $d_Lcom_raquo_laminar_modifiers_KeyUpdater = new $TypeData().i($c_Lcom_raquo_laminar_modifiers_KeyUpdater, "com.raquo.laminar.modifiers.KeyUpdater", ({
   eq: 1,
@@ -7728,7 +7732,7 @@ $p.constructor = $c_Lcom_raquo_laminar_nodes_RootNode;
 function $h_Lcom_raquo_laminar_nodes_RootNode() {
 }
 $h_Lcom_raquo_laminar_nodes_RootNode.prototype = $p;
-$p.bU = (function() {
+$p.bV = (function() {
   return this.iD;
 });
 $p.jy = (function(x$0) {
@@ -7736,7 +7740,7 @@ $p.jy = (function(x$0) {
 });
 $p.sF = (function() {
   this.iD.oK();
-  return $m_Lcom_raquo_laminar_nodes_ParentNode$().eJ(this, this.nO, (void 0));
+  return $m_Lcom_raquo_laminar_nodes_ParentNode$().eL(this, this.nO, (void 0));
 });
 $p.aa = (function() {
   return this.nP;
@@ -7895,15 +7899,15 @@ function $f_s_Product2__productElement__I__O($thiz, n) {
 function $f_s_Product3__productElement__I__O($thiz, n) {
   switch (n) {
     case 0: {
-      return $thiz.fi;
+      return $thiz.fk;
       break;
     }
     case 1: {
-      return $thiz.fj;
+      return $thiz.fl;
       break;
     }
     case 2: {
-      return $thiz.fk;
+      return $thiz.fm;
       break;
     }
     default: {
@@ -7931,7 +7935,7 @@ $p.av = (function(it) {
 $p.aw = (function() {
   return this.g0.hL($m_s_reflect_ManifestFactory$AnyManifest$());
 });
-$p.dl = (function(elems) {
+$p.dm = (function(elems) {
   return this.g0.jL(elems, $m_s_reflect_ManifestFactory$AnyManifest$());
 });
 function $ct_sc_IterableFactory$Delegate__sc_IterableFactory__($thiz, delegate) {
@@ -7988,7 +7992,7 @@ function $f_sc_Iterator__concat__F0__sc_Iterator($thiz, xs) {
 function $f_sc_Iterator__sliceIterator__I__I__sc_Iterator($thiz, from, until) {
   var lo = ((from > 0) ? from : 0);
   var rest = ((until < 0) ? (-1) : ((until <= lo) ? 0 : ((until - lo) | 0)));
-  return ((rest === 0) ? $m_sc_Iterator$().T : new $c_sc_Iterator$SliceIterator($thiz, lo, rest));
+  return ((rest === 0) ? $m_sc_Iterator$().U : new $c_sc_Iterator$SliceIterator($thiz, lo, rest));
 }
 function $f_sc_Iterator__sameElements__sc_IterableOnce__Z($thiz, that) {
   var those = that.r();
@@ -8001,9 +8005,9 @@ function $f_sc_Iterator__sameElements__sc_IterableOnce__Z($thiz, that) {
 }
 /** @constructor */
 function $c_sc_Iterator$() {
-  this.T = null;
+  this.U = null;
   $n_sc_Iterator$ = this;
-  this.T = new $c_sc_Iterator$$anon$19();
+  this.U = new $c_sc_Iterator$$anon$19();
 }
 $p = $c_sc_Iterator$.prototype = new $h_O();
 $p.constructor = $c_sc_Iterator$;
@@ -8083,14 +8087,14 @@ function $m_sc_View$() {
 function $c_sci_BitmapIndexedMapNode(dataMap, nodeMap, content, originalHashes, size, cachedJavaKeySetHashCode) {
   this.a6 = 0;
   this.ak = 0;
-  this.aD = null;
-  this.bP = null;
+  this.aE = null;
+  this.bQ = null;
   this.be = 0;
   this.bD = 0;
   this.a6 = dataMap;
   this.ak = nodeMap;
-  this.aD = content;
-  this.bP = originalHashes;
+  this.aE = content;
+  this.bQ = originalHashes;
   this.be = size;
   this.bD = cachedJavaKeySetHashCode;
 }
@@ -8100,34 +8104,34 @@ $p.constructor = $c_sci_BitmapIndexedMapNode;
 function $h_sci_BitmapIndexedMapNode() {
 }
 $h_sci_BitmapIndexedMapNode.prototype = $p;
-$p.bc = (function() {
+$p.bb = (function() {
   return this.be;
 });
-$p.ea = (function() {
+$p.eb = (function() {
   return this.bD;
 });
-$p.ec = (function(index) {
-  return this.aD.b[(index << 1)];
+$p.ee = (function(index) {
+  return this.aE.b[(index << 1)];
 });
-$p.dn = (function(index) {
-  return this.aD.b[((1 + (index << 1)) | 0)];
+$p.dp = (function(index) {
+  return this.aE.b[((1 + (index << 1)) | 0)];
 });
 $p.jT = (function(index) {
-  return new $c_T2(this.aD.b[(index << 1)], this.aD.b[((1 + (index << 1)) | 0)]);
+  return new $c_T2(this.aE.b[(index << 1)], this.aE.b[((1 + (index << 1)) | 0)]);
 });
 $p.gG = (function(index) {
-  return this.bP.b[index];
+  return this.bQ.b[index];
 });
 $p.cY = (function(index) {
-  return this.aD.b[(((((-1) + this.aD.b.length) | 0) - index) | 0)];
+  return this.aE.b[(((((-1) + this.aE.b.length) | 0) - index) | 0)];
 });
 $p.jt = (function(key, originalHash, keyHash, shift) {
-  var mask = $m_sci_Node$().eW(keyHash, shift);
-  var bitpos = $m_sci_Node$().e9(mask);
+  var mask = $m_sci_Node$().eY(keyHash, shift);
+  var bitpos = $m_sci_Node$().ea(mask);
   if (((this.a6 & bitpos) !== 0)) {
     var index = $m_sci_Node$().d0(this.a6, mask, bitpos);
-    if ($m_sr_BoxesRunTime$().A(key, this.ec(index))) {
-      return this.dn(index);
+    if ($m_sr_BoxesRunTime$().A(key, this.ee(index))) {
+      return this.dp(index);
     } else {
       throw new $c_ju_NoSuchElementException(("key not found: " + key));
     }
@@ -8138,42 +8142,42 @@ $p.jt = (function(key, originalHash, keyHash, shift) {
   }
 });
 $p.jS = (function(key, originalHash, keyHash, shift, f) {
-  var mask = $m_sci_Node$().eW(keyHash, shift);
-  var bitpos = $m_sci_Node$().e9(mask);
+  var mask = $m_sci_Node$().eY(keyHash, shift);
+  var bitpos = $m_sci_Node$().ea(mask);
   if (((this.a6 & bitpos) !== 0)) {
     var index = $m_sci_Node$().d0(this.a6, mask, bitpos);
-    return ($m_sr_BoxesRunTime$().A(key, this.ec(index)) ? this.dn(index) : f.Y());
+    return ($m_sr_BoxesRunTime$().A(key, this.ee(index)) ? this.dp(index) : f.Y());
   } else {
     return (((this.ak & bitpos) !== 0) ? this.cY($m_sci_Node$().d0(this.ak, mask, bitpos)).jS(key, originalHash, keyHash, ((5 + shift) | 0), f) : f.Y());
   }
 });
 $p.jE = (function(key, originalHash, keyHash, shift) {
-  var mask = $m_sci_Node$().eW(keyHash, shift);
-  var bitpos = $m_sci_Node$().e9(mask);
+  var mask = $m_sci_Node$().eY(keyHash, shift);
+  var bitpos = $m_sci_Node$().ea(mask);
   if (((this.a6 & bitpos) !== 0)) {
     var index = $m_sci_Node$().d0(this.a6, mask, bitpos);
-    return ((this.bP.b[index] === originalHash) && $m_sr_BoxesRunTime$().A(key, this.ec(index)));
+    return ((this.bQ.b[index] === originalHash) && $m_sr_BoxesRunTime$().A(key, this.ee(index)));
   } else {
     return (((this.ak & bitpos) !== 0) && this.cY($m_sci_Node$().d0(this.ak, mask, bitpos)).jE(key, originalHash, keyHash, ((5 + shift) | 0)));
   }
 });
 $p.q9 = (function(key, value, originalHash, keyHash, shift, replaceValue) {
-  var mask = $m_sci_Node$().eW(keyHash, shift);
-  var bitpos = $m_sci_Node$().e9(mask);
+  var mask = $m_sci_Node$().eY(keyHash, shift);
+  var bitpos = $m_sci_Node$().ea(mask);
   if (((this.a6 & bitpos) !== 0)) {
     var index = $m_sci_Node$().d0(this.a6, mask, bitpos);
-    var key0 = this.ec(index);
+    var key0 = this.ee(index);
     var key0UnimprovedHash = this.gG(index);
     if (((key0UnimprovedHash === originalHash) && $m_sr_BoxesRunTime$().A(key0, key))) {
       if (replaceValue) {
-        var value0 = this.dn(index);
+        var value0 = this.dp(index);
         return ((Object.is(key0, key) && Object.is(value0, value)) ? this : this.rn(bitpos, key, value));
       } else {
         return this;
       }
     } else {
-      var value0$2 = this.dn(index);
-      var key0Hash = $m_sc_Hashing$().cG(key0UnimprovedHash);
+      var value0$2 = this.dp(index);
+      var key0Hash = $m_sc_Hashing$().cH(key0UnimprovedHash);
       return this.rl(bitpos, key0Hash, this.k7(key0, value0$2, key0UnimprovedHash, key0Hash, key, value, originalHash, keyHash, ((5 + shift) | 0)));
     }
   } else if (((this.ak & bitpos) !== 0)) {
@@ -8189,16 +8193,16 @@ $p.k7 = (function(key0, value0, originalHash0, keyHash0, key1, value1, originalH
   if ((shift >= 32)) {
     return new $c_sci_HashCollisionMapNode(originalHash0, keyHash0, $m_sci_Vector$().jP(new $c_sjsr_WrappedVarArgs([new $c_T2(key0, value0), new $c_T2(key1, value1)])));
   } else {
-    var mask0 = $m_sci_Node$().eW(keyHash0, shift);
-    var mask1 = $m_sci_Node$().eW(keyHash1, shift);
+    var mask0 = $m_sci_Node$().eY(keyHash0, shift);
+    var mask1 = $m_sci_Node$().eY(keyHash1, shift);
     var newCachedHash = ((keyHash0 + keyHash1) | 0);
     if ((mask0 !== mask1)) {
-      var dataMap = ($m_sci_Node$().e9(mask0) | $m_sci_Node$().e9(mask1));
+      var dataMap = ($m_sci_Node$().ea(mask0) | $m_sci_Node$().ea(mask1));
       return ((mask0 < mask1) ? new $c_sci_BitmapIndexedMapNode(dataMap, 0, new $ac_O([key0, value0, key1, value1]), new $ac_I(new Int32Array([originalHash0, originalHash1])), 2, newCachedHash) : new $c_sci_BitmapIndexedMapNode(dataMap, 0, new $ac_O([key1, value1, key0, value0]), new $ac_I(new Int32Array([originalHash1, originalHash0])), 2, newCachedHash));
     } else {
-      var nodeMap = $m_sci_Node$().e9(mask0);
+      var nodeMap = $m_sci_Node$().ea(mask0);
       var node = this.k7(key0, value0, originalHash0, keyHash0, key1, value1, originalHash1, keyHash1, ((5 + shift) | 0));
-      return new $c_sci_BitmapIndexedMapNode(0, nodeMap, new $ac_O([node]), $m_s_Array$EmptyArrays$().iO, node.bc(), node.ea());
+      return new $c_sci_BitmapIndexedMapNode(0, nodeMap, new $ac_O([node]), $m_s_Array$EmptyArrays$().iO, node.bb(), node.eb());
     }
   }
 });
@@ -8223,26 +8227,26 @@ $p.ka = (function(bitpos) {
 $p.rn = (function(bitpos, newKey, newValue) {
   var dataIx = this.gB(bitpos);
   var idx = (dataIx << 1);
-  var src = this.aD;
+  var src = this.aE;
   var dst = new $ac_O(src.b.length);
   var length = src.b.length;
   src.H(0, dst, 0, length);
   dst.b[((1 + idx) | 0)] = newValue;
-  return new $c_sci_BitmapIndexedMapNode(this.a6, this.ak, dst, this.bP, this.be, this.bD);
+  return new $c_sci_BitmapIndexedMapNode(this.a6, this.ak, dst, this.bQ, this.be, this.bD);
 });
 $p.rm = (function(bitpos, oldNode, newNode) {
-  var idx = (((((-1) + this.aD.b.length) | 0) - this.ka(bitpos)) | 0);
-  var src = this.aD;
+  var idx = (((((-1) + this.aE.b.length) | 0) - this.ka(bitpos)) | 0);
+  var src = this.aE;
   var dst = new $ac_O(src.b.length);
   var length = src.b.length;
   src.H(0, dst, 0, length);
   dst.b[idx] = newNode;
-  return new $c_sci_BitmapIndexedMapNode(this.a6, this.ak, dst, this.bP, ((((this.be - oldNode.bc()) | 0) + newNode.bc()) | 0), ((((this.bD - oldNode.ea()) | 0) + newNode.ea()) | 0));
+  return new $c_sci_BitmapIndexedMapNode(this.a6, this.ak, dst, this.bQ, ((((this.be - oldNode.bb()) | 0) + newNode.bb()) | 0), ((((this.bD - oldNode.eb()) | 0) + newNode.eb()) | 0));
 });
 $p.rk = (function(bitpos, key, originalHash, keyHash, value) {
   var dataIx = this.gB(bitpos);
   var idx = (dataIx << 1);
-  var src = this.aD;
+  var src = this.aE;
   var dst = new $ac_O(((2 + src.b.length) | 0));
   src.H(0, dst, 0, idx);
   dst.b[idx] = key;
@@ -8250,14 +8254,14 @@ $p.rk = (function(bitpos, key, originalHash, keyHash, value) {
   var destPos = ((2 + idx) | 0);
   var length = ((src.b.length - idx) | 0);
   src.H(idx, dst, destPos, length);
-  var dstHashes = this.sl(this.bP, dataIx, originalHash);
+  var dstHashes = this.sl(this.bQ, dataIx, originalHash);
   return new $c_sci_BitmapIndexedMapNode((this.a6 | bitpos), this.ak, dst, dstHashes, ((1 + this.be) | 0), ((this.bD + keyHash) | 0));
 });
 $p.sE = (function(bitpos, keyHash, node) {
   var dataIx = this.gB(bitpos);
   var idxOld = (dataIx << 1);
-  var idxNew = (((((-2) + this.aD.b.length) | 0) - this.ka(bitpos)) | 0);
-  var src = this.aD;
+  var idxNew = (((((-2) + this.aE.b.length) | 0) - this.ka(bitpos)) | 0);
+  var src = this.aE;
   var dst = new $ac_O((((-1) + src.b.length) | 0));
   src.H(0, dst, 0, idxOld);
   var srcPos = ((2 + idxOld) | 0);
@@ -8268,20 +8272,20 @@ $p.sE = (function(bitpos, keyHash, node) {
   var destPos = ((1 + idxNew) | 0);
   var length$1 = (((-2) + ((src.b.length - idxNew) | 0)) | 0);
   src.H(srcPos$1, dst, destPos, length$1);
-  var dstHashes = this.pT(this.bP, dataIx);
+  var dstHashes = this.pT(this.bQ, dataIx);
   this.a6 = (this.a6 ^ bitpos);
   this.ak = (this.ak | bitpos);
-  this.aD = dst;
-  this.bP = dstHashes;
-  this.be = (((((-1) + this.be) | 0) + node.bc()) | 0);
-  this.bD = ((((this.bD - keyHash) | 0) + node.ea()) | 0);
+  this.aE = dst;
+  this.bQ = dstHashes;
+  this.be = (((((-1) + this.be) | 0) + node.bb()) | 0);
+  this.bD = ((((this.bD - keyHash) | 0) + node.eb()) | 0);
   return this;
 });
 $p.rl = (function(bitpos, keyHash, node) {
   var dataIx = this.gB(bitpos);
   var idxOld = (dataIx << 1);
-  var idxNew = (((((-2) + this.aD.b.length) | 0) - this.ka(bitpos)) | 0);
-  var src = this.aD;
+  var idxNew = (((((-2) + this.aE.b.length) | 0) - this.ka(bitpos)) | 0);
+  var src = this.aE;
   var dst = new $ac_O((((-1) + src.b.length) | 0));
   src.H(0, dst, 0, idxOld);
   var srcPos = ((2 + idxOld) | 0);
@@ -8292,8 +8296,8 @@ $p.rl = (function(bitpos, keyHash, node) {
   var destPos = ((1 + idxNew) | 0);
   var length$1 = (((-2) + ((src.b.length - idxNew) | 0)) | 0);
   src.H(srcPos$1, dst, destPos, length$1);
-  var dstHashes = this.pT(this.bP, dataIx);
-  return new $c_sci_BitmapIndexedMapNode((this.a6 ^ bitpos), (this.ak | bitpos), dst, dstHashes, (((((-1) + this.be) | 0) + node.bc()) | 0), ((((this.bD - keyHash) | 0) + node.ea()) | 0));
+  var dstHashes = this.pT(this.bQ, dataIx);
+  return new $c_sci_BitmapIndexedMapNode((this.a6 ^ bitpos), (this.ak | bitpos), dst, dstHashes, (((((-1) + this.be) | 0) + node.bb()) | 0), ((((this.bD - keyHash) | 0) + node.eb()) | 0));
 });
 $p.aj = (function(f) {
   var iN = $m_jl_Integer$().cV(this.a6);
@@ -8309,17 +8313,17 @@ $p.aj = (function(f) {
     j = ((1 + j) | 0);
   }
 });
-$p.eQ = (function(f) {
+$p.eR = (function(f) {
   var iN = $m_jl_Integer$().cV(this.a6);
   var i$1 = 0;
   while ((i$1 < iN)) {
-    f.eL(this.ec(i$1), this.dn(i$1));
+    f.eM(this.ee(i$1), this.dp(i$1));
     i$1 = ((1 + i$1) | 0);
   }
   var jN = $m_jl_Integer$().cV(this.ak);
   var j = 0;
   while ((j < jN)) {
-    this.cY(j).eQ(f);
+    this.cY(j).eR(f);
     j = ((1 + j) | 0);
   }
 });
@@ -8327,10 +8331,10 @@ $p.z = (function(that) {
   if ((that instanceof $c_sci_BitmapIndexedMapNode)) {
     if ((this === that)) {
       return true;
-    } else if ((((((this.bD === that.bD) && (this.ak === that.ak)) && (this.a6 === that.a6)) && (this.be === that.be)) && $m_ju_Arrays$().jH(this.bP, that.bP))) {
-      var a1 = this.aD;
-      var a2 = that.aD;
-      var length = this.aD.b.length;
+    } else if ((((((this.bD === that.bD) && (this.ak === that.ak)) && (this.a6 === that.a6)) && (this.be === that.be)) && $m_ju_Arrays$().jH(this.bQ, that.bQ))) {
+      var a1 = this.aE;
+      var a2 = that.aE;
+      var length = this.aE.b.length;
       if ((a1 === a2)) {
         return true;
       } else {
@@ -8353,7 +8357,7 @@ $p.E = (function() {
   throw new $c_jl_UnsupportedOperationException("Trie nodes do not support hashing.");
 });
 $p.pf = (function() {
-  var this$1 = this.aD;
+  var this$1 = this.aE;
   var contentClone = this$1.o();
   var contentLength = contentClone.b.length;
   var i$1 = ($m_jl_Integer$().cV(this.a6) << 1);
@@ -8361,7 +8365,7 @@ $p.pf = (function() {
     contentClone.b[i$1] = contentClone.b[i$1].pg();
     i$1 = ((1 + i$1) | 0);
   }
-  return new $c_sci_BitmapIndexedMapNode(this.a6, this.ak, contentClone, this.bP.o(), this.be, this.bD);
+  return new $c_sci_BitmapIndexedMapNode(this.a6, this.ak, contentClone, this.bQ.o(), this.be, this.bD);
 });
 $p.pg = (function() {
   return this.pf();
@@ -8383,10 +8387,10 @@ var $d_sci_BitmapIndexedMapNode = new $TypeData().i($c_sci_BitmapIndexedMapNode,
 /** @constructor */
 function $c_sci_HashCollisionMapNode(originalHash, hash, content) {
   this.j4 = 0;
-  this.dK = 0;
+  this.dL = 0;
   this.al = null;
   this.j4 = originalHash;
-  this.dK = hash;
+  this.dL = hash;
   this.al = content;
   $m_s_Predef$().tc((this.al.C() >= 2));
 }
@@ -8407,20 +8411,20 @@ $p.fz = (function(key) {
   }
   return (-1);
 });
-$p.bc = (function() {
+$p.bb = (function() {
   return this.al.C();
 });
 $p.jt = (function(key, originalHash, hash, shift) {
   var this$1 = this.rY(key, originalHash, hash, shift);
   if (this$1.j()) {
-    $m_sc_Iterator$().T.n();
+    $m_sc_Iterator$().U.n();
     throw new $c_jl_ClassCastException();
   } else {
     return this$1.Q();
   }
 });
 $p.rY = (function(key, originalHash, hash, shift) {
-  if ((this.dK === hash)) {
+  if ((this.dL === hash)) {
     var index = this.fz(key);
     return ((index >= 0) ? new $c_s_Some(this.al.F(index).bj()) : $m_s_None$());
   } else {
@@ -8428,7 +8432,7 @@ $p.rY = (function(key, originalHash, hash, shift) {
   }
 });
 $p.jS = (function(key, originalHash, hash, shift, f) {
-  if ((this.dK === hash)) {
+  if ((this.dL === hash)) {
     var x1 = this.fz(key);
     return ((x1 === (-1)) ? f.Y() : this.al.F(x1).bj());
   } else {
@@ -8436,11 +8440,11 @@ $p.jS = (function(key, originalHash, hash, shift, f) {
   }
 });
 $p.jE = (function(key, originalHash, hash, shift) {
-  return ((this.dK === hash) && (this.fz(key) >= 0));
+  return ((this.dL === hash) && (this.fz(key) >= 0));
 });
 $p.qa = (function(key, value, originalHash, hash, shift, replaceValue) {
   var index = this.fz(key);
-  return ((index >= 0) ? (replaceValue ? (Object.is(this.al.F(index).bj(), value) ? this : new $c_sci_HashCollisionMapNode(originalHash, hash, this.al.ek(index, new $c_T2(key, value)))) : this) : new $c_sci_HashCollisionMapNode(originalHash, hash, this.al.e8(new $c_T2(key, value))));
+  return ((index >= 0) ? (replaceValue ? (Object.is(this.al.F(index).bj(), value) ? this : new $c_sci_HashCollisionMapNode(originalHash, hash, this.al.em(index, new $c_T2(key, value)))) : this) : new $c_sci_HashCollisionMapNode(originalHash, hash, this.al.e9(new $c_T2(key, value))));
 });
 $p.jW = (function() {
   return false;
@@ -8457,10 +8461,10 @@ $p.hI = (function() {
 $p.ke = (function() {
   return this.al.C();
 });
-$p.ec = (function(index) {
+$p.ee = (function(index) {
   return this.al.F(index).bq();
 });
-$p.dn = (function(index) {
+$p.dp = (function(index) {
   return this.al.F(index).bj();
 });
 $p.jT = (function(index) {
@@ -8472,12 +8476,12 @@ $p.gG = (function(index) {
 $p.aj = (function(f) {
   this.al.aj(f);
 });
-$p.eQ = (function(f) {
+$p.eR = (function(f) {
   this.al.aj(new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((x0$1$2$2) => {
     if ((x0$1$2$2 !== null)) {
       var k = x0$1$2$2.bq();
       var v = x0$1$2$2.bj();
-      return f.eL(k, v);
+      return f.eM(k, v);
     } else {
       throw new $c_s_MatchError(x0$1$2$2);
     }
@@ -8487,7 +8491,7 @@ $p.z = (function(that) {
   if ((that instanceof $c_sci_HashCollisionMapNode)) {
     if ((this === that)) {
       return true;
-    } else if (((this.dK === that.dK) && (this.al.C() === that.al.C()))) {
+    } else if (((this.dL === that.dL) && (this.al.C() === that.al.C()))) {
       var iter = this.al.r();
       while (iter.x()) {
         var x1$2 = iter.n();
@@ -8512,11 +8516,11 @@ $p.z = (function(that) {
 $p.E = (function() {
   throw new $c_jl_UnsupportedOperationException("Trie nodes do not support hashing.");
 });
-$p.ea = (function() {
-  return Math.imul(this.al.C(), this.dK);
+$p.eb = (function() {
+  return Math.imul(this.al.C(), this.dL);
 });
 $p.pg = (function() {
-  return new $c_sci_HashCollisionMapNode(this.j4, this.dK, this.al);
+  return new $c_sci_HashCollisionMapNode(this.j4, this.dL, this.al);
 });
 $p.jR = (function(index) {
   return this.cY(index);
@@ -8578,7 +8582,7 @@ $h_sci_LazyList$State$Cons.prototype = $p;
 $p.w = (function() {
   return this.of;
 });
-$p.aM = (function() {
+$p.aN = (function() {
   return this.og;
 });
 var $d_sci_LazyList$State$Cons = new $TypeData().i($c_sci_LazyList$State$Cons, "scala.collection.immutable.LazyList$State$Cons", ({
@@ -8598,7 +8602,7 @@ $h_sci_LazyList$State$Empty$.prototype = $p;
 $p.jX = (function() {
   throw new $c_ju_NoSuchElementException("head of empty lazy list");
 });
-$p.aM = (function() {
+$p.aN = (function() {
   throw new $c_jl_UnsupportedOperationException("tail of empty lazy list");
 });
 $p.w = (function() {
@@ -8783,7 +8787,7 @@ $p.constructor = $c_sr_AbstractFunction2_$$Lambda$286cbfc6187197affcadc8465aaec9
 function $h_sr_AbstractFunction2_$$Lambda$286cbfc6187197affcadc8465aaec93d6b7d20dc() {
 }
 $h_sr_AbstractFunction2_$$Lambda$286cbfc6187197affcadc8465aaec93d6b7d20dc.prototype = $p;
-$p.eL = (function(x0, x1) {
+$p.eM = (function(x0, x1) {
   return (0, this.oz)(x0, x1);
 });
 var $d_sr_AbstractFunction2_$$Lambda$286cbfc6187197affcadc8465aaec93d6b7d20dc = new $TypeData().i($c_sr_AbstractFunction2_$$Lambda$286cbfc6187197affcadc8465aaec93d6b7d20dc, "scala.runtime.AbstractFunction2.$$Lambda$286cbfc6187197affcadc8465aaec93d6b7d20dc", ({
@@ -8804,7 +8808,7 @@ $p.D = (function() {
   return "<function1>";
 });
 $p.i = (function(x) {
-  return this.c8(x, $m_s_PartialFunction$().hf);
+  return this.cc(x, $m_s_PartialFunction$().hf);
 });
 var $d_sr_Nothing$ = new $TypeData().i(0, "scala.runtime.Nothing$", ({
   i3: 1,
@@ -8906,7 +8910,7 @@ $p.kc = (function(nextError, transaction) {
   $f_Lcom_raquo_airstream_common_InternalTryObserver__onError__jl_Throwable__Lcom_raquo_airstream_core_Transaction__V(this, nextError, transaction);
 });
 $p.gP = (function(nextValue, transaction) {
-  this.ky.eL(nextValue, transaction);
+  this.ky.eM(nextValue, transaction);
 });
 var $d_Lcom_raquo_airstream_common_InternalParentObserver$$anon$2 = new $TypeData().i($c_Lcom_raquo_airstream_common_InternalParentObserver$$anon$2, "com.raquo.airstream.common.InternalParentObserver$$anon$2", ({
   d0: 1,
@@ -8934,16 +8938,16 @@ $p.constructor = $c_Lcom_raquo_airstream_core_Observer$$anon$8;
 function $h_Lcom_raquo_airstream_core_Observer$$anon$8() {
 }
 $h_Lcom_raquo_airstream_core_Observer$$anon$8.prototype = $p;
-$p.ee = (function() {
+$p.eg = (function() {
   return this.kC;
 });
-$p.eb = (function() {
+$p.ed = (function() {
   return $f_Lcom_raquo_airstream_core_Named__defaultDisplayName__T(this);
 });
 $p.D = (function() {
   return $f_Lcom_raquo_airstream_core_Named__displayName__T(this);
 });
-$p.dq = (function(nextValue) {
+$p.dr = (function(nextValue) {
   try {
     this.kD.i(nextValue);
   } catch (e) {
@@ -8951,27 +8955,27 @@ $p.dq = (function(nextValue) {
     if (this.kB) {
       this.gM(new $c_Lcom_raquo_airstream_core_AirstreamError$ObserverError(e$2));
     } else {
-      $m_Lcom_raquo_airstream_core_AirstreamError$().cK(new $c_Lcom_raquo_airstream_core_AirstreamError$ObserverError(e$2));
+      $m_Lcom_raquo_airstream_core_AirstreamError$().cL(new $c_Lcom_raquo_airstream_core_AirstreamError$ObserverError(e$2));
     }
   }
 });
 $p.gM = (function(error) {
   try {
-    if (this.hZ.cw(error)) {
+    if (this.hZ.cB(error)) {
       this.hZ.i(error);
     } else {
-      $m_Lcom_raquo_airstream_core_AirstreamError$().cK(error);
+      $m_Lcom_raquo_airstream_core_AirstreamError$().cL(error);
     }
   } catch (e) {
     var e$2 = ((e instanceof $c_jl_Throwable) ? e : new $c_sjs_js_JavaScriptException(e));
-    $m_Lcom_raquo_airstream_core_AirstreamError$().cK(new $c_Lcom_raquo_airstream_core_AirstreamError$ObserverErrorHandlingError(e$2, error));
+    $m_Lcom_raquo_airstream_core_AirstreamError$().cL(new $c_Lcom_raquo_airstream_core_AirstreamError$ObserverErrorHandlingError(e$2, error));
   }
 });
-$p.eg = (function(nextValue) {
-  nextValue.cu(new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((error) => {
+$p.ei = (function(nextValue) {
+  nextValue.cz(new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((error) => {
     this.gM(error);
   })), new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((nextValue$2) => {
-    this.dq(nextValue$2);
+    this.dr(nextValue$2);
   })));
 });
 var $d_Lcom_raquo_airstream_core_Observer$$anon$8 = new $TypeData().i($c_Lcom_raquo_airstream_core_Observer$$anon$8, "com.raquo.airstream.core.Observer$$anon$8", ({
@@ -8998,28 +9002,28 @@ $p.constructor = $c_Lcom_raquo_airstream_core_Observer$$anon$9;
 function $h_Lcom_raquo_airstream_core_Observer$$anon$9() {
 }
 $h_Lcom_raquo_airstream_core_Observer$$anon$9.prototype = $p;
-$p.ee = (function() {
+$p.eg = (function() {
   return this.kF;
 });
-$p.eb = (function() {
+$p.ed = (function() {
   return $f_Lcom_raquo_airstream_core_Named__defaultDisplayName__T(this);
 });
 $p.D = (function() {
   return $f_Lcom_raquo_airstream_core_Named__displayName__T(this);
 });
-$p.dq = (function(nextValue) {
-  this.eg(new $c_s_util_Success(nextValue));
+$p.dr = (function(nextValue) {
+  this.ei(new $c_s_util_Success(nextValue));
 });
 $p.gM = (function(error) {
-  this.eg(new $c_s_util_Failure(error));
+  this.ei(new $c_s_util_Failure(error));
 });
-$p.eg = (function(nextValue) {
+$p.ei = (function(nextValue) {
   try {
-    if (this.i0.cw(nextValue)) {
+    if (this.i0.cB(nextValue)) {
       this.i0.i(nextValue);
     } else {
-      nextValue.cu(new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((err) => {
-        $m_Lcom_raquo_airstream_core_AirstreamError$().cK(err);
+      nextValue.cz(new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((err) => {
+        $m_Lcom_raquo_airstream_core_AirstreamError$().cL(err);
       })), new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((_$3) => (void 0))));
     }
   } catch (e) {
@@ -9027,10 +9031,10 @@ $p.eg = (function(nextValue) {
     if ((this.kE && nextValue.pE())) {
       this.gM(new $c_Lcom_raquo_airstream_core_AirstreamError$ObserverError(e$2));
     } else {
-      nextValue.cu(new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((originalError) => {
-        $m_Lcom_raquo_airstream_core_AirstreamError$().cK(new $c_Lcom_raquo_airstream_core_AirstreamError$ObserverErrorHandlingError(e$2, originalError));
+      nextValue.cz(new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((originalError) => {
+        $m_Lcom_raquo_airstream_core_AirstreamError$().cL(new $c_Lcom_raquo_airstream_core_AirstreamError$ObserverErrorHandlingError(e$2, originalError));
       })), new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((_$4) => {
-        $m_Lcom_raquo_airstream_core_AirstreamError$().cK(new $c_Lcom_raquo_airstream_core_AirstreamError$ObserverError(e$2));
+        $m_Lcom_raquo_airstream_core_AirstreamError$().cL(new $c_Lcom_raquo_airstream_core_AirstreamError$ObserverError(e$2));
       })));
     }
   }
@@ -9077,7 +9081,7 @@ function $c_Lcom_raquo_laminar_api_Laminar$svg$(outer) {
   this.lY = false;
   this.lZ = null;
   this.m0 = false;
-  this.dw = null;
+  this.dx = null;
   if ((outer === null)) {
     throw new $c_jl_NullPointerException();
   }
@@ -9096,7 +9100,7 @@ $p.r8 = (function() {
   }
   return this.lt;
 });
-$p.ce = (function() {
+$p.ci = (function() {
   if ((!this.lG)) {
     this.lF = new $c_Lcom_raquo_laminar_tags_SvgTag("path", false);
     this.lG = true;
@@ -9110,7 +9114,7 @@ $p.sX = (function() {
   }
   return this.lJ;
 });
-$p.ej = (function() {
+$p.el = (function() {
   if ((!this.lW)) {
     this.lV = new $c_Lcom_raquo_laminar_tags_SvgTag("svg", false);
     this.lW = true;
@@ -9119,91 +9123,91 @@ $p.ej = (function() {
 });
 $p.rs = (function() {
   if ((!this.lw)) {
-    this.lv = new $c_Lcom_raquo_laminar_keys_SvgAttr("cx", $m_Lcom_raquo_laminar_codecs_package$().b3, $m_s_None$());
+    this.lv = new $c_Lcom_raquo_laminar_keys_SvgAttr("cx", $m_Lcom_raquo_laminar_codecs_package$().b2, $m_s_None$());
     this.lw = true;
   }
   return this.lv;
 });
 $p.rt = (function() {
   if ((!this.ly)) {
-    this.lx = new $c_Lcom_raquo_laminar_keys_SvgAttr("cy", $m_Lcom_raquo_laminar_codecs_package$().b3, $m_s_None$());
+    this.lx = new $c_Lcom_raquo_laminar_keys_SvgAttr("cy", $m_Lcom_raquo_laminar_codecs_package$().b2, $m_s_None$());
     this.ly = true;
   }
   return this.lx;
 });
-$p.cb = (function() {
+$p.cg = (function() {
   if ((!this.lA)) {
-    this.lz = new $c_Lcom_raquo_laminar_keys_SvgAttr("d", $m_Lcom_raquo_laminar_codecs_package$().b3, $m_s_None$());
+    this.lz = new $c_Lcom_raquo_laminar_keys_SvgAttr("d", $m_Lcom_raquo_laminar_codecs_package$().b2, $m_s_None$());
     this.lA = true;
   }
   return this.lz;
 });
-$p.eO = (function() {
+$p.eP = (function() {
   if ((!this.lC)) {
-    this.lB = new $c_Lcom_raquo_laminar_keys_SvgAttr("fill", $m_Lcom_raquo_laminar_codecs_package$().b3, $m_s_None$());
+    this.lB = new $c_Lcom_raquo_laminar_keys_SvgAttr("fill", $m_Lcom_raquo_laminar_codecs_package$().b2, $m_s_None$());
     this.lC = true;
   }
   return this.lB;
 });
-$p.eT = (function() {
+$p.eV = (function() {
   if ((!this.lE)) {
-    this.lD = new $c_Lcom_raquo_laminar_keys_SvgAttr("height", $m_Lcom_raquo_laminar_codecs_package$().b3, $m_s_None$());
+    this.lD = new $c_Lcom_raquo_laminar_keys_SvgAttr("height", $m_Lcom_raquo_laminar_codecs_package$().b2, $m_s_None$());
     this.lE = true;
   }
   return this.lD;
 });
 $p.sW = (function() {
   if ((!this.lI)) {
-    this.lH = new $c_Lcom_raquo_laminar_keys_SvgAttr("points", $m_Lcom_raquo_laminar_codecs_package$().b3, $m_s_None$());
+    this.lH = new $c_Lcom_raquo_laminar_keys_SvgAttr("points", $m_Lcom_raquo_laminar_codecs_package$().b2, $m_s_None$());
     this.lI = true;
   }
   return this.lH;
 });
 $p.sZ = (function() {
   if ((!this.lM)) {
-    this.lL = new $c_Lcom_raquo_laminar_keys_SvgAttr("r", $m_Lcom_raquo_laminar_codecs_package$().b3, $m_s_None$());
+    this.lL = new $c_Lcom_raquo_laminar_keys_SvgAttr("r", $m_Lcom_raquo_laminar_codecs_package$().b2, $m_s_None$());
     this.lM = true;
   }
   return this.lL;
 });
 $p.hO = (function() {
   if ((!this.lU)) {
-    this.lN = new $c_Lcom_raquo_laminar_keys_SvgAttr("stroke", $m_Lcom_raquo_laminar_codecs_package$().b3, $m_s_None$());
+    this.lN = new $c_Lcom_raquo_laminar_keys_SvgAttr("stroke", $m_Lcom_raquo_laminar_codecs_package$().b2, $m_s_None$());
     this.lU = true;
   }
   return this.lN;
 });
 $p.kh = (function() {
   if ((!this.lP)) {
-    this.lO = new $c_Lcom_raquo_laminar_keys_SvgAttr("stroke-linecap", $m_Lcom_raquo_laminar_codecs_package$().b3, $m_s_None$());
+    this.lO = new $c_Lcom_raquo_laminar_keys_SvgAttr("stroke-linecap", $m_Lcom_raquo_laminar_codecs_package$().b2, $m_s_None$());
     this.lP = true;
   }
   return this.lO;
 });
 $p.hP = (function() {
   if ((!this.lR)) {
-    this.lQ = new $c_Lcom_raquo_laminar_keys_SvgAttr("stroke-linejoin", $m_Lcom_raquo_laminar_codecs_package$().b3, $m_s_None$());
+    this.lQ = new $c_Lcom_raquo_laminar_keys_SvgAttr("stroke-linejoin", $m_Lcom_raquo_laminar_codecs_package$().b2, $m_s_None$());
     this.lR = true;
   }
   return this.lQ;
 });
 $p.hQ = (function() {
   if ((!this.lT)) {
-    this.lS = new $c_Lcom_raquo_laminar_keys_SvgAttr("stroke-width", $m_Lcom_raquo_laminar_codecs_package$().b3, $m_s_None$());
+    this.lS = new $c_Lcom_raquo_laminar_keys_SvgAttr("stroke-width", $m_Lcom_raquo_laminar_codecs_package$().b2, $m_s_None$());
     this.lT = true;
   }
   return this.lS;
 });
-$p.f2 = (function() {
+$p.f4 = (function() {
   if ((!this.lY)) {
-    this.lX = new $c_Lcom_raquo_laminar_keys_SvgAttr("viewBox", $m_Lcom_raquo_laminar_codecs_package$().b3, $m_s_None$());
+    this.lX = new $c_Lcom_raquo_laminar_keys_SvgAttr("viewBox", $m_Lcom_raquo_laminar_codecs_package$().b2, $m_s_None$());
     this.lY = true;
   }
   return this.lX;
 });
-$p.f3 = (function() {
+$p.f5 = (function() {
   if ((!this.m0)) {
-    this.lZ = new $c_Lcom_raquo_laminar_keys_SvgAttr("width", $m_Lcom_raquo_laminar_codecs_package$().b3, $m_s_None$());
+    this.lZ = new $c_Lcom_raquo_laminar_keys_SvgAttr("width", $m_Lcom_raquo_laminar_codecs_package$().b2, $m_s_None$());
     this.m0 = true;
   }
   return this.lZ;
@@ -9260,9 +9264,9 @@ $p.jx = (function(element) {
   var this$1 = this.np;
   var insertContext = (this$1.j() ? $m_Lcom_raquo_laminar_inserters_InsertContext$().td(element, this.nr, this.ii) : this$1.Q());
   var subscribe = new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((mountContext) => this.nq.hD(insertContext, mountContext.ir, this.ii)));
-  return $m_Lcom_raquo_airstream_ownership_DynamicSubscription$().gV(element.bU(), new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((owner) => subscribe.i(new $c_Lcom_raquo_laminar_lifecycle_MountContext(element, owner)))), false);
+  return $m_Lcom_raquo_airstream_ownership_DynamicSubscription$().gV(element.bV(), new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((owner) => subscribe.i(new $c_Lcom_raquo_laminar_lifecycle_MountContext(element, owner)))), false);
 });
-$p.cs = (function(element) {
+$p.cx = (function(element) {
   this.jx(element);
 });
 var $d_Lcom_raquo_laminar_inserters_DynamicInserter = new $TypeData().i($c_Lcom_raquo_laminar_inserters_DynamicInserter, "com.raquo.laminar.inserters.DynamicInserter", ({
@@ -9284,16 +9288,16 @@ $p.constructor = $c_Lcom_raquo_laminar_nodes_CommentNode;
 function $h_Lcom_raquo_laminar_nodes_CommentNode() {
 }
 $h_Lcom_raquo_laminar_nodes_CommentNode.prototype = $p;
-$p.ft = (function() {
+$p.fv = (function() {
   return this.iw;
 });
-$p.ei = (function(maybeNextParent) {
+$p.ek = (function(maybeNextParent) {
   this.iw = maybeNextParent;
 });
-$p.em = (function(maybeNextParent) {
+$p.eo = (function(maybeNextParent) {
 });
-$p.cs = (function(parentNode) {
-  $m_Lcom_raquo_laminar_nodes_ParentNode$().eJ(parentNode, this, (void 0));
+$p.cx = (function(parentNode) {
+  $m_Lcom_raquo_laminar_nodes_ParentNode$().eL(parentNode, this, (void 0));
 });
 $p.aa = (function() {
   return this.ix;
@@ -9317,16 +9321,16 @@ $p.constructor = $c_Lcom_raquo_laminar_nodes_TextNode;
 function $h_Lcom_raquo_laminar_nodes_TextNode() {
 }
 $h_Lcom_raquo_laminar_nodes_TextNode.prototype = $p;
-$p.ft = (function() {
+$p.fv = (function() {
   return this.iE;
 });
-$p.ei = (function(maybeNextParent) {
+$p.ek = (function(maybeNextParent) {
   this.iE = maybeNextParent;
 });
-$p.em = (function(maybeNextParent) {
+$p.eo = (function(maybeNextParent) {
 });
-$p.cs = (function(parentNode) {
-  $m_Lcom_raquo_laminar_nodes_ParentNode$().eJ(parentNode, this, (void 0));
+$p.cx = (function(parentNode) {
+  $m_Lcom_raquo_laminar_nodes_ParentNode$().eL(parentNode, this, (void 0));
 });
 $p.ts = (function() {
   return this.ha.data;
@@ -9460,13 +9464,13 @@ $p.constructor = $c_s_PartialFunction$$anon$1;
 function $h_s_PartialFunction$$anon$1() {
 }
 $h_s_PartialFunction$$anon$1.prototype = $p;
-$p.c8 = (function(x, default$1) {
+$p.cc = (function(x, default$1) {
   return $f_s_PartialFunction__applyOrElse__O__F1__O(this, x, default$1);
 });
 $p.D = (function() {
   return "<function1>";
 });
-$p.cw = (function(x) {
+$p.cB = (function(x) {
   return false;
 });
 $p.ju = (function(x) {
@@ -9496,7 +9500,7 @@ $p.r = (function() {
 $p.jD = (function(xs) {
   return $f_sc_Iterator__concat__F0__sc_Iterator(this, xs);
 });
-$p.dm = (function(n) {
+$p.dn = (function(n) {
   return this.gT(n, (-1));
 });
 $p.gT = (function(from, until) {
@@ -9508,14 +9512,14 @@ $p.D = (function() {
 $p.aj = (function(f) {
   $f_sc_IterableOnceOps__foreach__F1__V(this, f);
 });
-$p.ca = (function(xs, start, len) {
+$p.cf = (function(xs, start, len) {
   return $f_sc_IterableOnceOps__copyToArray__O__I__I__I(this, xs, start, len);
 });
-$p.e7 = (function(b, start, sep, end) {
+$p.e8 = (function(b, start, sep, end) {
   return $f_sc_IterableOnceOps__addString__scm_StringBuilder__T__T__T__scm_StringBuilder(this, b, start, sep, end);
 });
-$p.eY = (function() {
-  return $m_sci_Nil$().eh(this);
+$p.f0 = (function() {
+  return $m_sci_Nil$().ej(this);
 });
 $p.J = (function() {
   return (-1);
@@ -9550,12 +9554,12 @@ function $m_sc_Map$() {
   return $n_sc_Map$;
 }
 function $ct_sc_SeqFactory$Delegate__sc_SeqFactory__($thiz, delegate) {
-  $thiz.ew = delegate;
+  $thiz.ey = delegate;
   return $thiz;
 }
 /** @constructor */
 function $c_sc_SeqFactory$Delegate() {
-  this.ew = null;
+  this.ey = null;
 }
 $p = $c_sc_SeqFactory$Delegate.prototype = new $h_O();
 $p.constructor = $c_sc_SeqFactory$Delegate;
@@ -9564,22 +9568,22 @@ function $h_sc_SeqFactory$Delegate() {
 }
 $h_sc_SeqFactory$Delegate.prototype = $p;
 $p.oX = (function(elems) {
-  return this.ew.dl(elems);
+  return this.ey.dm(elems);
 });
 $p.hH = (function(it) {
-  return this.ew.av(it);
+  return this.ey.av(it);
 });
 $p.aw = (function() {
-  return this.ew.aw();
+  return this.ey.aw();
 });
 $p.av = (function(source) {
   return this.hH(source);
 });
-$p.dl = (function(elems) {
+$p.dm = (function(elems) {
   return this.oX(elems);
 });
 function $f_sc_SeqOps__distinct__O($thiz) {
-  return $thiz.cE(new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((x$2$2) => x$2$2)));
+  return $thiz.cF(new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((x$2$2) => x$2$2)));
 }
 function $f_sc_SeqOps__distinctBy__F1__O($thiz, f) {
   return $thiz.gE(new $c_sc_View$DistinctBy($thiz, f));
@@ -9608,9 +9612,9 @@ function $f_sc_StrictOptimizedIterableOps__map__F1__O($thiz, f) {
   var b = $thiz.bs().aw();
   var it = $thiz.r();
   while (it.x()) {
-    b.b8(f.i(it.n()));
+    b.b7(f.i(it.n()));
   }
-  return b.ba();
+  return b.b9();
 }
 function $f_sc_StrictOptimizedIterableOps__flatten__F1__O($thiz, toIterableOnce) {
   var b = $thiz.bs().aw();
@@ -9618,21 +9622,21 @@ function $f_sc_StrictOptimizedIterableOps__flatten__F1__O($thiz, toIterableOnce)
   while (it.x()) {
     b.bk(toIterableOnce.i(it.n()));
   }
-  return b.ba();
+  return b.b9();
 }
 function $f_sc_StrictOptimizedIterableOps__takeRight__I__O($thiz, n) {
-  var b = $thiz.eX();
+  var b = $thiz.eZ();
   $f_scm_Builder__sizeHintBounded__I__sc_Iterable__V(b, n, $thiz);
-  var lead = $thiz.r().dm(n);
+  var lead = $thiz.r().dn(n);
   var it = $thiz.r();
   while (lead.x()) {
     lead.n();
     it.n();
   }
   while (it.x()) {
-    b.b8(it.n());
+    b.b7(it.n());
   }
-  return b.ba();
+  return b.b9();
 }
 /** @constructor */
 function $c_sci_Iterable$() {
@@ -9676,28 +9680,28 @@ $p.constructor = $c_sci_LazyList$;
 function $h_sci_LazyList$() {
 }
 $h_sci_LazyList$.prototype = $p;
-$p.dl = (function(elems) {
+$p.dm = (function(elems) {
   return this.jO(elems);
 });
 $p.pZ = (function(ll, f) {
   return new $c_sci_LazyList(new $c_sr_AbstractFunction0_$$Lambda$a02b774b97db8234e08c6a02dd06557c99779855(((restRef) => (() => {
     var it = new $c_sr_ObjectRef(null);
     var itHasNext = false;
-    var rest = new $c_sr_ObjectRef(restRef.ay);
-    while (((!itHasNext) && (!rest.ay.j()))) {
-      it.ay = f.i(rest.ay.L().w()).r();
-      itHasNext = it.ay.x();
+    var rest = new $c_sr_ObjectRef(restRef.az);
+    while (((!itHasNext) && (!rest.az.j()))) {
+      it.az = f.i(rest.az.L().w()).r();
+      itHasNext = it.az.x();
       if ((!itHasNext)) {
-        rest.ay = rest.ay.L().aM();
-        restRef.ay = rest.ay;
+        rest.az = rest.az.L().aN();
+        restRef.az = rest.az;
       }
     }
     if (itHasNext) {
-      var head = it.ay.n();
-      rest.ay = rest.ay.L().aM();
-      restRef.ay = rest.ay;
+      var head = it.az.n();
+      rest.az = rest.az.L().aN();
+      restRef.az = rest.az;
       $m_sci_LazyList$();
-      return new $c_sci_LazyList$State$Cons(head, ($m_sci_LazyList$(), new $c_sci_LazyList(new $c_sr_AbstractFunction0_$$Lambda$a02b774b97db8234e08c6a02dd06557c99779855((() => $m_sci_LazyList$().kg(it.ay, new $c_sr_AbstractFunction0_$$Lambda$a02b774b97db8234e08c6a02dd06557c99779855((() => $m_sci_LazyList$().pZ(rest.ay, f).L()))))))));
+      return new $c_sci_LazyList$State$Cons(head, ($m_sci_LazyList$(), new $c_sci_LazyList(new $c_sr_AbstractFunction0_$$Lambda$a02b774b97db8234e08c6a02dd06557c99779855((() => $m_sci_LazyList$().kg(it.az, new $c_sr_AbstractFunction0_$$Lambda$a02b774b97db8234e08c6a02dd06557c99779855((() => $m_sci_LazyList$().pZ(rest.az, f).L()))))))));
     } else {
       return $m_sci_LazyList$State$Empty$();
     }
@@ -9705,13 +9709,13 @@ $p.pZ = (function(ll, f) {
 });
 $p.th = (function(ll, n) {
   return new $c_sci_LazyList(new $c_sr_AbstractFunction0_$$Lambda$a02b774b97db8234e08c6a02dd06557c99779855(((restRef, iRef) => (() => {
-    var rest = restRef.ay;
-    var i = iRef.eG;
+    var rest = restRef.az;
+    var i = iRef.eI;
     while (((i > 0) && (!rest.j()))) {
-      rest = rest.L().aM();
-      restRef.ay = rest;
+      rest = rest.L().aN();
+      restRef.az = rest;
       i = (((-1) + i) | 0);
-      iRef.eG = i;
+      iRef.eI = i;
     }
     return rest.L();
   }))(new $c_sr_ObjectRef(ll), new $c_sr_IntRef(n))));
@@ -9758,7 +9762,7 @@ function $h_scm_Builder$$anon$1() {
 }
 $h_scm_Builder$$anon$1.prototype = $p;
 $p.qO = (function(x) {
-  this.gg.b8(x);
+  this.gg.b7(x);
   return this;
 });
 $p.qE = (function(xs) {
@@ -9768,13 +9772,13 @@ $p.qE = (function(xs) {
 $p.bn = (function(size) {
   this.gg.bn(size);
 });
-$p.ba = (function() {
-  return this.or.i(this.gg.ba());
+$p.b9 = (function() {
+  return this.or.i(this.gg.b9());
 });
 $p.bk = (function(elems) {
   return this.qE(elems);
 });
-$p.b8 = (function(elem) {
+$p.b7 = (function(elem) {
   return this.qO(elem);
 });
 var $d_scm_Builder$$anon$1 = new $TypeData().i($c_scm_Builder$$anon$1, "scala.collection.mutable.Builder$$anon$1", ({
@@ -9784,12 +9788,12 @@ var $d_scm_Builder$$anon$1 = new $TypeData().i($c_scm_Builder$$anon$1, "scala.co
   H: 1
 }));
 function $ct_scm_GrowableBuilder__scm_Growable__($thiz, elems) {
-  $thiz.e1 = elems;
+  $thiz.e2 = elems;
   return $thiz;
 }
 /** @constructor */
 function $c_scm_GrowableBuilder() {
-  this.e1 = null;
+  this.e2 = null;
 }
 $p = $c_scm_GrowableBuilder.prototype = new $h_O();
 $p.constructor = $c_scm_GrowableBuilder;
@@ -9800,21 +9804,21 @@ $h_scm_GrowableBuilder.prototype = $p;
 $p.bn = (function(size) {
 });
 $p.qP = (function(elem) {
-  this.e1.b8(elem);
+  this.e2.b7(elem);
   return this;
 });
 $p.qF = (function(xs) {
-  this.e1.bk(xs);
+  this.e2.bk(xs);
   return this;
 });
 $p.bk = (function(elems) {
   return this.qF(elems);
 });
-$p.b8 = (function(elem) {
+$p.b7 = (function(elem) {
   return this.qP(elem);
 });
-$p.ba = (function() {
-  return this.e1;
+$p.b9 = (function() {
+  return this.e2;
 });
 var $d_scm_GrowableBuilder = new $TypeData().i($c_scm_GrowableBuilder, "scala.collection.mutable.GrowableBuilder", ({
   b5: 1,
@@ -9876,7 +9880,7 @@ $p.constructor = $c_sjsr_AnonFunction2_$$Lambda$1a8112ad760bd31301975c22c9537bb3
 function $h_sjsr_AnonFunction2_$$Lambda$1a8112ad760bd31301975c22c9537bb38341e0c2() {
 }
 $h_sjsr_AnonFunction2_$$Lambda$1a8112ad760bd31301975c22c9537bb38341e0c2.prototype = $p;
-$p.eL = (function(x0, x1) {
+$p.eM = (function(x0, x1) {
   return (0, this.oE)(x0, x1);
 });
 var $d_sjsr_AnonFunction2_$$Lambda$1a8112ad760bd31301975c22c9537bb38341e0c2 = new $TypeData().i($c_sjsr_AnonFunction2_$$Lambda$1a8112ad760bd31301975c22c9537bb38341e0c2, "scala.scalajs.runtime.AnonFunction2.$$Lambda$1a8112ad760bd31301975c22c9537bb38341e0c2", ({
@@ -9935,14 +9939,14 @@ function $h_s_util_Try() {
 }
 $h_s_util_Try.prototype = $p;
 function $ct_Lccrystal_site_Tab__T__T__T__($thiz, id, label, icon) {
-  $thiz.eo = label;
-  $thiz.en = icon;
+  $thiz.eq = label;
+  $thiz.ep = icon;
   return $thiz;
 }
 /** @constructor */
 function $c_Lccrystal_site_Tab() {
-  this.eo = null;
-  this.en = null;
+  this.eq = null;
+  this.ep = null;
 }
 $p = $c_Lccrystal_site_Tab.prototype = new $h_O();
 $p.constructor = $c_Lccrystal_site_Tab;
@@ -9987,7 +9991,7 @@ var $d_Lccrystal_site_TabExplorer$Scenario = new $TypeData().i(0, "ccrystal.site
 function $f_Lcom_raquo_airstream_core_WritableObservable__$init$__V($thiz) {
   $thiz.gx($m_Lcom_raquo_ew_JsArray$().br($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_airstream_core_Observer.r().C)([]))));
   $thiz.gy($m_Lcom_raquo_ew_JsArray$().br($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_airstream_core_InternalObserver.r().C)([]))));
-  $thiz.f4(false);
+  $thiz.f6(false);
 }
 function $f_Lcom_raquo_airstream_core_WritableObservable__addObserver__Lcom_raquo_airstream_core_Observer__Lcom_raquo_airstream_ownership_Owner__Lcom_raquo_airstream_ownership_Subscription($thiz, observer, owner) {
   var this$2 = $m_Lcom_raquo_airstream_core_Transaction$onStart$();
@@ -10056,7 +10060,7 @@ function $f_Lcom_raquo_airstream_core_WritableObservable__removeExternalObserver
 function $f_Lcom_raquo_airstream_core_WritableObservable__maybeWillStart__V($thiz) {
   if ((!$thiz.gW())) {
     $thiz.gQ();
-    $thiz.f4(true);
+    $thiz.f6(true);
   }
 }
 function $p_Lcom_raquo_airstream_core_WritableObservable__maybeStart__V($thiz) {
@@ -10067,7 +10071,7 @@ function $p_Lcom_raquo_airstream_core_WritableObservable__maybeStart__V($thiz) {
 function $p_Lcom_raquo_airstream_core_WritableObservable__maybeStop__V($thiz) {
   if ((!$f_Lcom_raquo_airstream_core_BaseObservable__isStarted__Z($thiz))) {
     $thiz.gO();
-    $thiz.f4(false);
+    $thiz.f6(false);
   }
 }
 function $f_Lcom_raquo_airstream_core_WritableObservable__numAllObservers__I($thiz) {
@@ -10098,10 +10102,10 @@ $p.qY = (function(x, default$1) {
     $f_Lcom_raquo_airstream_core_WritableStream__fireError__jl_Throwable__Lcom_raquo_airstream_core_Transaction__V(this.kH, x, _$1);
   }))), (void 0)) : default$1.i(x));
 });
-$p.cw = (function(x) {
+$p.cB = (function(x) {
   return this.so(x);
 });
-$p.c8 = (function(x, default$1) {
+$p.cc = (function(x, default$1) {
   return this.qY(x, default$1);
 });
 var $d_Lcom_raquo_airstream_custom_CustomSource$$anon$1 = new $TypeData().i($c_Lcom_raquo_airstream_custom_CustomSource$$anon$1, "com.raquo.airstream.custom.CustomSource$$anon$1", ({
@@ -10112,11 +10116,11 @@ var $d_Lcom_raquo_airstream_custom_CustomSource$$anon$1 = new $TypeData().i($c_L
   a: 1
 }));
 function $f_Lcom_raquo_airstream_state_Var__$init$__V($thiz) {
-  $thiz.du = $m_Lcom_raquo_airstream_core_Observer$().rW(new $c_Lcom_raquo_airstream_state_Var$$anon$1($thiz), ($m_Lcom_raquo_airstream_core_Observer$(), true));
+  $thiz.dv = $m_Lcom_raquo_airstream_core_Observer$().rW(new $c_Lcom_raquo_airstream_state_Var$$anon$1($thiz), ($m_Lcom_raquo_airstream_core_Observer$(), true));
 }
 function $f_Lcom_raquo_airstream_state_Var__set__O__V($thiz, value) {
   var tryValue = new $c_s_util_Success(value);
-  $thiz.du.eg(tryValue);
+  $thiz.dv.ei(tryValue);
 }
 /** @constructor */
 function $c_Lcom_raquo_airstream_state_Var$$anon$1(outer) {
@@ -10140,10 +10144,10 @@ $p.r0 = (function(x, default$1) {
     this.lg.ti(x, _$1);
   })));
 });
-$p.cw = (function(x) {
+$p.cB = (function(x) {
   return this.sq(x);
 });
-$p.c8 = (function(x, default$1) {
+$p.cc = (function(x, default$1) {
   return this.r0(x, default$1);
 });
 var $d_Lcom_raquo_airstream_state_Var$$anon$1 = new $TypeData().i($c_Lcom_raquo_airstream_state_Var$$anon$1, "com.raquo.airstream.state.Var$$anon$1", ({
@@ -10165,10 +10169,10 @@ $p.constructor = $c_Lcom_raquo_laminar_DomApi$$anon$1;
 function $h_Lcom_raquo_laminar_DomApi$$anon$1() {
 }
 $h_Lcom_raquo_laminar_DomApi$$anon$1.prototype = $p;
-$p.cw = (function(x) {
+$p.cB = (function(x) {
   return (((typeof x) === "boolean") && true);
 });
-$p.c8 = (function(x, default$1) {
+$p.cc = (function(x, default$1) {
   return (((typeof x) === "boolean") ? (!(!x)) : default$1.i(x));
 });
 var $d_Lcom_raquo_laminar_DomApi$$anon$1 = new $TypeData().i($c_Lcom_raquo_laminar_DomApi$$anon$1, "com.raquo.laminar.DomApi$$anon$1", ({
@@ -10180,18 +10184,18 @@ var $d_Lcom_raquo_laminar_DomApi$$anon$1 = new $TypeData().i($c_Lcom_raquo_lamin
 }));
 function $f_Lcom_raquo_laminar_nodes_ReactiveElement__$init$__V($thiz) {
   $thiz.pe(new $c_Lcom_raquo_airstream_ownership_TransferableSubscription(new $c_sjsr_AnonFunction0_$$Lambda$92a2e254bbb9c06a0a02fc31abab59c51c18ecc1((() => {
-    $thiz.bU().oK();
+    $thiz.bV().oK();
   })), new $c_sjsr_AnonFunction0_$$Lambda$92a2e254bbb9c06a0a02fc31abab59c51c18ecc1((() => {
-    $thiz.bU().ru();
+    $thiz.bV().ru();
   }))));
   $thiz.jA((void 0));
   $thiz.jz($m_sci_Map$EmptyMap$());
 }
 function $f_Lcom_raquo_laminar_nodes_ReactiveElement__addEventListener__Lcom_raquo_laminar_modifiers_EventListener__Z__V($thiz, listener, unsafePrepend) {
-  if (($thiz.fu() === (void 0))) {
+  if (($thiz.fw() === (void 0))) {
     $thiz.jA($m_Lcom_raquo_ew_JsArray$().br($m_sr_ScalaRunTime$().c(new ($d_Lcom_raquo_laminar_modifiers_EventListener.r().C)([listener]))));
   } else if (unsafePrepend) {
-    var x$1 = $thiz.fu();
+    var x$1 = $thiz.fw();
     if ((x$1 === (void 0))) {
       var $x_1;
       throw new $c_ju_NoSuchElementException("undefined.get");
@@ -10200,7 +10204,7 @@ function $f_Lcom_raquo_laminar_nodes_ReactiveElement__addEventListener__Lcom_raq
     }
     $x_1.unshift(listener);
   } else {
-    var x$2 = $thiz.fu();
+    var x$2 = $thiz.fw();
     if ((x$2 === (void 0))) {
       var $x_2;
       throw new $c_ju_NoSuchElementException("undefined.get");
@@ -10211,13 +10215,13 @@ function $f_Lcom_raquo_laminar_nodes_ReactiveElement__addEventListener__Lcom_raq
   }
 }
 function $f_Lcom_raquo_laminar_nodes_ReactiveElement__removeEventListener__I__V($thiz, index) {
-  var x = $thiz.fu();
+  var x = $thiz.fw();
   if ((x !== (void 0))) {
     x.splice(index, 1);
   }
 }
 function $f_Lcom_raquo_laminar_nodes_ReactiveElement__indexOfEventListener__Lcom_raquo_laminar_modifiers_EventListener__I($thiz, listener) {
-  var x = $thiz.fu();
+  var x = $thiz.fw();
   if ((x === (void 0))) {
     return (-1);
   } else {
@@ -10537,28 +10541,28 @@ function $f_Lcom_raquo_laminar_nodes_ReactiveElement__updateCompositeValue__Lcom
     }
   }
   var nextDomValues = $x_5.oT($x_4);
-  $thiz.jz($thiz.gz().el(key, newItems));
-  key.nt.eL($thiz, key.ij.pl(nextDomValues));
+  $thiz.jz($thiz.gz().en(key, newItems));
+  key.nt.eM($thiz, key.ij.pl(nextDomValues));
 }
 function $f_Lcom_raquo_laminar_nodes_ReactiveElement__willSetParent__s_Option__V($thiz, maybeNextParent) {
-  if ($p_Lcom_raquo_laminar_nodes_ReactiveElement__isUnmounting__s_Option__s_Option__Z($thiz, $thiz.ft(), maybeNextParent)) {
+  if ($p_Lcom_raquo_laminar_nodes_ReactiveElement__isUnmounting__s_Option__s_Option__Z($thiz, $thiz.fv(), maybeNextParent)) {
     $p_Lcom_raquo_laminar_nodes_ReactiveElement__setPilotSubscriptionOwner__s_Option__V($thiz, maybeNextParent);
   }
 }
 function $f_Lcom_raquo_laminar_nodes_ReactiveElement__setParent__s_Option__V($thiz, maybeNextParent) {
-  var maybePrevParent = $thiz.ft();
+  var maybePrevParent = $thiz.fv();
   $thiz.pd(maybeNextParent);
   if ((!$p_Lcom_raquo_laminar_nodes_ReactiveElement__isUnmounting__s_Option__s_Option__Z($thiz, maybePrevParent, maybeNextParent))) {
     $p_Lcom_raquo_laminar_nodes_ReactiveElement__setPilotSubscriptionOwner__s_Option__V($thiz, maybeNextParent);
   }
 }
 function $p_Lcom_raquo_laminar_nodes_ReactiveElement__isUnmounting__s_Option__s_Option__Z($thiz, maybePrevParent, maybeNextParent) {
-  var isPrevParentActive = ((!maybePrevParent.j()) && (!maybePrevParent.Q().bU().bY.j()));
-  var isNextParentActive = ((!maybeNextParent.j()) && (!maybeNextParent.Q().bU().bY.j()));
+  var isPrevParentActive = ((!maybePrevParent.j()) && (!maybePrevParent.Q().bV().c1.j()));
+  var isNextParentActive = ((!maybeNextParent.j()) && (!maybeNextParent.Q().bV().c1.j()));
   return (isPrevParentActive && (!isNextParentActive));
 }
 function $p_Lcom_raquo_laminar_nodes_ReactiveElement__setPilotSubscriptionOwner__s_Option__V($thiz, maybeNextParent) {
-  $f_Lcom_raquo_laminar_nodes_ReactiveElement__unsafeSetPilotSubscriptionOwner__s_Option__V($thiz, (maybeNextParent.j() ? $m_s_None$() : new $c_s_Some(maybeNextParent.Q().bU())));
+  $f_Lcom_raquo_laminar_nodes_ReactiveElement__unsafeSetPilotSubscriptionOwner__s_Option__V($thiz, (maybeNextParent.j() ? $m_s_None$() : new $c_s_Some(maybeNextParent.Q().bV())));
 }
 function $f_Lcom_raquo_laminar_nodes_ReactiveElement__unsafeSetPilotSubscriptionOwner__s_Option__V($thiz, maybeNextOwner) {
   if (maybeNextOwner.j()) {
@@ -10601,10 +10605,10 @@ $p.qZ = (function(x, default$1) {
   }
   return default$1.i(x);
 });
-$p.cw = (function(x) {
+$p.cB = (function(x) {
   return this.sp(x);
 });
-$p.c8 = (function(x, default$1) {
+$p.cc = (function(x, default$1) {
   return this.qZ(x, default$1);
 });
 var $d_Lcom_raquo_laminar_nodes_ReactiveElement$$anon$1 = new $TypeData().i($c_Lcom_raquo_laminar_nodes_ReactiveElement$$anon$1, "com.raquo.laminar.nodes.ReactiveElement$$anon$1", ({
@@ -10868,7 +10872,7 @@ $p.bm = (function(elem) {
   return ((!this.j()) && $m_sr_BoxesRunTime$().A(this.Q(), elem));
 });
 $p.r = (function() {
-  return (this.j() ? $m_sc_Iterator$().T : new $c_sc_Iterator$$anon$20(this.Q()));
+  return (this.j() ? $m_sc_Iterator$().U : new $c_sc_Iterator$$anon$20(this.Q()));
 });
 /** @constructor */
 function $c_s_Product$$anon$1(outer) {
@@ -10877,7 +10881,7 @@ function $c_s_Product$$anon$1(outer) {
   this.nW = null;
   this.nW = outer;
   this.fZ = 0;
-  this.nX = outer.aA();
+  this.nX = outer.aB();
 }
 $p = $c_s_Product$$anon$1.prototype = new $h_sc_AbstractIterator();
 $p.constructor = $c_s_Product$$anon$1;
@@ -10889,7 +10893,7 @@ $p.x = (function() {
   return (this.fZ < this.nX);
 });
 $p.n = (function() {
-  var result = this.nW.aB(this.fZ);
+  var result = this.nW.aC(this.fZ);
   this.fZ = ((1 + this.fZ) | 0);
   return result;
 });
@@ -10913,10 +10917,10 @@ $p.constructor = $c_T2;
 function $h_T2() {
 }
 $h_T2.prototype = $p;
-$p.aA = (function() {
+$p.aB = (function() {
   return 2;
 });
-$p.aB = (function(n) {
+$p.aC = (function(n) {
   return $f_s_Product2__productElement__I__O(this, n);
 });
 $p.bq = (function() {
@@ -10928,7 +10932,7 @@ $p.bj = (function() {
 $p.D = (function() {
   return (((("(" + this.bq()) + ",") + this.bj()) + ")");
 });
-$p.aC = (function() {
+$p.aD = (function() {
   return "Tuple2";
 });
 $p.bB = (function() {
@@ -10952,12 +10956,12 @@ var $d_T2 = new $TypeData().i($c_T2, "scala.Tuple2", ({
 }));
 /** @constructor */
 function $c_T3(_1, _2, _3) {
-  this.fi = null;
-  this.fj = null;
   this.fk = null;
-  this.fi = _1;
-  this.fj = _2;
-  this.fk = _3;
+  this.fl = null;
+  this.fm = null;
+  this.fk = _1;
+  this.fl = _2;
+  this.fm = _3;
 }
 $p = $c_T3.prototype = new $h_O();
 $p.constructor = $c_T3;
@@ -10965,16 +10969,16 @@ $p.constructor = $c_T3;
 function $h_T3() {
 }
 $h_T3.prototype = $p;
-$p.aA = (function() {
+$p.aB = (function() {
   return 3;
 });
-$p.aB = (function(n) {
+$p.aC = (function(n) {
   return $f_s_Product3__productElement__I__O(this, n);
 });
 $p.D = (function() {
-  return (((((("(" + this.fi) + ",") + this.fj) + ",") + this.fk) + ")");
+  return (((((("(" + this.fk) + ",") + this.fl) + ",") + this.fm) + ")");
 });
-$p.aC = (function() {
+$p.aD = (function() {
   return "Tuple3";
 });
 $p.bB = (function() {
@@ -10984,7 +10988,7 @@ $p.E = (function() {
   return $m_s_util_hashing_MurmurHash3$().d2(this, (-889275714), false);
 });
 $p.z = (function(x$1) {
-  return ((this === x$1) || ((x$1 instanceof $c_T3) && ($m_sr_BoxesRunTime$().A(this.fi, x$1.fi) && ($m_sr_BoxesRunTime$().A(this.fj, x$1.fj) && $m_sr_BoxesRunTime$().A(this.fk, x$1.fk)))));
+  return ((this === x$1) || ((x$1 instanceof $c_T3) && ($m_sr_BoxesRunTime$().A(this.fk, x$1.fk) && ($m_sr_BoxesRunTime$().A(this.fl, x$1.fl) && $m_sr_BoxesRunTime$().A(this.fm, x$1.fm)))));
 });
 function $isArrayOf_T3(obj, depth) {
   return (!(!(((obj && obj.$classData) && (obj.$classData.D === depth)) && obj.$classData.B.n.bE)));
@@ -11021,14 +11025,14 @@ function $f_sc_IndexedSeqOps__head__O($thiz) {
   if ((!$thiz.j())) {
     return $thiz.F(0);
   } else {
-    throw new $c_ju_NoSuchElementException(("head of empty " + ($is_sc_IndexedSeq($thiz) ? $thiz.c9() : $thiz.D())));
+    throw new $c_ju_NoSuchElementException(("head of empty " + ($is_sc_IndexedSeq($thiz) ? $thiz.ce() : $thiz.D())));
   }
 }
 function $f_sc_IndexedSeqOps__headOption__s_Option($thiz) {
   return ($thiz.j() ? $m_s_None$() : new $c_s_Some($thiz.w()));
 }
 function $f_sc_Iterable__toString__T($thiz) {
-  return $f_sc_IterableOnceOps__mkString__T__T__T__T($thiz, ($thiz.c9() + "("), ", ", ")");
+  return $f_sc_IterableOnceOps__mkString__T__T__T__T($thiz, ($thiz.ce() + "("), ", ", ")");
 }
 function $is_sc_Iterable(obj) {
   return (!(!((obj && obj.$classData) && obj.$classData.n.e)));
@@ -11085,14 +11089,14 @@ $p.x = (function() {
 });
 $p.n = (function() {
   if (this.g1) {
-    return $m_sc_Iterator$().T.n();
+    return $m_sc_Iterator$().U.n();
   } else {
     this.g1 = true;
     return this.o2;
   }
 });
 $p.gT = (function(from, until) {
-  return (((this.g1 || (from > 0)) || (until === 0)) ? $m_sc_Iterator$().T : this);
+  return (((this.g1 || (from > 0)) || (until === 0)) ? $m_sc_Iterator$().U : this);
 });
 var $d_sc_Iterator$$anon$20 = new $TypeData().i($c_sc_Iterator$$anon$20, "scala.collection.Iterator$$anon$20", ({
   fX: 1,
@@ -11140,7 +11144,7 @@ $p.n = (function() {
     this.hh = false;
     return this.o4;
   } else {
-    return $m_sc_Iterator$().T.n();
+    return $m_sc_Iterator$().U.n();
   }
 });
 var $d_sc_Iterator$$anon$8 = new $TypeData().i($c_sc_Iterator$$anon$8, "scala.collection.Iterator$$anon$8", ({
@@ -11181,16 +11185,16 @@ var $d_sc_Iterator$$anon$9 = new $TypeData().i($c_sc_Iterator$$anon$9, "scala.co
 }));
 function $p_sc_Iterator$ConcatIterator__merge$1__V($thiz) {
   while (true) {
-    if (($thiz.bO instanceof $c_sc_Iterator$ConcatIterator)) {
-      var c = $thiz.bO;
-      $thiz.bO = c.bO;
-      $thiz.dA = c.dA;
-      if ((c.cj !== null)) {
-        if (($thiz.ci === null)) {
-          $thiz.ci = c.ci;
+    if (($thiz.bP instanceof $c_sc_Iterator$ConcatIterator)) {
+      var c = $thiz.bP;
+      $thiz.bP = c.bP;
+      $thiz.dB = c.dB;
+      if ((c.co !== null)) {
+        if (($thiz.cn === null)) {
+          $thiz.cn = c.cn;
         }
-        c.ci.g2 = $thiz.cj;
-        $thiz.cj = c.cj;
+        c.cn.g2 = $thiz.co;
+        $thiz.co = c.co;
       }
       continue;
     }
@@ -11199,21 +11203,21 @@ function $p_sc_Iterator$ConcatIterator__merge$1__V($thiz) {
 }
 function $p_sc_Iterator$ConcatIterator__advance$1__Z($thiz) {
   while (true) {
-    if (($thiz.cj === null)) {
-      $thiz.bO = null;
-      $thiz.ci = null;
+    if (($thiz.co === null)) {
+      $thiz.bP = null;
+      $thiz.cn = null;
       return false;
     } else {
-      $thiz.bO = $thiz.cj.sa();
-      if (($thiz.ci === $thiz.cj)) {
-        $thiz.ci = $thiz.ci.g2;
+      $thiz.bP = $thiz.co.sa();
+      if (($thiz.cn === $thiz.co)) {
+        $thiz.cn = $thiz.cn.g2;
       }
-      $thiz.cj = $thiz.cj.g2;
+      $thiz.co = $thiz.co.g2;
       $p_sc_Iterator$ConcatIterator__merge$1__V($thiz);
-      if ($thiz.dA) {
+      if ($thiz.dB) {
         return true;
-      } else if ((($thiz.bO !== null) && $thiz.bO.x())) {
-        $thiz.dA = true;
+      } else if ((($thiz.bP !== null) && $thiz.bP.x())) {
+        $thiz.dB = true;
         return true;
       }
     }
@@ -11221,14 +11225,14 @@ function $p_sc_Iterator$ConcatIterator__advance$1__Z($thiz) {
 }
 /** @constructor */
 function $c_sc_Iterator$ConcatIterator(current) {
-  this.bO = null;
-  this.cj = null;
-  this.ci = null;
-  this.dA = false;
-  this.bO = current;
-  this.cj = null;
-  this.ci = null;
-  this.dA = false;
+  this.bP = null;
+  this.co = null;
+  this.cn = null;
+  this.dB = false;
+  this.bP = current;
+  this.co = null;
+  this.cn = null;
+  this.dB = false;
 }
 $p = $c_sc_Iterator$ConcatIterator.prototype = new $h_sc_AbstractIterator();
 $p.constructor = $c_sc_Iterator$ConcatIterator;
@@ -11237,11 +11241,11 @@ function $h_sc_Iterator$ConcatIterator() {
 }
 $h_sc_Iterator$ConcatIterator.prototype = $p;
 $p.x = (function() {
-  if (this.dA) {
+  if (this.dB) {
     return true;
-  } else if ((this.bO !== null)) {
-    if (this.bO.x()) {
-      this.dA = true;
+  } else if ((this.bP !== null)) {
+    if (this.bP.x()) {
+      this.dB = true;
       return true;
     } else {
       return $p_sc_Iterator$ConcatIterator__advance$1__Z(this);
@@ -11252,23 +11256,23 @@ $p.x = (function() {
 });
 $p.n = (function() {
   if (this.x()) {
-    this.dA = false;
-    return this.bO.n();
+    this.dB = false;
+    return this.bP.n();
   } else {
-    return $m_sc_Iterator$().T.n();
+    return $m_sc_Iterator$().U.n();
   }
 });
 $p.jD = (function(that) {
   var c = new $c_sc_Iterator$ConcatIteratorCell(that, null);
-  if ((this.cj === null)) {
-    this.cj = c;
-    this.ci = c;
+  if ((this.co === null)) {
+    this.co = c;
+    this.cn = c;
   } else {
-    this.ci.g2 = c;
-    this.ci = c;
+    this.cn.g2 = c;
+    this.cn = c;
   }
-  if ((this.bO === null)) {
-    this.bO = $m_sc_Iterator$().T;
+  if ((this.bP === null)) {
+    this.bP = $m_sc_Iterator$().U;
   }
   return this;
 });
@@ -11284,8 +11288,8 @@ var $d_sc_Iterator$ConcatIterator = new $TypeData().i($c_sc_Iterator$ConcatItera
 }));
 function $p_sc_Iterator$SliceIterator__skip__V($thiz) {
   while (($thiz.d8 > 0)) {
-    if ($thiz.dB.x()) {
-      $thiz.dB.n();
+    if ($thiz.dC.x()) {
+      $thiz.dC.n();
       $thiz.d8 = (((-1) + $thiz.d8) | 0);
     } else {
       $thiz.d8 = 0;
@@ -11293,20 +11297,20 @@ function $p_sc_Iterator$SliceIterator__skip__V($thiz) {
   }
 }
 function $p_sc_Iterator$SliceIterator__adjustedBound$1__I__I($thiz, lo$1) {
-  if (($thiz.c1 < 0)) {
+  if (($thiz.c5 < 0)) {
     return (-1);
   } else {
-    var that = (($thiz.c1 - lo$1) | 0);
+    var that = (($thiz.c5 - lo$1) | 0);
     return ((that < 0) ? 0 : that);
   }
 }
 /** @constructor */
 function $c_sc_Iterator$SliceIterator(underlying, start, limit) {
-  this.dB = null;
-  this.c1 = 0;
+  this.dC = null;
+  this.c5 = 0;
   this.d8 = 0;
-  this.dB = underlying;
-  this.c1 = limit;
+  this.dC = underlying;
+  this.c5 = limit;
   this.d8 = start;
 }
 $p = $c_sc_Iterator$SliceIterator.prototype = new $h_sc_AbstractIterator();
@@ -11316,31 +11320,31 @@ function $h_sc_Iterator$SliceIterator() {
 }
 $h_sc_Iterator$SliceIterator.prototype = $p;
 $p.J = (function() {
-  var size = this.dB.J();
+  var size = this.dC.J();
   if ((size < 0)) {
     return (-1);
   } else {
     var that = ((size - this.d8) | 0);
     var dropSize = ((that < 0) ? 0 : that);
-    if ((this.c1 < 0)) {
+    if ((this.c5 < 0)) {
       return dropSize;
     } else {
-      var x = this.c1;
+      var x = this.c5;
       return ((x < dropSize) ? x : dropSize);
     }
   }
 });
 $p.x = (function() {
   $p_sc_Iterator$SliceIterator__skip__V(this);
-  return ((this.c1 !== 0) && this.dB.x());
+  return ((this.c5 !== 0) && this.dC.x());
 });
 $p.n = (function() {
   $p_sc_Iterator$SliceIterator__skip__V(this);
-  if ((this.c1 > 0)) {
-    this.c1 = (((-1) + this.c1) | 0);
-    return this.dB.n();
+  if ((this.c5 > 0)) {
+    this.c5 = (((-1) + this.c5) | 0);
+    return this.dC.n();
   } else {
-    return ((this.c1 < 0) ? this.dB.n() : $m_sc_Iterator$().T.n());
+    return ((this.c5 < 0) ? this.dC.n() : $m_sc_Iterator$().U.n());
   }
 });
 $p.gT = (function(from, until) {
@@ -11349,7 +11353,7 @@ $p.gT = (function(from, until) {
     var rest = $p_sc_Iterator$SliceIterator__adjustedBound$1__I__I(this, lo);
   } else if ((until <= lo)) {
     var rest = 0;
-  } else if ((this.c1 < 0)) {
+  } else if ((this.c5 < 0)) {
     var rest = ((until - lo) | 0);
   } else {
     var x = $p_sc_Iterator$SliceIterator__adjustedBound$1__I__I(this, lo);
@@ -11358,14 +11362,14 @@ $p.gT = (function(from, until) {
   }
   var sum = ((this.d8 + lo) | 0);
   if ((rest === 0)) {
-    return $m_sc_Iterator$().T;
+    return $m_sc_Iterator$().U;
   } else if ((sum < 0)) {
     this.d8 = 2147483647;
-    this.c1 = 0;
-    return $f_sc_Iterator__concat__F0__sc_Iterator(this, new $c_sr_AbstractFunction0_$$Lambda$a02b774b97db8234e08c6a02dd06557c99779855((() => new $c_sc_Iterator$SliceIterator(this.dB, (((-2147483647) + sum) | 0), rest))));
+    this.c5 = 0;
+    return $f_sc_Iterator__concat__F0__sc_Iterator(this, new $c_sr_AbstractFunction0_$$Lambda$a02b774b97db8234e08c6a02dd06557c99779855((() => new $c_sc_Iterator$SliceIterator(this.dC, (((-2147483647) + sum) | 0), rest))));
   } else {
     this.d8 = sum;
-    this.c1 = rest;
+    this.c5 = rest;
     return this;
   }
 });
@@ -11468,31 +11472,31 @@ function $p_sci_ChampBaseIterator__initNodes__V($thiz) {
   }
 }
 function $p_sci_ChampBaseIterator__setupPayloadNode__sci_Node__V($thiz, node) {
-  $thiz.eA = node;
-  $thiz.c2 = 0;
+  $thiz.eC = node;
+  $thiz.c6 = 0;
   $thiz.g7 = node.ke();
 }
 function $p_sci_ChampBaseIterator__pushNode__sci_Node__V($thiz, node) {
   $p_sci_ChampBaseIterator__initNodes__V($thiz);
-  $thiz.bQ = ((1 + $thiz.bQ) | 0);
-  var cursorIndex = ($thiz.bQ << 1);
-  var lengthIndex = ((1 + ($thiz.bQ << 1)) | 0);
-  $thiz.g8.b[$thiz.bQ] = node;
+  $thiz.bR = ((1 + $thiz.bR) | 0);
+  var cursorIndex = ($thiz.bR << 1);
+  var lengthIndex = ((1 + ($thiz.bR << 1)) | 0);
+  $thiz.g8.b[$thiz.bR] = node;
   $thiz.da.b[cursorIndex] = 0;
   $thiz.da.b[lengthIndex] = node.k9();
 }
 function $p_sci_ChampBaseIterator__popNode__V($thiz) {
-  $thiz.bQ = (((-1) + $thiz.bQ) | 0);
+  $thiz.bR = (((-1) + $thiz.bR) | 0);
 }
 function $p_sci_ChampBaseIterator__searchNextValueNode__Z($thiz) {
-  while (($thiz.bQ >= 0)) {
-    var cursorIndex = ($thiz.bQ << 1);
-    var lengthIndex = ((1 + ($thiz.bQ << 1)) | 0);
+  while (($thiz.bR >= 0)) {
+    var cursorIndex = ($thiz.bR << 1);
+    var lengthIndex = ((1 + ($thiz.bR << 1)) | 0);
     var nodeCursor = $thiz.da.b[cursorIndex];
     if ((nodeCursor < $thiz.da.b[lengthIndex])) {
       var ev$1 = $thiz.da;
       ev$1.b[cursorIndex] = ((1 + ev$1.b[cursorIndex]) | 0);
-      var nextNode = $thiz.g8.b[$thiz.bQ].jR(nodeCursor);
+      var nextNode = $thiz.g8.b[$thiz.bR].jR(nodeCursor);
       if (nextNode.jW()) {
         $p_sci_ChampBaseIterator__pushNode__sci_Node__V($thiz, nextNode);
       }
@@ -11507,9 +11511,9 @@ function $p_sci_ChampBaseIterator__searchNextValueNode__Z($thiz) {
   return false;
 }
 function $ct_sci_ChampBaseIterator__($thiz) {
-  $thiz.c2 = 0;
+  $thiz.c6 = 0;
   $thiz.g7 = 0;
-  $thiz.bQ = (-1);
+  $thiz.bR = (-1);
   return $thiz;
 }
 function $ct_sci_ChampBaseIterator__sci_Node__($thiz, rootNode) {
@@ -11524,10 +11528,10 @@ function $ct_sci_ChampBaseIterator__sci_Node__($thiz, rootNode) {
 }
 /** @constructor */
 function $c_sci_ChampBaseIterator() {
-  this.c2 = 0;
+  this.c6 = 0;
   this.g7 = 0;
-  this.eA = null;
-  this.bQ = 0;
+  this.eC = null;
+  this.bR = 0;
   this.da = null;
   this.g8 = null;
 }
@@ -11538,28 +11542,28 @@ function $h_sci_ChampBaseIterator() {
 }
 $h_sci_ChampBaseIterator.prototype = $p;
 $p.x = (function() {
-  return ((this.c2 < this.g7) || $p_sci_ChampBaseIterator__searchNextValueNode__Z(this));
+  return ((this.c6 < this.g7) || $p_sci_ChampBaseIterator__searchNextValueNode__Z(this));
 });
 function $p_sci_ChampBaseReverseIterator__setupPayloadNode__sci_Node__V($thiz, node) {
   $thiz.hm = node;
-  $thiz.dJ = (((-1) + node.ke()) | 0);
+  $thiz.dK = (((-1) + node.ke()) | 0);
 }
 function $p_sci_ChampBaseReverseIterator__pushNode__sci_Node__V($thiz, node) {
-  $thiz.c3 = ((1 + $thiz.c3) | 0);
-  $thiz.ga.b[$thiz.c3] = node;
-  $thiz.g9.b[$thiz.c3] = (((-1) + node.k9()) | 0);
+  $thiz.c7 = ((1 + $thiz.c7) | 0);
+  $thiz.ga.b[$thiz.c7] = node;
+  $thiz.g9.b[$thiz.c7] = (((-1) + node.k9()) | 0);
 }
 function $p_sci_ChampBaseReverseIterator__popNode__V($thiz) {
-  $thiz.c3 = (((-1) + $thiz.c3) | 0);
+  $thiz.c7 = (((-1) + $thiz.c7) | 0);
 }
 function $p_sci_ChampBaseReverseIterator__searchNextValueNode__Z($thiz) {
-  while (($thiz.c3 >= 0)) {
-    var nodeCursor = $thiz.g9.b[$thiz.c3];
-    $thiz.g9.b[$thiz.c3] = (((-1) + nodeCursor) | 0);
+  while (($thiz.c7 >= 0)) {
+    var nodeCursor = $thiz.g9.b[$thiz.c7];
+    $thiz.g9.b[$thiz.c7] = (((-1) + nodeCursor) | 0);
     if ((nodeCursor >= 0)) {
-      $p_sci_ChampBaseReverseIterator__pushNode__sci_Node__V($thiz, $thiz.ga.b[$thiz.c3].jR(nodeCursor));
+      $p_sci_ChampBaseReverseIterator__pushNode__sci_Node__V($thiz, $thiz.ga.b[$thiz.c7].jR(nodeCursor));
     } else {
-      var currNode = $thiz.ga.b[$thiz.c3];
+      var currNode = $thiz.ga.b[$thiz.c7];
       $p_sci_ChampBaseReverseIterator__popNode__V($thiz);
       if (currNode.hI()) {
         $p_sci_ChampBaseReverseIterator__setupPayloadNode__sci_Node__V($thiz, currNode);
@@ -11570,8 +11574,8 @@ function $p_sci_ChampBaseReverseIterator__searchNextValueNode__Z($thiz) {
   return false;
 }
 function $ct_sci_ChampBaseReverseIterator__($thiz) {
-  $thiz.dJ = (-1);
-  $thiz.c3 = (-1);
+  $thiz.dK = (-1);
+  $thiz.c7 = (-1);
   $thiz.g9 = new $ac_I(((1 + $m_sci_Node$().gf) | 0));
   $thiz.ga = new ($d_sci_Node.r().C)(((1 + $m_sci_Node$().gf) | 0));
   return $thiz;
@@ -11584,9 +11588,9 @@ function $ct_sci_ChampBaseReverseIterator__sci_Node__($thiz, rootNode) {
 }
 /** @constructor */
 function $c_sci_ChampBaseReverseIterator() {
-  this.dJ = 0;
+  this.dK = 0;
   this.hm = null;
-  this.c3 = 0;
+  this.c7 = 0;
   this.g9 = null;
   this.ga = null;
 }
@@ -11597,10 +11601,10 @@ function $h_sci_ChampBaseReverseIterator() {
 }
 $h_sci_ChampBaseReverseIterator.prototype = $p;
 $p.x = (function() {
-  return ((this.dJ >= 0) || $p_sci_ChampBaseReverseIterator__searchNextValueNode__Z(this));
+  return ((this.dK >= 0) || $p_sci_ChampBaseReverseIterator__searchNextValueNode__Z(this));
 });
 function $p_sci_HashMapBuilder__isAliased__Z($thiz) {
-  return ($thiz.fl !== null);
+  return ($thiz.fn !== null);
 }
 function $p_sci_HashMapBuilder__insertElement__AI__I__I__AI($thiz, as, ix, elem) {
   if ((ix < 0)) {
@@ -11620,7 +11624,7 @@ function $p_sci_HashMapBuilder__insertElement__AI__I__I__AI($thiz, as, ix, elem)
 function $p_sci_HashMapBuilder__insertValue__sci_BitmapIndexedMapNode__I__O__I__I__O__V($thiz, bm, bitpos, key, originalHash, keyHash, value) {
   var dataIx = bm.gB(bitpos);
   var idx = (dataIx << 1);
-  var src = bm.aD;
+  var src = bm.aE;
   var dst = new $ac_O(((2 + src.b.length) | 0));
   src.H(0, dst, 0, idx);
   dst.b[idx] = key;
@@ -11628,10 +11632,10 @@ function $p_sci_HashMapBuilder__insertValue__sci_BitmapIndexedMapNode__I__O__I__
   var destPos = ((2 + idx) | 0);
   var length = ((src.b.length - idx) | 0);
   src.H(idx, dst, destPos, length);
-  var dstHashes = $p_sci_HashMapBuilder__insertElement__AI__I__I__AI($thiz, bm.bP, dataIx, originalHash);
+  var dstHashes = $p_sci_HashMapBuilder__insertElement__AI__I__I__AI($thiz, bm.bQ, dataIx, originalHash);
   bm.a6 = (bm.a6 | bitpos);
-  bm.aD = dst;
-  bm.bP = dstHashes;
+  bm.aE = dst;
+  bm.bQ = dstHashes;
   bm.be = ((1 + bm.be) | 0);
   bm.bD = ((bm.bD + keyHash) | 0);
 }
@@ -11639,14 +11643,14 @@ function $p_sci_HashMapBuilder__ensureUnaliased__V($thiz) {
   if ($p_sci_HashMapBuilder__isAliased__Z($thiz)) {
     $p_sci_HashMapBuilder__copyElems__V($thiz);
   }
-  $thiz.fl = null;
+  $thiz.fn = null;
 }
 function $p_sci_HashMapBuilder__copyElems__V($thiz) {
   $thiz.cP = $thiz.cP.pf();
 }
 /** @constructor */
 function $c_sci_HashMapBuilder() {
-  this.fl = null;
+  this.fn = null;
   this.cP = null;
   this.cP = new $c_sci_BitmapIndexedMapNode(0, 0, $m_s_Array$EmptyArrays$().nU, $m_s_Array$EmptyArrays$().iO, 0, 0);
 }
@@ -11660,37 +11664,37 @@ $p.bn = (function(size) {
 });
 $p.fH = (function(mapNode, key, value, originalHash, keyHash, shift) {
   if ((mapNode instanceof $c_sci_BitmapIndexedMapNode)) {
-    var mask = $m_sci_Node$().eW(keyHash, shift);
-    var bitpos = $m_sci_Node$().e9(mask);
+    var mask = $m_sci_Node$().eY(keyHash, shift);
+    var bitpos = $m_sci_Node$().ea(mask);
     if (((mapNode.a6 & bitpos) !== 0)) {
       var index = $m_sci_Node$().d0(mapNode.a6, mask, bitpos);
-      var key0 = mapNode.ec(index);
+      var key0 = mapNode.ee(index);
       var key0UnimprovedHash = mapNode.gG(index);
       if (((key0UnimprovedHash === originalHash) && $m_sr_BoxesRunTime$().A(key0, key))) {
-        mapNode.aD.b[((1 + (index << 1)) | 0)] = value;
+        mapNode.aE.b[((1 + (index << 1)) | 0)] = value;
       } else {
-        var value0 = mapNode.dn(index);
-        var key0Hash = $m_sc_Hashing$().cG(key0UnimprovedHash);
+        var value0 = mapNode.dp(index);
+        var key0Hash = $m_sc_Hashing$().cH(key0UnimprovedHash);
         var subNodeNew = mapNode.k7(key0, value0, key0UnimprovedHash, key0Hash, key, value, originalHash, keyHash, ((5 + shift) | 0));
         mapNode.sE(bitpos, key0Hash, subNodeNew);
       }
     } else if (((mapNode.ak & bitpos) !== 0)) {
       var index$2 = $m_sci_Node$().d0(mapNode.ak, mask, bitpos);
       var subNode = mapNode.cY(index$2);
-      var beforeSize = subNode.bc();
-      var beforeHash = subNode.ea();
+      var beforeSize = subNode.bb();
+      var beforeHash = subNode.eb();
       this.fH(subNode, key, value, originalHash, keyHash, ((5 + shift) | 0));
-      mapNode.be = ((mapNode.be + ((subNode.bc() - beforeSize) | 0)) | 0);
-      mapNode.bD = ((mapNode.bD + ((subNode.ea() - beforeHash) | 0)) | 0);
+      mapNode.be = ((mapNode.be + ((subNode.bb() - beforeSize) | 0)) | 0);
+      mapNode.bD = ((mapNode.bD + ((subNode.eb() - beforeHash) | 0)) | 0);
     } else {
       $p_sci_HashMapBuilder__insertValue__sci_BitmapIndexedMapNode__I__O__I__I__O__V(this, mapNode, bitpos, key, originalHash, keyHash, value);
     }
   } else if ((mapNode instanceof $c_sci_HashCollisionMapNode)) {
     var index$3 = mapNode.fz(key);
     if ((index$3 < 0)) {
-      mapNode.al = mapNode.al.e8(new $c_T2(key, value));
+      mapNode.al = mapNode.al.e9(new $c_T2(key, value));
     } else {
-      mapNode.al = mapNode.al.ek(index$3, new $c_T2(key, value));
+      mapNode.al = mapNode.al.em(index$3, new $c_T2(key, value));
     }
   } else {
     throw new $c_s_MatchError(mapNode);
@@ -11699,24 +11703,24 @@ $p.fH = (function(mapNode, key, value, originalHash, keyHash, shift) {
 $p.kf = (function() {
   if ((this.cP.be === 0)) {
     return $m_sci_HashMap$().j5;
-  } else if ((this.fl !== null)) {
-    return this.fl;
+  } else if ((this.fn !== null)) {
+    return this.fn;
   } else {
-    this.fl = new $c_sci_HashMap(this.cP);
-    return this.fl;
+    this.fn = new $c_sci_HashMap(this.cP);
+    return this.fn;
   }
 });
 $p.oQ = (function(elem) {
   $p_sci_HashMapBuilder__ensureUnaliased__V(this);
   var h = $m_sr_Statics$().a2(elem.bq());
-  var im = $m_sc_Hashing$().cG(h);
+  var im = $m_sc_Hashing$().cH(h);
   this.fH(this.cP, elem.bq(), elem.bj(), h, im, 0);
   return this;
 });
-$p.eI = (function(key, value) {
+$p.eK = (function(key, value) {
   $p_sci_HashMapBuilder__ensureUnaliased__V(this);
   var originalHash = $m_sr_Statics$().a2(key);
-  this.fH(this.cP, key, value, originalHash, $m_sc_Hashing$().cG(originalHash), 0);
+  this.fH(this.cP, key, value, originalHash, $m_sc_Hashing$().cH(originalHash), 0);
   return this;
 });
 $p.js = (function(xs) {
@@ -11728,7 +11732,7 @@ $p.js = (function(xs) {
     while (iter.x()) {
       var next = iter.n();
       var originalHash = xs.tx(next.pC());
-      var hash = $m_sc_Hashing$().cG(originalHash);
+      var hash = $m_sc_Hashing$().cH(originalHash);
       this.fH(this.cP, next.pG(), next.tC(), originalHash, hash, 0);
     }
   } else if (false) {
@@ -11736,11 +11740,11 @@ $p.js = (function(xs) {
     while (iter$2.x()) {
       var next$2 = iter$2.n();
       var originalHash$2 = xs.tx(next$2.pC());
-      var hash$2 = $m_sc_Hashing$().cG(originalHash$2);
+      var hash$2 = $m_sc_Hashing$().cH(originalHash$2);
       this.fH(this.cP, next$2.pG(), next$2.tC(), originalHash$2, hash$2, 0);
     }
   } else if ($is_sci_Map(xs)) {
-    xs.eQ(new $c_sr_AbstractFunction2_$$Lambda$286cbfc6187197affcadc8465aaec93d6b7d20dc(((key$2$2, value$2$2) => this.eI(key$2$2, value$2$2))));
+    xs.eR(new $c_sr_AbstractFunction2_$$Lambda$286cbfc6187197affcadc8465aaec93d6b7d20dc(((key$2$2, value$2$2) => this.eK(key$2$2, value$2$2))));
   } else {
     var it = xs.r();
     while (it.x()) {
@@ -11752,10 +11756,10 @@ $p.js = (function(xs) {
 $p.bk = (function(elems) {
   return this.js(elems);
 });
-$p.b8 = (function(elem) {
+$p.b7 = (function(elem) {
   return this.oQ(elem);
 });
-$p.ba = (function() {
+$p.b9 = (function() {
   return this.kf();
 });
 var $d_sci_HashMapBuilder = new $TypeData().i($c_sci_HashMapBuilder, "scala.collection.immutable.HashMapBuilder", ({
@@ -11767,7 +11771,7 @@ var $d_sci_HashMapBuilder = new $TypeData().i($c_sci_HashMapBuilder, "scala.coll
 }));
 /** @constructor */
 function $c_sci_IndexedSeq$() {
-  this.ew = null;
+  this.ey = null;
   $ct_sc_SeqFactory$Delegate__sc_SeqFactory__(this, $m_sci_Vector$());
 }
 $p = $c_sci_IndexedSeq$.prototype = new $h_sc_SeqFactory$Delegate();
@@ -11801,7 +11805,7 @@ function $m_sci_IndexedSeq$() {
 }
 /** @constructor */
 function $c_sci_LazyList$LazyBuilder() {
-  this.fm = null;
+  this.fo = null;
   this.oe = null;
   this.ra();
 }
@@ -11816,36 +11820,36 @@ $p.bn = (function(size) {
 $p.ra = (function() {
   var deferred = new $c_sci_LazyList$LazyBuilder$DeferredState();
   this.oe = ($m_sci_LazyList$(), new $c_sci_LazyList(new $c_sr_AbstractFunction0_$$Lambda$a02b774b97db8234e08c6a02dd06557c99779855((() => deferred.jI()))));
-  this.fm = deferred;
+  this.fo = deferred;
 });
 $p.tg = (function() {
-  this.fm.jY(new $c_sr_AbstractFunction0_$$Lambda$a02b774b97db8234e08c6a02dd06557c99779855((() => $m_sci_LazyList$State$Empty$())));
+  this.fo.jY(new $c_sr_AbstractFunction0_$$Lambda$a02b774b97db8234e08c6a02dd06557c99779855((() => $m_sci_LazyList$State$Empty$())));
   return this.oe;
 });
 $p.qL = (function(elem) {
   var deferred = new $c_sci_LazyList$LazyBuilder$DeferredState();
-  this.fm.jY(new $c_sr_AbstractFunction0_$$Lambda$a02b774b97db8234e08c6a02dd06557c99779855((() => {
+  this.fo.jY(new $c_sr_AbstractFunction0_$$Lambda$a02b774b97db8234e08c6a02dd06557c99779855((() => {
     $m_sci_LazyList$();
     return new $c_sci_LazyList$State$Cons(elem, ($m_sci_LazyList$(), new $c_sci_LazyList(new $c_sr_AbstractFunction0_$$Lambda$a02b774b97db8234e08c6a02dd06557c99779855((() => deferred.jI())))));
   })));
-  this.fm = deferred;
+  this.fo = deferred;
   return this;
 });
 $p.qC = (function(xs) {
   if ((xs.J() !== 0)) {
     var deferred = new $c_sci_LazyList$LazyBuilder$DeferredState();
-    this.fm.jY(new $c_sr_AbstractFunction0_$$Lambda$a02b774b97db8234e08c6a02dd06557c99779855((() => $m_sci_LazyList$().kg(xs.r(), new $c_sr_AbstractFunction0_$$Lambda$a02b774b97db8234e08c6a02dd06557c99779855((() => deferred.jI()))))));
-    this.fm = deferred;
+    this.fo.jY(new $c_sr_AbstractFunction0_$$Lambda$a02b774b97db8234e08c6a02dd06557c99779855((() => $m_sci_LazyList$().kg(xs.r(), new $c_sr_AbstractFunction0_$$Lambda$a02b774b97db8234e08c6a02dd06557c99779855((() => deferred.jI()))))));
+    this.fo = deferred;
   }
   return this;
 });
 $p.bk = (function(elems) {
   return this.qC(elems);
 });
-$p.b8 = (function(elem) {
+$p.b7 = (function(elem) {
   return this.qL(elem);
 });
-$p.ba = (function() {
+$p.b9 = (function() {
   return this.tg();
 });
 var $d_sci_LazyList$LazyBuilder = new $TypeData().i($c_sci_LazyList$LazyBuilder, "scala.collection.immutable.LazyList$LazyBuilder", ({
@@ -11857,8 +11861,8 @@ var $d_sci_LazyList$LazyBuilder = new $TypeData().i($c_sci_LazyList$LazyBuilder,
 }));
 /** @constructor */
 function $c_sci_LazyList$LazyIterator(lazyList) {
-  this.fn = null;
-  this.fn = lazyList;
+  this.fp = null;
+  this.fp = lazyList;
 }
 $p = $c_sci_LazyList$LazyIterator.prototype = new $h_sc_AbstractIterator();
 $p.constructor = $c_sci_LazyList$LazyIterator;
@@ -11867,14 +11871,14 @@ function $h_sci_LazyList$LazyIterator() {
 }
 $h_sci_LazyList$LazyIterator.prototype = $p;
 $p.x = (function() {
-  return (!this.fn.j());
+  return (!this.fp.j());
 });
 $p.n = (function() {
-  if (this.fn.j()) {
-    return $m_sc_Iterator$().T.n();
+  if (this.fp.j()) {
+    return $m_sc_Iterator$().U.n();
   } else {
-    var res = this.fn.L().w();
-    this.fn = this.fn.L().aM();
+    var res = this.fp.L().w();
+    this.fp = this.fp.L().aN();
     return res;
   }
 });
@@ -11897,14 +11901,14 @@ $p.constructor = $c_sci_List$;
 function $h_sci_List$() {
 }
 $h_sci_List$.prototype = $p;
-$p.dl = (function(elems) {
-  return $m_sci_Nil$().eh(elems);
+$p.dm = (function(elems) {
+  return $m_sci_Nil$().ej(elems);
 });
 $p.aw = (function() {
   return new $c_scm_ListBuffer();
 });
 $p.av = (function(source) {
-  return $m_sci_Nil$().eh(source);
+  return $m_sci_Nil$().ej(source);
 });
 var $d_sci_List$ = new $TypeData().i($c_sci_List$, "scala.collection.immutable.List$", ({
   gt: 1,
@@ -11921,14 +11925,14 @@ function $m_sci_List$() {
   return $n_sci_List$;
 }
 function $ct_sci_Map$Map2$Map2Iterator__sci_Map$Map2__($thiz, outer) {
-  $thiz.fo = outer;
-  $thiz.dM = 0;
+  $thiz.fq = outer;
+  $thiz.dN = 0;
   return $thiz;
 }
 /** @constructor */
 function $c_sci_Map$Map2$Map2Iterator() {
-  this.dM = 0;
-  this.fo = null;
+  this.dN = 0;
+  this.fq = null;
 }
 $p = $c_sci_Map$Map2$Map2Iterator.prototype = new $h_sc_AbstractIterator();
 $p.constructor = $c_sci_Map$Map2$Map2Iterator;
@@ -11937,38 +11941,38 @@ function $h_sci_Map$Map2$Map2Iterator() {
 }
 $h_sci_Map$Map2$Map2Iterator.prototype = $p;
 $p.x = (function() {
-  return (this.dM < 2);
+  return (this.dN < 2);
 });
 $p.n = (function() {
-  switch (this.dM) {
+  switch (this.dN) {
     case 0: {
-      var result = new $c_T2(this.fo.ck, this.fo.db);
+      var result = new $c_T2(this.fq.cp, this.fq.db);
       break;
     }
     case 1: {
-      var result = new $c_T2(this.fo.cl, this.fo.dc);
+      var result = new $c_T2(this.fq.cq, this.fq.dc);
       break;
     }
     default: {
-      var result = $m_sc_Iterator$().T.n();
+      var result = $m_sc_Iterator$().U.n();
     }
   }
-  this.dM = ((1 + this.dM) | 0);
+  this.dN = ((1 + this.dN) | 0);
   return result;
 });
-$p.dm = (function(n) {
-  this.dM = ((this.dM + n) | 0);
+$p.dn = (function(n) {
+  this.dN = ((this.dN + n) | 0);
   return this;
 });
 function $ct_sci_Map$Map3$Map3Iterator__sci_Map$Map3__($thiz, outer) {
-  $thiz.dN = outer;
-  $thiz.dO = 0;
+  $thiz.dO = outer;
+  $thiz.dP = 0;
   return $thiz;
 }
 /** @constructor */
 function $c_sci_Map$Map3$Map3Iterator() {
-  this.dO = 0;
-  this.dN = null;
+  this.dP = 0;
+  this.dO = null;
 }
 $p = $c_sci_Map$Map3$Map3Iterator.prototype = new $h_sc_AbstractIterator();
 $p.constructor = $c_sci_Map$Map3$Map3Iterator;
@@ -11977,41 +11981,41 @@ function $h_sci_Map$Map3$Map3Iterator() {
 }
 $h_sci_Map$Map3$Map3Iterator.prototype = $p;
 $p.x = (function() {
-  return (this.dO < 3);
+  return (this.dP < 3);
 });
 $p.n = (function() {
-  switch (this.dO) {
+  switch (this.dP) {
     case 0: {
-      var result = new $c_T2(this.dN.c4, this.dN.cQ);
+      var result = new $c_T2(this.dO.c8, this.dO.cQ);
       break;
     }
     case 1: {
-      var result = new $c_T2(this.dN.c5, this.dN.cR);
+      var result = new $c_T2(this.dO.c9, this.dO.cR);
       break;
     }
     case 2: {
-      var result = new $c_T2(this.dN.c6, this.dN.cS);
+      var result = new $c_T2(this.dO.ca, this.dO.cS);
       break;
     }
     default: {
-      var result = $m_sc_Iterator$().T.n();
+      var result = $m_sc_Iterator$().U.n();
     }
   }
-  this.dO = ((1 + this.dO) | 0);
+  this.dP = ((1 + this.dP) | 0);
   return result;
 });
-$p.dm = (function(n) {
-  this.dO = ((this.dO + n) | 0);
+$p.dn = (function(n) {
+  this.dP = ((this.dP + n) | 0);
   return this;
 });
 function $ct_sci_Map$Map4$Map4Iterator__sci_Map$Map4__($thiz, outer) {
   $thiz.cT = outer;
-  $thiz.dP = 0;
+  $thiz.dQ = 0;
   return $thiz;
 }
 /** @constructor */
 function $c_sci_Map$Map4$Map4Iterator() {
-  this.dP = 0;
+  this.dQ = 0;
   this.cT = null;
 }
 $p = $c_sci_Map$Map4$Map4Iterator.prototype = new $h_sc_AbstractIterator();
@@ -12021,42 +12025,42 @@ function $h_sci_Map$Map4$Map4Iterator() {
 }
 $h_sci_Map$Map4$Map4Iterator.prototype = $p;
 $p.x = (function() {
-  return (this.dP < 4);
+  return (this.dQ < 4);
 });
 $p.n = (function() {
-  switch (this.dP) {
+  switch (this.dQ) {
     case 0: {
-      var result = new $c_T2(this.cT.bE, this.cT.cm);
+      var result = new $c_T2(this.cT.bE, this.cT.cr);
       break;
     }
     case 1: {
-      var result = new $c_T2(this.cT.bF, this.cT.cn);
+      var result = new $c_T2(this.cT.bF, this.cT.cs);
       break;
     }
     case 2: {
-      var result = new $c_T2(this.cT.bG, this.cT.co);
+      var result = new $c_T2(this.cT.bG, this.cT.ct);
       break;
     }
     case 3: {
-      var result = new $c_T2(this.cT.bH, this.cT.cp);
+      var result = new $c_T2(this.cT.bH, this.cT.cu);
       break;
     }
     default: {
-      var result = $m_sc_Iterator$().T.n();
+      var result = $m_sc_Iterator$().U.n();
     }
   }
-  this.dP = ((1 + this.dP) | 0);
+  this.dQ = ((1 + this.dQ) | 0);
   return result;
 });
-$p.dm = (function(n) {
-  this.dP = ((this.dP + n) | 0);
+$p.dn = (function(n) {
+  this.dQ = ((this.dQ + n) | 0);
   return this;
 });
 /** @constructor */
 function $c_sci_MapBuilderImpl() {
   this.dd = null;
   this.gd = false;
-  this.eB = null;
+  this.eD = null;
   this.dd = $m_sci_Map$EmptyMap$();
   this.gd = false;
 }
@@ -12069,35 +12073,35 @@ $h_sci_MapBuilderImpl.prototype = $p;
 $p.bn = (function(size) {
 });
 $p.pX = (function() {
-  return (this.gd ? this.eB.kf() : this.dd);
+  return (this.gd ? this.eD.kf() : this.dd);
 });
 $p.qJ = (function(key, value) {
   if (this.gd) {
-    this.eB.eI(key, value);
-  } else if ((this.dd.bc() < 4)) {
-    this.dd = this.dd.el(key, value);
+    this.eD.eK(key, value);
+  } else if ((this.dd.bb() < 4)) {
+    this.dd = this.dd.en(key, value);
   } else if (this.dd.bm(key)) {
-    this.dd = this.dd.el(key, value);
+    this.dd = this.dd.en(key, value);
   } else {
     this.gd = true;
-    if ((this.eB === null)) {
-      this.eB = new $c_sci_HashMapBuilder();
+    if ((this.eD === null)) {
+      this.eD = new $c_sci_HashMapBuilder();
     }
-    this.dd.r7(this.eB);
-    this.eB.eI(key, value);
+    this.dd.r7(this.eD);
+    this.eD.eK(key, value);
   }
   return this;
 });
 $p.oL = (function(xs) {
-  return (this.gd ? (this.eB.js(xs), this) : $f_scm_Growable__addAll__sc_IterableOnce__scm_Growable(this, xs));
+  return (this.gd ? (this.eD.js(xs), this) : $f_scm_Growable__addAll__sc_IterableOnce__scm_Growable(this, xs));
 });
 $p.bk = (function(elems) {
   return this.oL(elems);
 });
-$p.b8 = (function(elem) {
+$p.b7 = (function(elem) {
   return this.qJ(elem.bq(), elem.bj());
 });
-$p.ba = (function() {
+$p.b9 = (function() {
   return this.pX();
 });
 var $d_sci_MapBuilderImpl = new $TypeData().i($c_sci_MapBuilderImpl, "scala.collection.immutable.MapBuilderImpl", ({
@@ -12132,7 +12136,7 @@ $p.constructor = $c_sci_Vector$;
 function $h_sci_Vector$() {
 }
 $h_sci_Vector$.prototype = $p;
-$p.dl = (function(elems) {
+$p.dm = (function(elems) {
   return this.jP(elems);
 });
 $p.jP = (function(it) {
@@ -12146,7 +12150,7 @@ $p.jP = (function(it) {
       matchEnd5: {
         var $x_1;
         if ((it instanceof $c_sci_ArraySeq$ofRef)) {
-          var x = it.au().bb();
+          var x = it.au().ba();
           if (((x !== null) && (x === $d_O.l()))) {
             var $x_1 = it.cO;
             break matchEnd5;
@@ -12154,12 +12158,12 @@ $p.jP = (function(it) {
         }
         if ($is_sci_Iterable(it)) {
           var a1 = new $ac_O(knownSize);
-          it.ca(a1, 0, 2147483647);
+          it.cf(a1, 0, 2147483647);
           var $x_1 = a1;
           break matchEnd5;
         }
         var a1$2 = new $ac_O(knownSize);
-        it.r().ca(a1$2, 0, 2147483647);
+        it.r().cf(a1$2, 0, 2147483647);
         var $x_1 = a1$2;
       }
       return new $c_sci_Vector1($x_1);
@@ -12193,16 +12197,16 @@ function $p_sci_VectorBuilder__leftAlignPrefix__V($thiz) {
   var aParent = null;
   if (($thiz.X >= 6)) {
     a = $thiz.aX;
-    var i = (($thiz.R >>> 25) | 0);
+    var i = (($thiz.S >>> 25) | 0);
     if ((i > 0)) {
       var src = a;
       var dest = a;
       var length = ((64 - i) | 0);
       src.H(i, dest, 0, length);
     }
-    var newOffset = (($thiz.R % 33554432) | 0);
-    $thiz.M = (($thiz.M - (($thiz.R - newOffset) | 0)) | 0);
-    $thiz.R = newOffset;
+    var newOffset = (($thiz.S % 33554432) | 0);
+    $thiz.M = (($thiz.M - (($thiz.S - newOffset) | 0)) | 0);
+    $thiz.S = newOffset;
     if (((($thiz.M >>> 25) | 0) === 0)) {
       $thiz.X = 5;
     }
@@ -12213,7 +12217,7 @@ function $p_sci_VectorBuilder__leftAlignPrefix__V($thiz) {
     if ((a === null)) {
       a = $thiz.a7;
     }
-    var i$2 = (31 & (($thiz.R >>> 20) | 0));
+    var i$2 = (31 & (($thiz.S >>> 20) | 0));
     if (($thiz.X === 5)) {
       if ((i$2 > 0)) {
         var src$1 = a;
@@ -12222,9 +12226,9 @@ function $p_sci_VectorBuilder__leftAlignPrefix__V($thiz) {
         src$1.H(i$2, dest$1, 0, length$1);
       }
       $thiz.a7 = a;
-      var newOffset$1 = (($thiz.R % 1048576) | 0);
-      $thiz.M = (($thiz.M - (($thiz.R - newOffset$1) | 0)) | 0);
-      $thiz.R = newOffset$1;
+      var newOffset$1 = (($thiz.S % 1048576) | 0);
+      $thiz.M = (($thiz.M - (($thiz.S - newOffset$1) | 0)) | 0);
+      $thiz.S = newOffset$1;
       if (((($thiz.M >>> 20) | 0) === 0)) {
         $thiz.X = 4;
       }
@@ -12241,7 +12245,7 @@ function $p_sci_VectorBuilder__leftAlignPrefix__V($thiz) {
     if ((a === null)) {
       a = $thiz.Z;
     }
-    var i$3 = (31 & (($thiz.R >>> 15) | 0));
+    var i$3 = (31 & (($thiz.S >>> 15) | 0));
     if (($thiz.X === 4)) {
       if ((i$3 > 0)) {
         var src$2 = a;
@@ -12250,9 +12254,9 @@ function $p_sci_VectorBuilder__leftAlignPrefix__V($thiz) {
         src$2.H(i$3, dest$2, 0, length$2);
       }
       $thiz.Z = a;
-      var newOffset$2 = (($thiz.R % 32768) | 0);
-      $thiz.M = (($thiz.M - (($thiz.R - newOffset$2) | 0)) | 0);
-      $thiz.R = newOffset$2;
+      var newOffset$2 = (($thiz.S % 32768) | 0);
+      $thiz.M = (($thiz.M - (($thiz.S - newOffset$2) | 0)) | 0);
+      $thiz.S = newOffset$2;
       if (((($thiz.M >>> 15) | 0) === 0)) {
         $thiz.X = 3;
       }
@@ -12267,9 +12271,9 @@ function $p_sci_VectorBuilder__leftAlignPrefix__V($thiz) {
   }
   if (($thiz.X >= 3)) {
     if ((a === null)) {
-      a = $thiz.U;
+      a = $thiz.V;
     }
-    var i$4 = (31 & (($thiz.R >>> 10) | 0));
+    var i$4 = (31 & (($thiz.S >>> 10) | 0));
     if (($thiz.X === 3)) {
       if ((i$4 > 0)) {
         var src$3 = a;
@@ -12277,10 +12281,10 @@ function $p_sci_VectorBuilder__leftAlignPrefix__V($thiz) {
         var length$3 = ((32 - i$4) | 0);
         src$3.H(i$4, dest$3, 0, length$3);
       }
-      $thiz.U = a;
-      var newOffset$3 = (($thiz.R % 1024) | 0);
-      $thiz.M = (($thiz.M - (($thiz.R - newOffset$3) | 0)) | 0);
-      $thiz.R = newOffset$3;
+      $thiz.V = a;
+      var newOffset$3 = (($thiz.S % 1024) | 0);
+      $thiz.M = (($thiz.M - (($thiz.S - newOffset$3) | 0)) | 0);
+      $thiz.S = newOffset$3;
       if (((($thiz.M >>> 10) | 0) === 0)) {
         $thiz.X = 2;
       }
@@ -12297,7 +12301,7 @@ function $p_sci_VectorBuilder__leftAlignPrefix__V($thiz) {
     if ((a === null)) {
       a = $thiz.P;
     }
-    var i$5 = (31 & (($thiz.R >>> 5) | 0));
+    var i$5 = (31 & (($thiz.S >>> 5) | 0));
     if (($thiz.X === 2)) {
       if ((i$5 > 0)) {
         var src$4 = a;
@@ -12306,9 +12310,9 @@ function $p_sci_VectorBuilder__leftAlignPrefix__V($thiz) {
         src$4.H(i$5, dest$4, 0, length$4);
       }
       $thiz.P = a;
-      var newOffset$4 = (($thiz.R % 32) | 0);
-      $thiz.M = (($thiz.M - (($thiz.R - newOffset$4) | 0)) | 0);
-      $thiz.R = newOffset$4;
+      var newOffset$4 = (($thiz.S % 32) | 0);
+      $thiz.M = (($thiz.M - (($thiz.S - newOffset$4) | 0)) | 0);
+      $thiz.S = newOffset$4;
       if (((($thiz.M >>> 5) | 0) === 0)) {
         $thiz.X = 1;
       }
@@ -12325,7 +12329,7 @@ function $p_sci_VectorBuilder__leftAlignPrefix__V($thiz) {
     if ((a === null)) {
       a = $thiz.a4;
     }
-    var i$6 = (31 & $thiz.R);
+    var i$6 = (31 & $thiz.S);
     if (($thiz.X === 1)) {
       if ((i$6 > 0)) {
         var src$5 = a;
@@ -12334,8 +12338,8 @@ function $p_sci_VectorBuilder__leftAlignPrefix__V($thiz) {
         src$5.H(i$6, dest$5, 0, length$5);
       }
       $thiz.a4 = a;
-      $thiz.V = (($thiz.V - $thiz.R) | 0);
-      $thiz.R = 0;
+      $thiz.W = (($thiz.W - $thiz.S) | 0);
+      $thiz.S = 0;
     } else {
       if ((i$6 > 0)) {
         a = $m_ju_Arrays$().ai(a, i$6, 32);
@@ -12348,21 +12352,21 @@ function $p_sci_VectorBuilder__leftAlignPrefix__V($thiz) {
 function $p_sci_VectorBuilder__addArr1__AO__V($thiz, data) {
   var dl = data.b.length;
   if ((dl > 0)) {
-    if (($thiz.V === 32)) {
+    if (($thiz.W === 32)) {
       $p_sci_VectorBuilder__advance__V($thiz);
     }
-    var a = ((32 - $thiz.V) | 0);
+    var a = ((32 - $thiz.W) | 0);
     var copy1 = ((a < dl) ? a : dl);
     var copy2 = ((dl - copy1) | 0);
     var dest = $thiz.a4;
-    var destPos = $thiz.V;
+    var destPos = $thiz.W;
     data.H(0, dest, destPos, copy1);
-    $thiz.V = (($thiz.V + copy1) | 0);
+    $thiz.W = (($thiz.W + copy1) | 0);
     if ((copy2 > 0)) {
       $p_sci_VectorBuilder__advance__V($thiz);
       var dest$1 = $thiz.a4;
       data.H(copy1, dest$1, 0, copy2);
-      $thiz.V = (($thiz.V + copy2) | 0);
+      $thiz.W = (($thiz.W + copy2) | 0);
     }
   }
 }
@@ -12370,7 +12374,7 @@ function $p_sci_VectorBuilder__addArrN__AO__I__V($thiz, slice, dim) {
   if ((slice.b.length === 0)) {
     return (void 0);
   }
-  if (($thiz.V === 32)) {
+  if (($thiz.W === 32)) {
     $p_sci_VectorBuilder__advance__V($thiz);
   }
   var sl = slice.b.length;
@@ -12462,11 +12466,11 @@ function $p_sci_VectorBuilder__addArrN__AO__I__V($thiz, slice, dim) {
       var copy1$2 = ((a$1 < sl) ? a$1 : sl);
       var copy2$2 = ((sl - copy1$2) | 0);
       var destPos$2 = (31 & (($thiz.M >>> 10) | 0));
-      var dest$2 = $thiz.U;
+      var dest$2 = $thiz.V;
       slice.H(0, dest$2, destPos$2, copy1$2);
       $p_sci_VectorBuilder__advanceN__I__V($thiz, (copy1$2 << 10));
       if ((copy2$2 > 0)) {
-        var dest$3 = $thiz.U;
+        var dest$3 = $thiz.V;
         slice.H(copy1$2, dest$3, 0, copy2$2);
         $p_sci_VectorBuilder__advanceN__I__V($thiz, (copy2$2 << 10));
       }
@@ -12730,7 +12734,7 @@ function $p_sci_VectorBuilder__addVector__sci_Vector__sci_VectorBuilder($thiz, x
     var x1 = ((((1 + c) | 0) - (((a ^ sign) - sign) | 0)) | 0);
     if ((x1 === 1)) {
       $p_sci_VectorBuilder__addArr1__AO__V($thiz, slice);
-    } else if ((($thiz.V === 32) || ($thiz.V === 0))) {
+    } else if ((($thiz.W === 32) || ($thiz.W === 0))) {
       $p_sci_VectorBuilder__addArrN__AO__I__V($thiz, slice, x1);
     } else {
       $m_sci_VectorStatics$().jK((((-2) + x1) | 0), slice, new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((data$2$2) => {
@@ -12745,7 +12749,7 @@ function $p_sci_VectorBuilder__advance__V($thiz) {
   var idx = ((32 + $thiz.M) | 0);
   var xor = (idx ^ $thiz.M);
   $thiz.M = idx;
-  $thiz.V = 0;
+  $thiz.W = 0;
   $p_sci_VectorBuilder__advance1__I__I__V($thiz, idx, xor);
 }
 function $p_sci_VectorBuilder__advanceN__I__V($thiz, n) {
@@ -12753,13 +12757,13 @@ function $p_sci_VectorBuilder__advanceN__I__V($thiz, n) {
     var idx = (($thiz.M + n) | 0);
     var xor = (idx ^ $thiz.M);
     $thiz.M = idx;
-    $thiz.V = 0;
+    $thiz.W = 0;
     $p_sci_VectorBuilder__advance1__I__I__V($thiz, idx, xor);
   }
 }
 function $p_sci_VectorBuilder__advance1__I__I__V($thiz, idx, xor) {
   if ((xor <= 0)) {
-    throw $ct_jl_IllegalArgumentException__T__(new $c_jl_IllegalArgumentException(), ((((((((((((((((("advance1(" + idx) + ", ") + xor) + "): a1=") + $thiz.a4) + ", a2=") + $thiz.P) + ", a3=") + $thiz.U) + ", a4=") + $thiz.Z) + ", a5=") + $thiz.a7) + ", a6=") + $thiz.aX) + ", depth=") + $thiz.X));
+    throw $ct_jl_IllegalArgumentException__T__(new $c_jl_IllegalArgumentException(), ((((((((((((((((("advance1(" + idx) + ", ") + xor) + "): a1=") + $thiz.a4) + ", a2=") + $thiz.P) + ", a3=") + $thiz.V) + ", a4=") + $thiz.Z) + ", a5=") + $thiz.a7) + ", a6=") + $thiz.aX) + ", depth=") + $thiz.X));
   } else if ((xor < 1024)) {
     if (($thiz.X <= 1)) {
       $thiz.P = new ($d_O.r().r().C)(32);
@@ -12770,26 +12774,26 @@ function $p_sci_VectorBuilder__advance1__I__I__V($thiz, idx, xor) {
     $thiz.P.b[(31 & ((idx >>> 5) | 0))] = $thiz.a4;
   } else if ((xor < 32768)) {
     if (($thiz.X <= 2)) {
-      $thiz.U = new ($d_O.r().r().r().C)(32);
-      $thiz.U.b[0] = $thiz.P;
+      $thiz.V = new ($d_O.r().r().r().C)(32);
+      $thiz.V.b[0] = $thiz.P;
       $thiz.X = 3;
     }
     $thiz.a4 = new $ac_O(32);
     $thiz.P = new ($d_O.r().r().C)(32);
     $thiz.P.b[(31 & ((idx >>> 5) | 0))] = $thiz.a4;
-    $thiz.U.b[(31 & ((idx >>> 10) | 0))] = $thiz.P;
+    $thiz.V.b[(31 & ((idx >>> 10) | 0))] = $thiz.P;
   } else if ((xor < 1048576)) {
     if (($thiz.X <= 3)) {
       $thiz.Z = new ($d_O.r().r().r().r().C)(32);
-      $thiz.Z.b[0] = $thiz.U;
+      $thiz.Z.b[0] = $thiz.V;
       $thiz.X = 4;
     }
     $thiz.a4 = new $ac_O(32);
     $thiz.P = new ($d_O.r().r().C)(32);
-    $thiz.U = new ($d_O.r().r().r().C)(32);
+    $thiz.V = new ($d_O.r().r().r().C)(32);
     $thiz.P.b[(31 & ((idx >>> 5) | 0))] = $thiz.a4;
-    $thiz.U.b[(31 & ((idx >>> 10) | 0))] = $thiz.P;
-    $thiz.Z.b[(31 & ((idx >>> 15) | 0))] = $thiz.U;
+    $thiz.V.b[(31 & ((idx >>> 10) | 0))] = $thiz.P;
+    $thiz.Z.b[(31 & ((idx >>> 15) | 0))] = $thiz.V;
   } else if ((xor < 33554432)) {
     if (($thiz.X <= 4)) {
       $thiz.a7 = new ($d_O.r().r().r().r().r().C)(32);
@@ -12798,11 +12802,11 @@ function $p_sci_VectorBuilder__advance1__I__I__V($thiz, idx, xor) {
     }
     $thiz.a4 = new $ac_O(32);
     $thiz.P = new ($d_O.r().r().C)(32);
-    $thiz.U = new ($d_O.r().r().r().C)(32);
+    $thiz.V = new ($d_O.r().r().r().C)(32);
     $thiz.Z = new ($d_O.r().r().r().r().C)(32);
     $thiz.P.b[(31 & ((idx >>> 5) | 0))] = $thiz.a4;
-    $thiz.U.b[(31 & ((idx >>> 10) | 0))] = $thiz.P;
-    $thiz.Z.b[(31 & ((idx >>> 15) | 0))] = $thiz.U;
+    $thiz.V.b[(31 & ((idx >>> 10) | 0))] = $thiz.P;
+    $thiz.Z.b[(31 & ((idx >>> 15) | 0))] = $thiz.V;
     $thiz.a7.b[(31 & ((idx >>> 20) | 0))] = $thiz.Z;
   } else {
     if (($thiz.X <= 5)) {
@@ -12812,12 +12816,12 @@ function $p_sci_VectorBuilder__advance1__I__I__V($thiz, idx, xor) {
     }
     $thiz.a4 = new $ac_O(32);
     $thiz.P = new ($d_O.r().r().C)(32);
-    $thiz.U = new ($d_O.r().r().r().C)(32);
+    $thiz.V = new ($d_O.r().r().r().C)(32);
     $thiz.Z = new ($d_O.r().r().r().r().C)(32);
     $thiz.a7 = new ($d_O.r().r().r().r().r().C)(32);
     $thiz.P.b[(31 & ((idx >>> 5) | 0))] = $thiz.a4;
-    $thiz.U.b[(31 & ((idx >>> 10) | 0))] = $thiz.P;
-    $thiz.Z.b[(31 & ((idx >>> 15) | 0))] = $thiz.U;
+    $thiz.V.b[(31 & ((idx >>> 10) | 0))] = $thiz.P;
+    $thiz.Z.b[(31 & ((idx >>> 15) | 0))] = $thiz.V;
     $thiz.a7.b[(31 & ((idx >>> 20) | 0))] = $thiz.Z;
     $thiz.aX.b[((idx >>> 25) | 0)] = $thiz.a7;
   }
@@ -12827,18 +12831,18 @@ function $c_sci_VectorBuilder() {
   this.aX = null;
   this.a7 = null;
   this.Z = null;
-  this.U = null;
+  this.V = null;
   this.P = null;
   this.a4 = null;
-  this.V = 0;
+  this.W = 0;
   this.M = 0;
-  this.R = 0;
+  this.S = 0;
   this.ho = false;
   this.X = 0;
   this.a4 = new $ac_O(32);
-  this.V = 0;
+  this.W = 0;
   this.M = 0;
-  this.R = 0;
+  this.S = 0;
   this.ho = false;
   this.X = 1;
 }
@@ -12859,8 +12863,8 @@ $p.sf = (function(v) {
     case 1: {
       this.X = 1;
       var i = v.l.b.length;
-      this.V = (31 & i);
-      this.M = ((i - this.V) | 0);
+      this.W = (31 & i);
+      this.M = ((i - this.W) | 0);
       var a = v.l;
       this.a4 = ((a.b.length === 32) ? a : $m_ju_Arrays$().ai(a, 0, 32));
       break;
@@ -12870,10 +12874,10 @@ $p.sf = (function(v) {
       var a$1 = v.q;
       this.a4 = ((a$1.b.length === 32) ? a$1 : $m_ju_Arrays$().ai(a$1, 0, 32));
       this.X = 2;
-      this.R = ((32 - v.bT) | 0);
-      var i$1 = ((v.s + this.R) | 0);
-      this.V = (31 & i$1);
-      this.M = ((i$1 - this.V) | 0);
+      this.S = ((32 - v.bU) | 0);
+      var i$1 = ((v.s + this.S) | 0);
+      this.W = (31 & i$1);
+      this.M = ((i$1 - this.W) | 0);
       this.P = new ($d_O.r().r().C)(32);
       this.P.b[0] = v.l;
       var dest = this.P;
@@ -12888,17 +12892,17 @@ $p.sf = (function(v) {
       var a$2 = v.q;
       this.a4 = ((a$2.b.length === 32) ? a$2 : $m_ju_Arrays$().ai(a$2, 0, 32));
       this.X = 3;
-      this.R = ((1024 - v.bw) | 0);
-      var i$2 = ((v.s + this.R) | 0);
-      this.V = (31 & i$2);
-      this.M = ((i$2 - this.V) | 0);
-      this.U = new ($d_O.r().r().r().C)(32);
-      this.U.b[0] = $m_sci_VectorStatics$().cW(v.l, v.bJ);
-      var dest$1 = this.U;
+      this.S = ((1024 - v.bw) | 0);
+      var i$2 = ((v.s + this.S) | 0);
+      this.W = (31 & i$2);
+      this.M = ((i$2 - this.W) | 0);
+      this.V = new ($d_O.r().r().r().C)(32);
+      this.V.b[0] = $m_sci_VectorStatics$().cW(v.l, v.bJ);
+      var dest$1 = this.V;
       var length$1 = d3.b.length;
       d3.H(0, dest$1, 1, length$1);
       this.P = $m_ju_Arrays$().a9(s2, 32);
-      this.U.b[((1 + d3.b.length) | 0)] = this.P;
+      this.V.b[((1 + d3.b.length) | 0)] = this.P;
       this.P.b[s2.b.length] = this.a4;
       break;
     }
@@ -12909,19 +12913,19 @@ $p.sf = (function(v) {
       var a$3 = v.q;
       this.a4 = ((a$3.b.length === 32) ? a$3 : $m_ju_Arrays$().ai(a$3, 0, 32));
       this.X = 4;
-      this.R = ((32768 - v.b6) | 0);
-      var i$3 = ((v.s + this.R) | 0);
-      this.V = (31 & i$3);
-      this.M = ((i$3 - this.V) | 0);
+      this.S = ((32768 - v.b5) | 0);
+      var i$3 = ((v.s + this.S) | 0);
+      this.W = (31 & i$3);
+      this.M = ((i$3 - this.W) | 0);
       this.Z = new ($d_O.r().r().r().r().C)(32);
       this.Z.b[0] = $m_sci_VectorStatics$().cW($m_sci_VectorStatics$().cW(v.l, v.bo), v.bp);
       var dest$2 = this.Z;
       var length$2 = d4.b.length;
       d4.H(0, dest$2, 1, length$2);
-      this.U = $m_ju_Arrays$().a9(s3, 32);
+      this.V = $m_ju_Arrays$().a9(s3, 32);
       this.P = $m_ju_Arrays$().a9(s2$2, 32);
-      this.Z.b[((1 + d4.b.length) | 0)] = this.U;
-      this.U.b[s3.b.length] = this.P;
+      this.Z.b[((1 + d4.b.length) | 0)] = this.V;
+      this.V.b[s3.b.length] = this.P;
       this.P.b[s2$2.b.length] = this.a4;
       break;
     }
@@ -12933,21 +12937,21 @@ $p.sf = (function(v) {
       var a$4 = v.q;
       this.a4 = ((a$4.b.length === 32) ? a$4 : $m_ju_Arrays$().ai(a$4, 0, 32));
       this.X = 5;
-      this.R = ((1048576 - v.aH) | 0);
-      var i$4 = ((v.s + this.R) | 0);
-      this.V = (31 & i$4);
-      this.M = ((i$4 - this.V) | 0);
+      this.S = ((1048576 - v.aI) | 0);
+      var i$4 = ((v.s + this.S) | 0);
+      this.W = (31 & i$4);
+      this.M = ((i$4 - this.W) | 0);
       this.a7 = new ($d_O.r().r().r().r().r().C)(32);
       this.a7.b[0] = $m_sci_VectorStatics$().cW($m_sci_VectorStatics$().cW($m_sci_VectorStatics$().cW(v.l, v.aU), v.aV), v.aW);
       var dest$3 = this.a7;
       var length$3 = d5.b.length;
       d5.H(0, dest$3, 1, length$3);
       this.Z = $m_ju_Arrays$().a9(s4, 32);
-      this.U = $m_ju_Arrays$().a9(s3$2, 32);
+      this.V = $m_ju_Arrays$().a9(s3$2, 32);
       this.P = $m_ju_Arrays$().a9(s2$3, 32);
       this.a7.b[((1 + d5.b.length) | 0)] = this.Z;
-      this.Z.b[s4.b.length] = this.U;
-      this.U.b[s3$2.b.length] = this.P;
+      this.Z.b[s4.b.length] = this.V;
+      this.V.b[s3$2.b.length] = this.P;
       this.P.b[s2$3.b.length] = this.a4;
       break;
     }
@@ -12960,23 +12964,23 @@ $p.sf = (function(v) {
       var a$5 = v.q;
       this.a4 = ((a$5.b.length === 32) ? a$5 : $m_ju_Arrays$().ai(a$5, 0, 32));
       this.X = 6;
-      this.R = ((33554432 - v.ax) | 0);
-      var i$5 = ((v.s + this.R) | 0);
-      this.V = (31 & i$5);
-      this.M = ((i$5 - this.V) | 0);
+      this.S = ((33554432 - v.ay) | 0);
+      var i$5 = ((v.s + this.S) | 0);
+      this.W = (31 & i$5);
+      this.M = ((i$5 - this.W) | 0);
       this.aX = new ($d_O.r().r().r().r().r().r().C)(64);
-      this.aX.b[0] = $m_sci_VectorStatics$().cW($m_sci_VectorStatics$().cW($m_sci_VectorStatics$().cW($m_sci_VectorStatics$().cW(v.l, v.aI), v.aJ), v.aK), v.aL);
+      this.aX.b[0] = $m_sci_VectorStatics$().cW($m_sci_VectorStatics$().cW($m_sci_VectorStatics$().cW($m_sci_VectorStatics$().cW(v.l, v.aJ), v.aK), v.aL), v.aM);
       var dest$4 = this.aX;
       var length$4 = d6.b.length;
       d6.H(0, dest$4, 1, length$4);
       this.a7 = $m_ju_Arrays$().a9(s5, 32);
       this.Z = $m_ju_Arrays$().a9(s4$2, 32);
-      this.U = $m_ju_Arrays$().a9(s3$3, 32);
+      this.V = $m_ju_Arrays$().a9(s3$3, 32);
       this.P = $m_ju_Arrays$().a9(s2$4, 32);
       this.aX.b[((1 + d6.b.length) | 0)] = this.a7;
       this.a7.b[s5.b.length] = this.Z;
-      this.Z.b[s4$2.b.length] = this.U;
-      this.U.b[s3$3.b.length] = this.P;
+      this.Z.b[s4$2.b.length] = this.V;
+      this.V.b[s3$3.b.length] = this.P;
       this.P.b[s2$4.b.length] = this.a4;
       break;
     }
@@ -12984,29 +12988,29 @@ $p.sf = (function(v) {
       throw new $c_s_MatchError(x1);
     }
   }
-  if (((this.V === 0) && (this.M > 0))) {
-    this.V = 32;
+  if (((this.W === 0) && (this.M > 0))) {
+    this.W = 32;
     this.M = (((-32) + this.M) | 0);
   }
   return this;
 });
 $p.qM = (function(elem) {
-  if ((this.V === 32)) {
+  if ((this.W === 32)) {
     $p_sci_VectorBuilder__advance__V(this);
   }
-  this.a4.b[this.V] = elem;
-  this.V = ((1 + this.V) | 0);
+  this.a4.b[this.W] = elem;
+  this.W = ((1 + this.W) | 0);
   return this;
 });
 $p.oM = (function(xs) {
-  return ((xs instanceof $c_sci_Vector) ? ((((this.V === 0) && (this.M === 0)) && (!this.ho)) ? this.sf(xs) : $p_sci_VectorBuilder__addVector__sci_Vector__sci_VectorBuilder(this, xs)) : $f_scm_Growable__addAll__sc_IterableOnce__scm_Growable(this, xs));
+  return ((xs instanceof $c_sci_Vector) ? ((((this.W === 0) && (this.M === 0)) && (!this.ho)) ? this.sf(xs) : $p_sci_VectorBuilder__addVector__sci_Vector__sci_VectorBuilder(this, xs)) : $f_scm_Growable__addAll__sc_IterableOnce__scm_Growable(this, xs));
 });
 $p.pY = (function() {
   if (this.ho) {
     $p_sci_VectorBuilder__leftAlignPrefix__V(this);
   }
-  var len = ((this.V + this.M) | 0);
-  var realLen = ((len - this.R) | 0);
+  var len = ((this.W + this.M) | 0);
+  var realLen = ((len - this.S) | 0);
   if ((realLen === 0)) {
     $m_sci_Vector$();
     return $m_sci_Vector0$();
@@ -13023,17 +13027,17 @@ $p.pY = (function() {
     var a$1 = this.P.b[i2];
     var len$1 = ((1 + i1) | 0);
     var suffix1 = ((a$1.b.length === len$1) ? a$1 : $m_ju_Arrays$().a9(a$1, len$1));
-    return new $c_sci_Vector2(prefix1, ((32 - this.R) | 0), data, suffix1, realLen);
+    return new $c_sci_Vector2(prefix1, ((32 - this.S) | 0), data, suffix1, realLen);
   } else if ((len <= 32768)) {
     var i1$2 = (31 & (((-1) + len) | 0));
     var i2$2 = (31 & (((((-1) + len) | 0) >>> 5) | 0));
     var i3 = (((((-1) + len) | 0) >>> 10) | 0);
-    var data$2 = $m_ju_Arrays$().ai(this.U, 1, i3);
-    var a$2 = this.U.b[0];
+    var data$2 = $m_ju_Arrays$().ai(this.V, 1, i3);
+    var a$2 = this.V.b[0];
     var prefix2 = $m_ju_Arrays$().ai(a$2, 1, a$2.b.length);
-    var prefix1$2 = this.U.b[0].b[0];
-    var suffix2 = $m_ju_Arrays$().a9(this.U.b[i3], i2$2);
-    var a$3 = this.U.b[i3].b[i2$2];
+    var prefix1$2 = this.V.b[0].b[0];
+    var suffix2 = $m_ju_Arrays$().a9(this.V.b[i3], i2$2);
+    var a$3 = this.V.b[i3].b[i2$2];
     var len$2 = ((1 + i1$2) | 0);
     var suffix1$2 = ((a$3.b.length === len$2) ? a$3 : $m_ju_Arrays$().a9(a$3, len$2));
     var len1 = prefix1$2.b.length;
@@ -13113,15 +13117,15 @@ $p.pY = (function() {
   }
 });
 $p.D = (function() {
-  return (((((((("VectorBuilder(len1=" + this.V) + ", lenRest=") + this.M) + ", offset=") + this.R) + ", depth=") + this.X) + ")");
+  return (((((((("VectorBuilder(len1=" + this.W) + ", lenRest=") + this.M) + ", offset=") + this.S) + ", depth=") + this.X) + ")");
 });
-$p.ba = (function() {
+$p.b9 = (function() {
   return this.pY();
 });
 $p.bk = (function(elems) {
   return this.oM(elems);
 });
-$p.b8 = (function(elem) {
+$p.b7 = (function(elem) {
   return this.qM(elem);
 });
 var $d_sci_VectorBuilder = new $TypeData().i($c_sci_VectorBuilder, "scala.collection.immutable.VectorBuilder", ({
@@ -13143,14 +13147,14 @@ $p.constructor = $c_scm_ArrayBuffer$;
 function $h_scm_ArrayBuffer$() {
 }
 $h_scm_ArrayBuffer$.prototype = $p;
-$p.dl = (function(elems) {
+$p.dm = (function(elems) {
   return this.py(elems);
 });
 $p.py = (function(coll) {
   var k = coll.J();
   if ((k >= 0)) {
     var array = this.q1(this.on, 0, k);
-    var actual = ($is_sc_Iterable(coll) ? coll.ca(array, 0, 2147483647) : coll.r().ca(array, 0, 2147483647));
+    var actual = ($is_sc_Iterable(coll) ? coll.cf(array, 0, 2147483647) : coll.r().cf(array, 0, 2147483647));
     if ((actual !== k)) {
       throw new $c_jl_IllegalStateException(((("Copied " + actual) + " of ") + k));
     }
@@ -13206,7 +13210,7 @@ function $m_scm_ArrayBuffer$() {
 }
 /** @constructor */
 function $c_scm_ArrayBuffer$$anon$1() {
-  this.e1 = null;
+  this.e2 = null;
   $ct_scm_GrowableBuilder__scm_Growable__(this, ($m_scm_ArrayBuffer$(), $ct_scm_ArrayBuffer__(new $c_scm_ArrayBuffer())));
 }
 $p = $c_scm_ArrayBuffer$$anon$1.prototype = new $h_scm_GrowableBuilder();
@@ -13216,7 +13220,7 @@ function $h_scm_ArrayBuffer$$anon$1() {
 }
 $h_scm_ArrayBuffer$$anon$1.prototype = $p;
 $p.bn = (function(size) {
-  this.e1.bn(size);
+  this.e2.bn(size);
 });
 var $d_scm_ArrayBuffer$$anon$1 = new $TypeData().i($c_scm_ArrayBuffer$$anon$1, "scala.collection.mutable.ArrayBuffer$$anon$1", ({
   h5: 1,
@@ -13227,7 +13231,7 @@ var $d_scm_ArrayBuffer$$anon$1 = new $TypeData().i($c_scm_ArrayBuffer$$anon$1, "
 }));
 /** @constructor */
 function $c_scm_Buffer$() {
-  this.ew = null;
+  this.ey = null;
   $ct_sc_SeqFactory$Delegate__sc_SeqFactory__(this, $m_sjs_js_WrappedArray$());
 }
 $p = $c_scm_Buffer$.prototype = new $h_sc_SeqFactory$Delegate();
@@ -13252,7 +13256,7 @@ function $m_scm_Buffer$() {
 }
 /** @constructor */
 function $c_scm_HashSet$$anon$4(initialCapacity$1, loadFactor$1) {
-  this.e1 = null;
+  this.e2 = null;
   $ct_scm_GrowableBuilder__scm_Growable__(this, $ct_scm_HashSet__I__D__(new $c_scm_HashSet(), initialCapacity$1, loadFactor$1));
 }
 $p = $c_scm_HashSet$$anon$4.prototype = new $h_scm_GrowableBuilder();
@@ -13262,7 +13266,7 @@ function $h_scm_HashSet$$anon$4() {
 }
 $h_scm_HashSet$$anon$4.prototype = $p;
 $p.bn = (function(size) {
-  this.e1.bn(size);
+  this.e2.bn(size);
 });
 var $d_scm_HashSet$$anon$4 = new $TypeData().i($c_scm_HashSet$$anon$4, "scala.collection.mutable.HashSet$$anon$4", ({
   hk: 1,
@@ -13273,14 +13277,14 @@ var $d_scm_HashSet$$anon$4 = new $TypeData().i($c_scm_HashSet$$anon$4, "scala.co
 }));
 function $ct_scm_HashSet$HashSetIterator__scm_HashSet__($thiz, outer) {
   $thiz.gi = outer;
-  $thiz.e3 = 0;
+  $thiz.e4 = 0;
   $thiz.dh = null;
   $thiz.gj = outer.aY.b.length;
   return $thiz;
 }
 /** @constructor */
 function $c_scm_HashSet$HashSetIterator() {
-  this.e3 = 0;
+  this.e4 = 0;
   this.dh = null;
   this.gj = 0;
   this.gi = null;
@@ -13295,9 +13299,9 @@ $p.x = (function() {
   if ((this.dh !== null)) {
     return true;
   } else {
-    while ((this.e3 < this.gj)) {
-      var n = this.gi.aY.b[this.e3];
-      this.e3 = ((1 + this.e3) | 0);
+    while ((this.e4 < this.gj)) {
+      var n = this.gi.aY.b[this.e4];
+      this.e4 = ((1 + this.e4) | 0);
       if ((n !== null)) {
         this.dh = n;
         return true;
@@ -13308,7 +13312,7 @@ $p.x = (function() {
 });
 $p.n = (function() {
   if ((!this.x())) {
-    return $m_sc_Iterator$().T.n();
+    return $m_sc_Iterator$().U.n();
   } else {
     var r = this.jJ(this.dh);
     this.dh = this.dh.aZ;
@@ -13334,12 +13338,12 @@ $p.bn = (function(size) {
 $p.bk = (function(elems) {
   return $f_scm_Growable__addAll__sc_IterableOnce__scm_Growable(this, elems);
 });
-$p.ba = (function() {
+$p.b9 = (function() {
   return this.gk;
 });
 /** @constructor */
 function $c_scm_IndexedSeq$() {
-  this.ew = null;
+  this.ey = null;
   $ct_sc_SeqFactory$Delegate__sc_SeqFactory__(this, $m_scm_ArrayBuffer$());
 }
 $p = $c_scm_IndexedSeq$.prototype = new $h_sc_SeqFactory$Delegate();
@@ -13371,7 +13375,7 @@ $p.constructor = $c_scm_ListBuffer$;
 function $h_scm_ListBuffer$() {
 }
 $h_scm_ListBuffer$.prototype = $p;
-$p.dl = (function(elems) {
+$p.dm = (function(elems) {
   return new $c_scm_ListBuffer().gS(elems);
 });
 $p.aw = (function() {
@@ -13425,8 +13429,8 @@ var $d_scm_MutationTracker$CheckedIterator = new $TypeData().i($c_scm_MutationTr
 }));
 function $f_s_reflect_ClassTag__equals__O__Z($thiz, x) {
   if ($is_s_reflect_ClassTag(x)) {
-    var x$2 = $thiz.bb();
-    var x$3 = x.bb();
+    var x$2 = $thiz.ba();
+    var x$3 = x.ba();
     return (x$2 === x$3);
   } else {
     return false;
@@ -13448,7 +13452,7 @@ function $c_sr_ScalaRunTime$$anon$1(x$2) {
   this.oB = null;
   this.oB = x$2;
   this.gm = 0;
-  this.oA = x$2.aA();
+  this.oA = x$2.aB();
 }
 $p = $c_sr_ScalaRunTime$$anon$1.prototype = new $h_sc_AbstractIterator();
 $p.constructor = $c_sr_ScalaRunTime$$anon$1;
@@ -13460,7 +13464,7 @@ $p.x = (function() {
   return (this.gm < this.oA);
 });
 $p.n = (function() {
-  var result = this.oB.aB(this.gm);
+  var result = this.oB.aC(this.gm);
   this.gm = ((1 + this.gm) | 0);
   return result;
 });
@@ -13480,14 +13484,14 @@ $p.constructor = $c_sjs_js_WrappedArray$;
 function $h_sjs_js_WrappedArray$() {
 }
 $h_sjs_js_WrappedArray$.prototype = $p;
-$p.dl = (function(elems) {
+$p.dm = (function(elems) {
   return this.pz(elems);
 });
 $p.aw = (function() {
   return $ct_sjs_js_WrappedArray__(new $c_sjs_js_WrappedArray());
 });
 $p.pz = (function(source) {
-  return $f_scm_Growable__addAll__sc_IterableOnce__scm_Growable($ct_sjs_js_WrappedArray__(new $c_sjs_js_WrappedArray()), source).ba();
+  return $f_scm_Growable__addAll__sc_IterableOnce__scm_Growable($ct_sjs_js_WrappedArray__(new $c_sjs_js_WrappedArray()), source).b9();
 });
 $p.av = (function(source) {
   return this.pz(source);
@@ -13515,14 +13519,14 @@ $p.constructor = $c_sjsr_WrappedVarArgs$;
 function $h_sjsr_WrappedVarArgs$() {
 }
 $h_sjsr_WrappedVarArgs$.prototype = $p;
-$p.dl = (function(elems) {
+$p.dm = (function(elems) {
   return this.jQ(elems);
 });
 $p.jQ = (function(source) {
-  return this.aw().bk(source).ba();
+  return this.aw().bk(source).b9();
 });
 $p.aw = (function() {
-  return new $c_scm_Builder$$anon$1($ct_sjs_js_WrappedArray__sjs_js_Array__(new $c_sjs_js_WrappedArray(), []), new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((x$1$2$2) => new $c_sjsr_WrappedVarArgs(x$1$2$2.e4))));
+  return new $c_scm_Builder$$anon$1($ct_sjs_js_WrappedArray__sjs_js_Array__(new $c_sjs_js_WrappedArray(), []), new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((x$1$2$2) => new $c_sjsr_WrappedVarArgs(x$1$2$2.e5))));
 });
 $p.av = (function(source) {
   return this.jQ(source);
@@ -13543,8 +13547,8 @@ function $m_sjsr_WrappedVarArgs$() {
 }
 /** @constructor */
 function $c_s_util_Failure(exception) {
-  this.e5 = null;
-  this.e5 = exception;
+  this.e6 = null;
+  this.e6 = exception;
 }
 $p = $c_s_util_Failure.prototype = new $h_s_util_Try();
 $p.constructor = $c_s_util_Failure;
@@ -13559,7 +13563,7 @@ $p.pE = (function() {
   return false;
 });
 $p.Q = (function() {
-  var $x_1 = this.e5;
+  var $x_1 = this.e6;
   throw (($x_1 instanceof $c_sjs_js_JavaScriptException) ? $x_1.ag : $x_1);
 });
 $p.k4 = (function(f) {
@@ -13568,27 +13572,27 @@ $p.k4 = (function(f) {
 $p.pS = (function(pf) {
   var marker = $m_sr_Statics$PFMarker$();
   try {
-    var v = pf.c8(this.e5, new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((x$2$2) => marker)));
+    var v = pf.cc(this.e6, new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((x$2$2) => marker)));
     return ((marker !== v) ? new $c_s_util_Success(v) : this);
   } catch (e) {
     var e$2 = ((e instanceof $c_jl_Throwable) ? e : new $c_sjs_js_JavaScriptException(e));
-    if ($m_s_util_control_NonFatal$().eM(e$2)) {
+    if ($m_s_util_control_NonFatal$().eN(e$2)) {
       return new $c_s_util_Failure(e$2);
     }
     throw ((e$2 instanceof $c_sjs_js_JavaScriptException) ? e$2.ag : e$2);
   }
 });
-$p.cu = (function(fa, fb) {
-  return fa.i(this.e5);
+$p.cz = (function(fa, fb) {
+  return fa.i(this.e6);
 });
-$p.aC = (function() {
+$p.aD = (function() {
   return "Failure";
 });
-$p.aA = (function() {
+$p.aB = (function() {
   return 1;
 });
-$p.aB = (function(x$1) {
-  return ((x$1 === 0) ? this.e5 : $m_sr_Statics$().eU(x$1));
+$p.aC = (function(x$1) {
+  return ((x$1 === 0) ? this.e6 : $m_sr_Statics$().eW(x$1));
 });
 $p.bB = (function() {
   return new $c_sr_ScalaRunTime$$anon$1(this);
@@ -13603,8 +13607,8 @@ $p.z = (function(x$1) {
   if ((this === x$1)) {
     return true;
   } else if ((x$1 instanceof $c_s_util_Failure)) {
-    var x = this.e5;
-    var x$2 = x$1.e5;
+    var x = this.e6;
+    var x$2 = x$1.e6;
     return ((x === null) ? (x$2 === null) : x.z(x$2));
   } else {
     return false;
@@ -13622,8 +13626,8 @@ var $d_s_util_Failure = new $TypeData().i($c_s_util_Failure, "scala.util.Failure
 }));
 /** @constructor */
 function $c_s_util_Success(value) {
-  this.eH = null;
-  this.eH = value;
+  this.eJ = null;
+  this.eJ = value;
 }
 $p = $c_s_util_Success.prototype = new $h_s_util_Try();
 $p.constructor = $c_s_util_Success;
@@ -13638,14 +13642,14 @@ $p.pE = (function() {
   return true;
 });
 $p.Q = (function() {
-  return this.eH;
+  return this.eJ;
 });
 $p.k4 = (function(f) {
   try {
-    return new $c_s_util_Success(f.i(this.eH));
+    return new $c_s_util_Success(f.i(this.eJ));
   } catch (e) {
     var e$2 = ((e instanceof $c_jl_Throwable) ? e : new $c_sjs_js_JavaScriptException(e));
-    if ($m_s_util_control_NonFatal$().eM(e$2)) {
+    if ($m_s_util_control_NonFatal$().eN(e$2)) {
       return new $c_s_util_Failure(e$2);
     }
     throw ((e$2 instanceof $c_sjs_js_JavaScriptException) ? e$2.ag : e$2);
@@ -13654,25 +13658,25 @@ $p.k4 = (function(f) {
 $p.pS = (function(pf) {
   return this;
 });
-$p.cu = (function(fa, fb) {
+$p.cz = (function(fa, fb) {
   try {
-    return fb.i(this.eH);
+    return fb.i(this.eJ);
   } catch (e) {
     var e$2 = ((e instanceof $c_jl_Throwable) ? e : new $c_sjs_js_JavaScriptException(e));
-    if ($m_s_util_control_NonFatal$().eM(e$2)) {
+    if ($m_s_util_control_NonFatal$().eN(e$2)) {
       return fa.i(e$2);
     }
     throw ((e$2 instanceof $c_sjs_js_JavaScriptException) ? e$2.ag : e$2);
   }
 });
-$p.aC = (function() {
+$p.aD = (function() {
   return "Success";
 });
-$p.aA = (function() {
+$p.aB = (function() {
   return 1;
 });
-$p.aB = (function(x$1) {
-  return ((x$1 === 0) ? this.eH : $m_sr_Statics$().eU(x$1));
+$p.aC = (function(x$1) {
+  return ((x$1 === 0) ? this.eJ : $m_sr_Statics$().eW(x$1));
 });
 $p.bB = (function() {
   return new $c_sr_ScalaRunTime$$anon$1(this);
@@ -13684,7 +13688,7 @@ $p.D = (function() {
   return $m_sr_ScalaRunTime$().jq(this);
 });
 $p.z = (function(x$1) {
-  return ((this === x$1) || ((x$1 instanceof $c_s_util_Success) && $m_sr_BoxesRunTime$().A(this.eH, x$1.eH)));
+  return ((this === x$1) || ((x$1 instanceof $c_s_util_Success) && $m_sr_BoxesRunTime$().A(this.eJ, x$1.eJ)));
 });
 function $isArrayOf_s_util_Success(obj, depth) {
   return (!(!(((obj && obj.$classData) && (obj.$classData.D === depth)) && obj.$classData.B.n.cu)));
@@ -13731,7 +13735,7 @@ class $c_Lcom_raquo_airstream_core_AirstreamError$CombinedError extends $c_Lcom_
     this.fN = null;
     this.fN = causes;
     $ct_jl_Throwable__T__jl_Throwable__Z__Z__(this, $m_Lcom_raquo_airstream_core_AirstreamError$().re(causes), null, true, true);
-    var this$3 = causes.eP($m_s_$less$colon$less$().hd).bV();
+    var this$3 = causes.eQ($m_s_$less$colon$less$().hd).bW();
     if ((!this$3.j())) {
       this.jZ(this$3.Q());
     }
@@ -13753,20 +13757,20 @@ class $c_Lcom_raquo_airstream_core_AirstreamError$CombinedError extends $c_Lcom_
       return false;
     }
   }
-  aA() {
+  aB() {
     return 1;
   }
-  aC() {
+  aD() {
     return "CombinedError";
   }
-  aB(n) {
+  aC(n) {
     if ((n === 0)) {
       return this.fN;
     }
     throw $ct_jl_IndexOutOfBoundsException__T__(new $c_jl_IndexOutOfBoundsException(), ("" + n));
   }
   D() {
-    return ("CombinedError: " + $f_sc_IterableOnceOps__mkString__T__T__T__T(this.fN.eP($m_s_$less$colon$less$().hd).eY(), "", "; ", ""));
+    return ("CombinedError: " + $f_sc_IterableOnceOps__mkString__T__T__T__T(this.fN.eQ($m_s_$less$colon$less$().hd).f0(), "", "; ", ""));
   }
 }
 function $isArrayOf_Lcom_raquo_airstream_core_AirstreamError$CombinedError(obj, depth) {
@@ -13787,7 +13791,7 @@ class $c_Lcom_raquo_airstream_core_AirstreamError$ErrorHandlingError extends $c_
     this.fO = null;
     this.fP = error;
     this.fO = cause;
-    $ct_jl_Throwable__T__jl_Throwable__Z__Z__(this, ((("ErrorHandlingError: " + $m_Lcom_raquo_airstream_core_AirstreamError$().eR(error)) + "; cause: ") + $m_Lcom_raquo_airstream_core_AirstreamError$().eR(cause)), null, true, true);
+    $ct_jl_Throwable__T__jl_Throwable__Z__Z__(this, ((("ErrorHandlingError: " + $m_Lcom_raquo_airstream_core_AirstreamError$().eS(error)) + "; cause: ") + $m_Lcom_raquo_airstream_core_AirstreamError$().eS(cause)), null, true, true);
     this.jZ(cause);
   }
   bB() {
@@ -13813,13 +13817,13 @@ class $c_Lcom_raquo_airstream_core_AirstreamError$ErrorHandlingError extends $c_
       return false;
     }
   }
-  aA() {
+  aB() {
     return 2;
   }
-  aC() {
+  aD() {
     return "ErrorHandlingError";
   }
-  aB(n) {
+  aC(n) {
     if ((n === 0)) {
       return this.fP;
     }
@@ -13848,7 +13852,7 @@ class $c_Lcom_raquo_airstream_core_AirstreamError$ObserverError extends $c_Lcom_
     super();
     this.fQ = null;
     this.fQ = error;
-    $ct_jl_Throwable__T__jl_Throwable__Z__Z__(this, ("ObserverError: " + $m_Lcom_raquo_airstream_core_AirstreamError$().eR(error)), null, true, true);
+    $ct_jl_Throwable__T__jl_Throwable__Z__Z__(this, ("ObserverError: " + $m_Lcom_raquo_airstream_core_AirstreamError$().eS(error)), null, true, true);
   }
   bB() {
     return new $c_s_Product$$anon$1(this);
@@ -13867,13 +13871,13 @@ class $c_Lcom_raquo_airstream_core_AirstreamError$ObserverError extends $c_Lcom_
       return false;
     }
   }
-  aA() {
+  aB() {
     return 1;
   }
-  aC() {
+  aD() {
     return "ObserverError";
   }
-  aB(n) {
+  aC(n) {
     if ((n === 0)) {
       return this.fQ;
     }
@@ -13901,7 +13905,7 @@ class $c_Lcom_raquo_airstream_core_AirstreamError$ObserverErrorHandlingError ext
     this.fR = null;
     this.fS = error;
     this.fR = cause;
-    $ct_jl_Throwable__T__jl_Throwable__Z__Z__(this, ((("ObserverErrorHandlingError: " + $m_Lcom_raquo_airstream_core_AirstreamError$().eR(error)) + "; cause: ") + $m_Lcom_raquo_airstream_core_AirstreamError$().eR(cause)), null, true, true);
+    $ct_jl_Throwable__T__jl_Throwable__Z__Z__(this, ((("ObserverErrorHandlingError: " + $m_Lcom_raquo_airstream_core_AirstreamError$().eS(error)) + "; cause: ") + $m_Lcom_raquo_airstream_core_AirstreamError$().eS(cause)), null, true, true);
     this.jZ(cause);
   }
   bB() {
@@ -13927,13 +13931,13 @@ class $c_Lcom_raquo_airstream_core_AirstreamError$ObserverErrorHandlingError ext
       return false;
     }
   }
-  aA() {
+  aB() {
     return 2;
   }
-  aC() {
+  aD() {
     return "ObserverErrorHandlingError";
   }
-  aB(n) {
+  aC(n) {
     if ((n === 0)) {
       return this.fS;
     }
@@ -13960,10 +13964,10 @@ var $d_Lcom_raquo_airstream_core_AirstreamError$ObserverErrorHandlingError = new
 class $c_Lcom_raquo_airstream_core_AirstreamError$TransactionDepthExceeded extends $c_Lcom_raquo_airstream_core_AirstreamError {
   constructor(trx, depth) {
     super();
-    this.f8 = null;
-    this.f7 = 0;
-    this.f8 = trx;
-    this.f7 = depth;
+    this.fa = null;
+    this.f9 = 0;
+    this.fa = trx;
+    this.f9 = depth;
     $ct_jl_Throwable__T__jl_Throwable__Z__Z__(this, (((("Transaction depth exceeded maxDepth = " + depth) + ": Execution of ") + trx) + " aborted. See `Transaction.maxDepth`."), null, true, true);
   }
   bB() {
@@ -13972,17 +13976,17 @@ class $c_Lcom_raquo_airstream_core_AirstreamError$TransactionDepthExceeded exten
   E() {
     var acc = (-889275714);
     acc = $m_sr_Statics$().m(acc, $f_T__hashCode__I("TransactionDepthExceeded"));
-    acc = $m_sr_Statics$().m(acc, $m_sr_Statics$().a2(this.f8));
-    acc = $m_sr_Statics$().m(acc, this.f7);
+    acc = $m_sr_Statics$().m(acc, $m_sr_Statics$().a2(this.fa));
+    acc = $m_sr_Statics$().m(acc, this.f9);
     return $m_sr_Statics$().N(acc, 2);
   }
   z(x$0) {
     if ((this === x$0)) {
       return true;
     } else if ((x$0 instanceof $c_Lcom_raquo_airstream_core_AirstreamError$TransactionDepthExceeded)) {
-      if ((this.f7 === x$0.f7)) {
-        var x = this.f8;
-        var x$2 = x$0.f8;
+      if ((this.f9 === x$0.f9)) {
+        var x = this.fa;
+        var x$2 = x$0.fa;
         return (x === x$2);
       } else {
         return false;
@@ -13991,23 +13995,23 @@ class $c_Lcom_raquo_airstream_core_AirstreamError$TransactionDepthExceeded exten
       return false;
     }
   }
-  aA() {
+  aB() {
     return 2;
   }
-  aC() {
+  aD() {
     return "TransactionDepthExceeded";
   }
-  aB(n) {
+  aC(n) {
     if ((n === 0)) {
-      return this.f8;
+      return this.fa;
     }
     if ((n === 1)) {
-      return this.f7;
+      return this.f9;
     }
     throw $ct_jl_IndexOutOfBoundsException__T__(new $c_jl_IndexOutOfBoundsException(), ("" + n));
   }
   D() {
-    return ((("TransactionDepthExceeded: " + this.f8) + "; maxDepth: ") + this.f7);
+    return ((("TransactionDepthExceeded: " + this.fa) + "; maxDepth: ") + this.f9);
   }
 }
 function $isArrayOf_Lcom_raquo_airstream_core_AirstreamError$TransactionDepthExceeded(obj, depth) {
@@ -14047,7 +14051,7 @@ function $f_Lcom_raquo_airstream_custom_CustomSource__onStart__V($thiz) {
     var e$2 = ((e instanceof $c_jl_Throwable) ? e : new $c_sjs_js_JavaScriptException(e));
     matchEnd8: {
       var $x_1;
-      if ($m_s_util_control_NonFatal$().eM(e$2)) {
+      if ($m_s_util_control_NonFatal$().eN(e$2)) {
         var $x_1 = new $c_s_util_Failure(e$2);
         break matchEnd8;
       }
@@ -14062,15 +14066,15 @@ function $f_Lcom_raquo_airstream_custom_CustomSource__onStop__V($thiz) {
 /** @constructor */
 function $c_Lcom_raquo_airstream_state_SourceVar(initial) {
   this.lf = null;
-  this.du = null;
+  this.dv = null;
   this.ib = null;
   this.ia = null;
-  this.aN = null;
+  this.ax = null;
   this.lf = (void 0);
   $f_Lcom_raquo_airstream_state_Var__$init$__V(this);
   this.ib = initial;
   this.ia = new $c_Lcom_raquo_airstream_state_VarSignal(this.ib, new $c_sjsr_AnonFunction0_$$Lambda$92a2e254bbb9c06a0a02fc31abab59c51c18ecc1((() => $f_Lcom_raquo_airstream_core_Named__displayName__T(this))));
-  this.aN = this.ia;
+  this.ax = this.ia;
 }
 $p = $c_Lcom_raquo_airstream_state_SourceVar.prototype = new $h_O();
 $p.constructor = $c_Lcom_raquo_airstream_state_SourceVar;
@@ -14078,24 +14082,24 @@ $p.constructor = $c_Lcom_raquo_airstream_state_SourceVar;
 function $h_Lcom_raquo_airstream_state_SourceVar() {
 }
 $h_Lcom_raquo_airstream_state_SourceVar.prototype = $p;
-$p.ee = (function() {
+$p.eg = (function() {
   return this.lf;
 });
-$p.eb = (function() {
+$p.ed = (function() {
   return $f_Lcom_raquo_airstream_core_Named__defaultDisplayName__T(this);
 });
 $p.D = (function() {
   return $f_Lcom_raquo_airstream_core_Named__displayName__T(this);
 });
 $p.fG = (function() {
-  return this.aN;
+  return this.ax;
 });
 $p.ti = (function(value, transaction) {
   this.ib = value;
   $f_Lcom_raquo_airstream_core_WritableSignal__fireTry__s_util_Try__Lcom_raquo_airstream_core_Transaction__V(this.ia, value, transaction);
 });
-$p.eZ = (function() {
-  return this.aN;
+$p.f1 = (function() {
+  return this.ax;
 });
 var $d_Lcom_raquo_airstream_state_SourceVar = new $TypeData().i($c_Lcom_raquo_airstream_state_SourceVar, "com.raquo.airstream.state.SourceVar", ({
   dv: 1,
@@ -14141,11 +14145,11 @@ function $c_Lcom_raquo_laminar_nodes_ReactiveHtmlElement(tag, ref) {
   this.nF = null;
   this.nE = null;
   this.iB = null;
-  this.cg = null;
+  this.cl = null;
   this.nH = null;
   this.iA = null;
   this.iB = tag;
-  this.cg = ref;
+  this.cl = ref;
   this.iz = $m_s_None$();
   $f_Lcom_raquo_laminar_nodes_ParentNode__$init$__V(this);
   $f_Lcom_raquo_laminar_nodes_ReactiveElement__$init$__V(this);
@@ -14158,16 +14162,16 @@ $p.constructor = $c_Lcom_raquo_laminar_nodes_ReactiveHtmlElement;
 function $h_Lcom_raquo_laminar_nodes_ReactiveHtmlElement() {
 }
 $h_Lcom_raquo_laminar_nodes_ReactiveHtmlElement.prototype = $p;
-$p.ft = (function() {
+$p.fv = (function() {
   return this.iz;
 });
 $p.pd = (function(x$1) {
   this.iz = x$1;
 });
-$p.cs = (function(parentNode) {
-  $m_Lcom_raquo_laminar_nodes_ParentNode$().eJ(parentNode, this, (void 0));
+$p.cx = (function(parentNode) {
+  $m_Lcom_raquo_laminar_nodes_ParentNode$().eL(parentNode, this, (void 0));
 });
-$p.bU = (function() {
+$p.bV = (function() {
   return this.nI;
 });
 $p.jy = (function(x$0) {
@@ -14176,7 +14180,7 @@ $p.jy = (function(x$0) {
 $p.jB = (function() {
   return this.nG;
 });
-$p.fu = (function() {
+$p.fw = (function() {
   return this.nF;
 });
 $p.gz = (function() {
@@ -14191,14 +14195,14 @@ $p.jz = (function(x$1) {
 $p.pe = (function(x$0) {
   this.nG = x$0;
 });
-$p.em = (function(maybeNextParent) {
+$p.eo = (function(maybeNextParent) {
   $f_Lcom_raquo_laminar_nodes_ReactiveElement__willSetParent__s_Option__V(this, maybeNextParent);
 });
-$p.ei = (function(maybeNextParent) {
+$p.ek = (function(maybeNextParent) {
   $f_Lcom_raquo_laminar_nodes_ReactiveElement__setParent__s_Option__V(this, maybeNextParent);
 });
 $p.rj = (function() {
-  if ($m_Lcom_raquo_laminar_DomApi$().pD(this.cg)) {
+  if ($m_Lcom_raquo_laminar_DomApi$().pD(this.cl)) {
     var x1 = this.iB;
     if (false) {
       return x1.tJ();
@@ -14216,7 +14220,7 @@ $p.pK = (function(key) {
   if ((key instanceof $c_Lcom_raquo_laminar_keys_HtmlProp)) {
     if (this.sm(key.d6)) {
       if ($p_Lcom_raquo_laminar_nodes_ReactiveHtmlElement__hasController__T__Z(this, key.d6)) {
-        throw $ct_jl_Exception__T__(new $c_jl_Exception(), (((((("Can not add uncontrolled `" + key.d6) + " <-- ???` to element `") + $m_Lcom_raquo_laminar_DomApi$().pi(this.cg)) + "` that already has an input controller for `") + key.d6) + "` property."));
+        throw $ct_jl_Exception__T__(new $c_jl_Exception(), (((((("Can not add uncontrolled `" + key.d6) + " <-- ???` to element `") + $m_Lcom_raquo_laminar_DomApi$().pi(this.cl)) + "` that already has an input controller for `") + key.d6) + "` property."));
       } else {
         $p_Lcom_raquo_laminar_nodes_ReactiveHtmlElement__appendControllablePropBinder__T__V(this, key.d6);
       }
@@ -14224,10 +14228,10 @@ $p.pK = (function(key) {
   }
 });
 $p.D = (function() {
-  return (("ReactiveHtmlElement(" + ((this.cg !== null) ? this.cg.outerHTML : ("tag=" + this.iB.iF))) + ")");
+  return (("ReactiveHtmlElement(" + ((this.cl !== null) ? this.cl.outerHTML : ("tag=" + this.iB.iF))) + ")");
 });
 $p.aa = (function() {
-  return this.cg;
+  return this.cl;
 });
 var $d_Lcom_raquo_laminar_nodes_ReactiveHtmlElement = new $TypeData().i($c_Lcom_raquo_laminar_nodes_ReactiveHtmlElement, "com.raquo.laminar.nodes.ReactiveHtmlElement", ({
   eG: 1,
@@ -14245,9 +14249,9 @@ function $c_Lcom_raquo_laminar_nodes_ReactiveSvgElement(tag, ref) {
   this.nK = null;
   this.nJ = null;
   this.nN = null;
-  this.dz = null;
+  this.dA = null;
   this.nN = tag;
-  this.dz = ref;
+  this.dA = ref;
   this.iC = $m_s_None$();
   $f_Lcom_raquo_laminar_nodes_ParentNode__$init$__V(this);
   $f_Lcom_raquo_laminar_nodes_ReactiveElement__$init$__V(this);
@@ -14258,16 +14262,16 @@ $p.constructor = $c_Lcom_raquo_laminar_nodes_ReactiveSvgElement;
 function $h_Lcom_raquo_laminar_nodes_ReactiveSvgElement() {
 }
 $h_Lcom_raquo_laminar_nodes_ReactiveSvgElement.prototype = $p;
-$p.ft = (function() {
+$p.fv = (function() {
   return this.iC;
 });
 $p.pd = (function(x$1) {
   this.iC = x$1;
 });
-$p.cs = (function(parentNode) {
-  $m_Lcom_raquo_laminar_nodes_ParentNode$().eJ(parentNode, this, (void 0));
+$p.cx = (function(parentNode) {
+  $m_Lcom_raquo_laminar_nodes_ParentNode$().eL(parentNode, this, (void 0));
 });
-$p.bU = (function() {
+$p.bV = (function() {
   return this.nM;
 });
 $p.jy = (function(x$0) {
@@ -14276,7 +14280,7 @@ $p.jy = (function(x$0) {
 $p.jB = (function() {
   return this.nL;
 });
-$p.fu = (function() {
+$p.fw = (function() {
   return this.nK;
 });
 $p.gz = (function() {
@@ -14291,19 +14295,19 @@ $p.jz = (function(x$1) {
 $p.pe = (function(x$0) {
   this.nL = x$0;
 });
-$p.em = (function(maybeNextParent) {
+$p.eo = (function(maybeNextParent) {
   $f_Lcom_raquo_laminar_nodes_ReactiveElement__willSetParent__s_Option__V(this, maybeNextParent);
 });
-$p.ei = (function(maybeNextParent) {
+$p.ek = (function(maybeNextParent) {
   $f_Lcom_raquo_laminar_nodes_ReactiveElement__setParent__s_Option__V(this, maybeNextParent);
 });
 $p.pK = (function(key) {
 });
 $p.D = (function() {
-  return (("ReactiveSvgElement(" + ((this.dz !== null) ? this.dz.outerHTML : ("tag=" + this.nN.iG))) + ")");
+  return (("ReactiveSvgElement(" + ((this.dA !== null) ? this.dA.outerHTML : ("tag=" + this.nN.iG))) + ")");
 });
 $p.aa = (function() {
-  return this.dz;
+  return this.dA;
 });
 var $d_Lcom_raquo_laminar_nodes_ReactiveSvgElement = new $TypeData().i($c_Lcom_raquo_laminar_nodes_ReactiveSvgElement, "com.raquo.laminar.nodes.ReactiveSvgElement", ({
   eH: 1,
@@ -14492,14 +14496,14 @@ $h_s_None$.prototype = $p;
 $p.rZ = (function() {
   throw new $c_ju_NoSuchElementException("None.get");
 });
-$p.aC = (function() {
+$p.aD = (function() {
   return "None";
 });
-$p.aA = (function() {
+$p.aB = (function() {
   return 0;
 });
-$p.aB = (function(x$1) {
-  return $m_sr_Statics$().eU(x$1);
+$p.aC = (function(x$1) {
+  return $m_sr_Statics$().eW(x$1);
 });
 $p.bB = (function() {
   return new $c_sr_ScalaRunTime$$anon$1(this);
@@ -14530,8 +14534,8 @@ function $m_s_None$() {
 }
 /** @constructor */
 function $c_s_Some(value) {
-  this.cA = null;
-  this.cA = value;
+  this.c2 = null;
+  this.c2 = value;
 }
 $p = $c_s_Some.prototype = new $h_s_Option();
 $p.constructor = $c_s_Some;
@@ -14540,16 +14544,16 @@ function $h_s_Some() {
 }
 $h_s_Some.prototype = $p;
 $p.Q = (function() {
-  return this.cA;
+  return this.c2;
 });
-$p.aC = (function() {
+$p.aD = (function() {
   return "Some";
 });
-$p.aA = (function() {
+$p.aB = (function() {
   return 1;
 });
-$p.aB = (function(x$1) {
-  return ((x$1 === 0) ? this.cA : $m_sr_Statics$().eU(x$1));
+$p.aC = (function(x$1) {
+  return ((x$1 === 0) ? this.c2 : $m_sr_Statics$().eW(x$1));
 });
 $p.bB = (function() {
   return new $c_sr_ScalaRunTime$$anon$1(this);
@@ -14561,7 +14565,7 @@ $p.D = (function() {
   return $m_sr_ScalaRunTime$().jq(this);
 });
 $p.z = (function(x$1) {
-  return ((this === x$1) || ((x$1 instanceof $c_s_Some) && $m_sr_BoxesRunTime$().A(this.cA, x$1.cA)));
+  return ((this === x$1) || ((x$1 instanceof $c_s_Some) && $m_sr_BoxesRunTime$().A(this.c2, x$1.c2)));
 });
 function $isArrayOf_s_Some(obj, depth) {
   return (!(!(((obj && obj.$classData) && (obj.$classData.D === depth)) && obj.$classData.B.n.bC)));
@@ -14583,16 +14587,16 @@ $p.constructor = $c_sc_AbstractIterable;
 function $h_sc_AbstractIterable() {
 }
 $h_sc_AbstractIterable.prototype = $p;
-$p.c9 = (function() {
+$p.ce = (function() {
   return this.bx();
 });
 $p.gF = (function(coll) {
   return this.bs().av(coll);
 });
-$p.eX = (function() {
+$p.eZ = (function() {
   return this.bs().aw();
 });
-$p.bV = (function() {
+$p.bW = (function() {
   return $f_sc_IterableOps__headOption__s_Option(this);
 });
 $p.a5 = (function(f) {
@@ -14601,20 +14605,20 @@ $p.a5 = (function(f) {
 $p.aj = (function(f) {
   $f_sc_IterableOnceOps__foreach__F1__V(this, f);
 });
-$p.fx = (function(p) {
+$p.fy = (function(p) {
   return $f_sc_IterableOnceOps__forall__F1__Z(this, p);
 });
 $p.j = (function() {
   return $f_sc_IterableOnceOps__isEmpty__Z(this);
 });
-$p.ca = (function(xs, start, len) {
+$p.cf = (function(xs, start, len) {
   return $f_sc_IterableOnceOps__copyToArray__O__I__I__I(this, xs, start, len);
 });
-$p.e7 = (function(b, start, sep, end) {
+$p.e8 = (function(b, start, sep, end) {
   return $f_sc_IterableOnceOps__addString__scm_StringBuilder__T__T__T__scm_StringBuilder(this, b, start, sep, end);
 });
-$p.eY = (function() {
-  return $m_sci_Nil$().eh(this);
+$p.f0 = (function() {
+  return $m_sci_Nil$().ej(this);
 });
 $p.J = (function() {
   return (-1);
@@ -14623,16 +14627,16 @@ $p.gE = (function(coll) {
   return this.gF(coll);
 });
 function $ct_sc_ArrayOps$ArrayIterator__O__($thiz, xs) {
-  $thiz.bZ = xs;
+  $thiz.c3 = xs;
   $thiz.K = 0;
-  $thiz.bN = $m_jl_reflect_Array$().cv($thiz.bZ);
+  $thiz.bO = $m_jl_reflect_Array$().cA($thiz.c3);
   return $thiz;
 }
 /** @constructor */
 function $c_sc_ArrayOps$ArrayIterator() {
-  this.bZ = null;
+  this.c3 = null;
   this.K = 0;
-  this.bN = 0;
+  this.bO = 0;
 }
 $p = $c_sc_ArrayOps$ArrayIterator.prototype = new $h_sc_AbstractIterator();
 $p.constructor = $c_sc_ArrayOps$ArrayIterator;
@@ -14641,26 +14645,26 @@ function $h_sc_ArrayOps$ArrayIterator() {
 }
 $h_sc_ArrayOps$ArrayIterator.prototype = $p;
 $p.J = (function() {
-  return ((this.bN - this.K) | 0);
+  return ((this.bO - this.K) | 0);
 });
 $p.x = (function() {
-  return (this.K < this.bN);
+  return (this.K < this.bO);
 });
 $p.n = (function() {
-  if ((this.K >= $m_jl_reflect_Array$().cv(this.bZ))) {
-    $m_sc_Iterator$().T.n();
+  if ((this.K >= $m_jl_reflect_Array$().cA(this.c3))) {
+    $m_sc_Iterator$().U.n();
   }
-  var r = $m_sr_ScalaRunTime$().eN(this.bZ, this.K);
+  var r = $m_sr_ScalaRunTime$().eO(this.c3, this.K);
   this.K = ((1 + this.K) | 0);
   return r;
 });
-$p.dm = (function(n) {
+$p.dn = (function(n) {
   if ((n > 0)) {
     var newPos = ((this.K + n) | 0);
     if ((newPos < 0)) {
-      var $x_1 = this.bN;
+      var $x_1 = this.bO;
     } else {
-      var a = this.bN;
+      var a = this.bO;
       var $x_1 = ((a < newPos) ? a : newPos);
     }
     this.K = $x_1;
@@ -14676,19 +14680,19 @@ var $d_sc_ArrayOps$ArrayIterator = new $TypeData().i($c_sc_ArrayOps$ArrayIterato
   a: 1
 }));
 function $p_sc_IndexedSeqView$IndexedSeqViewIterator__formatRange$1__I__I($thiz, value) {
-  return ((value < 0) ? 0 : ((value > $thiz.c0) ? $thiz.c0 : value));
+  return ((value < 0) ? 0 : ((value > $thiz.c4) ? $thiz.c4 : value));
 }
 function $ct_sc_IndexedSeqView$IndexedSeqViewIterator__sc_IndexedSeqView__($thiz, self) {
   $thiz.iZ = self;
   $thiz.d7 = 0;
-  $thiz.c0 = self.C();
+  $thiz.c4 = self.C();
   return $thiz;
 }
 /** @constructor */
 function $c_sc_IndexedSeqView$IndexedSeqViewIterator() {
   this.iZ = null;
   this.d7 = 0;
-  this.c0 = 0;
+  this.c4 = 0;
 }
 $p = $c_sc_IndexedSeqView$IndexedSeqViewIterator.prototype = new $h_sc_AbstractIterator();
 $p.constructor = $c_sc_IndexedSeqView$IndexedSeqViewIterator;
@@ -14697,26 +14701,26 @@ function $h_sc_IndexedSeqView$IndexedSeqViewIterator() {
 }
 $h_sc_IndexedSeqView$IndexedSeqViewIterator.prototype = $p;
 $p.J = (function() {
-  return this.c0;
+  return this.c4;
 });
 $p.x = (function() {
-  return (this.c0 > 0);
+  return (this.c4 > 0);
 });
 $p.n = (function() {
-  if ((this.c0 > 0)) {
+  if ((this.c4 > 0)) {
     var r = this.iZ.F(this.d7);
     this.d7 = ((1 + this.d7) | 0);
-    this.c0 = (((-1) + this.c0) | 0);
+    this.c4 = (((-1) + this.c4) | 0);
     return r;
   } else {
-    return $m_sc_Iterator$().T.n();
+    return $m_sc_Iterator$().U.n();
   }
 });
-$p.dm = (function(n) {
+$p.dn = (function(n) {
   if ((n > 0)) {
     this.d7 = ((this.d7 + n) | 0);
-    var b = ((this.c0 - n) | 0);
-    this.c0 = ((b < 0) ? 0 : b);
+    var b = ((this.c4 - n) | 0);
+    this.c4 = ((b < 0) ? 0 : b);
   }
   return this;
 });
@@ -14724,7 +14728,7 @@ $p.gT = (function(from, until) {
   var formatFrom = $p_sc_IndexedSeqView$IndexedSeqViewIterator__formatRange$1__I__I(this, from);
   var formatUntil = $p_sc_IndexedSeqView$IndexedSeqViewIterator__formatRange$1__I__I(this, until);
   var b = ((formatUntil - formatFrom) | 0);
-  this.c0 = ((b < 0) ? 0 : b);
+  this.c4 = ((b < 0) ? 0 : b);
   this.d7 = ((this.d7 + formatFrom) | 0);
   return this;
 });
@@ -14739,7 +14743,7 @@ var $d_sc_IndexedSeqView$IndexedSeqViewIterator = new $TypeData().i($c_sc_Indexe
 /** @constructor */
 function $c_sc_Iterator$$anon$21() {
   this.gk = null;
-  $ct_scm_ImmutableBuilder__sc_IterableOnce__(this, $m_sc_Iterator$().T);
+  $ct_scm_ImmutableBuilder__sc_IterableOnce__(this, $m_sc_Iterator$().U);
 }
 $p = $c_sc_Iterator$$anon$21.prototype = new $h_scm_ImmutableBuilder();
 $p.constructor = $c_sc_Iterator$$anon$21;
@@ -14751,7 +14755,7 @@ $p.qK = (function(elem) {
   this.gk = this.gk.jD(new $c_sr_AbstractFunction0_$$Lambda$a02b774b97db8234e08c6a02dd06557c99779855((() => new $c_sc_Iterator$$anon$20(elem))));
   return this;
 });
-$p.b8 = (function(elem) {
+$p.b7 = (function(elem) {
   return this.qK(elem);
 });
 var $d_sc_Iterator$$anon$21 = new $TypeData().i($c_sc_Iterator$$anon$21, "scala.collection.Iterator$$anon$21", ({
@@ -14769,7 +14773,7 @@ function $f_sc_MapOps__foreachEntry__F2__V($thiz, f) {
   var it = $thiz.r();
   while (it.x()) {
     var next = it.n();
-    f.eL(next.bq(), next.bj());
+    f.eM(next.bq(), next.bj());
   }
 }
 function $f_sc_MapOps__addString__scm_StringBuilder__T__T__T__scm_StringBuilder($thiz, sb, start, sep, end) {
@@ -14784,22 +14788,22 @@ function $f_sc_MapOps__addString__scm_StringBuilder__T__T__T__scm_StringBuilder(
   }))), sb, start, sep, end);
 }
 function $f_sc_StrictOptimizedSeqOps__distinctBy__F1__O($thiz, f) {
-  var builder = $thiz.eX();
+  var builder = $thiz.eZ();
   var seen = $ct_scm_HashSet__(new $c_scm_HashSet());
   var it = $thiz.r();
   while (it.x()) {
     var next = it.n();
     if (seen.hB(f.i(next))) {
-      builder.b8(next);
+      builder.b7(next);
     }
   }
-  return builder.ba();
+  return builder.b9();
 }
 function $f_sc_StrictOptimizedSeqOps__appendedAll__sc_IterableOnce__O($thiz, suffix) {
-  var b = $thiz.ed().aw();
+  var b = $thiz.ef().aw();
   b.bk($thiz);
   b.bk(suffix);
-  return b.ba();
+  return b.b9();
 }
 function $p_sci_ArraySeq$__emptyImpl$lzycompute__sci_ArraySeq$ofRef($thiz) {
   if ((!$thiz.j1)) {
@@ -14878,17 +14882,17 @@ function $m_sci_ArraySeq$() {
 }
 /** @constructor */
 function $c_sci_HashMapBuilder$$anon$1(outer, x2$1) {
-  this.c2 = 0;
+  this.c6 = 0;
   this.g7 = 0;
-  this.eA = null;
-  this.bQ = 0;
+  this.eC = null;
+  this.bR = 0;
   this.da = null;
   this.g8 = null;
   $ct_sci_ChampBaseIterator__sci_Node__(this, x2$1.by);
   while (this.x()) {
-    var originalHash = this.eA.gG(this.c2);
-    outer.fH(outer.cP, this.eA.ec(this.c2), this.eA.dn(this.c2), originalHash, $m_sc_Hashing$().cG(originalHash), 0);
-    this.c2 = ((1 + this.c2) | 0);
+    var originalHash = this.eC.gG(this.c6);
+    outer.fH(outer.cP, this.eC.ee(this.c6), this.eC.dp(this.c6), originalHash, $m_sc_Hashing$().cH(originalHash), 0);
+    this.c6 = ((1 + this.c6) | 0);
   }
 }
 $p = $c_sci_HashMapBuilder$$anon$1.prototype = new $h_sci_ChampBaseIterator();
@@ -14898,7 +14902,7 @@ function $h_sci_HashMapBuilder$$anon$1() {
 }
 $h_sci_HashMapBuilder$$anon$1.prototype = $p;
 $p.k8 = (function() {
-  $m_sc_Iterator$().T.n();
+  $m_sc_Iterator$().U.n();
   throw new $c_jl_ClassCastException();
 });
 $p.n = (function() {
@@ -14920,8 +14924,8 @@ function $isArrayOf_sci_Iterable(obj, depth) {
 }
 /** @constructor */
 function $c_sci_Map$Map2$$anon$1(outer) {
-  this.dM = 0;
-  this.fo = null;
+  this.dN = 0;
+  this.fq = null;
   $ct_sci_Map$Map2$Map2Iterator__sci_Map$Map2__(this, outer);
 }
 $p = $c_sci_Map$Map2$$anon$1.prototype = new $h_sci_Map$Map2$Map2Iterator();
@@ -14940,8 +14944,8 @@ var $d_sci_Map$Map2$$anon$1 = new $TypeData().i($c_sci_Map$Map2$$anon$1, "scala.
 }));
 /** @constructor */
 function $c_sci_Map$Map3$$anon$4(outer) {
-  this.dO = 0;
-  this.dN = null;
+  this.dP = 0;
+  this.dO = null;
   $ct_sci_Map$Map3$Map3Iterator__sci_Map$Map3__(this, outer);
 }
 $p = $c_sci_Map$Map3$$anon$4.prototype = new $h_sci_Map$Map3$Map3Iterator();
@@ -14960,7 +14964,7 @@ var $d_sci_Map$Map3$$anon$4 = new $TypeData().i($c_sci_Map$Map3$$anon$4, "scala.
 }));
 /** @constructor */
 function $c_sci_Map$Map4$$anon$7(outer) {
-  this.dP = 0;
+  this.dQ = 0;
   this.cT = null;
   $ct_sci_Map$Map4$Map4Iterator__sci_Map$Map4__(this, outer);
 }
@@ -14980,9 +14984,9 @@ var $d_sci_Map$Map4$$anon$7 = new $TypeData().i($c_sci_Map$Map4$$anon$7, "scala.
 }));
 /** @constructor */
 function $c_sci_MapKeyValueTupleHashIterator(rootNode) {
-  this.dJ = 0;
+  this.dK = 0;
   this.hm = null;
-  this.c3 = 0;
+  this.c7 = 0;
   this.g9 = null;
   this.ga = null;
   this.ja = 0;
@@ -15001,11 +15005,11 @@ $p.E = (function() {
 });
 $p.sK = (function() {
   if ((!this.x())) {
-    $m_sc_Iterator$().T.n();
+    $m_sc_Iterator$().U.n();
   }
-  this.ja = this.hm.gG(this.dJ);
-  this.oh = this.hm.dn(this.dJ);
-  this.dJ = (((-1) + this.dJ) | 0);
+  this.ja = this.hm.gG(this.dK);
+  this.oh = this.hm.dp(this.dK);
+  this.dK = (((-1) + this.dK) | 0);
   return this;
 });
 $p.n = (function() {
@@ -15021,10 +15025,10 @@ var $d_sci_MapKeyValueTupleHashIterator = new $TypeData().i($c_sci_MapKeyValueTu
 }));
 /** @constructor */
 function $c_sci_MapKeyValueTupleIterator(rootNode) {
-  this.c2 = 0;
+  this.c6 = 0;
   this.g7 = 0;
-  this.eA = null;
-  this.bQ = 0;
+  this.eC = null;
+  this.bR = 0;
   this.da = null;
   this.g8 = null;
   $ct_sci_ChampBaseIterator__sci_Node__(this, rootNode);
@@ -15037,10 +15041,10 @@ function $h_sci_MapKeyValueTupleIterator() {
 $h_sci_MapKeyValueTupleIterator.prototype = $p;
 $p.sJ = (function() {
   if ((!this.x())) {
-    $m_sc_Iterator$().T.n();
+    $m_sc_Iterator$().U.n();
   }
-  var payload = this.eA.jT(this.c2);
-  this.c2 = ((1 + this.c2) | 0);
+  var payload = this.eC.jT(this.c6);
+  this.c6 = ((1 + this.c6) | 0);
   return payload;
 });
 $p.n = (function() {
@@ -15055,23 +15059,23 @@ var $d_sci_MapKeyValueTupleIterator = new $TypeData().i($c_sci_MapKeyValueTupleI
   c: 1
 }));
 function $p_sci_NewVectorIterator__advanceSlice__V($thiz) {
-  if (($thiz.bS <= $thiz.aO)) {
-    $m_sc_Iterator$().T.n();
+  if (($thiz.bT <= $thiz.aO)) {
+    $m_sc_Iterator$().U.n();
   }
-  $thiz.dR = ((1 + $thiz.dR) | 0);
-  var slice = $thiz.jc.d4($thiz.dR);
+  $thiz.dS = ((1 + $thiz.dS) | 0);
+  var slice = $thiz.jc.d4($thiz.dS);
   while ((slice.b.length === 0)) {
-    $thiz.dR = ((1 + $thiz.dR) | 0);
-    slice = $thiz.jc.d4($thiz.dR);
+    $thiz.dS = ((1 + $thiz.dS) | 0);
+    slice = $thiz.jc.d4($thiz.dS);
   }
-  $thiz.ge = $thiz.eD;
+  $thiz.ge = $thiz.eF;
   var count = $thiz.oj;
-  var idx = $thiz.dR;
+  var idx = $thiz.dS;
   var c = ((count / 2) | 0);
   var a = ((idx - c) | 0);
   var sign = (a >> 31);
-  $thiz.dQ = ((((1 + c) | 0) - (((a ^ sign) - sign) | 0)) | 0);
-  var x1 = $thiz.dQ;
+  $thiz.dR = ((((1 + c) | 0) - (((a ^ sign) - sign) | 0)) | 0);
+  var x1 = $thiz.dR;
   switch (x1) {
     case 1: {
       $thiz.bf = slice;
@@ -15086,11 +15090,11 @@ function $p_sci_NewVectorIterator__advanceSlice__V($thiz) {
       break;
     }
     case 4: {
-      $thiz.cC = slice;
+      $thiz.cE = slice;
       break;
     }
     case 5: {
-      $thiz.eC = slice;
+      $thiz.eE = slice;
       break;
     }
     case 6: {
@@ -15101,27 +15105,27 @@ function $p_sci_NewVectorIterator__advanceSlice__V($thiz) {
       throw new $c_s_MatchError(x1);
     }
   }
-  $thiz.eD = (($thiz.ge + Math.imul(slice.b.length, (1 << Math.imul(5, (((-1) + $thiz.dQ) | 0))))) | 0);
-  if (($thiz.eD > $thiz.df)) {
-    $thiz.eD = $thiz.df;
+  $thiz.eF = (($thiz.ge + Math.imul(slice.b.length, (1 << Math.imul(5, (((-1) + $thiz.dR) | 0))))) | 0);
+  if (($thiz.eF > $thiz.df)) {
+    $thiz.eF = $thiz.df;
   }
-  if (($thiz.dQ > 1)) {
-    $thiz.fp = (((-1) + (1 << Math.imul(5, $thiz.dQ))) | 0);
+  if (($thiz.dR > 1)) {
+    $thiz.fr = (((-1) + (1 << Math.imul(5, $thiz.dR))) | 0);
   }
 }
 function $p_sci_NewVectorIterator__advance__V($thiz) {
-  var pos = (((($thiz.aO - $thiz.bS) | 0) + $thiz.df) | 0);
-  if ((pos === $thiz.eD)) {
+  var pos = (((($thiz.aO - $thiz.bT) | 0) + $thiz.df) | 0);
+  if ((pos === $thiz.eF)) {
     $p_sci_NewVectorIterator__advanceSlice__V($thiz);
   }
-  if (($thiz.dQ > 1)) {
+  if (($thiz.dR > 1)) {
     var io = ((pos - $thiz.ge) | 0);
-    $p_sci_NewVectorIterator__advanceA__I__I__V($thiz, io, ($thiz.fp ^ io));
-    $thiz.fp = io;
+    $p_sci_NewVectorIterator__advanceA__I__I__V($thiz, io, ($thiz.fr ^ io));
+    $thiz.fr = io;
   }
-  $thiz.bS = (($thiz.bS - $thiz.aO) | 0);
+  $thiz.bT = (($thiz.bT - $thiz.aO) | 0);
   var a = $thiz.bf.b.length;
-  var b = $thiz.bS;
+  var b = $thiz.bT;
   $thiz.de = ((a < b) ? a : b);
   $thiz.aO = 0;
 }
@@ -15132,18 +15136,18 @@ function $p_sci_NewVectorIterator__advanceA__I__I__V($thiz, io, xor) {
     $thiz.bg = $thiz.bI.b[(31 & ((io >>> 10) | 0))];
     $thiz.bf = $thiz.bg.b[0];
   } else if ((xor < 1048576)) {
-    $thiz.bI = $thiz.cC.b[(31 & ((io >>> 15) | 0))];
+    $thiz.bI = $thiz.cE.b[(31 & ((io >>> 15) | 0))];
     $thiz.bg = $thiz.bI.b[0];
     $thiz.bf = $thiz.bg.b[0];
   } else if ((xor < 33554432)) {
-    $thiz.cC = $thiz.eC.b[(31 & ((io >>> 20) | 0))];
-    $thiz.bI = $thiz.cC.b[0];
+    $thiz.cE = $thiz.eE.b[(31 & ((io >>> 20) | 0))];
+    $thiz.bI = $thiz.cE.b[0];
     $thiz.bg = $thiz.bI.b[0];
     $thiz.bf = $thiz.bg.b[0];
   } else {
-    $thiz.eC = $thiz.jb.b[((io >>> 25) | 0)];
-    $thiz.cC = $thiz.eC.b[0];
-    $thiz.bI = $thiz.cC.b[0];
+    $thiz.eE = $thiz.jb.b[((io >>> 25) | 0)];
+    $thiz.cE = $thiz.eE.b[0];
+    $thiz.bI = $thiz.cE.b[0];
     $thiz.bg = $thiz.bI.b[0];
     $thiz.bf = $thiz.bg.b[0];
   }
@@ -15155,18 +15159,18 @@ function $p_sci_NewVectorIterator__setA__I__I__V($thiz, io, xor) {
     $thiz.bg = $thiz.bI.b[(31 & ((io >>> 10) | 0))];
     $thiz.bf = $thiz.bg.b[(31 & ((io >>> 5) | 0))];
   } else if ((xor < 1048576)) {
-    $thiz.bI = $thiz.cC.b[(31 & ((io >>> 15) | 0))];
+    $thiz.bI = $thiz.cE.b[(31 & ((io >>> 15) | 0))];
     $thiz.bg = $thiz.bI.b[(31 & ((io >>> 10) | 0))];
     $thiz.bf = $thiz.bg.b[(31 & ((io >>> 5) | 0))];
   } else if ((xor < 33554432)) {
-    $thiz.cC = $thiz.eC.b[(31 & ((io >>> 20) | 0))];
-    $thiz.bI = $thiz.cC.b[(31 & ((io >>> 15) | 0))];
+    $thiz.cE = $thiz.eE.b[(31 & ((io >>> 20) | 0))];
+    $thiz.bI = $thiz.cE.b[(31 & ((io >>> 15) | 0))];
     $thiz.bg = $thiz.bI.b[(31 & ((io >>> 10) | 0))];
     $thiz.bf = $thiz.bg.b[(31 & ((io >>> 5) | 0))];
   } else {
-    $thiz.eC = $thiz.jb.b[((io >>> 25) | 0)];
-    $thiz.cC = $thiz.eC.b[(31 & ((io >>> 20) | 0))];
-    $thiz.bI = $thiz.cC.b[(31 & ((io >>> 15) | 0))];
+    $thiz.eE = $thiz.jb.b[((io >>> 25) | 0)];
+    $thiz.cE = $thiz.eE.b[(31 & ((io >>> 20) | 0))];
+    $thiz.bI = $thiz.cE.b[(31 & ((io >>> 15) | 0))];
     $thiz.bg = $thiz.bI.b[(31 & ((io >>> 10) | 0))];
     $thiz.bf = $thiz.bg.b[(31 & ((io >>> 5) | 0))];
   }
@@ -15179,29 +15183,29 @@ function $c_sci_NewVectorIterator(v, totalLength, sliceCount) {
   this.bf = null;
   this.bg = null;
   this.bI = null;
-  this.cC = null;
-  this.eC = null;
+  this.cE = null;
+  this.eE = null;
   this.jb = null;
   this.de = 0;
   this.aO = 0;
-  this.fp = 0;
-  this.bS = 0;
+  this.fr = 0;
+  this.bT = 0;
+  this.dS = 0;
   this.dR = 0;
-  this.dQ = 0;
   this.ge = 0;
-  this.eD = 0;
+  this.eF = 0;
   this.jc = v;
   this.df = totalLength;
   this.oj = sliceCount;
   this.bf = v.l;
   this.de = this.bf.b.length;
   this.aO = 0;
-  this.fp = 0;
-  this.bS = this.df;
-  this.dR = 0;
-  this.dQ = 1;
+  this.fr = 0;
+  this.bT = this.df;
+  this.dS = 0;
+  this.dR = 1;
   this.ge = 0;
-  this.eD = this.de;
+  this.eF = this.de;
 }
 $p = $c_sci_NewVectorIterator.prototype = new $h_sc_AbstractIterator();
 $p.constructor = $c_sci_NewVectorIterator;
@@ -15210,10 +15214,10 @@ function $h_sci_NewVectorIterator() {
 }
 $h_sci_NewVectorIterator.prototype = $p;
 $p.J = (function() {
-  return ((this.bS - this.aO) | 0);
+  return ((this.bT - this.aO) | 0);
 });
 $p.x = (function() {
-  return (this.bS > this.aO);
+  return (this.bT > this.aO);
 });
 $p.n = (function() {
   if ((this.aO === this.de)) {
@@ -15223,38 +15227,38 @@ $p.n = (function() {
   this.aO = ((1 + this.aO) | 0);
   return r;
 });
-$p.dm = (function(n) {
+$p.dn = (function(n) {
   if ((n > 0)) {
-    var oldpos = ((((this.aO - this.bS) | 0) + this.df) | 0);
+    var oldpos = ((((this.aO - this.bT) | 0) + this.df) | 0);
     var a = ((oldpos + n) | 0);
     var b = this.df;
     var newpos = ((a < b) ? a : b);
     if ((newpos === this.df)) {
       this.aO = 0;
-      this.bS = 0;
+      this.bT = 0;
       this.de = 0;
     } else {
-      while ((newpos >= this.eD)) {
+      while ((newpos >= this.eF)) {
         $p_sci_NewVectorIterator__advanceSlice__V(this);
       }
       var io = ((newpos - this.ge) | 0);
-      if ((this.dQ > 1)) {
-        $p_sci_NewVectorIterator__setA__I__I__V(this, io, (this.fp ^ io));
-        this.fp = io;
+      if ((this.dR > 1)) {
+        $p_sci_NewVectorIterator__setA__I__I__V(this, io, (this.fr ^ io));
+        this.fr = io;
       }
       this.de = this.bf.b.length;
       this.aO = (31 & io);
-      this.bS = ((this.aO + ((this.df - newpos) | 0)) | 0);
-      if ((this.de > this.bS)) {
-        this.de = this.bS;
+      this.bT = ((this.aO + ((this.df - newpos) | 0)) | 0);
+      if ((this.de > this.bT)) {
+        this.de = this.bT;
       }
     }
   }
   return this;
 });
-$p.ca = (function(xs, start, len) {
-  var xsLen = $m_jl_reflect_Array$().cv(xs);
-  var srcLen = ((this.bS - this.aO) | 0);
+$p.cf = (function(xs, start, len) {
+  var xsLen = $m_jl_reflect_Array$().cA(xs);
+  var srcLen = ((this.bT - this.aO) | 0);
   var x = ((len < srcLen) ? len : srcLen);
   var y = ((xsLen - start) | 0);
   var x$1 = ((x < y) ? x : y);
@@ -15328,7 +15332,7 @@ $p.rQ = (function(it, evidence$2) {
   return this.k3($m_s_Array$().pw(it, evidence$2));
 });
 $p.hL = (function(evidence$3) {
-  return new $c_scm_Builder$$anon$1(new $c_scm_ArrayBuilder$generic(evidence$3.bb()), new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((x$2$2) => $m_scm_ArraySeq$().k3(x$2$2))));
+  return new $c_scm_Builder$$anon$1(new $c_scm_ArrayBuilder$generic(evidence$3.ba()), new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((x$2$2) => $m_scm_ArraySeq$().k3(x$2$2))));
 });
 $p.k3 = (function(x) {
   if ((x === null)) {
@@ -15377,7 +15381,7 @@ function $m_scm_ArraySeq$() {
 }
 /** @constructor */
 function $c_scm_HashSet$$anon$1(outer) {
-  this.e3 = 0;
+  this.e4 = 0;
   this.dh = null;
   this.gj = 0;
   this.gi = null;
@@ -15390,7 +15394,7 @@ function $h_scm_HashSet$$anon$1() {
 }
 $h_scm_HashSet$$anon$1.prototype = $p;
 $p.jJ = (function(nd) {
-  return nd.eF;
+  return nd.eH;
 });
 var $d_scm_HashSet$$anon$1 = new $TypeData().i($c_scm_HashSet$$anon$1, "scala.collection.mutable.HashSet$$anon$1", ({
   hh: 1,
@@ -15402,7 +15406,7 @@ var $d_scm_HashSet$$anon$1 = new $TypeData().i($c_scm_HashSet$$anon$1, "scala.co
 }));
 /** @constructor */
 function $c_scm_HashSet$$anon$2(outer) {
-  this.e3 = 0;
+  this.e4 = 0;
   this.dh = null;
   this.gj = 0;
   this.gi = null;
@@ -15427,7 +15431,7 @@ var $d_scm_HashSet$$anon$2 = new $TypeData().i($c_scm_HashSet$$anon$2, "scala.co
 }));
 /** @constructor */
 function $c_scm_HashSet$$anon$3(outer) {
-  this.e3 = 0;
+  this.e4 = 0;
   this.dh = null;
   this.gj = 0;
   this.gi = null;
@@ -15478,10 +15482,10 @@ $p.E = (function() {
 $p.D = (function() {
   return $ps_s_reflect_ClassTag__prettyprint$1__jl_Class__T(this.gl);
 });
-$p.bb = (function() {
+$p.ba = (function() {
   return this.gl;
 });
-$p.bM = (function(len) {
+$p.bN = (function(len) {
   return this.gl.a3.U(len);
 });
 var $d_s_reflect_ClassTag$GenericClassTag = new $TypeData().i($c_s_reflect_ClassTag$GenericClassTag, "scala.reflect.ClassTag$GenericClassTag", ({
@@ -15494,9 +15498,9 @@ var $d_s_reflect_ClassTag$GenericClassTag = new $TypeData().i($c_s_reflect_Class
 }));
 /** @constructor */
 function $c_sc_ArrayOps$ArrayIterator$mcB$sp(xs$mcB$sp) {
-  this.bZ = null;
+  this.c3 = null;
   this.K = 0;
-  this.bN = 0;
+  this.bO = 0;
   this.iR = null;
   this.iR = xs$mcB$sp;
   $ct_sc_ArrayOps$ArrayIterator__O__(this, xs$mcB$sp);
@@ -15509,7 +15513,7 @@ function $h_sc_ArrayOps$ArrayIterator$mcB$sp() {
 $h_sc_ArrayOps$ArrayIterator$mcB$sp.prototype = $p;
 $p.sL = (function() {
   if ((this.K >= this.iR.b.length)) {
-    $m_sc_Iterator$().T.n();
+    $m_sc_Iterator$().U.n();
   }
   var r = this.iR.b[this.K];
   this.K = ((1 + this.K) | 0);
@@ -15529,9 +15533,9 @@ var $d_sc_ArrayOps$ArrayIterator$mcB$sp = new $TypeData().i($c_sc_ArrayOps$Array
 }));
 /** @constructor */
 function $c_sc_ArrayOps$ArrayIterator$mcC$sp(xs$mcC$sp) {
-  this.bZ = null;
+  this.c3 = null;
   this.K = 0;
-  this.bN = 0;
+  this.bO = 0;
   this.iS = null;
   this.iS = xs$mcC$sp;
   $ct_sc_ArrayOps$ArrayIterator__O__(this, xs$mcC$sp);
@@ -15544,7 +15548,7 @@ function $h_sc_ArrayOps$ArrayIterator$mcC$sp() {
 $h_sc_ArrayOps$ArrayIterator$mcC$sp.prototype = $p;
 $p.sM = (function() {
   if ((this.K >= this.iS.b.length)) {
-    $m_sc_Iterator$().T.n();
+    $m_sc_Iterator$().U.n();
   }
   var r = this.iS.b[this.K];
   this.K = ((1 + this.K) | 0);
@@ -15564,9 +15568,9 @@ var $d_sc_ArrayOps$ArrayIterator$mcC$sp = new $TypeData().i($c_sc_ArrayOps$Array
 }));
 /** @constructor */
 function $c_sc_ArrayOps$ArrayIterator$mcD$sp(xs$mcD$sp) {
-  this.bZ = null;
+  this.c3 = null;
   this.K = 0;
-  this.bN = 0;
+  this.bO = 0;
   this.iT = null;
   this.iT = xs$mcD$sp;
   $ct_sc_ArrayOps$ArrayIterator__O__(this, xs$mcD$sp);
@@ -15579,7 +15583,7 @@ function $h_sc_ArrayOps$ArrayIterator$mcD$sp() {
 $h_sc_ArrayOps$ArrayIterator$mcD$sp.prototype = $p;
 $p.sN = (function() {
   if ((this.K >= this.iT.b.length)) {
-    $m_sc_Iterator$().T.n();
+    $m_sc_Iterator$().U.n();
   }
   var r = this.iT.b[this.K];
   this.K = ((1 + this.K) | 0);
@@ -15599,9 +15603,9 @@ var $d_sc_ArrayOps$ArrayIterator$mcD$sp = new $TypeData().i($c_sc_ArrayOps$Array
 }));
 /** @constructor */
 function $c_sc_ArrayOps$ArrayIterator$mcF$sp(xs$mcF$sp) {
-  this.bZ = null;
+  this.c3 = null;
   this.K = 0;
-  this.bN = 0;
+  this.bO = 0;
   this.iU = null;
   this.iU = xs$mcF$sp;
   $ct_sc_ArrayOps$ArrayIterator__O__(this, xs$mcF$sp);
@@ -15614,7 +15618,7 @@ function $h_sc_ArrayOps$ArrayIterator$mcF$sp() {
 $h_sc_ArrayOps$ArrayIterator$mcF$sp.prototype = $p;
 $p.sO = (function() {
   if ((this.K >= this.iU.b.length)) {
-    $m_sc_Iterator$().T.n();
+    $m_sc_Iterator$().U.n();
   }
   var r = this.iU.b[this.K];
   this.K = ((1 + this.K) | 0);
@@ -15634,9 +15638,9 @@ var $d_sc_ArrayOps$ArrayIterator$mcF$sp = new $TypeData().i($c_sc_ArrayOps$Array
 }));
 /** @constructor */
 function $c_sc_ArrayOps$ArrayIterator$mcI$sp(xs$mcI$sp) {
-  this.bZ = null;
+  this.c3 = null;
   this.K = 0;
-  this.bN = 0;
+  this.bO = 0;
   this.iV = null;
   this.iV = xs$mcI$sp;
   $ct_sc_ArrayOps$ArrayIterator__O__(this, xs$mcI$sp);
@@ -15649,7 +15653,7 @@ function $h_sc_ArrayOps$ArrayIterator$mcI$sp() {
 $h_sc_ArrayOps$ArrayIterator$mcI$sp.prototype = $p;
 $p.sP = (function() {
   if ((this.K >= this.iV.b.length)) {
-    $m_sc_Iterator$().T.n();
+    $m_sc_Iterator$().U.n();
   }
   var r = this.iV.b[this.K];
   this.K = ((1 + this.K) | 0);
@@ -15669,9 +15673,9 @@ var $d_sc_ArrayOps$ArrayIterator$mcI$sp = new $TypeData().i($c_sc_ArrayOps$Array
 }));
 /** @constructor */
 function $c_sc_ArrayOps$ArrayIterator$mcJ$sp(xs$mcJ$sp) {
-  this.bZ = null;
+  this.c3 = null;
   this.K = 0;
-  this.bN = 0;
+  this.bO = 0;
   this.iW = null;
   this.iW = xs$mcJ$sp;
   $ct_sc_ArrayOps$ArrayIterator__O__(this, xs$mcJ$sp);
@@ -15684,7 +15688,7 @@ function $h_sc_ArrayOps$ArrayIterator$mcJ$sp() {
 $h_sc_ArrayOps$ArrayIterator$mcJ$sp.prototype = $p;
 $p.sQ = (function() {
   if ((this.K >= this.iW.b.length)) {
-    $m_sc_Iterator$().T.n();
+    $m_sc_Iterator$().U.n();
   }
   var t = this.iW.b[this.K];
   var lo = t.u;
@@ -15706,9 +15710,9 @@ var $d_sc_ArrayOps$ArrayIterator$mcJ$sp = new $TypeData().i($c_sc_ArrayOps$Array
 }));
 /** @constructor */
 function $c_sc_ArrayOps$ArrayIterator$mcS$sp(xs$mcS$sp) {
-  this.bZ = null;
+  this.c3 = null;
   this.K = 0;
-  this.bN = 0;
+  this.bO = 0;
   this.iX = null;
   this.iX = xs$mcS$sp;
   $ct_sc_ArrayOps$ArrayIterator__O__(this, xs$mcS$sp);
@@ -15721,7 +15725,7 @@ function $h_sc_ArrayOps$ArrayIterator$mcS$sp() {
 $h_sc_ArrayOps$ArrayIterator$mcS$sp.prototype = $p;
 $p.sR = (function() {
   if ((this.K >= this.iX.b.length)) {
-    $m_sc_Iterator$().T.n();
+    $m_sc_Iterator$().U.n();
   }
   var r = this.iX.b[this.K];
   this.K = ((1 + this.K) | 0);
@@ -15741,9 +15745,9 @@ var $d_sc_ArrayOps$ArrayIterator$mcS$sp = new $TypeData().i($c_sc_ArrayOps$Array
 }));
 /** @constructor */
 function $c_sc_ArrayOps$ArrayIterator$mcV$sp(xs$mcV$sp) {
-  this.bZ = null;
+  this.c3 = null;
   this.K = 0;
-  this.bN = 0;
+  this.bO = 0;
   this.o1 = null;
   this.o1 = xs$mcV$sp;
   $ct_sc_ArrayOps$ArrayIterator__O__(this, xs$mcV$sp);
@@ -15756,7 +15760,7 @@ function $h_sc_ArrayOps$ArrayIterator$mcV$sp() {
 $h_sc_ArrayOps$ArrayIterator$mcV$sp.prototype = $p;
 $p.sS = (function() {
   if ((this.K >= this.o1.b.length)) {
-    $m_sc_Iterator$().T.n();
+    $m_sc_Iterator$().U.n();
   }
   this.K = ((1 + this.K) | 0);
 });
@@ -15774,9 +15778,9 @@ var $d_sc_ArrayOps$ArrayIterator$mcV$sp = new $TypeData().i($c_sc_ArrayOps$Array
 }));
 /** @constructor */
 function $c_sc_ArrayOps$ArrayIterator$mcZ$sp(xs$mcZ$sp) {
-  this.bZ = null;
+  this.c3 = null;
   this.K = 0;
-  this.bN = 0;
+  this.bO = 0;
   this.iY = null;
   this.iY = xs$mcZ$sp;
   $ct_sc_ArrayOps$ArrayIterator__O__(this, xs$mcZ$sp);
@@ -15789,7 +15793,7 @@ function $h_sc_ArrayOps$ArrayIterator$mcZ$sp() {
 $h_sc_ArrayOps$ArrayIterator$mcZ$sp.prototype = $p;
 $p.sT = (function() {
   if ((this.K >= this.iY.b.length)) {
-    $m_sc_Iterator$().T.n();
+    $m_sc_Iterator$().U.n();
   }
   var r = this.iY.b[this.K];
   this.K = ((1 + this.K) | 0);
@@ -15808,7 +15812,7 @@ var $d_sc_ArrayOps$ArrayIterator$mcZ$sp = new $TypeData().i($c_sc_ArrayOps$Array
   a: 1
 }));
 function $f_sc_View__toString__T($thiz) {
-  return ($thiz.c9() + "(<not computed>)");
+  return ($thiz.ce() + "(<not computed>)");
 }
 function $is_sc_View(obj) {
   return (!(!((obj && obj.$classData) && obj.$classData.n.X)));
@@ -15820,10 +15824,10 @@ function $isArrayOf_sc_View(obj, depth) {
 function $c_scm_ArrayBuilder$generic(elementClass) {
   this.jh = 0;
   this.oo = 0;
-  this.fr = null;
+  this.ft = null;
   this.op = false;
   this.ji = null;
-  this.fr = elementClass;
+  this.ft = elementClass;
   $ct_scm_ArrayBuilder__(this);
   this.op = (elementClass === $d_C.l());
   this.ji = [];
@@ -15835,7 +15839,7 @@ function $h_scm_ArrayBuilder$generic() {
 }
 $h_scm_ArrayBuilder$generic.prototype = $p;
 $p.oP = (function(elem) {
-  var unboxedElem = (this.op ? $uC(elem) : ((elem === null) ? this.fr.a3.z : elem));
+  var unboxedElem = (this.op ? $uC(elem) : ((elem === null) ? this.ft.a3.z : elem));
   this.ji.push(unboxedElem);
   return this;
 });
@@ -15848,8 +15852,8 @@ $p.qD = (function(xs) {
 });
 $p.te = (function(size) {
 });
-$p.ba = (function() {
-  var elemRuntimeClass = ((this.fr === $d_V.l()) ? $d_jl_Void.l() : (((this.fr === $d_sr_Null$.l()) || (this.fr === $d_sr_Nothing$.l())) ? $d_O.l() : this.fr));
+$p.b9 = (function() {
+  var elemRuntimeClass = ((this.ft === $d_V.l()) ? $d_jl_Void.l() : (((this.ft === $d_sr_Null$.l()) || (this.ft === $d_sr_Nothing$.l())) ? $d_O.l() : this.ft));
   return elemRuntimeClass.a3.r().w(this.ji);
 });
 $p.D = (function() {
@@ -15858,7 +15862,7 @@ $p.D = (function() {
 $p.bk = (function(elems) {
   return this.qD(elems);
 });
-$p.b8 = (function(elem) {
+$p.b7 = (function(elem) {
   return this.oP(elem);
 });
 var $d_scm_ArrayBuilder$generic = new $TypeData().i($c_scm_ArrayBuilder$generic, "scala.collection.mutable.ArrayBuilder$generic", ({
@@ -15874,7 +15878,7 @@ var $d_scm_ArrayBuilder$generic = new $TypeData().i($c_scm_ArrayBuilder$generic,
 function $c_scm_CheckedIndexedSeqView$CheckedIterator(self, mutationCount) {
   this.iZ = null;
   this.d7 = 0;
-  this.c0 = 0;
+  this.c4 = 0;
   this.ot = null;
   this.os = 0;
   this.ot = mutationCount;
@@ -15889,7 +15893,7 @@ function $h_scm_CheckedIndexedSeqView$CheckedIterator() {
 $h_scm_CheckedIndexedSeqView$CheckedIterator.prototype = $p;
 $p.x = (function() {
   $m_scm_MutationTracker$().p9(this.os, (this.ot.Y() | 0), "mutation occurred during iteration");
-  return (this.c0 > 0);
+  return (this.c4 > 0);
 });
 var $d_scm_CheckedIndexedSeqView$CheckedIterator = new $TypeData().i($c_scm_CheckedIndexedSeqView$CheckedIterator, "scala.collection.mutable.CheckedIndexedSeqView$CheckedIterator", ({
   hd: 1,
@@ -15938,14 +15942,14 @@ class $c_sjs_js_JavaScriptException extends $c_jl_RuntimeException {
   gH() {
     return $dp_toString__T(this.ag);
   }
-  aC() {
+  aD() {
     return "JavaScriptException";
   }
-  aA() {
+  aB() {
     return 1;
   }
-  aB(x$1) {
-    return ((x$1 === 0) ? this.ag : $m_sr_Statics$().eU(x$1));
+  aC(x$1) {
+    return ((x$1 === 0) ? this.ag : $m_sr_Statics$().eW(x$1));
   }
   bB() {
     return new $c_sr_ScalaRunTime$$anon$1(this);
@@ -15998,13 +16002,13 @@ function $f_Lcom_raquo_airstream_core_WritableSignal__fireTry__s_util_Try__Lcom_
   var isError = nextValue.k1();
   var elem = false;
   elem = false;
-  $thiz.cH(false);
+  $thiz.cI(false);
   var this$ = $thiz.cX();
   var index = 0;
   while ((index < (this$.length | 0))) {
     var observer = this$[index];
     index = ((1 + index) | 0);
-    observer.eg(nextValue);
+    observer.ei(nextValue);
     if ((isError && (!elem))) {
       var ev$5 = true;
       elem = ev$5;
@@ -16021,8 +16025,8 @@ function $f_Lcom_raquo_airstream_core_WritableSignal__fireTry__s_util_Try__Lcom_
       elem = ev$6;
     }
   }
-  $thiz.cH(true);
-  var x = $thiz.ef();
+  $thiz.cI(true);
+  var x = $thiz.eh();
   if ((x !== (void 0))) {
     var i = 0;
     var len = (x.length | 0);
@@ -16033,23 +16037,23 @@ function $f_Lcom_raquo_airstream_core_WritableSignal__fireTry__s_util_Try__Lcom_
     x.length = 0;
   }
   if ((isError && (!elem))) {
-    nextValue.cu(new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((err) => {
-      $m_Lcom_raquo_airstream_core_AirstreamError$().cK(err);
+    nextValue.cz(new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((err) => {
+      $m_Lcom_raquo_airstream_core_AirstreamError$().cL(err);
     })), new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((_$1) => (void 0))));
   }
 }
 function $f_Lcom_raquo_airstream_core_WritableStream__fireValue__O__Lcom_raquo_airstream_core_Transaction__V($thiz, nextValue, transaction) {
-  $thiz.cH(false);
+  $thiz.cI(false);
   var this$ = $thiz.cX();
   var index = 0;
   while ((index < (this$.length | 0))) {
     var observer = this$[index];
     index = ((1 + index) | 0);
     try {
-      observer.dq(nextValue);
+      observer.dr(nextValue);
     } catch (e) {
       var e$2 = ((e instanceof $c_jl_Throwable) ? e : new $c_sjs_js_JavaScriptException(e));
-      $m_Lcom_raquo_airstream_core_AirstreamError$().cK(new $c_Lcom_raquo_airstream_core_AirstreamError$ObserverError(e$2));
+      $m_Lcom_raquo_airstream_core_AirstreamError$().cL(new $c_Lcom_raquo_airstream_core_AirstreamError$ObserverError(e$2));
     }
   }
   var this$$1 = $thiz.d1();
@@ -16059,8 +16063,8 @@ function $f_Lcom_raquo_airstream_core_WritableStream__fireValue__O__Lcom_raquo_a
     index$1 = ((1 + index$1) | 0);
     observer$1.hM(nextValue, transaction);
   }
-  $thiz.cH(true);
-  var x = $thiz.ef();
+  $thiz.cI(true);
+  var x = $thiz.eh();
   if ((x !== (void 0))) {
     var i = 0;
     var len = (x.length | 0);
@@ -16072,7 +16076,7 @@ function $f_Lcom_raquo_airstream_core_WritableStream__fireValue__O__Lcom_raquo_a
   }
 }
 function $f_Lcom_raquo_airstream_core_WritableStream__fireError__jl_Throwable__Lcom_raquo_airstream_core_Transaction__V($thiz, nextError, transaction) {
-  $thiz.cH(false);
+  $thiz.cI(false);
   var this$ = $thiz.cX();
   var index = 0;
   while ((index < (this$.length | 0))) {
@@ -16087,8 +16091,8 @@ function $f_Lcom_raquo_airstream_core_WritableStream__fireError__jl_Throwable__L
     index$1 = ((1 + index$1) | 0);
     observer$1.kc(nextError, transaction);
   }
-  $thiz.cH(true);
-  var x = $thiz.ef();
+  $thiz.cI(true);
+  var x = $thiz.eh();
   if ((x !== (void 0))) {
     var i = 0;
     var len = (x.length | 0);
@@ -16100,7 +16104,7 @@ function $f_Lcom_raquo_airstream_core_WritableStream__fireError__jl_Throwable__L
   }
 }
 function $f_Lcom_raquo_airstream_core_WritableStream__fireTry__s_util_Try__Lcom_raquo_airstream_core_Transaction__V($thiz, nextValue, transaction) {
-  nextValue.cu(new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((_$1) => {
+  nextValue.cz(new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((_$1) => {
     $f_Lcom_raquo_airstream_core_WritableStream__fireError__jl_Throwable__Lcom_raquo_airstream_core_Transaction__V($thiz, _$1, transaction);
   })), new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((_$2) => {
     $f_Lcom_raquo_airstream_core_WritableStream__fireValue__O__Lcom_raquo_airstream_core_Transaction__V($thiz, _$2, transaction);
@@ -16122,19 +16126,19 @@ function $f_sci_StrictOptimizedSeqOps__distinctBy__F1__O($thiz, f) {
   if (($thiz.bt(1) <= 0)) {
     return $thiz;
   } else {
-    var builder = $thiz.eX();
+    var builder = $thiz.eZ();
     var seen = $ct_scm_HashSet__(new $c_scm_HashSet());
     var it = $thiz.r();
     var different = false;
     while (it.x()) {
       var next = it.n();
       if (seen.hB(f.i(next))) {
-        builder.b8(next);
+        builder.b7(next);
       } else {
         different = true;
       }
     }
-    return (different ? builder.ba() : $thiz);
+    return (different ? builder.b9() : $thiz);
   }
 }
 /** @constructor */
@@ -16147,10 +16151,10 @@ $p.constructor = $c_s_reflect_ManifestFactory$BooleanManifest;
 function $h_s_reflect_ManifestFactory$BooleanManifest() {
 }
 $h_s_reflect_ManifestFactory$BooleanManifest.prototype = $p;
-$p.bb = (function() {
+$p.ba = (function() {
   return $d_Z.l();
 });
-$p.bM = (function(len) {
+$p.bN = (function(len) {
   return new $ac_Z(len);
 });
 /** @constructor */
@@ -16163,10 +16167,10 @@ $p.constructor = $c_s_reflect_ManifestFactory$ByteManifest;
 function $h_s_reflect_ManifestFactory$ByteManifest() {
 }
 $h_s_reflect_ManifestFactory$ByteManifest.prototype = $p;
-$p.bb = (function() {
+$p.ba = (function() {
   return $d_B.l();
 });
-$p.bM = (function(len) {
+$p.bN = (function(len) {
   return new $ac_B(len);
 });
 /** @constructor */
@@ -16179,10 +16183,10 @@ $p.constructor = $c_s_reflect_ManifestFactory$CharManifest;
 function $h_s_reflect_ManifestFactory$CharManifest() {
 }
 $h_s_reflect_ManifestFactory$CharManifest.prototype = $p;
-$p.bb = (function() {
+$p.ba = (function() {
   return $d_C.l();
 });
-$p.bM = (function(len) {
+$p.bN = (function(len) {
   return new $ac_C(len);
 });
 /** @constructor */
@@ -16195,10 +16199,10 @@ $p.constructor = $c_s_reflect_ManifestFactory$DoubleManifest;
 function $h_s_reflect_ManifestFactory$DoubleManifest() {
 }
 $h_s_reflect_ManifestFactory$DoubleManifest.prototype = $p;
-$p.bb = (function() {
+$p.ba = (function() {
   return $d_D.l();
 });
-$p.bM = (function(len) {
+$p.bN = (function(len) {
   return new $ac_D(len);
 });
 /** @constructor */
@@ -16211,10 +16215,10 @@ $p.constructor = $c_s_reflect_ManifestFactory$FloatManifest;
 function $h_s_reflect_ManifestFactory$FloatManifest() {
 }
 $h_s_reflect_ManifestFactory$FloatManifest.prototype = $p;
-$p.bb = (function() {
+$p.ba = (function() {
   return $d_F.l();
 });
-$p.bM = (function(len) {
+$p.bN = (function(len) {
   return new $ac_F(len);
 });
 /** @constructor */
@@ -16227,10 +16231,10 @@ $p.constructor = $c_s_reflect_ManifestFactory$IntManifest;
 function $h_s_reflect_ManifestFactory$IntManifest() {
 }
 $h_s_reflect_ManifestFactory$IntManifest.prototype = $p;
-$p.bb = (function() {
+$p.ba = (function() {
   return $d_I.l();
 });
-$p.bM = (function(len) {
+$p.bN = (function(len) {
   return new $ac_I(len);
 });
 /** @constructor */
@@ -16243,10 +16247,10 @@ $p.constructor = $c_s_reflect_ManifestFactory$LongManifest;
 function $h_s_reflect_ManifestFactory$LongManifest() {
 }
 $h_s_reflect_ManifestFactory$LongManifest.prototype = $p;
-$p.bb = (function() {
+$p.ba = (function() {
   return $d_J.l();
 });
-$p.bM = (function(len) {
+$p.bN = (function(len) {
   return new $ac_J(len);
 });
 /** @constructor */
@@ -16278,10 +16282,10 @@ $p.constructor = $c_s_reflect_ManifestFactory$ShortManifest;
 function $h_s_reflect_ManifestFactory$ShortManifest() {
 }
 $h_s_reflect_ManifestFactory$ShortManifest.prototype = $p;
-$p.bb = (function() {
+$p.ba = (function() {
   return $d_S.l();
 });
-$p.bM = (function(len) {
+$p.bN = (function(len) {
   return new $ac_S(len);
 });
 /** @constructor */
@@ -16294,14 +16298,14 @@ $p.constructor = $c_s_reflect_ManifestFactory$UnitManifest;
 function $h_s_reflect_ManifestFactory$UnitManifest() {
 }
 $h_s_reflect_ManifestFactory$UnitManifest.prototype = $p;
-$p.bb = (function() {
+$p.ba = (function() {
   return $d_V.l();
 });
-$p.bM = (function(len) {
+$p.bN = (function(len) {
   return new ($d_jl_Void.r().C)(len);
 });
 function $f_Lcom_raquo_airstream_common_MultiParentSignal___parentLastUpdateIds__Lcom_raquo_ew_JsArray($thiz) {
-  return $thiz.fM.map(((_$1) => _$1.fs()));
+  return $thiz.fM.map(((_$1) => _$1.fu()));
 }
 function $f_Lcom_raquo_airstream_common_MultiParentSignal__onWillStart__V($thiz) {
   var arr = $thiz.fM;
@@ -16324,7 +16328,7 @@ function $f_Lcom_raquo_airstream_common_MultiParentSignal__updateParentLastUpdat
   while ((i < len)) {
     var parent = arr[i];
     var ix = i;
-    var newLastUpdateId = parent.fs();
+    var newLastUpdateId = parent.fu();
     if ((newLastUpdateId !== ($thiz.oJ()[ix] | 0))) {
       $thiz.oJ()[ix] = newLastUpdateId;
       var ev$3 = true;
@@ -16359,7 +16363,7 @@ function $f_sc_Set__equals__O__Z($thiz, that) {
   if (($thiz === that)) {
     return true;
   } else if ($is_sc_Set(that)) {
-    if (($thiz.bc() === that.bc())) {
+    if (($thiz.bb() === that.bb())) {
       try {
         return $thiz.to(that);
       } catch (e) {
@@ -16393,10 +16397,10 @@ $p.constructor = $c_s_reflect_ManifestFactory$AnyManifest$;
 function $h_s_reflect_ManifestFactory$AnyManifest$() {
 }
 $h_s_reflect_ManifestFactory$AnyManifest$.prototype = $p;
-$p.bb = (function() {
+$p.ba = (function() {
   return $d_O.l();
 });
-$p.bM = (function(len) {
+$p.bN = (function(len) {
   return new $ac_O(len);
 });
 var $d_s_reflect_ManifestFactory$AnyManifest$ = new $TypeData().i($c_s_reflect_ManifestFactory$AnyManifest$, "scala.reflect.ManifestFactory$AnyManifest$", ({
@@ -16631,10 +16635,10 @@ $p.constructor = $c_s_reflect_ManifestFactory$NothingManifest$;
 function $h_s_reflect_ManifestFactory$NothingManifest$() {
 }
 $h_s_reflect_ManifestFactory$NothingManifest$.prototype = $p;
-$p.bb = (function() {
+$p.ba = (function() {
   return $d_sr_Nothing$.l();
 });
-$p.bM = (function(len) {
+$p.bN = (function(len) {
   return new $ac_O(len);
 });
 var $d_s_reflect_ManifestFactory$NothingManifest$ = new $TypeData().i($c_s_reflect_ManifestFactory$NothingManifest$, "scala.reflect.ManifestFactory$NothingManifest$", ({
@@ -16666,10 +16670,10 @@ $p.constructor = $c_s_reflect_ManifestFactory$NullManifest$;
 function $h_s_reflect_ManifestFactory$NullManifest$() {
 }
 $h_s_reflect_ManifestFactory$NullManifest$.prototype = $p;
-$p.bb = (function() {
+$p.ba = (function() {
   return $d_sr_Null$.l();
 });
-$p.bM = (function(len) {
+$p.bN = (function(len) {
   return new $ac_O(len);
 });
 var $d_s_reflect_ManifestFactory$NullManifest$ = new $TypeData().i($c_s_reflect_ManifestFactory$NullManifest$, "scala.reflect.ManifestFactory$NullManifest$", ({
@@ -16701,10 +16705,10 @@ $p.constructor = $c_s_reflect_ManifestFactory$ObjectManifest$;
 function $h_s_reflect_ManifestFactory$ObjectManifest$() {
 }
 $h_s_reflect_ManifestFactory$ObjectManifest$.prototype = $p;
-$p.bb = (function() {
+$p.ba = (function() {
   return $d_O.l();
 });
-$p.bM = (function(len) {
+$p.bN = (function(len) {
   return new $ac_O(len);
 });
 var $d_s_reflect_ManifestFactory$ObjectManifest$ = new $TypeData().i($c_s_reflect_ManifestFactory$ObjectManifest$, "scala.reflect.ManifestFactory$ObjectManifest$", ({
@@ -16785,8 +16789,8 @@ function $m_s_reflect_ManifestFactory$UnitManifest$() {
 }
 /** @constructor */
 function $c_Lccrystal_site_Tab$$anon$1() {
-  this.eo = null;
-  this.en = null;
+  this.eq = null;
+  this.ep = null;
   $ct_Lccrystal_site_Tab__T__T__T__(this, "manifesto", "Manifesto & Architecture", "\u25c8");
 }
 $p = $c_Lccrystal_site_Tab$$anon$1.prototype = new $h_Lccrystal_site_Tab();
@@ -16795,13 +16799,13 @@ $p.constructor = $c_Lccrystal_site_Tab$$anon$1;
 function $h_Lccrystal_site_Tab$$anon$1() {
 }
 $h_Lccrystal_site_Tab$$anon$1.prototype = $p;
-$p.aA = (function() {
+$p.aB = (function() {
   return 0;
 });
-$p.aB = (function(n) {
+$p.aC = (function(n) {
   return $f_sr_EnumValue__productElement__I__O(this, n);
 });
-$p.aC = (function() {
+$p.aD = (function() {
   return "Manifesto";
 });
 $p.D = (function() {
@@ -16821,8 +16825,8 @@ var $d_Lccrystal_site_Tab$$anon$1 = new $TypeData().i($c_Lccrystal_site_Tab$$ano
 }));
 /** @constructor */
 function $c_Lccrystal_site_Tab$$anon$2() {
-  this.eo = null;
-  this.en = null;
+  this.eq = null;
+  this.ep = null;
   $ct_Lccrystal_site_Tab__T__T__T__(this, "explorer", "Interactive DAG Explorer", "\u2b21");
 }
 $p = $c_Lccrystal_site_Tab$$anon$2.prototype = new $h_Lccrystal_site_Tab();
@@ -16831,13 +16835,13 @@ $p.constructor = $c_Lccrystal_site_Tab$$anon$2;
 function $h_Lccrystal_site_Tab$$anon$2() {
 }
 $h_Lccrystal_site_Tab$$anon$2.prototype = $p;
-$p.aA = (function() {
+$p.aB = (function() {
   return 0;
 });
-$p.aB = (function(n) {
+$p.aC = (function(n) {
   return $f_sr_EnumValue__productElement__I__O(this, n);
 });
-$p.aC = (function() {
+$p.aD = (function() {
   return "Explorer";
 });
 $p.D = (function() {
@@ -16857,8 +16861,8 @@ var $d_Lccrystal_site_Tab$$anon$2 = new $TypeData().i($c_Lccrystal_site_Tab$$ano
 }));
 /** @constructor */
 function $c_Lccrystal_site_Tab$$anon$3() {
-  this.eo = null;
-  this.en = null;
+  this.eq = null;
+  this.ep = null;
   $ct_Lccrystal_site_Tab__T__T__T__(this, "quickstart", "Install & Quickstart", "\u25c7");
 }
 $p = $c_Lccrystal_site_Tab$$anon$3.prototype = new $h_Lccrystal_site_Tab();
@@ -16867,13 +16871,13 @@ $p.constructor = $c_Lccrystal_site_Tab$$anon$3;
 function $h_Lccrystal_site_Tab$$anon$3() {
 }
 $h_Lccrystal_site_Tab$$anon$3.prototype = $p;
-$p.aA = (function() {
+$p.aB = (function() {
   return 0;
 });
-$p.aB = (function(n) {
+$p.aC = (function(n) {
   return $f_sr_EnumValue__productElement__I__O(this, n);
 });
-$p.aC = (function() {
+$p.aD = (function() {
   return "Quickstart";
 });
 $p.D = (function() {
@@ -16893,8 +16897,8 @@ var $d_Lccrystal_site_Tab$$anon$3 = new $TypeData().i($c_Lccrystal_site_Tab$$ano
 }));
 /** @constructor */
 function $c_Lccrystal_site_Tab$$anon$4() {
-  this.eo = null;
-  this.en = null;
+  this.eq = null;
+  this.ep = null;
   $ct_Lccrystal_site_Tab__T__T__T__(this, "mcp", "Native MCP Reference", "\u2325");
 }
 $p = $c_Lccrystal_site_Tab$$anon$4.prototype = new $h_Lccrystal_site_Tab();
@@ -16903,13 +16907,13 @@ $p.constructor = $c_Lccrystal_site_Tab$$anon$4;
 function $h_Lccrystal_site_Tab$$anon$4() {
 }
 $h_Lccrystal_site_Tab$$anon$4.prototype = $p;
-$p.aA = (function() {
+$p.aB = (function() {
   return 0;
 });
-$p.aB = (function(n) {
+$p.aC = (function(n) {
   return $f_sr_EnumValue__productElement__I__O(this, n);
 });
-$p.aC = (function() {
+$p.aD = (function() {
   return "Mcp";
 });
 $p.D = (function() {
@@ -16929,8 +16933,8 @@ var $d_Lccrystal_site_Tab$$anon$4 = new $TypeData().i($c_Lccrystal_site_Tab$$ano
 }));
 /** @constructor */
 function $c_Lccrystal_site_Tab$$anon$5() {
-  this.eo = null;
-  this.en = null;
+  this.eq = null;
+  this.ep = null;
   $ct_Lccrystal_site_Tab__T__T__T__(this, "agent-ingestion", "Agent Ingestion (llms.txt)", "\u00a7");
 }
 $p = $c_Lccrystal_site_Tab$$anon$5.prototype = new $h_Lccrystal_site_Tab();
@@ -16939,13 +16943,13 @@ $p.constructor = $c_Lccrystal_site_Tab$$anon$5;
 function $h_Lccrystal_site_Tab$$anon$5() {
 }
 $h_Lccrystal_site_Tab$$anon$5.prototype = $p;
-$p.aA = (function() {
+$p.aB = (function() {
   return 0;
 });
-$p.aB = (function(n) {
+$p.aC = (function(n) {
   return $f_sr_EnumValue__productElement__I__O(this, n);
 });
-$p.aC = (function() {
+$p.aD = (function() {
   return "AgentIngestion";
 });
 $p.D = (function() {
@@ -16974,13 +16978,13 @@ $p.constructor = $c_Lccrystal_site_TabExplorer$Scenario$$anon$1;
 function $h_Lccrystal_site_TabExplorer$Scenario$$anon$1() {
 }
 $h_Lccrystal_site_TabExplorer$Scenario$$anon$1.prototype = $p;
-$p.aA = (function() {
+$p.aB = (function() {
   return 0;
 });
-$p.aB = (function(n) {
+$p.aC = (function(n) {
   return $f_sr_EnumValue__productElement__I__O(this, n);
 });
-$p.aC = (function() {
+$p.aD = (function() {
   return "Inception";
 });
 $p.D = (function() {
@@ -17009,13 +17013,13 @@ $p.constructor = $c_Lccrystal_site_TabExplorer$Scenario$$anon$2;
 function $h_Lccrystal_site_TabExplorer$Scenario$$anon$2() {
 }
 $h_Lccrystal_site_TabExplorer$Scenario$$anon$2.prototype = $p;
-$p.aA = (function() {
+$p.aB = (function() {
   return 0;
 });
-$p.aB = (function(n) {
+$p.aC = (function(n) {
   return $f_sr_EnumValue__productElement__I__O(this, n);
 });
-$p.aC = (function() {
+$p.aD = (function() {
   return "ActiveSpike";
 });
 $p.D = (function() {
@@ -17044,13 +17048,13 @@ $p.constructor = $c_Lccrystal_site_TabExplorer$Scenario$$anon$3;
 function $h_Lccrystal_site_TabExplorer$Scenario$$anon$3() {
 }
 $h_Lccrystal_site_TabExplorer$Scenario$$anon$3.prototype = $p;
-$p.aA = (function() {
+$p.aB = (function() {
   return 0;
 });
-$p.aB = (function(n) {
+$p.aC = (function(n) {
   return $f_sr_EnumValue__productElement__I__O(this, n);
 });
-$p.aC = (function() {
+$p.aD = (function() {
   return "PhysicalArtifact";
 });
 $p.D = (function() {
@@ -17105,10 +17109,10 @@ $p.constructor = $c_Lcom_raquo_airstream_custom_CustomStreamSource;
 function $h_Lcom_raquo_airstream_custom_CustomStreamSource() {
 }
 $h_Lcom_raquo_airstream_custom_CustomStreamSource.prototype = $p;
-$p.ee = (function() {
+$p.eg = (function() {
   return this.kO;
 });
-$p.eb = (function() {
+$p.ed = (function() {
   return $f_Lcom_raquo_airstream_core_Named__defaultDisplayName__T(this);
 });
 $p.D = (function() {
@@ -17117,10 +17121,10 @@ $p.D = (function() {
 $p.fA = (function() {
   return this.kN;
 });
-$p.ef = (function() {
+$p.eh = (function() {
   return this.kP;
 });
-$p.cH = (function(x$1) {
+$p.cI = (function(x$1) {
   this.kN = x$1;
 });
 $p.fD = (function(x$1) {
@@ -17143,7 +17147,7 @@ $p.d1 = (function() {
 $p.gW = (function() {
   return this.kR;
 });
-$p.f4 = (function(x$1) {
+$p.f6 = (function(x$1) {
   this.kR = x$1;
 });
 $p.gx = (function(x$0) {
@@ -17155,7 +17159,7 @@ $p.gy = (function(x$0) {
 $p.gD = (function(nextValue, transaction) {
   $f_Lcom_raquo_airstream_core_WritableStream__fireTry__s_util_Try__Lcom_raquo_airstream_core_Transaction__V(this, nextValue, transaction);
 });
-$p.f0 = (function() {
+$p.f2 = (function() {
   return this.kQ;
 });
 $p.gQ = (function() {
@@ -17167,7 +17171,7 @@ $p.gN = (function() {
 $p.gO = (function() {
   $f_Lcom_raquo_airstream_custom_CustomSource__onStop__V(this);
 });
-$p.eZ = (function() {
+$p.f1 = (function() {
   return this;
 });
 var $d_Lcom_raquo_airstream_custom_CustomStreamSource = new $TypeData().i($c_Lcom_raquo_airstream_custom_CustomStreamSource, "com.raquo.airstream.custom.CustomStreamSource", ({
@@ -17209,7 +17213,7 @@ $p.constructor = $c_Lcom_raquo_airstream_state_VarSignal;
 function $h_Lcom_raquo_airstream_state_VarSignal() {
 }
 $h_Lcom_raquo_airstream_state_VarSignal.prototype = $p;
-$p.ee = (function() {
+$p.eg = (function() {
   return this.lk;
 });
 $p.D = (function() {
@@ -17218,10 +17222,10 @@ $p.D = (function() {
 $p.fA = (function() {
   return this.lj;
 });
-$p.ef = (function() {
+$p.eh = (function() {
   return this.ll;
 });
-$p.cH = (function(x$1) {
+$p.cI = (function(x$1) {
   this.lj = x$1;
 });
 $p.fD = (function(x$1) {
@@ -17235,7 +17239,7 @@ $p.z = (function(obj) {
 $p.E = (function() {
   return $systemIdentityHashCode(this);
 });
-$p.fs = (function() {
+$p.fu = (function() {
   return this.ic;
 });
 $p.hA = (function(x$1) {
@@ -17248,7 +17252,7 @@ $p.gN = (function() {
   $f_Lcom_raquo_airstream_core_Signal__onStart__V(this);
 });
 $p.gL = (function(observer) {
-  observer.eg($f_Lcom_raquo_airstream_core_WritableSignal__tryNow__s_util_Try(this));
+  observer.ei($f_Lcom_raquo_airstream_core_WritableSignal__tryNow__s_util_Try(this));
 });
 $p.cX = (function() {
   return this.lh;
@@ -17259,7 +17263,7 @@ $p.d1 = (function() {
 $p.gW = (function() {
   return this.lo;
 });
-$p.f4 = (function(x$1) {
+$p.f6 = (function(x$1) {
   this.lo = x$1;
 });
 $p.gx = (function(x$0) {
@@ -17280,7 +17284,7 @@ $p.gD = (function(nextValue, transaction) {
 $p.gU = (function() {
   return $f_Lcom_raquo_airstream_core_WritableSignal__tryNow__s_util_Try(this);
 });
-$p.f0 = (function() {
+$p.f2 = (function() {
   return this.ln;
 });
 $p.hG = (function() {
@@ -17288,10 +17292,10 @@ $p.hG = (function() {
 });
 $p.gQ = (function() {
 });
-$p.eb = (function() {
+$p.ed = (function() {
   return (this.lm.Y() + ".signal");
 });
-$p.eZ = (function() {
+$p.f1 = (function() {
   return this;
 });
 var $d_Lcom_raquo_airstream_state_VarSignal = new $TypeData().i($c_Lcom_raquo_airstream_state_VarSignal, "com.raquo.airstream.state.VarSignal", ({
@@ -17385,13 +17389,13 @@ var $d_sc_View$DistinctBy = new $TypeData().i($c_sc_View$DistinctBy, "scala.coll
   a: 1
 }));
 function $ct_sc_View$Map__sc_IterableOps__F1__($thiz, underlying, f) {
-  $thiz.ey = underlying;
+  $thiz.eA = underlying;
   $thiz.g5 = f;
   return $thiz;
 }
 /** @constructor */
 function $c_sc_View$Map() {
-  this.ey = null;
+  this.eA = null;
   this.g5 = null;
 }
 $p = $c_sc_View$Map.prototype = new $h_sc_AbstractView();
@@ -17401,13 +17405,13 @@ function $h_sc_View$Map() {
 }
 $h_sc_View$Map.prototype = $p;
 $p.r = (function() {
-  return new $c_sc_Iterator$$anon$9(this.ey.r(), this.g5);
+  return new $c_sc_Iterator$$anon$9(this.eA.r(), this.g5);
 });
 $p.J = (function() {
-  return this.ey.J();
+  return this.eA.J();
 });
 $p.j = (function() {
-  return this.ey.j();
+  return this.eA.j();
 });
 var $d_sc_View$Map = new $TypeData().i($c_sc_View$Map, "scala.collection.View$Map", ({
   aH: 1,
@@ -17422,13 +17426,13 @@ var $d_sc_View$Map = new $TypeData().i($c_sc_View$Map, "scala.collection.View$Ma
   a: 1
 }));
 function $f_Lcom_raquo_airstream_common_SingleParentSignal__$init$__V($thiz) {
-  $thiz.i5 = ($thiz.dr !== null);
+  $thiz.i5 = ($thiz.ds !== null);
   $thiz.h3 = (-1);
 }
 function $f_Lcom_raquo_airstream_common_SingleParentSignal__onWillStart__V($thiz) {
-  $f_Lcom_raquo_airstream_core_WritableObservable__maybeWillStart__V($thiz.dr);
+  $f_Lcom_raquo_airstream_core_WritableObservable__maybeWillStart__V($thiz.ds);
   if ($thiz.i5) {
-    var newParentLastUpdateId = $thiz.dr.fs();
+    var newParentLastUpdateId = $thiz.ds.fu();
     if ((newParentLastUpdateId !== $thiz.h3)) {
       $f_Lcom_raquo_airstream_common_SingleParentSignal__updateCurrentValueFromParent__s_util_Try__I__V($thiz, $thiz.hG(), newParentLastUpdateId);
     }
@@ -17440,15 +17444,15 @@ function $f_Lcom_raquo_airstream_common_SingleParentSignal__updateCurrentValueFr
 }
 function $f_Lcom_raquo_airstream_common_SingleParentSignal__onTry__s_util_Try__Lcom_raquo_airstream_core_Transaction__V($thiz, nextParentValue, transaction) {
   if ($thiz.i5) {
-    $thiz.h3 = $thiz.dr.fs();
+    $thiz.h3 = $thiz.ds.fu();
   }
 }
 function $f_Lcom_raquo_airstream_common_SingleParentSignal__onStart__V($thiz) {
-  $f_Lcom_raquo_airstream_core_WritableObservable__addInternalObserver__Lcom_raquo_airstream_core_InternalObserver__Z__V($thiz.dr, $thiz, false);
+  $f_Lcom_raquo_airstream_core_WritableObservable__addInternalObserver__Lcom_raquo_airstream_core_InternalObserver__Z__V($thiz.ds, $thiz, false);
   $f_Lcom_raquo_airstream_core_Signal__onStart__V($thiz);
 }
 function $f_Lcom_raquo_airstream_common_SingleParentSignal__onStop__V($thiz) {
-  $f_Lcom_raquo_airstream_core_BaseObservable__removeInternalObserver__Lcom_raquo_airstream_core_InternalObserver__V($thiz.dr, $thiz);
+  $f_Lcom_raquo_airstream_core_BaseObservable__removeInternalObserver__Lcom_raquo_airstream_core_InternalObserver__V($thiz.ds, $thiz);
 }
 /** @constructor */
 function $c_sc_AbstractSet() {
@@ -17469,7 +17473,7 @@ $p.D = (function() {
   return $f_sc_Iterable__toString__T(this);
 });
 $p.to = (function(that) {
-  return this.fx(that);
+  return this.fy(that);
 });
 $p.i = (function(v1) {
   return this.bm(v1);
@@ -17478,9 +17482,9 @@ function $f_sc_Map__equals__O__Z($thiz, o) {
   if (($thiz === o)) {
     return true;
   } else if ($is_sc_Map(o)) {
-    if (($thiz.bc() === o.bc())) {
+    if (($thiz.bb() === o.bb())) {
       try {
-        return $thiz.fx(new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((x2) => ((kv$2$2) => $m_sr_BoxesRunTime$().A(x2.cZ(kv$2$2.bq(), $m_sc_Map$().o9), kv$2$2.bj())))(o)));
+        return $thiz.fy(new $c_sr_AbstractFunction1_$$Lambda$70e1780b84463d18653aacefee3ab989ac625f28(((x2) => ((kv$2$2) => $m_sr_BoxesRunTime$().A(x2.cZ(kv$2$2.bq(), $m_sc_Map$().o9), kv$2$2.bj())))(o)));
       } catch (e) {
         if ((e instanceof $c_jl_ClassCastException)) {
           return false;
@@ -17535,10 +17539,10 @@ $p.constructor = $c_Lcom_raquo_airstream_combine_CombineSignalN;
 function $h_Lcom_raquo_airstream_combine_CombineSignalN() {
 }
 $h_Lcom_raquo_airstream_combine_CombineSignalN.prototype = $p;
-$p.ee = (function() {
+$p.eg = (function() {
   return this.kv;
 });
-$p.eb = (function() {
+$p.ed = (function() {
   return $f_Lcom_raquo_airstream_core_Named__defaultDisplayName__T(this);
 });
 $p.D = (function() {
@@ -17547,10 +17551,10 @@ $p.D = (function() {
 $p.fA = (function() {
   return this.ku;
 });
-$p.ef = (function() {
+$p.eh = (function() {
   return this.kw;
 });
-$p.cH = (function(x$1) {
+$p.cI = (function(x$1) {
   this.ku = x$1;
 });
 $p.fD = (function(x$1) {
@@ -17562,7 +17566,7 @@ $p.z = (function(obj) {
 $p.E = (function() {
   return $systemIdentityHashCode(this);
 });
-$p.fs = (function() {
+$p.fu = (function() {
   return this.hT;
 });
 $p.hA = (function(x$1) {
@@ -17572,7 +17576,7 @@ $p.fG = (function() {
   return this;
 });
 $p.gL = (function(observer) {
-  observer.eg($f_Lcom_raquo_airstream_core_WritableSignal__tryNow__s_util_Try(this));
+  observer.ei($f_Lcom_raquo_airstream_core_WritableSignal__tryNow__s_util_Try(this));
 });
 $p.cX = (function() {
   return this.ks;
@@ -17583,7 +17587,7 @@ $p.d1 = (function() {
 $p.gW = (function() {
   return this.kx;
 });
-$p.f4 = (function(x$1) {
+$p.f6 = (function(x$1) {
   this.kx = x$1;
 });
 $p.gx = (function(x$0) {
@@ -17620,7 +17624,7 @@ $p.gN = (function() {
 $p.gO = (function() {
   $f_Lcom_raquo_airstream_combine_CombineObservable__onStop__V(this);
 });
-$p.f0 = (function() {
+$p.f2 = (function() {
   return this.hW;
 });
 $p.jC = (function() {
@@ -17629,7 +17633,7 @@ $p.jC = (function() {
 $p.hG = (function() {
   return this.jC();
 });
-$p.eZ = (function() {
+$p.f1 = (function() {
   return this;
 });
 var $d_Lcom_raquo_airstream_combine_CombineSignalN = new $TypeData().i($c_Lcom_raquo_airstream_combine_CombineSignalN, "com.raquo.airstream.combine.CombineSignalN", ({
@@ -17662,7 +17666,7 @@ function $c_Lcom_raquo_airstream_misc_CollectStream(parent, fn) {
   this.kW = (void 0);
   $f_Lcom_raquo_airstream_core_BaseObservable__$init$__V(this);
   $f_Lcom_raquo_airstream_core_WritableObservable__$init$__V(this);
-  this.kY = ((1 + parent.f0()) | 0);
+  this.kY = ((1 + parent.f2()) | 0);
 }
 $p = $c_Lcom_raquo_airstream_misc_CollectStream.prototype = new $h_O();
 $p.constructor = $c_Lcom_raquo_airstream_misc_CollectStream;
@@ -17670,10 +17674,10 @@ $p.constructor = $c_Lcom_raquo_airstream_misc_CollectStream;
 function $h_Lcom_raquo_airstream_misc_CollectStream() {
 }
 $h_Lcom_raquo_airstream_misc_CollectStream.prototype = $p;
-$p.ee = (function() {
+$p.eg = (function() {
   return this.kW;
 });
-$p.eb = (function() {
+$p.ed = (function() {
   return $f_Lcom_raquo_airstream_core_Named__defaultDisplayName__T(this);
 });
 $p.D = (function() {
@@ -17682,10 +17686,10 @@ $p.D = (function() {
 $p.fA = (function() {
   return this.kV;
 });
-$p.ef = (function() {
+$p.eh = (function() {
   return this.kX;
 });
-$p.cH = (function(x$1) {
+$p.cI = (function(x$1) {
   this.kV = x$1;
 });
 $p.fD = (function(x$1) {
@@ -17708,7 +17712,7 @@ $p.d1 = (function() {
 $p.gW = (function() {
   return this.kZ;
 });
-$p.f4 = (function(x$1) {
+$p.f6 = (function(x$1) {
   this.kZ = x$1;
 });
 $p.gx = (function(x$0) {
@@ -17732,7 +17736,7 @@ $p.gO = (function() {
 $p.gP = (function(nextValue, transaction) {
   $f_Lcom_raquo_airstream_common_InternalNextErrorObserver__onTry__s_util_Try__Lcom_raquo_airstream_core_Transaction__V(this, nextValue, transaction);
 });
-$p.f0 = (function() {
+$p.f2 = (function() {
   return this.kY;
 });
 $p.hM = (function(nextParentValue, transaction) {
@@ -17742,14 +17746,14 @@ $p.hM = (function(nextParentValue, transaction) {
     var e$2 = ((e instanceof $c_jl_Throwable) ? e : new $c_sjs_js_JavaScriptException(e));
     matchEnd8: {
       var $x_1;
-      if ($m_s_util_control_NonFatal$().eM(e$2)) {
+      if ($m_s_util_control_NonFatal$().eN(e$2)) {
         var $x_1 = new $c_s_util_Failure(e$2);
         break matchEnd8;
       }
       throw ((e$2 instanceof $c_sjs_js_JavaScriptException) ? e$2.ag : e$2);
     }
   }
-  $x_1.cu(new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((_$1) => {
+  $x_1.cz(new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((_$1) => {
     $f_Lcom_raquo_airstream_core_WritableStream__fireError__jl_Throwable__Lcom_raquo_airstream_core_Transaction__V(this, _$1, transaction);
   })), new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((nextValue) => {
     if ((!nextValue.j())) {
@@ -17760,7 +17764,7 @@ $p.hM = (function(nextParentValue, transaction) {
 $p.kc = (function(nextError, transaction) {
   $f_Lcom_raquo_airstream_core_WritableStream__fireError__jl_Throwable__Lcom_raquo_airstream_core_Transaction__V(this, nextError, transaction);
 });
-$p.eZ = (function() {
+$p.f1 = (function() {
   return this;
 });
 var $d_Lcom_raquo_airstream_misc_CollectStream = new $TypeData().i($c_Lcom_raquo_airstream_misc_CollectStream, "com.raquo.airstream.misc.CollectStream", ({
@@ -17789,11 +17793,11 @@ function $c_Lcom_raquo_airstream_misc_MapSignal(parent, project, recover) {
   this.i4 = null;
   this.i5 = false;
   this.h3 = 0;
-  this.dr = null;
+  this.ds = null;
   this.i6 = null;
   this.i7 = null;
   this.l5 = 0;
-  this.dr = parent;
+  this.ds = parent;
   this.i6 = project;
   this.i7 = recover;
   this.l3 = (void 0);
@@ -17802,7 +17806,7 @@ function $c_Lcom_raquo_airstream_misc_MapSignal(parent, project, recover) {
   $f_Lcom_raquo_airstream_core_WritableObservable__$init$__V(this);
   this.i4 = (void 0);
   $f_Lcom_raquo_airstream_common_SingleParentSignal__$init$__V(this);
-  this.l5 = ((1 + parent.f0()) | 0);
+  this.l5 = ((1 + parent.f2()) | 0);
 }
 $p = $c_Lcom_raquo_airstream_misc_MapSignal.prototype = new $h_O();
 $p.constructor = $c_Lcom_raquo_airstream_misc_MapSignal;
@@ -17810,10 +17814,10 @@ $p.constructor = $c_Lcom_raquo_airstream_misc_MapSignal;
 function $h_Lcom_raquo_airstream_misc_MapSignal() {
 }
 $h_Lcom_raquo_airstream_misc_MapSignal.prototype = $p;
-$p.ee = (function() {
+$p.eg = (function() {
   return this.l3;
 });
-$p.eb = (function() {
+$p.ed = (function() {
   return $f_Lcom_raquo_airstream_core_Named__defaultDisplayName__T(this);
 });
 $p.D = (function() {
@@ -17822,10 +17826,10 @@ $p.D = (function() {
 $p.fA = (function() {
   return this.l2;
 });
-$p.ef = (function() {
+$p.eh = (function() {
   return this.l4;
 });
-$p.cH = (function(x$1) {
+$p.cI = (function(x$1) {
   this.l2 = x$1;
 });
 $p.fD = (function(x$1) {
@@ -17837,7 +17841,7 @@ $p.z = (function(obj) {
 $p.E = (function() {
   return $systemIdentityHashCode(this);
 });
-$p.fs = (function() {
+$p.fu = (function() {
   return this.i3;
 });
 $p.hA = (function(x$1) {
@@ -17847,7 +17851,7 @@ $p.fG = (function() {
   return this;
 });
 $p.gL = (function(observer) {
-  observer.eg($f_Lcom_raquo_airstream_core_WritableSignal__tryNow__s_util_Try(this));
+  observer.ei($f_Lcom_raquo_airstream_core_WritableSignal__tryNow__s_util_Try(this));
 });
 $p.cX = (function() {
   return this.l0;
@@ -17858,7 +17862,7 @@ $p.d1 = (function() {
 $p.gW = (function() {
   return this.l6;
 });
-$p.f4 = (function(x$1) {
+$p.f6 = (function(x$1) {
   this.l6 = x$1;
 });
 $p.gx = (function(x$0) {
@@ -17894,31 +17898,31 @@ $p.gN = (function() {
 $p.gO = (function() {
   $f_Lcom_raquo_airstream_common_SingleParentSignal__onStop__V(this);
 });
-$p.f0 = (function() {
+$p.f2 = (function() {
   return this.l5;
 });
 $p.gP = (function(nextParentValue, transaction) {
   $f_Lcom_raquo_airstream_common_SingleParentSignal__onTry__s_util_Try__Lcom_raquo_airstream_core_Transaction__V(this, nextParentValue, transaction);
-  nextParentValue.cu(new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((nextError) => {
+  nextParentValue.cz(new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((nextError) => {
     var this$2 = this.i7;
     if (this$2.j()) {
       $f_Lcom_raquo_airstream_core_WritableSignal__fireError__jl_Throwable__Lcom_raquo_airstream_core_Transaction__V(this, nextError, transaction);
     } else {
       var x0 = this$2.Q();
       try {
-        var $x_1 = new $c_s_util_Success(x0.c8(nextError, new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((_$1) => null))));
+        var $x_1 = new $c_s_util_Success(x0.cc(nextError, new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((_$1) => null))));
       } catch (e) {
         var e$2 = ((e instanceof $c_jl_Throwable) ? e : new $c_sjs_js_JavaScriptException(e));
         matchEnd8: {
           var $x_1;
-          if ($m_s_util_control_NonFatal$().eM(e$2)) {
+          if ($m_s_util_control_NonFatal$().eN(e$2)) {
             var $x_1 = new $c_s_util_Failure(e$2);
             break matchEnd8;
           }
           throw ((e$2 instanceof $c_sjs_js_JavaScriptException) ? e$2.ag : e$2);
         }
       }
-      $x_1.cu(new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((nextError$3$3) => ((tryError) => {
+      $x_1.cz(new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((nextError$3$3) => ((tryError) => {
         $f_Lcom_raquo_airstream_core_WritableSignal__fireError__jl_Throwable__Lcom_raquo_airstream_core_Transaction__V(this, new $c_Lcom_raquo_airstream_core_AirstreamError$ErrorHandlingError(tryError, nextError$3$3), transaction);
       }))(nextError)), new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((nextError$3$4) => ((nextValue) => {
         if ((nextValue === null)) {
@@ -17933,27 +17937,27 @@ $p.gP = (function(nextParentValue, transaction) {
   })));
 });
 $p.hG = (function() {
-  var originalValue = this.dr.gU().k4(this.i6);
-  return originalValue.cu(new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((nextError) => {
+  var originalValue = this.ds.gU().k4(this.i6);
+  return originalValue.cz(new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((nextError) => {
     var this$2 = this.i7;
     if (this$2.j()) {
       return originalValue;
     } else {
       var x0 = this$2.Q();
       try {
-        var $x_1 = new $c_s_util_Success(x0.c8(nextError, new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((_$4) => null))));
+        var $x_1 = new $c_s_util_Success(x0.cc(nextError, new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((_$4) => null))));
       } catch (e) {
         var e$2 = ((e instanceof $c_jl_Throwable) ? e : new $c_sjs_js_JavaScriptException(e));
         matchEnd8: {
           var $x_1;
-          if ($m_s_util_control_NonFatal$().eM(e$2)) {
+          if ($m_s_util_control_NonFatal$().eN(e$2)) {
             var $x_1 = new $c_s_util_Failure(e$2);
             break matchEnd8;
           }
           throw ((e$2 instanceof $c_sjs_js_JavaScriptException) ? e$2.ag : e$2);
         }
       }
-      return $x_1.cu(new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((nextError$7$3) => ((tryError) => new $c_s_util_Failure(new $c_Lcom_raquo_airstream_core_AirstreamError$ErrorHandlingError(tryError, nextError$7$3))))(nextError)), new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((nextValue) => {
+      return $x_1.cz(new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((nextError$7$3) => ((tryError) => new $c_s_util_Failure(new $c_Lcom_raquo_airstream_core_AirstreamError$ErrorHandlingError(tryError, nextError$7$3))))(nextError)), new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((nextValue) => {
         if ((nextValue === null)) {
           return originalValue;
         } else {
@@ -17964,7 +17968,7 @@ $p.hG = (function() {
     }
   })), new $c_sjsr_AnonFunction1_$$Lambda$3aa60c34ef08a878abffbf4628007cc68fa3c7ab(((_$6) => originalValue)));
 });
-$p.eZ = (function() {
+$p.f1 = (function() {
   return this;
 });
 var $d_Lcom_raquo_airstream_misc_MapSignal = new $TypeData().i($c_Lcom_raquo_airstream_misc_MapSignal, "com.raquo.airstream.misc.MapSignal", ({
@@ -18002,7 +18006,7 @@ $p.E = (function() {
 $p.D = (function() {
   return $f_sc_Iterable__toString__T(this);
 });
-$p.cE = (function(f) {
+$p.cF = (function(f) {
   return $f_sc_SeqOps__distinctBy__F1__O(this, f);
 });
 $p.k0 = (function(idx) {
@@ -18017,10 +18021,10 @@ $p.j = (function() {
 $p.fE = (function(that) {
   return $f_sc_SeqOps__sameElements__sc_IterableOnce__Z(this, that);
 });
-$p.c8 = (function(x, default$1) {
+$p.cc = (function(x, default$1) {
   return $f_s_PartialFunction__applyOrElse__O__F1__O(this, x, default$1);
 });
-$p.cw = (function(x) {
+$p.cB = (function(x) {
   return this.k0((x | 0));
 });
 /** @constructor */
@@ -18032,13 +18036,13 @@ $p.constructor = $c_sc_AbstractSeqView;
 function $h_sc_AbstractSeqView() {
 }
 $h_sc_AbstractSeqView.prototype = $p;
-$p.eV = (function(f) {
+$p.eX = (function(f) {
   return $ct_sc_SeqView$Map__sc_SeqOps__F1__(new $c_sc_SeqView$Map(), this, f);
 });
 $p.bx = (function() {
   return "SeqView";
 });
-$p.cE = (function(f) {
+$p.cF = (function(f) {
   return $f_sc_SeqOps__distinctBy__F1__O(this, f);
 });
 $p.bt = (function(len) {
@@ -18048,7 +18052,7 @@ $p.j = (function() {
   return $f_sc_SeqOps__isEmpty__Z(this);
 });
 $p.a5 = (function(f) {
-  return this.eV(f);
+  return this.eX(f);
 });
 function $is_sc_IndexedSeq(obj) {
   return (!(!((obj && obj.$classData) && obj.$classData.n.q)));
@@ -18090,28 +18094,28 @@ $p.D = (function() {
 $p.gF = (function(coll) {
   return this.k5().av(coll);
 });
-$p.eX = (function() {
+$p.eZ = (function() {
   return this.k5().aw();
 });
-$p.c8 = (function(x, default$1) {
+$p.cc = (function(x, default$1) {
   return $f_sc_MapOps__applyOrElse__O__F1__O(this, x, default$1);
 });
-$p.eQ = (function(f) {
+$p.eR = (function(f) {
   $f_sc_MapOps__foreachEntry__F2__V(this, f);
 });
-$p.cw = (function(key) {
+$p.cB = (function(key) {
   return this.bm(key);
 });
-$p.e7 = (function(sb, start, sep, end) {
+$p.e8 = (function(sb, start, sep, end) {
   return $f_sc_MapOps__addString__scm_StringBuilder__T__T__T__scm_StringBuilder(this, sb, start, sep, end);
 });
 function $ct_sc_SeqView$Id__sc_SeqOps__($thiz, underlying) {
-  $thiz.ex = underlying;
+  $thiz.ez = underlying;
   return $thiz;
 }
 /** @constructor */
 function $c_sc_SeqView$Id() {
-  this.ex = null;
+  this.ez = null;
 }
 $p = $c_sc_SeqView$Id.prototype = new $h_sc_AbstractSeqView();
 $p.constructor = $c_sc_SeqView$Id;
@@ -18120,19 +18124,19 @@ function $h_sc_SeqView$Id() {
 }
 $h_sc_SeqView$Id.prototype = $p;
 $p.F = (function(idx) {
-  return this.ex.F(idx);
+  return this.ez.F(idx);
 });
 $p.C = (function() {
-  return this.ex.C();
+  return this.ez.C();
 });
 $p.r = (function() {
-  return this.ex.r();
+  return this.ez.r();
 });
 $p.J = (function() {
-  return this.ex.J();
+  return this.ez.J();
 });
 $p.j = (function() {
-  return this.ex.j();
+  return this.ez.j();
 });
 var $d_sc_SeqView$Id = new $TypeData().i($c_sc_SeqView$Id, "scala.collection.SeqView$Id", ({
   bL: 1,
@@ -18157,7 +18161,7 @@ function $ct_sc_SeqView$Map__sc_SeqOps__F1__($thiz, underlying, f) {
 }
 /** @constructor */
 function $c_sc_SeqView$Map() {
-  this.ey = null;
+  this.eA = null;
   this.g5 = null;
   this.g3 = null;
   this.hk = null;
@@ -18168,13 +18172,13 @@ $p.constructor = $c_sc_SeqView$Map;
 function $h_sc_SeqView$Map() {
 }
 $h_sc_SeqView$Map.prototype = $p;
-$p.eV = (function(f) {
+$p.eX = (function(f) {
   return $ct_sc_SeqView$Map__sc_SeqOps__F1__(new $c_sc_SeqView$Map(), this, f);
 });
 $p.bx = (function() {
   return "SeqView";
 });
-$p.cE = (function(f) {
+$p.cF = (function(f) {
   return $f_sc_SeqOps__distinctBy__F1__O(this, f);
 });
 $p.bt = (function(len) {
@@ -18190,7 +18194,7 @@ $p.C = (function() {
   return this.g3.C();
 });
 $p.a5 = (function(f) {
-  return this.eV(f);
+  return this.eX(f);
 });
 var $d_sc_SeqView$Map = new $TypeData().i($c_sc_SeqView$Map, "scala.collection.SeqView$Map", ({
   aX: 1,
@@ -18286,7 +18290,7 @@ function $c_Lcom_raquo_laminar_api_package$$anon$1() {
   this.g = null;
   this.mP = null;
   this.mQ = false;
-  this.fc = null;
+  this.fe = null;
   this.qe = null;
   this.m2 = null;
   this.m3 = false;
@@ -18329,35 +18333,35 @@ $p.s9 = (function() {
   }
   return this.mj;
 });
-$p.eS = (function() {
+$p.eT = (function() {
   if ((!this.mm)) {
     this.ml = new $c_Lcom_raquo_laminar_tags_HtmlTag("h2", false);
     this.mm = true;
   }
   return this.ml;
 });
-$p.bL = (function() {
+$p.bM = (function() {
   if ((!this.mo)) {
     this.mn = new $c_Lcom_raquo_laminar_tags_HtmlTag("h3", false);
     this.mo = true;
   }
   return this.mn;
 });
-$p.fy = (function() {
+$p.eU = (function() {
   if ((!this.mq)) {
     this.mp = new $c_Lcom_raquo_laminar_tags_HtmlTag("h4", false);
     this.mq = true;
   }
   return this.mp;
 });
-$p.b7 = (function() {
+$p.b6 = (function() {
   if ((!this.m5)) {
     this.m4 = new $c_Lcom_raquo_laminar_tags_HtmlTag("a", false);
     this.m5 = true;
   }
   return this.m4;
 });
-$p.b2 = (function() {
+$p.bc = (function() {
   if ((!this.mW)) {
     this.mV = new $c_Lcom_raquo_laminar_tags_HtmlTag("strong", false);
     this.mW = true;
@@ -18399,14 +18403,14 @@ $p.sh = (function() {
   }
   return this.mv;
 });
-$p.cD = (function() {
+$p.cd = (function() {
   if ((!this.m9)) {
     this.m8 = new $c_Lcom_raquo_laminar_tags_HtmlTag("button", false);
     this.m9 = true;
   }
   return this.m8;
 });
-$p.W = (function() {
+$p.R = (function() {
   if ((!this.mM)) {
     this.mL = new $c_Lcom_raquo_laminar_tags_HtmlTag("p", false);
     this.mM = true;
@@ -18427,7 +18431,7 @@ $p.hR = (function() {
   }
   return this.nh;
 });
-$p.cd = (function() {
+$p.ch = (function() {
   if ((!this.mA)) {
     this.mz = new $c_Lcom_raquo_laminar_tags_HtmlTag("li", false);
     this.mA = true;
@@ -18476,7 +18480,7 @@ $p.p = (function() {
   }
   return this.n5;
 });
-$p.cL = (function() {
+$p.cM = (function() {
   if ((!this.n8)) {
     this.n7 = new $c_Lcom_raquo_laminar_tags_HtmlTag("th", false);
     this.n8 = true;
@@ -18504,21 +18508,21 @@ $p.sv = (function() {
   }
   return this.mB;
 });
-$p.b9 = (function() {
+$p.b8 = (function() {
   if ((!this.mu)) {
-    this.mt = new $c_Lcom_raquo_laminar_keys_HtmlAttr("href", $m_Lcom_raquo_laminar_codecs_package$().b3);
+    this.mt = new $c_Lcom_raquo_laminar_keys_HtmlAttr("href", $m_Lcom_raquo_laminar_codecs_package$().b2);
     this.mu = true;
   }
   return this.mt;
 });
 $p.tw = (function() {
   if ((!this.ng)) {
-    this.nf = new $c_Lcom_raquo_laminar_keys_HtmlAttr("type", $m_Lcom_raquo_laminar_codecs_package$().b3);
+    this.nf = new $c_Lcom_raquo_laminar_keys_HtmlAttr("type", $m_Lcom_raquo_laminar_codecs_package$().b2);
     this.ng = true;
   }
   return this.nf;
 });
-$p.cz = (function() {
+$p.c0 = (function() {
   if ((!this.ne)) {
     this.nd = this.tw();
     this.ne = true;
@@ -18534,19 +18538,19 @@ $p.pa = (function() {
 });
 $p.qb = (function() {
   if ((!this.nm)) {
-    this.nl = new $c_Lcom_raquo_laminar_keys_HtmlProp("value", $m_Lcom_raquo_laminar_codecs_package$().b3);
+    this.nl = new $c_Lcom_raquo_laminar_keys_HtmlProp("value", $m_Lcom_raquo_laminar_codecs_package$().b2);
     this.nm = true;
   }
   return this.nl;
 });
 $p.bd = (function() {
   if ((!this.n2)) {
-    this.n1 = new $c_Lcom_raquo_laminar_keys_HtmlProp("target", $m_Lcom_raquo_laminar_codecs_package$().b3);
+    this.n1 = new $c_Lcom_raquo_laminar_keys_HtmlProp("target", $m_Lcom_raquo_laminar_codecs_package$().b2);
     this.n2 = true;
   }
   return this.n1;
 });
-$p.cy = (function() {
+$p.bX = (function() {
   if ((!this.mI)) {
     this.mH = new $c_Lcom_raquo_laminar_keys_EventProp("click");
     this.mI = true;
@@ -18632,7 +18636,7 @@ $p.bx = (function() {
 $p.w = (function() {
   return $f_sc_IndexedSeqOps__head__O(this);
 });
-$p.bV = (function() {
+$p.bW = (function() {
   return $f_sc_IndexedSeqOps__headOption__s_Option(this);
 });
 $p.bt = (function(len) {
@@ -18644,7 +18648,7 @@ $p.J = (function() {
 });
 /** @constructor */
 function $c_sc_IndexedSeqView$Id(underlying) {
-  this.ex = null;
+  this.ez = null;
   $ct_sc_SeqView$Id__sc_SeqOps__(this, underlying);
 }
 $p = $c_sc_IndexedSeqView$Id.prototype = new $h_sc_SeqView$Id();
@@ -18662,7 +18666,7 @@ $p.bx = (function() {
 $p.w = (function() {
   return $f_sc_IndexedSeqOps__head__O(this);
 });
-$p.bV = (function() {
+$p.bW = (function() {
   return $f_sc_IndexedSeqOps__headOption__s_Option(this);
 });
 $p.bt = (function(len) {
@@ -18672,7 +18676,7 @@ $p.bt = (function(len) {
 $p.J = (function() {
   return this.C();
 });
-$p.eV = (function(f) {
+$p.eX = (function(f) {
   return $ct_sc_IndexedSeqView$Map__sc_IndexedSeqOps__F1__(new $c_sc_IndexedSeqView$Map(), this, f);
 });
 $p.a5 = (function(f) {
@@ -18702,7 +18706,7 @@ function $ct_sc_IndexedSeqView$Map__sc_IndexedSeqOps__F1__($thiz, underlying, f)
 }
 /** @constructor */
 function $c_sc_IndexedSeqView$Map() {
-  this.ey = null;
+  this.eA = null;
   this.g5 = null;
   this.g3 = null;
   this.hk = null;
@@ -18725,7 +18729,7 @@ $p.bx = (function() {
 $p.w = (function() {
   return $f_sc_IndexedSeqOps__head__O(this);
 });
-$p.bV = (function() {
+$p.bW = (function() {
   return $f_sc_IndexedSeqOps__headOption__s_Option(this);
 });
 $p.bt = (function(len) {
@@ -18735,7 +18739,7 @@ $p.bt = (function(len) {
 $p.J = (function() {
   return this.C();
 });
-$p.eV = (function(f) {
+$p.eX = (function(f) {
   return this.fC(f);
 });
 $p.a5 = (function(f) {
@@ -18787,7 +18791,7 @@ $p.F = (function(n) {
 $p.C = (function() {
   return this.jg.aS;
 });
-$p.c9 = (function() {
+$p.ce = (function() {
   return "ArrayBufferView";
 });
 $p.r = (function() {
@@ -18796,7 +18800,7 @@ $p.r = (function() {
 $p.fC = (function(f) {
   return new $c_scm_CheckedIndexedSeqView$Map(this, f, this.jf);
 });
-$p.eV = (function(f) {
+$p.eX = (function(f) {
   return this.fC(f);
 });
 $p.a5 = (function(f) {
@@ -18864,8 +18868,8 @@ function $f_sci_IndexedSeq__sameElements__sc_IterableOnce__Z($thiz, o) {
           index = ((1 + index) | 0);
         }
         if (((index < length) && equal)) {
-          var thisIt = $thiz.r().dm(index);
-          var thatIt = o.r().dm(index);
+          var thisIt = $thiz.r().dn(index);
+          var thatIt = o.r().dn(index);
           while ((equal && thisIt.x())) {
             equal = $m_sr_BoxesRunTime$().A(thisIt.n(), thatIt.n());
           }
@@ -18906,7 +18910,7 @@ function $h_scm_AbstractSeq() {
 $h_scm_AbstractSeq.prototype = $p;
 /** @constructor */
 function $c_scm_CheckedIndexedSeqView$Map(underlying, f, mutationCount) {
-  this.ey = null;
+  this.eA = null;
   this.g5 = null;
   this.g3 = null;
   this.hk = null;
@@ -18926,7 +18930,7 @@ $p.r = (function() {
 $p.fC = (function(f) {
   return new $c_scm_CheckedIndexedSeqView$Map(this, f, this.gh);
 });
-$p.eV = (function(f) {
+$p.eX = (function(f) {
   return new $c_scm_CheckedIndexedSeqView$Map(this, f, this.gh);
 });
 $p.a5 = (function(f) {
@@ -18961,7 +18965,7 @@ $p.constructor = $c_sci_Map$EmptyMap$;
 function $h_sci_Map$EmptyMap$() {
 }
 $h_sci_Map$EmptyMap$.prototype = $p;
-$p.bc = (function() {
+$p.bb = (function() {
   return 0;
 });
 $p.J = (function() {
@@ -18980,9 +18984,9 @@ $p.cZ = (function(key, default$1) {
   return default$1.Y();
 });
 $p.r = (function() {
-  return $m_sc_Iterator$().T;
+  return $m_sc_Iterator$().U;
 });
-$p.el = (function(key, value) {
+$p.en = (function(key, value) {
   return new $c_sci_Map$Map1(key, value);
 });
 $p.i = (function(key) {
@@ -19018,10 +19022,10 @@ function $m_sci_Map$EmptyMap$() {
 }
 /** @constructor */
 function $c_sci_Map$Map1(key1, value1) {
-  this.cB = null;
-  this.dL = null;
-  this.cB = key1;
-  this.dL = value1;
+  this.cD = null;
+  this.dM = null;
+  this.cD = key1;
+  this.dM = value1;
 }
 $p = $c_sci_Map$Map1.prototype = new $h_sci_AbstractMap();
 $p.constructor = $c_sci_Map$Map1;
@@ -19032,7 +19036,7 @@ $h_sci_Map$Map1.prototype = $p;
 $p.a5 = (function(f) {
   return $f_sc_StrictOptimizedIterableOps__map__F1__O(this, f);
 });
-$p.bc = (function() {
+$p.bb = (function() {
   return 1;
 });
 $p.J = (function() {
@@ -19042,46 +19046,46 @@ $p.j = (function() {
   return false;
 });
 $p.i = (function(key) {
-  if ($m_sr_BoxesRunTime$().A(key, this.cB)) {
-    return this.dL;
+  if ($m_sr_BoxesRunTime$().A(key, this.cD)) {
+    return this.dM;
   } else {
     throw new $c_ju_NoSuchElementException(("key not found: " + key));
   }
 });
 $p.bm = (function(key) {
-  return $m_sr_BoxesRunTime$().A(key, this.cB);
+  return $m_sr_BoxesRunTime$().A(key, this.cD);
 });
 $p.cZ = (function(key, default$1) {
-  return ($m_sr_BoxesRunTime$().A(key, this.cB) ? this.dL : default$1.Y());
+  return ($m_sr_BoxesRunTime$().A(key, this.cD) ? this.dM : default$1.Y());
 });
 $p.r = (function() {
-  return new $c_sc_Iterator$$anon$20(new $c_T2(this.cB, this.dL));
+  return new $c_sc_Iterator$$anon$20(new $c_T2(this.cD, this.dM));
 });
-$p.f1 = (function(key, value) {
-  return ($m_sr_BoxesRunTime$().A(key, this.cB) ? new $c_sci_Map$Map1(this.cB, value) : new $c_sci_Map$Map2(this.cB, this.dL, key, value));
+$p.f3 = (function(key, value) {
+  return ($m_sr_BoxesRunTime$().A(key, this.cD) ? new $c_sci_Map$Map1(this.cD, value) : new $c_sci_Map$Map2(this.cD, this.dM, key, value));
 });
 $p.aj = (function(f) {
-  f.i(new $c_T2(this.cB, this.dL));
+  f.i(new $c_T2(this.cD, this.dM));
 });
-$p.fx = (function(p) {
-  return (!(!p.i(new $c_T2(this.cB, this.dL))));
+$p.fy = (function(p) {
+  return (!(!p.i(new $c_T2(this.cD, this.dM))));
 });
 $p.E = (function() {
   var a = 0;
   var b = 0;
   var c = 1;
-  var h = $m_s_util_hashing_MurmurHash3$().cM(this.cB, this.dL);
+  var h = $m_s_util_hashing_MurmurHash3$().cN(this.cD, this.dM);
   a = ((a + h) | 0);
   b = (b ^ h);
   c = Math.imul(c, (1 | h));
-  h = $m_s_util_hashing_MurmurHash3$().e6;
+  h = $m_s_util_hashing_MurmurHash3$().e7;
   h = $m_s_util_hashing_MurmurHash3$().m(h, a);
   h = $m_s_util_hashing_MurmurHash3$().m(h, b);
-  h = $m_s_util_hashing_MurmurHash3$().dp(h, c);
+  h = $m_s_util_hashing_MurmurHash3$().dq(h, c);
   return $m_s_util_hashing_MurmurHash3$().N(h, 1);
 });
-$p.el = (function(key, value) {
-  return this.f1(key, value);
+$p.en = (function(key, value) {
+  return this.f3(key, value);
 });
 function $isArrayOf_sci_Map$Map1(obj, depth) {
   return (!(!(((obj && obj.$classData) && (obj.$classData.D === depth)) && obj.$classData.B.n.c4)));
@@ -19110,13 +19114,13 @@ var $d_sci_Map$Map1 = new $TypeData().i($c_sci_Map$Map1, "scala.collection.immut
 }));
 /** @constructor */
 function $c_sci_Map$Map2(key1, value1, key2, value2) {
-  this.ck = null;
+  this.cp = null;
   this.db = null;
-  this.cl = null;
+  this.cq = null;
   this.dc = null;
-  this.ck = key1;
+  this.cp = key1;
   this.db = value1;
-  this.cl = key2;
+  this.cq = key2;
   this.dc = value2;
 }
 $p = $c_sci_Map$Map2.prototype = new $h_sci_AbstractMap();
@@ -19128,7 +19132,7 @@ $h_sci_Map$Map2.prototype = $p;
 $p.a5 = (function(f) {
   return $f_sc_StrictOptimizedIterableOps__map__F1__O(this, f);
 });
-$p.bc = (function() {
+$p.bb = (function() {
   return 2;
 });
 $p.J = (function() {
@@ -19138,53 +19142,53 @@ $p.j = (function() {
   return false;
 });
 $p.i = (function(key) {
-  if ($m_sr_BoxesRunTime$().A(key, this.ck)) {
+  if ($m_sr_BoxesRunTime$().A(key, this.cp)) {
     return this.db;
-  } else if ($m_sr_BoxesRunTime$().A(key, this.cl)) {
+  } else if ($m_sr_BoxesRunTime$().A(key, this.cq)) {
     return this.dc;
   } else {
     throw new $c_ju_NoSuchElementException(("key not found: " + key));
   }
 });
 $p.bm = (function(key) {
-  return ($m_sr_BoxesRunTime$().A(key, this.ck) || $m_sr_BoxesRunTime$().A(key, this.cl));
+  return ($m_sr_BoxesRunTime$().A(key, this.cp) || $m_sr_BoxesRunTime$().A(key, this.cq));
 });
 $p.cZ = (function(key, default$1) {
-  return ($m_sr_BoxesRunTime$().A(key, this.ck) ? this.db : ($m_sr_BoxesRunTime$().A(key, this.cl) ? this.dc : default$1.Y()));
+  return ($m_sr_BoxesRunTime$().A(key, this.cp) ? this.db : ($m_sr_BoxesRunTime$().A(key, this.cq) ? this.dc : default$1.Y()));
 });
 $p.r = (function() {
   return new $c_sci_Map$Map2$$anon$1(this);
 });
-$p.f1 = (function(key, value) {
-  return ($m_sr_BoxesRunTime$().A(key, this.ck) ? new $c_sci_Map$Map2(this.ck, value, this.cl, this.dc) : ($m_sr_BoxesRunTime$().A(key, this.cl) ? new $c_sci_Map$Map2(this.ck, this.db, this.cl, value) : new $c_sci_Map$Map3(this.ck, this.db, this.cl, this.dc, key, value)));
+$p.f3 = (function(key, value) {
+  return ($m_sr_BoxesRunTime$().A(key, this.cp) ? new $c_sci_Map$Map2(this.cp, value, this.cq, this.dc) : ($m_sr_BoxesRunTime$().A(key, this.cq) ? new $c_sci_Map$Map2(this.cp, this.db, this.cq, value) : new $c_sci_Map$Map3(this.cp, this.db, this.cq, this.dc, key, value)));
 });
 $p.aj = (function(f) {
-  f.i(new $c_T2(this.ck, this.db));
-  f.i(new $c_T2(this.cl, this.dc));
+  f.i(new $c_T2(this.cp, this.db));
+  f.i(new $c_T2(this.cq, this.dc));
 });
-$p.fx = (function(p) {
-  return ((!(!p.i(new $c_T2(this.ck, this.db)))) && (!(!p.i(new $c_T2(this.cl, this.dc)))));
+$p.fy = (function(p) {
+  return ((!(!p.i(new $c_T2(this.cp, this.db)))) && (!(!p.i(new $c_T2(this.cq, this.dc)))));
 });
 $p.E = (function() {
   var a = 0;
   var b = 0;
   var c = 1;
-  var h = $m_s_util_hashing_MurmurHash3$().cM(this.ck, this.db);
+  var h = $m_s_util_hashing_MurmurHash3$().cN(this.cp, this.db);
   a = ((a + h) | 0);
   b = (b ^ h);
   c = Math.imul(c, (1 | h));
-  h = $m_s_util_hashing_MurmurHash3$().cM(this.cl, this.dc);
+  h = $m_s_util_hashing_MurmurHash3$().cN(this.cq, this.dc);
   a = ((a + h) | 0);
   b = (b ^ h);
   c = Math.imul(c, (1 | h));
-  h = $m_s_util_hashing_MurmurHash3$().e6;
+  h = $m_s_util_hashing_MurmurHash3$().e7;
   h = $m_s_util_hashing_MurmurHash3$().m(h, a);
   h = $m_s_util_hashing_MurmurHash3$().m(h, b);
-  h = $m_s_util_hashing_MurmurHash3$().dp(h, c);
+  h = $m_s_util_hashing_MurmurHash3$().dq(h, c);
   return $m_s_util_hashing_MurmurHash3$().N(h, 2);
 });
-$p.el = (function(key, value) {
-  return this.f1(key, value);
+$p.en = (function(key, value) {
+  return this.f3(key, value);
 });
 function $isArrayOf_sci_Map$Map2(obj, depth) {
   return (!(!(((obj && obj.$classData) && (obj.$classData.D === depth)) && obj.$classData.B.n.c5)));
@@ -19213,17 +19217,17 @@ var $d_sci_Map$Map2 = new $TypeData().i($c_sci_Map$Map2, "scala.collection.immut
 }));
 /** @constructor */
 function $c_sci_Map$Map3(key1, value1, key2, value2, key3, value3) {
-  this.c4 = null;
+  this.c8 = null;
   this.cQ = null;
-  this.c5 = null;
+  this.c9 = null;
   this.cR = null;
-  this.c6 = null;
+  this.ca = null;
   this.cS = null;
-  this.c4 = key1;
+  this.c8 = key1;
   this.cQ = value1;
-  this.c5 = key2;
+  this.c9 = key2;
   this.cR = value2;
-  this.c6 = key3;
+  this.ca = key3;
   this.cS = value3;
 }
 $p = $c_sci_Map$Map3.prototype = new $h_sci_AbstractMap();
@@ -19235,7 +19239,7 @@ $h_sci_Map$Map3.prototype = $p;
 $p.a5 = (function(f) {
   return $f_sc_StrictOptimizedIterableOps__map__F1__O(this, f);
 });
-$p.bc = (function() {
+$p.bb = (function() {
   return 3;
 });
 $p.J = (function() {
@@ -19245,60 +19249,60 @@ $p.j = (function() {
   return false;
 });
 $p.i = (function(key) {
-  if ($m_sr_BoxesRunTime$().A(key, this.c4)) {
+  if ($m_sr_BoxesRunTime$().A(key, this.c8)) {
     return this.cQ;
-  } else if ($m_sr_BoxesRunTime$().A(key, this.c5)) {
+  } else if ($m_sr_BoxesRunTime$().A(key, this.c9)) {
     return this.cR;
-  } else if ($m_sr_BoxesRunTime$().A(key, this.c6)) {
+  } else if ($m_sr_BoxesRunTime$().A(key, this.ca)) {
     return this.cS;
   } else {
     throw new $c_ju_NoSuchElementException(("key not found: " + key));
   }
 });
 $p.bm = (function(key) {
-  return (($m_sr_BoxesRunTime$().A(key, this.c4) || $m_sr_BoxesRunTime$().A(key, this.c5)) || $m_sr_BoxesRunTime$().A(key, this.c6));
+  return (($m_sr_BoxesRunTime$().A(key, this.c8) || $m_sr_BoxesRunTime$().A(key, this.c9)) || $m_sr_BoxesRunTime$().A(key, this.ca));
 });
 $p.cZ = (function(key, default$1) {
-  return ($m_sr_BoxesRunTime$().A(key, this.c4) ? this.cQ : ($m_sr_BoxesRunTime$().A(key, this.c5) ? this.cR : ($m_sr_BoxesRunTime$().A(key, this.c6) ? this.cS : default$1.Y())));
+  return ($m_sr_BoxesRunTime$().A(key, this.c8) ? this.cQ : ($m_sr_BoxesRunTime$().A(key, this.c9) ? this.cR : ($m_sr_BoxesRunTime$().A(key, this.ca) ? this.cS : default$1.Y())));
 });
 $p.r = (function() {
   return new $c_sci_Map$Map3$$anon$4(this);
 });
-$p.f1 = (function(key, value) {
-  return ($m_sr_BoxesRunTime$().A(key, this.c4) ? new $c_sci_Map$Map3(this.c4, value, this.c5, this.cR, this.c6, this.cS) : ($m_sr_BoxesRunTime$().A(key, this.c5) ? new $c_sci_Map$Map3(this.c4, this.cQ, this.c5, value, this.c6, this.cS) : ($m_sr_BoxesRunTime$().A(key, this.c6) ? new $c_sci_Map$Map3(this.c4, this.cQ, this.c5, this.cR, this.c6, value) : new $c_sci_Map$Map4(this.c4, this.cQ, this.c5, this.cR, this.c6, this.cS, key, value))));
+$p.f3 = (function(key, value) {
+  return ($m_sr_BoxesRunTime$().A(key, this.c8) ? new $c_sci_Map$Map3(this.c8, value, this.c9, this.cR, this.ca, this.cS) : ($m_sr_BoxesRunTime$().A(key, this.c9) ? new $c_sci_Map$Map3(this.c8, this.cQ, this.c9, value, this.ca, this.cS) : ($m_sr_BoxesRunTime$().A(key, this.ca) ? new $c_sci_Map$Map3(this.c8, this.cQ, this.c9, this.cR, this.ca, value) : new $c_sci_Map$Map4(this.c8, this.cQ, this.c9, this.cR, this.ca, this.cS, key, value))));
 });
 $p.aj = (function(f) {
-  f.i(new $c_T2(this.c4, this.cQ));
-  f.i(new $c_T2(this.c5, this.cR));
-  f.i(new $c_T2(this.c6, this.cS));
+  f.i(new $c_T2(this.c8, this.cQ));
+  f.i(new $c_T2(this.c9, this.cR));
+  f.i(new $c_T2(this.ca, this.cS));
 });
-$p.fx = (function(p) {
-  return (((!(!p.i(new $c_T2(this.c4, this.cQ)))) && (!(!p.i(new $c_T2(this.c5, this.cR))))) && (!(!p.i(new $c_T2(this.c6, this.cS)))));
+$p.fy = (function(p) {
+  return (((!(!p.i(new $c_T2(this.c8, this.cQ)))) && (!(!p.i(new $c_T2(this.c9, this.cR))))) && (!(!p.i(new $c_T2(this.ca, this.cS)))));
 });
 $p.E = (function() {
   var a = 0;
   var b = 0;
   var c = 1;
-  var h = $m_s_util_hashing_MurmurHash3$().cM(this.c4, this.cQ);
+  var h = $m_s_util_hashing_MurmurHash3$().cN(this.c8, this.cQ);
   a = ((a + h) | 0);
   b = (b ^ h);
   c = Math.imul(c, (1 | h));
-  h = $m_s_util_hashing_MurmurHash3$().cM(this.c5, this.cR);
+  h = $m_s_util_hashing_MurmurHash3$().cN(this.c9, this.cR);
   a = ((a + h) | 0);
   b = (b ^ h);
   c = Math.imul(c, (1 | h));
-  h = $m_s_util_hashing_MurmurHash3$().cM(this.c6, this.cS);
+  h = $m_s_util_hashing_MurmurHash3$().cN(this.ca, this.cS);
   a = ((a + h) | 0);
   b = (b ^ h);
   c = Math.imul(c, (1 | h));
-  h = $m_s_util_hashing_MurmurHash3$().e6;
+  h = $m_s_util_hashing_MurmurHash3$().e7;
   h = $m_s_util_hashing_MurmurHash3$().m(h, a);
   h = $m_s_util_hashing_MurmurHash3$().m(h, b);
-  h = $m_s_util_hashing_MurmurHash3$().dp(h, c);
+  h = $m_s_util_hashing_MurmurHash3$().dq(h, c);
   return $m_s_util_hashing_MurmurHash3$().N(h, 3);
 });
-$p.el = (function(key, value) {
-  return this.f1(key, value);
+$p.en = (function(key, value) {
+  return this.f3(key, value);
 });
 function $isArrayOf_sci_Map$Map3(obj, depth) {
   return (!(!(((obj && obj.$classData) && (obj.$classData.D === depth)) && obj.$classData.B.n.c6)));
@@ -19328,21 +19332,21 @@ var $d_sci_Map$Map3 = new $TypeData().i($c_sci_Map$Map3, "scala.collection.immut
 /** @constructor */
 function $c_sci_Map$Map4(key1, value1, key2, value2, key3, value3, key4, value4) {
   this.bE = null;
-  this.cm = null;
+  this.cr = null;
   this.bF = null;
-  this.cn = null;
+  this.cs = null;
   this.bG = null;
-  this.co = null;
+  this.ct = null;
   this.bH = null;
-  this.cp = null;
+  this.cu = null;
   this.bE = key1;
-  this.cm = value1;
+  this.cr = value1;
   this.bF = key2;
-  this.cn = value2;
+  this.cs = value2;
   this.bG = key3;
-  this.co = value3;
+  this.ct = value3;
   this.bH = key4;
-  this.cp = value4;
+  this.cu = value4;
 }
 $p = $c_sci_Map$Map4.prototype = new $h_sci_AbstractMap();
 $p.constructor = $c_sci_Map$Map4;
@@ -19353,7 +19357,7 @@ $h_sci_Map$Map4.prototype = $p;
 $p.a5 = (function(f) {
   return $f_sc_StrictOptimizedIterableOps__map__F1__O(this, f);
 });
-$p.bc = (function() {
+$p.bb = (function() {
   return 4;
 });
 $p.J = (function() {
@@ -19364,13 +19368,13 @@ $p.j = (function() {
 });
 $p.i = (function(key) {
   if ($m_sr_BoxesRunTime$().A(key, this.bE)) {
-    return this.cm;
+    return this.cr;
   } else if ($m_sr_BoxesRunTime$().A(key, this.bF)) {
-    return this.cn;
+    return this.cs;
   } else if ($m_sr_BoxesRunTime$().A(key, this.bG)) {
-    return this.co;
+    return this.ct;
   } else if ($m_sr_BoxesRunTime$().A(key, this.bH)) {
-    return this.cp;
+    return this.cu;
   } else {
     throw new $c_ju_NoSuchElementException(("key not found: " + key));
   }
@@ -19379,54 +19383,54 @@ $p.bm = (function(key) {
   return ((($m_sr_BoxesRunTime$().A(key, this.bE) || $m_sr_BoxesRunTime$().A(key, this.bF)) || $m_sr_BoxesRunTime$().A(key, this.bG)) || $m_sr_BoxesRunTime$().A(key, this.bH));
 });
 $p.cZ = (function(key, default$1) {
-  return ($m_sr_BoxesRunTime$().A(key, this.bE) ? this.cm : ($m_sr_BoxesRunTime$().A(key, this.bF) ? this.cn : ($m_sr_BoxesRunTime$().A(key, this.bG) ? this.co : ($m_sr_BoxesRunTime$().A(key, this.bH) ? this.cp : default$1.Y()))));
+  return ($m_sr_BoxesRunTime$().A(key, this.bE) ? this.cr : ($m_sr_BoxesRunTime$().A(key, this.bF) ? this.cs : ($m_sr_BoxesRunTime$().A(key, this.bG) ? this.ct : ($m_sr_BoxesRunTime$().A(key, this.bH) ? this.cu : default$1.Y()))));
 });
 $p.r = (function() {
   return new $c_sci_Map$Map4$$anon$7(this);
 });
-$p.f1 = (function(key, value) {
-  return ($m_sr_BoxesRunTime$().A(key, this.bE) ? new $c_sci_Map$Map4(this.bE, value, this.bF, this.cn, this.bG, this.co, this.bH, this.cp) : ($m_sr_BoxesRunTime$().A(key, this.bF) ? new $c_sci_Map$Map4(this.bE, this.cm, this.bF, value, this.bG, this.co, this.bH, this.cp) : ($m_sr_BoxesRunTime$().A(key, this.bG) ? new $c_sci_Map$Map4(this.bE, this.cm, this.bF, this.cn, this.bG, value, this.bH, this.cp) : ($m_sr_BoxesRunTime$().A(key, this.bH) ? new $c_sci_Map$Map4(this.bE, this.cm, this.bF, this.cn, this.bG, this.co, this.bH, value) : $m_sci_HashMap$().j5.fI(this.bE, this.cm).fI(this.bF, this.cn).fI(this.bG, this.co).fI(this.bH, this.cp).fI(key, value)))));
+$p.f3 = (function(key, value) {
+  return ($m_sr_BoxesRunTime$().A(key, this.bE) ? new $c_sci_Map$Map4(this.bE, value, this.bF, this.cs, this.bG, this.ct, this.bH, this.cu) : ($m_sr_BoxesRunTime$().A(key, this.bF) ? new $c_sci_Map$Map4(this.bE, this.cr, this.bF, value, this.bG, this.ct, this.bH, this.cu) : ($m_sr_BoxesRunTime$().A(key, this.bG) ? new $c_sci_Map$Map4(this.bE, this.cr, this.bF, this.cs, this.bG, value, this.bH, this.cu) : ($m_sr_BoxesRunTime$().A(key, this.bH) ? new $c_sci_Map$Map4(this.bE, this.cr, this.bF, this.cs, this.bG, this.ct, this.bH, value) : $m_sci_HashMap$().j5.fI(this.bE, this.cr).fI(this.bF, this.cs).fI(this.bG, this.ct).fI(this.bH, this.cu).fI(key, value)))));
 });
 $p.aj = (function(f) {
-  f.i(new $c_T2(this.bE, this.cm));
-  f.i(new $c_T2(this.bF, this.cn));
-  f.i(new $c_T2(this.bG, this.co));
-  f.i(new $c_T2(this.bH, this.cp));
+  f.i(new $c_T2(this.bE, this.cr));
+  f.i(new $c_T2(this.bF, this.cs));
+  f.i(new $c_T2(this.bG, this.ct));
+  f.i(new $c_T2(this.bH, this.cu));
 });
-$p.fx = (function(p) {
-  return ((((!(!p.i(new $c_T2(this.bE, this.cm)))) && (!(!p.i(new $c_T2(this.bF, this.cn))))) && (!(!p.i(new $c_T2(this.bG, this.co))))) && (!(!p.i(new $c_T2(this.bH, this.cp)))));
+$p.fy = (function(p) {
+  return ((((!(!p.i(new $c_T2(this.bE, this.cr)))) && (!(!p.i(new $c_T2(this.bF, this.cs))))) && (!(!p.i(new $c_T2(this.bG, this.ct))))) && (!(!p.i(new $c_T2(this.bH, this.cu)))));
 });
 $p.r7 = (function(builder) {
-  return builder.eI(this.bE, this.cm).eI(this.bF, this.cn).eI(this.bG, this.co).eI(this.bH, this.cp);
+  return builder.eK(this.bE, this.cr).eK(this.bF, this.cs).eK(this.bG, this.ct).eK(this.bH, this.cu);
 });
 $p.E = (function() {
   var a = 0;
   var b = 0;
   var c = 1;
-  var h = $m_s_util_hashing_MurmurHash3$().cM(this.bE, this.cm);
+  var h = $m_s_util_hashing_MurmurHash3$().cN(this.bE, this.cr);
   a = ((a + h) | 0);
   b = (b ^ h);
   c = Math.imul(c, (1 | h));
-  h = $m_s_util_hashing_MurmurHash3$().cM(this.bF, this.cn);
+  h = $m_s_util_hashing_MurmurHash3$().cN(this.bF, this.cs);
   a = ((a + h) | 0);
   b = (b ^ h);
   c = Math.imul(c, (1 | h));
-  h = $m_s_util_hashing_MurmurHash3$().cM(this.bG, this.co);
+  h = $m_s_util_hashing_MurmurHash3$().cN(this.bG, this.ct);
   a = ((a + h) | 0);
   b = (b ^ h);
   c = Math.imul(c, (1 | h));
-  h = $m_s_util_hashing_MurmurHash3$().cM(this.bH, this.cp);
+  h = $m_s_util_hashing_MurmurHash3$().cN(this.bH, this.cu);
   a = ((a + h) | 0);
   b = (b ^ h);
   c = Math.imul(c, (1 | h));
-  h = $m_s_util_hashing_MurmurHash3$().e6;
+  h = $m_s_util_hashing_MurmurHash3$().e7;
   h = $m_s_util_hashing_MurmurHash3$().m(h, a);
   h = $m_s_util_hashing_MurmurHash3$().m(h, b);
-  h = $m_s_util_hashing_MurmurHash3$().dp(h, c);
+  h = $m_s_util_hashing_MurmurHash3$().dq(h, c);
   return $m_s_util_hashing_MurmurHash3$().N(h, 4);
 });
-$p.el = (function(key, value) {
-  return this.f1(key, value);
+$p.en = (function(key, value) {
+  return this.f3(key, value);
 });
 function $isArrayOf_sci_Map$Map4(obj, depth) {
   return (!(!(((obj && obj.$classData) && (obj.$classData.D === depth)) && obj.$classData.B.n.c7)));
@@ -19465,7 +19469,7 @@ $p.constructor = $c_scm_AbstractSet;
 function $h_scm_AbstractSet() {
 }
 $h_scm_AbstractSet.prototype = $p;
-$p.ba = (function() {
+$p.b9 = (function() {
   return this;
 });
 function $p_sci_LazyList__scala$collection$immutable$LazyList$$state$lzycompute__sci_LazyList$State($thiz) {
@@ -19479,7 +19483,7 @@ function $p_sci_LazyList__scala$collection$immutable$LazyList$$state$lzycompute_
     } finally {
       $thiz.hn = false;
     }
-    $thiz.bR = true;
+    $thiz.bS = true;
     $thiz.j7 = null;
     $thiz.j8 = res;
     $thiz.j6 = true;
@@ -19488,44 +19492,44 @@ function $p_sci_LazyList__scala$collection$immutable$LazyList$$state$lzycompute_
 }
 function $p_sci_LazyList__mapImpl__F1__sci_LazyList($thiz, f) {
   $m_sci_LazyList$();
-  return new $c_sci_LazyList(new $c_sr_AbstractFunction0_$$Lambda$a02b774b97db8234e08c6a02dd06557c99779855((() => ($thiz.j() ? $m_sci_LazyList$State$Empty$() : ($m_sci_LazyList$(), new $c_sci_LazyList$State$Cons(f.i($thiz.L().w()), $p_sci_LazyList__mapImpl__F1__sci_LazyList($thiz.L().aM(), f)))))));
+  return new $c_sci_LazyList(new $c_sr_AbstractFunction0_$$Lambda$a02b774b97db8234e08c6a02dd06557c99779855((() => ($thiz.j() ? $m_sci_LazyList$State$Empty$() : ($m_sci_LazyList$(), new $c_sci_LazyList$State$Cons(f.i($thiz.L().w()), $p_sci_LazyList__mapImpl__F1__sci_LazyList($thiz.L().aN(), f)))))));
 }
 function $p_sci_LazyList__addStringNoForce__jl_StringBuilder__T__T__T__jl_StringBuilder($thiz, b, start, sep, end) {
   b.B = (("" + b.B) + start);
-  if ((!$thiz.bR)) {
+  if ((!$thiz.bS)) {
     b.B = (b.B + "<not computed>");
   } else if ((!$thiz.j())) {
     var obj = $thiz.L().w();
     b.B = (("" + b.B) + obj);
     var elem = null;
     elem = $thiz;
-    var elem$1 = $thiz.L().aM();
+    var elem$1 = $thiz.L().aN();
     var elem$2 = null;
     elem$2 = elem$1;
-    if (((elem !== elem$2) && ((!elem$2.bR) || (elem.L() !== elem$2.L())))) {
+    if (((elem !== elem$2) && ((!elem$2.bS) || (elem.L() !== elem$2.L())))) {
       elem = elem$2;
-      if ((elem$2.bR && (!elem$2.j()))) {
-        elem$2 = elem$2.L().aM();
-        while ((((elem !== elem$2) && (elem$2.bR && (!elem$2.j()))) && (elem.L() !== elem$2.L()))) {
+      if ((elem$2.bS && (!elem$2.j()))) {
+        elem$2 = elem$2.L().aN();
+        while ((((elem !== elem$2) && (elem$2.bS && (!elem$2.j()))) && (elem.L() !== elem$2.L()))) {
           b.B = (("" + b.B) + sep);
           var obj$1 = elem.L().w();
           b.B = (("" + b.B) + obj$1);
-          elem = elem.L().aM();
-          elem$2 = elem$2.L().aM();
-          if ((elem$2.bR && (!elem$2.j()))) {
-            elem$2 = elem$2.L().aM();
+          elem = elem.L().aN();
+          elem$2 = elem$2.L().aN();
+          if ((elem$2.bS && (!elem$2.j()))) {
+            elem$2 = elem$2.L().aN();
           }
         }
       }
     }
-    if ((!(elem$2.bR && (!elem$2.j())))) {
+    if ((!(elem$2.bS && (!elem$2.j())))) {
       while ((elem !== elem$2)) {
         b.B = (("" + b.B) + sep);
         var obj$2 = elem.L().w();
         b.B = (("" + b.B) + obj$2);
-        elem = elem.L().aM();
+        elem = elem.L().aN();
       }
-      if ((!elem.bR)) {
+      if ((!elem.bS)) {
         b.B = (("" + b.B) + sep);
         b.B = (b.B + "<not computed>");
       }
@@ -19536,8 +19540,8 @@ function $p_sci_LazyList__addStringNoForce__jl_StringBuilder__T__T__T__jl_String
         var a = runner;
         var b$1 = elem$2;
         if ((!((a === b$1) || (a.L() === b$1.L())))) {
-          runner = runner.L().aM();
-          elem$2 = elem$2.L().aM();
+          runner = runner.L().aN();
+          elem$2 = elem$2.L().aN();
           k = ((1 + k) | 0);
         } else {
           break;
@@ -19549,7 +19553,7 @@ function $p_sci_LazyList__addStringNoForce__jl_StringBuilder__T__T__T__jl_String
         b.B = (("" + b.B) + sep);
         var obj$3 = elem.L().w();
         b.B = (("" + b.B) + obj$3);
-        elem = elem.L().aM();
+        elem = elem.L().aN();
       }
       while (true) {
         var a$2 = elem;
@@ -19558,7 +19562,7 @@ function $p_sci_LazyList__addStringNoForce__jl_StringBuilder__T__T__T__jl_String
           b.B = (("" + b.B) + sep);
           var obj$4 = elem.L().w();
           b.B = (("" + b.B) + obj$4);
-          elem = elem.L().aM();
+          elem = elem.L().aN();
         } else {
           break;
         }
@@ -19574,11 +19578,11 @@ function $p_sci_LazyList__addStringNoForce__jl_StringBuilder__T__T__T__jl_String
 function $c_sci_LazyList(lazyState) {
   this.j8 = null;
   this.j7 = null;
-  this.bR = false;
+  this.bS = false;
   this.hn = false;
   this.j6 = false;
   this.j7 = lazyState;
-  this.bR = false;
+  this.bS = false;
   this.hn = false;
 }
 $p = $c_sci_LazyList.prototype = new $h_sci_AbstractSeq();
@@ -19590,7 +19594,7 @@ $h_sci_LazyList.prototype = $p;
 $p.bx = (function() {
   return "LinearSeq";
 });
-$p.bV = (function() {
+$p.bW = (function() {
   return $f_sc_LinearSeqOps__headOption__s_Option(this);
 });
 $p.C = (function() {
@@ -19615,7 +19619,7 @@ $p.j = (function() {
   return (this.L() === $m_sci_LazyList$State$Empty$());
 });
 $p.J = (function() {
-  return ((this.bR && (this.L() === $m_sci_LazyList$State$Empty$())) ? 0 : (-1));
+  return ((this.bS && (this.L() === $m_sci_LazyList$State$Empty$())) ? 0 : (-1));
 });
 $p.w = (function() {
   return this.L().w();
@@ -19624,51 +19628,51 @@ $p.pu = (function() {
   var these = this;
   var those = this;
   if ((!these.j())) {
-    these = these.L().aM();
+    these = these.L().aN();
   }
   while ((those !== these)) {
     if (these.j()) {
       return this;
     }
-    these = these.L().aM();
+    these = these.L().aN();
     if (these.j()) {
       return this;
     }
-    these = these.L().aM();
+    these = these.L().aN();
     if ((these === those)) {
       return this;
     }
-    those = those.L().aM();
+    those = those.L().aN();
   }
   return this;
 });
 $p.r = (function() {
-  return ((this.bR && (this.L() === $m_sci_LazyList$State$Empty$())) ? $m_sc_Iterator$().T : new $c_sci_LazyList$LazyIterator(this));
+  return ((this.bS && (this.L() === $m_sci_LazyList$State$Empty$())) ? $m_sc_Iterator$().U : new $c_sci_LazyList$LazyIterator(this));
 });
 $p.aj = (function(f) {
   var _$this = this;
   while (true) {
     if ((!_$this.j())) {
       f.i(_$this.L().w());
-      _$this = _$this.L().aM();
+      _$this = _$this.L().aN();
       continue;
     }
     break;
   }
 });
-$p.c9 = (function() {
+$p.ce = (function() {
   return "LazyList";
 });
 $p.sx = (function(f) {
-  return ((this.bR && (this.L() === $m_sci_LazyList$State$Empty$())) ? $m_sci_LazyList$().gb : ($m_sci_LazyList$(), new $c_sci_LazyList(new $c_sr_AbstractFunction0_$$Lambda$a02b774b97db8234e08c6a02dd06557c99779855((() => (this.j() ? $m_sci_LazyList$State$Empty$() : ($m_sci_LazyList$(), new $c_sci_LazyList$State$Cons(f.i(this.L().w()), $p_sci_LazyList__mapImpl__F1__sci_LazyList(this.L().aM(), f)))))))));
+  return ((this.bS && (this.L() === $m_sci_LazyList$State$Empty$())) ? $m_sci_LazyList$().gb : ($m_sci_LazyList$(), new $c_sci_LazyList(new $c_sr_AbstractFunction0_$$Lambda$a02b774b97db8234e08c6a02dd06557c99779855((() => (this.j() ? $m_sci_LazyList$State$Empty$() : ($m_sci_LazyList$(), new $c_sci_LazyList$State$Cons(f.i(this.L().w()), $p_sci_LazyList__mapImpl__F1__sci_LazyList(this.L().aN(), f)))))))));
 });
 $p.rM = (function(f) {
-  return ((this.bR && (this.L() === $m_sci_LazyList$State$Empty$())) ? $m_sci_LazyList$().gb : $m_sci_LazyList$().pZ(this, f));
+  return ((this.bS && (this.L() === $m_sci_LazyList$State$Empty$())) ? $m_sci_LazyList$().gb : $m_sci_LazyList$().pZ(this, f));
 });
 $p.rC = (function(n) {
-  return ((n <= 0) ? this : ((this.bR && (this.L() === $m_sci_LazyList$State$Empty$())) ? $m_sci_LazyList$().gb : $m_sci_LazyList$().th(this, n)));
+  return ((n <= 0) ? this : ((this.bS && (this.L() === $m_sci_LazyList$State$Empty$())) ? $m_sci_LazyList$().gb : $m_sci_LazyList$().th(this, n)));
 });
-$p.e7 = (function(sb, start, sep, end) {
+$p.e8 = (function(sb, start, sep, end) {
   this.pu();
   $p_sci_LazyList__addStringNoForce__jl_StringBuilder__T__T__T__jl_StringBuilder(this, sb.b0, start, sep, end);
   return sb;
@@ -19679,20 +19683,20 @@ $p.D = (function() {
 $p.i = (function(v1) {
   return $f_sc_LinearSeqOps__apply__I__O(this, (v1 | 0));
 });
-$p.cw = (function(x) {
+$p.cB = (function(x) {
   return $f_sc_LinearSeqOps__isDefinedAt__I__Z(this, (x | 0));
 });
 $p.pk = (function(n) {
   return this.rC(n);
 });
-$p.eP = (function(asIterable) {
+$p.eQ = (function(asIterable) {
   return this.rM(asIterable);
 });
 $p.a5 = (function(f) {
   return this.sx(f);
 });
 $p.y = (function() {
-  return this.L().aM();
+  return this.L().aN();
 });
 $p.bs = (function() {
   return $m_sci_LazyList$();
@@ -19738,13 +19742,13 @@ $p.constructor = $c_sjsr_WrappedVarArgs;
 function $h_sjsr_WrappedVarArgs() {
 }
 $h_sjsr_WrappedVarArgs.prototype = $p;
-$p.cE = (function(f) {
+$p.cF = (function(f) {
   return $f_sci_StrictOptimizedSeqOps__distinctBy__F1__O(this, f);
 });
 $p.a5 = (function(f) {
   return $f_sc_StrictOptimizedIterableOps__map__F1__O(this, f);
 });
-$p.eP = (function(toIterableOnce) {
+$p.eQ = (function(toIterableOnce) {
   return $f_sc_StrictOptimizedIterableOps__flatten__F1__O(this, toIterableOnce);
 });
 $p.hF = (function(that) {
@@ -19762,7 +19766,7 @@ $p.r = (function() {
 $p.w = (function() {
   return $f_sc_IndexedSeqOps__head__O(this);
 });
-$p.bV = (function() {
+$p.bW = (function() {
   return $f_sc_IndexedSeqOps__headOption__s_Option(this);
 });
 $p.bt = (function(len) {
@@ -19784,25 +19788,25 @@ $p.D = (function() {
 $p.j = (function() {
   return $f_sc_SeqOps__isEmpty__Z(this);
 });
-$p.c8 = (function(x, default$1) {
+$p.cc = (function(x, default$1) {
   return $f_s_PartialFunction__applyOrElse__O__F1__O(this, x, default$1);
 });
-$p.eX = (function() {
+$p.eZ = (function() {
   return $m_sjsr_WrappedVarArgs$().aw();
 });
 $p.aj = (function(f) {
   $f_sc_IterableOnceOps__foreach__F1__V(this, f);
 });
-$p.ca = (function(xs, start, len) {
+$p.cf = (function(xs, start, len) {
   return $f_sc_IterableOnceOps__copyToArray__O__I__I__I(this, xs, start, len);
 });
-$p.e7 = (function(b, start, sep, end) {
+$p.e8 = (function(b, start, sep, end) {
   return $f_sc_IterableOnceOps__addString__scm_StringBuilder__T__T__T__scm_StringBuilder(this, b, start, sep, end);
 });
-$p.eY = (function() {
-  return $m_sci_Nil$().eh(this);
+$p.f0 = (function() {
+  return $m_sci_Nil$().ej(this);
 });
-$p.ed = (function() {
+$p.ef = (function() {
   return $m_sjsr_WrappedVarArgs$();
 });
 $p.C = (function() {
@@ -19811,13 +19815,13 @@ $p.C = (function() {
 $p.F = (function(idx) {
   return this.hu[idx];
 });
-$p.c9 = (function() {
+$p.ce = (function() {
   return "WrappedVarArgs";
 });
 $p.gE = (function(coll) {
   return $m_sjsr_WrappedVarArgs$().jQ(coll);
 });
-$p.cw = (function(x) {
+$p.cB = (function(x) {
   return $f_sc_SeqOps__isDefinedAt__I__Z(this, (x | 0));
 });
 $p.i = (function(v1) {
@@ -19873,40 +19877,40 @@ $p.k5 = (function() {
 $p.J = (function() {
   return this.by.be;
 });
-$p.bc = (function() {
+$p.bb = (function() {
   return this.by.be;
 });
 $p.j = (function() {
   return (this.by.be === 0);
 });
 $p.r = (function() {
-  return (this.j() ? $m_sc_Iterator$().T : new $c_sci_MapKeyValueTupleIterator(this.by));
+  return (this.j() ? $m_sc_Iterator$().U : new $c_sci_MapKeyValueTupleIterator(this.by));
 });
 $p.bm = (function(key) {
   var keyUnimprovedHash = $m_sr_Statics$().a2(key);
-  var keyHash = $m_sc_Hashing$().cG(keyUnimprovedHash);
+  var keyHash = $m_sc_Hashing$().cH(keyUnimprovedHash);
   return this.by.jE(key, keyUnimprovedHash, keyHash, 0);
 });
 $p.i = (function(key) {
   var keyUnimprovedHash = $m_sr_Statics$().a2(key);
-  var keyHash = $m_sc_Hashing$().cG(keyUnimprovedHash);
+  var keyHash = $m_sc_Hashing$().cH(keyUnimprovedHash);
   return this.by.jt(key, keyUnimprovedHash, keyHash, 0);
 });
 $p.cZ = (function(key, default$1) {
   var keyUnimprovedHash = $m_sr_Statics$().a2(key);
-  var keyHash = $m_sc_Hashing$().cG(keyUnimprovedHash);
+  var keyHash = $m_sc_Hashing$().cH(keyUnimprovedHash);
   return this.by.jS(key, keyUnimprovedHash, keyHash, 0, default$1);
 });
 $p.fI = (function(key, value) {
   var keyUnimprovedHash = $m_sr_Statics$().a2(key);
-  var newRootNode = this.by.q9(key, value, keyUnimprovedHash, $m_sc_Hashing$().cG(keyUnimprovedHash), 0, true);
+  var newRootNode = this.by.q9(key, value, keyUnimprovedHash, $m_sc_Hashing$().cH(keyUnimprovedHash), 0, true);
   return ((newRootNode === this.by) ? this : new $c_sci_HashMap(newRootNode));
 });
 $p.aj = (function(f) {
   this.by.aj(f);
 });
-$p.eQ = (function(f) {
-  this.by.eQ(f);
+$p.eR = (function(f) {
+  this.by.eR(f);
 });
 $p.z = (function(that) {
   if ((that instanceof $c_sci_HashMap)) {
@@ -19926,13 +19930,13 @@ $p.E = (function() {
     return $m_s_util_hashing_MurmurHash3$().jo;
   } else {
     var hashIterator = new $c_sci_MapKeyValueTupleHashIterator(this.by);
-    return $m_s_util_hashing_MurmurHash3$().kl(hashIterator, $m_s_util_hashing_MurmurHash3$().e6);
+    return $m_s_util_hashing_MurmurHash3$().kl(hashIterator, $m_s_util_hashing_MurmurHash3$().e7);
   }
 });
-$p.c9 = (function() {
+$p.ce = (function() {
   return "HashMap";
 });
-$p.el = (function(key, value) {
+$p.en = (function(key, value) {
   return this.fI(key, value);
 });
 function $isArrayOf_sci_HashMap(obj, depth) {
@@ -19990,7 +19994,7 @@ function $p_scm_HashSet__addElem__O__I__Z($thiz, elem, hash) {
     var prev = null;
     var n = x1;
     while (((n !== null) && (n.di <= hash))) {
-      if (((n.di === hash) && $m_sr_BoxesRunTime$().A(elem, n.eF))) {
+      if (((n.di === hash) && $m_sr_BoxesRunTime$().A(elem, n.eH))) {
         return false;
       }
       prev = n;
@@ -20002,13 +20006,13 @@ function $p_scm_HashSet__addElem__O__I__Z($thiz, elem, hash) {
       prev.aZ = new $c_scm_HashSet$Node(elem, hash, prev.aZ);
     }
   }
-  $thiz.e2 = ((1 + $thiz.e2) | 0);
+  $thiz.e3 = ((1 + $thiz.e3) | 0);
   return true;
 }
 function $p_scm_HashSet__growTable__I__V($thiz, newlen) {
   var oldlen = $thiz.aY.b.length;
   $thiz.jl = $p_scm_HashSet__newThreshold__I__I($thiz, newlen);
-  if (($thiz.e2 === 0)) {
+  if (($thiz.e3 === 0)) {
     $thiz.aY = new ($d_scm_HashSet$Node.r().C)(newlen);
   } else {
     $thiz.aY = $m_ju_Arrays$().a9($thiz.aY, newlen);
@@ -20063,7 +20067,7 @@ function $ct_scm_HashSet__I__D__($thiz, initialCapacity, loadFactor) {
   $thiz.jk = loadFactor;
   $thiz.aY = new ($d_scm_HashSet$Node.r().C)($p_scm_HashSet__tableSizeFor__I__I($thiz, initialCapacity));
   $thiz.jl = $p_scm_HashSet__newThreshold__I__I($thiz, $thiz.aY.b.length);
-  $thiz.e2 = 0;
+  $thiz.e3 = 0;
   return $thiz;
 }
 function $ct_scm_HashSet__($thiz) {
@@ -20075,7 +20079,7 @@ function $c_scm_HashSet() {
   this.jk = 0.0;
   this.aY = null;
   this.jl = 0;
-  this.e2 = 0;
+  this.e3 = 0;
 }
 $p = $c_scm_HashSet.prototype = new $h_scm_AbstractSet();
 $p.constructor = $c_scm_HashSet;
@@ -20086,8 +20090,8 @@ $h_scm_HashSet.prototype = $p;
 $p.a5 = (function(f) {
   return $f_sc_StrictOptimizedIterableOps__map__F1__O(this, f);
 });
-$p.bc = (function() {
-  return this.e2;
+$p.bb = (function() {
+  return this.e3;
 });
 $p.hN = (function(originalHash) {
   return (originalHash ^ ((originalHash >>> 16) | 0));
@@ -20104,7 +20108,7 @@ $p.bn = (function(size) {
   }
 });
 $p.hB = (function(elem) {
-  if ((((1 + this.e2) | 0) >= this.jl)) {
+  if ((((1 + this.e3) | 0) >= this.jl)) {
     $p_scm_HashSet__growTable__I__V(this, (this.aY.b.length << 1));
   }
   return $p_scm_HashSet__addElem__O__I__Z(this, elem, this.hN($m_sr_Statics$().a2(elem)));
@@ -20121,7 +20125,7 @@ $p.oO = (function(xs) {
     var iter = new $c_scm_HashSet$$anon$2(xs);
     while (iter.x()) {
       var next = iter.n();
-      $p_scm_HashSet__addElem__O__I__Z(this, next.eF, next.di);
+      $p_scm_HashSet__addElem__O__I__Z(this, next.eH, next.di);
     }
     return this;
   } else if (false) {
@@ -20142,10 +20146,10 @@ $p.bs = (function() {
   return $m_scm_HashSet$();
 });
 $p.J = (function() {
-  return this.e2;
+  return this.e3;
 });
 $p.j = (function() {
-  return (this.e2 === 0);
+  return (this.e3 === 0);
 });
 $p.aj = (function(f) {
   var len = this.aY.b.length;
@@ -20158,7 +20162,7 @@ $p.aj = (function(f) {
     i = ((1 + i) | 0);
   }
 });
-$p.c9 = (function() {
+$p.ce = (function() {
   return "HashSet";
 });
 $p.E = (function() {
@@ -20166,7 +20170,7 @@ $p.E = (function() {
   var hashIterator = ((!setIterator.x()) ? setIterator : new $c_scm_HashSet$$anon$3(this));
   return $m_s_util_hashing_MurmurHash3$().kl(hashIterator, $m_s_util_hashing_MurmurHash3$().oH);
 });
-$p.b8 = (function(elem) {
+$p.b7 = (function(elem) {
   this.hB(elem);
   return this;
 });
@@ -20220,13 +20224,13 @@ $h_sci_ArraySeq.prototype = $p;
 $p.gF = (function(coll) {
   return $m_sci_ArraySeq$().jM(coll, this.au());
 });
-$p.eX = (function() {
+$p.eZ = (function() {
   return $m_sci_ArraySeq$().hL(this.au());
 });
-$p.cE = (function(f) {
+$p.cF = (function(f) {
   return $f_sci_StrictOptimizedSeqOps__distinctBy__F1__O(this, f);
 });
-$p.eP = (function(toIterableOnce) {
+$p.eQ = (function(toIterableOnce) {
   return $f_sc_StrictOptimizedIterableOps__flatten__F1__O(this, toIterableOnce);
 });
 $p.hF = (function(that) {
@@ -20241,7 +20245,7 @@ $p.bx = (function() {
 $p.w = (function() {
   return $f_sc_IndexedSeqOps__head__O(this);
 });
-$p.bV = (function() {
+$p.bW = (function() {
   return $f_sc_IndexedSeqOps__headOption__s_Option(this);
 });
 $p.bt = (function(len) {
@@ -20251,7 +20255,7 @@ $p.bt = (function(len) {
 $p.J = (function() {
   return this.C();
 });
-$p.ed = (function() {
+$p.ef = (function() {
   return $m_sci_ArraySeq$().j3;
 });
 $p.sw = (function(f) {
@@ -20263,12 +20267,12 @@ $p.sw = (function(f) {
   }
   return $m_sci_ArraySeq$().hS(a);
 });
-$p.c9 = (function() {
+$p.ce = (function() {
   return "ArraySeq";
 });
-$p.ca = (function(xs, start, len) {
+$p.cf = (function(xs, start, len) {
   var srcLen = this.C();
-  var destLen = $m_jl_reflect_Array$().cv(xs);
+  var destLen = $m_jl_reflect_Array$().cA(xs);
   var x = ((len < srcLen) ? len : srcLen);
   var y = ((destLen - start) | 0);
   var x$1 = ((x < y) ? x : y);
@@ -20307,10 +20311,10 @@ $p.constructor = $c_sci_Vector;
 function $h_sci_Vector() {
 }
 $h_sci_Vector.prototype = $p;
-$p.cE = (function(f) {
+$p.cF = (function(f) {
   return $f_sci_StrictOptimizedSeqOps__distinctBy__F1__O(this, f);
 });
-$p.eP = (function(toIterableOnce) {
+$p.eQ = (function(toIterableOnce) {
   return $f_sc_StrictOptimizedIterableOps__flatten__F1__O(this, toIterableOnce);
 });
 $p.hF = (function(that) {
@@ -20322,7 +20326,7 @@ $p.fE = (function(o) {
 $p.bx = (function() {
   return "IndexedSeq";
 });
-$p.bV = (function() {
+$p.bW = (function() {
   return $f_sc_IndexedSeqOps__headOption__s_Option(this);
 });
 $p.bt = (function(len) {
@@ -20332,7 +20336,7 @@ $p.bt = (function(len) {
 $p.J = (function() {
   return this.C();
 });
-$p.ed = (function() {
+$p.ef = (function() {
   return $m_sci_Vector$();
 });
 $p.C = (function() {
@@ -20341,11 +20345,11 @@ $p.C = (function() {
 $p.r = (function() {
   return (($m_sci_Vector0$() === this) ? $m_sci_Vector$().ol : new $c_sci_NewVectorIterator(this, this.C(), this.d5()));
 });
-$p.c9 = (function() {
+$p.ce = (function() {
   return "Vector";
 });
-$p.ca = (function(xs, start, len) {
-  return this.r().ca(xs, start, len);
+$p.cf = (function(xs, start, len) {
+  return this.r().cf(xs, start, len);
 });
 $p.hE = (function() {
   return $m_sci_Vector$().ok;
@@ -20388,7 +20392,7 @@ $p.constructor = $c_scm_ArraySeq;
 function $h_scm_ArraySeq() {
 }
 $h_scm_ArraySeq.prototype = $p;
-$p.cE = (function(f) {
+$p.cF = (function(f) {
   return $f_sc_StrictOptimizedSeqOps__distinctBy__F1__O(this, f);
 });
 $p.a5 = (function(f) {
@@ -20400,7 +20404,7 @@ $p.bx = (function() {
 $p.w = (function() {
   return $f_sc_IndexedSeqOps__head__O(this);
 });
-$p.bV = (function() {
+$p.bW = (function() {
   return $f_sc_IndexedSeqOps__headOption__s_Option(this);
 });
 $p.bt = (function(len) {
@@ -20410,7 +20414,7 @@ $p.bt = (function(len) {
 $p.J = (function() {
   return this.C();
 });
-$p.ed = (function() {
+$p.ef = (function() {
   return $m_scm_ArraySeq$().jj;
 });
 $p.pB = (function(coll) {
@@ -20418,7 +20422,7 @@ $p.pB = (function(coll) {
   var capacity = 0;
   var size = 0;
   var jsElems = null;
-  var elementClass = evidence$1.bb();
+  var elementClass = evidence$1.ba();
   capacity = 0;
   size = 0;
   var isCharArrayBuilder = (elementClass === $d_C.l());
@@ -20434,27 +20438,27 @@ $p.pB = (function(coll) {
   var elemRuntimeClass = ((elementClass === $d_V.l()) ? $d_jl_Void.l() : (((elementClass === $d_sr_Null$.l()) || (elementClass === $d_sr_Nothing$.l())) ? $d_O.l() : elementClass));
   return $x_1.k3(elemRuntimeClass.a3.r().w(jsElems));
 });
-$p.eX = (function() {
+$p.eZ = (function() {
   return $m_scm_ArraySeq$().hL(this.au());
 });
-$p.c9 = (function() {
+$p.ce = (function() {
   return "ArraySeq";
 });
-$p.ca = (function(xs, start, len) {
+$p.cf = (function(xs, start, len) {
   var srcLen = this.C();
-  var destLen = $m_jl_reflect_Array$().cv(xs);
+  var destLen = $m_jl_reflect_Array$().cA(xs);
   var x = ((len < srcLen) ? len : srcLen);
   var y = ((destLen - start) | 0);
   var x$1 = ((x < y) ? x : y);
   var copied = ((x$1 > 0) ? x$1 : 0);
   if ((copied > 0)) {
-    $m_s_Array$().gA(this.ct(), 0, xs, start, copied);
+    $m_s_Array$().gA(this.cy(), 0, xs, start, copied);
   }
   return copied;
 });
 $p.z = (function(other) {
   if ((other instanceof $c_scm_ArraySeq)) {
-    if (($m_jl_reflect_Array$().cv(this.ct()) !== $m_jl_reflect_Array$().cv(other.ct()))) {
+    if (($m_jl_reflect_Array$().cA(this.cy()) !== $m_jl_reflect_Array$().cA(other.cy()))) {
       return false;
     }
   }
@@ -20474,8 +20478,8 @@ function $isArrayOf_scm_ArraySeq(obj, depth) {
 }
 /** @constructor */
 function $c_sci_ArraySeq$ofBoolean(unsafeArray) {
-  this.dC = null;
-  this.dC = unsafeArray;
+  this.dD = null;
+  this.dD = unsafeArray;
 }
 $p = $c_sci_ArraySeq$ofBoolean.prototype = new $h_sci_ArraySeq();
 $p.constructor = $c_sci_ArraySeq$ofBoolean;
@@ -20484,20 +20488,20 @@ function $h_sci_ArraySeq$ofBoolean() {
 }
 $h_sci_ArraySeq$ofBoolean.prototype = $p;
 $p.C = (function() {
-  return this.dC.b.length;
+  return this.dD.b.length;
 });
 $p.E = (function() {
   var this$1 = $m_s_util_hashing_MurmurHash3$();
-  return this$1.p7(this.dC, this$1.az);
+  return this$1.p7(this.dD, this$1.aA);
 });
 $p.z = (function(that) {
-  return ((that instanceof $c_sci_ArraySeq$ofBoolean) ? $m_ju_Arrays$().ps(this.dC, that.dC) : $f_sc_Seq__equals__O__Z(this, that));
+  return ((that instanceof $c_sci_ArraySeq$ofBoolean) ? $m_ju_Arrays$().ps(this.dD, that.dD) : $f_sc_Seq__equals__O__Z(this, that));
 });
 $p.r = (function() {
-  return new $c_sc_ArrayOps$ArrayIterator$mcZ$sp(this.dC);
+  return new $c_sc_ArrayOps$ArrayIterator$mcZ$sp(this.dD);
 });
 $p.gw = (function(i) {
-  return this.dC.b[i];
+  return this.dD.b[i];
 });
 $p.i = (function(v1) {
   return this.gw((v1 | 0));
@@ -20509,7 +20513,7 @@ $p.au = (function() {
   return $m_s_reflect_ManifestFactory$BooleanManifest$();
 });
 $p.d3 = (function() {
-  return this.dC;
+  return this.dD;
 });
 function $isArrayOf_sci_ArraySeq$ofBoolean(obj, depth) {
   return (!(!(((obj && obj.$classData) && (obj.$classData.D === depth)) && obj.$classData.B.n.bO)));
@@ -20545,8 +20549,8 @@ var $d_sci_ArraySeq$ofBoolean = new $TypeData().i($c_sci_ArraySeq$ofBoolean, "sc
 }));
 /** @constructor */
 function $c_sci_ArraySeq$ofByte(unsafeArray) {
-  this.dD = null;
-  this.dD = unsafeArray;
+  this.dE = null;
+  this.dE = unsafeArray;
 }
 $p = $c_sci_ArraySeq$ofByte.prototype = new $h_sci_ArraySeq();
 $p.constructor = $c_sci_ArraySeq$ofByte;
@@ -20555,20 +20559,20 @@ function $h_sci_ArraySeq$ofByte() {
 }
 $h_sci_ArraySeq$ofByte.prototype = $p;
 $p.C = (function() {
-  return this.dD.b.length;
+  return this.dE.b.length;
 });
 $p.gn = (function(i) {
-  return this.dD.b[i];
+  return this.dE.b[i];
 });
 $p.E = (function() {
   var this$1 = $m_s_util_hashing_MurmurHash3$();
-  return this$1.oZ(this.dD, this$1.az);
+  return this$1.oZ(this.dE, this$1.aA);
 });
 $p.z = (function(that) {
-  return ((that instanceof $c_sci_ArraySeq$ofByte) ? $m_ju_Arrays$().pm(this.dD, that.dD) : $f_sc_Seq__equals__O__Z(this, that));
+  return ((that instanceof $c_sci_ArraySeq$ofByte) ? $m_ju_Arrays$().pm(this.dE, that.dE) : $f_sc_Seq__equals__O__Z(this, that));
 });
 $p.r = (function() {
-  return new $c_sc_ArrayOps$ArrayIterator$mcB$sp(this.dD);
+  return new $c_sc_ArrayOps$ArrayIterator$mcB$sp(this.dE);
 });
 $p.i = (function(v1) {
   return this.gn((v1 | 0));
@@ -20580,7 +20584,7 @@ $p.au = (function() {
   return $m_s_reflect_ManifestFactory$ByteManifest$();
 });
 $p.d3 = (function() {
-  return this.dD;
+  return this.dE;
 });
 function $isArrayOf_sci_ArraySeq$ofByte(obj, depth) {
   return (!(!(((obj && obj.$classData) && (obj.$classData.D === depth)) && obj.$classData.B.n.bP)));
@@ -20633,7 +20637,7 @@ $p.go = (function(i) {
 });
 $p.E = (function() {
   var this$1 = $m_s_util_hashing_MurmurHash3$();
-  return this$1.p0(this.d9, this$1.az);
+  return this$1.p0(this.d9, this$1.aA);
 });
 $p.z = (function(that) {
   return ((that instanceof $c_sci_ArraySeq$ofChar) ? $m_ju_Arrays$().pn(this.d9, that.d9) : $f_sc_Seq__equals__O__Z(this, that));
@@ -20641,8 +20645,8 @@ $p.z = (function(that) {
 $p.r = (function() {
   return new $c_sc_ArrayOps$ArrayIterator$mcC$sp(this.d9);
 });
-$p.e7 = (function(sb, start, sep, end) {
-  return new $c_scm_ArraySeq$ofChar(this.d9).e7(sb, start, sep, end);
+$p.e8 = (function(sb, start, sep, end) {
+  return new $c_scm_ArraySeq$ofChar(this.d9).e8(sb, start, sep, end);
 });
 $p.i = (function(v1) {
   return $bC(this.go((v1 | 0)));
@@ -20690,8 +20694,8 @@ var $d_sci_ArraySeq$ofChar = new $TypeData().i($c_sci_ArraySeq$ofChar, "scala.co
 }));
 /** @constructor */
 function $c_sci_ArraySeq$ofDouble(unsafeArray) {
-  this.dE = null;
-  this.dE = unsafeArray;
+  this.dF = null;
+  this.dF = unsafeArray;
 }
 $p = $c_sci_ArraySeq$ofDouble.prototype = new $h_sci_ArraySeq();
 $p.constructor = $c_sci_ArraySeq$ofDouble;
@@ -20700,20 +20704,20 @@ function $h_sci_ArraySeq$ofDouble() {
 }
 $h_sci_ArraySeq$ofDouble.prototype = $p;
 $p.C = (function() {
-  return this.dE.b.length;
+  return this.dF.b.length;
 });
 $p.E = (function() {
   var this$1 = $m_s_util_hashing_MurmurHash3$();
-  return this$1.p1(this.dE, this$1.az);
+  return this$1.p1(this.dF, this$1.aA);
 });
 $p.z = (function(that) {
-  return ((that instanceof $c_sci_ArraySeq$ofDouble) ? $m_ju_Arrays$().po(this.dE, that.dE) : $f_sc_Seq__equals__O__Z(this, that));
+  return ((that instanceof $c_sci_ArraySeq$ofDouble) ? $m_ju_Arrays$().po(this.dF, that.dF) : $f_sc_Seq__equals__O__Z(this, that));
 });
 $p.r = (function() {
-  return new $c_sc_ArrayOps$ArrayIterator$mcD$sp(this.dE);
+  return new $c_sc_ArrayOps$ArrayIterator$mcD$sp(this.dF);
 });
 $p.gr = (function(i) {
-  return this.dE.b[i];
+  return this.dF.b[i];
 });
 $p.i = (function(v1) {
   return this.gr((v1 | 0));
@@ -20725,7 +20729,7 @@ $p.au = (function() {
   return $m_s_reflect_ManifestFactory$DoubleManifest$();
 });
 $p.d3 = (function() {
-  return this.dE;
+  return this.dF;
 });
 function $isArrayOf_sci_ArraySeq$ofDouble(obj, depth) {
   return (!(!(((obj && obj.$classData) && (obj.$classData.D === depth)) && obj.$classData.B.n.bR)));
@@ -20761,8 +20765,8 @@ var $d_sci_ArraySeq$ofDouble = new $TypeData().i($c_sci_ArraySeq$ofDouble, "scal
 }));
 /** @constructor */
 function $c_sci_ArraySeq$ofFloat(unsafeArray) {
-  this.dF = null;
-  this.dF = unsafeArray;
+  this.dG = null;
+  this.dG = unsafeArray;
 }
 $p = $c_sci_ArraySeq$ofFloat.prototype = new $h_sci_ArraySeq();
 $p.constructor = $c_sci_ArraySeq$ofFloat;
@@ -20771,20 +20775,20 @@ function $h_sci_ArraySeq$ofFloat() {
 }
 $h_sci_ArraySeq$ofFloat.prototype = $p;
 $p.C = (function() {
-  return this.dF.b.length;
+  return this.dG.b.length;
 });
 $p.E = (function() {
   var this$1 = $m_s_util_hashing_MurmurHash3$();
-  return this$1.p2(this.dF, this$1.az);
+  return this$1.p2(this.dG, this$1.aA);
 });
 $p.z = (function(that) {
-  return ((that instanceof $c_sci_ArraySeq$ofFloat) ? $m_ju_Arrays$().pp(this.dF, that.dF) : $f_sc_Seq__equals__O__Z(this, that));
+  return ((that instanceof $c_sci_ArraySeq$ofFloat) ? $m_ju_Arrays$().pp(this.dG, that.dG) : $f_sc_Seq__equals__O__Z(this, that));
 });
 $p.r = (function() {
-  return new $c_sc_ArrayOps$ArrayIterator$mcF$sp(this.dF);
+  return new $c_sc_ArrayOps$ArrayIterator$mcF$sp(this.dG);
 });
 $p.gs = (function(i) {
-  return this.dF.b[i];
+  return this.dG.b[i];
 });
 $p.i = (function(v1) {
   return this.gs((v1 | 0));
@@ -20796,7 +20800,7 @@ $p.au = (function() {
   return $m_s_reflect_ManifestFactory$FloatManifest$();
 });
 $p.d3 = (function() {
-  return this.dF;
+  return this.dG;
 });
 function $isArrayOf_sci_ArraySeq$ofFloat(obj, depth) {
   return (!(!(((obj && obj.$classData) && (obj.$classData.D === depth)) && obj.$classData.B.n.bS)));
@@ -20832,8 +20836,8 @@ var $d_sci_ArraySeq$ofFloat = new $TypeData().i($c_sci_ArraySeq$ofFloat, "scala.
 }));
 /** @constructor */
 function $c_sci_ArraySeq$ofInt(unsafeArray) {
-  this.dG = null;
-  this.dG = unsafeArray;
+  this.dH = null;
+  this.dH = unsafeArray;
 }
 $p = $c_sci_ArraySeq$ofInt.prototype = new $h_sci_ArraySeq();
 $p.constructor = $c_sci_ArraySeq$ofInt;
@@ -20842,20 +20846,20 @@ function $h_sci_ArraySeq$ofInt() {
 }
 $h_sci_ArraySeq$ofInt.prototype = $p;
 $p.C = (function() {
-  return this.dG.b.length;
+  return this.dH.b.length;
 });
 $p.E = (function() {
   var this$1 = $m_s_util_hashing_MurmurHash3$();
-  return this$1.p3(this.dG, this$1.az);
+  return this$1.p3(this.dH, this$1.aA);
 });
 $p.z = (function(that) {
-  return ((that instanceof $c_sci_ArraySeq$ofInt) ? $m_ju_Arrays$().jH(this.dG, that.dG) : $f_sc_Seq__equals__O__Z(this, that));
+  return ((that instanceof $c_sci_ArraySeq$ofInt) ? $m_ju_Arrays$().jH(this.dH, that.dH) : $f_sc_Seq__equals__O__Z(this, that));
 });
 $p.r = (function() {
-  return new $c_sc_ArrayOps$ArrayIterator$mcI$sp(this.dG);
+  return new $c_sc_ArrayOps$ArrayIterator$mcI$sp(this.dH);
 });
 $p.gt = (function(i) {
-  return this.dG.b[i];
+  return this.dH.b[i];
 });
 $p.i = (function(v1) {
   return this.gt((v1 | 0));
@@ -20867,7 +20871,7 @@ $p.au = (function() {
   return $m_s_reflect_ManifestFactory$IntManifest$();
 });
 $p.d3 = (function() {
-  return this.dG;
+  return this.dH;
 });
 function $isArrayOf_sci_ArraySeq$ofInt(obj, depth) {
   return (!(!(((obj && obj.$classData) && (obj.$classData.D === depth)) && obj.$classData.B.n.bT)));
@@ -20903,8 +20907,8 @@ var $d_sci_ArraySeq$ofInt = new $TypeData().i($c_sci_ArraySeq$ofInt, "scala.coll
 }));
 /** @constructor */
 function $c_sci_ArraySeq$ofLong(unsafeArray) {
-  this.dH = null;
-  this.dH = unsafeArray;
+  this.dI = null;
+  this.dI = unsafeArray;
 }
 $p = $c_sci_ArraySeq$ofLong.prototype = new $h_sci_ArraySeq();
 $p.constructor = $c_sci_ArraySeq$ofLong;
@@ -20913,20 +20917,20 @@ function $h_sci_ArraySeq$ofLong() {
 }
 $h_sci_ArraySeq$ofLong.prototype = $p;
 $p.C = (function() {
-  return this.dH.b.length;
+  return this.dI.b.length;
 });
 $p.E = (function() {
   var this$1 = $m_s_util_hashing_MurmurHash3$();
-  return this$1.p4(this.dH, this$1.az);
+  return this$1.p4(this.dI, this$1.aA);
 });
 $p.z = (function(that) {
-  return ((that instanceof $c_sci_ArraySeq$ofLong) ? $m_ju_Arrays$().pq(this.dH, that.dH) : $f_sc_Seq__equals__O__Z(this, that));
+  return ((that instanceof $c_sci_ArraySeq$ofLong) ? $m_ju_Arrays$().pq(this.dI, that.dI) : $f_sc_Seq__equals__O__Z(this, that));
 });
 $p.r = (function() {
-  return new $c_sc_ArrayOps$ArrayIterator$mcJ$sp(this.dH);
+  return new $c_sc_ArrayOps$ArrayIterator$mcJ$sp(this.dI);
 });
 $p.gu = (function(i) {
-  return this.dH.b[i];
+  return this.dI.b[i];
 });
 $p.i = (function(v1) {
   return this.gu((v1 | 0));
@@ -20938,7 +20942,7 @@ $p.au = (function() {
   return $m_s_reflect_ManifestFactory$LongManifest$();
 });
 $p.d3 = (function() {
-  return this.dH;
+  return this.dI;
 });
 function $isArrayOf_sci_ArraySeq$ofLong(obj, depth) {
   return (!(!(((obj && obj.$classData) && (obj.$classData.D === depth)) && obj.$classData.B.n.bU)));
@@ -20994,7 +20998,7 @@ $p.F = (function(i) {
 });
 $p.E = (function() {
   var this$1 = $m_s_util_hashing_MurmurHash3$();
-  return this$1.oY(this.cO, this$1.az);
+  return this$1.oY(this.cO, this$1.aA);
 });
 $p.z = (function(that) {
   return ((that instanceof $c_sci_ArraySeq$ofRef) ? $m_s_Array$().pt(this.cO, that.cO) : $f_sc_Seq__equals__O__Z(this, that));
@@ -21042,8 +21046,8 @@ var $d_sci_ArraySeq$ofRef = new $TypeData().i($c_sci_ArraySeq$ofRef, "scala.coll
 }));
 /** @constructor */
 function $c_sci_ArraySeq$ofShort(unsafeArray) {
-  this.dI = null;
-  this.dI = unsafeArray;
+  this.dJ = null;
+  this.dJ = unsafeArray;
 }
 $p = $c_sci_ArraySeq$ofShort.prototype = new $h_sci_ArraySeq();
 $p.constructor = $c_sci_ArraySeq$ofShort;
@@ -21052,20 +21056,20 @@ function $h_sci_ArraySeq$ofShort() {
 }
 $h_sci_ArraySeq$ofShort.prototype = $p;
 $p.C = (function() {
-  return this.dI.b.length;
+  return this.dJ.b.length;
 });
 $p.gp = (function(i) {
-  return this.dI.b[i];
+  return this.dJ.b[i];
 });
 $p.E = (function() {
   var this$1 = $m_s_util_hashing_MurmurHash3$();
-  return this$1.p5(this.dI, this$1.az);
+  return this$1.p5(this.dJ, this$1.aA);
 });
 $p.z = (function(that) {
-  return ((that instanceof $c_sci_ArraySeq$ofShort) ? $m_ju_Arrays$().pr(this.dI, that.dI) : $f_sc_Seq__equals__O__Z(this, that));
+  return ((that instanceof $c_sci_ArraySeq$ofShort) ? $m_ju_Arrays$().pr(this.dJ, that.dJ) : $f_sc_Seq__equals__O__Z(this, that));
 });
 $p.r = (function() {
-  return new $c_sc_ArrayOps$ArrayIterator$mcS$sp(this.dI);
+  return new $c_sc_ArrayOps$ArrayIterator$mcS$sp(this.dJ);
 });
 $p.i = (function(v1) {
   return this.gp((v1 | 0));
@@ -21077,7 +21081,7 @@ $p.au = (function() {
   return $m_s_reflect_ManifestFactory$ShortManifest$();
 });
 $p.d3 = (function() {
-  return this.dI;
+  return this.dJ;
 });
 function $isArrayOf_sci_ArraySeq$ofShort(obj, depth) {
   return (!(!(((obj && obj.$classData) && (obj.$classData.D === depth)) && obj.$classData.B.n.bW)));
@@ -21113,8 +21117,8 @@ var $d_sci_ArraySeq$ofShort = new $TypeData().i($c_sci_ArraySeq$ofShort, "scala.
 }));
 /** @constructor */
 function $c_sci_ArraySeq$ofUnit(unsafeArray) {
-  this.ez = null;
-  this.ez = unsafeArray;
+  this.eB = null;
+  this.eB = unsafeArray;
 }
 $p = $c_sci_ArraySeq$ofUnit.prototype = new $h_sci_ArraySeq();
 $p.constructor = $c_sci_ArraySeq$ofUnit;
@@ -21123,17 +21127,17 @@ function $h_sci_ArraySeq$ofUnit() {
 }
 $h_sci_ArraySeq$ofUnit.prototype = $p;
 $p.C = (function() {
-  return this.ez.b.length;
+  return this.eB.b.length;
 });
 $p.E = (function() {
   var this$1 = $m_s_util_hashing_MurmurHash3$();
-  return this$1.p6(this.ez, this$1.az);
+  return this$1.p6(this.eB, this$1.aA);
 });
 $p.z = (function(that) {
-  return ((that instanceof $c_sci_ArraySeq$ofUnit) ? (this.ez.b.length === that.ez.b.length) : $f_sc_Seq__equals__O__Z(this, that));
+  return ((that instanceof $c_sci_ArraySeq$ofUnit) ? (this.eB.b.length === that.eB.b.length) : $f_sc_Seq__equals__O__Z(this, that));
 });
 $p.r = (function() {
-  return new $c_sc_ArrayOps$ArrayIterator$mcV$sp(this.ez);
+  return new $c_sc_ArrayOps$ArrayIterator$mcV$sp(this.eB);
 });
 $p.gv = (function(i) {
 });
@@ -21147,7 +21151,7 @@ $p.au = (function() {
   return $m_s_reflect_ManifestFactory$UnitManifest$();
 });
 $p.d3 = (function() {
-  return this.ez;
+  return this.eB;
 });
 function $isArrayOf_sci_ArraySeq$ofUnit(obj, depth) {
   return (!(!(((obj && obj.$classData) && (obj.$classData.D === depth)) && obj.$classData.B.n.bX)));
@@ -21222,13 +21226,13 @@ $p.constructor = $c_sci_List;
 function $h_sci_List() {
 }
 $h_sci_List.prototype = $p;
-$p.cE = (function(f) {
+$p.cF = (function(f) {
   return $f_sci_StrictOptimizedSeqOps__distinctBy__F1__O(this, f);
 });
 $p.r = (function() {
   return new $c_sc_StrictOptimizedLinearSeqOps$$anon$1(this);
 });
-$p.eP = (function(toIterableOnce) {
+$p.eQ = (function(toIterableOnce) {
   return $f_sc_StrictOptimizedIterableOps__flatten__F1__O(this, toIterableOnce);
 });
 $p.bx = (function() {
@@ -21243,7 +21247,7 @@ $p.F = (function(n) {
 $p.fE = (function(that) {
   return $f_sc_LinearSeqOps__sameElements__sc_IterableOnce__Z(this, that);
 });
-$p.ed = (function() {
+$p.ef = (function() {
   return $m_sci_List$();
 });
 $p.oI = (function(prefix) {
@@ -21267,7 +21271,7 @@ $p.oI = (function(prefix) {
 $p.j = (function() {
   return (this === $m_sci_Nil$());
 });
-$p.eh = (function(prefix) {
+$p.ej = (function(prefix) {
   if ((prefix instanceof $c_sci_List)) {
     return this.oI(prefix);
   }
@@ -21276,7 +21280,7 @@ $p.eh = (function(prefix) {
   }
   if ((prefix instanceof $c_scm_ListBuffer)) {
     if (this.j()) {
-      return prefix.eY();
+      return prefix.f0();
     }
   }
   var iter = prefix.r();
@@ -21320,7 +21324,7 @@ $p.rd = (function(pf) {
     var h = null;
     var x = null;
     while ((h === null)) {
-      x = pf.c8(rest.w(), $m_sci_List$().gc);
+      x = pf.cc(rest.w(), $m_sci_List$().gc);
       if ((x !== $m_sci_List$().gc)) {
         h = new $c_sci_$colon$colon(x, $m_sci_Nil$());
       }
@@ -21331,7 +21335,7 @@ $p.rd = (function(pf) {
     }
     var t = h;
     while ((rest !== $m_sci_Nil$())) {
-      x = pf.c8(rest.w(), $m_sci_List$().gc);
+      x = pf.cc(rest.w(), $m_sci_List$().gc);
       if ((x !== $m_sci_List$().gc)) {
         var nx = new $c_sci_$colon$colon(x, $m_sci_Nil$());
         t.a1 = nx;
@@ -21371,10 +21375,10 @@ $p.bm = (function(elem) {
   }
   return false;
 });
-$p.c9 = (function() {
+$p.ce = (function() {
   return "List";
 });
-$p.eY = (function() {
+$p.f0 = (function() {
   return this;
 });
 $p.z = (function(o) {
@@ -21383,7 +21387,7 @@ $p.z = (function(o) {
 $p.i = (function(v1) {
   return $f_sc_LinearSeqOps__apply__I__O(this, (v1 | 0));
 });
-$p.cw = (function(x) {
+$p.cB = (function(x) {
   return $f_sc_LinearSeqOps__isDefinedAt__I__Z(this, (x | 0));
 });
 $p.pk = (function(n) {
@@ -21410,8 +21414,8 @@ function $h_sci_VectorImpl() {
 $h_sci_VectorImpl.prototype = $p;
 /** @constructor */
 function $c_scm_ArraySeq$ofBoolean(array) {
-  this.dU = null;
-  this.dU = array;
+  this.dV = null;
+  this.dV = array;
 }
 $p = $c_scm_ArraySeq$ofBoolean.prototype = new $h_scm_ArraySeq();
 $p.constructor = $c_scm_ArraySeq$ofBoolean;
@@ -21420,20 +21424,20 @@ function $h_scm_ArraySeq$ofBoolean() {
 }
 $h_scm_ArraySeq$ofBoolean.prototype = $p;
 $p.C = (function() {
-  return this.dU.b.length;
+  return this.dV.b.length;
 });
 $p.E = (function() {
   var this$1 = $m_s_util_hashing_MurmurHash3$();
-  return this$1.p7(this.dU, this$1.az);
+  return this$1.p7(this.dV, this$1.aA);
 });
 $p.z = (function(that) {
-  return ((that instanceof $c_scm_ArraySeq$ofBoolean) ? $m_ju_Arrays$().ps(this.dU, that.dU) : $c_scm_ArraySeq.prototype.z.call(this, that));
+  return ((that instanceof $c_scm_ArraySeq$ofBoolean) ? $m_ju_Arrays$().ps(this.dV, that.dV) : $c_scm_ArraySeq.prototype.z.call(this, that));
 });
 $p.r = (function() {
-  return new $c_sc_ArrayOps$ArrayIterator$mcZ$sp(this.dU);
+  return new $c_sc_ArrayOps$ArrayIterator$mcZ$sp(this.dV);
 });
 $p.gw = (function(index) {
-  return this.dU.b[index];
+  return this.dV.b[index];
 });
 $p.i = (function(v1) {
   return this.gw((v1 | 0));
@@ -21444,8 +21448,8 @@ $p.F = (function(i) {
 $p.au = (function() {
   return $m_s_reflect_ManifestFactory$BooleanManifest$();
 });
-$p.ct = (function() {
-  return this.dU;
+$p.cy = (function() {
+  return this.dV;
 });
 function $isArrayOf_scm_ArraySeq$ofBoolean(obj, depth) {
   return (!(!(((obj && obj.$classData) && (obj.$classData.D === depth)) && obj.$classData.B.n.ca)));
@@ -21481,8 +21485,8 @@ var $d_scm_ArraySeq$ofBoolean = new $TypeData().i($c_scm_ArraySeq$ofBoolean, "sc
 }));
 /** @constructor */
 function $c_scm_ArraySeq$ofByte(array) {
-  this.dV = null;
-  this.dV = array;
+  this.dW = null;
+  this.dW = array;
 }
 $p = $c_scm_ArraySeq$ofByte.prototype = new $h_scm_ArraySeq();
 $p.constructor = $c_scm_ArraySeq$ofByte;
@@ -21491,20 +21495,20 @@ function $h_scm_ArraySeq$ofByte() {
 }
 $h_scm_ArraySeq$ofByte.prototype = $p;
 $p.C = (function() {
-  return this.dV.b.length;
+  return this.dW.b.length;
 });
 $p.gn = (function(index) {
-  return this.dV.b[index];
+  return this.dW.b[index];
 });
 $p.E = (function() {
   var this$1 = $m_s_util_hashing_MurmurHash3$();
-  return this$1.oZ(this.dV, this$1.az);
+  return this$1.oZ(this.dW, this$1.aA);
 });
 $p.z = (function(that) {
-  return ((that instanceof $c_scm_ArraySeq$ofByte) ? $m_ju_Arrays$().pm(this.dV, that.dV) : $c_scm_ArraySeq.prototype.z.call(this, that));
+  return ((that instanceof $c_scm_ArraySeq$ofByte) ? $m_ju_Arrays$().pm(this.dW, that.dW) : $c_scm_ArraySeq.prototype.z.call(this, that));
 });
 $p.r = (function() {
-  return new $c_sc_ArrayOps$ArrayIterator$mcB$sp(this.dV);
+  return new $c_sc_ArrayOps$ArrayIterator$mcB$sp(this.dW);
 });
 $p.i = (function(v1) {
   return this.gn((v1 | 0));
@@ -21515,8 +21519,8 @@ $p.F = (function(i) {
 $p.au = (function() {
   return $m_s_reflect_ManifestFactory$ByteManifest$();
 });
-$p.ct = (function() {
-  return this.dV;
+$p.cy = (function() {
+  return this.dW;
 });
 function $isArrayOf_scm_ArraySeq$ofByte(obj, depth) {
   return (!(!(((obj && obj.$classData) && (obj.$classData.D === depth)) && obj.$classData.B.n.cb)));
@@ -21552,8 +21556,8 @@ var $d_scm_ArraySeq$ofByte = new $TypeData().i($c_scm_ArraySeq$ofByte, "scala.co
 }));
 /** @constructor */
 function $c_scm_ArraySeq$ofChar(array) {
-  this.c7 = null;
-  this.c7 = array;
+  this.cb = null;
+  this.cb = array;
 }
 $p = $c_scm_ArraySeq$ofChar.prototype = new $h_scm_ArraySeq();
 $p.constructor = $c_scm_ArraySeq$ofChar;
@@ -21562,39 +21566,39 @@ function $h_scm_ArraySeq$ofChar() {
 }
 $h_scm_ArraySeq$ofChar.prototype = $p;
 $p.C = (function() {
-  return this.c7.b.length;
+  return this.cb.b.length;
 });
 $p.go = (function(index) {
-  return this.c7.b[index];
+  return this.cb.b[index];
 });
 $p.E = (function() {
   var this$1 = $m_s_util_hashing_MurmurHash3$();
-  return this$1.p0(this.c7, this$1.az);
+  return this$1.p0(this.cb, this$1.aA);
 });
 $p.z = (function(that) {
-  return ((that instanceof $c_scm_ArraySeq$ofChar) ? $m_ju_Arrays$().pn(this.c7, that.c7) : $c_scm_ArraySeq.prototype.z.call(this, that));
+  return ((that instanceof $c_scm_ArraySeq$ofChar) ? $m_ju_Arrays$().pn(this.cb, that.cb) : $c_scm_ArraySeq.prototype.z.call(this, that));
 });
 $p.r = (function() {
-  return new $c_sc_ArrayOps$ArrayIterator$mcC$sp(this.c7);
+  return new $c_sc_ArrayOps$ArrayIterator$mcC$sp(this.cb);
 });
-$p.e7 = (function(sb, start, sep, end) {
+$p.e8 = (function(sb, start, sep, end) {
   var jsb = sb.b0;
   if ((start.length !== 0)) {
     jsb.B = (("" + jsb.B) + start);
   }
-  var len = this.c7.b.length;
+  var len = this.cb.b.length;
   if ((len !== 0)) {
     if ((sep === "")) {
-      jsb.oR(this.c7);
+      jsb.oR(this.cb);
     } else {
       jsb.C();
-      var c = this.c7.b[0];
+      var c = this.cb.b[0];
       var str = ("" + $cToS(c));
       jsb.B = (jsb.B + str);
       var i = 1;
       while ((i < len)) {
         jsb.B = (("" + jsb.B) + sep);
-        var c$1 = this.c7.b[i];
+        var c$1 = this.cb.b[i];
         var str$1 = ("" + $cToS(c$1));
         jsb.B = (jsb.B + str$1);
         i = ((1 + i) | 0);
@@ -21615,8 +21619,8 @@ $p.F = (function(i) {
 $p.au = (function() {
   return $m_s_reflect_ManifestFactory$CharManifest$();
 });
-$p.ct = (function() {
-  return this.c7;
+$p.cy = (function() {
+  return this.cb;
 });
 function $isArrayOf_scm_ArraySeq$ofChar(obj, depth) {
   return (!(!(((obj && obj.$classData) && (obj.$classData.D === depth)) && obj.$classData.B.n.cc)));
@@ -21652,8 +21656,8 @@ var $d_scm_ArraySeq$ofChar = new $TypeData().i($c_scm_ArraySeq$ofChar, "scala.co
 }));
 /** @constructor */
 function $c_scm_ArraySeq$ofDouble(array) {
-  this.dW = null;
-  this.dW = array;
+  this.dX = null;
+  this.dX = array;
 }
 $p = $c_scm_ArraySeq$ofDouble.prototype = new $h_scm_ArraySeq();
 $p.constructor = $c_scm_ArraySeq$ofDouble;
@@ -21662,20 +21666,20 @@ function $h_scm_ArraySeq$ofDouble() {
 }
 $h_scm_ArraySeq$ofDouble.prototype = $p;
 $p.C = (function() {
-  return this.dW.b.length;
+  return this.dX.b.length;
 });
 $p.E = (function() {
   var this$1 = $m_s_util_hashing_MurmurHash3$();
-  return this$1.p1(this.dW, this$1.az);
+  return this$1.p1(this.dX, this$1.aA);
 });
 $p.z = (function(that) {
-  return ((that instanceof $c_scm_ArraySeq$ofDouble) ? $m_ju_Arrays$().po(this.dW, that.dW) : $c_scm_ArraySeq.prototype.z.call(this, that));
+  return ((that instanceof $c_scm_ArraySeq$ofDouble) ? $m_ju_Arrays$().po(this.dX, that.dX) : $c_scm_ArraySeq.prototype.z.call(this, that));
 });
 $p.r = (function() {
-  return new $c_sc_ArrayOps$ArrayIterator$mcD$sp(this.dW);
+  return new $c_sc_ArrayOps$ArrayIterator$mcD$sp(this.dX);
 });
 $p.gr = (function(index) {
-  return this.dW.b[index];
+  return this.dX.b[index];
 });
 $p.i = (function(v1) {
   return this.gr((v1 | 0));
@@ -21686,8 +21690,8 @@ $p.F = (function(i) {
 $p.au = (function() {
   return $m_s_reflect_ManifestFactory$DoubleManifest$();
 });
-$p.ct = (function() {
-  return this.dW;
+$p.cy = (function() {
+  return this.dX;
 });
 function $isArrayOf_scm_ArraySeq$ofDouble(obj, depth) {
   return (!(!(((obj && obj.$classData) && (obj.$classData.D === depth)) && obj.$classData.B.n.cd)));
@@ -21723,8 +21727,8 @@ var $d_scm_ArraySeq$ofDouble = new $TypeData().i($c_scm_ArraySeq$ofDouble, "scal
 }));
 /** @constructor */
 function $c_scm_ArraySeq$ofFloat(array) {
-  this.dX = null;
-  this.dX = array;
+  this.dY = null;
+  this.dY = array;
 }
 $p = $c_scm_ArraySeq$ofFloat.prototype = new $h_scm_ArraySeq();
 $p.constructor = $c_scm_ArraySeq$ofFloat;
@@ -21733,20 +21737,20 @@ function $h_scm_ArraySeq$ofFloat() {
 }
 $h_scm_ArraySeq$ofFloat.prototype = $p;
 $p.C = (function() {
-  return this.dX.b.length;
+  return this.dY.b.length;
 });
 $p.E = (function() {
   var this$1 = $m_s_util_hashing_MurmurHash3$();
-  return this$1.p2(this.dX, this$1.az);
+  return this$1.p2(this.dY, this$1.aA);
 });
 $p.z = (function(that) {
-  return ((that instanceof $c_scm_ArraySeq$ofFloat) ? $m_ju_Arrays$().pp(this.dX, that.dX) : $c_scm_ArraySeq.prototype.z.call(this, that));
+  return ((that instanceof $c_scm_ArraySeq$ofFloat) ? $m_ju_Arrays$().pp(this.dY, that.dY) : $c_scm_ArraySeq.prototype.z.call(this, that));
 });
 $p.r = (function() {
-  return new $c_sc_ArrayOps$ArrayIterator$mcF$sp(this.dX);
+  return new $c_sc_ArrayOps$ArrayIterator$mcF$sp(this.dY);
 });
 $p.gs = (function(index) {
-  return this.dX.b[index];
+  return this.dY.b[index];
 });
 $p.i = (function(v1) {
   return this.gs((v1 | 0));
@@ -21757,8 +21761,8 @@ $p.F = (function(i) {
 $p.au = (function() {
   return $m_s_reflect_ManifestFactory$FloatManifest$();
 });
-$p.ct = (function() {
-  return this.dX;
+$p.cy = (function() {
+  return this.dY;
 });
 function $isArrayOf_scm_ArraySeq$ofFloat(obj, depth) {
   return (!(!(((obj && obj.$classData) && (obj.$classData.D === depth)) && obj.$classData.B.n.ce)));
@@ -21794,8 +21798,8 @@ var $d_scm_ArraySeq$ofFloat = new $TypeData().i($c_scm_ArraySeq$ofFloat, "scala.
 }));
 /** @constructor */
 function $c_scm_ArraySeq$ofInt(array) {
-  this.dY = null;
-  this.dY = array;
+  this.dZ = null;
+  this.dZ = array;
 }
 $p = $c_scm_ArraySeq$ofInt.prototype = new $h_scm_ArraySeq();
 $p.constructor = $c_scm_ArraySeq$ofInt;
@@ -21804,20 +21808,20 @@ function $h_scm_ArraySeq$ofInt() {
 }
 $h_scm_ArraySeq$ofInt.prototype = $p;
 $p.C = (function() {
-  return this.dY.b.length;
+  return this.dZ.b.length;
 });
 $p.E = (function() {
   var this$1 = $m_s_util_hashing_MurmurHash3$();
-  return this$1.p3(this.dY, this$1.az);
+  return this$1.p3(this.dZ, this$1.aA);
 });
 $p.z = (function(that) {
-  return ((that instanceof $c_scm_ArraySeq$ofInt) ? $m_ju_Arrays$().jH(this.dY, that.dY) : $c_scm_ArraySeq.prototype.z.call(this, that));
+  return ((that instanceof $c_scm_ArraySeq$ofInt) ? $m_ju_Arrays$().jH(this.dZ, that.dZ) : $c_scm_ArraySeq.prototype.z.call(this, that));
 });
 $p.r = (function() {
-  return new $c_sc_ArrayOps$ArrayIterator$mcI$sp(this.dY);
+  return new $c_sc_ArrayOps$ArrayIterator$mcI$sp(this.dZ);
 });
 $p.gt = (function(index) {
-  return this.dY.b[index];
+  return this.dZ.b[index];
 });
 $p.i = (function(v1) {
   return this.gt((v1 | 0));
@@ -21828,8 +21832,8 @@ $p.F = (function(i) {
 $p.au = (function() {
   return $m_s_reflect_ManifestFactory$IntManifest$();
 });
-$p.ct = (function() {
-  return this.dY;
+$p.cy = (function() {
+  return this.dZ;
 });
 function $isArrayOf_scm_ArraySeq$ofInt(obj, depth) {
   return (!(!(((obj && obj.$classData) && (obj.$classData.D === depth)) && obj.$classData.B.n.cf)));
@@ -21865,8 +21869,8 @@ var $d_scm_ArraySeq$ofInt = new $TypeData().i($c_scm_ArraySeq$ofInt, "scala.coll
 }));
 /** @constructor */
 function $c_scm_ArraySeq$ofLong(array) {
-  this.dZ = null;
-  this.dZ = array;
+  this.e0 = null;
+  this.e0 = array;
 }
 $p = $c_scm_ArraySeq$ofLong.prototype = new $h_scm_ArraySeq();
 $p.constructor = $c_scm_ArraySeq$ofLong;
@@ -21875,20 +21879,20 @@ function $h_scm_ArraySeq$ofLong() {
 }
 $h_scm_ArraySeq$ofLong.prototype = $p;
 $p.C = (function() {
-  return this.dZ.b.length;
+  return this.e0.b.length;
 });
 $p.E = (function() {
   var this$1 = $m_s_util_hashing_MurmurHash3$();
-  return this$1.p4(this.dZ, this$1.az);
+  return this$1.p4(this.e0, this$1.aA);
 });
 $p.z = (function(that) {
-  return ((that instanceof $c_scm_ArraySeq$ofLong) ? $m_ju_Arrays$().pq(this.dZ, that.dZ) : $c_scm_ArraySeq.prototype.z.call(this, that));
+  return ((that instanceof $c_scm_ArraySeq$ofLong) ? $m_ju_Arrays$().pq(this.e0, that.e0) : $c_scm_ArraySeq.prototype.z.call(this, that));
 });
 $p.r = (function() {
-  return new $c_sc_ArrayOps$ArrayIterator$mcJ$sp(this.dZ);
+  return new $c_sc_ArrayOps$ArrayIterator$mcJ$sp(this.e0);
 });
 $p.gu = (function(index) {
-  return this.dZ.b[index];
+  return this.e0.b[index];
 });
 $p.i = (function(v1) {
   return this.gu((v1 | 0));
@@ -21899,8 +21903,8 @@ $p.F = (function(i) {
 $p.au = (function() {
   return $m_s_reflect_ManifestFactory$LongManifest$();
 });
-$p.ct = (function() {
-  return this.dZ;
+$p.cy = (function() {
+  return this.e0;
 });
 function $isArrayOf_scm_ArraySeq$ofLong(obj, depth) {
   return (!(!(((obj && obj.$classData) && (obj.$classData.D === depth)) && obj.$classData.B.n.cg)));
@@ -21956,7 +21960,7 @@ $p.F = (function(index) {
 });
 $p.E = (function() {
   var this$1 = $m_s_util_hashing_MurmurHash3$();
-  return this$1.oY(this.dg, this$1.az);
+  return this$1.oY(this.dg, this$1.aA);
 });
 $p.z = (function(that) {
   return ((that instanceof $c_scm_ArraySeq$ofRef) ? $m_s_Array$().pt(this.dg, that.dg) : $c_scm_ArraySeq.prototype.z.call(this, that));
@@ -21967,7 +21971,7 @@ $p.r = (function() {
 $p.i = (function(v1) {
   return this.F((v1 | 0));
 });
-$p.ct = (function() {
+$p.cy = (function() {
   return this.dg;
 });
 function $isArrayOf_scm_ArraySeq$ofRef(obj, depth) {
@@ -22004,8 +22008,8 @@ var $d_scm_ArraySeq$ofRef = new $TypeData().i($c_scm_ArraySeq$ofRef, "scala.coll
 }));
 /** @constructor */
 function $c_scm_ArraySeq$ofShort(array) {
-  this.e0 = null;
-  this.e0 = array;
+  this.e1 = null;
+  this.e1 = array;
 }
 $p = $c_scm_ArraySeq$ofShort.prototype = new $h_scm_ArraySeq();
 $p.constructor = $c_scm_ArraySeq$ofShort;
@@ -22014,20 +22018,20 @@ function $h_scm_ArraySeq$ofShort() {
 }
 $h_scm_ArraySeq$ofShort.prototype = $p;
 $p.C = (function() {
-  return this.e0.b.length;
+  return this.e1.b.length;
 });
 $p.gp = (function(index) {
-  return this.e0.b[index];
+  return this.e1.b[index];
 });
 $p.E = (function() {
   var this$1 = $m_s_util_hashing_MurmurHash3$();
-  return this$1.p5(this.e0, this$1.az);
+  return this$1.p5(this.e1, this$1.aA);
 });
 $p.z = (function(that) {
-  return ((that instanceof $c_scm_ArraySeq$ofShort) ? $m_ju_Arrays$().pr(this.e0, that.e0) : $c_scm_ArraySeq.prototype.z.call(this, that));
+  return ((that instanceof $c_scm_ArraySeq$ofShort) ? $m_ju_Arrays$().pr(this.e1, that.e1) : $c_scm_ArraySeq.prototype.z.call(this, that));
 });
 $p.r = (function() {
-  return new $c_sc_ArrayOps$ArrayIterator$mcS$sp(this.e0);
+  return new $c_sc_ArrayOps$ArrayIterator$mcS$sp(this.e1);
 });
 $p.i = (function(v1) {
   return this.gp((v1 | 0));
@@ -22038,8 +22042,8 @@ $p.F = (function(i) {
 $p.au = (function() {
   return $m_s_reflect_ManifestFactory$ShortManifest$();
 });
-$p.ct = (function() {
-  return this.e0;
+$p.cy = (function() {
+  return this.e1;
 });
 function $isArrayOf_scm_ArraySeq$ofShort(obj, depth) {
   return (!(!(((obj && obj.$classData) && (obj.$classData.D === depth)) && obj.$classData.B.n.ci)));
@@ -22075,8 +22079,8 @@ var $d_scm_ArraySeq$ofShort = new $TypeData().i($c_scm_ArraySeq$ofShort, "scala.
 }));
 /** @constructor */
 function $c_scm_ArraySeq$ofUnit(array) {
-  this.eE = null;
-  this.eE = array;
+  this.eG = null;
+  this.eG = array;
 }
 $p = $c_scm_ArraySeq$ofUnit.prototype = new $h_scm_ArraySeq();
 $p.constructor = $c_scm_ArraySeq$ofUnit;
@@ -22085,17 +22089,17 @@ function $h_scm_ArraySeq$ofUnit() {
 }
 $h_scm_ArraySeq$ofUnit.prototype = $p;
 $p.C = (function() {
-  return this.eE.b.length;
+  return this.eG.b.length;
 });
 $p.E = (function() {
   var this$1 = $m_s_util_hashing_MurmurHash3$();
-  return this$1.p6(this.eE, this$1.az);
+  return this$1.p6(this.eG, this$1.aA);
 });
 $p.z = (function(that) {
-  return ((that instanceof $c_scm_ArraySeq$ofUnit) ? (this.eE.b.length === that.eE.b.length) : $c_scm_ArraySeq.prototype.z.call(this, that));
+  return ((that instanceof $c_scm_ArraySeq$ofUnit) ? (this.eG.b.length === that.eG.b.length) : $c_scm_ArraySeq.prototype.z.call(this, that));
 });
 $p.r = (function() {
-  return new $c_sc_ArrayOps$ArrayIterator$mcV$sp(this.eE);
+  return new $c_sc_ArrayOps$ArrayIterator$mcV$sp(this.eG);
 });
 $p.gv = (function(index) {
 });
@@ -22108,8 +22112,8 @@ $p.F = (function(i) {
 $p.au = (function() {
   return $m_s_reflect_ManifestFactory$UnitManifest$();
 });
-$p.ct = (function() {
-  return this.eE;
+$p.cy = (function() {
+  return this.eG;
 });
 function $isArrayOf_scm_ArraySeq$ofUnit(obj, depth) {
   return (!(!(((obj && obj.$classData) && (obj.$classData.D === depth)) && obj.$classData.B.n.cj)));
@@ -22185,7 +22189,7 @@ $p.F = (function(index) {
     throw this.b1(index);
   }
 });
-$p.ek = (function(index, elem) {
+$p.em = (function(index, elem) {
   if (((index >= 0) && (index < this.l.b.length))) {
     var a1 = this.l;
     var a1c = a1.o();
@@ -22195,9 +22199,9 @@ $p.ek = (function(index, elem) {
     throw this.b1(index);
   }
 });
-$p.e8 = (function(elem) {
+$p.e9 = (function(elem) {
   if ((this.l.b.length < 32)) {
-    return new $c_sci_Vector1($m_sci_VectorStatics$().fv(this.l, elem));
+    return new $c_sci_Vector1($m_sci_VectorStatics$().fx(this.l, elem));
   } else {
     var $x_2 = this.l;
     var $x_1 = $m_sci_VectorStatics$().bK;
@@ -22206,8 +22210,8 @@ $p.e8 = (function(elem) {
     return new $c_sci_Vector2($x_2, 32, $x_1, a, 33);
   }
 });
-$p.cI = (function(f) {
-  return new $c_sci_Vector1($m_sci_VectorStatics$().cx(this.l, f));
+$p.cJ = (function(f) {
+  return new $c_sci_Vector1($m_sci_VectorStatics$().cC(this.l, f));
 });
 $p.d5 = (function() {
   return 1;
@@ -22216,7 +22220,7 @@ $p.d4 = (function(idx) {
   return this.l;
 });
 $p.a5 = (function(f) {
-  return this.cI(f);
+  return this.cJ(f);
 });
 $p.i = (function(v1) {
   var index = (v1 | 0);
@@ -22272,13 +22276,13 @@ $h_sci_$colon$colon.prototype = $p;
 $p.w = (function() {
   return this.g6;
 });
-$p.aC = (function() {
+$p.aD = (function() {
   return "::";
 });
-$p.aA = (function() {
+$p.aB = (function() {
   return 2;
 });
-$p.aB = (function(x$1) {
+$p.aC = (function(x$1) {
   switch (x$1) {
     case 0: {
       return this.g6;
@@ -22289,7 +22293,7 @@ $p.aB = (function(x$1) {
       break;
     }
     default: {
-      return $m_sr_Statics$().eU(x$1);
+      return $m_sr_Statics$().eW(x$1);
     }
   }
 });
@@ -22299,7 +22303,7 @@ $p.bB = (function() {
 $p.y = (function() {
   return this.a1;
 });
-$p.bV = (function() {
+$p.bW = (function() {
   return new $c_s_Some(this.g6);
 });
 var $d_sci_$colon$colon = new $TypeData().i($c_sci_$colon$colon, "scala.collection.immutable.$colon$colon", ({
@@ -22352,16 +22356,16 @@ $p.J = (function() {
   return 0;
 });
 $p.r = (function() {
-  return $m_sc_Iterator$().T;
+  return $m_sc_Iterator$().U;
 });
-$p.aC = (function() {
+$p.aD = (function() {
   return "Nil";
 });
-$p.aA = (function() {
+$p.aB = (function() {
   return 0;
 });
-$p.aB = (function(x$1) {
-  return $m_sr_Statics$().eU(x$1);
+$p.aC = (function(x$1) {
+  return $m_sr_Statics$().eW(x$1);
 });
 $p.bB = (function() {
   return new $c_sr_ScalaRunTime$$anon$1(this);
@@ -22369,7 +22373,7 @@ $p.bB = (function() {
 $p.y = (function() {
   this.tr();
 });
-$p.bV = (function() {
+$p.bW = (function() {
   return $m_s_None$();
 });
 $p.w = (function() {
@@ -22429,10 +22433,10 @@ $h_sci_Vector0$.prototype = $p;
 $p.oU = (function(index) {
   throw this.b1(index);
 });
-$p.ek = (function(index, elem) {
+$p.em = (function(index, elem) {
   throw this.b1(index);
 });
-$p.e8 = (function(elem) {
+$p.e9 = (function(elem) {
   var a = new $ac_O(1);
   a.b[0] = elem;
   return new $c_sci_Vector1(a);
@@ -22501,9 +22505,9 @@ function $c_sci_Vector2(_prefix1, len1, data2, _suffix1, _length0) {
   this.l = null;
   this.q = null;
   this.s = 0;
-  this.bT = 0;
+  this.bU = 0;
   this.bz = null;
-  this.bT = len1;
+  this.bU = len1;
   this.bz = data2;
   $ct_sci_BigVector__AO__AO__I__(this, _prefix1, _suffix1, _length0);
 }
@@ -22515,7 +22519,7 @@ function $h_sci_Vector2() {
 $h_sci_Vector2.prototype = $p;
 $p.F = (function(index) {
   if (((index >= 0) && (index < this.s))) {
-    var io = ((index - this.bT) | 0);
+    var io = ((index - this.bU) | 0);
     if ((io >= 0)) {
       var i2 = ((io >>> 5) | 0);
       var i1 = (31 & io);
@@ -22527,10 +22531,10 @@ $p.F = (function(index) {
     throw this.b1(index);
   }
 });
-$p.ek = (function(index, elem) {
+$p.em = (function(index, elem) {
   if (((index >= 0) && (index < this.s))) {
-    if ((index >= this.bT)) {
-      var io = ((index - this.bT) | 0);
+    if ((index >= this.bU)) {
+      var io = ((index - this.bU) | 0);
       var i2 = ((io >>> 5) | 0);
       var i1 = (31 & io);
       if ((i2 < this.bz.b.length)) {
@@ -22540,39 +22544,39 @@ $p.ek = (function(index, elem) {
         var a1c = a1.o();
         a1c.b[i1] = elem;
         a2c.b[i2] = a1c;
-        return new $c_sci_Vector2(this.l, this.bT, a2c, this.q, this.s);
+        return new $c_sci_Vector2(this.l, this.bU, a2c, this.q, this.s);
       } else {
         var a1$1 = this.q;
         var a1c$1 = a1$1.o();
         a1c$1.b[i1] = elem;
-        return new $c_sci_Vector2(this.l, this.bT, this.bz, a1c$1, this.s);
+        return new $c_sci_Vector2(this.l, this.bU, this.bz, a1c$1, this.s);
       }
     } else {
       var a1$2 = this.l;
       var a1c$2 = a1$2.o();
       a1c$2.b[index] = elem;
-      return new $c_sci_Vector2(a1c$2, this.bT, this.bz, this.q, this.s);
+      return new $c_sci_Vector2(a1c$2, this.bU, this.bz, this.q, this.s);
     }
   } else {
     throw this.b1(index);
   }
 });
-$p.e8 = (function(elem) {
+$p.e9 = (function(elem) {
   if ((this.q.b.length < 32)) {
-    var x$1 = $m_sci_VectorStatics$().fv(this.q, elem);
+    var x$1 = $m_sci_VectorStatics$().fx(this.q, elem);
     var x$2 = ((1 + this.s) | 0);
-    return new $c_sci_Vector2(this.l, this.bT, this.bz, x$1, x$2);
+    return new $c_sci_Vector2(this.l, this.bU, this.bz, x$1, x$2);
   } else if ((this.bz.b.length < 30)) {
     var x$6 = $m_sci_VectorStatics$().O(this.bz, this.q);
     var a = new $ac_O(1);
     a.b[0] = elem;
     var x$8 = ((1 + this.s) | 0);
-    return new $c_sci_Vector2(this.l, this.bT, x$6, a, x$8);
+    return new $c_sci_Vector2(this.l, this.bU, x$6, a, x$8);
   } else {
     var $x_5 = this.l;
-    var $x_4 = this.bT;
+    var $x_4 = this.bU;
     var $x_3 = this.bz;
-    var $x_2 = this.bT;
+    var $x_2 = this.bU;
     var $x_1 = $m_sci_VectorStatics$().cU;
     var x = this.q;
     var a$1 = new ($d_O.r().r().C)(1);
@@ -22582,11 +22586,11 @@ $p.e8 = (function(elem) {
     return new $c_sci_Vector3($x_5, $x_4, $x_3, ((960 + $x_2) | 0), $x_1, a$1, a$2, ((1 + this.s) | 0));
   }
 });
-$p.cI = (function(f) {
-  var x$1 = $m_sci_VectorStatics$().cx(this.l, f);
+$p.cJ = (function(f) {
+  var x$1 = $m_sci_VectorStatics$().cC(this.l, f);
   var x$2 = $m_sci_VectorStatics$().ah(2, this.bz, f);
-  var x$3 = $m_sci_VectorStatics$().cx(this.q, f);
-  return new $c_sci_Vector2(x$1, this.bT, x$2, x$3, this.s);
+  var x$3 = $m_sci_VectorStatics$().cC(this.q, f);
+  return new $c_sci_Vector2(x$1, this.bU, x$2, x$3, this.s);
 });
 $p.d5 = (function() {
   return 3;
@@ -22611,12 +22615,12 @@ $p.d4 = (function(idx) {
   }
 });
 $p.a5 = (function(f) {
-  return this.cI(f);
+  return this.cJ(f);
 });
 $p.i = (function(v1) {
   var index = (v1 | 0);
   if (((index >= 0) && (index < this.s))) {
-    var io = ((index - this.bT) | 0);
+    var io = ((index - this.bU) | 0);
     if ((io >= 0)) {
       var i2 = ((io >>> 5) | 0);
       var i1 = (31 & io);
@@ -22700,7 +22704,7 @@ $p.F = (function(index) {
     throw this.b1(index);
   }
 });
-$p.ek = (function(index, elem) {
+$p.em = (function(index, elem) {
   if (((index >= 0) && (index < this.s))) {
     if ((index >= this.bw)) {
       var io = ((index - this.bw) | 0);
@@ -22753,9 +22757,9 @@ $p.ek = (function(index, elem) {
     throw this.b1(index);
   }
 });
-$p.e8 = (function(elem) {
+$p.e9 = (function(elem) {
   if ((this.q.b.length < 32)) {
-    var x$1 = $m_sci_VectorStatics$().fv(this.q, elem);
+    var x$1 = $m_sci_VectorStatics$().fx(this.q, elem);
     var x$2 = ((1 + this.s) | 0);
     return new $c_sci_Vector3(this.l, this.bv, this.bJ, this.bw, this.bh, this.bi, x$1, x$2);
   } else if ((this.bi.b.length < 31)) {
@@ -22778,7 +22782,7 @@ $p.e8 = (function(elem) {
     var $x_5 = this.bw;
     var $x_4 = this.bh;
     var $x_3 = this.bw;
-    var $x_2 = $m_sci_VectorStatics$().fq;
+    var $x_2 = $m_sci_VectorStatics$().fs;
     var x = $m_sci_VectorStatics$().O(this.bi, this.q);
     var a$2 = new ($d_O.r().r().r().C)(1);
     a$2.b[0] = x;
@@ -22788,12 +22792,12 @@ $p.e8 = (function(elem) {
     return new $c_sci_Vector4($x_8, $x_7, $x_6, $x_5, $x_4, ((30720 + $x_3) | 0), $x_2, a$2, $x_1, a$3, ((1 + this.s) | 0));
   }
 });
-$p.cI = (function(f) {
-  var x$1 = $m_sci_VectorStatics$().cx(this.l, f);
+$p.cJ = (function(f) {
+  var x$1 = $m_sci_VectorStatics$().cC(this.l, f);
   var x$2 = $m_sci_VectorStatics$().ah(2, this.bJ, f);
   var x$3 = $m_sci_VectorStatics$().ah(3, this.bh, f);
   var x$4 = $m_sci_VectorStatics$().ah(2, this.bi, f);
-  var x$5 = $m_sci_VectorStatics$().cx(this.q, f);
+  var x$5 = $m_sci_VectorStatics$().cC(this.q, f);
   return new $c_sci_Vector3(x$1, this.bv, x$2, this.bw, x$3, x$4, x$5, this.s);
 });
 $p.d5 = (function() {
@@ -22827,7 +22831,7 @@ $p.d4 = (function(idx) {
   }
 });
 $p.a5 = (function(f) {
-  return this.cI(f);
+  return this.cJ(f);
 });
 $p.i = (function(v1) {
   var index = (v1 | 0);
@@ -22884,19 +22888,19 @@ function $c_sci_Vector4(_prefix1, len1, prefix2, len12, prefix3, len123, data4, 
   this.l = null;
   this.q = null;
   this.s = 0;
-  this.b4 = 0;
+  this.b3 = 0;
   this.bo = null;
-  this.b5 = 0;
+  this.b4 = 0;
   this.bp = null;
-  this.b6 = 0;
+  this.b5 = 0;
   this.aP = null;
   this.aR = null;
   this.aQ = null;
-  this.b4 = len1;
+  this.b3 = len1;
   this.bo = prefix2;
-  this.b5 = len12;
+  this.b4 = len12;
   this.bp = prefix3;
-  this.b6 = len123;
+  this.b5 = len123;
   this.aP = data4;
   this.aR = suffix3;
   this.aQ = suffix2;
@@ -22910,18 +22914,18 @@ function $h_sci_Vector4() {
 $h_sci_Vector4.prototype = $p;
 $p.F = (function(index) {
   if (((index >= 0) && (index < this.s))) {
-    var io = ((index - this.b6) | 0);
+    var io = ((index - this.b5) | 0);
     if ((io >= 0)) {
       var i4 = ((io >>> 15) | 0);
       var i3 = (31 & ((io >>> 10) | 0));
       var i2 = (31 & ((io >>> 5) | 0));
       var i1 = (31 & io);
       return ((i4 < this.aP.b.length) ? this.aP.b[i4].b[i3].b[i2].b[i1] : ((i3 < this.aR.b.length) ? this.aR.b[i3].b[i2].b[i1] : ((i2 < this.aQ.b.length) ? this.aQ.b[i2].b[i1] : this.q.b[i1])));
-    } else if ((index >= this.b5)) {
-      var io$2 = ((index - this.b5) | 0);
-      return this.bp.b[((io$2 >>> 10) | 0)].b[(31 & ((io$2 >>> 5) | 0))].b[(31 & io$2)];
     } else if ((index >= this.b4)) {
-      var io$3 = ((index - this.b4) | 0);
+      var io$2 = ((index - this.b4) | 0);
+      return this.bp.b[((io$2 >>> 10) | 0)].b[(31 & ((io$2 >>> 5) | 0))].b[(31 & io$2)];
+    } else if ((index >= this.b3)) {
+      var io$3 = ((index - this.b3) | 0);
       return this.bo.b[((io$3 >>> 5) | 0)].b[(31 & io$3)];
     } else {
       return this.l.b[index];
@@ -22930,10 +22934,10 @@ $p.F = (function(index) {
     throw this.b1(index);
   }
 });
-$p.ek = (function(index, elem) {
+$p.em = (function(index, elem) {
   if (((index >= 0) && (index < this.s))) {
-    if ((index >= this.b6)) {
-      var io = ((index - this.b6) | 0);
+    if ((index >= this.b5)) {
+      var io = ((index - this.b5) | 0);
       var i4 = ((io >>> 15) | 0);
       var i3 = (31 & ((io >>> 10) | 0));
       var i2 = (31 & ((io >>> 5) | 0));
@@ -22951,7 +22955,7 @@ $p.ek = (function(index, elem) {
         a2c.b[i2] = a1c;
         a3c.b[i3] = a2c;
         a4c.b[i4] = a3c;
-        return new $c_sci_Vector4(this.l, this.b4, this.bo, this.b5, this.bp, this.b6, a4c, this.aR, this.aQ, this.q, this.s);
+        return new $c_sci_Vector4(this.l, this.b3, this.bo, this.b4, this.bp, this.b5, a4c, this.aR, this.aQ, this.q, this.s);
       } else if ((i3 < this.aR.b.length)) {
         var a3$1 = this.aR;
         var a3c$1 = a3$1.o();
@@ -22962,7 +22966,7 @@ $p.ek = (function(index, elem) {
         a1c$1.b[i1] = elem;
         a2c$1.b[i2] = a1c$1;
         a3c$1.b[i3] = a2c$1;
-        return new $c_sci_Vector4(this.l, this.b4, this.bo, this.b5, this.bp, this.b6, this.aP, a3c$1, this.aQ, this.q, this.s);
+        return new $c_sci_Vector4(this.l, this.b3, this.bo, this.b4, this.bp, this.b5, this.aP, a3c$1, this.aQ, this.q, this.s);
       } else if ((i2 < this.aQ.b.length)) {
         var a2$2 = this.aQ;
         var a2c$2 = a2$2.o();
@@ -22970,15 +22974,15 @@ $p.ek = (function(index, elem) {
         var a1c$2 = a1$2.o();
         a1c$2.b[i1] = elem;
         a2c$2.b[i2] = a1c$2;
-        return new $c_sci_Vector4(this.l, this.b4, this.bo, this.b5, this.bp, this.b6, this.aP, this.aR, a2c$2, this.q, this.s);
+        return new $c_sci_Vector4(this.l, this.b3, this.bo, this.b4, this.bp, this.b5, this.aP, this.aR, a2c$2, this.q, this.s);
       } else {
         var a1$3 = this.q;
         var a1c$3 = a1$3.o();
         a1c$3.b[i1] = elem;
-        return new $c_sci_Vector4(this.l, this.b4, this.bo, this.b5, this.bp, this.b6, this.aP, this.aR, this.aQ, a1c$3, this.s);
+        return new $c_sci_Vector4(this.l, this.b3, this.bo, this.b4, this.bp, this.b5, this.aP, this.aR, this.aQ, a1c$3, this.s);
       }
-    } else if ((index >= this.b5)) {
-      var io$2 = ((index - this.b5) | 0);
+    } else if ((index >= this.b4)) {
+      var io$2 = ((index - this.b4) | 0);
       var a3$2 = this.bp;
       var idx3 = ((io$2 >>> 10) | 0);
       var idx2 = (31 & ((io$2 >>> 5) | 0));
@@ -22991,9 +22995,9 @@ $p.ek = (function(index, elem) {
       a1c$4.b[idx1] = elem;
       a2c$3.b[idx2] = a1c$4;
       a3c$2.b[idx3] = a2c$3;
-      return new $c_sci_Vector4(this.l, this.b4, this.bo, this.b5, a3c$2, this.b6, this.aP, this.aR, this.aQ, this.q, this.s);
-    } else if ((index >= this.b4)) {
-      var io$3 = ((index - this.b4) | 0);
+      return new $c_sci_Vector4(this.l, this.b3, this.bo, this.b4, a3c$2, this.b5, this.aP, this.aR, this.aQ, this.q, this.s);
+    } else if ((index >= this.b3)) {
+      var io$3 = ((index - this.b3) | 0);
       var a2$4 = this.bo;
       var idx2$1 = ((io$3 >>> 5) | 0);
       var idx1$1 = (31 & io$3);
@@ -23002,35 +23006,35 @@ $p.ek = (function(index, elem) {
       var a1c$5 = a1$5.o();
       a1c$5.b[idx1$1] = elem;
       a2c$4.b[idx2$1] = a1c$5;
-      return new $c_sci_Vector4(this.l, this.b4, a2c$4, this.b5, this.bp, this.b6, this.aP, this.aR, this.aQ, this.q, this.s);
+      return new $c_sci_Vector4(this.l, this.b3, a2c$4, this.b4, this.bp, this.b5, this.aP, this.aR, this.aQ, this.q, this.s);
     } else {
       var a1$6 = this.l;
       var a1c$6 = a1$6.o();
       a1c$6.b[index] = elem;
-      return new $c_sci_Vector4(a1c$6, this.b4, this.bo, this.b5, this.bp, this.b6, this.aP, this.aR, this.aQ, this.q, this.s);
+      return new $c_sci_Vector4(a1c$6, this.b3, this.bo, this.b4, this.bp, this.b5, this.aP, this.aR, this.aQ, this.q, this.s);
     }
   } else {
     throw this.b1(index);
   }
 });
-$p.e8 = (function(elem) {
+$p.e9 = (function(elem) {
   if ((this.q.b.length < 32)) {
-    var x$1 = $m_sci_VectorStatics$().fv(this.q, elem);
+    var x$1 = $m_sci_VectorStatics$().fx(this.q, elem);
     var x$2 = ((1 + this.s) | 0);
-    return new $c_sci_Vector4(this.l, this.b4, this.bo, this.b5, this.bp, this.b6, this.aP, this.aR, this.aQ, x$1, x$2);
+    return new $c_sci_Vector4(this.l, this.b3, this.bo, this.b4, this.bp, this.b5, this.aP, this.aR, this.aQ, x$1, x$2);
   } else if ((this.aQ.b.length < 31)) {
     var x$12 = $m_sci_VectorStatics$().O(this.aQ, this.q);
     var a = new $ac_O(1);
     a.b[0] = elem;
     var x$14 = ((1 + this.s) | 0);
-    return new $c_sci_Vector4(this.l, this.b4, this.bo, this.b5, this.bp, this.b6, this.aP, this.aR, x$12, a, x$14);
+    return new $c_sci_Vector4(this.l, this.b3, this.bo, this.b4, this.bp, this.b5, this.aP, this.aR, x$12, a, x$14);
   } else if ((this.aR.b.length < 31)) {
     var x$23 = $m_sci_VectorStatics$().O(this.aR, $m_sci_VectorStatics$().O(this.aQ, this.q));
     var x$24 = $m_sci_VectorStatics$().bK;
     var a$1 = new $ac_O(1);
     a$1.b[0] = elem;
     var x$26 = ((1 + this.s) | 0);
-    return new $c_sci_Vector4(this.l, this.b4, this.bo, this.b5, this.bp, this.b6, this.aP, x$23, x$24, a$1, x$26);
+    return new $c_sci_Vector4(this.l, this.b3, this.bo, this.b4, this.bp, this.b5, this.aP, x$23, x$24, a$1, x$26);
   } else if ((this.aP.b.length < 30)) {
     var x$34 = $m_sci_VectorStatics$().O(this.aP, $m_sci_VectorStatics$().O(this.aR, $m_sci_VectorStatics$().O(this.aQ, this.q)));
     var x$35 = $m_sci_VectorStatics$().cU;
@@ -23038,16 +23042,16 @@ $p.e8 = (function(elem) {
     var a$2 = new $ac_O(1);
     a$2.b[0] = elem;
     var x$38 = ((1 + this.s) | 0);
-    return new $c_sci_Vector4(this.l, this.b4, this.bo, this.b5, this.bp, this.b6, x$34, x$35, x$36, a$2, x$38);
+    return new $c_sci_Vector4(this.l, this.b3, this.bo, this.b4, this.bp, this.b5, x$34, x$35, x$36, a$2, x$38);
   } else {
     var $x_11 = this.l;
-    var $x_10 = this.b4;
+    var $x_10 = this.b3;
     var $x_9 = this.bo;
-    var $x_8 = this.b5;
+    var $x_8 = this.b4;
     var $x_7 = this.bp;
-    var $x_6 = this.b6;
+    var $x_6 = this.b5;
     var $x_5 = this.aP;
-    var $x_4 = this.b6;
+    var $x_4 = this.b5;
     var $x_3 = $m_sci_VectorStatics$().je;
     var x = $m_sci_VectorStatics$().O(this.aR, $m_sci_VectorStatics$().O(this.aQ, this.q));
     var a$3 = new ($d_O.r().r().r().r().C)(1);
@@ -23059,15 +23063,15 @@ $p.e8 = (function(elem) {
     return new $c_sci_Vector5($x_11, $x_10, $x_9, $x_8, $x_7, $x_6, $x_5, ((983040 + $x_4) | 0), $x_3, a$3, $x_2, $x_1, a$4, ((1 + this.s) | 0));
   }
 });
-$p.cI = (function(f) {
-  var x$1 = $m_sci_VectorStatics$().cx(this.l, f);
+$p.cJ = (function(f) {
+  var x$1 = $m_sci_VectorStatics$().cC(this.l, f);
   var x$2 = $m_sci_VectorStatics$().ah(2, this.bo, f);
   var x$3 = $m_sci_VectorStatics$().ah(3, this.bp, f);
   var x$4 = $m_sci_VectorStatics$().ah(4, this.aP, f);
   var x$5 = $m_sci_VectorStatics$().ah(3, this.aR, f);
   var x$6 = $m_sci_VectorStatics$().ah(2, this.aQ, f);
-  var x$7 = $m_sci_VectorStatics$().cx(this.q, f);
-  return new $c_sci_Vector4(x$1, this.b4, x$2, this.b5, x$3, this.b6, x$4, x$5, x$6, x$7, this.s);
+  var x$7 = $m_sci_VectorStatics$().cC(this.q, f);
+  return new $c_sci_Vector4(x$1, this.b3, x$2, this.b4, x$3, this.b5, x$4, x$5, x$6, x$7, this.s);
 });
 $p.d5 = (function() {
   return 7;
@@ -23108,23 +23112,23 @@ $p.d4 = (function(idx) {
   }
 });
 $p.a5 = (function(f) {
-  return this.cI(f);
+  return this.cJ(f);
 });
 $p.i = (function(v1) {
   var index = (v1 | 0);
   if (((index >= 0) && (index < this.s))) {
-    var io = ((index - this.b6) | 0);
+    var io = ((index - this.b5) | 0);
     if ((io >= 0)) {
       var i4 = ((io >>> 15) | 0);
       var i3 = (31 & ((io >>> 10) | 0));
       var i2 = (31 & ((io >>> 5) | 0));
       var i1 = (31 & io);
       return ((i4 < this.aP.b.length) ? this.aP.b[i4].b[i3].b[i2].b[i1] : ((i3 < this.aR.b.length) ? this.aR.b[i3].b[i2].b[i1] : ((i2 < this.aQ.b.length) ? this.aQ.b[i2].b[i1] : this.q.b[i1])));
-    } else if ((index >= this.b5)) {
-      var io$2 = ((index - this.b5) | 0);
-      return this.bp.b[((io$2 >>> 10) | 0)].b[(31 & ((io$2 >>> 5) | 0))].b[(31 & io$2)];
     } else if ((index >= this.b4)) {
-      var io$3 = ((index - this.b4) | 0);
+      var io$2 = ((index - this.b4) | 0);
+      return this.bp.b[((io$2 >>> 10) | 0)].b[(31 & ((io$2 >>> 5) | 0))].b[(31 & io$2)];
+    } else if ((index >= this.b3)) {
+      var io$3 = ((index - this.b3) | 0);
       return this.bo.b[((io$3 >>> 5) | 0)].b[(31 & io$3)];
     } else {
       return this.l.b[index];
@@ -23169,24 +23173,24 @@ function $c_sci_Vector5(_prefix1, len1, prefix2, len12, prefix3, len123, prefix4
   this.l = null;
   this.q = null;
   this.s = 0;
-  this.aE = 0;
-  this.aU = null;
   this.aF = 0;
-  this.aV = null;
+  this.aU = null;
   this.aG = 0;
-  this.aW = null;
+  this.aV = null;
   this.aH = 0;
+  this.aW = null;
+  this.aI = 0;
   this.am = null;
   this.ap = null;
   this.ao = null;
   this.an = null;
-  this.aE = len1;
+  this.aF = len1;
   this.aU = prefix2;
-  this.aF = len12;
+  this.aG = len12;
   this.aV = prefix3;
-  this.aG = len123;
+  this.aH = len123;
   this.aW = prefix4;
-  this.aH = len1234;
+  this.aI = len1234;
   this.am = data5;
   this.ap = suffix4;
   this.ao = suffix3;
@@ -23201,7 +23205,7 @@ function $h_sci_Vector5() {
 $h_sci_Vector5.prototype = $p;
 $p.F = (function(index) {
   if (((index >= 0) && (index < this.s))) {
-    var io = ((index - this.aH) | 0);
+    var io = ((index - this.aI) | 0);
     if ((io >= 0)) {
       var i5 = ((io >>> 20) | 0);
       var i4 = (31 & ((io >>> 15) | 0));
@@ -23209,14 +23213,14 @@ $p.F = (function(index) {
       var i2 = (31 & ((io >>> 5) | 0));
       var i1 = (31 & io);
       return ((i5 < this.am.b.length) ? this.am.b[i5].b[i4].b[i3].b[i2].b[i1] : ((i4 < this.ap.b.length) ? this.ap.b[i4].b[i3].b[i2].b[i1] : ((i3 < this.ao.b.length) ? this.ao.b[i3].b[i2].b[i1] : ((i2 < this.an.b.length) ? this.an.b[i2].b[i1] : this.q.b[i1]))));
-    } else if ((index >= this.aG)) {
-      var io$2 = ((index - this.aG) | 0);
+    } else if ((index >= this.aH)) {
+      var io$2 = ((index - this.aH) | 0);
       return this.aW.b[((io$2 >>> 15) | 0)].b[(31 & ((io$2 >>> 10) | 0))].b[(31 & ((io$2 >>> 5) | 0))].b[(31 & io$2)];
-    } else if ((index >= this.aF)) {
-      var io$3 = ((index - this.aF) | 0);
+    } else if ((index >= this.aG)) {
+      var io$3 = ((index - this.aG) | 0);
       return this.aV.b[((io$3 >>> 10) | 0)].b[(31 & ((io$3 >>> 5) | 0))].b[(31 & io$3)];
-    } else if ((index >= this.aE)) {
-      var io$4 = ((index - this.aE) | 0);
+    } else if ((index >= this.aF)) {
+      var io$4 = ((index - this.aF) | 0);
       return this.aU.b[((io$4 >>> 5) | 0)].b[(31 & io$4)];
     } else {
       return this.l.b[index];
@@ -23225,10 +23229,10 @@ $p.F = (function(index) {
     throw this.b1(index);
   }
 });
-$p.ek = (function(index, elem) {
+$p.em = (function(index, elem) {
   if (((index >= 0) && (index < this.s))) {
-    if ((index >= this.aH)) {
-      var io = ((index - this.aH) | 0);
+    if ((index >= this.aI)) {
+      var io = ((index - this.aI) | 0);
       var i5 = ((io >>> 20) | 0);
       var i4 = (31 & ((io >>> 15) | 0));
       var i3 = (31 & ((io >>> 10) | 0));
@@ -23250,7 +23254,7 @@ $p.ek = (function(index, elem) {
         a3c.b[i3] = a2c;
         a4c.b[i4] = a3c;
         a5c.b[i5] = a4c;
-        return new $c_sci_Vector5(this.l, this.aE, this.aU, this.aF, this.aV, this.aG, this.aW, this.aH, a5c, this.ap, this.ao, this.an, this.q, this.s);
+        return new $c_sci_Vector5(this.l, this.aF, this.aU, this.aG, this.aV, this.aH, this.aW, this.aI, a5c, this.ap, this.ao, this.an, this.q, this.s);
       } else if ((i4 < this.ap.b.length)) {
         var a4$1 = this.ap;
         var a4c$1 = a4$1.o();
@@ -23264,7 +23268,7 @@ $p.ek = (function(index, elem) {
         a2c$1.b[i2] = a1c$1;
         a3c$1.b[i3] = a2c$1;
         a4c$1.b[i4] = a3c$1;
-        return new $c_sci_Vector5(this.l, this.aE, this.aU, this.aF, this.aV, this.aG, this.aW, this.aH, this.am, a4c$1, this.ao, this.an, this.q, this.s);
+        return new $c_sci_Vector5(this.l, this.aF, this.aU, this.aG, this.aV, this.aH, this.aW, this.aI, this.am, a4c$1, this.ao, this.an, this.q, this.s);
       } else if ((i3 < this.ao.b.length)) {
         var a3$2 = this.ao;
         var a3c$2 = a3$2.o();
@@ -23275,7 +23279,7 @@ $p.ek = (function(index, elem) {
         a1c$2.b[i1] = elem;
         a2c$2.b[i2] = a1c$2;
         a3c$2.b[i3] = a2c$2;
-        return new $c_sci_Vector5(this.l, this.aE, this.aU, this.aF, this.aV, this.aG, this.aW, this.aH, this.am, this.ap, a3c$2, this.an, this.q, this.s);
+        return new $c_sci_Vector5(this.l, this.aF, this.aU, this.aG, this.aV, this.aH, this.aW, this.aI, this.am, this.ap, a3c$2, this.an, this.q, this.s);
       } else if ((i2 < this.an.b.length)) {
         var a2$3 = this.an;
         var a2c$3 = a2$3.o();
@@ -23283,15 +23287,15 @@ $p.ek = (function(index, elem) {
         var a1c$3 = a1$3.o();
         a1c$3.b[i1] = elem;
         a2c$3.b[i2] = a1c$3;
-        return new $c_sci_Vector5(this.l, this.aE, this.aU, this.aF, this.aV, this.aG, this.aW, this.aH, this.am, this.ap, this.ao, a2c$3, this.q, this.s);
+        return new $c_sci_Vector5(this.l, this.aF, this.aU, this.aG, this.aV, this.aH, this.aW, this.aI, this.am, this.ap, this.ao, a2c$3, this.q, this.s);
       } else {
         var a1$4 = this.q;
         var a1c$4 = a1$4.o();
         a1c$4.b[i1] = elem;
-        return new $c_sci_Vector5(this.l, this.aE, this.aU, this.aF, this.aV, this.aG, this.aW, this.aH, this.am, this.ap, this.ao, this.an, a1c$4, this.s);
+        return new $c_sci_Vector5(this.l, this.aF, this.aU, this.aG, this.aV, this.aH, this.aW, this.aI, this.am, this.ap, this.ao, this.an, a1c$4, this.s);
       }
-    } else if ((index >= this.aG)) {
-      var io$2 = ((index - this.aG) | 0);
+    } else if ((index >= this.aH)) {
+      var io$2 = ((index - this.aH) | 0);
       var a4$2 = this.aW;
       var idx4 = ((io$2 >>> 15) | 0);
       var idx3 = (31 & ((io$2 >>> 10) | 0));
@@ -23308,9 +23312,9 @@ $p.ek = (function(index, elem) {
       a2c$4.b[idx2] = a1c$5;
       a3c$3.b[idx3] = a2c$4;
       a4c$2.b[idx4] = a3c$3;
-      return new $c_sci_Vector5(this.l, this.aE, this.aU, this.aF, this.aV, this.aG, a4c$2, this.aH, this.am, this.ap, this.ao, this.an, this.q, this.s);
-    } else if ((index >= this.aF)) {
-      var io$3 = ((index - this.aF) | 0);
+      return new $c_sci_Vector5(this.l, this.aF, this.aU, this.aG, this.aV, this.aH, a4c$2, this.aI, this.am, this.ap, this.ao, this.an, this.q, this.s);
+    } else if ((index >= this.aG)) {
+      var io$3 = ((index - this.aG) | 0);
       var a3$4 = this.aV;
       var idx3$1 = ((io$3 >>> 10) | 0);
       var idx2$1 = (31 & ((io$3 >>> 5) | 0));
@@ -23323,9 +23327,9 @@ $p.ek = (function(index, elem) {
       a1c$6.b[idx1$1] = elem;
       a2c$5.b[idx2$1] = a1c$6;
       a3c$4.b[idx3$1] = a2c$5;
-      return new $c_sci_Vector5(this.l, this.aE, this.aU, this.aF, a3c$4, this.aG, this.aW, this.aH, this.am, this.ap, this.ao, this.an, this.q, this.s);
-    } else if ((index >= this.aE)) {
-      var io$4 = ((index - this.aE) | 0);
+      return new $c_sci_Vector5(this.l, this.aF, this.aU, this.aG, a3c$4, this.aH, this.aW, this.aI, this.am, this.ap, this.ao, this.an, this.q, this.s);
+    } else if ((index >= this.aF)) {
+      var io$4 = ((index - this.aF) | 0);
       var a2$6 = this.aU;
       var idx2$2 = ((io$4 >>> 5) | 0);
       var idx1$2 = (31 & io$4);
@@ -23334,35 +23338,35 @@ $p.ek = (function(index, elem) {
       var a1c$7 = a1$7.o();
       a1c$7.b[idx1$2] = elem;
       a2c$6.b[idx2$2] = a1c$7;
-      return new $c_sci_Vector5(this.l, this.aE, a2c$6, this.aF, this.aV, this.aG, this.aW, this.aH, this.am, this.ap, this.ao, this.an, this.q, this.s);
+      return new $c_sci_Vector5(this.l, this.aF, a2c$6, this.aG, this.aV, this.aH, this.aW, this.aI, this.am, this.ap, this.ao, this.an, this.q, this.s);
     } else {
       var a1$8 = this.l;
       var a1c$8 = a1$8.o();
       a1c$8.b[index] = elem;
-      return new $c_sci_Vector5(a1c$8, this.aE, this.aU, this.aF, this.aV, this.aG, this.aW, this.aH, this.am, this.ap, this.ao, this.an, this.q, this.s);
+      return new $c_sci_Vector5(a1c$8, this.aF, this.aU, this.aG, this.aV, this.aH, this.aW, this.aI, this.am, this.ap, this.ao, this.an, this.q, this.s);
     }
   } else {
     throw this.b1(index);
   }
 });
-$p.e8 = (function(elem) {
+$p.e9 = (function(elem) {
   if ((this.q.b.length < 32)) {
-    var x$1 = $m_sci_VectorStatics$().fv(this.q, elem);
+    var x$1 = $m_sci_VectorStatics$().fx(this.q, elem);
     var x$2 = ((1 + this.s) | 0);
-    return new $c_sci_Vector5(this.l, this.aE, this.aU, this.aF, this.aV, this.aG, this.aW, this.aH, this.am, this.ap, this.ao, this.an, x$1, x$2);
+    return new $c_sci_Vector5(this.l, this.aF, this.aU, this.aG, this.aV, this.aH, this.aW, this.aI, this.am, this.ap, this.ao, this.an, x$1, x$2);
   } else if ((this.an.b.length < 31)) {
     var x$15 = $m_sci_VectorStatics$().O(this.an, this.q);
     var a = new $ac_O(1);
     a.b[0] = elem;
     var x$17 = ((1 + this.s) | 0);
-    return new $c_sci_Vector5(this.l, this.aE, this.aU, this.aF, this.aV, this.aG, this.aW, this.aH, this.am, this.ap, this.ao, x$15, a, x$17);
+    return new $c_sci_Vector5(this.l, this.aF, this.aU, this.aG, this.aV, this.aH, this.aW, this.aI, this.am, this.ap, this.ao, x$15, a, x$17);
   } else if ((this.ao.b.length < 31)) {
     var x$29 = $m_sci_VectorStatics$().O(this.ao, $m_sci_VectorStatics$().O(this.an, this.q));
     var x$30 = $m_sci_VectorStatics$().bK;
     var a$1 = new $ac_O(1);
     a$1.b[0] = elem;
     var x$32 = ((1 + this.s) | 0);
-    return new $c_sci_Vector5(this.l, this.aE, this.aU, this.aF, this.aV, this.aG, this.aW, this.aH, this.am, this.ap, x$29, x$30, a$1, x$32);
+    return new $c_sci_Vector5(this.l, this.aF, this.aU, this.aG, this.aV, this.aH, this.aW, this.aI, this.am, this.ap, x$29, x$30, a$1, x$32);
   } else if ((this.ap.b.length < 31)) {
     var x$43 = $m_sci_VectorStatics$().O(this.ap, $m_sci_VectorStatics$().O(this.ao, $m_sci_VectorStatics$().O(this.an, this.q)));
     var x$44 = $m_sci_VectorStatics$().cU;
@@ -23370,32 +23374,32 @@ $p.e8 = (function(elem) {
     var a$2 = new $ac_O(1);
     a$2.b[0] = elem;
     var x$47 = ((1 + this.s) | 0);
-    return new $c_sci_Vector5(this.l, this.aE, this.aU, this.aF, this.aV, this.aG, this.aW, this.aH, this.am, x$43, x$44, x$45, a$2, x$47);
+    return new $c_sci_Vector5(this.l, this.aF, this.aU, this.aG, this.aV, this.aH, this.aW, this.aI, this.am, x$43, x$44, x$45, a$2, x$47);
   } else if ((this.am.b.length < 30)) {
     var x$57 = $m_sci_VectorStatics$().O(this.am, $m_sci_VectorStatics$().O(this.ap, $m_sci_VectorStatics$().O(this.ao, $m_sci_VectorStatics$().O(this.an, this.q))));
-    var x$58 = $m_sci_VectorStatics$().fq;
+    var x$58 = $m_sci_VectorStatics$().fs;
     var x$59 = $m_sci_VectorStatics$().cU;
     var x$60 = $m_sci_VectorStatics$().bK;
     var a$3 = new $ac_O(1);
     a$3.b[0] = elem;
     var x$62 = ((1 + this.s) | 0);
-    return new $c_sci_Vector5(this.l, this.aE, this.aU, this.aF, this.aV, this.aG, this.aW, this.aH, x$57, x$58, x$59, x$60, a$3, x$62);
+    return new $c_sci_Vector5(this.l, this.aF, this.aU, this.aG, this.aV, this.aH, this.aW, this.aI, x$57, x$58, x$59, x$60, a$3, x$62);
   } else {
     var $x_14 = this.l;
-    var $x_13 = this.aE;
+    var $x_13 = this.aF;
     var $x_12 = this.aU;
-    var $x_11 = this.aF;
+    var $x_11 = this.aG;
     var $x_10 = this.aV;
-    var $x_9 = this.aG;
+    var $x_9 = this.aH;
     var $x_8 = this.aW;
-    var $x_7 = this.aH;
+    var $x_7 = this.aI;
     var $x_6 = this.am;
-    var $x_5 = this.aH;
+    var $x_5 = this.aI;
     var $x_4 = $m_sci_VectorStatics$().om;
     var x = $m_sci_VectorStatics$().O(this.ap, $m_sci_VectorStatics$().O(this.ao, $m_sci_VectorStatics$().O(this.an, this.q)));
     var a$4 = new ($d_O.r().r().r().r().r().C)(1);
     a$4.b[0] = x;
-    var $x_3 = $m_sci_VectorStatics$().fq;
+    var $x_3 = $m_sci_VectorStatics$().fs;
     var $x_2 = $m_sci_VectorStatics$().cU;
     var $x_1 = $m_sci_VectorStatics$().bK;
     var a$5 = new $ac_O(1);
@@ -23403,8 +23407,8 @@ $p.e8 = (function(elem) {
     return new $c_sci_Vector6($x_14, $x_13, $x_12, $x_11, $x_10, $x_9, $x_8, $x_7, $x_6, ((31457280 + $x_5) | 0), $x_4, a$4, $x_3, $x_2, $x_1, a$5, ((1 + this.s) | 0));
   }
 });
-$p.cI = (function(f) {
-  var x$1 = $m_sci_VectorStatics$().cx(this.l, f);
+$p.cJ = (function(f) {
+  var x$1 = $m_sci_VectorStatics$().cC(this.l, f);
   var x$2 = $m_sci_VectorStatics$().ah(2, this.aU, f);
   var x$3 = $m_sci_VectorStatics$().ah(3, this.aV, f);
   var x$4 = $m_sci_VectorStatics$().ah(4, this.aW, f);
@@ -23412,8 +23416,8 @@ $p.cI = (function(f) {
   var x$6 = $m_sci_VectorStatics$().ah(4, this.ap, f);
   var x$7 = $m_sci_VectorStatics$().ah(3, this.ao, f);
   var x$8 = $m_sci_VectorStatics$().ah(2, this.an, f);
-  var x$9 = $m_sci_VectorStatics$().cx(this.q, f);
-  return new $c_sci_Vector5(x$1, this.aE, x$2, this.aF, x$3, this.aG, x$4, this.aH, x$5, x$6, x$7, x$8, x$9, this.s);
+  var x$9 = $m_sci_VectorStatics$().cC(this.q, f);
+  return new $c_sci_Vector5(x$1, this.aF, x$2, this.aG, x$3, this.aH, x$4, this.aI, x$5, x$6, x$7, x$8, x$9, this.s);
 });
 $p.d5 = (function() {
   return 9;
@@ -23462,12 +23466,12 @@ $p.d4 = (function(idx) {
   }
 });
 $p.a5 = (function(f) {
-  return this.cI(f);
+  return this.cJ(f);
 });
 $p.i = (function(v1) {
   var index = (v1 | 0);
   if (((index >= 0) && (index < this.s))) {
-    var io = ((index - this.aH) | 0);
+    var io = ((index - this.aI) | 0);
     if ((io >= 0)) {
       var i5 = ((io >>> 20) | 0);
       var i4 = (31 & ((io >>> 15) | 0));
@@ -23475,14 +23479,14 @@ $p.i = (function(v1) {
       var i2 = (31 & ((io >>> 5) | 0));
       var i1 = (31 & io);
       return ((i5 < this.am.b.length) ? this.am.b[i5].b[i4].b[i3].b[i2].b[i1] : ((i4 < this.ap.b.length) ? this.ap.b[i4].b[i3].b[i2].b[i1] : ((i3 < this.ao.b.length) ? this.ao.b[i3].b[i2].b[i1] : ((i2 < this.an.b.length) ? this.an.b[i2].b[i1] : this.q.b[i1]))));
-    } else if ((index >= this.aG)) {
-      var io$2 = ((index - this.aG) | 0);
+    } else if ((index >= this.aH)) {
+      var io$2 = ((index - this.aH) | 0);
       return this.aW.b[((io$2 >>> 15) | 0)].b[(31 & ((io$2 >>> 10) | 0))].b[(31 & ((io$2 >>> 5) | 0))].b[(31 & io$2)];
-    } else if ((index >= this.aF)) {
-      var io$3 = ((index - this.aF) | 0);
+    } else if ((index >= this.aG)) {
+      var io$3 = ((index - this.aG) | 0);
       return this.aV.b[((io$3 >>> 10) | 0)].b[(31 & ((io$3 >>> 5) | 0))].b[(31 & io$3)];
-    } else if ((index >= this.aE)) {
-      var io$4 = ((index - this.aE) | 0);
+    } else if ((index >= this.aF)) {
+      var io$4 = ((index - this.aF) | 0);
       return this.aU.b[((io$4 >>> 5) | 0)].b[(31 & io$4)];
     } else {
       return this.l.b[index];
@@ -23528,28 +23532,28 @@ function $c_sci_Vector6(_prefix1, len1, prefix2, len12, prefix3, len123, prefix4
   this.q = null;
   this.s = 0;
   this.aq = 0;
-  this.aI = null;
-  this.ar = 0;
   this.aJ = null;
-  this.as = 0;
+  this.ar = 0;
   this.aK = null;
-  this.at = 0;
+  this.as = 0;
   this.aL = null;
-  this.ax = 0;
+  this.at = 0;
+  this.aM = null;
+  this.ay = 0;
   this.ab = null;
   this.af = null;
   this.ae = null;
   this.ad = null;
   this.ac = null;
   this.aq = len1;
-  this.aI = prefix2;
+  this.aJ = prefix2;
   this.ar = len12;
-  this.aJ = prefix3;
+  this.aK = prefix3;
   this.as = len123;
-  this.aK = prefix4;
+  this.aL = prefix4;
   this.at = len1234;
-  this.aL = prefix5;
-  this.ax = len12345;
+  this.aM = prefix5;
+  this.ay = len12345;
   this.ab = data6;
   this.af = suffix5;
   this.ae = suffix4;
@@ -23565,7 +23569,7 @@ function $h_sci_Vector6() {
 $h_sci_Vector6.prototype = $p;
 $p.F = (function(index) {
   if (((index >= 0) && (index < this.s))) {
-    var io = ((index - this.ax) | 0);
+    var io = ((index - this.ay) | 0);
     if ((io >= 0)) {
       var i6 = ((io >>> 25) | 0);
       var i5 = (31 & ((io >>> 20) | 0));
@@ -23576,16 +23580,16 @@ $p.F = (function(index) {
       return ((i6 < this.ab.b.length) ? this.ab.b[i6].b[i5].b[i4].b[i3].b[i2].b[i1] : ((i5 < this.af.b.length) ? this.af.b[i5].b[i4].b[i3].b[i2].b[i1] : ((i4 < this.ae.b.length) ? this.ae.b[i4].b[i3].b[i2].b[i1] : ((i3 < this.ad.b.length) ? this.ad.b[i3].b[i2].b[i1] : ((i2 < this.ac.b.length) ? this.ac.b[i2].b[i1] : this.q.b[i1])))));
     } else if ((index >= this.at)) {
       var io$2 = ((index - this.at) | 0);
-      return this.aL.b[((io$2 >>> 20) | 0)].b[(31 & ((io$2 >>> 15) | 0))].b[(31 & ((io$2 >>> 10) | 0))].b[(31 & ((io$2 >>> 5) | 0))].b[(31 & io$2)];
+      return this.aM.b[((io$2 >>> 20) | 0)].b[(31 & ((io$2 >>> 15) | 0))].b[(31 & ((io$2 >>> 10) | 0))].b[(31 & ((io$2 >>> 5) | 0))].b[(31 & io$2)];
     } else if ((index >= this.as)) {
       var io$3 = ((index - this.as) | 0);
-      return this.aK.b[((io$3 >>> 15) | 0)].b[(31 & ((io$3 >>> 10) | 0))].b[(31 & ((io$3 >>> 5) | 0))].b[(31 & io$3)];
+      return this.aL.b[((io$3 >>> 15) | 0)].b[(31 & ((io$3 >>> 10) | 0))].b[(31 & ((io$3 >>> 5) | 0))].b[(31 & io$3)];
     } else if ((index >= this.ar)) {
       var io$4 = ((index - this.ar) | 0);
-      return this.aJ.b[((io$4 >>> 10) | 0)].b[(31 & ((io$4 >>> 5) | 0))].b[(31 & io$4)];
+      return this.aK.b[((io$4 >>> 10) | 0)].b[(31 & ((io$4 >>> 5) | 0))].b[(31 & io$4)];
     } else if ((index >= this.aq)) {
       var io$5 = ((index - this.aq) | 0);
-      return this.aI.b[((io$5 >>> 5) | 0)].b[(31 & io$5)];
+      return this.aJ.b[((io$5 >>> 5) | 0)].b[(31 & io$5)];
     } else {
       return this.l.b[index];
     }
@@ -23593,10 +23597,10 @@ $p.F = (function(index) {
     throw this.b1(index);
   }
 });
-$p.ek = (function(index, elem) {
+$p.em = (function(index, elem) {
   if (((index >= 0) && (index < this.s))) {
-    if ((index >= this.ax)) {
-      var io = ((index - this.ax) | 0);
+    if ((index >= this.ay)) {
+      var io = ((index - this.ay) | 0);
       var i6 = ((io >>> 25) | 0);
       var i5 = (31 & ((io >>> 20) | 0));
       var i4 = (31 & ((io >>> 15) | 0));
@@ -23622,7 +23626,7 @@ $p.ek = (function(index, elem) {
         a4c.b[i4] = a3c;
         a5c.b[i5] = a4c;
         a6c.b[i6] = a5c;
-        return new $c_sci_Vector6(this.l, this.aq, this.aI, this.ar, this.aJ, this.as, this.aK, this.at, this.aL, this.ax, a6c, this.af, this.ae, this.ad, this.ac, this.q, this.s);
+        return new $c_sci_Vector6(this.l, this.aq, this.aJ, this.ar, this.aK, this.as, this.aL, this.at, this.aM, this.ay, a6c, this.af, this.ae, this.ad, this.ac, this.q, this.s);
       } else if ((i5 < this.af.b.length)) {
         var a5$1 = this.af;
         var a5c$1 = a5$1.o();
@@ -23639,7 +23643,7 @@ $p.ek = (function(index, elem) {
         a3c$1.b[i3] = a2c$1;
         a4c$1.b[i4] = a3c$1;
         a5c$1.b[i5] = a4c$1;
-        return new $c_sci_Vector6(this.l, this.aq, this.aI, this.ar, this.aJ, this.as, this.aK, this.at, this.aL, this.ax, this.ab, a5c$1, this.ae, this.ad, this.ac, this.q, this.s);
+        return new $c_sci_Vector6(this.l, this.aq, this.aJ, this.ar, this.aK, this.as, this.aL, this.at, this.aM, this.ay, this.ab, a5c$1, this.ae, this.ad, this.ac, this.q, this.s);
       } else if ((i4 < this.ae.b.length)) {
         var a4$2 = this.ae;
         var a4c$2 = a4$2.o();
@@ -23653,7 +23657,7 @@ $p.ek = (function(index, elem) {
         a2c$2.b[i2] = a1c$2;
         a3c$2.b[i3] = a2c$2;
         a4c$2.b[i4] = a3c$2;
-        return new $c_sci_Vector6(this.l, this.aq, this.aI, this.ar, this.aJ, this.as, this.aK, this.at, this.aL, this.ax, this.ab, this.af, a4c$2, this.ad, this.ac, this.q, this.s);
+        return new $c_sci_Vector6(this.l, this.aq, this.aJ, this.ar, this.aK, this.as, this.aL, this.at, this.aM, this.ay, this.ab, this.af, a4c$2, this.ad, this.ac, this.q, this.s);
       } else if ((i3 < this.ad.b.length)) {
         var a3$3 = this.ad;
         var a3c$3 = a3$3.o();
@@ -23664,7 +23668,7 @@ $p.ek = (function(index, elem) {
         a1c$3.b[i1] = elem;
         a2c$3.b[i2] = a1c$3;
         a3c$3.b[i3] = a2c$3;
-        return new $c_sci_Vector6(this.l, this.aq, this.aI, this.ar, this.aJ, this.as, this.aK, this.at, this.aL, this.ax, this.ab, this.af, this.ae, a3c$3, this.ac, this.q, this.s);
+        return new $c_sci_Vector6(this.l, this.aq, this.aJ, this.ar, this.aK, this.as, this.aL, this.at, this.aM, this.ay, this.ab, this.af, this.ae, a3c$3, this.ac, this.q, this.s);
       } else if ((i2 < this.ac.b.length)) {
         var a2$4 = this.ac;
         var a2c$4 = a2$4.o();
@@ -23672,16 +23676,16 @@ $p.ek = (function(index, elem) {
         var a1c$4 = a1$4.o();
         a1c$4.b[i1] = elem;
         a2c$4.b[i2] = a1c$4;
-        return new $c_sci_Vector6(this.l, this.aq, this.aI, this.ar, this.aJ, this.as, this.aK, this.at, this.aL, this.ax, this.ab, this.af, this.ae, this.ad, a2c$4, this.q, this.s);
+        return new $c_sci_Vector6(this.l, this.aq, this.aJ, this.ar, this.aK, this.as, this.aL, this.at, this.aM, this.ay, this.ab, this.af, this.ae, this.ad, a2c$4, this.q, this.s);
       } else {
         var a1$5 = this.q;
         var a1c$5 = a1$5.o();
         a1c$5.b[i1] = elem;
-        return new $c_sci_Vector6(this.l, this.aq, this.aI, this.ar, this.aJ, this.as, this.aK, this.at, this.aL, this.ax, this.ab, this.af, this.ae, this.ad, this.ac, a1c$5, this.s);
+        return new $c_sci_Vector6(this.l, this.aq, this.aJ, this.ar, this.aK, this.as, this.aL, this.at, this.aM, this.ay, this.ab, this.af, this.ae, this.ad, this.ac, a1c$5, this.s);
       }
     } else if ((index >= this.at)) {
       var io$2 = ((index - this.at) | 0);
-      var a5$2 = this.aL;
+      var a5$2 = this.aM;
       var idx5 = ((io$2 >>> 20) | 0);
       var idx4 = (31 & ((io$2 >>> 15) | 0));
       var idx3 = (31 & ((io$2 >>> 10) | 0));
@@ -23701,10 +23705,10 @@ $p.ek = (function(index, elem) {
       a3c$4.b[idx3] = a2c$5;
       a4c$3.b[idx4] = a3c$4;
       a5c$2.b[idx5] = a4c$3;
-      return new $c_sci_Vector6(this.l, this.aq, this.aI, this.ar, this.aJ, this.as, this.aK, this.at, a5c$2, this.ax, this.ab, this.af, this.ae, this.ad, this.ac, this.q, this.s);
+      return new $c_sci_Vector6(this.l, this.aq, this.aJ, this.ar, this.aK, this.as, this.aL, this.at, a5c$2, this.ay, this.ab, this.af, this.ae, this.ad, this.ac, this.q, this.s);
     } else if ((index >= this.as)) {
       var io$3 = ((index - this.as) | 0);
-      var a4$4 = this.aK;
+      var a4$4 = this.aL;
       var idx4$1 = ((io$3 >>> 15) | 0);
       var idx3$1 = (31 & ((io$3 >>> 10) | 0));
       var idx2$1 = (31 & ((io$3 >>> 5) | 0));
@@ -23720,10 +23724,10 @@ $p.ek = (function(index, elem) {
       a2c$6.b[idx2$1] = a1c$7;
       a3c$5.b[idx3$1] = a2c$6;
       a4c$4.b[idx4$1] = a3c$5;
-      return new $c_sci_Vector6(this.l, this.aq, this.aI, this.ar, this.aJ, this.as, a4c$4, this.at, this.aL, this.ax, this.ab, this.af, this.ae, this.ad, this.ac, this.q, this.s);
+      return new $c_sci_Vector6(this.l, this.aq, this.aJ, this.ar, this.aK, this.as, a4c$4, this.at, this.aM, this.ay, this.ab, this.af, this.ae, this.ad, this.ac, this.q, this.s);
     } else if ((index >= this.ar)) {
       var io$4 = ((index - this.ar) | 0);
-      var a3$6 = this.aJ;
+      var a3$6 = this.aK;
       var idx3$2 = ((io$4 >>> 10) | 0);
       var idx2$2 = (31 & ((io$4 >>> 5) | 0));
       var idx1$2 = (31 & io$4);
@@ -23735,10 +23739,10 @@ $p.ek = (function(index, elem) {
       a1c$8.b[idx1$2] = elem;
       a2c$7.b[idx2$2] = a1c$8;
       a3c$6.b[idx3$2] = a2c$7;
-      return new $c_sci_Vector6(this.l, this.aq, this.aI, this.ar, a3c$6, this.as, this.aK, this.at, this.aL, this.ax, this.ab, this.af, this.ae, this.ad, this.ac, this.q, this.s);
+      return new $c_sci_Vector6(this.l, this.aq, this.aJ, this.ar, a3c$6, this.as, this.aL, this.at, this.aM, this.ay, this.ab, this.af, this.ae, this.ad, this.ac, this.q, this.s);
     } else if ((index >= this.aq)) {
       var io$5 = ((index - this.aq) | 0);
-      var a2$8 = this.aI;
+      var a2$8 = this.aJ;
       var idx2$3 = ((io$5 >>> 5) | 0);
       var idx1$3 = (31 & io$5);
       var a2c$8 = a2$8.o();
@@ -23746,35 +23750,35 @@ $p.ek = (function(index, elem) {
       var a1c$9 = a1$9.o();
       a1c$9.b[idx1$3] = elem;
       a2c$8.b[idx2$3] = a1c$9;
-      return new $c_sci_Vector6(this.l, this.aq, a2c$8, this.ar, this.aJ, this.as, this.aK, this.at, this.aL, this.ax, this.ab, this.af, this.ae, this.ad, this.ac, this.q, this.s);
+      return new $c_sci_Vector6(this.l, this.aq, a2c$8, this.ar, this.aK, this.as, this.aL, this.at, this.aM, this.ay, this.ab, this.af, this.ae, this.ad, this.ac, this.q, this.s);
     } else {
       var a1$10 = this.l;
       var a1c$10 = a1$10.o();
       a1c$10.b[index] = elem;
-      return new $c_sci_Vector6(a1c$10, this.aq, this.aI, this.ar, this.aJ, this.as, this.aK, this.at, this.aL, this.ax, this.ab, this.af, this.ae, this.ad, this.ac, this.q, this.s);
+      return new $c_sci_Vector6(a1c$10, this.aq, this.aJ, this.ar, this.aK, this.as, this.aL, this.at, this.aM, this.ay, this.ab, this.af, this.ae, this.ad, this.ac, this.q, this.s);
     }
   } else {
     throw this.b1(index);
   }
 });
-$p.e8 = (function(elem) {
+$p.e9 = (function(elem) {
   if ((this.q.b.length < 32)) {
-    var x$1 = $m_sci_VectorStatics$().fv(this.q, elem);
+    var x$1 = $m_sci_VectorStatics$().fx(this.q, elem);
     var x$2 = ((1 + this.s) | 0);
-    return new $c_sci_Vector6(this.l, this.aq, this.aI, this.ar, this.aJ, this.as, this.aK, this.at, this.aL, this.ax, this.ab, this.af, this.ae, this.ad, this.ac, x$1, x$2);
+    return new $c_sci_Vector6(this.l, this.aq, this.aJ, this.ar, this.aK, this.as, this.aL, this.at, this.aM, this.ay, this.ab, this.af, this.ae, this.ad, this.ac, x$1, x$2);
   } else if ((this.ac.b.length < 31)) {
     var x$18 = $m_sci_VectorStatics$().O(this.ac, this.q);
     var a = new $ac_O(1);
     a.b[0] = elem;
     var x$20 = ((1 + this.s) | 0);
-    return new $c_sci_Vector6(this.l, this.aq, this.aI, this.ar, this.aJ, this.as, this.aK, this.at, this.aL, this.ax, this.ab, this.af, this.ae, this.ad, x$18, a, x$20);
+    return new $c_sci_Vector6(this.l, this.aq, this.aJ, this.ar, this.aK, this.as, this.aL, this.at, this.aM, this.ay, this.ab, this.af, this.ae, this.ad, x$18, a, x$20);
   } else if ((this.ad.b.length < 31)) {
     var x$35 = $m_sci_VectorStatics$().O(this.ad, $m_sci_VectorStatics$().O(this.ac, this.q));
     var x$36 = $m_sci_VectorStatics$().bK;
     var a$1 = new $ac_O(1);
     a$1.b[0] = elem;
     var x$38 = ((1 + this.s) | 0);
-    return new $c_sci_Vector6(this.l, this.aq, this.aI, this.ar, this.aJ, this.as, this.aK, this.at, this.aL, this.ax, this.ab, this.af, this.ae, x$35, x$36, a$1, x$38);
+    return new $c_sci_Vector6(this.l, this.aq, this.aJ, this.ar, this.aK, this.as, this.aL, this.at, this.aM, this.ay, this.ab, this.af, this.ae, x$35, x$36, a$1, x$38);
   } else if ((this.ae.b.length < 31)) {
     var x$52 = $m_sci_VectorStatics$().O(this.ae, $m_sci_VectorStatics$().O(this.ad, $m_sci_VectorStatics$().O(this.ac, this.q)));
     var x$53 = $m_sci_VectorStatics$().cU;
@@ -23782,43 +23786,43 @@ $p.e8 = (function(elem) {
     var a$2 = new $ac_O(1);
     a$2.b[0] = elem;
     var x$56 = ((1 + this.s) | 0);
-    return new $c_sci_Vector6(this.l, this.aq, this.aI, this.ar, this.aJ, this.as, this.aK, this.at, this.aL, this.ax, this.ab, this.af, x$52, x$53, x$54, a$2, x$56);
+    return new $c_sci_Vector6(this.l, this.aq, this.aJ, this.ar, this.aK, this.as, this.aL, this.at, this.aM, this.ay, this.ab, this.af, x$52, x$53, x$54, a$2, x$56);
   } else if ((this.af.b.length < 31)) {
     var x$69 = $m_sci_VectorStatics$().O(this.af, $m_sci_VectorStatics$().O(this.ae, $m_sci_VectorStatics$().O(this.ad, $m_sci_VectorStatics$().O(this.ac, this.q))));
-    var x$70 = $m_sci_VectorStatics$().fq;
+    var x$70 = $m_sci_VectorStatics$().fs;
     var x$71 = $m_sci_VectorStatics$().cU;
     var x$72 = $m_sci_VectorStatics$().bK;
     var a$3 = new $ac_O(1);
     a$3.b[0] = elem;
     var x$74 = ((1 + this.s) | 0);
-    return new $c_sci_Vector6(this.l, this.aq, this.aI, this.ar, this.aJ, this.as, this.aK, this.at, this.aL, this.ax, this.ab, x$69, x$70, x$71, x$72, a$3, x$74);
+    return new $c_sci_Vector6(this.l, this.aq, this.aJ, this.ar, this.aK, this.as, this.aL, this.at, this.aM, this.ay, this.ab, x$69, x$70, x$71, x$72, a$3, x$74);
   } else if ((this.ab.b.length < 62)) {
     var x$86 = $m_sci_VectorStatics$().O(this.ab, $m_sci_VectorStatics$().O(this.af, $m_sci_VectorStatics$().O(this.ae, $m_sci_VectorStatics$().O(this.ad, $m_sci_VectorStatics$().O(this.ac, this.q)))));
     var x$87 = $m_sci_VectorStatics$().je;
-    var x$88 = $m_sci_VectorStatics$().fq;
+    var x$88 = $m_sci_VectorStatics$().fs;
     var x$89 = $m_sci_VectorStatics$().cU;
     var x$90 = $m_sci_VectorStatics$().bK;
     var a$4 = new $ac_O(1);
     a$4.b[0] = elem;
     var x$92 = ((1 + this.s) | 0);
-    return new $c_sci_Vector6(this.l, this.aq, this.aI, this.ar, this.aJ, this.as, this.aK, this.at, this.aL, this.ax, x$86, x$87, x$88, x$89, x$90, a$4, x$92);
+    return new $c_sci_Vector6(this.l, this.aq, this.aJ, this.ar, this.aK, this.as, this.aL, this.at, this.aM, this.ay, x$86, x$87, x$88, x$89, x$90, a$4, x$92);
   } else {
     throw $ct_jl_IllegalArgumentException__(new $c_jl_IllegalArgumentException());
   }
 });
-$p.cI = (function(f) {
-  var x$1 = $m_sci_VectorStatics$().cx(this.l, f);
-  var x$2 = $m_sci_VectorStatics$().ah(2, this.aI, f);
-  var x$3 = $m_sci_VectorStatics$().ah(3, this.aJ, f);
-  var x$4 = $m_sci_VectorStatics$().ah(4, this.aK, f);
-  var x$5 = $m_sci_VectorStatics$().ah(5, this.aL, f);
+$p.cJ = (function(f) {
+  var x$1 = $m_sci_VectorStatics$().cC(this.l, f);
+  var x$2 = $m_sci_VectorStatics$().ah(2, this.aJ, f);
+  var x$3 = $m_sci_VectorStatics$().ah(3, this.aK, f);
+  var x$4 = $m_sci_VectorStatics$().ah(4, this.aL, f);
+  var x$5 = $m_sci_VectorStatics$().ah(5, this.aM, f);
   var x$6 = $m_sci_VectorStatics$().ah(6, this.ab, f);
   var x$7 = $m_sci_VectorStatics$().ah(5, this.af, f);
   var x$8 = $m_sci_VectorStatics$().ah(4, this.ae, f);
   var x$9 = $m_sci_VectorStatics$().ah(3, this.ad, f);
   var x$10 = $m_sci_VectorStatics$().ah(2, this.ac, f);
-  var x$11 = $m_sci_VectorStatics$().cx(this.q, f);
-  return new $c_sci_Vector6(x$1, this.aq, x$2, this.ar, x$3, this.as, x$4, this.at, x$5, this.ax, x$6, x$7, x$8, x$9, x$10, x$11, this.s);
+  var x$11 = $m_sci_VectorStatics$().cC(this.q, f);
+  return new $c_sci_Vector6(x$1, this.aq, x$2, this.ar, x$3, this.as, x$4, this.at, x$5, this.ay, x$6, x$7, x$8, x$9, x$10, x$11, this.s);
 });
 $p.d5 = (function() {
   return 11;
@@ -23830,19 +23834,19 @@ $p.d4 = (function(idx) {
       break;
     }
     case 1: {
-      return this.aI;
-      break;
-    }
-    case 2: {
       return this.aJ;
       break;
     }
-    case 3: {
+    case 2: {
       return this.aK;
       break;
     }
-    case 4: {
+    case 3: {
       return this.aL;
+      break;
+    }
+    case 4: {
+      return this.aM;
       break;
     }
     case 5: {
@@ -23875,12 +23879,12 @@ $p.d4 = (function(idx) {
   }
 });
 $p.a5 = (function(f) {
-  return this.cI(f);
+  return this.cJ(f);
 });
 $p.i = (function(v1) {
   var index = (v1 | 0);
   if (((index >= 0) && (index < this.s))) {
-    var io = ((index - this.ax) | 0);
+    var io = ((index - this.ay) | 0);
     if ((io >= 0)) {
       var i6 = ((io >>> 25) | 0);
       var i5 = (31 & ((io >>> 20) | 0));
@@ -23891,16 +23895,16 @@ $p.i = (function(v1) {
       return ((i6 < this.ab.b.length) ? this.ab.b[i6].b[i5].b[i4].b[i3].b[i2].b[i1] : ((i5 < this.af.b.length) ? this.af.b[i5].b[i4].b[i3].b[i2].b[i1] : ((i4 < this.ae.b.length) ? this.ae.b[i4].b[i3].b[i2].b[i1] : ((i3 < this.ad.b.length) ? this.ad.b[i3].b[i2].b[i1] : ((i2 < this.ac.b.length) ? this.ac.b[i2].b[i1] : this.q.b[i1])))));
     } else if ((index >= this.at)) {
       var io$2 = ((index - this.at) | 0);
-      return this.aL.b[((io$2 >>> 20) | 0)].b[(31 & ((io$2 >>> 15) | 0))].b[(31 & ((io$2 >>> 10) | 0))].b[(31 & ((io$2 >>> 5) | 0))].b[(31 & io$2)];
+      return this.aM.b[((io$2 >>> 20) | 0)].b[(31 & ((io$2 >>> 15) | 0))].b[(31 & ((io$2 >>> 10) | 0))].b[(31 & ((io$2 >>> 5) | 0))].b[(31 & io$2)];
     } else if ((index >= this.as)) {
       var io$3 = ((index - this.as) | 0);
-      return this.aK.b[((io$3 >>> 15) | 0)].b[(31 & ((io$3 >>> 10) | 0))].b[(31 & ((io$3 >>> 5) | 0))].b[(31 & io$3)];
+      return this.aL.b[((io$3 >>> 15) | 0)].b[(31 & ((io$3 >>> 10) | 0))].b[(31 & ((io$3 >>> 5) | 0))].b[(31 & io$3)];
     } else if ((index >= this.ar)) {
       var io$4 = ((index - this.ar) | 0);
-      return this.aJ.b[((io$4 >>> 10) | 0)].b[(31 & ((io$4 >>> 5) | 0))].b[(31 & io$4)];
+      return this.aK.b[((io$4 >>> 10) | 0)].b[(31 & ((io$4 >>> 5) | 0))].b[(31 & io$4)];
     } else if ((index >= this.aq)) {
       var io$5 = ((index - this.aq) | 0);
-      return this.aI.b[((io$5 >>> 5) | 0)].b[(31 & io$5)];
+      return this.aJ.b[((io$5 >>> 5) | 0)].b[(31 & io$5)];
     } else {
       return this.l.b[index];
     }
@@ -23969,7 +23973,7 @@ $p.a5 = (function(f) {
 $p.w = (function() {
   return $f_sc_IndexedSeqOps__head__O(this);
 });
-$p.bV = (function() {
+$p.bW = (function() {
   return $f_sc_IndexedSeqOps__headOption__s_Option(this);
 });
 $p.bt = (function(len) {
@@ -24007,7 +24011,7 @@ $p.oS = (function(xs) {
     var str = xs.tI;
     this$3.B = (("" + this$3.B) + str);
   } else if ((xs instanceof $c_scm_ArraySeq$ofChar)) {
-    this.b0.oR(xs.c7);
+    this.b0.oR(xs.cb);
   } else if ((xs instanceof $c_scm_StringBuilder)) {
     var this$4 = this.b0;
     var s = xs.b0;
@@ -24035,10 +24039,10 @@ $p.j = (function() {
 $p.bs = (function() {
   return $m_scm_IndexedSeq$();
 });
-$p.ba = (function() {
+$p.b9 = (function() {
   return this.b0.B;
 });
-$p.b8 = (function(elem) {
+$p.b7 = (function(elem) {
   return this.qI($uC(elem));
 });
 $p.gE = (function(coll) {
@@ -24093,7 +24097,7 @@ function $isArrayOf_scm_LinkedHashMap(obj, depth) {
 }
 function $p_scm_ListBuffer__copyElems__V($thiz) {
   var buf = new $c_scm_ListBuffer().gS($thiz);
-  $thiz.cq = buf.cq;
+  $thiz.cv = buf.cv;
   $thiz.dj = buf.dj;
   $thiz.hp = false;
 }
@@ -24106,15 +24110,15 @@ function $p_scm_ListBuffer__ensureUnaliased__V($thiz) {
 /** @constructor */
 function $c_scm_ListBuffer() {
   this.hq = 0;
-  this.cq = null;
+  this.cv = null;
   this.dj = null;
   this.hp = false;
-  this.cr = 0;
+  this.cw = 0;
   this.hq = 0;
-  this.cq = $m_sci_Nil$();
+  this.cv = $m_sci_Nil$();
   this.dj = null;
   this.hp = false;
-  this.cr = 0;
+  this.cw = 0;
 }
 $p = $c_scm_ListBuffer.prototype = new $h_scm_AbstractBuffer();
 $p.constructor = $c_scm_ListBuffer;
@@ -24124,44 +24128,44 @@ function $h_scm_ListBuffer() {
 $h_scm_ListBuffer.prototype = $p;
 $p.bn = (function(size) {
 });
-$p.cE = (function(f) {
+$p.cF = (function(f) {
   return $f_sc_StrictOptimizedSeqOps__distinctBy__F1__O(this, f);
 });
 $p.a5 = (function(f) {
   return $f_sc_StrictOptimizedIterableOps__map__F1__O(this, f);
 });
 $p.r = (function() {
-  return new $c_scm_MutationTracker$CheckedIterator(this.cq.r(), new $c_sr_AbstractFunction0_$$Lambda$a02b774b97db8234e08c6a02dd06557c99779855((() => this.hq)));
+  return new $c_scm_MutationTracker$CheckedIterator(this.cv.r(), new $c_sr_AbstractFunction0_$$Lambda$a02b774b97db8234e08c6a02dd06557c99779855((() => this.hq)));
 });
-$p.ed = (function() {
+$p.ef = (function() {
   return $m_scm_ListBuffer$();
 });
 $p.F = (function(i) {
-  return $f_sc_LinearSeqOps__apply__I__O(this.cq, i);
+  return $f_sc_LinearSeqOps__apply__I__O(this.cv, i);
 });
 $p.C = (function() {
-  return this.cr;
+  return this.cw;
 });
 $p.J = (function() {
-  return this.cr;
+  return this.cw;
 });
 $p.j = (function() {
-  return (this.cr === 0);
+  return (this.cw === 0);
 });
-$p.eY = (function() {
+$p.f0 = (function() {
   this.hp = (!this.j());
-  return this.cq;
+  return this.cv;
 });
 $p.hC = (function(elem) {
   $p_scm_ListBuffer__ensureUnaliased__V(this);
   var last1 = new $c_sci_$colon$colon(elem, $m_sci_Nil$());
-  if ((this.cr === 0)) {
-    this.cq = last1;
+  if ((this.cw === 0)) {
+    this.cv = last1;
   } else {
     this.dj.a1 = last1;
   }
   this.dj = last1;
-  this.cr = ((1 + this.cr) | 0);
+  this.cw = ((1 + this.cw) | 0);
   return this;
 });
 $p.gS = (function(xs) {
@@ -24169,14 +24173,14 @@ $p.gS = (function(xs) {
   if (it.x()) {
     var len = 1;
     var last0 = new $c_sci_$colon$colon(it.n(), $m_sci_Nil$());
-    this.cq = last0;
+    this.cv = last0;
     while (it.x()) {
       var last1 = new $c_sci_$colon$colon(it.n(), $m_sci_Nil$());
       last0.a1 = last1;
       last0 = last1;
       len = ((1 + len) | 0);
     }
-    this.cr = len;
+    this.cw = len;
     this.dj = last0;
   }
   return this;
@@ -24186,13 +24190,13 @@ $p.qG = (function(xs) {
   if (it.x()) {
     var fresh = new $c_scm_ListBuffer().gS(it);
     $p_scm_ListBuffer__ensureUnaliased__V(this);
-    if ((this.cr === 0)) {
-      this.cq = fresh.cq;
+    if ((this.cw === 0)) {
+      this.cv = fresh.cv;
     } else {
-      this.dj.a1 = fresh.cq;
+      this.dj.a1 = fresh.cv;
     }
     this.dj = fresh.dj;
-    this.cr = ((this.cr + fresh.cr) | 0);
+    this.cw = ((this.cw + fresh.cw) | 0);
   }
   return this;
 });
@@ -24202,15 +24206,15 @@ $p.bx = (function() {
 $p.bk = (function(elems) {
   return this.qG(elems);
 });
-$p.b8 = (function(elem) {
+$p.b7 = (function(elem) {
   return this.hC(elem);
 });
-$p.ba = (function() {
-  return this.eY();
+$p.b9 = (function() {
+  return this.f0();
 });
 $p.i = (function(v1) {
   var i = (v1 | 0);
-  return $f_sc_LinearSeqOps__apply__I__O(this.cq, i);
+  return $f_sc_LinearSeqOps__apply__I__O(this.cv, i);
 });
 $p.bs = (function() {
   return $m_scm_ListBuffer$();
@@ -24251,8 +24255,8 @@ var $d_scm_ListBuffer = new $TypeData().i($c_scm_ListBuffer, "scala.collection.m
   a: 1
 }));
 function $ct_scm_ArrayBuffer__AO__I__($thiz, initialElements, initialSize) {
-  $thiz.dT = 0;
-  $thiz.dS = initialElements;
+  $thiz.dU = 0;
+  $thiz.dT = initialElements;
   $thiz.aS = initialSize;
   return $thiz;
 }
@@ -24262,8 +24266,8 @@ function $ct_scm_ArrayBuffer__($thiz) {
 }
 /** @constructor */
 function $c_scm_ArrayBuffer() {
-  this.dT = 0;
-  this.dS = null;
+  this.dU = 0;
+  this.dT = null;
   this.aS = 0;
 }
 $p = $c_scm_ArrayBuffer.prototype = new $h_scm_AbstractBuffer();
@@ -24272,7 +24276,7 @@ $p.constructor = $c_scm_ArrayBuffer;
 function $h_scm_ArrayBuffer() {
 }
 $h_scm_ArrayBuffer.prototype = $p;
-$p.cE = (function(f) {
+$p.cF = (function(f) {
   return $f_sc_StrictOptimizedSeqOps__distinctBy__F1__O(this, f);
 });
 $p.a5 = (function(f) {
@@ -24284,7 +24288,7 @@ $p.r = (function() {
 $p.w = (function() {
   return $f_sc_IndexedSeqOps__head__O(this);
 });
-$p.bV = (function() {
+$p.bW = (function() {
   return $f_sc_IndexedSeqOps__headOption__s_Option(this);
 });
 $p.bt = (function(len) {
@@ -24295,7 +24299,7 @@ $p.J = (function() {
   return this.aS;
 });
 $p.jG = (function(n) {
-  this.dS = $m_scm_ArrayBuffer$().q1(this.dS, this.aS, n);
+  this.dT = $m_scm_ArrayBuffer$().q1(this.dT, this.aS, n);
 });
 $p.bn = (function(size) {
   if (((size > this.aS) && (size >= 1))) {
@@ -24310,7 +24314,7 @@ $p.F = (function(n) {
   if ((hi > this.aS)) {
     throw $m_scg_CommonErrors$().gI((((-1) + hi) | 0), (((-1) + this.aS) | 0));
   }
-  return this.dS.b[n];
+  return this.dT.b[n];
 });
 $p.tB = (function(index, elem) {
   var hi = ((1 + index) | 0);
@@ -24320,20 +24324,20 @@ $p.tB = (function(index, elem) {
   if ((hi > this.aS)) {
     throw $m_scg_CommonErrors$().gI((((-1) + hi) | 0), (((-1) + this.aS) | 0));
   }
-  this.dT = ((1 + this.dT) | 0);
-  this.dS.b[index] = elem;
+  this.dU = ((1 + this.dU) | 0);
+  this.dT.b[index] = elem;
 });
 $p.C = (function() {
   return this.aS;
 });
 $p.tF = (function() {
-  return new $c_scm_ArrayBufferView(this, new $c_sr_AbstractFunction0_$$Lambda$a02b774b97db8234e08c6a02dd06557c99779855((() => this.dT)));
+  return new $c_scm_ArrayBufferView(this, new $c_sr_AbstractFunction0_$$Lambda$a02b774b97db8234e08c6a02dd06557c99779855((() => this.dU)));
 });
-$p.ed = (function() {
+$p.ef = (function() {
   return $m_scm_ArrayBuffer$();
 });
 $p.qN = (function(elem) {
-  this.dT = ((1 + this.dT) | 0);
+  this.dU = ((1 + this.dU) | 0);
   var newSize = ((1 + this.aS) | 0);
   this.jG(newSize);
   this.aS = newSize;
@@ -24344,9 +24348,9 @@ $p.oN = (function(elems) {
   if ((elems instanceof $c_scm_ArrayBuffer)) {
     var elemsLength = elems.aS;
     if ((elemsLength > 0)) {
-      this.dT = ((1 + this.dT) | 0);
+      this.dU = ((1 + this.dU) | 0);
       this.jG(((this.aS + elemsLength) | 0));
-      $m_s_Array$().gA(elems.dS, 0, this.dS, this.aS, elemsLength);
+      $m_s_Array$().gA(elems.dT, 0, this.dT, this.aS, elemsLength);
       this.aS = ((this.aS + elemsLength) | 0);
     }
   } else {
@@ -24357,22 +24361,22 @@ $p.oN = (function(elems) {
 $p.bx = (function() {
   return "ArrayBuffer";
 });
-$p.ca = (function(xs, start, len) {
+$p.cf = (function(xs, start, len) {
   var srcLen = this.aS;
-  var destLen = $m_jl_reflect_Array$().cv(xs);
+  var destLen = $m_jl_reflect_Array$().cA(xs);
   var x = ((len < srcLen) ? len : srcLen);
   var y = ((destLen - start) | 0);
   var x$1 = ((x < y) ? x : y);
   var copied = ((x$1 > 0) ? x$1 : 0);
   if ((copied > 0)) {
-    $m_s_Array$().gA(this.dS, 0, xs, start, copied);
+    $m_s_Array$().gA(this.dT, 0, xs, start, copied);
   }
   return copied;
 });
 $p.bk = (function(elems) {
   return this.oN(elems);
 });
-$p.b8 = (function(elem) {
+$p.b7 = (function(elem) {
   return this.qN(elem);
 });
 $p.bs = (function() {
@@ -24420,7 +24424,7 @@ var $d_scm_ArrayBuffer = new $TypeData().i($c_scm_ArrayBuffer, "scala.collection
   a: 1
 }));
 function $ct_sjs_js_WrappedArray__sjs_js_Array__($thiz, array) {
-  $thiz.e4 = array;
+  $thiz.e5 = array;
   return $thiz;
 }
 function $ct_sjs_js_WrappedArray__($thiz) {
@@ -24429,7 +24433,7 @@ function $ct_sjs_js_WrappedArray__($thiz) {
 }
 /** @constructor */
 function $c_sjs_js_WrappedArray() {
-  this.e4 = null;
+  this.e5 = null;
 }
 $p = $c_sjs_js_WrappedArray.prototype = new $h_scm_AbstractBuffer();
 $p.constructor = $c_sjs_js_WrappedArray;
@@ -24451,41 +24455,41 @@ $p.a5 = (function(f) {
 $p.w = (function() {
   return $f_sc_IndexedSeqOps__head__O(this);
 });
-$p.bV = (function() {
+$p.bW = (function() {
   return $f_sc_IndexedSeqOps__headOption__s_Option(this);
 });
 $p.bt = (function(len) {
-  var x = (this.e4.length | 0);
+  var x = (this.e5.length | 0);
   return ((x === len) ? 0 : ((x < len) ? (-1) : 1));
 });
-$p.cE = (function(f) {
+$p.cF = (function(f) {
   return $f_sc_StrictOptimizedSeqOps__distinctBy__F1__O(this, f);
 });
-$p.ed = (function() {
+$p.ef = (function() {
   return $m_sjs_js_WrappedArray$();
 });
 $p.F = (function(index) {
-  return this.e4[index];
+  return this.e5[index];
 });
 $p.C = (function() {
-  return (this.e4.length | 0);
+  return (this.e5.length | 0);
 });
 $p.J = (function() {
-  return (this.e4.length | 0);
+  return (this.e5.length | 0);
 });
-$p.c9 = (function() {
+$p.ce = (function() {
   return "WrappedArray";
 });
-$p.ba = (function() {
+$p.b9 = (function() {
   return this;
 });
-$p.b8 = (function(elem) {
-  this.e4.push(elem);
+$p.b7 = (function(elem) {
+  this.e5.push(elem);
   return this;
 });
 $p.i = (function(v1) {
   var index = (v1 | 0);
-  return this.e4[index];
+  return this.e5[index];
 });
 $p.bs = (function() {
   return $m_sjs_js_WrappedArray$();

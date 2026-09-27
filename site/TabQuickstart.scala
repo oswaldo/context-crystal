@@ -20,7 +20,7 @@ object TabQuickstart:
           span(className := "qs-step-number", "1"),
           div(
             h3("Fast Installation (Linux & macOS)"),
-            p("Choose your preferred installation method: curl installer or Homebrew Tap."),
+            p("Choose your preferred installation method: curl bootstrap, Homebrew, or Coursier (cs):"),
           ),
         ),
         div(
@@ -47,7 +47,7 @@ object TabQuickstart:
           ),
           div(
             className := "install-method-box",
-            h4("Option B: Homebrew Tap (macOS & Linux)"),
+            h4("Option B: Homebrew (macOS & Linux)"),
             p("Install and manage updates via Homebrew package manager:"),
             div(
               className := "code-snippet-box",
@@ -61,6 +61,26 @@ object TabQuickstart:
                 },
                 onClick --> { _ =>
                   State.copyToClipboard("qs-brew", "brew install oswaldo/context-crystal/ccrystal")
+                },
+              ),
+            ),
+          ),
+          div(
+            className := "install-method-box",
+            h4("Option C: Coursier (Scala Toolchain)"),
+            p("Install native release binary via Coursier application manager:"),
+            div(
+              className := "code-snippet-box",
+              pre(code("cs install --channel gh:oswaldo/context-crystal:main ccrystal")),
+              button(
+                typ := "button",
+                className := "snippet-copy-btn",
+                child.text <-- State.copiedSnippet.signal.map {
+                  case Some("qs-cs") => "✓ Copied"
+                  case _ => "Copy"
+                },
+                onClick --> { _ =>
+                  State.copyToClipboard("qs-cs", "cs install --channel gh:oswaldo/context-crystal:main ccrystal")
                 },
               ),
             ),

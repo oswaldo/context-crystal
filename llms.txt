@@ -24,6 +24,11 @@ Homebrew (macOS & Linux):
 brew install oswaldo/context-crystal/ccrystal
 ```
 
+Coursier (Scala Toolchain):
+```bash
+cs install --channel gh:oswaldo/context-crystal:main ccrystal
+```
+
 ## Essential CLI Subcommands
 ```bash
 # Initialize crystal with atomic tasks

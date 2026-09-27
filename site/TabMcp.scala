@@ -23,17 +23,46 @@ object TabMcp:
           className := "qs-card-header",
           span(className := "qs-step-number", "1"),
           div(
-            h3("Frictionless IDE & Client Setup"),
-            p("Add Context Crystal to your preferred AI coding environment:"),
+            h3("Frictionless IDE & Agent Harness Setup"),
+            p("Connect Context Crystal to your preferred AI coding environment:"),
           ),
         ),
         div(
-          className := "cards-grid three-col mcp-clients-grid",
-          // Claude Desktop
+          className := "cards-grid two-col",
+          // Automated Agent Installer
           div(
             className := "feature-card client-config-card",
-            div(className := "client-header", Icons.claude(20), strong("Claude Desktop")),
-            p(className := "config-path", "~/.config/Claude/claude_desktop_config.json"),
+            div(className := "client-header", strong("Automated Onboarding (Recommended)")),
+            p(className := "config-path", "Claude Desktop • Cursor • Windsurf • Zed • Google Antigravity • Claude Code"),
+            p("Context Crystal automatically discovers installed IDEs and agent runtimes, updates their configurations, and creates defensive `.ccrystal.bak` rollback snapshots:"),
+            div(
+              className := "code-snippet-box",
+              pre(code("ccrystal agent install --all")),
+              button(
+                typ := "button",
+                className := "snippet-copy-btn",
+                child.text <-- State.copiedSnippet.signal.map {
+                  case Some("agent-install") => "✓ Copied"
+                  case _ => "Copy"
+                },
+                onClick --> { _ =>
+                  State.copyToClipboard("agent-install", "ccrystal agent install --all")
+                },
+              ),
+            ),
+            p(className := "config-path", "Run diagnostic anytime to inspect health: `ccrystal agent doctor`"),
+          ),
+          // Unified Manual Declaration
+          div(
+            className := "feature-card client-config-card",
+            div(
+              className := "client-header",
+              Icons.claude(18),
+              Icons.cursor(18),
+              Icons.zed(18),
+              strong("Manual Configuration"),
+            ),
+            p(className := "config-path", "Claude Desktop, Cursor, Windsurf, Zed, and Custom Harnesses"),
             pre(
               code(
                 """{
@@ -46,42 +75,7 @@ object TabMcp:
 }"""
               ),
             ),
-          ),
-          // Cursor
-          div(
-            className := "feature-card client-config-card",
-            div(className := "client-header", Icons.cursor(20), strong("Cursor IDE")),
-            p(className := "config-path", ".cursor/mcp.json"),
-            pre(
-              code(
-                """{
-  "mcpServers": {
-    "context-crystal": {
-      "command": "ccrystal",
-      "args": ["mcp"]
-    }
-  }
-}"""
-              ),
-            ),
-          ),
-          // Zed
-          div(
-            className := "feature-card client-config-card",
-            div(className := "client-header", Icons.zed(20), strong("Zed Editor")),
-            p(className := "config-path", "~/.config/zed/settings.json"),
-            pre(
-              code(
-                """{
-  "context_servers": {
-    "context-crystal": {
-      "command": "ccrystal",
-      "args": ["mcp"]
-    }
-  }
-}"""
-              ),
-            ),
+            p(className := "config-path", "Config files: Claude (~/.config/Claude/claude_desktop_config.json) • Cursor (.cursor/mcp.json) • Windsurf (~/.codeium/windsurf/mcp_config.json) • Zed (context_servers in settings.json)"),
           ),
         ),
       ),
