@@ -152,39 +152,53 @@ class FsCrystalStore(val rootPath: Path) extends CrystalStore:
         else Left(s"Crystal '$id' not found at ${activeFile.toString}")
       else
         try
-          val rawBytes           = Files.readAllBytes(activeFile)
-          val rawContent         = new String(rawBytes, StandardCharsets.UTF_8)
-          val initialFingerprint = ContentFingerprint.compute(rawContent)
+          val rawBytes   = Files.readAllBytes(activeFile)
+          val rawContent = new String(rawBytes, StandardCharsets.UTF_8)
+          if rawContent.trim.isEmpty then
+            if retryCount < maxRetries then
+              try Thread.sleep(retryCount * 5L + scala.util.Random.nextInt(10))
+              catch case _: Throwable => ()
+              attempt(retryCount + 1)
+            else
+              Left(
+                s"Crystal '$id' at ${activeFile.toString} was unexpectedly empty after $maxRetries attempts",
+              )
+          else
+            val initialFingerprint = ContentFingerprint.compute(rawContent)
 
-          decode[ContextCrystal](rawContent) match
-            case Left(err) =>
-              Left(s"JSON parse error loading crystal $id: ${err.getMessage}")
-            case Right(loaded) =>
-              f(loaded) match
-                case Left(err) => Left(err)
-                case Right(updatedCrystal) =>
-                  val commitResult = withCrystalLock(dir) {
-                    val currentBytes       = Files.readAllBytes(activeFile)
-                    val currentContent     = new String(currentBytes, StandardCharsets.UTF_8)
-                    val currentFingerprint = ContentFingerprint.compute(currentContent)
+            decode[ContextCrystal](rawContent) match
+              case Left(err) if retryCount < maxRetries =>
+                try Thread.sleep(retryCount * 5L + scala.util.Random.nextInt(10))
+                catch case _: Throwable => ()
+                attempt(retryCount + 1)
+              case Left(err) =>
+                Left(s"JSON parse error loading crystal $id: ${err.getMessage}")
+              case Right(loaded) =>
+                f(loaded) match
+                  case Left(err) => Left(err)
+                  case Right(updatedCrystal) =>
+                    val commitResult = withCrystalLock(dir) {
+                      val currentBytes       = Files.readAllBytes(activeFile)
+                      val currentContent     = new String(currentBytes, StandardCharsets.UTF_8)
+                      val currentFingerprint = ContentFingerprint.compute(currentContent)
 
-                    if currentFingerprint == initialFingerprint then
-                      saveDirect(dir, updatedCrystal).map(_ => updatedCrystal)
-                    else Left("OCC_CONFLICT")
-                  }
+                      if currentFingerprint == initialFingerprint then
+                        saveDirect(dir, updatedCrystal).map(_ => updatedCrystal)
+                      else Left("OCC_CONFLICT")
+                    }
 
-                  commitResult match
-                    case Right(success) => Right(success)
-                    case Left(err) if err == "OCC_CONFLICT" =>
-                      if retryCount < maxRetries then
-                        try Thread.sleep(retryCount * 5L + scala.util.Random.nextInt(10))
-                        catch case _: Throwable => ()
-                        attempt(retryCount + 1)
-                      else
-                        Left(
-                          s"Concurrent modification detected on crystal '$id': conflict could not be reconciled after $maxRetries attempts",
-                        )
-                    case Left(otherErr) => Left(otherErr)
+                    commitResult match
+                      case Right(success) => Right(success)
+                      case Left(err) if err == "OCC_CONFLICT" =>
+                        if retryCount < maxRetries then
+                          try Thread.sleep(retryCount * 5L + scala.util.Random.nextInt(10))
+                          catch case _: Throwable => ()
+                          attempt(retryCount + 1)
+                        else
+                          Left(
+                            s"Concurrent modification detected on crystal '$id': conflict could not be reconciled after $maxRetries attempts",
+                          )
+                      case Left(otherErr) => Left(otherErr)
 
         catch
           case _: Throwable if retryCount < maxRetries =>
@@ -253,20 +267,46 @@ class FsCrystalStore(val rootPath: Path) extends CrystalStore:
     }
 
   override def load(id: String): Either[String, ContextCrystal] =
-    try
-      val activeFile  = crystalDir(id).resolve("crystal.json")
-      val archiveFile = archiveCrystalDir(id).resolve("crystal.json")
-      val file =
-        if Files.exists(activeFile) then activeFile
-        else if Files.exists(archiveFile) then archiveFile
-        else activeFile
-      if !Files.exists(file) then Left(s"Crystal '$id' not found at $file")
-      else
-        val content = new String(Files.readAllBytes(file), StandardCharsets.UTF_8)
-        decode[ContextCrystal](content).left.map(err =>
-          s"JSON parse error for '$id': ${err.getMessage}",
-        )
-    catch case ex: Throwable => Left(s"Failed to load crystal '$id': ${ex.getMessage}")
+    val maxRetries = 10
+    def attempt(retryCount: Int): Either[String, ContextCrystal] =
+      try
+        val activeFile  = crystalDir(id).resolve("crystal.json")
+        val archiveFile = archiveCrystalDir(id).resolve("crystal.json")
+        val file =
+          if Files.exists(activeFile) then activeFile
+          else if Files.exists(archiveFile) then archiveFile
+          else activeFile
+        if !Files.exists(file) then
+          if retryCount < maxRetries then
+            try Thread.sleep(retryCount * 5L + scala.util.Random.nextInt(10))
+            catch case _: Throwable => ()
+            attempt(retryCount + 1)
+          else Left(s"Crystal '$id' not found at $file")
+        else
+          val content = new String(Files.readAllBytes(file), StandardCharsets.UTF_8)
+          if content.trim.isEmpty then
+            if retryCount < maxRetries then
+              try Thread.sleep(retryCount * 5L + scala.util.Random.nextInt(10))
+              catch case _: Throwable => ()
+              attempt(retryCount + 1)
+            else Left(s"Crystal '$id' at $file was unexpectedly empty after $maxRetries attempts")
+          else
+            decode[ContextCrystal](content) match
+              case Left(err) if retryCount < maxRetries =>
+                try Thread.sleep(retryCount * 5L + scala.util.Random.nextInt(10))
+                catch case _: Throwable => ()
+                attempt(retryCount + 1)
+              case Left(err) =>
+                Left(s"JSON parse error for '$id': ${err.getMessage}")
+              case Right(crystal) => Right(crystal)
+      catch
+        case _: Throwable if retryCount < maxRetries =>
+          try Thread.sleep(retryCount * 5L + scala.util.Random.nextInt(10))
+          catch case _: Throwable => ()
+          attempt(retryCount + 1)
+        case ex: Throwable => Left(s"Failed to load crystal '$id': ${ex.getMessage}")
+
+    attempt(1)
 
   override def list(): Either[String, List[ContextCrystal]] = list(includeArchived = false)
 
