@@ -142,3 +142,14 @@ npx shellcheck skills/**/*.sh
 - **Forge Privacy & Public Surface Invariant:** Public installation scripts (`install.sh`), package manager formulas (Homebrew Tap), and documentation must exclusively target official GitHub Releases. Codeberg is preserved exclusively as a private upstream developer forge and experimental staging ground; Codeberg URLs, remotes, or unannounced staging branches must never be exposed or referenced in public distribution artifacts.
 - **Clean POSIX Signal Trap Invariant (SC2329 Avoidance):** When implementing cleanup routines in POSIX shell scripts (`install.sh`, test harnesses), prefer inline command execution (`trap 'rm -rf "$TEMP_DIR"' EXIT INT TERM`) over standalone callback functions that trigger static analysis false positives (`SC2329: function never invoked`). Never disable linter rules via `# shellcheck disable` when a clean, portable syntax pattern exists.
 - **Proud Human-in-the-Loop Craftsmanship (Not AI Slop):** Context Crystal strictly rejects unsupervised, runaway agent swarms and synthetic slop. All architectures, state transitions, and codebase modifications are engineered, reviewed, and audited with human care, love, and rigor in deliberate partnership with computational intelligence. Autonomous entities must proactively facilitate human verification at phase checkpoints and push gates rather than attempting unsupervisioned completion.
+- **Collaborative Release Notes & Prior Human Approval Gate:** Before creating or pushing any release tag (`v*.*.*`), the entity MUST draft comprehensive release notes in an artifact or markdown document, present them to the human steersman / operator, and receive explicit approval. Release notes must clearly articulate architectural progress, user-facing capabilities, and installation instructions rather than relying on raw commit dumps.
+- **Platform Linker Invariants (macOS vs. Linux LTO):** Due to an upstream assertion crash in Apple Clang's linker (`ld-prime`) on Thin LTO alias atoms, release compilation on macOS targets (`macos-aarch64`, `macos-x86_64`) must use `LTO.none` with `Mode.releaseFast` (providing full `-O3` LLVM optimization without linker crashes). Linux targets must continue using `LTO.thin` for maximum dead-code elimination.
+- **Pre-Push Quality & Anti-Failure Verification (Zero Push-Fail Cycles):** Never push to remote or tag a release without first running the exact full verification sequence enforced by CI:
+
+  ```bash
+  sbt "scalafmtCheckAll; scalafixAll --check"
+  npx markdownlint-cli "README.md" "AGENTS.md" "docs/*.md" "skills/**/SKILL.md"
+  npx shellcheck install.sh && find skills -name "*.sh" -exec npx shellcheck {} +
+  ```
+
+  Every push should be an assured green build.

@@ -48,4 +48,9 @@
   - Interactive Three.js/WebGL spatial navigation supporting thematic views (celestial clouds, subterranean cave lattices, archival library books).
 - **Post-MLP Portal Search & Extended Docs Engine:**
   - Client-side search engines (Pagefind WASM or Typelevel Laika) for the public documentation portal.
+- **Track 20: Local Developer Ergonomics, Zero-Friction Git Hooks & Pre-Push Quality Guards:**
+  - Automated setup and configuration of repository Git hooks (`.githooks/` configured via `core.hooksPath`).
+  - Fast staged-file pre-commit verification: incremental `scalafmt`, `scalafix`, `markdownlint`, and `shellcheck`.
+  - Robust pre-push guard: prevents pushing to `main` or pushing release tags (`v*.*.*`) if uncommitted changes, formatting deviations, or failing tests exist locally, entirely eliminating the remote "push-and-fail" cycle.
+  - Secret protection hook: intercepts accidental credentials, API tokens, or private keys before staging into git.
 - **Maintenance / Chore (Completed / Locked):** Upgraded to Scala 3.9.0 LTS and sbt-scala-native 0.5.12 with zero warnings. sbt 2.0.8 compatibility locked at sbt 1.10.7 pending community sbt 2.x cross-publishing of required plugins (sbt-crossproject, sbt-updates, scalafix, scalafmt).
