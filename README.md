@@ -38,7 +38,7 @@ curl -fsSL https://raw.githubusercontent.com/oswaldo/context-crystal/main/instal
 To install into a custom directory or pin a specific release version:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/oswaldo/context-crystal/main/install.sh | sh -s -- --to /usr/local/bin --version v0.1.0
+curl -fsSL https://raw.githubusercontent.com/oswaldo/context-crystal/main/install.sh | sh -s -- --to /usr/local/bin --version v1.0.0
 ```
 
 ### 2. Homebrew (macOS & Linux)
@@ -53,7 +53,7 @@ brew install ccrystal
 | Platform | Tier | Architecture | Status |
 | :--- | :--- | :--- | :--- |
 | **Linux** | Tier 1 | `x86_64`, `aarch64` | Fully supported (pre-compiled Thin LTO binaries) |
-| **macOS** | Tier 1 | Apple Silicon (`aarch64`), Intel (`x86_64`) | Fully supported (pre-compiled Thin LTO binaries) |
+| **macOS** | Tier 1 | Apple Silicon (`aarch64`), Intel (`x86_64`) | Fully supported (pre-compiled Thin LTO binaries; tested and validated on macOS 14, 15, and 26 Apple Silicon) |
 | **Windows (WSL)** | Tier 1 | `x86_64` (WSL / Ubuntu) | Fully supported via WSL (Windows Subsystem for Linux) |
 | **Windows (Native)** | Roadmap | `x86_64`, `arm64` | Planned for post-1.0 track (native MSVC toolchain validation) |
 

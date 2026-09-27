@@ -20,7 +20,7 @@ We rely on standard Scala ecosystem tooling:
    - **Ubuntu / Debian:** `sudo apt install clang build-essential`
    - **Fedora / RHEL:** `sudo dnf install clang gcc-c++`
    - **Arch Linux:** `sudo pacman -S clang base-devel`
-   - **macOS:** Included with Xcode CommandLineTools (`xcode-select --install`)
+   - **macOS:** Included with Xcode CommandLineTools (`xcode-select --install`). Verified on macOS Sequoia (15) and macOS 26 Apple Silicon (`arm64`).
 
 3. **Verify Installation:**
    Launch `sbt` and run the JVM test suite:
@@ -107,7 +107,7 @@ The documentation showcase and interactive portal are decoupled from `main` and 
 
    ```bash
    cd ../context-crystal-gh-pages
-   scala-cli package site --js-mode release -o main.js --force
+   scala-cli --power package site --js-mode release -o main.js --force
    ```
 
 3. **Run local preview server:**
@@ -128,3 +128,31 @@ The documentation showcase and interactive portal are decoupled from `main` and 
    ```
 
 3. The live portal is served at **`https://oswaldo.github.io/context-crystal/`**.
+
+---
+
+## 5. Release Checklist & Distribution Packaging Hygiene
+
+When cutting a new release (e.g., tagging `vX.Y.Z` or triggering `.github/workflows/release.yml`):
+
+1. **Verify Release Manifests:** Confirm that all multi-platform `.tar.gz` archives and `SHA256SUMS` have been built and uploaded to GitHub Releases.
+2. **Synchronize Homebrew Formula (`Formula/ccrystal.rb`):**
+   - Update `version` to match the exact release tag.
+   - Update each platform stanza (`on_macos`, `on_linux`) with the cryptographic checksums from `SHA256SUMS`.
+   - Ensure the formula specifies the correct license (`MIT`).
+3. **Synchronize Homebrew Tap:**
+   - Ensure the public tap repository (`github.com/oswaldo/homebrew-tap`) is created on GitHub.
+   - Push the updated `Formula/ccrystal.rb` to the tap repository.
+4. **Clean-Room Smoke Verification:**
+   - Execute an isolated verification of both official installation methods on target platforms prior to public announcement:
+
+   ```bash
+   # 1. Universal POSIX bootstrap
+   curl -fsSL https://raw.githubusercontent.com/oswaldo/context-crystal/main/install.sh | sh
+   ~/.local/bin/ccrystal --help
+
+   # 2. Homebrew tap
+   brew tap oswaldo/tap
+   brew install ccrystal
+   ccrystal --help
+   ```
