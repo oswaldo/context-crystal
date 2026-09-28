@@ -44,8 +44,11 @@
   - **Prompt Injection Defense & Structural Sandboxing:** Structural sandboxing, delimiter escaping for untrusted node summaries and tool outputs, untrusted data provenance stamping, and cryptographic verification.
 - **Track 12: Bidirectional Schema Tooling & Code Generation Strategy:**
   - Automated, zero-reflection code generation or code-first schema derivation (Smithy4s / Tapir).
-- **Track 11: Experimental 3D Context Lattice Visualizer:**
-  - Interactive Three.js/WebGL spatial navigation supporting thematic views (celestial clouds, subterranean cave lattices, archival library books).
+- **Track 11: Experimental Context Lattice Visualizer & Interface Accessibility:**
+  - **Pre-Implementation Discussion Gate:** Evaluate whether a graphical or terminal visualizer is genuinely necessary, or if the sovereign CLI + MCP + conversational agent interaction model renders visual UIs redundant (or relevant only for enterprise oversight).
+  - **Universal Accessibility (Visually Impaired & Screen-Reader First):** Any visualizer or web portal must achieve strict WCAG 2.1 AA/AAA compliance. Ensure full parity for visually impaired collaborators via screen reader support (Orca / VoiceOver), semantic ARIA tree structures, keyboard-only traversal, and high-contrast modes.
+  - **Conversational & Auditory Briefing Streams:** Design context beams and DAG hydrations to be inherently screen-reader and voice-friendly, enabling natural auditory briefings ("Morning Context Cast") for developers who prefer voice/audio interaction over typing.
+
 - **Post-MLP Portal Search & Extended Docs Engine:**
   - Client-side search engines (Pagefind WASM or Typelevel Laika) for the public documentation portal.
 - **Track 20: Local Developer Ergonomics, Zero-Friction Git Hooks & Pre-Push Quality Guards:**
