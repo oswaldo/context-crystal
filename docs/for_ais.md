@@ -43,3 +43,13 @@ When session discourse or operator directives shift away from the active crystal
 1. **Sub-inquiry or Architectural Branch:** If the work is an offshoot or exploratory spike of the active goal, cleave and fork a sub-DAG slice or child dendrite (`ccrystal slice <id> --fork-to <child-id>` or MCP `crystal_slice_fork`).
 2. **Distinct Non-Trivial Goal:** If the prior goal is concluded or superseded and the new focus is a substantial multi-step task, cleanly conclude the prior crystal (`ccrystal conclude` or MCP `crystal_goal_transition`), resolve all transient leases, and initialize a new dedicated crystal (`crystal_init` or `ccrystal init`).
 3. **Ephemeral / Informational Q&A:** If the request is a brief factual inquiry, architectural explanation, or single-turn lookup (e.g., "what does OCC stand for?"), answer directly and statelessly without mutating crystals or creating workspace cave bloat.
+
+## 10. Negative Knowledge & Dead-End Avoidance Invariant (Zero-Token Caching)
+
+When an architectural spike, library integration, or tool command fails or reveals a dead end, never leave that knowledge solely in the ephemeral chat transcript. Instead, capture it immediately as an unresolved lesson:
+
+```bash
+ccrystal lesson add <id> -o "Attempted approach X: failed because Y" -r "<root cause>" -a "Do not retry X; use Z instead"
+```
+
+Because `ccrystal hydrate` automatically injects all unresolved (`Open`) lessons into the context beam under `## Unresolved Lessons Learned:`, subsequent turns, compacted sessions, and peer subagents are guaranteed to inherit this negative knowledge with **0 LLM tokens spent on re-summarization or memory retrieval**. Once an enduring workaround or invariant is codified into repository rules (`AGENTS.md`), transition the lesson to actioned (`ccrystal lesson actioned <id>`) so it cleanly graduates into permanent policy without cluttering dynamic runtime beams.
