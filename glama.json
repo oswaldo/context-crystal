@@ -1,0 +1,21 @@
+{
+  "$schema": "https://glama.ai/mcp/schemas/server.json",
+  "maintainers": [
+    "oswaldo"
+  ],
+  "name": "context-crystal",
+  "description": "Sovereign, deterministic, local-first context and DAG lifecycle engine with native Model Context Protocol (MCP) server for autonomous AI coding agents.",
+  "type": "mcp_server",
+  "transport": [
+    "stdio"
+  ],
+  "keywords": [
+    "mcp-server",
+    "context",
+    "dag",
+    "agentic-ai",
+    "lifecycle",
+    "scala-native",
+    "local-first"
+  ]
+}

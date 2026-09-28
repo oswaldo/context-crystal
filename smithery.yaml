@@ -1,0 +1,16 @@
+# smithery.yaml
+# Specification: https://smithery.ai/docs/config#smitheryyaml
+startCommand:
+  type: stdio
+  configSchema:
+    type: object
+    properties:
+      storePath:
+        type: string
+        description: "Optional custom path for .ccrystals store directory (defaults to current working directory)."
+  commandFunction: |-
+    (config) => ({
+      command: "ccrystal",
+      args: ["mcp"],
+      env: config.storePath ? { CCRYSTAL_STORE: config.storePath } : {}
+    })
