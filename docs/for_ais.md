@@ -53,3 +53,11 @@ ccrystal lesson add <id> -o "Attempted approach X: failed because Y" -r "<root c
 ```
 
 Because `ccrystal hydrate` automatically injects all unresolved (`Open`) lessons into the context beam under `## Unresolved Lessons Learned:`, subsequent turns, compacted sessions, and peer subagents are guaranteed to inherit this negative knowledge with **0 LLM tokens spent on re-summarization or memory retrieval**. Once an enduring workaround or invariant is codified into repository rules (`AGENTS.md`), transition the lesson to actioned (`ccrystal lesson actioned <id>`) so it cleanly graduates into permanent policy without cluttering dynamic runtime beams.
+
+## 11. Clean Archival & In-Flight Dependency Audit Invariant
+
+Never move an active crystal to cold storage (`ccrystal archive` or MCP `crystal_archive`) while external asynchronous commitments or unregistered workspace resources remain in-flight. Before archiving, you must explicitly audit:
+
+1. **Asynchronous Feedback Loops:** Did the session open upstream pull requests, submit directory or search index requests, or trigger email verification challenges? If so, the goal is not yet finished. Keep the crystal in active status and register explicit monitoring tasks (`task-N: Monitor and verify merge of PR #...`).
+2. **Unregistered Workspace Leases:** Were temporary git worktrees, clones, or mock services spawned during the session that are missing from crystal lease tracking? Register them immediately (`ccrystal transient lease` or MCP `crystal_transient_lease`) to defend in-progress workspace resources against premature teardown.
+3. **Clean Archival Threshold:** Only archive when both internal code milestones AND external verification loops are fully resolved, all transient leases are cleaned or promoted, and all lessons are actioned.

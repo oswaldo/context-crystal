@@ -28,6 +28,7 @@ This skill equips AI coding entities (Antigravity, Claude Code, Cursor, Windsurf
   3. *Ephemeral / Informational Q&A:* If the request is a brief factual inquiry, architectural explanation, or single-turn lookup (e.g., "what does OCC stand for?"), answer directly and statelessly without mutating crystals or creating workspace cave bloat.
 - **Authoritative CLI Ground Truth (`--help` & `--for-ai`):** Because `ccrystal`'s CLI parser is statically generated via Decline ADTs, running `ccrystal --help` and `ccrystal <subcommand> --help` is the **guaranteed source of truth** for all available subcommands, flags, defaults, and syntax. When choosing between MCP and CLI, or when discovering newly implemented capabilities that might not yet be exposed in a specific agent's MCP schema, the entity should run `ccrystal --help` or `ccrystal <subcommand> --help` to verify current options. Additionally, `ccrystal --for-ai` emits agent-specific operational rules, naming conventions, and PII invariants on demand.
 - **Negative Knowledge & Dead-End Avoidance (Zero-Token Caching):** When an architectural spike, dependency hypothesis, or tool command fails, never leave that negative knowledge solely in transient chat transcript. Record it immediately as an unresolved lesson: `ccrystal lesson add <id> -o "Attempted X: failed because Y" -r "<root cause>" -a "Avoid X; use Z instead"` (or via MCP `crystal_batch`). Because `ContextHydrator` deterministically injects all `Open` lessons into every context beam under `## Unresolved Lessons Learned:`, the agent (and future resuming entities) avoids repeating failed attempts with **0 LLM tokens spent on re-summarization or memory retrieval**. Once codified into permanent repository rules (`AGENTS.md`), transition the lesson to actioned (`ccrystal lesson actioned <id>`).
+- **Clean Archival & In-Flight Dependency Audit Gate:** Never archive an active crystal to cold storage while external asynchronous commitments (upstream pull requests awaiting review/merge, third-party directory listings awaiting crawl/activation, verification tokens) or unregistered workspace resources (temporary clones, worktrees, branches) remain in-flight. Before invoking `crystal_archive` or `ccrystal archive`, explicitly reason: *Did this session spawn external dependencies or temporary workspace resources that would cause amnesia or orphaned artifacts if hidden?* If so, the goal is not yet finished. Keep the crystal in active status, register explicit monitoring tasks (`task-N`), and register transient resource leases (`crystal_transient_lease` / `ccrystal transient lease`) to defend in-progress workspace resources against premature teardown.
 
 ---
 
@@ -339,18 +340,20 @@ Context Crystal deterministically classifies crystals into three aging states:
 
 1. **Solid (Clean Concluded State — Primary Candidate for Archiving):**
    - Goal status is `concluded_success` or `concluded_abandoned`.
-   - All tasks completed (`100%`).
+   - All internal tasks completed (`100%`).
    - Active transient leases: `0`.
    - Open lessons: `0` (or lessons already incorporated into codebase documentation/ADRs).
+   - In-flight external feedback loops: `0` (no pending upstream PRs, unverified registry submissions, or challenge emails).
    - **Recommendation:** Safe to archive to cold storage via `ccrystal archive <id>` (or MCP `crystal_archive`). This removes the crystal from the active cave while preserving 100% of state, history, and artifacts under `.ccrystals/archive/<id>/`.
 2. **Stale (Review & Action Needed):**
    - Incomplete / `in_progress` with no activity for >30 days, or abandoned with unresolved transient leases or incomplete acceptance criteria.
    - **Recommendation:** Prompt operator whether to clean leases, harvest lessons, and archive/delete, or resume work.
 3. **Active (Protected Work in Flight):**
-   - Active feature or bugfix tracks currently in development (updated within last 14 days or with active leases).
+   - Active feature or bugfix tracks currently in development (updated within last 14 days, holding active leases, or monitoring pending external PRs/reviews).
    - **Recommendation:** Keep active in workspace cave.
 
 ### C. Cold Storage Archiving vs. Permanent Deletion
 
+- **Pre-Archival In-Flight Dependency & Lease Audit:** Before executing `ccrystal archive` or MCP `crystal_archive`, explicitly reason whether the session spawned in-flight asynchronous commitments (upstream PRs, registry submissions, verification emails) or unregistered workspace resources (temporary git worktrees, clones, mock services). If external commitments remain in-flight, do NOT archive prematurely: keep the crystal active with explicit monitoring tasks (`task-N`) and transient resource leases (`git_worktree`). Only archive when both code milestones and external verification loops are fully resolved.
 - **Default to Cold Storage Archiving:** Unless the operator explicitly asks to permanently destroy a throwaway spike or scratch session, **always prefer archiving** (`ccrystal archive <id>` / MCP `crystal_archive`) over deletion. Archived crystals can be inspected at any time with `ccrystal list --archived` and restored seamlessly via `ccrystal unarchive <id>`.
 - **Permanent Deletion Safety Gate:** Permanent deletion (`ccrystal delete <id>` / MCP `crystal_delete`) is irrecoverable and cascades to all associated nodes and leases. The AI entity MUST request explicit confirmation from the operator specifying the crystal IDs to be deleted, never deleting unprompted.
