@@ -150,10 +150,10 @@ Context Crystal adapts to your team's workflow without polluting your code:
 
 Context Crystal includes ready-to-use skills and instruction adapters for major agent harnesses:
 
-- 🚀 **[Google Antigravity](.agents/skills/context-crystal/SKILL.md):** Full agent skill with symbiotic and autonomous fallback modes.
-- 🟣 **[Claude Code](skills/context-crystal/adapters/claude/CLAUDE.md):** CLAUDE.md integration instructions for Anthropic's CLI.
-- ⚡ **[Cursor & Windsurf](skills/context-crystal/adapters/cursor/.cursorrules):** Rule definitions for prompt hydration and automatic checkpointing.
-- 🛠️ **[Generic POSIX Skill](skills/context-crystal/SKILL.md):** Universal agent specification adaptable to any tool-calling harness.
+- **[Google Antigravity](.agents/skills/context-crystal/SKILL.md):** Full agent skill with symbiotic and autonomous fallback modes.
+- **[Claude Code](skills/context-crystal/adapters/claude/CLAUDE.md):** CLAUDE.md integration instructions for Anthropic's CLI.
+- **[Cursor & Windsurf](skills/context-crystal/adapters/cursor/.cursorrules):** Rule definitions for prompt hydration and automatic checkpointing.
+- **[Generic POSIX Skill](skills/context-crystal/SKILL.md):** Universal agent specification adaptable to any tool-calling harness.
 
 ---
 
