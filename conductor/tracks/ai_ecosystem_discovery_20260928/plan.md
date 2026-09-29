@@ -15,7 +15,7 @@
 
 ## Phase 3: Operator Review, Claims & Upstream Submissions (Gated)
 
-- [ ] Task 3.1: Present all changes, diffs, and drafts to human steersman for review.
-- [ ] Task 3.2: Verify Smithery and Glama indexing and claim ownership.
-- [ ] Task 3.3: Submit upstream PRs (`coursier/apps`, `awesome-mcp-servers`, `llmstxt-site`) upon operator confirmation.
-- [ ] Task 3.4: Transition crystal tasks and conclude `ai-ecosystem-discovery-and-mcp-registries`.
+- [x] Task 3.1: Present all changes, diffs, and drafts to human steersman for review.
+- [x] Task 3.2: Verify Smithery and Glama indexing and claim ownership.
+- [x] Task 3.3: Submit upstream PRs (`coursier/apps`, `awesome-mcp-servers`, `llmstxt-site`) upon operator confirmation.
+- [x] Task 3.4: Transition crystal tasks and conclude `ai-ecosystem-discovery-and-mcp-registries`.

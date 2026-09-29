@@ -62,5 +62,5 @@
 - [x] **Track: Distribution, Packaging & Native CLI Installer**  
   *Link: [conductor/tracks/distribution_packaging_and_installer_20260925/index.md](./tracks/distribution_packaging_and_installer_20260925/index.md)*
 
-- [ ] **Track: Public AI Discoverability, MCP Registry Listings, and Ecosystem Distribution**  
+- [x] **Track: Public AI Discoverability, MCP Registry Listings, and Ecosystem Distribution**  
   *Link: [conductor/tracks/ai_ecosystem_discovery_20260928/index.md](./tracks/ai_ecosystem_discovery_20260928/index.md)*
