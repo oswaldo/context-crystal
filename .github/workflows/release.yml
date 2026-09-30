@@ -167,3 +167,33 @@ jobs:
           files: |
             artifacts/*.tar.gz
             artifacts/SHA256SUMS
+
+  publish-maven-central:
+    name: Publish to Maven Central
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code with full history for dynver
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: "temurin"
+          java-version: "21"
+
+      - name: Setup sbt
+        uses: sbt/setup-sbt@v1
+
+      - name: Cache Coursier
+        uses: coursier/cache-action@v6
+
+      - name: Publish JVM Artifacts via sbt-ci-release
+        run: sbt ci-release
+        env:
+          PGP_PASSPHRASE: ${{ secrets.PGP_PASSPHRASE }}
+          PGP_SECRET: ${{ secrets.PGP_SECRET }}
+          SONATYPE_PASSWORD: ${{ secrets.SONATYPE_PASSWORD }}
+          SONATYPE_USERNAME: ${{ secrets.SONATYPE_USERNAME }}
+

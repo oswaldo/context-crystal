@@ -45,6 +45,9 @@
 - **Subsequent Track: Crystal Comms & Lock-Free Multi-Entity Mailboxes:**
   - **Objective:** Filesystem-based inbox/outbox signaling (`.ccrystals/_comms/<entity-id>/inbox/`) and `Entity.endpoints` resolution for multi-agent coordination without lock contention.
   - **Priority:** High impact, establishes multi-entity communication channels for coordinated workflows; scheduled directly after Cave Query & Search.
+- **Track 22: Native MCP Server Consolidation, TDQS Optimization & Tool Quality:**
+  - **Objective:** Refactor the MCP server tool surface into an ergonomic, consolidated facade (e.g. 6-8 cohesive tools: `crystal_manage`, `crystal_hydrate`, `crystal_transition`, `crystal_artifact`, `crystal_lesson`, `crystal_lifecycle`) to eliminate prompt context bloat and agent routing indecision.
+  - **Naming & Completeness:** Enforce strict, uniform `verb_noun` naming conventions, add dedicated first-class lesson management tools (`crystal_lesson` to record, list, and resolve open lessons), and provide full artifact lifecycle support (updating metadata and unregistering artifacts) to achieve a verified Grade A (4.5+/5.0) on Glama TDQS.
 - **Track 14: Strict Functional Quality & Invariant Hardening (Disallow var, null, throws):**
   - Compiler warning configurations (`-Werror`, `-Wnonunit-statement`), scalafix lint rules, and elimination of mutable state / null / throw across `core` and `cli`.
 - **Track 15: Context Armor, Secret Guards & Threat Modeling (Betterleaks Integration & Injection Defenses):**

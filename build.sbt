@@ -6,10 +6,19 @@ val munitVersion    = "1.3.6"
 val declineVersion  = "2.6.2"
 
 ThisBuild / scalaVersion := scala3Version
-ThisBuild / organization := "org.contextcrystal"
-ThisBuild / version      := "0.1.0-SNAPSHOT"
+ThisBuild / organization := "io.github.oswaldo"
 ThisBuild / licenses     := List("MIT" -> new java.net.URI("https://opensource.org/licenses/MIT").toURL)
 ThisBuild / homepage     := Some(new java.net.URI("https://github.com/oswaldo/context-crystal").toURL)
+ThisBuild / developers   := List(
+  Developer(
+    id = "oswaldo",
+    name = "Oswaldo Dantas",
+    email = "77538+oswaldo@users.noreply.github.com",
+    url = new java.net.URI("https://github.com/oswaldo").toURL
+  )
+)
+ThisBuild / sonatypeCredentialHost := "central.sonatype.com"
+ThisBuild / sonatypeRepository     := "https://central.sonatype.com/service/local"
 
 lazy val root = project.in(file("."))
   .aggregate(core.jvm, core.native, core.js, cli.jvm, cli.native)
@@ -43,10 +52,12 @@ lazy val core = crossProject(JVMPlatform, NativePlatform, JSPlatform)
   )
   .nativeSettings(
     Compile / unmanagedSourceDirectories += (ThisBuild / baseDirectory).value / "core" / "jvm-native" / "src" / "main" / "scala",
-    Test / unmanagedSourceDirectories += (ThisBuild / baseDirectory).value / "core" / "jvm-native" / "src" / "test" / "scala"
+    Test / unmanagedSourceDirectories += (ThisBuild / baseDirectory).value / "core" / "jvm-native" / "src" / "test" / "scala",
+    publish / skip := true
   )
   .jsSettings(
-    scalaJSLinkerConfig ~= { _.withModuleKind(ModuleKind.CommonJSModule) }
+    scalaJSLinkerConfig ~= { _.withModuleKind(ModuleKind.CommonJSModule) },
+    publish / skip := true
   )
 
 lazy val cli = crossProject(JVMPlatform, NativePlatform)
@@ -69,7 +80,9 @@ lazy val cli = crossProject(JVMPlatform, NativePlatform)
     Compile / mainClass := Some("ccrystal.cli.Main")
   )
   .jvmSettings()
-  .nativeSettings()
+  .nativeSettings(
+    publish / skip := true
+  )
 
 ThisBuild / semanticdbEnabled := true
 ThisBuild / semanticdbVersion := scalafixSemanticdb.revision
