@@ -13,7 +13,7 @@ Context Crystal decouples **context**, **goals**, **transient resources**, and *
 
 ## Why Context Crystal?
 
-Modern AI-assisted engineering suffers from three critical bottlenecks:
+Modern AI-assisted engineering suffers from a few critical bottlenecks:
 
 1. **The Navigational Void (Context vs. Memory):** Tools frequently conflate "context" with "memory" (vector databases, RAG retrieval, associative search, or endless chat transcripts). While memory attempts to simulate cognitive recall, engineering requires a **navigational map and compass**: a deterministic record of *where we have been* (verified milestones, executed tools, resolved friction) and *where we are going* (goal nucleus, active acceptance criteria). Crystals are self-contained and inert at rest; active use and hydration turn them into meaningful, high-bandwidth context.
 2. **The Session Boundary Problem:** Work is trapped in ephemeral chat windows. When a context window fills, a session restarts, or work hands off between human steersmen and autonomous agents, nuance evaporates. Summaries suffer from lossy compaction, prompt drift, and hallucinated progress.
