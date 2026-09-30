@@ -25,17 +25,26 @@
 
 ---
 
-## 2. Next Track: Crystal Comms & Lock-Free Multi-Entity Mailboxes
+## 2. Next Track: Cave Query, Search & Temporal Navigation (`cave_search_and_temporal_query`)
 
-- **Objective:** Filesystem-based inbox/outbox signaling (`.ccrystals/_comms/<entity-id>/inbox/`) and `Entity.endpoints` resolution for multi-agent coordination without lock contention.
-- **Priority:** High impact, establishes multi-entity communication channels for coordinated workflows.
+- **Objective:** Introduce direct, deterministic cave search and temporal query capabilities (`ccrystal search` / `ccrystal find` CLI subcommands and MCP `crystal_search` / extended `crystal_list`) to answer lifecycle questions (initial, in-flight, and retrospective) without paginating or dumping raw JSON envelopes.
+- **Priority:** Immediate next step (High impact, eliminates multi-turn agent scanning friction, manual python scripting, and token burning).
+- **Core Scope & Lifecycle Question Coverage:**
+  - **Temporal & Activity Queries:** `--since <iso-date|relative>`, `--until <iso-date|relative>`, `--yesterday`, `--today` (e.g., "what crystals did we work on yesterday?"). Filters crystals based on `updatedAt`, `createdAt`, or recent node timestamps in the DAG.
+  - **Inception & Discovery Queries:** `--query / -q <text>` (matching title, intent, node summaries, or lessons), `--author <id>`, `--tag <k=v>` (e.g., "has this problem/feature been attempted or explored before?").
+  - **In-Flight & Resource Queries:** `--has-active-leases`, `--touching-path <path>` (e.g., "which crystal is leasing worktree X?"), `--has-open-tasks`, `--status <status>` (e.g., "what crystals are currently active or holding open resources?").
+  - **Retrospective & Hygiene Queries:** `--has-lessons`, `--lesson-query <text>`, `--artifact <id|name>`, `--include-archived`, `--aging <active|solid|stale>` (e.g., "what lessons were recorded about X?", "why was crystal Y abandoned?").
+- **Architectural Tenets & Strategy:**
+  - **Boundary Separation (Navigational Compass vs Long-Term Memory):** Not competing with long-term memory or semantic vector databases (e.g. Engram, RAG). Context Crystal's sweet spot is fast, deterministic, zero-hallucination operational metadata over the cave (`.ccrystals/` and `.ccrystals/archive/`). The filesystem structure, filenames, and typed envelope conventions are completely sufficient for this volume of data.
+  - **Focused Pragmatic Flags vs Query DSL:** Prioritize focused, compile-time verified Decline flags and structured MCP tool arguments. Defer complex query languages/DSLs to avoid LLM hallucination loops and syntax trial-and-error ("token burning"); if a query DSL is ever explored, keep it deferred or locked behind an `--experimental` flag.
 
 ---
 
-## 4. Backlog & Future Track Roadmap
+## 3. Backlog & Future Track Roadmap
 
-- **Track 9: Crystal Comms & Lock-Free Multi-Entity Mailboxes:**
-  - Filesystem-based inbox/outbox signaling (`.ccrystals/_comms/<entity-id>/inbox/`) and `Entity.endpoints` resolution for multi-agent coordination without lock contention.
+- **Subsequent Track: Crystal Comms & Lock-Free Multi-Entity Mailboxes:**
+  - **Objective:** Filesystem-based inbox/outbox signaling (`.ccrystals/_comms/<entity-id>/inbox/`) and `Entity.endpoints` resolution for multi-agent coordination without lock contention.
+  - **Priority:** High impact, establishes multi-entity communication channels for coordinated workflows; scheduled directly after Cave Query & Search.
 - **Track 14: Strict Functional Quality & Invariant Hardening (Disallow var, null, throws):**
   - Compiler warning configurations (`-Werror`, `-Wnonunit-statement`), scalafix lint rules, and elimination of mutable state / null / throw across `core` and `cli`.
 - **Track 15: Context Armor, Secret Guards & Threat Modeling (Betterleaks Integration & Injection Defenses):**
