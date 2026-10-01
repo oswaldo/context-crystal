@@ -34,6 +34,8 @@ flowchart LR
     Triage -.-> Delete[crystal_delete]
 ```
 
+0. **Discovery & Search (`crystal_search`):**
+   Search and list cave crystals across multi-dimensional criteria (query text, temporal bounds, status, active leases, touching path, open tasks, lessons, author, aging state, and pagination). When called without filters, lists active crystals (most recently active first).
 1. **Inception (`crystal_init`):**
    Initialize a dedicated crystal with `name`, `goal`, optional `intent`, `author`, and initial `tasks`.
 2. **Work & Provenance Tracking:**
