@@ -1,0 +1,195 @@
+{
+  "schemaVersion" : "1.0.0",
+  "id" : "cave-search-and-temporal-query",
+  "name" : "cave-search-and-temporal-query",
+  "createdAt" : "2026-10-01T18:58:14.990Z",
+  "updatedAt" : "2026-10-01T23:33:25.823Z",
+  "parentCrystalId" : null,
+  "origin" : null,
+  "caveId" : null,
+  "defaultAuthorId" : "usr_antigravity",
+  "goal" : {
+    "title" : "Cave Query, Search & Temporal Navigation",
+    "intent" : "Implement deterministic cave search and temporal query engine across core, CLI (ccrystal search), and native MCP (consolidated crystal_search replacing crystal_list)",
+    "status" : "concluded_success",
+    "acceptanceCriteria" : [
+      {
+        "id" : "task-1",
+        "description" : "Define CrystalFilter, AgingCategory, and temporal parsing in core",
+        "completed" : true
+      },
+      {
+        "id" : "task-2",
+        "description" : "Implement Search & Query Engine in core",
+        "completed" : true
+      },
+      {
+        "id" : "task-3",
+        "description" : "Implement Decline parser for ccrystal search in cli",
+        "completed" : true
+      },
+      {
+        "id" : "task-4",
+        "description" : "Implement ccrystal search execution and formatting in Runner",
+        "completed" : true
+      },
+      {
+        "id" : "task-5",
+        "description" : "Implement crystal_search tool in DefaultMcpHandler and replace crystal_list",
+        "completed" : true
+      },
+      {
+        "id" : "task-6",
+        "description" : "Update MCP end-to-end integration tests in McpEndToEndSessionSuite",
+        "completed" : true
+      },
+      {
+        "id" : "task-7",
+        "description" : "Export MCP schema for crystal_search and remove crystal_list.json",
+        "completed" : true
+      },
+      {
+        "id" : "task-8",
+        "description" : "Update Agent Skill, Guidelines & MCP documentation",
+        "completed" : true
+      },
+      {
+        "id" : "task-9",
+        "description" : "Full multi-platform test suite & optimized native release build",
+        "completed" : true
+      }
+    ],
+    "metadata" : {
+      
+    }
+  },
+  "entities" : [
+    {
+      "id" : "usr_antigravity",
+      "kind" : "human",
+      "name" : "antigravity",
+      "metadata" : {
+        
+      },
+      "publicKey" : null,
+      "endpoints" : {
+        
+      }
+    }
+  ],
+  "activeMask" : null,
+  "dag" : {
+    "rootNodeId" : "node-cave-search-and-temporal-query-init",
+    "nodes" : [
+      {
+        "id" : "node-cave-search-and-temporal-query-init",
+        "parentIds" : [
+        ],
+        "timestamp" : "2026-10-01T18:58:14.990Z",
+        "actorId" : "usr_antigravity",
+        "kind" : "human_prompt",
+        "contentSummary" : "Initialized crystal 'cave-search-and-temporal-query' with goal: Cave Query, Search & Temporal Navigation",
+        "anchor" : null,
+        "artifactIds" : [
+        ],
+        "inputArtifactIds" : [
+        ],
+        "outputArtifactIds" : [
+        ],
+        "preconditionArtifactIds" : [
+        ],
+        "fidelity" : "inferred",
+        "metadata" : {
+          
+        }
+      },
+      {
+        "id" : "node-2",
+        "parentIds" : [
+          "node-cave-search-and-temporal-query-init"
+        ],
+        "timestamp" : "2026-10-01T20:57:59.802Z",
+        "actorId" : "usr_antigravity",
+        "kind" : "checkpoint",
+        "contentSummary" : "Phase 3 completed: crystal_search tool consolidated replacing crystal_list with pagination and multi-dimensional search [1103d9b]",
+        "anchor" : null,
+        "artifactIds" : [
+        ],
+        "inputArtifactIds" : [
+        ],
+        "outputArtifactIds" : [
+        ],
+        "preconditionArtifactIds" : [
+        ],
+        "fidelity" : "inferred",
+        "metadata" : {
+          
+        }
+      },
+      {
+        "id" : "node-3",
+        "parentIds" : [
+          "node-2"
+        ],
+        "timestamp" : "2026-10-01T21:11:57.132Z",
+        "actorId" : "usr_antigravity",
+        "kind" : "checkpoint",
+        "contentSummary" : "Track implementation complete: all 9 tasks finished, 526 tests green across Native/JVM/JS, ccrystal search consolidated and installed to ~/.local/bin/ccrystal with Thin LTO, ready for operator review and push gate.",
+        "anchor" : null,
+        "artifactIds" : [
+        ],
+        "inputArtifactIds" : [
+        ],
+        "outputArtifactIds" : [
+        ],
+        "preconditionArtifactIds" : [
+        ],
+        "fidelity" : "inferred",
+        "metadata" : {
+          
+        }
+      },
+      {
+        "id" : "node-4",
+        "parentIds" : [
+          "node-3"
+        ],
+        "timestamp" : "2026-10-01T23:33:25.823Z",
+        "actorId" : "usr_antigravity",
+        "kind" : "resolution",
+        "contentSummary" : "Concluded Cave Query, Search & Temporal Navigation track successfully: consolidated ccrystal search and crystal_search with multi-dimensional filtering, temporal bounding, and defensive pagination across core, CLI, and MCP. Rebased and merged into main on Codeberg and GitHub.",
+        "anchor" : null,
+        "artifactIds" : [
+        ],
+        "inputArtifactIds" : [
+        ],
+        "outputArtifactIds" : [
+        ],
+        "preconditionArtifactIds" : [
+        ],
+        "fidelity" : "inferred",
+        "metadata" : {
+          
+        }
+      }
+    ]
+  },
+  "transientLeases" : [
+    {
+      "id" : "lease-1",
+      "resourceType" : "git_worktree",
+      "resourcePath" : null,
+      "description" : "Dedicated track worktree at /home/oswaldo/git/ccrystal-worktrees/cave-search-and-temporal-query",
+      "disposalPolicy" : "manual",
+      "status" : "cleaned",
+      "createdAt" : "2026-10-01T18:59:35.854Z"
+    }
+  ],
+  "lessonsLearned" : [
+  ],
+  "artifacts" : [
+  ],
+  "metadata" : {
+    
+  }
+}

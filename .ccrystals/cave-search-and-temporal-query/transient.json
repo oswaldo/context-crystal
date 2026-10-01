@@ -1,0 +1,11 @@
+[
+  {
+    "id" : "lease-1",
+    "resourceType" : "git_worktree",
+    "resourcePath" : null,
+    "description" : "Dedicated track worktree at /home/oswaldo/git/ccrystal-worktrees/cave-search-and-temporal-query",
+    "disposalPolicy" : "manual",
+    "status" : "cleaned",
+    "createdAt" : "2026-10-01T18:59:35.854Z"
+  }
+]
