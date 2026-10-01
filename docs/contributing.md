@@ -147,24 +147,25 @@ The documentation showcase and interactive portal are decoupled from `main` and 
 When cutting a new release (e.g., tagging `vX.Y.Z` or triggering `.github/workflows/release.yml`):
 
 1. **Verify Release Manifests:** Confirm that all multi-platform `.tar.gz` archives and `SHA256SUMS` have been built and uploaded to GitHub Releases.
-2. **Synchronize Homebrew Formula (`Formula/ccrystal.rb`):**
+2. **Verify Maven Central Publication (Sonatype Central):** Confirm that the `publish-maven-central` workflow job completed and that `io.github.oswaldo:ccrystal-cli_3` and `io.github.oswaldo:ccrystal-core_3` are staged/published to Maven Central via `sbt ci-release`.
+3. **Synchronize Homebrew Formula (`Formula/ccrystal.rb`):**
    - Update `version` to match the exact release tag.
    - Update each platform stanza (`on_macos`, `on_linux`) with the cryptographic checksums from `SHA256SUMS`.
    - Ensure the formula specifies the correct license (`MIT`).
-3. **Synchronize Homebrew Tap:**
+4. **Synchronize Homebrew Tap:**
    - Ensure the public tap repository (`github.com/oswaldo/homebrew-context-crystal`) is up to date with `Formula/ccrystal.rb`.
    - Push the updated formula to the tap repository.
-4. **Synchronize Coursier Channel (`apps.json`):**
+5. **Synchronize Coursier Channel (`apps.json`):**
    - Update version tags in `apps.json` to point to the new release tag `vX.Y.Z`.
    - Validate with `cs install --channel file://$(pwd)/apps.json ccrystal`.
-5. **Synchronize Web Portal (`context-crystal-gh-pages`):**
+6. **Synchronize Web Portal (`context-crystal-gh-pages`):**
    - Update quickstart version references in `site/TabQuickstart.scala` and `llms.txt`.
    - Recompile the static bundle: `scala-cli --power package site --js-mode release -o main.js --force`.
    - Commit and push to `gh-pages`.
-6. **Collaborative Release Notes & Human Approval Gate:**
+7. **Collaborative Release Notes & Human Approval Gate:**
    - Draft comprehensive release notes highlighting architectural progress, user-facing capabilities, and upgrade steps.
    - Present to the human steersman/operator for explicit review and cryptographic push sign-off.
-7. **Clean-Room Smoke Verification:**
+8. **Clean-Room Smoke Verification:**
    - Execute an isolated verification of official installation methods on target platforms prior to public announcement:
 
    ```bash
@@ -176,7 +177,10 @@ When cutting a new release (e.g., tagging `vX.Y.Z` or triggering `.github/workfl
    brew install oswaldo/context-crystal/ccrystal
    ccrystal --help
 
-   # 3. Coursier (cs)
+   # 3. Coursier (cs install)
    cs install --channel gh:oswaldo/context-crystal:main ccrystal
    ccrystal --help
+
+   # 4. Coursier Launch (Maven Central JVM artifact)
+   cs launch --contrib ccrystal -- --help
    ```
