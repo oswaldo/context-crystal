@@ -2,14 +2,14 @@
 
 ## Phase 1: Core Search & Temporal Query Engine
 
-- [ ] Task: Define `CrystalFilter`, `AgingCategory`, and temporal parsing in `core`
-  - [ ] Write failing unit tests in `core/shared/src/test/scala/ccrystal/core/model/CrystalFilterSuite.scala`
-  - [ ] Implement `CrystalFilter`, `AgingCategory`, and temporal parser supporting ISO-8601, `today`, `yesterday`, and relative offsets (`1d`, `7d`)
-  - [ ] Verify unit tests pass cleanly
-- [ ] Task: Implement Search & Query Engine in `core`
-  - [ ] Write failing unit tests in `core/shared/src/test/scala/ccrystal/core/store/CrystalSearchEngineSuite.scala`
-  - [ ] Implement multi-attribute matching (text search across title, intent, DAG nodes, lessons, artifacts; leases; tasks; author; aging; archived)
-  - [ ] Verify engine tests pass cleanly
+- [x] Task: Define `CrystalFilter`, `AgingCategory`, and temporal parsing in `core` [5a1ba35]
+  - [x] Write failing unit tests in `core/shared/src/test/scala/ccrystal/core/model/CrystalFilterSuite.scala`
+  - [x] Implement `CrystalFilter`, `AgingCategory`, and temporal parser supporting ISO-8601, `today`, `yesterday`, and relative offsets (`1d`, `7d`)
+  - [x] Verify unit tests pass cleanly
+- [x] Task: Implement Search & Query Engine in `core` [5a1ba35]
+  - [x] Write failing unit tests in `core/shared/src/test/scala/ccrystal/core/store/CrystalSearchEngineSuite.scala`
+  - [x] Implement multi-attribute matching (text search across title, intent, DAG nodes, lessons, artifacts; leases; tasks; author; aging; archived)
+  - [x] Verify engine tests pass cleanly
 - [ ] Task: Phase 1 Verification & Checkpoint (Refer to workflow.md)
 
 ## Phase 2: CLI Command: `ccrystal search`
