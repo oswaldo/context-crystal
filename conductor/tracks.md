@@ -65,5 +65,5 @@
 - [x] **Track: Public AI Discoverability, MCP Registry Listings, and Ecosystem Distribution**  
   *Link: [conductor/tracks/ai_ecosystem_discovery_20260928/index.md](./tracks/ai_ecosystem_discovery_20260928/index.md)*
 
-- [ ] **Track: Cave Query, Search & Temporal Navigation**  
+- [x] **Track: Cave Query, Search & Temporal Navigation**  
   *Link: [conductor/tracks/cave_search_and_temporal_query_20260930/index.md](./tracks/cave_search_and_temporal_query_20260930/index.md)*

@@ -19,24 +19,22 @@
 - **Track 16 (`artifact_world_state_ontology_20260913`):** Complete `[x]` (Artifact & world-state ontology, virtual & physical substrates, roles, locations, directional DAG links, Cave Artifact Registry, CLI commands, native MCP server integration, and beam projection).
 - **Track 17 (`universal_agent_onboarding_20260920`):** Complete `[x]` (Universal Agent Runtime Matrix: `ccrystal agent doctor` non-destructive diagnostic evaluator and `ccrystal agent install` defensive auto-configuration engine supporting Google Antigravity, Claude Code, Claude Desktop, Cursor, Windsurf, and Zed with automatic `.ccrystal.bak` creation and rollback instructions, JSONC comment support, and native Thin LTO release binary).
 - **Track 18 (`store_hardening_and_concurrency_20260920`):** Complete `[x]` (Storage Isolation, Atomic Swaps & Optimistic Concurrency Control: zero-torn-read inode engine via temporary file staging and POSIX atomic renames, pure 128-bit `ContentFingerprint` CAS rebase retry loop on `CrystalStore.update(id)(f)`, defensive drift detection in `AgentInstaller`, and ephemeral `.lock` mutex serialization with PID tracking and 5s staleness auto-expiration).
-- **Track 19 (`distribution_packaging_and_installer_20260925`):** Complete `[x]` (Distribution, Packaging & Native CLI Installer: hardened `install.sh` bootstrap with `.tar.gz` extraction, `SHA256SUMS` verification, argument parsing, atomic inode swaps, GitHub Actions release matrix with Thin LTO binaries for Linux & macOS, official Homebrew formula `Formula/ccrystal.rb`, and Craftsmanship / Human-in-the-Loop manifesto).
+- **Track 20 (`cave_search_and_temporal_query_20260930`):** Complete `[x]` (Cave Query, Search & Temporal Navigation: multi-dimensional `SearchEngine` across metadata, DAG nodes, lessons, artifacts, zero-dependency portable `CivilDate` Gregorian calendar epoch math, Decline CLI `ccrystal search` with defensive pagination and sorting, consolidated MCP `crystal_search` replacing `crystal_list`, and full multi-platform test suites).
 - **Binary Location:** `./cli/native/target/scala-3.9.0/ccrystal-cli` (installed in `~/.local/bin/ccrystal` with Thin LTO)
 - **Codeberg Remote:** Clean, up-to-date with linear Conventional Commits history and Git Notes.
 
 ---
 
-## 2. Next Track: Cave Query, Search & Temporal Navigation (`cave_search_and_temporal_query`)
+## 2. Next Track: Cave Stats, Telemetry & Token Savings (`cave_stats_and_telemetry`)
 
-- **Objective:** Introduce direct, deterministic cave search and temporal query capabilities (`ccrystal search` / `ccrystal find` CLI subcommands and MCP `crystal_search` / extended `crystal_list`) to answer lifecycle questions (initial, in-flight, and retrospective) without paginating or dumping raw JSON envelopes.
-- **Priority:** Immediate next step (High impact, eliminates multi-turn agent scanning friction, manual python scripting, and token burning).
-- **Core Scope & Lifecycle Question Coverage:**
-  - **Temporal & Activity Queries:** `--since <iso-date|relative>`, `--until <iso-date|relative>`, `--yesterday`, `--today` (e.g., "what crystals did we work on yesterday?"). Filters crystals based on `updatedAt`, `createdAt`, or recent node timestamps in the DAG.
-  - **Inception & Discovery Queries:** `--query / -q <text>` (matching title, intent, node summaries, or lessons), `--author <id>`, `--tag <k=v>` (e.g., "has this problem/feature been attempted or explored before?").
-  - **In-Flight & Resource Queries:** `--has-active-leases`, `--touching-path <path>` (e.g., "which crystal is leasing worktree X?"), `--has-open-tasks`, `--status <status>` (e.g., "what crystals are currently active or holding open resources?").
-  - **Retrospective & Hygiene Queries:** `--has-lessons`, `--lesson-query <text>`, `--artifact <id|name>`, `--include-archived`, `--aging <active|solid|stale>` (e.g., "what lessons were recorded about X?", "why was crystal Y abandoned?").
-- **Architectural Tenets & Strategy:**
-  - **Boundary Separation (Navigational Compass vs Long-Term Memory):** Not competing with long-term memory or semantic vector databases (e.g. Engram, RAG). Context Crystal's sweet spot is fast, deterministic, zero-hallucination operational metadata over the cave (`.ccrystals/` and `.ccrystals/archive/`). The filesystem structure, filenames, and typed envelope conventions are completely sufficient for this volume of data.
-  - **Focused Pragmatic Flags vs Query DSL:** Prioritize focused, compile-time verified Decline flags and structured MCP tool arguments. Defer complex query languages/DSLs to avoid LLM hallucination loops and syntax trial-and-error ("token burning"); if a query DSL is ever explored, keep it deferred or locked behind an `--experimental` flag.
+- **Objective:** Introduce comprehensive cave statistics and quantitative efficiency telemetry (`ccrystal stats` CLI subcommand and MCP `crystal_stats` tool) to provide immediate, high-fidelity answers to workspace lifecycle questions without manual calculations:
+  - **Temporal Extents:** Identify the oldest crystal (initial cave genesis) and most recent crystal (latest active beam).
+  - **Volume & Structural Totals:** Total crystals (active vs archived), total DAG transitions/messages, total acceptance criteria/tasks (completed vs open), active transient leases, lessons recorded, and registered artifacts/entities.
+  - **Cave Footprint & Densities:** Total cave storage footprint on disk (bytes, KB, MB) across `.ccrystals/` and `.ccrystals/archive/`, along with average crystal footprint.
+  - **Quantitative Efficiency & Token Savings:** Calculate estimated prompt tokens saved through selective hydration (`ccrystal cast/hydrate --from/--tail`), sub-DAG melting (`ccrystal melt`), and compact state representation versus bloated transcript re-ingestion.
+  - **Status & Health Breakdown:** Aggregated distribution by goal status (`InProgress`, `ConcludedSuccess`, `ConcludedAbandoned`) and deterministic aging health (`Active`, `Solid`, `Stale`).
+  - **Output Modes:** Human-friendly CLI telemetry dashboard table and machine-readable structured JSON (`--json`).
+- **Priority:** Immediate next step (High impact, requested by human steersman to quantify project health, cave evolution, and tangible token savings).
 
 ---
 

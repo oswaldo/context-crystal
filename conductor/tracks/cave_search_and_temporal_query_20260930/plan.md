@@ -38,15 +38,15 @@
 
 ## Phase 4: Agent Skill, MCP Schemas, Documentation & Release Verification
 
-- [ ] Task: Export MCP tool schema for `crystal_search` and remove `crystal_list.json`
-  - [ ] Write `crystal_search.json` schema to `.gemini/antigravity-cli/mcp/context-crystal/`
-  - [ ] Remove obsolete `crystal_list.json`
-- [ ] Task: Update Agent Skill, Guidelines & MCP documentation
-  - [ ] Update `.agents/skills/context-crystal/SKILL.md` and `docs/mcp/instructions.md`
-  - [ ] Update `AGENTS.md` and `README.md` references to `crystal_search` and `ccrystal search`
-  - [ ] Run Markdown formatting and linter checks (`npx markdownlint-cli ...`)
-- [ ] Task: Full multi-platform test suite & optimized native release build
-  - [ ] Run `sbt test` across core and cli modules
-  - [ ] Run `sbt "scalafmtCheckAll; scalafixAll --check"`
-  - [ ] Build and install optimized release binary (`ccrystal`) with Thin LTO to `~/.local/bin/ccrystal`
-- [ ] Task: Phase 4 Verification & Checkpoint (Refer to workflow.md)
+- [x] Task: Export MCP tool schema for `crystal_search` and remove `crystal_list.json` [b14b1a9]
+  - [x] Write `crystal_search.json` schema to `.gemini/antigravity-cli/mcp/context-crystal/`
+  - [x] Remove obsolete `crystal_list.json`
+- [x] Task: Update Agent Skill, Guidelines & MCP documentation [b14b1a9]
+  - [x] Update `.agents/skills/context-crystal/SKILL.md` and `docs/mcp/instructions.md`
+  - [x] Update `AGENTS.md` and `README.md` references to `crystal_search` and `ccrystal search`
+  - [x] Run Markdown formatting and linter checks (`npx markdownlint-cli ...`)
+- [x] Task: Full multi-platform test suite & optimized native release build [b14b1a9]
+  - [x] Run `sbt test` across core and cli modules
+  - [x] Run `sbt "scalafmtCheckAll; scalafixAll --check"`
+  - [x] Build and install optimized release binary (`ccrystal`) with Thin LTO to `~/.local/bin/ccrystal`
+- [x] Task: Phase 4 Verification & Checkpoint (Refer to workflow.md) [b14b1a9]
