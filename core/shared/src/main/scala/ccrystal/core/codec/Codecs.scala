@@ -270,3 +270,19 @@ given Codec[CaveArtifactRegistry]                  = deriveCodec
 given Codec[CrystalOrigin]                         = deriveCodec
 given Codec[ContextCrystal]                        = deriveCodec
 given Codec[ccrystal.core.audit.CrystalTriageItem] = deriveCodec
+
+given Encoder[ccrystal.core.model.search.AgingCategory] = Encoder.encodeString.contramap {
+  case ccrystal.core.model.search.AgingCategory.Active => "active"
+  case ccrystal.core.model.search.AgingCategory.Solid  => "solid"
+  case ccrystal.core.model.search.AgingCategory.Stale  => "stale"
+}
+
+given Decoder[ccrystal.core.model.search.AgingCategory] = Decoder.decodeString.emap {
+  case "active" => Right(ccrystal.core.model.search.AgingCategory.Active)
+  case "solid"  => Right(ccrystal.core.model.search.AgingCategory.Solid)
+  case "stale"  => Right(ccrystal.core.model.search.AgingCategory.Stale)
+  case other    => Left(s"Invalid AgingCategory: $other")
+}
+
+given Codec[ccrystal.core.model.search.CrystalFilter] = deriveCodec
+given Codec[ccrystal.core.model.search.SearchMatch]   = deriveCodec
