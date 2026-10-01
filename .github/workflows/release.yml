@@ -156,6 +156,21 @@ jobs:
           echo "=== Consolidated SHA256SUMS ==="
           cat SHA256SUMS
 
+      - name: Resolve Release Notes
+        id: notes
+        run: |
+          VERSION="${{ steps.version.outputs.VERSION }}"
+          NOTES_FILE="docs/releases/${VERSION}.md"
+          if [ -f "$NOTES_FILE" ]; then
+            echo "Using committed release notes from $NOTES_FILE"
+            echo "body_path=$NOTES_FILE" >> "$GITHUB_OUTPUT"
+            echo "generate_release_notes=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "No committed notes found at $NOTES_FILE, falling back to auto-generated changelog"
+            echo "body_path=" >> "$GITHUB_OUTPUT"
+            echo "generate_release_notes=true" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Create or Update GitHub Release
         uses: softprops/action-gh-release@v2
         with:
@@ -163,7 +178,8 @@ jobs:
           name: "Context Crystal ${{ steps.version.outputs.VERSION }}"
           draft: false
           prerelease: false
-          generate_release_notes: true
+          body_path: ${{ steps.notes.outputs.body_path }}
+          generate_release_notes: ${{ steps.notes.outputs.generate_release_notes }}
           files: |
             artifacts/*.tar.gz
             artifacts/SHA256SUMS

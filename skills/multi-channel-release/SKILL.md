@@ -85,9 +85,10 @@ sbt "coreJVM/publishLocal; cliJVM/publishLocal"
 
 ## 3. Release Execution Sequence
 
-### Step 1: Draft User-Facing Release Notes
+### Step 1: Draft and Commit User-Facing Release Notes
 
-Draft release notes adhering strictly to the User-Facing Deliverable Focus rule, present them to the human operator, and obtain explicit sign-off before tagging.
+1. Draft release notes adhering strictly to the User-Facing Deliverable Focus rule, present them to the human operator, and obtain explicit sign-off before tagging.
+2. Save the approved notes to `docs/releases/<version>.md` (e.g. `docs/releases/v1.0.2.md`) and commit to `main`. The `.github/workflows/release.yml` workflow automatically detects this file and injects it as the official GitHub Release body, falling back to auto-generated commit logs only if no file exists.
 
 ### Step 2: Create and Sign Git Tag
 
