@@ -743,3 +743,73 @@ class CommandParserSuite extends FunSuite:
       help.contains("valid: human_prompt, agent_reasoning, tool_execution"),
       s"Error message must list valid node kinds, got: $help",
     )
+
+  test("Parses 'search' with default empty options"):
+    val res = CommandParser.parse(List("search"))
+    assertEquals(res.isRight, true)
+    res.foreach {
+      case CliCommand.Search(filter, jsonOutput) =>
+        assertEquals(filter.query, None)
+        assertEquals(filter.since, None)
+        assertEquals(filter.until, None)
+        assertEquals(filter.status, None)
+        assertEquals(jsonOutput, false)
+      case other => fail(s"Unexpected command: $other")
+    }
+
+  test("Parses 'search' with query, temporal, and status flags"):
+    val res = CommandParser.parse(
+      List(
+        "search",
+        "-q",
+        "mcp",
+        "--since",
+        "2026-09-01",
+        "--until",
+        "2026-09-30",
+        "--status",
+        "in_progress",
+        "--json",
+      ),
+    )
+    assertEquals(res.isRight, true)
+    res.foreach {
+      case CliCommand.Search(filter, jsonOutput) =>
+        assertEquals(filter.query, Some("mcp"))
+        assertEquals(filter.since, Some("2026-09-01"))
+        assertEquals(filter.until, Some("2026-09-30"))
+        assertEquals(filter.status, Some(GoalStatus.InProgress))
+        assertEquals(jsonOutput, true)
+      case other => fail(s"Unexpected command: $other")
+    }
+
+  test("Parses 'search' with convenience flags and lease/task filters"):
+    val res = CommandParser.parse(
+      List(
+        "search",
+        "--today",
+        "--has-active-leases",
+        "--has-open-tasks",
+        "--has-lessons",
+        "--include-archived",
+        "--touching-path",
+        "/tmp/wt",
+        "--author",
+        "usr_1",
+        "--aging",
+        "active",
+      ),
+    )
+    assertEquals(res.isRight, true)
+    res.foreach {
+      case CliCommand.Search(filter, _) =>
+        assertEquals(filter.since, Some("today"))
+        assertEquals(filter.hasActiveLeases, Some(true))
+        assertEquals(filter.hasOpenTasks, Some(true))
+        assertEquals(filter.hasLessons, Some(true))
+        assertEquals(filter.includeArchived, true)
+        assertEquals(filter.touchingPath, Some("/tmp/wt"))
+        assertEquals(filter.author, Some("usr_1"))
+        assertEquals(filter.aging, Some(ccrystal.core.model.search.AgingCategory.Active))
+      case other => fail(s"Unexpected command: $other")
+    }

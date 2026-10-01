@@ -136,6 +136,18 @@ object CommandParser:
           )
     }
 
+  private given agingCategoryArgument: Argument[ccrystal.core.model.search.AgingCategory] =
+    Argument.from("aging-category") { s =>
+      normalize(s) match
+        case "active" => Validated.valid(ccrystal.core.model.search.AgingCategory.Active)
+        case "solid"  => Validated.valid(ccrystal.core.model.search.AgingCategory.Solid)
+        case "stale"  => Validated.valid(ccrystal.core.model.search.AgingCategory.Stale)
+        case _ =>
+          Validated.invalidNel(
+            s"Invalid aging category: '$s' (valid: active, solid, stale)",
+          )
+    }
+
   // --- Subcommands ---
 
   private val initOpts = (
@@ -171,6 +183,97 @@ object CommandParser:
       Opts.flag("all", "Include all crystals (including archived)").orFalse,
     ).mapN(_ || _),
   ).mapN(CliCommand.ListCrystals.apply)
+
+  private val searchOpts = (
+    Opts
+      .option[String](
+        "query",
+        "Free-text search query across crystal metadata, DAG, lessons, and artifacts",
+        "q",
+      )
+      .orNone,
+    Opts
+      .option[String](
+        "since",
+        "Filter crystals updated on or after timestamp (ISO-8601 or relative like 1d, 7d)",
+      )
+      .orNone,
+    Opts
+      .option[String](
+        "until",
+        "Filter crystals updated on or before timestamp (ISO-8601 or relative)",
+      )
+      .orNone,
+    Opts.flag("today", "Filter crystals active today").orFalse,
+    Opts.flag("yesterday", "Filter crystals active yesterday").orFalse,
+    Opts
+      .option[GoalStatus](
+        "status",
+        "Filter by goal status (in_progress, concluded_success, concluded_abandoned)",
+      )
+      .orNone,
+    Opts
+      .flag("has-active-leases", "Only show crystals with active transient resource leases")
+      .orFalse,
+    Opts
+      .option[String]("touching-path", "Match leases or artifacts referencing the specified path")
+      .orNone,
+    Opts.flag("has-open-tasks", "Only show crystals with incomplete acceptance criteria").orFalse,
+    Opts.flag("has-lessons", "Only show crystals with recorded lessons").orFalse,
+    Opts.option[String]("author", "Filter by author entity ID").orNone,
+    Opts
+      .option[ccrystal.core.model.search.AgingCategory](
+        "aging",
+        "Filter by aging state (active, solid, stale)",
+      )
+      .orNone,
+    (
+      Opts
+        .flag("include-archived", "Include crystals in cold storage (.ccrystals/archive/)")
+        .orFalse,
+      Opts.flag("all", "Include all crystals (including archived)").orFalse,
+    ).mapN(_ || _),
+    Opts.flag("json", "Output JSON array of search matches instead of formatted table").orFalse,
+  ).mapN {
+    (
+        query,
+        since,
+        until,
+        today,
+        yesterday,
+        status,
+        hasActiveLeases,
+        touchingPath,
+        hasOpenTasks,
+        hasLessons,
+        author,
+        aging,
+        includeArchived,
+        json,
+    ) =>
+      val effectiveSince =
+        if today && since.isEmpty then Some("today")
+        else if yesterday && since.isEmpty then Some("yesterday")
+        else since
+      val effectiveUntil =
+        if yesterday && until.isEmpty then Some("today")
+        else until
+
+      val filter = ccrystal.core.model.search.CrystalFilter(
+        query = query,
+        since = effectiveSince,
+        until = effectiveUntil,
+        status = status,
+        hasActiveLeases = if hasActiveLeases then Some(true) else None,
+        touchingPath = touchingPath,
+        hasOpenTasks = if hasOpenTasks then Some(true) else None,
+        hasLessons = if hasLessons then Some(true) else None,
+        author = author,
+        aging = aging,
+        includeArchived = includeArchived,
+      )
+      CliCommand.Search(filter, json)
+  }
 
   private val taskAddOpts = (
     Opts.argument[String]("crystal-id"),
@@ -484,6 +587,10 @@ object CommandParser:
     forAiOpt,
     Opts.subcommand("init", "Initialize a new crystal")(initOpts),
     Opts.subcommand("list", "List crystals")(listOpts),
+    Opts.subcommand(
+      "search",
+      "Search and query crystals across the cave with temporal and metadata filters",
+    )(searchOpts),
     taskCmd,
     Opts.subcommand("conclude", "Conclude a crystal with optional resolution summary")(
       concludeOpts,

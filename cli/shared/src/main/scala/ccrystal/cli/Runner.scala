@@ -86,6 +86,32 @@ class Runner(
           sb.toString
       }
 
+    case CliCommand.Search(filter, jsonOutput) =>
+      store.search(filter).map { matches =>
+        if jsonOutput then matches.asJson.spaces2
+        else
+          val sb = new java.lang.StringBuilder()
+          val header = filter.query match
+            case Some(q) => s"Found ${matches.size} crystal(s) matching query '$q':\n"
+            case None    => s"Found ${matches.size} crystal(s):\n"
+          sb.append(header)
+          matches.foreach { m =>
+            val c            = m.crystal
+            val done         = c.goal.acceptanceCriteria.count(_.completed)
+            val total        = c.goal.acceptanceCriteria.size
+            val openLessons  = c.lessonsLearned.count(_.status == LessonStatus.Open)
+            val activeLeases = c.transientLeases.count(_.status == TransientLeaseStatus.Active)
+            val archivedTag  = if m.isArchived then " (archived)" else ""
+            val agingTag     = s"[${m.agingCategory}]"
+            val reasonsStr =
+              if m.matchedReasons.nonEmpty then s" | ${m.matchedReasons.mkString(", ")}" else ""
+            sb.append(
+              s"- ${c.id} [${c.goal.status}]$archivedTag $agingTag Tasks: $done/$total | Active Leases: $activeLeases | Open Lessons: $openLessons$reasonsStr\n",
+            )
+          }
+          sb.toString
+      }
+
     case CliCommand.TaskAdd(crystalId, desc) =>
       var assignedTaskId = ""
       store

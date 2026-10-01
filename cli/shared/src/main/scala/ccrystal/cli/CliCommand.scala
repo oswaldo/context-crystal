@@ -134,6 +134,10 @@ enum CliCommand derives CanEqual:
       force: Boolean = false,
   )
   case ForAi
+  case Search(
+      filter: ccrystal.core.model.search.CrystalFilter,
+      jsonOutput: Boolean = false,
+  )
 
   def castSliceParams: SliceParams = this match
     case Cast(_, from, to, tail, depth, _) =>
