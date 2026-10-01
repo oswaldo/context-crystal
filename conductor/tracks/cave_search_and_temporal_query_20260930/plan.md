@@ -1,6 +1,6 @@
 # Implementation Plan: Cave Query, Search & Temporal Navigation
 
-## Phase 1: Core Search & Temporal Query Engine
+## Phase 1: Core Search & Temporal Query Engine [checkpoint: e8915ad]
 
 - [x] Task: Define `CrystalFilter`, `AgingCategory`, and temporal parsing in `core` [5a1ba35]
   - [x] Write failing unit tests in `core/shared/src/test/scala/ccrystal/core/model/CrystalFilterSuite.scala`
@@ -10,11 +10,11 @@
   - [x] Write failing unit tests in `core/shared/src/test/scala/ccrystal/core/store/CrystalSearchEngineSuite.scala`
   - [x] Implement multi-attribute matching (text search across title, intent, DAG nodes, lessons, artifacts; leases; tasks; author; aging; archived)
   - [x] Verify engine tests pass cleanly
-- [ ] Task: Phase 1 Verification & Checkpoint (Refer to workflow.md)
+- [x] Task: Phase 1 Verification & Checkpoint (Refer to workflow.md) [e8915ad]
 
 ## Phase 2: CLI Command: `ccrystal search`
 
-- [ ] Task: Implement Decline parser for `ccrystal search` in `cli`
+- [~] Task: Implement Decline parser for `ccrystal search` in `cli`
   - [ ] Write failing parser tests in `cli/shared/src/test/scala/ccrystal/cli/CommandLineParserSuite.scala`
   - [ ] Implement `CliCommand.Search` and Decline command definition with `--query`, `--since`, `--until`, `--today`, `--yesterday`, `--status`, `--has-active-leases`, `--touching-path`, `--has-open-tasks`, `--has-lessons`, `--author`, `--aging`, `--include-archived`, `--json`
   - [ ] Verify parser tests pass cleanly
