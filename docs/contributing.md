@@ -163,7 +163,7 @@ When cutting a new release (e.g., tagging `vX.Y.Z` or triggering `.github/workfl
    - Recompile the static bundle: `scala-cli --power package site --js-mode release -o main.js --force`.
    - Commit and push to `gh-pages`.
 7. **Collaborative Release Notes & Human Approval Gate:**
-   - Draft comprehensive release notes highlighting architectural progress, user-facing capabilities, and upgrade steps.
+   - Draft comprehensive release notes highlighting user-facing capabilities, API additions, installation methods, and tangible bug fixes (strictly omitting internal repo governance rules or agent guidelines).
    - Present to the human steersman/operator for explicit review and cryptographic push sign-off.
 8. **Clean-Room Smoke Verification:**
    - Execute an isolated verification of official installation methods on target platforms prior to public announcement:
