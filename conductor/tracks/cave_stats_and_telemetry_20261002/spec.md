@@ -22,7 +22,7 @@ This track delivers a dedicated CLI subcommand (`ccrystal stats`) and native MCP
 package ccrystal.core.model.stats
 
 import ccrystal.core.model.*
-import ccrystal.core.model.search.AgingCategory
+import ccrystal.core.model.search.{AgingCategory, CrystalFilter}
 
 final case class TemporalExtents(
     oldestCrystalId: Option[String],
@@ -66,32 +66,71 @@ final case class CaveHealthBreakdown(
     byAging: Map[String, Int],
 )
 
+final case class CrystalDiskUsage(
+    crystalId: String,
+    status: GoalStatus,
+    aging: AgingCategory,
+    totalBytes: Long,
+    dagNodes: Int,
+    estimatedTokens: Long,
+    isArchived: Boolean,
+)
+
 final case class CaveStats(
+    filter: Option[CrystalFilter],
     extents: TemporalExtents,
     structure: StructuralTotals,
     storage: StorageFootprint,
     tokenSavings: TokenSavingsEstimate,
     health: CaveHealthBreakdown,
+    topCrystals: List[CrystalDiskUsage],
 )
 ```
 
-### 2.2 CLI Interface: `ccrystal stats`
+### 2.2 CLI Interface: `ccrystal stats` (Composable with Search Filters)
 
-- **Command Syntax:**
+By reusing the `CrystalFilter` parser from `ccrystal search`, `ccrystal stats` effortlessly supports combined queries answering targeted operational questions without reinventing filter logic:
+
+- **Global Cave Telemetry:**
 
   ```bash
-  ccrystal stats [--include-archived] [--detailed] [--json]
+  ccrystal stats
   ```
 
+- **Filter-Scoped Telemetry:**
+  - *"How much disk and token volume did we use for crystals updated in the last 7 days?"*
+
+    ```bash
+    ccrystal stats --since 7d
+    ```
+
+  - *"What are the stats for active crystals with in-flight leases?"*
+
+    ```bash
+    ccrystal stats --status in_progress --has-active-leases
+    ```
+
+  - *"Show disk and token breakdown for stale crystals:"*
+
+    ```bash
+    ccrystal stats --aging stale --detailed
+    ```
+
+  - *"Disk footprint for crystals touching a specific worktree or path:"*
+
+    ```bash
+    ccrystal stats --touching-path ../ccrystal-worktrees/my-feature
+    ```
+
 - **Options:**
-  - `--include-archived`: Include cold storage crystals in calculation (default: true).
-  - `--detailed`: Show breakdown tables of top crystals by node count, disk size, and token savings.
-  - `--json`: Output machine-readable structured JSON (`CaveStats`).
+  - Search filter options: `-q / --query`, `--since`, `--until`, `--today`, `--yesterday`, `--status`, `--has-active-leases`, `--touching-path`, `--has-open-tasks`, `--has-lessons`, `--author`, `--aging`, `--include-archived` / `--archived`.
+  - Telemetry options: `--detailed` (prints per-crystal disk usage ranking table), `--json` (emits structured JSON).
 
 - **Human-Readable Dashboard Table:**
 
   ```text
   === CONTEXT CRYSTAL CAVE TELEMETRY & STATS ===
+  Scope: Global Cave (13 crystals evaluated)
 
   Temporal Genesis & Activity:
     Genesis:      c-1 (2026-08-28T10:00:00Z)
@@ -119,17 +158,21 @@ final case class CaveStats(
   Cave Health Distribution:
     Status: 10 ConcludedSuccess | 1 InProgress | 0 ConcludedAbandoned
     Aging:  10 Solid | 1 Active | 0 Stale
+
+  Detailed Disk Usage (Top Crystals):
+    - c-large-feature:     142.3 KB | 48 nodes | ~72,000 tokens [ConcludedSuccess]
+    - auth-refactor:        86.1 KB | 29 nodes | ~44,000 tokens [ConcludedSuccess]
+    - cave-search:          54.2 KB | 18 nodes | ~27,000 tokens [ConcludedSuccess]
   ==============================================
   ```
 
 ### 2.3 Native MCP Server Tool: `crystal_stats`
 
 - **Tool Name:** `crystal_stats`
-- **Description:** "Compute and inspect workspace cave statistics, temporal genesis, structural totals, physical disk footprints, and quantitative prompt token savings."
+- **Description:** "Compute and inspect workspace cave statistics, temporal genesis, structural totals, physical disk footprints, and quantitative prompt token savings across global cave or filtered search criteria."
 - **Parameters:**
-  - `include_archived` (boolean, default: true): Include crystals in cold storage.
-  - `detailed` (boolean, default: false): Include detailed per-crystal breakdowns.
-  - `json_output` (boolean, default: false): Output structured JSON instead of formatted text.
+  - Filtering parameters (reusing `crystal_search` dimensions): `query`, `since`, `until`, `status`, `has_active_leases`, `touching_path`, `has_open_tasks`, `has_lessons`, `author`, `aging`, `include_archived`.
+  - Output options: `detailed: boolean` (default false), `json_output: boolean` (default false).
 
 ---
 
