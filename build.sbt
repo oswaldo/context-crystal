@@ -17,8 +17,12 @@ ThisBuild / developers   := List(
     url = new java.net.URI("https://github.com/oswaldo").toURL
   )
 )
-ThisBuild / sonatypeCredentialHost := "central.sonatype.com"
-ThisBuild / sonatypeRepository     := "https://central.sonatype.com/service/local"
+ThisBuild / scmInfo := Some(
+  ScmInfo(
+    new java.net.URI("https://github.com/oswaldo/context-crystal").toURL,
+    "scm:git:git@github.com:oswaldo/context-crystal.git"
+  )
+)
 
 lazy val root = project.in(file("."))
   .aggregate(core.jvm, core.native, core.js, cli.jvm, cli.native)
