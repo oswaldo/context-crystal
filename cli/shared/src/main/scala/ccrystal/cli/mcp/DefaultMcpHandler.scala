@@ -57,24 +57,74 @@ class DefaultMcpHandler(
             ),
           ),
           Tool(
-            name = "crystal_list",
+            name = "crystal_search",
             description =
-              "List all crystals in the cave with status, task progress, active leases, and open lessons.",
+              "Search and list crystals in the cave with multi-dimensional filtering (query text, temporal bounds, leases, tasks, lessons, status, aging, archived, sorting, and pagination). When called without filters, lists active crystals (most recently active first).",
             inputSchema = Json.obj(
               "type" -> "object".asJson,
               "properties" -> Json.obj(
+                "query" -> Json.obj(
+                  "type" -> "string".asJson,
+                  "description" -> "Free-text search query across crystal ID, title, intent, DAG nodes, lessons, and artifacts".asJson,
+                ),
+                "since" -> Json.obj(
+                  "type" -> "string".asJson,
+                  "description" -> "Filter crystals active on or after ISO-8601 date/datetime or relative expression (today, yesterday, 1d, 7d)".asJson,
+                ),
+                "until" -> Json.obj(
+                  "type" -> "string".asJson,
+                  "description" -> "Filter crystals active on or before ISO-8601 date/datetime or relative expression".asJson,
+                ),
                 "status" -> Json.obj(
                   "type" -> "string".asJson,
                   "enum" -> List("in_progress", "concluded_success", "concluded_abandoned").asJson,
-                  "description" -> "Optional filter by goal status".asJson,
+                  "description" -> "Filter by goal status".asJson,
                 ),
-                "json_output" -> Json.obj(
-                  "type" -> "boolean".asJson,
-                  "description" -> "Output structured JSON array instead of text table (default: false)".asJson,
+                "has_active_leases" -> Json.obj(
+                  "type"        -> "boolean".asJson,
+                  "description" -> "Filter crystals holding active transient resource leases".asJson,
+                ),
+                "touching_path" -> Json.obj(
+                  "type" -> "string".asJson,
+                  "description" -> "Match leases or artifacts referencing the specified filesystem path or URI".asJson,
+                ),
+                "has_open_tasks" -> Json.obj(
+                  "type"        -> "boolean".asJson,
+                  "description" -> "Filter crystals with incomplete acceptance criteria".asJson,
+                ),
+                "has_lessons" -> Json.obj(
+                  "type"        -> "boolean".asJson,
+                  "description" -> "Filter crystals with recorded lessons learned".asJson,
+                ),
+                "author" -> Json.obj(
+                  "type"        -> "string".asJson,
+                  "description" -> "Filter by author entity ID".asJson,
+                ),
+                "aging" -> Json.obj(
+                  "type"        -> "string".asJson,
+                  "enum"        -> List("active", "solid", "stale").asJson,
+                  "description" -> "Filter by aging category (active, solid, stale)".asJson,
+                ),
+                "sort" -> Json.obj(
+                  "type"        -> "string".asJson,
+                  "enum"        -> List("recent", "oldest", "name").asJson,
+                  "description" -> "Sort order: recent (default), oldest, name".asJson,
+                ),
+                "limit" -> Json.obj(
+                  "type" -> "integer".asJson,
+                  "description" -> "Maximum number of results to return per page (default: 20; 0 to uncap)".asJson,
+                ),
+                "offset" -> Json.obj(
+                  "type"        -> "integer".asJson,
+                  "description" -> "Result offset for pagination (default: 0)".asJson,
                 ),
                 "include_archived" -> Json.obj(
                   "type"        -> "boolean".asJson,
                   "description" -> "Include crystals in cold storage (default: false)".asJson,
+                ),
+                "json_output" -> Json.obj(
+                  "type" -> "boolean".asJson,
+                  "description" -> "Output structured JSON array instead of text table (default: false)".asJson,
                 ),
               ),
             ),
@@ -546,20 +596,52 @@ class DefaultMcpHandler(
                   isError = true,
                 )
 
-      case "crystal_list" =>
+      case "crystal_search" =>
+        val queryOpt = cursor.get[String]("query").toOption
+        val sinceOpt = cursor.get[String]("since").toOption
+        val untilOpt = cursor.get[String]("until").toOption
         val statusOpt = cursor.get[String]("status").toOption.flatMap {
           case "in_progress"                     => Some(GoalStatus.InProgress)
           case "concluded" | "concluded_success" => Some(GoalStatus.ConcludedSuccess)
           case "concluded_abandoned"             => Some(GoalStatus.ConcludedAbandoned)
           case _                                 => None
         }
-        val jsonOutput      = cursor.get[Boolean]("json_output").toOption.getOrElse(false)
+        val hasActiveLeasesOpt = cursor.get[Boolean]("has_active_leases").toOption
+        val touchingPathOpt    = cursor.get[String]("touching_path").toOption
+        val hasOpenTasksOpt    = cursor.get[Boolean]("has_open_tasks").toOption
+        val hasLessonsOpt      = cursor.get[Boolean]("has_lessons").toOption
+        val authorOpt          = cursor.get[String]("author").toOption
+        val agingOpt =
+          cursor
+            .get[String]("aging")
+            .toOption
+            .flatMap(ccrystal.core.model.search.AgingCategory.parse)
+        val sortOpt =
+          cursor.get[String]("sort").toOption.flatMap(ccrystal.core.model.search.SearchSort.parse)
+        val limitOpt        = cursor.get[Int]("limit").toOption
+        val offsetOpt       = cursor.get[Int]("offset").toOption
+        val isUncapped      = limitOpt.contains(0)
         val includeArchived = cursor.get[Boolean]("include_archived").toOption.getOrElse(false)
-        val cmd = CliCommand.ListCrystals(
+        val jsonOutput      = cursor.get[Boolean]("json_output").toOption.getOrElse(false)
+
+        val filter = ccrystal.core.model.search.CrystalFilter(
+          query = queryOpt,
+          since = sinceOpt,
+          until = untilOpt,
           status = statusOpt,
-          jsonOutput = jsonOutput,
+          hasActiveLeases = hasActiveLeasesOpt,
+          touchingPath = touchingPathOpt,
+          hasOpenTasks = hasOpenTasksOpt,
+          hasLessons = hasLessonsOpt,
+          author = authorOpt,
+          aging = agingOpt,
           includeArchived = includeArchived,
+          sort = sortOpt,
+          limit = if isUncapped then None else limitOpt.filter(_ > 0),
+          offset = offsetOpt,
+          uncapped = isUncapped,
         )
+        val cmd = CliCommand.Search(filter = filter, jsonOutput = jsonOutput)
         runCommandToResult(cmd)
 
       case "crystal_init" =>

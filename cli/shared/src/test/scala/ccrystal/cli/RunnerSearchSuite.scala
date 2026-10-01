@@ -63,8 +63,26 @@ class RunnerSearchSuite extends FunSuite:
     assert(res.isRight, s"Runner failed: $res")
     val output = res.toOption.get
     import ccrystal.core.codec.given
-    val decoded = decode[List[SearchMatch]](output)
+    val decoded = decode[SearchResult](output)
     assert(decoded.isRight, s"Failed to decode JSON output: $decoded")
-    val matches = decoded.toOption.get
-    assertEquals(matches.size, 1)
-    assertEquals(matches.head.crystal.id, "mcp-engine")
+    val result = decoded.toOption.get
+    assertEquals(result.total, 1)
+    assertEquals(result.matches.head.crystal.id, "mcp-engine")
+
+  test("Runner.run formats pagination note when remaining results exist"):
+    val store = new InMemoryCrystalStore()
+    (1 to 5).foreach { i =>
+      createSampleCrystal(store, s"crystal-$i", s"Goal $i")
+    }
+    val runner = new Runner(store)
+
+    val res = runner.run(
+      CliCommand.Search(CrystalFilter(limit = Some(2), offset = Some(0)), jsonOutput = false),
+    )
+    assert(res.isRight)
+    val text = res.toOption.get
+    assert(
+      text.contains(
+        "Found 5 crystal(s) (showing 1-2, 3 remaining; use --offset 2 to view next page):",
+      ),
+    )

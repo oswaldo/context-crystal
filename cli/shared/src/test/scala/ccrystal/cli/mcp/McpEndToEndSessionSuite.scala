@@ -196,7 +196,7 @@ class McpEndToEndSessionSuite extends FunSuite:
     assert(resText.contains("Phase 1 Green"), "Resource query includes recent node")
 
   test(
-    "Full end-to-end MCP session exercising ergonomic tools (atomic init tasks, crystal_list, crystal_hydrate, crystal_triage)",
+    "Full end-to-end MCP session exercising ergonomic tools (atomic init tasks, crystal_search, crystal_hydrate, crystal_triage)",
   ):
     val store   = new InMemoryCrystalStore()
     val runner  = new Runner(store, confirmPrompt = _ => true)
@@ -207,7 +207,7 @@ class McpEndToEndSessionSuite extends FunSuite:
         |{"jsonrpc":"2.0","method":"notifications/initialized"}
         |{"jsonrpc":"2.0","id":2,"method":"tools/list"}
         |{"jsonrpc":"2.0","id":3,"method":"tools/call","params":{"name":"crystal_init","arguments":{"name":"ergo-session","goal":"Ergonomic Tools E2E","tasks":["T1 Design","T2 Implement"]}}}
-        |{"jsonrpc":"2.0","id":4,"method":"tools/call","params":{"name":"crystal_list","arguments":{"json_output":true}}}
+        |{"jsonrpc":"2.0","id":4,"method":"tools/call","params":{"name":"crystal_search","arguments":{"json_output":true}}}
         |{"jsonrpc":"2.0","id":5,"method":"tools/call","params":{"name":"crystal_hydrate","arguments":{"crystal_id":"ergo-session","summary_only":true}}}
         |{"jsonrpc":"2.0","id":6,"method":"tools/call","params":{"name":"crystal_triage","arguments":{"json_output":false}}}
         |{"jsonrpc":"2.0","id":7,"method":"tools/call","params":{"name":"crystal_delete","arguments":{"crystal_id":"ergo-session","force":true}}}
@@ -230,7 +230,8 @@ class McpEndToEndSessionSuite extends FunSuite:
     // 2. tools/list
     val toolsResp = decode[JsonRpcResponse](responseLines(1)).toOption.get
     val tools     = toolsResp.result.get.hcursor.as[ListToolsResult].toOption.get.tools
-    assert(tools.exists(_.name == "crystal_list"), "must list crystal_list")
+    assert(tools.exists(_.name == "crystal_search"), "must list crystal_search")
+    assert(!tools.exists(_.name == "crystal_list"), "must not list obsolete crystal_list")
     assert(tools.exists(_.name == "crystal_hydrate"), "must list crystal_hydrate")
     assert(tools.exists(_.name == "crystal_triage"), "must list crystal_triage")
 
@@ -243,10 +244,10 @@ class McpEndToEndSessionSuite extends FunSuite:
     )
     assert(cInitResult.content.head.text.contains("ergo-session"), "must mention crystal id")
 
-    // 4. crystal_list (json)
+    // 4. crystal_search (json)
     val listResp   = decode[JsonRpcResponse](responseLines(3)).toOption.get
     val listResult = listResp.result.get.hcursor.as[CallToolResult].toOption.get
-    assert(!listResult.isError, "crystal_list must succeed")
+    assert(!listResult.isError, "crystal_search must succeed")
     assert(
       listResult.content.head.text.contains("\"id\" : \"ergo-session\""),
       "must contain crystal id",

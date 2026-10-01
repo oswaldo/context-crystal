@@ -425,7 +425,7 @@ class DefaultMcpHandlerSuite extends FunSuite:
     assertEquals(resp.error.isDefined, true)
     assertEquals(resp.error.get.code, JsonRpcError.MethodNotFound)
 
-  test("DefaultMcpHandler handles crystal_init with tasks and crystal_list tool"):
+  test("DefaultMcpHandler handles crystal_init with tasks and crystal_search tool"):
     val (handler, store, _) = createFixture()
 
     // 1. crystal_init with tasks
@@ -452,20 +452,24 @@ class DefaultMcpHandlerSuite extends FunSuite:
     assertEquals(crystal.goal.acceptanceCriteria(1).id, "task-2")
     assertEquals(crystal.goal.acceptanceCriteria(1).description, "Task Beta")
 
-    // 2. tools/list includes crystal_list
+    // 2. tools/list includes crystal_search
     val toolsReq  = JsonRpcRequest(id = JsonRpcId.Str("tools-list"), method = "tools/list")
     val toolsResp = handler.handle(toolsReq)
     assertEquals(toolsResp.error.isEmpty, true)
     val tools = toolsResp.result.get.hcursor.downField("tools").as[List[Tool]].toOption.get
-    assert(tools.exists(_.name == "crystal_list"), "tools/list must include crystal_list")
+    assert(tools.exists(_.name == "crystal_search"), "tools/list must include crystal_search")
+    assert(
+      !tools.exists(_.name == "crystal_list"),
+      "tools/list must not include legacy crystal_list",
+    )
 
-    // 3. tools/call crystal_list (text output)
+    // 3. tools/call crystal_search (unfiltered text output)
     val listReq = JsonRpcRequest(
-      id = JsonRpcId.Str("call-list"),
+      id = JsonRpcId.Str("call-search"),
       method = "tools/call",
       params = Some(
         Json.obj(
-          "name"      -> "crystal_list".asJson,
+          "name"      -> "crystal_search".asJson,
           "arguments" -> Json.obj(),
         ),
       ),
@@ -474,16 +478,16 @@ class DefaultMcpHandlerSuite extends FunSuite:
     assertEquals(listResp.error.isEmpty, true)
     val listText =
       listResp.result.get.hcursor.downField("content").downArray.get[String]("text").toOption.get
-    assert(listText.contains("init-tasks-crystal"), "list text output should mention crystal ID")
-    assert(listText.contains("Tasks: 0/2"), "list text output should show task ratio 0/2")
+    assert(listText.contains("init-tasks-crystal"), "search text output should mention crystal ID")
+    assert(listText.contains("Tasks: 0/2"), "search text output should show task ratio 0/2")
 
-    // 4. tools/call crystal_list (json output)
+    // 4. tools/call crystal_search (json output with telemetry)
     val listJsonReq = JsonRpcRequest(
-      id = JsonRpcId.Str("call-list-json"),
+      id = JsonRpcId.Str("call-search-json"),
       method = "tools/call",
       params = Some(
         Json.obj(
-          "name"      -> "crystal_list".asJson,
+          "name"      -> "crystal_search".asJson,
           "arguments" -> Json.obj("json_output" -> true.asJson),
         ),
       ),
@@ -498,8 +502,34 @@ class DefaultMcpHandlerSuite extends FunSuite:
       .get
     assert(
       listJsonText.contains("\"id\" : \"init-tasks-crystal\""),
-      "list JSON output should include crystal JSON",
+      "search JSON output should include crystal JSON",
     )
+    assert(
+      listJsonText.contains("\"total\" : 1"),
+      "search JSON output should include total count",
+    )
+
+    // 5. tools/call crystal_search (filtered query)
+    val filteredReq = JsonRpcRequest(
+      id = JsonRpcId.Str("call-search-filter"),
+      method = "tools/call",
+      params = Some(
+        Json.obj(
+          "name"      -> "crystal_search".asJson,
+          "arguments" -> Json.obj("query" -> "tasks".asJson),
+        ),
+      ),
+    )
+    val filteredResp = handler.handle(filteredReq)
+    assertEquals(filteredResp.error.isEmpty, true)
+    val filteredText =
+      filteredResp.result.get.hcursor
+        .downField("content")
+        .downArray
+        .get[String]("text")
+        .toOption
+        .get
+    assert(filteredText.contains("Found 1 crystal(s) matching query 'tasks'"))
 
   test("DefaultMcpHandler handles crystal_hydrate tool with selective beam shaping"):
     val (handler, _, _) = createFixture()

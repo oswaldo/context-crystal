@@ -13,7 +13,7 @@ trait CrystalStore:
   def list(includeArchived: Boolean): Either[String, List[ContextCrystal]]
   def search(
       filter: ccrystal.core.model.search.CrystalFilter,
-  ): Either[String, List[ccrystal.core.model.search.SearchMatch]] =
+  ): Either[String, ccrystal.core.model.search.SearchResult] =
     for
       activeCrystals <- list(includeArchived = false)
       archivedCrystals <-
@@ -21,14 +21,8 @@ trait CrystalStore:
           list(includeArchived = true).map(_.filter(c => isArchived(c.id)))
         else Right(Nil)
     yield
-      val nowMillis = System.currentTimeMillis()
-      val activeMatches = activeCrystals.flatMap(c =>
-        ccrystal.core.model.search.SearchEngine.matches(c, filter, nowMillis, isArchived = false),
-      )
-      val archivedMatches = archivedCrystals.flatMap(c =>
-        ccrystal.core.model.search.SearchEngine.matches(c, filter, nowMillis, isArchived = true),
-      )
-      activeMatches ++ archivedMatches
+      val pairs = activeCrystals.map((_, false)) ++ archivedCrystals.map((_, true))
+      ccrystal.core.model.search.SearchEngine.search(pairs, filter)
   def archive(id: String): Either[String, Unit]
   def unarchive(id: String): Either[String, Unit]
   def isArchived(id: String): Boolean

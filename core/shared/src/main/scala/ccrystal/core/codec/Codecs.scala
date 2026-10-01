@@ -286,3 +286,18 @@ given Decoder[ccrystal.core.model.search.AgingCategory] = Decoder.decodeString.e
 
 given Codec[ccrystal.core.model.search.CrystalFilter] = deriveCodec
 given Codec[ccrystal.core.model.search.SearchMatch]   = deriveCodec
+
+given Encoder[ccrystal.core.model.search.SearchSort] = Encoder.encodeString.contramap {
+  case ccrystal.core.model.search.SearchSort.Recent => "recent"
+  case ccrystal.core.model.search.SearchSort.Oldest => "oldest"
+  case ccrystal.core.model.search.SearchSort.Name   => "name"
+}
+
+given Decoder[ccrystal.core.model.search.SearchSort] = Decoder.decodeString.emap {
+  case "recent" => Right(ccrystal.core.model.search.SearchSort.Recent)
+  case "oldest" => Right(ccrystal.core.model.search.SearchSort.Oldest)
+  case "name"   => Right(ccrystal.core.model.search.SearchSort.Name)
+  case other    => Left(s"Invalid SearchSort: $other")
+}
+
+given Codec[ccrystal.core.model.search.SearchResult] = deriveCodec

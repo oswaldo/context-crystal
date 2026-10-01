@@ -87,15 +87,28 @@ class Runner(
       }
 
     case CliCommand.Search(filter, jsonOutput) =>
-      store.search(filter).map { matches =>
-        if jsonOutput then matches.asJson.spaces2
+      store.search(filter).map { result =>
+        if jsonOutput then result.asJson.spaces2
         else
           val sb = new java.lang.StringBuilder()
-          val header = filter.query match
-            case Some(q) => s"Found ${matches.size} crystal(s) matching query '$q':\n"
-            case None    => s"Found ${matches.size} crystal(s):\n"
-          sb.append(header)
-          matches.foreach { m =>
+          val countStr = filter.query match
+            case Some(q) => s"Found ${result.total} crystal(s) matching query '$q'"
+            case None    => s"Found ${result.total} crystal(s)"
+
+          val paginationNote =
+            if result.hasMore then
+              val start      = result.offset + 1
+              val end        = result.offset + result.matches.size
+              val nextOffset = end
+              s" (showing $start-$end, ${result.remaining} remaining; use --offset $nextOffset to view next page)"
+            else if result.offset > 0 then
+              val start = result.offset + 1
+              val end   = result.offset + result.matches.size
+              s" (showing $start-$end)"
+            else ""
+
+          sb.append(s"$countStr$paginationNote:\n")
+          result.matches.foreach { m =>
             val c            = m.crystal
             val done         = c.goal.acceptanceCriteria.count(_.completed)
             val total        = c.goal.acceptanceCriteria.size

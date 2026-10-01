@@ -42,6 +42,14 @@ Define an immutable, zero-reflection filter abstraction in `core` (`io.github.os
   - `Solid` (24h to 7d)
   - `Stale` (> 7d)
 - **Archival Inclusion (`includeArchived: Boolean`, default `false`):** When true, searches both active `.ccrystals/` and cold storage `.ccrystals/archive/`.
+- **Default Sorting & Ordering (`sort: Option[SearchSort]`, default `recent`):**
+  - `recent`: Order by latest activity timestamp descending (most recent first).
+  - `oldest`: Order by latest activity timestamp ascending.
+  - `name`: Order alphabetically by crystal ID.
+- **Defensive Pagination & Context Limits (`limit: Option[Int]`, `offset: Option[Int]`):**
+  - `limit`: Maximum results to return per page (default: 20; uncap with `--all` or `limit: 0`).
+  - `offset`: Starting index offset for page pagination (default: 0).
+- **Result Telemetry (`SearchResult`):** Contains `total` (all matching crystals), `offset`, `limit`, `hasMore`, `remaining` count of unviewed matching crystals, and paginated `matches`.
 
 ### 2.2 CLI Command: `ccrystal search`
 
@@ -59,12 +67,18 @@ Add `ccrystal search` with Decline-based options, while retaining `ccrystal list
 - `--has-lessons`: Only show crystals with recorded lessons.
 - `--author <id>`: Filter by author ID.
 - `--aging <active|solid|stale>`: Filter by aging bucket.
+- `--sort <recent|oldest|name>`: Sort order (default: `recent`).
+- `--limit <N>`: Maximum results to return (default: 20; 0 to uncap).
+- `--offset <N>`: Pagination offset (default: 0).
+- `--all`: Show all results without pagination cap.
 - `--include-archived`: Include crystals in cold storage (`.ccrystals/archive/`).
-- `--json`: Output JSON array of search result models instead of formatted text.
+- `--json`: Output JSON envelope (`SearchResult`) with pagination telemetry and matches instead of formatted text.
 
 **Formatting:**
 - Text table output displays: Crystal ID, Status, Matched Reasons/Snippets, Task Progress ($X/Y$), Active Leases, Last Modified relative date.
-- Emits clear summary header: `Found N crystal(s) matching query` (or `Found N crystal(s)` when unfiltered).
+- Emits pagination header:
+  - If results exceed page: `Found N crystal(s) (showing 1-20, R remaining; use --offset 20 to view next page):`
+  - If all results fit: `Found N crystal(s):`
 
 ### 2.3 Consolidated MCP Server Tool: `crystal_search` (Replacing `crystal_list`)
 
@@ -81,8 +95,11 @@ Add `ccrystal search` with Decline-based options, while retaining `ccrystal list
   - `has_lessons` (optional boolean): Filter by recorded lessons.
   - `author` (optional string): Filter by author ID.
   - `aging` (optional string): `active`, `solid`, `stale`.
+  - `sort` (optional string, default `recent`): `recent`, `oldest`, `name`.
+  - `limit` (optional integer, default 20): Maximum results to return per page (0 to uncap).
+  - `offset` (optional integer, default 0): Result offset for pagination.
   - `include_archived` (optional boolean, default `false`): Include crystals in cold storage.
-  - `json_output` (optional boolean, default `false`): Output structured JSON array instead of formatted text.
+  - `json_output` (optional boolean, default `false`): Output structured `SearchResult` JSON envelope.
 - **Behavior:**
   - If called with zero filter parameters (or just `include_archived` / `json_output`), acts as the complete cave listing, maintaining full parity with former `crystal_list`.
   - If called with any filters, applies the `CrystalFilter` criteria and returns matching crystals with contextual match reasons.

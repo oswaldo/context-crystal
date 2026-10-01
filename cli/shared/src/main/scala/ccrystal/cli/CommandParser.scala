@@ -148,6 +148,18 @@ object CommandParser:
           )
     }
 
+  private given searchSortArgument: Argument[ccrystal.core.model.search.SearchSort] =
+    Argument.from("search-sort") { s =>
+      normalize(s) match
+        case "recent" => Validated.valid(ccrystal.core.model.search.SearchSort.Recent)
+        case "oldest" => Validated.valid(ccrystal.core.model.search.SearchSort.Oldest)
+        case "name"   => Validated.valid(ccrystal.core.model.search.SearchSort.Name)
+        case _ =>
+          Validated.invalidNel(
+            s"Invalid sort order: '$s' (valid: recent, oldest, name)",
+          )
+    }
+
   // --- Subcommands ---
 
   private val initOpts = (
@@ -227,11 +239,25 @@ object CommandParser:
         "Filter by aging state (active, solid, stale)",
       )
       .orNone,
+    Opts
+      .option[ccrystal.core.model.search.SearchSort](
+        "sort",
+        "Sort order: recent (default), oldest, name",
+      )
+      .orNone,
+    Opts
+      .option[Int](
+        "limit",
+        "Maximum number of results to return per page (default: 20; 0 to uncap)",
+      )
+      .orNone,
+    Opts.option[Int]("offset", "Result offset for pagination (default: 0)").orNone,
+    Opts.flag("all", "Show all results without pagination cap").orFalse,
     (
       Opts
         .flag("include-archived", "Include crystals in cold storage (.ccrystals/archive/)")
         .orFalse,
-      Opts.flag("all", "Include all crystals (including archived)").orFalse,
+      Opts.flag("archived", "Include crystals in cold storage (.ccrystals/archive/)").orFalse,
     ).mapN(_ || _),
     Opts.flag("json", "Output JSON array of search matches instead of formatted table").orFalse,
   ).mapN {
@@ -248,6 +274,10 @@ object CommandParser:
         hasLessons,
         author,
         aging,
+        sort,
+        limit,
+        offset,
+        all,
         includeArchived,
         json,
     ) =>
@@ -258,6 +288,8 @@ object CommandParser:
       val effectiveUntil =
         if yesterday && until.isEmpty then Some("today")
         else until
+
+      val isUncapped = all || limit.contains(0)
 
       val filter = ccrystal.core.model.search.CrystalFilter(
         query = query,
@@ -271,6 +303,10 @@ object CommandParser:
         author = author,
         aging = aging,
         includeArchived = includeArchived,
+        sort = sort,
+        limit = if isUncapped then None else limit.filter(_ > 0),
+        offset = offset,
+        uncapped = isUncapped,
       )
       CliCommand.Search(filter, json)
   }

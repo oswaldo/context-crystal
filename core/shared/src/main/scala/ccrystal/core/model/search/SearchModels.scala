@@ -23,6 +23,19 @@ object AgingCategory:
       case "stale"  => Some(AgingCategory.Stale)
       case _        => None
 
+enum SearchSort derives CanEqual:
+  case Recent
+  case Oldest
+  case Name
+
+object SearchSort:
+  def parse(s: String): Option[SearchSort] =
+    s.trim.toLowerCase match
+      case "recent" => Some(SearchSort.Recent)
+      case "oldest" => Some(SearchSort.Oldest)
+      case "name"   => Some(SearchSort.Name)
+      case _        => None
+
 case class CrystalFilter(
     query: Option[String] = None,
     since: Option[String] = None,
@@ -35,6 +48,10 @@ case class CrystalFilter(
     author: Option[String] = None,
     aging: Option[AgingCategory] = None,
     includeArchived: Boolean = false,
+    sort: Option[SearchSort] = None,
+    limit: Option[Int] = None,
+    offset: Option[Int] = None,
+    uncapped: Boolean = false,
 ) derives CanEqual
 
 case class SearchMatch(
@@ -42,6 +59,15 @@ case class SearchMatch(
     isArchived: Boolean,
     matchedReasons: List[String],
     agingCategory: AgingCategory,
+) derives CanEqual
+
+case class SearchResult(
+    total: Int,
+    offset: Int,
+    limit: Option[Int],
+    hasMore: Boolean,
+    remaining: Int,
+    matches: List[SearchMatch],
 ) derives CanEqual
 
 object CivilDate:
@@ -286,3 +312,44 @@ object SearchEngine:
       if finalReasons.nonEmpty then finalReasons else List("Matched filter criteria")
 
     Some(SearchMatch(crystal, isArchived, matchReasons, agingCat))
+
+  def search(
+      crystals: List[(ContextCrystal, Boolean)],
+      filter: CrystalFilter,
+      nowEpochMillis: Long = System.currentTimeMillis(),
+  ): SearchResult =
+    val allMatches = crystals.flatMap { case (crystal, isArchived) =>
+      matches(crystal, filter, nowEpochMillis, isArchived)
+    }
+
+    val sortedMatches = filter.sort.getOrElse(SearchSort.Recent) match
+      case SearchSort.Recent =>
+        allMatches.sortBy(m => -latestActivityMillis(m.crystal))
+      case SearchSort.Oldest =>
+        allMatches.sortBy(m => latestActivityMillis(m.crystal))
+      case SearchSort.Name =>
+        allMatches.sortBy(m => m.crystal.id.toLowerCase)
+
+    val total           = sortedMatches.size
+    val effectiveOffset = filter.offset.getOrElse(0).max(0)
+    val dropped         = sortedMatches.drop(effectiveOffset)
+
+    val effectiveLimitOpt =
+      if filter.uncapped then None
+      else filter.limit.filter(_ > 0).orElse(Some(20))
+
+    val pagedMatches = effectiveLimitOpt match
+      case Some(limit) => dropped.take(limit)
+      case None        => dropped
+
+    val remaining = math.max(0, total - effectiveOffset - pagedMatches.size)
+    val hasMore   = remaining > 0
+
+    SearchResult(
+      total = total,
+      offset = effectiveOffset,
+      limit = effectiveLimitOpt,
+      hasMore = hasMore,
+      remaining = remaining,
+      matches = pagedMatches,
+    )
