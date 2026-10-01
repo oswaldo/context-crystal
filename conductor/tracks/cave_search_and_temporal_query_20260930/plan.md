@@ -26,15 +26,15 @@
 
 ## Phase 3: Consolidated MCP Tool: `crystal_search` (Replacing `crystal_list`)
 
-- [~] Task: Implement `crystal_search` tool in `DefaultMcpHandler` and replace `crystal_list`
-  - [ ] Write failing unit tests in `cli/shared/src/test/scala/ccrystal/cli/mcp/DefaultMcpHandlerSuite.scala` verifying empty call returns full listing and filtered calls execute search
-  - [ ] Expose `crystal_search` in MCP `tools/list`, remove `crystal_list`, and wire execution to search runner
-  - [ ] Verify unit tests pass cleanly
-- [ ] Task: Update MCP end-to-end integration tests in `McpEndToEndSessionSuite.scala`
-  - [ ] Update existing session tests to use `crystal_search` instead of `crystal_list`
-  - [ ] Add integration test exercising filtered searches via MCP
-  - [ ] Verify all MCP integration tests pass cleanly
-- [ ] Task: Phase 3 Verification & Checkpoint (Refer to workflow.md)
+- [x] Task: Implement `crystal_search` tool in `DefaultMcpHandler` and replace `crystal_list` [1103d9b]
+  - [x] Write failing unit tests in `cli/shared/src/test/scala/ccrystal/cli/mcp/DefaultMcpHandlerSuite.scala` verifying empty call returns full listing and filtered calls execute search
+  - [x] Expose `crystal_search` in MCP `tools/list`, remove `crystal_list`, and wire execution to search runner
+  - [x] Verify unit tests pass cleanly
+- [x] Task: Update MCP end-to-end integration tests in `McpEndToEndSessionSuite.scala` [1103d9b]
+  - [x] Update existing session tests to use `crystal_search` instead of `crystal_list`
+  - [x] Add integration test exercising filtered searches via MCP
+  - [x] Verify all MCP integration tests pass cleanly
+- [x] Task: Phase 3 Verification & Checkpoint (Refer to workflow.md) [1103d9b]
 
 ## Phase 4: Agent Skill, MCP Schemas, Documentation & Release Verification
 
