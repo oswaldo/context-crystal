@@ -55,29 +55,27 @@ brew tap oswaldo/context-crystal
 brew install ccrystal
 ```
 
-### 3. Coursier (Scala Toolchain)
+### 3. Coursier (JVM Zero-Install & Universal OS)
 
-For Scala developers and environments managed via [Coursier](https://get-coursier.io/):
+For developers on any operating system (including Windows, macOS, Linux, and BSD) with Java 17+ installed:
 
 ```bash
+# Launch on-demand instantly without installation (resolved directly via Maven Central)
+cs launch io.github.oswaldo:ccrystal-cli_3:latest.release -- --help
+
+# Or install binary locally via repo channel
 cs install --channel gh:oswaldo/context-crystal:main ccrystal
-```
-
-Or add the repository channel permanently:
-
-```bash
-cs channel --add gh:oswaldo/context-crystal:main
-cs install ccrystal
 ```
 
 ### 4. Platform Support Matrix
 
-| Platform | Tier | Architecture | Status |
-| :--- | :--- | :--- | :--- |
-| **Linux** | Tier 1 | `x86_64`, `aarch64` | Fully supported (pre-compiled Thin LTO binaries) |
-| **macOS** | Tier 1 | Apple Silicon (`aarch64`), Intel (`x86_64`) | Fully supported (pre-compiled Thin LTO binaries; tested and validated on macOS 14, 15, and 26 Apple Silicon) |
-| **Windows (WSL)** | Tier 1 | `x86_64` (WSL / Ubuntu) | Fully supported via WSL (Windows Subsystem for Linux) |
-| **Windows (Native)** | Roadmap | `x86_64`, `arm64` | Planned for post-1.0 track (native MSVC toolchain validation) |
+| Platform | Tier | Architecture | Runtime / Engine | Status |
+| :--- | :--- | :--- | :--- | :--- |
+| **Linux** | Tier 1 | `x86_64`, `aarch64` | Native binary (Thin LTO) | Fully supported |
+| **macOS** | Tier 1 | Apple Silicon (`aarch64`), Intel (`x86_64`) | Native binary (LLVM -O3) | Fully supported (tested on macOS 14, 15, and 26 Apple Silicon) |
+| **Windows (PowerShell / CMD)** | Tier 1 | Any architecture (`x86_64`, `arm64`) | JVM / Coursier (`cs launch`) | Fully supported via Maven Central; standalone native MSVC binary planned for post-1.0 |
+| **Windows (WSL)** | Tier 1 | `x86_64` (WSL / Ubuntu) | Native binary / POSIX script | Fully supported |
+| **Universal (BSD, Solaris, etc.)** | Tier 1 | Any POSIX / JVM target | JVM (`cs launch`) | Fully supported via Maven Central (`io.github.oswaldo:ccrystal-cli_3`) |
 
 ---
 

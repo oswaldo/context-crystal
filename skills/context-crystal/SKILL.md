@@ -58,6 +58,17 @@ If `ccrystal` is not present in PATH:
      curl -fsSL https://raw.githubusercontent.com/oswaldo/context-crystal/main/install.sh | sh
      ```
 
+   - **Universal JVM & Windows Bootstrap (Zero-Install via Coursier):**
+     If running on Windows, an architecture without native binaries, or an environment with Java/Coursier available:
+
+     ```bash
+     # Launch on-demand without installation
+     cs launch io.github.oswaldo:ccrystal-cli_3:latest.release -- <command>
+
+     # Or install globally into user PATH
+     cs install io.github.oswaldo:ccrystal-cli_3:latest.release --name ccrystal
+     ```
+
    - **Monorepo Fallback (When in Context Crystal repository):**
 
      ```bash
