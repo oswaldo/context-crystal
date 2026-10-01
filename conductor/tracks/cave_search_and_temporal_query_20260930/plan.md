@@ -12,21 +12,21 @@
   - [x] Verify engine tests pass cleanly
 - [x] Task: Phase 1 Verification & Checkpoint (Refer to workflow.md) [e8915ad]
 
-## Phase 2: CLI Command: `ccrystal search`
+## Phase 2: CLI Command: `ccrystal search` [checkpoint: 71a6eb3]
 
-- [~] Task: Implement Decline parser for `ccrystal search` in `cli`
-  - [ ] Write failing parser tests in `cli/shared/src/test/scala/ccrystal/cli/CommandLineParserSuite.scala`
-  - [ ] Implement `CliCommand.Search` and Decline command definition with `--query`, `--since`, `--until`, `--today`, `--yesterday`, `--status`, `--has-active-leases`, `--touching-path`, `--has-open-tasks`, `--has-lessons`, `--author`, `--aging`, `--include-archived`, `--json`
-  - [ ] Verify parser tests pass cleanly
-- [ ] Task: Implement `ccrystal search` execution and formatting in `Runner`
-  - [ ] Write failing runner unit tests in `cli/shared/src/test/scala/ccrystal/cli/RunnerSuite.scala`
-  - [ ] Implement search execution in `Runner.run`, supporting formatted table output with match reasons and `--json` structured array
-  - [ ] Verify runner tests pass cleanly
-- [ ] Task: Phase 2 Verification & Checkpoint (Refer to workflow.md)
+- [x] Task: Implement Decline parser for `ccrystal search` in `cli` [71a6eb3]
+  - [x] Write failing parser tests in `cli/shared/src/test/scala/ccrystal/cli/CommandLineParserSuite.scala`
+  - [x] Implement `CliCommand.Search` and Decline command definition with `--query`, `--since`, `--until`, `--today`, `--yesterday`, `--status`, `--has-active-leases`, `--touching-path`, `--has-open-tasks`, `--has-lessons`, `--author`, `--aging`, `--include-archived`, `--json`
+  - [x] Verify parser tests pass cleanly
+- [x] Task: Implement `ccrystal search` execution and formatting in `Runner` [71a6eb3]
+  - [x] Write failing runner unit tests in `cli/shared/src/test/scala/ccrystal/cli/RunnerSuite.scala`
+  - [x] Implement search execution in `Runner.run`, supporting formatted table output with match reasons and `--json` structured array
+  - [x] Verify runner tests pass cleanly
+- [x] Task: Phase 2 Verification & Checkpoint (Refer to workflow.md) [71a6eb3]
 
 ## Phase 3: Consolidated MCP Tool: `crystal_search` (Replacing `crystal_list`)
 
-- [ ] Task: Implement `crystal_search` tool in `DefaultMcpHandler` and replace `crystal_list`
+- [~] Task: Implement `crystal_search` tool in `DefaultMcpHandler` and replace `crystal_list`
   - [ ] Write failing unit tests in `cli/shared/src/test/scala/ccrystal/cli/mcp/DefaultMcpHandlerSuite.scala` verifying empty call returns full listing and filtered calls execute search
   - [ ] Expose `crystal_search` in MCP `tools/list`, remove `crystal_list`, and wire execution to search runner
   - [ ] Verify unit tests pass cleanly
