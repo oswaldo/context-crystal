@@ -3,8 +3,32 @@ package ccrystal.cli
 object BatchExecutor:
 
   def splitCommands(chain: String): List[List[String]] =
-    val parts = chain.split(";").map(_.trim).filter(_.nonEmpty).toList
-    parts.map(parseCommandLine)
+    val parts     = List.newBuilder[String]
+    val sb        = new java.lang.StringBuilder()
+    var inQuotes  = false
+    var quoteChar = ' '
+    var i         = 0
+
+    while i < chain.length do
+      val c = chain.charAt(i)
+      if (c == '"' || c == '\'') && !inQuotes then
+        inQuotes = true
+        quoteChar = c
+        sb.append(c)
+      else if inQuotes && c == quoteChar then
+        inQuotes = false
+        sb.append(c)
+      else if !inQuotes && c == ';' then
+        val trimmed = sb.toString.trim
+        if trimmed.nonEmpty then parts += trimmed
+        sb.setLength(0)
+      else sb.append(c)
+      i += 1
+
+    val lastTrimmed = sb.toString.trim
+    if lastTrimmed.nonEmpty then parts += lastTrimmed
+
+    parts.result().map(parseCommandLine)
 
   def parseCommandLine(line: String): List[String] =
     val tokens    = List.newBuilder[String]
@@ -32,33 +56,48 @@ object BatchExecutor:
 
   def executeChain(chain: String, runner: Runner): Either[String, List[String]] =
     val commandArgsList = splitCommands(chain)
-    val outputs         = List.newBuilder[String]
+    val parsedCommands  = List.newBuilder[(Int, List[String], CliCommand)]
 
-    var error: Option[String] = None
-    var idx                   = 0
+    var validationError: Option[String] = None
+    var idx                             = 0
 
-    while idx < commandArgsList.size && error.isEmpty do
+    while idx < commandArgsList.size && validationError.isEmpty do
       val args = commandArgsList(idx)
       CommandParser.parse(args) match
         case Right(cmd) =>
           cmd match
             case CliCommand.Delete(_, false) =>
-              error = Some(
+              validationError = Some(
                 s"Destructive command 'delete' in batch mode requires --force (-f) flag at command #${idx + 1} (${args.mkString(" ")})",
               )
             case CliCommand.EntityDeregister(_, false) =>
-              error = Some(
+              validationError = Some(
                 s"Destructive command 'entity deregister' in batch mode requires --force (-f) flag at command #${idx + 1} (${args.mkString(" ")})",
               )
             case _ =>
-              runner.run(cmd) match
-                case Right(out) => outputs += out
-                case Left(err) =>
-                  error = Some(s"Error at command #${idx + 1} (${args.mkString(" ")}): $err")
+              parsedCommands += ((idx, args, cmd))
         case Left(parseErr) =>
-          error = Some(s"Syntax error at command #${idx + 1} (${args.mkString(" ")}): $parseErr")
+          validationError = Some(
+            s"Syntax error at command #${idx + 1} (${args.mkString(" ")}): $parseErr",
+          )
       idx += 1
 
-    error match
+    validationError match
       case Some(err) => Left(err)
-      case None      => Right(outputs.result())
+      case None =>
+        val commands                  = parsedCommands.result()
+        val outputs                   = List.newBuilder[String]
+        var execError: Option[String] = None
+        var execIdx                   = 0
+
+        while execIdx < commands.size && execError.isEmpty do
+          val (cmdIdx, args, cmd) = commands(execIdx)
+          runner.run(cmd) match
+            case Right(out) => outputs += out
+            case Left(err) =>
+              execError = Some(s"Error at command #${cmdIdx + 1} (${args.mkString(" ")}): $err")
+          execIdx += 1
+
+        execError match
+          case Some(err) => Left(err)
+          case None      => Right(outputs.result())

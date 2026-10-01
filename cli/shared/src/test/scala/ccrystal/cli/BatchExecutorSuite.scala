@@ -41,3 +41,36 @@ class BatchExecutorSuite extends FunSuite:
     assertEquals(crystal.goal.status, ccrystal.core.model.GoalStatus.ConcludedAbandoned)
     assertEquals(crystal.dag.nodes.size, 2)
     assertEquals(crystal.dag.nodes.last.contentSummary, "Pivoted to new architecture")
+
+  test("Preserves semicolons inside single and double quoted arguments"):
+    val input =
+      "init semi-proj --goal 'Step 1; Step 2'; node add semi-proj -k checkpoint -s \"Verified A; cleaned B\" --fidelity inferred"
+    val commands = BatchExecutor.splitCommands(input)
+    assertEquals(commands.size, 2)
+    assertEquals(commands(0), List("init", "semi-proj", "--goal", "Step 1; Step 2"))
+    assertEquals(
+      commands(1),
+      List(
+        "node",
+        "add",
+        "semi-proj",
+        "-k",
+        "checkpoint",
+        "-s",
+        "Verified A; cleaned B",
+        "--fidelity",
+        "inferred",
+      ),
+    )
+
+  test("Pre-validates all commands in batch before executing any state mutations"):
+    val store  = new InMemoryCrystalStore()
+    val runner = new Runner(store)
+    val recipe =
+      "init atomic-proj --goal 'Should not persist on syntax error'; node add atomic-proj --invalid-flag"
+    val res = BatchExecutor.executeChain(recipe, runner)
+    assert(res.isLeft, "Expected batch with syntax error in command #2 to fail")
+    assert(
+      store.load("atomic-proj").isLeft,
+      "Command #1 should not have mutated store when command #2 has a syntax error",
+    )
