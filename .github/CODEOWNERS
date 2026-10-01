@@ -1,0 +1,6 @@
+# Critical infrastructure, packaging, installer, and workflow governance
+.github/workflows/  @oswaldo
+install.sh          @oswaldo
+Formula/            @oswaldo
+apps.json           @oswaldo
+spec/               @oswaldo
