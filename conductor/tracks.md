@@ -67,3 +67,6 @@
 
 - [x] **Track: Cave Query, Search & Temporal Navigation**  
   *Link: [conductor/tracks/cave_search_and_temporal_query_20260930/index.md](./tracks/cave_search_and_temporal_query_20260930/index.md)*
+
+- [ ] **Track: Cave Statistics, Quantitative Telemetry & Token Savings**  
+  *Link: [conductor/tracks/cave_stats_and_telemetry_20261002/index.md](./tracks/cave_stats_and_telemetry_20261002/index.md)*
