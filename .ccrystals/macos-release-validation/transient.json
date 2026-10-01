@@ -1,0 +1,11 @@
+[
+  {
+    "id" : "lease-1",
+    "resourceType" : "git_worktree",
+    "resourcePath" : "../ccrystal-worktrees/macos-release-validation",
+    "description" : "Isolated worktree for macOS v1.0.1 release validation and doc fixes",
+    "disposalPolicy" : "revert_on_conclusion",
+    "status" : "active",
+    "createdAt" : "2026-10-01T11:31:47.178Z"
+  }
+]

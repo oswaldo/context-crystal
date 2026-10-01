@@ -48,6 +48,7 @@ This skill codifies the complete operational lifecycle, architecture invariants,
 
 - **Explicit Main Class Fallback:** Include `"mainClass": "ccrystal.cli.Main?"` as standard defensive metadata.
 - **Strict `check-pr-scope` Invariant:** Upstream `coursier/apps` enforces a strict CI check (`.github/workflows/check-pr-scope.yml`) that forbids mixing hand-written descriptors with generated listing aggregations. **NEVER commit `listings/` in PRs.** Only touch `apps-contrib/resources/ccrystal.json`.
+- **GitHub Channel Branch Shorthand (`gh:org/repo/branch`):** When referencing an in-repo `apps.json` channel on the `main` branch via Coursier's `gh:` shorthand, always use a slash (`gh:oswaldo/context-crystal/main`), **never** a colon (`gh:oswaldo/context-crystal:main`). Coursier interprets `:main` after the repository name as a *file path* on the default `master` branch (`master/main`), resulting in HTTP 404.
 
 ### C. Collaborative Release Notes Protocol
 
@@ -117,6 +118,7 @@ Track GitHub Actions run for `.github/workflows/release.yml`:
 1. **`build-release-matrix`**: Compiles native binaries for `linux-x86_64`, `linux-aarch64`, `macos-aarch64`, and `macos-x86_64`.
 2. **`publish-release`**: Publishes GitHub Release with native `.tar.gz` bundles and `SHA256SUMS`.
 3. **`publish-maven-central`**: Runs `sbt ci-release`, uploading signed JVM artifacts to Sonatype Central Portal.
+4. **`verify-release-smoke`**: Automatically runs post-release clean-room smoke verification (`install.sh` checksum verification and atomic `ccrystal batch` DAG lifecycle) across both `ubuntu-latest` and `macos-14` runners so release integrity does not depend on which machine triggered the release.
 
 ---
 
@@ -144,21 +146,25 @@ Verify that root `apps.json` and upstream `apps-contrib/resources/ccrystal.json`
 
 ## 5. Clean-Room Smoke Verification
 
-Verify that official installation pathways succeed on target environments:
+Verify that official installation pathways succeed on target environments. Always use isolated temporary directories (`--to` and `--install-dir`) when smoke testing on an operator or developer machine so you do not shadow the active `PATH` binary (e.g., Homebrew) or leave dangling symlinks in `~/.local/bin` or Coursier's bin directory:
 
 ```bash
-# 1. Universal POSIX bootstrap (Linux / macOS Native)
-curl -fsSL https://raw.githubusercontent.com/oswaldo/context-crystal/main/install.sh | sh
-~/.local/bin/ccrystal --help
+SMOKE_DIR="$(mktemp -d)"
+
+# 1. Universal POSIX bootstrap (Linux / macOS Native, isolated --to)
+curl -fsSL https://raw.githubusercontent.com/oswaldo/context-crystal/main/install.sh | sh -s -- --to "$SMOKE_DIR/posix"
+"$SMOKE_DIR/posix/ccrystal" --store "$SMOKE_DIR/store" batch "init smoke -g 'Smoke test'; conclude smoke -s 'Verified'"
 
 # 2. Homebrew
-brew install oswaldo/context-crystal/ccrystal
+brew upgrade oswaldo/context-crystal/ccrystal || brew install oswaldo/context-crystal/ccrystal
 ccrystal --help
 
 # 3. Coursier Zero-Install (Universal: Windows, Linux, macOS, BSD)
 cs launch io.github.oswaldo:ccrystal-cli_3:latest.release -- --help
 
-# 4. Coursier Local Install
-cs install --channel gh:oswaldo/context-crystal:main ccrystal
-ccrystal --help
+# 4. Coursier Local Install (isolated --install-dir, using /main branch syntax)
+cs install --channel gh:oswaldo/context-crystal/main --install-dir "$SMOKE_DIR/cs" ccrystal
+"$SMOKE_DIR/cs/ccrystal" --help
+
+rm -rf "$SMOKE_DIR"
 ```

@@ -1,0 +1,212 @@
+{
+  "schemaVersion" : "1.0.0",
+  "id" : "macos-release-validation",
+  "name" : "macos-release-validation",
+  "createdAt" : "2026-10-01T11:31:47.173Z",
+  "updatedAt" : "2026-10-01T11:43:50.535Z",
+  "parentCrystalId" : null,
+  "origin" : null,
+  "caveId" : null,
+  "defaultAuthorId" : "usr_operator",
+  "goal" : {
+    "title" : "Validate v1.0.1 multi-channel installation on macOS and codify release verification lessons",
+    "intent" : "Step-by-step clean-room validation of POSIX installer, Coursier JVM launch, Coursier channel install, and Homebrew upgrade on macOS Apple Silicon, capturing friction and remediation across docs and release skills.",
+    "status" : "in_progress",
+    "acceptanceCriteria" : [
+      {
+        "id" : "task-1",
+        "description" : "Validate install.sh, cs launch, cs install, and brew upgrade on macOS aarch64",
+        "completed" : true
+      },
+      {
+        "id" : "task-2",
+        "description" : "Fix Coursier channel branch syntax (gh:oswaldo/context-crystal/main) across docs and skills",
+        "completed" : true
+      },
+      {
+        "id" : "task-3",
+        "description" : "Codify isolated smoke test flags and cross-platform CI verification lessons in multi-channel-release skill",
+        "completed" : true
+      }
+    ],
+    "metadata" : {
+      
+    }
+  },
+  "entities" : [
+    {
+      "id" : "usr_operator",
+      "kind" : "human",
+      "name" : "Operator",
+      "metadata" : {
+        
+      },
+      "publicKey" : null,
+      "endpoints" : {
+        
+      }
+    }
+  ],
+  "activeMask" : null,
+  "dag" : {
+    "rootNodeId" : "node-macos-release-validation-init",
+    "nodes" : [
+      {
+        "id" : "node-macos-release-validation-init",
+        "parentIds" : [
+        ],
+        "timestamp" : "2026-10-01T11:31:47.173Z",
+        "actorId" : "usr_operator",
+        "kind" : "human_prompt",
+        "contentSummary" : "Initialized crystal 'macos-release-validation' with goal: Validate v1.0.1 multi-channel installation on macOS and codify release verification lessons",
+        "anchor" : null,
+        "artifactIds" : [
+        ],
+        "inputArtifactIds" : [
+        ],
+        "outputArtifactIds" : [
+        ],
+        "preconditionArtifactIds" : [
+        ],
+        "fidelity" : "inferred",
+        "metadata" : {
+          
+        }
+      },
+      {
+        "id" : "node-2",
+        "parentIds" : [
+          "node-macos-release-validation-init"
+        ],
+        "timestamp" : "2026-10-01T11:31:47.185Z",
+        "actorId" : "usr_operator",
+        "kind" : "checkpoint",
+        "contentSummary" : "Verified v1.0.1 across install.sh, cs launch, cs install (with /main fix), and brew upgrade on macOS aarch64, and cleaned up temporary binaries and dangling Coursier symlink.",
+        "anchor" : null,
+        "artifactIds" : [
+        ],
+        "inputArtifactIds" : [
+        ],
+        "outputArtifactIds" : [
+        ],
+        "preconditionArtifactIds" : [
+        ],
+        "fidelity" : "inferred",
+        "metadata" : {
+          
+        }
+      },
+      {
+        "id" : "node-3",
+        "parentIds" : [
+          "node-2"
+        ],
+        "timestamp" : "2026-10-01T11:43:50.535Z",
+        "actorId" : "usr_operator",
+        "kind" : "checkpoint",
+        "contentSummary" : "Applied doc/skill fixes, added verify-release-smoke CI job, fixed BatchExecutor quote splitting and pre-validation, and verified scalafmt, scalafix, markdownlint, and BatchExecutorSuite.",
+        "anchor" : null,
+        "artifactIds" : [
+        ],
+        "inputArtifactIds" : [
+        ],
+        "outputArtifactIds" : [
+        ],
+        "preconditionArtifactIds" : [
+        ],
+        "fidelity" : "inferred",
+        "metadata" : {
+          
+        }
+      }
+    ]
+  },
+  "transientLeases" : [
+    {
+      "id" : "lease-1",
+      "resourceType" : "git_worktree",
+      "resourcePath" : "../ccrystal-worktrees/macos-release-validation",
+      "description" : "Isolated worktree for macOS v1.0.1 release validation and doc fixes",
+      "disposalPolicy" : "revert_on_conclusion",
+      "status" : "active",
+      "createdAt" : "2026-10-01T11:31:47.178Z"
+    }
+  ],
+  "lessonsLearned" : [
+    {
+      "id" : "lesson-1",
+      "observedFriction" : "cs install --channel gh:oswaldo/context-crystal:main failed with 404 on https://raw.githubusercontent.com/oswaldo/context-crystal/master/main",
+      "rootCause" : "Coursier gh: shorthand treats a colon (:main) as a file path on the default master branch, whereas a slash (/main) specifies the branch name and defaults to apps.json",
+      "recommendedAction" : "Replace gh:oswaldo/context-crystal:main with gh:oswaldo/context-crystal/main in README.md, docs/contributing.md, and skills/multi-channel-release/SKILL.md",
+      "status" : "actioned",
+      "actionAuditTrail" : [
+        {
+          "timestamp" : "2026-10-01T11:43:50.513Z",
+          "action" : "Updated gh:oswaldo/context-crystal:main to gh:oswaldo/context-crystal/main across README.md, docs/contributing.md, and skills/multi-channel-release/SKILL.md",
+          "actorId" : "usr_operator"
+        }
+      ]
+    },
+    {
+      "id" : "lesson-2",
+      "observedFriction" : "Validating a release only from the Linux build machine missed the Coursier channel syntax error and requires manual cross-machine testing on macOS",
+      "rootCause" : "Release workflow publishes artifacts and Maven Central packages but lacks an automated post-release smoke-verification matrix testing exact documented install commands on clean Linux and macOS runners",
+      "recommendedAction" : "Add automated post-release smoke verification in CI (ubuntu-latest and macos-latest) executing exact README installation pathways so release stability does not depend on which machine or human cuts the release",
+      "status" : "actioned",
+      "actionAuditTrail" : [
+        {
+          "timestamp" : "2026-10-01T11:43:50.518Z",
+          "action" : "Added verify-release-smoke matrix job (ubuntu-latest and macos-14) in .github/workflows/release.yml and documented in multi-channel-release skill",
+          "actorId" : "usr_operator"
+        }
+      ]
+    },
+    {
+      "id" : "lesson-3",
+      "observedFriction" : "ccrystal --version failed with Unexpected option: --version when verifying which release binary was active across installation channels",
+      "rootCause" : "Top-level --version / -v flag (Track 21) is not yet wired into the Decline CLI root parser",
+      "recommendedAction" : "Prioritize Track 21 (ccrystal --version / -v) and assert version output in install.sh, Homebrew test block, and CI smoke tests",
+      "status" : "actioned",
+      "actionAuditTrail" : [
+        {
+          "timestamp" : "2026-10-01T11:43:50.522Z",
+          "action" : "Verified Track 21 (ccrystal --version / -v) is queued in conductor/next-steps.md and documented version assertion target",
+          "actorId" : "usr_operator"
+        }
+      ]
+    },
+    {
+      "id" : "lesson-4",
+      "observedFriction" : "Testing multiple installation methods on a user machine left a dangling symlink in ~/Library/Application Support/Coursier/bin/ccrystal and risked shadowing Homebrew in PATH",
+      "rootCause" : "Smoke verification snippets in skills/multi-channel-release/SKILL.md install directly into default global directories (~/.local/bin and Coursier default bin) without isolation flags",
+      "recommendedAction" : "Update Clean-Room Smoke Verification in skills/multi-channel-release/SKILL.md to use isolated temporary directories (install.sh --to and cs install --install-dir) with automatic cleanup",
+      "status" : "actioned",
+      "actionAuditTrail" : [
+        {
+          "timestamp" : "2026-10-01T11:43:50.526Z",
+          "action" : "Updated Clean-Room Smoke Verification in docs/contributing.md and skills/multi-channel-release/SKILL.md to use isolated SMOKE_DIR (--to and --install-dir) with cleanup",
+          "actorId" : "usr_operator"
+        }
+      ]
+    },
+    {
+      "id" : "lesson-5",
+      "observedFriction" : "ccrystal batch failed with a syntax error when a quoted node summary contained a semicolon (;), and executed earlier commands in the batch before rejecting the malformed command",
+      "rootCause" : "BatchExecutor.splitCommands calls chain.split(\";\") without quote awareness before parseCommandLine, and executeChain interleaves CommandParser.parse with runner.run instead of pre-validating all commands in the batch",
+      "recommendedAction" : "Make BatchExecutor.splitCommands quote-aware so semicolons inside single or double quotes are preserved, and pre-parse/validate all batch commands before executing mutations",
+      "status" : "actioned",
+      "actionAuditTrail" : [
+        {
+          "timestamp" : "2026-10-01T11:43:50.531Z",
+          "action" : "Updated BatchExecutor.splitCommands for quote-aware semicolon splitting and BatchExecutor.executeChain for pre-execution command validation with unit tests in BatchExecutorSuite",
+          "actorId" : "usr_operator"
+        }
+      ]
+    }
+  ],
+  "artifacts" : [
+  ],
+  "metadata" : {
+    
+  }
+}

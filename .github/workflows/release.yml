@@ -213,3 +213,36 @@ jobs:
           SONATYPE_PASSWORD: ${{ secrets.SONATYPE_PASSWORD }}
           SONATYPE_USERNAME: ${{ secrets.SONATYPE_USERNAME }}
 
+  verify-release-smoke:
+    name: Smoke Verify Release (${{ matrix.os }})
+    needs: publish-release
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os:
+          - ubuntu-latest
+          - macos-14
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Determine Release Version
+        id: version
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            VERSION="${{ inputs.tag }}"
+          else
+            VERSION="${GITHUB_REF#refs/tags/}"
+          fi
+          echo "VERSION=$VERSION" >> "$GITHUB_OUTPUT"
+
+      - name: Clean-Room Smoke Test (POSIX Installer & DAG Lifecycle)
+        run: |
+          VERSION="${{ steps.version.outputs.VERSION }}"
+          SMOKE_DIR="$(mktemp -d)"
+          sh ./install.sh --to "$SMOKE_DIR/bin" --version "$VERSION"
+          "$SMOKE_DIR/bin/ccrystal" --store "$SMOKE_DIR/store" batch "init smoke-ci -g 'Verify release binary' -t 'Run batch lifecycle'; task done smoke-ci -t task-1; conclude smoke-ci -s 'Verified in CI smoke test'"
+          rm -rf "$SMOKE_DIR"
+
+

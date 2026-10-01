@@ -64,7 +64,7 @@ For developers on any operating system (including Windows, macOS, Linux, and BSD
 cs launch io.github.oswaldo:ccrystal-cli_3:latest.release -- --help
 
 # Or install binary locally via repo channel
-cs install --channel gh:oswaldo/context-crystal:main ccrystal
+cs install --channel gh:oswaldo/context-crystal/main ccrystal
 ```
 
 ### 4. Platform Support Matrix

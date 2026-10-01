@@ -156,8 +156,8 @@ When cutting a new release (e.g., tagging `vX.Y.Z` or triggering `.github/workfl
    - Ensure the public tap repository (`github.com/oswaldo/homebrew-context-crystal`) is up to date with `Formula/ccrystal.rb`.
    - Push the updated formula to the tap repository.
 5. **Synchronize Coursier Channel (`apps.json`):**
-   - Update version tags in `apps.json` to point to the new release tag `vX.Y.Z`.
-   - Validate with `cs install --channel file://$(pwd)/apps.json ccrystal`.
+   - Verify that `apps.json` maintains dynamic `${version}` interpolation (`v${version}`) and `"io.github.oswaldo:ccrystal-cli_3:latest.release"`.
+   - Validate locally with `cs install --channel gh:oswaldo/context-crystal/main --install-dir "$SMOKE_DIR" ccrystal`.
 6. **Synchronize Web Portal (`context-crystal-gh-pages`):**
    - Update quickstart version references in `site/TabQuickstart.scala` and `llms.txt`.
    - Recompile the static bundle: `scala-cli --power package site --js-mode release -o main.js --force`.
@@ -166,21 +166,25 @@ When cutting a new release (e.g., tagging `vX.Y.Z` or triggering `.github/workfl
    - Draft comprehensive release notes highlighting user-facing capabilities, API additions, installation methods, and tangible bug fixes (strictly omitting internal repo governance rules or agent guidelines).
    - Present to the human steersman/operator for explicit review and cryptographic push sign-off.
 8. **Clean-Room Smoke Verification:**
-   - Execute an isolated verification of official installation methods on target platforms prior to public announcement:
+   - Execute an isolated verification of official installation methods on target platforms prior to public announcement (using isolated target directories so existing `PATH` installations are not shadowed or left with dangling symlinks):
 
    ```bash
-   # 1. Universal POSIX bootstrap
-   curl -fsSL https://raw.githubusercontent.com/oswaldo/context-crystal/main/install.sh | sh
-   ~/.local/bin/ccrystal --help
+   SMOKE_DIR="$(mktemp -d)"
+
+   # 1. Universal POSIX bootstrap (isolated --to)
+   curl -fsSL https://raw.githubusercontent.com/oswaldo/context-crystal/main/install.sh | sh -s -- --to "$SMOKE_DIR/posix"
+   "$SMOKE_DIR/posix/ccrystal" --help
 
    # 2. Homebrew
-   brew install oswaldo/context-crystal/ccrystal
+   brew upgrade oswaldo/context-crystal/ccrystal || brew install oswaldo/context-crystal/ccrystal
    ccrystal --help
 
-   # 3. Coursier (cs install)
-   cs install --channel gh:oswaldo/context-crystal:main ccrystal
-   ccrystal --help
+   # 3. Coursier (cs install via repo channel, isolated --install-dir)
+   cs install --channel gh:oswaldo/context-crystal/main --install-dir "$SMOKE_DIR/cs" ccrystal
+   "$SMOKE_DIR/cs/ccrystal" --help
 
    # 4. Coursier Launch (Maven Central JVM artifact)
-   cs launch --contrib ccrystal -- --help
+   cs launch io.github.oswaldo:ccrystal-cli_3:latest.release -- --help
+
+   rm -rf "$SMOKE_DIR"
    ```
