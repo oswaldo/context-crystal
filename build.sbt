@@ -23,6 +23,7 @@ ThisBuild / scmInfo := Some(
     "scm:git:git@github.com:oswaldo/context-crystal.git"
   )
 )
+ThisBuild / versionScheme := Some("early-semver")
 
 lazy val root = project.in(file("."))
   .aggregate(core.jvm, core.native, core.js, cli.jvm, cli.native)
