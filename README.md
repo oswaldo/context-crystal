@@ -141,6 +141,7 @@ Context Crystal adapts to your team's workflow without polluting your code:
 8. **Deterministic Zero-LLM Housekeeping & Melting:** Sub-DAG topological melting (`ccrystal melt`) collapses intermediate transition chains into consolidated checkpoint nodes with aggregated artifact links, preserving key decisions while drastically reducing prompt token overhead with zero LLM dependency.
 9. **Cold Storage Archiving & Cave Hygiene Triage:** Classify workspace health into `Active`, `Solid`, and `Stale` states (`ccrystal triage --solid/--stale`). Move completed crystals to cold storage (`ccrystal archive`) to keep active context listings lean while preserving full history and artifacts.
 10. **Secret Sanitization & Zero-Leak Invariant:** Context crystals capture operational lineage without compromising security. Enforces a strict *pointers over values* invariant (referencing `env:VAR` or vault keys rather than literal credentials) with automated scanning recommendations (such as Betterleaks or Gitleaks) to prevent sensitive token exposure in context repositories.
+11. **Multi-Dimensional Search & Temporal Scoping (`ccrystal search` / `crystal_search`):** Query cave history across full-text contents, temporal bounds (`--since 7d`, `--today`, `--yesterday`), active leases, touching paths, open tasks, aging status, and author identities, with deterministic sorting and defensive pagination.
 
 ---
 
@@ -159,12 +160,12 @@ Context Crystal includes ready-to-use skills and instruction adapters for major 
 
 Context Crystal includes an embedded, zero-overhead MCP server built directly into the native binary. It connects Claude Desktop, Cursor, Zed, Windsurf, and agent harnesses to your workspace crystals with zero Python or Node.js runtime dependencies.
 
-- **Compound Atomic Tools (14 tools):**
+- **Compound Atomic Tools (15 tools):**
   - **Batching & Inception:** `crystal_batch`, `crystal_init`.
   - **Transitions & Provenance:** `crystal_checkpoint`, `crystal_task_transition`, `crystal_goal_transition`.
   - **Artifacts & Leases:** `crystal_artifact`, `crystal_transient_lease`.
   - **Context Shaping & Slicing:** `crystal_hydrate`, `crystal_slice_fork`.
-  - **Housekeeping & Lifecycle:** `crystal_list`, `crystal_triage`, `crystal_melt`, `crystal_archive`, `crystal_unarchive`, `crystal_delete`.
+  - **Search & Lifecycle:** `crystal_search` (replaces legacy `crystal_list` with multi-dimensional filtering and pagination), `crystal_triage`, `crystal_melt`, `crystal_archive`, `crystal_unarchive`, `crystal_delete`.
 - **Dynamic Context Resources (`ccrystal://`):**
   - `ccrystal://{id}/state`: Living state container JSON (Goal status, pending tasks, active leases, open lessons).
   - `ccrystal://{id}/dag`: Normalized DAG nodes and parent lineage JSON.

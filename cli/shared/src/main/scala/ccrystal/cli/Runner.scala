@@ -63,29 +63,6 @@ class Runner(
         _ <- store.save(crystal)
       yield s"Initialized crystal '$name' at .ccrystals/$name (Author: ${resolvedAuthor.name} [${resolvedAuthor.id}])"
 
-    case CliCommand.ListCrystals(statusOpt, jsonOutput, includeArchived) =>
-      store.list(includeArchived).map { crystals =>
-        val filtered = statusOpt match
-          case Some(st) => crystals.filter(_.goal.status == st)
-          case None     => crystals
-
-        if jsonOutput then filtered.asJson.spaces2
-        else
-          val sb = new java.lang.StringBuilder()
-          sb.append(s"Found ${filtered.size} crystal(s):\n")
-          filtered.foreach { c =>
-            val done         = c.goal.acceptanceCriteria.count(_.completed)
-            val total        = c.goal.acceptanceCriteria.size
-            val openLessons  = c.lessonsLearned.count(_.status == LessonStatus.Open)
-            val activeLeases = c.transientLeases.count(_.status == TransientLeaseStatus.Active)
-            val archivedTag  = if store.isArchived(c.id) then " (archived)" else ""
-            sb.append(
-              s"- ${c.id} [${c.goal.status}]$archivedTag Tasks: $done/$total | Active Leases: $activeLeases | Open Lessons: $openLessons\n",
-            )
-          }
-          sb.toString
-      }
-
     case CliCommand.Search(filter, jsonOutput) =>
       store.search(filter).map { result =>
         if jsonOutput then result.asJson.spaces2

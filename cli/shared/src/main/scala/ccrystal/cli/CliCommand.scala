@@ -18,11 +18,6 @@ enum CliCommand derives CanEqual:
       createdAt: Option[String] = None,
       tasks: List[String] = Nil,
   )
-  case ListCrystals(
-      status: Option[GoalStatus],
-      jsonOutput: Boolean,
-      includeArchived: Boolean = false,
-  )
   case TaskAdd(crystalId: String, description: String)
   case TaskDone(crystalId: String, taskId: String)
   case TaskList(crystalId: String)

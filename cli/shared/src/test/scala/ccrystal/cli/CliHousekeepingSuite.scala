@@ -57,21 +57,27 @@ class CliHousekeepingSuite extends FunSuite:
       ),
     )
 
-  test("Parses 'list' with --archived and --all flags"):
-    val argsArchived   = List("list", "--archived")
+  test("Parses 'search' with --archived and --all flags"):
+    val argsArchived   = List("search", "--archived")
     val parsedArchived = CommandParser.parse(argsArchived)
-    assert(parsedArchived.isRight, "Expected list --archived to parse")
+    assert(parsedArchived.isRight, "Expected search --archived to parse")
     assertEquals(
       parsedArchived.toOption.get,
-      CliCommand.ListCrystals(status = None, jsonOutput = false, includeArchived = true),
+      CliCommand.Search(
+        filter = ccrystal.core.model.search.CrystalFilter(includeArchived = true),
+        jsonOutput = false,
+      ),
     )
 
-    val argsAll   = List("list", "--all")
+    val argsAll   = List("search", "--all")
     val parsedAll = CommandParser.parse(argsAll)
-    assert(parsedAll.isRight, "Expected list --all to parse")
+    assert(parsedAll.isRight, "Expected search --all to parse")
     assertEquals(
       parsedAll.toOption.get,
-      CliCommand.ListCrystals(status = None, jsonOutput = false, includeArchived = true),
+      CliCommand.Search(
+        filter = ccrystal.core.model.search.CrystalFilter(uncapped = true),
+        jsonOutput = false,
+      ),
     )
 
   test("Parses 'triage' command with --solid, --stale, and --json flags"):

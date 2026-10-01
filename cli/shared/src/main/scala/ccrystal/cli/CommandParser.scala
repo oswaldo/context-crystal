@@ -180,22 +180,6 @@ object CommandParser:
     Opts.options[String]("task", "Initial acceptance criterion / task", "t").orEmpty,
   ).mapN(CliCommand.Init.apply)
 
-  private val listOpts = (
-    Opts
-      .option[String]("status", "Filter by goal status")
-      .orNone
-      .map(_.flatMap {
-        case "in_progress" => Some(GoalStatus.InProgress)
-        case "concluded"   => Some(GoalStatus.ConcludedSuccess)
-        case _             => None
-      }),
-    Opts.flag("json", "Output as JSON").orFalse,
-    (
-      Opts.flag("archived", "Include archived crystals in list").orFalse,
-      Opts.flag("all", "Include all crystals (including archived)").orFalse,
-    ).mapN(_ || _),
-  ).mapN(CliCommand.ListCrystals.apply)
-
   private val searchOpts = (
     Opts
       .option[String](
@@ -622,7 +606,6 @@ object CommandParser:
   private val subcommands: List[Opts[CliCommand]] = List(
     forAiOpt,
     Opts.subcommand("init", "Initialize a new crystal")(initOpts),
-    Opts.subcommand("list", "List crystals")(listOpts),
     Opts.subcommand(
       "search",
       "Search and query crystals across the cave with temporal and metadata filters",
