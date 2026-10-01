@@ -3,7 +3,7 @@
   "id" : "macos-release-validation",
   "name" : "macos-release-validation",
   "createdAt" : "2026-10-01T11:31:47.173Z",
-  "updatedAt" : "2026-10-01T11:43:50.535Z",
+  "updatedAt" : "2026-10-01T21:49:23.577Z",
   "parentCrystalId" : null,
   "origin" : null,
   "caveId" : null,
@@ -11,7 +11,7 @@
   "goal" : {
     "title" : "Validate v1.0.1 multi-channel installation on macOS and codify release verification lessons",
     "intent" : "Step-by-step clean-room validation of POSIX installer, Coursier JVM launch, Coursier channel install, and Homebrew upgrade on macOS Apple Silicon, capturing friction and remediation across docs and release skills.",
-    "status" : "in_progress",
+    "status" : "concluded_success",
     "acceptanceCriteria" : [
       {
         "id" : "task-1",
@@ -118,6 +118,29 @@
         "metadata" : {
           
         }
+      },
+      {
+        "id" : "node-4",
+        "parentIds" : [
+          "node-3"
+        ],
+        "timestamp" : "2026-10-01T21:49:19.846Z",
+        "actorId" : "usr_operator",
+        "kind" : "resolution",
+        "contentSummary" : "Validated v1.0.1 multi-channel installation on macOS; codified Coursier syntax, isolated smoke testing, and batch pre-validation",
+        "anchor" : null,
+        "artifactIds" : [
+        ],
+        "inputArtifactIds" : [
+        ],
+        "outputArtifactIds" : [
+        ],
+        "preconditionArtifactIds" : [
+        ],
+        "fidelity" : "inferred",
+        "metadata" : {
+          
+        }
       }
     ]
   },
@@ -128,7 +151,7 @@
       "resourcePath" : "../ccrystal-worktrees/macos-release-validation",
       "description" : "Isolated worktree for macOS v1.0.1 release validation and doc fixes",
       "disposalPolicy" : "revert_on_conclusion",
-      "status" : "active",
+      "status" : "cleaned",
       "createdAt" : "2026-10-01T11:31:47.178Z"
     }
   ],
