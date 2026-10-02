@@ -67,11 +67,11 @@ object TabQuickstart:
           ),
           div(
             className := "install-method-box",
-            h4("Option C: Coursier (Scala Toolchain)"),
-            p("Install native release binary via Coursier application manager:"),
+            h4("Option C: Coursier (Universal / Contrib Catalog)"),
+            p("Install binary globally via official Coursier contrib channel:"),
             div(
               className := "code-snippet-box",
-              pre(code("cs install --channel gh:oswaldo/context-crystal:main ccrystal")),
+              pre(code("cs install --contrib ccrystal")),
               button(
                 typ := "button",
                 className := "snippet-copy-btn",
@@ -80,7 +80,7 @@ object TabQuickstart:
                   case _ => "Copy"
                 },
                 onClick --> { _ =>
-                  State.copyToClipboard("qs-cs", "cs install --channel gh:oswaldo/context-crystal:main ccrystal")
+                  State.copyToClipboard("qs-cs", "cs install --contrib ccrystal")
                 },
               ),
             ),
