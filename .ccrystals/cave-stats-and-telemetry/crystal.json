@@ -1,0 +1,149 @@
+{
+  "schemaVersion" : "1.0.0",
+  "id" : "cave-stats-and-telemetry",
+  "name" : "cave-stats-and-telemetry",
+  "createdAt" : "2026-10-01T23:34:25.383Z",
+  "updatedAt" : "2026-10-02T17:44:36.385Z",
+  "parentCrystalId" : null,
+  "origin" : null,
+  "caveId" : null,
+  "defaultAuthorId" : "usr_usr_antigravity",
+  "goal" : {
+    "title" : "Cave Statistics, Quantitative Telemetry & Token Savings",
+    "intent" : "Implement deterministic cave statistics engine reporting temporal extents, DAG message totals, structural elements, disk footprints, and token savings across CLI (ccrystal stats) and MCP (crystal_stats)",
+    "status" : "concluded_success",
+    "acceptanceCriteria" : [
+      {
+        "id" : "task-1",
+        "description" : "Define CaveStats and TokenSavings domain models and codecs in core",
+        "completed" : true
+      },
+      {
+        "id" : "task-2",
+        "description" : "Implement CaveStatsEngine in core measuring temporal extents, structural elements, and disk metrics",
+        "completed" : true
+      },
+      {
+        "id" : "task-3",
+        "description" : "Implement token estimation and savings algorithm (comparing raw transcript re-ingestion vs selective hydration and melting)",
+        "completed" : true
+      },
+      {
+        "id" : "task-4",
+        "description" : "Implement Decline parser for ccrystal stats in cli (--json, --include-archived, --detailed)",
+        "completed" : true
+      },
+      {
+        "id" : "task-5",
+        "description" : "Implement ccrystal stats execution and dashboard rendering in Runner",
+        "completed" : true
+      },
+      {
+        "id" : "task-6",
+        "description" : "Expose crystal_stats in DefaultMcpHandler tools/list and wire execution",
+        "completed" : true
+      },
+      {
+        "id" : "task-7",
+        "description" : "Write unit and end-to-end integration tests across core and cli modules",
+        "completed" : true
+      },
+      {
+        "id" : "task-8",
+        "description" : "Export MCP schema crystal_stats.json and update Agent Skill and documentation",
+        "completed" : true
+      },
+      {
+        "id" : "task-9",
+        "description" : "Run full multi-platform verification and compile optimized native release binary",
+        "completed" : true
+      }
+    ],
+    "metadata" : {
+      
+    }
+  },
+  "entities" : [
+    {
+      "id" : "usr_usr_antigravity",
+      "kind" : "human",
+      "name" : "usr_antigravity",
+      "metadata" : {
+        
+      },
+      "publicKey" : null,
+      "endpoints" : {
+        
+      }
+    }
+  ],
+  "activeMask" : null,
+  "dag" : {
+    "rootNodeId" : "node-cave-stats-and-telemetry-init",
+    "nodes" : [
+      {
+        "id" : "node-cave-stats-and-telemetry-init",
+        "parentIds" : [
+        ],
+        "timestamp" : "2026-10-01T23:34:25.383Z",
+        "actorId" : "usr_usr_antigravity",
+        "kind" : "human_prompt",
+        "contentSummary" : "Initialized crystal 'cave-stats-and-telemetry' with goal: Cave Statistics, Quantitative Telemetry & Token Savings",
+        "anchor" : null,
+        "artifactIds" : [
+        ],
+        "inputArtifactIds" : [
+        ],
+        "outputArtifactIds" : [
+        ],
+        "preconditionArtifactIds" : [
+        ],
+        "fidelity" : "inferred",
+        "metadata" : {
+          
+        }
+      },
+      {
+        "id" : "node-2",
+        "parentIds" : [
+          "node-cave-stats-and-telemetry-init"
+        ],
+        "timestamp" : "2026-10-02T17:44:36.385Z",
+        "actorId" : "usr_usr_antigravity",
+        "kind" : "resolution",
+        "contentSummary" : "Cave statistics, storage metrics, and quantitative token savings engine implemented across CLI (ccrystal stats) and MCP (crystal_stats) with full multi-platform test coverage.",
+        "anchor" : null,
+        "artifactIds" : [
+        ],
+        "inputArtifactIds" : [
+        ],
+        "outputArtifactIds" : [
+        ],
+        "preconditionArtifactIds" : [
+        ],
+        "fidelity" : "inferred",
+        "metadata" : {
+          
+        }
+      }
+    ]
+  },
+  "transientLeases" : [
+    {
+      "id" : "lease-1",
+      "resourceType" : "git_worktree",
+      "resourcePath" : null,
+      "description" : "Dedicated track worktree at /home/oswaldo/git/ccrystal-worktrees/cave-stats-and-telemetry",
+      "disposalPolicy" : "manual",
+      "status" : "cleaned",
+      "createdAt" : "2026-10-01T23:34:35.983Z"
+    }
+  ],
+  "lessonsLearned" : [
+  ],
+  "artifacts" : [
+  ],
+  "metadata" : {
+    
+  }
+}
