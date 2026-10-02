@@ -301,3 +301,11 @@ given Decoder[ccrystal.core.model.search.SearchSort] = Decoder.decodeString.emap
 }
 
 given Codec[ccrystal.core.model.search.SearchResult] = deriveCodec
+
+given Codec[ccrystal.core.model.stats.TemporalExtents]      = deriveCodec
+given Codec[ccrystal.core.model.stats.StructuralTotals]     = deriveCodec
+given Codec[ccrystal.core.model.stats.StorageFootprint]     = deriveCodec
+given Codec[ccrystal.core.model.stats.TokenSavingsEstimate] = deriveCodec
+given Codec[ccrystal.core.model.stats.CaveHealthBreakdown]  = deriveCodec
+given Codec[ccrystal.core.model.stats.CrystalDiskUsage]     = deriveCodec
+given Codec[ccrystal.core.model.stats.CaveStats]            = deriveCodec

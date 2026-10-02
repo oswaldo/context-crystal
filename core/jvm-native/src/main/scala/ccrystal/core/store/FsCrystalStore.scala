@@ -636,3 +636,56 @@ class FsCrystalStore(val rootPath: Path) extends CrystalStore:
         sb.append("\n")
       }
     sb.toString
+
+  private def computeDirSize(dir: Path): Long =
+    if !Files.exists(dir) then 0L
+    else
+      try
+        Files
+          .list(dir)
+          .iterator()
+          .asScala
+          .map { p =>
+            if Files.isDirectory(p) then computeDirSize(p)
+            else
+              try Files.size(p)
+              catch case _: Throwable => 0L
+          }
+          .sum
+      catch case _: Throwable => 0L
+
+  override def getDiskSizes(): (Long, Long, Map[String, Long]) =
+    try
+      if !Files.exists(rootPath) then (0L, 0L, Map.empty)
+      else
+        var activeTotal = 0L
+        val perCrystal  = Map.newBuilder[String, Long]
+
+        val activeDirs = Files
+          .list(rootPath)
+          .iterator()
+          .asScala
+          .filter(p =>
+            Files.isDirectory(p) && p.getFileName.toString != "archive" && !p.getFileName.toString
+              .startsWith("_"),
+          )
+          .toList
+
+        activeDirs.foreach { dir =>
+          val sz = computeDirSize(dir)
+          activeTotal += sz
+          perCrystal += (dir.getFileName.toString -> sz)
+        }
+
+        var archiveTotal = 0L
+        if Files.exists(archiveDir) then
+          val arcDirs =
+            Files.list(archiveDir).iterator().asScala.filter(Files.isDirectory(_)).toList
+          arcDirs.foreach { dir =>
+            val sz = computeDirSize(dir)
+            archiveTotal += sz
+            perCrystal += (dir.getFileName.toString -> sz)
+          }
+
+        (activeTotal, archiveTotal, perCrystal.result())
+    catch case _: Throwable => (0L, 0L, Map.empty)

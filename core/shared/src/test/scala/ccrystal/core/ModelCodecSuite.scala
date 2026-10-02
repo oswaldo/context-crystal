@@ -456,3 +456,63 @@ class ModelCodecSuite extends FunSuite:
     )
 
     assertEquals(decode[CaveArtifactRegistry](registry.asJson.noSpaces), Right(registry))
+
+  test("Round-trip serialization of CaveStats and stats sub-models"):
+    import ccrystal.core.model.stats.*
+    import ccrystal.core.model.search.AgingCategory
+
+    val stats = CaveStats(
+      filter = None,
+      extents = TemporalExtents(
+        oldestCrystalId = Some("c-old"),
+        oldestCreatedAt = Some("2026-08-28T10:00:00Z"),
+        newestCrystalId = Some("c-new"),
+        newestUpdatedAt = Some("2026-10-02T01:00:00Z"),
+        spanDays = 35L,
+      ),
+      structure = StructuralTotals(
+        totalCrystals = 12,
+        activeCrystals = 10,
+        archivedCrystals = 2,
+        totalDagNodes = 142L,
+        totalTasks = 50,
+        completedTasks = 45,
+        openTasks = 5,
+        activeLeases = 1,
+        totalLessons = 8,
+        openLessons = 0,
+        totalArtifacts = 4,
+        totalEntities = 3,
+      ),
+      storage = StorageFootprint(
+        activeBytes = 400000L,
+        archivedBytes = 50000L,
+        totalBytes = 450000L,
+        averageCrystalBytes = 37500L,
+      ),
+      tokenSavings = TokenSavingsEstimate(
+        estimatedRawDagTokens = 200000L,
+        estimatedHydratedTokens = 15000L,
+        estimatedTokensSaved = 185000L,
+        savingsPercentage = 92.5,
+      ),
+      health = CaveHealthBreakdown(
+        byStatus = Map("concluded_success" -> 10, "in_progress" -> 2),
+        byAging = Map("solid" -> 10, "active" -> 2),
+      ),
+      topCrystals = List(
+        CrystalDiskUsage(
+          crystalId = "c-large",
+          status = GoalStatus.ConcludedSuccess,
+          aging = AgingCategory.Solid,
+          totalBytes = 150000L,
+          dagNodes = 40,
+          estimatedTokens = 60000L,
+          isArchived = false,
+        ),
+      ),
+    )
+
+    val json    = stats.asJson.noSpaces
+    val decoded = decode[CaveStats](json)
+    assertEquals(decoded, Right(stats))

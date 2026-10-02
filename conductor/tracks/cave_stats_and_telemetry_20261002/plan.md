@@ -1,21 +1,21 @@
-# Implementation Plan: Cave Statistics, Quantitative Telemetry & Token Savings
+# Implementation Plan: Cave Statistics, Storage Metrics & Token Savings
 
 ## Phase 1: Core Domain Models, Codecs & Stats Engine
 
-- [ ] Task: Define domain models in `core/shared/src/main/scala/ccrystal/core/model/stats/StatsModels.scala`
-  - [ ] Implement `TemporalExtents`, `StructuralTotals`, `StorageFootprint`, `TokenSavingsEstimate`, `CaveHealthBreakdown`, `CrystalDiskUsage`, `CaveStats`
-  - [ ] Implement Circe codecs in `core/shared/src/main/scala/ccrystal/core/codec/Codecs.scala`
-  - [ ] Write unit tests for codecs in `core/shared/src/test/scala/ccrystal/core/ModelCodecSuite.scala`
-- [ ] Task: Implement `CaveStatsEngine` in `core/shared/src/main/scala/ccrystal/core/stats/CaveStatsEngine.scala`
-  - [ ] Compute temporal extents (oldest/newest crystal and span days using `CivilDate`)
-  - [ ] Aggregate structural totals (crystals, DAG transitions, tasks, leases, lessons, artifacts, entities)
-  - [ ] Compute disk footprint globally and per crystal (active, archived, total, and average)
-  - [ ] Compute token savings comparing full DAG history vs hydrated/living state
-  - [ ] Aggregate health status and aging breakdown
-  - [ ] Support filter-scoped computation reusing `SearchEngine` / `CrystalFilter`
-  - [ ] Wire `CrystalStore.stats(filter: Option[CrystalFilter])` method
-  - [ ] Write unit tests in `core/shared/src/test/scala/ccrystal/core/stats/CaveStatsEngineSuite.scala`
-- [ ] Task: Phase 1 Verification & Checkpoint (Refer to workflow.md)
+- [x] Task: Define domain models in `core/shared/src/main/scala/ccrystal/core/model/stats/StatsModels.scala`
+  - [x] Implement `TemporalExtents`, `StructuralTotals`, `StorageFootprint`, `TokenSavingsEstimate`, `CaveHealthBreakdown`, `CrystalDiskUsage`, `CaveStats`
+  - [x] Implement Circe codecs in `core/shared/src/main/scala/ccrystal/core/codec/Codecs.scala`
+  - [x] Write unit tests for codecs in `core/shared/src/test/scala/ccrystal/core/ModelCodecSuite.scala`
+- [x] Task: Implement `CaveStatsEngine` in `core/shared/src/main/scala/ccrystal/core/stats/CaveStatsEngine.scala`
+  - [x] Compute temporal extents (oldest/newest crystal and span days using `CivilDate`)
+  - [x] Aggregate structural totals (crystals, DAG transitions, tasks, leases, lessons, artifacts, entities)
+  - [x] Compute disk footprint globally and per crystal (active, archived, total, and average)
+  - [x] Compute token savings comparing full DAG history vs hydrated/living state
+  - [x] Aggregate health status and aging breakdown
+  - [x] Support filter-scoped computation reusing `SearchEngine` / `CrystalFilter`
+  - [x] Wire `CrystalStore.stats(filter: Option[CrystalFilter])` method
+  - [x] Write unit tests in `core/shared/src/test/scala/ccrystal/core/stats/CaveStatsEngineSuite.scala`
+- [x] Task: Phase 1 Verification & Checkpoint (Refer to workflow.md)
 
 ## Phase 2: CLI Command `ccrystal stats` & Dashboard Formatting
 

@@ -1,4 +1,4 @@
-# Specification: Cave Statistics, Quantitative Telemetry & Token Savings
+# Specification: Cave Statistics, Storage Metrics & Token Savings
 
 ## 1. Overview & Problem Statement
 
@@ -7,7 +7,7 @@ As engineering teams and autonomous agents accumulate history in a Context Cryst
 - **Temporal Genesis & Activity:** What is the oldest crystal in the cave (genesis)? What is the most recent crystal? When was the cave last updated?
 - **Structural Inventory:** How many total crystals exist (active vs cold storage archive)? How many total DAG transitions/messages have been recorded across the cave? How many acceptance criteria/tasks have been completed vs remain open? How many active transient leases exist? How many lessons learned and registered artifacts/entities exist?
 - **Physical Footprint:** What is the total storage footprint of the cave on disk (in bytes, KB, MB) across active `.ccrystals/` and archived `.ccrystals/archive/`? What is the average footprint per crystal?
-- **Quantitative Token Efficiency:** How many prompt tokens has Context Crystal saved compared to naive conversational transcripts? By utilizing selective context hydration (`ccrystal cast/hydrate --from/--tail`), sub-DAG topological melting (`ccrystal melt`), and compact state representations, Context Crystal deterministically slashes token consumption. A clear statistical calculation provides tangible proof of token savings.
+- **Quantitative Token Efficiency:** How many prompt tokens has Context Crystal saved compared to naive conversational transcripts? By utilizing selective context hydration (`ccrystal cast/hydrate --from/--tail`), sub-DAG topological melting (`ccrystal melt`), and compact state representations, Context Crystal deterministically slashes token consumption. A clear statistical calculation provides a quantitative indicator of token efficiency. *(Note: These figures are reference estimates based on best-effort heuristic assumptions [~4 chars/token] rather than scientifically validated tokenizer benchmarks—an engineering hypothesis we aim to empirically validate in future research).*
 - **Cave Health Breakdown:** What is the distribution of crystals across goal statuses (`InProgress`, `ConcludedSuccess`, `ConcludedAbandoned`) and aging states (`Active`, `Solid`, `Stale`)?
 
 This track delivers a dedicated CLI subcommand (`ccrystal stats`) and native MCP tool (`crystal_stats`) to compute and render these metrics deterministically with zero LLM overhead.
@@ -91,13 +91,13 @@ final case class CaveStats(
 
 By reusing the `CrystalFilter` parser from `ccrystal search`, `ccrystal stats` effortlessly supports combined queries answering targeted operational questions without reinventing filter logic:
 
-- **Global Cave Telemetry:**
+- **Global Cave Metrics:**
 
   ```bash
   ccrystal stats
   ```
 
-- **Filter-Scoped Telemetry:**
+- **Filter-Scoped Metrics:**
   - *"How much disk and token volume did we use for crystals updated in the last 7 days?"*
 
     ```bash
@@ -124,12 +124,12 @@ By reusing the `CrystalFilter` parser from `ccrystal search`, `ccrystal stats` e
 
 - **Options:**
   - Search filter options: `-q / --query`, `--since`, `--until`, `--today`, `--yesterday`, `--status`, `--has-active-leases`, `--touching-path`, `--has-open-tasks`, `--has-lessons`, `--author`, `--aging`, `--include-archived` / `--archived`.
-  - Telemetry options: `--detailed` (prints per-crystal disk usage ranking table), `--json` (emits structured JSON).
+  - Display options: `--detailed` (prints per-crystal disk usage ranking table), `--json` (emits structured JSON).
 
 - **Human-Readable Dashboard Table:**
 
   ```text
-  === CONTEXT CRYSTAL CAVE TELEMETRY & STATS ===
+  === CONTEXT CRYSTAL CAVE METRICS & STATS ===
   Scope: Global Cave (13 crystals evaluated)
 
   Temporal Genesis & Activity:

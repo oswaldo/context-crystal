@@ -132,7 +132,7 @@ Context Crystal adapts to your team's workflow without polluting your code:
 ## Key Capabilities
 
 1. **Topological State DAG:** Context is structured as an immutable directed acyclic graph capturing human prompts, agent reasoning, tool executions, and verifiable checkpoints.
-2. **Capture Fidelity Guarantees:** Distinguishes between **Inferred** context (agent synthesis, chain-of-thought) and **Intercepted** telemetry (deterministic, verbatim tool input/output), preventing synthetic hallucinations from masquerading as verified facts.
+2. **Capture Fidelity Guarantees:** Distinguishes between **Inferred** context (agent synthesis, chain-of-thought) and **Intercepted** execution records (deterministic, verbatim tool input/output), preventing synthetic hallucinations from masquerading as verified facts.
 3. **First-Class Transient Resource Leases:** Tracks temporary resources (`git_worktree`, test environment overrides, mock services, dummy assets) with automated cleanup gates before task conclusion.
 4. **Context Cleavage & Slicing (`ccrystal slice`):** Prune context lattices to avoid token saturation, or slice and fork unexpected discoveries into linked child crystals with full parent lineage.
 5. **Selective Context Hydration & Beam Shaping (`ccrystal cast/hydrate --from`):** Reconstitutes living state (Goal, Tasks, Leases, Lessons) while focusing the state transition beam on a specific milestone (`--from <anchor|id>`, `--to <anchor|id>`, `--tail <N>`), keeping prompts lean without permanent forking.

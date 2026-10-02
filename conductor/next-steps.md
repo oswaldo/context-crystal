@@ -25,15 +25,15 @@
 
 ---
 
-## 2. Next Track: Cave Stats, Telemetry & Token Savings (`cave_stats_and_telemetry`)
+## 2. Next Track: Cave Stats, Storage Metrics & Token Savings (`cave_stats_and_telemetry`)
 
-- **Objective:** Introduce comprehensive cave statistics and quantitative efficiency telemetry (`ccrystal stats` CLI subcommand and MCP `crystal_stats` tool) to provide immediate, high-fidelity answers to workspace lifecycle questions without manual calculations:
+- **Objective:** Introduce comprehensive cave statistics and quantitative efficiency metrics (`ccrystal stats` CLI subcommand and MCP `crystal_stats` tool) to provide immediate, high-fidelity answers to workspace lifecycle questions without manual calculations:
   - **Temporal Extents:** Identify the oldest crystal (initial cave genesis) and most recent crystal (latest active beam).
   - **Volume & Structural Totals:** Total crystals (active vs archived), total DAG transitions/messages, total acceptance criteria/tasks (completed vs open), active transient leases, lessons recorded, and registered artifacts/entities.
   - **Cave Footprint & Densities:** Total cave storage footprint on disk (bytes, KB, MB) across `.ccrystals/` and `.ccrystals/archive/`, along with average crystal footprint.
   - **Quantitative Efficiency & Token Savings:** Calculate estimated prompt tokens saved through selective hydration (`ccrystal cast/hydrate --from/--tail`), sub-DAG melting (`ccrystal melt`), and compact state representation versus bloated transcript re-ingestion.
   - **Status & Health Breakdown:** Aggregated distribution by goal status (`InProgress`, `ConcludedSuccess`, `ConcludedAbandoned`) and deterministic aging health (`Active`, `Solid`, `Stale`).
-  - **Output Modes:** Human-friendly CLI telemetry dashboard table and machine-readable structured JSON (`--json`).
+  - **Output Modes:** Human-friendly CLI metrics dashboard table and machine-readable structured JSON (`--json`).
 - **Priority:** Immediate next step (High impact, requested by human steersman to quantify project health, cave evolution, and tangible token savings).
 
 ---

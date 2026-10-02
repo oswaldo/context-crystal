@@ -23,6 +23,30 @@ trait CrystalStore:
     yield
       val pairs = activeCrystals.map((_, false)) ++ archivedCrystals.map((_, true))
       ccrystal.core.model.search.SearchEngine.search(pairs, filter)
+  def getDiskSizes(): (Long, Long, Map[String, Long]) = (0L, 0L, Map.empty)
+  def stats(
+      filter: Option[ccrystal.core.model.search.CrystalFilter] = None,
+  ): Either[String, ccrystal.core.model.stats.CaveStats] =
+    val includeArchived = filter.forall(_.includeArchived)
+    for
+      activeCrystals <- list(includeArchived = false)
+      archivedCrystals <-
+        if includeArchived then list(includeArchived = true).map(_.filter(c => isArchived(c.id)))
+        else Right(Nil)
+      entityReg   <- getEntityRegistry().map(Option(_)).orElse(Right(None))
+      artifactReg <- getArtifactRegistry().map(Option(_)).orElse(Right(None))
+    yield
+      val pairs = activeCrystals.map((_, false)) ++ archivedCrystals.map((_, true))
+      val (actBytes, arcBytes, perCrystal) = getDiskSizes()
+      ccrystal.core.stats.CaveStatsEngine.compute(
+        allCrystalPairs = pairs,
+        globalActiveBytes = actBytes,
+        globalArchivedBytes = arcBytes,
+        perCrystalBytes = perCrystal,
+        entityRegistry = entityReg,
+        artifactRegistry = artifactReg,
+        filter = filter,
+      )
   def archive(id: String): Either[String, Unit]
   def unarchive(id: String): Either[String, Unit]
   def isArchived(id: String): Boolean
