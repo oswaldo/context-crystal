@@ -20,21 +20,16 @@
 - **Track 17 (`universal_agent_onboarding_20260920`):** Complete `[x]` (Universal Agent Runtime Matrix: `ccrystal agent doctor` non-destructive diagnostic evaluator and `ccrystal agent install` defensive auto-configuration engine supporting Google Antigravity, Claude Code, Claude Desktop, Cursor, Windsurf, and Zed with automatic `.ccrystal.bak` creation and rollback instructions, JSONC comment support, and native Thin LTO release binary).
 - **Track 18 (`store_hardening_and_concurrency_20260920`):** Complete `[x]` (Storage Isolation, Atomic Swaps & Optimistic Concurrency Control: zero-torn-read inode engine via temporary file staging and POSIX atomic renames, pure 128-bit `ContentFingerprint` CAS rebase retry loop on `CrystalStore.update(id)(f)`, defensive drift detection in `AgentInstaller`, and ephemeral `.lock` mutex serialization with PID tracking and 5s staleness auto-expiration).
 - **Track 20 (`cave_search_and_temporal_query_20260930`):** Complete `[x]` (Cave Query, Search & Temporal Navigation: multi-dimensional `SearchEngine` across metadata, DAG nodes, lessons, artifacts, zero-dependency portable `CivilDate` Gregorian calendar epoch math, Decline CLI `ccrystal search` with defensive pagination and sorting, consolidated MCP `crystal_search` replacing `crystal_list`, and full multi-platform test suites).
+- **Track 21 (`cave_stats_and_telemetry_20261002`):** Complete `[x]` (Cave Statistics, Storage Metrics & Token Savings: quantitative lifecycle metrics, genesis/recent extents, disk usage across active and cold storage, per-crystal footprint ranking, reference prompt token savings estimation, Decline CLI `ccrystal stats`, native MCP `crystal_stats` tool, and multi-platform verification).
 - **Binary Location:** `./cli/native/target/scala-3.9.0/ccrystal-cli` (installed in `~/.local/bin/ccrystal` with Thin LTO)
 - **Codeberg Remote:** Clean, up-to-date with linear Conventional Commits history and Git Notes.
 
 ---
 
-## 2. Next Track: Cave Stats, Storage Metrics & Token Savings (`cave_stats_and_telemetry`)
+## 2. Next Track: Crystal Comms & Lock-Free Multi-Entity Mailboxes
 
-- **Objective:** Introduce comprehensive cave statistics and quantitative efficiency metrics (`ccrystal stats` CLI subcommand and MCP `crystal_stats` tool) to provide immediate, high-fidelity answers to workspace lifecycle questions without manual calculations:
-  - **Temporal Extents:** Identify the oldest crystal (initial cave genesis) and most recent crystal (latest active beam).
-  - **Volume & Structural Totals:** Total crystals (active vs archived), total DAG transitions/messages, total acceptance criteria/tasks (completed vs open), active transient leases, lessons recorded, and registered artifacts/entities.
-  - **Cave Footprint & Densities:** Total cave storage footprint on disk (bytes, KB, MB) across `.ccrystals/` and `.ccrystals/archive/`, along with average crystal footprint.
-  - **Quantitative Efficiency & Token Savings:** Calculate estimated prompt tokens saved through selective hydration (`ccrystal cast/hydrate --from/--tail`), sub-DAG melting (`ccrystal melt`), and compact state representation versus bloated transcript re-ingestion.
-  - **Status & Health Breakdown:** Aggregated distribution by goal status (`InProgress`, `ConcludedSuccess`, `ConcludedAbandoned`) and deterministic aging health (`Active`, `Solid`, `Stale`).
-  - **Output Modes:** Human-friendly CLI metrics dashboard table and machine-readable structured JSON (`--json`).
-- **Priority:** Immediate next step (High impact, requested by human steersman to quantify project health, cave evolution, and tangible token savings).
+- **Objective:** Filesystem-based inbox/outbox signaling (`.ccrystals/_comms/<entity-id>/inbox/`) and `Entity.endpoints` resolution for multi-agent coordination without lock contention.
+- **Priority:** High impact, establishes multi-entity communication channels for coordinated workflows; scheduled directly after Cave Stats & Storage Metrics.
 
 ---
 

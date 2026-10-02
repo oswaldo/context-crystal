@@ -36,6 +36,8 @@ flowchart LR
 
 0. **Discovery & Search (`crystal_search`):**
    Search and list cave crystals across multi-dimensional criteria (query text, temporal bounds, status, active leases, touching path, open tasks, lessons, author, aging state, and pagination). When called without filters, lists active crystals (most recently active first).
+0b. **Cave Metrics & Statistics (`crystal_stats`):**
+   Compute quantitative statistics on cave lifecycle, temporal genesis, structural totals, physical disk footprints (active vs. cold storage), and estimated prompt token savings. Reuses search filters to answer scoped operational queries (e.g. storage used for crystals updated in the last 7 days).
 1. **Inception (`crystal_init`):**
    Initialize a dedicated crystal with `name`, `goal`, optional `intent`, `author`, and initial `tasks`.
 2. **Work & Provenance Tracking:**

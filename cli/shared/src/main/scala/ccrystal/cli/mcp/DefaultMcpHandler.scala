@@ -130,6 +130,70 @@ class DefaultMcpHandler(
             ),
           ),
           Tool(
+            name = "crystal_stats",
+            description =
+              "Compute and inspect workspace cave statistics, temporal genesis, structural totals, physical disk footprints, and quantitative prompt token savings across global cave or filtered search criteria.",
+            inputSchema = Json.obj(
+              "type" -> "object".asJson,
+              "properties" -> Json.obj(
+                "query" -> Json.obj(
+                  "type" -> "string".asJson,
+                  "description" -> "Optional free-text search query to scope statistics calculation".asJson,
+                ),
+                "since" -> Json.obj(
+                  "type" -> "string".asJson,
+                  "description" -> "Filter crystals active on or after ISO-8601 date/datetime or relative expression (today, yesterday, 1d, 7d)".asJson,
+                ),
+                "until" -> Json.obj(
+                  "type" -> "string".asJson,
+                  "description" -> "Filter crystals active on or before ISO-8601 date/datetime or relative expression".asJson,
+                ),
+                "status" -> Json.obj(
+                  "type" -> "string".asJson,
+                  "enum" -> List("in_progress", "concluded_success", "concluded_abandoned").asJson,
+                  "description" -> "Filter by goal status".asJson,
+                ),
+                "has_active_leases" -> Json.obj(
+                  "type"        -> "boolean".asJson,
+                  "description" -> "Filter crystals holding active transient resource leases".asJson,
+                ),
+                "touching_path" -> Json.obj(
+                  "type" -> "string".asJson,
+                  "description" -> "Match leases or artifacts referencing the specified filesystem path or URI".asJson,
+                ),
+                "has_open_tasks" -> Json.obj(
+                  "type"        -> "boolean".asJson,
+                  "description" -> "Filter crystals with incomplete acceptance criteria".asJson,
+                ),
+                "has_lessons" -> Json.obj(
+                  "type"        -> "boolean".asJson,
+                  "description" -> "Filter crystals with recorded lessons learned".asJson,
+                ),
+                "author" -> Json.obj(
+                  "type"        -> "string".asJson,
+                  "description" -> "Filter by author entity ID".asJson,
+                ),
+                "aging" -> Json.obj(
+                  "type"        -> "string".asJson,
+                  "enum"        -> List("active", "solid", "stale").asJson,
+                  "description" -> "Filter by aging category (active, solid, stale)".asJson,
+                ),
+                "include_archived" -> Json.obj(
+                  "type"        -> "boolean".asJson,
+                  "description" -> "Include crystals in cold storage (default: false)".asJson,
+                ),
+                "detailed" -> Json.obj(
+                  "type" -> "boolean".asJson,
+                  "description" -> "Show detailed per-crystal storage breakdown and ranking (default: false)".asJson,
+                ),
+                "json_output" -> Json.obj(
+                  "type" -> "boolean".asJson,
+                  "description" -> "Output structured JSON instead of human-readable dashboard table (default: false)".asJson,
+                ),
+              ),
+            ),
+          ),
+          Tool(
             name = "crystal_init",
             description = "Initialize a new context crystal.",
             inputSchema = Json.obj(
@@ -642,6 +706,64 @@ class DefaultMcpHandler(
           uncapped = isUncapped,
         )
         val cmd = CliCommand.Search(filter = filter, jsonOutput = jsonOutput)
+        runCommandToResult(cmd)
+
+      case "crystal_stats" =>
+        val queryOpt = cursor.get[String]("query").toOption
+        val sinceOpt = cursor.get[String]("since").toOption
+        val untilOpt = cursor.get[String]("until").toOption
+        val statusOpt = cursor.get[String]("status").toOption.flatMap {
+          case "in_progress"                     => Some(GoalStatus.InProgress)
+          case "concluded" | "concluded_success" => Some(GoalStatus.ConcludedSuccess)
+          case "concluded_abandoned"             => Some(GoalStatus.ConcludedAbandoned)
+          case _                                 => None
+        }
+        val hasActiveLeasesOpt = cursor.get[Boolean]("has_active_leases").toOption
+        val touchingPathOpt    = cursor.get[String]("touching_path").toOption
+        val hasOpenTasksOpt    = cursor.get[Boolean]("has_open_tasks").toOption
+        val hasLessonsOpt      = cursor.get[Boolean]("has_lessons").toOption
+        val authorOpt          = cursor.get[String]("author").toOption
+        val agingOpt =
+          cursor
+            .get[String]("aging")
+            .toOption
+            .flatMap(ccrystal.core.model.search.AgingCategory.parse)
+        val includeArchived = cursor.get[Boolean]("include_archived").toOption.getOrElse(false)
+        val detailed        = cursor.get[Boolean]("detailed").toOption.getOrElse(false)
+        val jsonOutput      = cursor.get[Boolean]("json_output").toOption.getOrElse(false)
+
+        val hasFilterCriteria = queryOpt.isDefined ||
+          sinceOpt.isDefined ||
+          untilOpt.isDefined ||
+          statusOpt.isDefined ||
+          hasActiveLeasesOpt.isDefined ||
+          touchingPathOpt.isDefined ||
+          hasOpenTasksOpt.isDefined ||
+          hasLessonsOpt.isDefined ||
+          authorOpt.isDefined ||
+          agingOpt.isDefined ||
+          includeArchived
+
+        val filterOpt =
+          if hasFilterCriteria then
+            Some(
+              ccrystal.core.model.search.CrystalFilter(
+                query = queryOpt,
+                since = sinceOpt,
+                until = untilOpt,
+                status = statusOpt,
+                hasActiveLeases = hasActiveLeasesOpt,
+                touchingPath = touchingPathOpt,
+                hasOpenTasks = hasOpenTasksOpt,
+                hasLessons = hasLessonsOpt,
+                author = authorOpt,
+                aging = agingOpt,
+                includeArchived = includeArchived,
+              ),
+            )
+          else None
+
+        val cmd = CliCommand.Stats(filter = filterOpt, detailed = detailed, jsonOutput = jsonOutput)
         runCommandToResult(cmd)
 
       case "crystal_init" =>

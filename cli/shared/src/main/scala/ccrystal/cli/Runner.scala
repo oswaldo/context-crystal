@@ -102,6 +102,12 @@ class Runner(
           sb.toString
       }
 
+    case CliCommand.Stats(filterOpt, detailed, jsonOutput) =>
+      store.stats(filterOpt).map { stats =>
+        if jsonOutput then stats.asJson.spaces2
+        else formatCaveStatsDashboard(stats, detailed)
+      }
+
     case CliCommand.TaskAdd(crystalId, desc) =>
       var assignedTaskId = ""
       store
@@ -833,4 +839,106 @@ class Runner(
       }
 
     sb.append("------------------------------------------------------------\n")
+    sb.toString
+
+  private def formatBytes(bytes: Long): String =
+    if bytes < 1024L then s"$bytes B"
+    else if bytes < 1024L * 1024L then f"${bytes / 1024.0}%.1f KB"
+    else if bytes < 1024L * 1024L * 1024L then f"${bytes / (1024.0 * 1024.0)}%.1f MB"
+    else f"${bytes / (1024.0 * 1024.0 * 1024.0)}%.2f GB"
+
+  private def formatCaveStatsDashboard(
+      stats: ccrystal.core.model.stats.CaveStats,
+      detailed: Boolean,
+  ): String =
+    val sb = new java.lang.StringBuilder()
+    val scopeDesc = stats.filter match
+      case Some(f) =>
+        val parts = List(
+          f.query.map(q => s"query='$q'"),
+          f.since.map(s => s"since=$s"),
+          f.until.map(u => s"until=$u"),
+          f.status.map(st => s"status=$st"),
+          f.aging.map(a => s"aging=$a"),
+          Option.when(f.hasActiveLeases.contains(true))("active leases"),
+          Option.when(f.hasOpenTasks.contains(true))("open tasks"),
+          Option.when(f.hasLessons.contains(true))("lessons"),
+          f.touchingPath.map(p => s"path='$p'"),
+          f.author.map(a => s"author='$a'"),
+          Option.when(f.includeArchived)("incl. archived"),
+        ).flatten
+        s"Filtered (${parts.mkString(", ")}; ${stats.structure.totalCrystals} crystals evaluated)"
+      case None =>
+        s"Global Cave (${stats.structure.totalCrystals} crystals evaluated)"
+
+    sb.append("=== CONTEXT CRYSTAL CAVE METRICS & STATS ===\n")
+    sb.append(s"Scope: $scopeDesc\n\n")
+
+    sb.append("Temporal Genesis & Activity:\n")
+    val genesis = (stats.extents.oldestCrystalId, stats.extents.oldestCreatedAt) match
+      case (Some(id), Some(dt)) => s"$id ($dt)"
+      case _                    => "None (empty cave)"
+    val recent = (stats.extents.newestCrystalId, stats.extents.newestUpdatedAt) match
+      case (Some(id), Some(dt)) => s"$id ($dt)"
+      case _                    => "None (empty cave)"
+    sb.append(s"  Genesis:      $genesis\n")
+    sb.append(s"  Most Recent:  $recent\n")
+    sb.append(s"  Lifespan:     ${stats.extents.spanDays} day(s)\n\n")
+
+    sb.append("Cave Structural Inventory:\n")
+    val taskPct =
+      if stats.structure.totalTasks > 0 then
+        f"${stats.structure.completedTasks * 100.0 / stats.structure.totalTasks}%.1f"
+      else "0.0"
+    sb.append(
+      s"  Total Crystals:     ${stats.structure.totalCrystals} (${stats.structure.activeCrystals} active, ${stats.structure.archivedCrystals} archived)\n",
+    )
+    sb.append(s"  DAG Transitions:    ${stats.structure.totalDagNodes} total nodes\n")
+    sb.append(
+      s"  Tasks / Criteria:   ${stats.structure.totalTasks} total (${stats.structure.completedTasks} completed [$taskPct%], ${stats.structure.openTasks} open)\n",
+    )
+    sb.append(s"  Active Leases:      ${stats.structure.activeLeases} lease(s) in-flight\n")
+    sb.append(
+      s"  Lessons Learned:    ${stats.structure.totalLessons} recorded (${stats.structure.openLessons} unresolved)\n",
+    )
+    sb.append(
+      s"  Artifacts/Entities: ${stats.structure.totalArtifacts} artifacts | ${stats.structure.totalEntities} registered entities\n\n",
+    )
+
+    sb.append("Storage Footprint on Disk:\n")
+    sb.append(s"  Active Cave:        ${formatBytes(stats.storage.activeBytes)}\n")
+    sb.append(s"  Cold Storage:       ${formatBytes(stats.storage.archivedBytes)}\n")
+    sb.append(
+      s"  Total Footprint:    ${formatBytes(stats.storage.totalBytes)} (avg ${formatBytes(stats.storage.averageCrystalBytes)} / crystal)\n\n",
+    )
+
+    sb.append("Quantitative Token Savings (vs. Full DAG Re-Ingestion):\n")
+    val rawTokens   = stats.tokenSavings.estimatedRawDagTokens
+    val hydTokens   = stats.tokenSavings.estimatedHydratedTokens
+    val savedTokens = stats.tokenSavings.estimatedTokensSaved
+    val pct         = f"${stats.tokenSavings.savingsPercentage}%.1f"
+    sb.append(s"  Estimated Full DAG Volume:    ~$rawTokens tokens\n")
+    sb.append(s"  Current Hydrated Footprint:   ~$hydTokens tokens\n")
+    sb.append(s"  Tokens Preserved / Saved:     ~$savedTokens tokens ($pct% reduction)\n\n")
+
+    sb.append("Cave Health Distribution:\n")
+    val statusParts = stats.health.byStatus.toList.sortBy(_._1).map { case (st, count) =>
+      s"$count $st"
+    }
+    val agingParts = stats.health.byAging.toList.sortBy(_._1).map { case (ag, count) =>
+      s"$count $ag"
+    }
+    sb.append(s"  Status: ${statusParts.mkString(" | ")}\n")
+    sb.append(s"  Aging:  ${agingParts.mkString(" | ")}\n")
+
+    if detailed && stats.topCrystals.nonEmpty then
+      sb.append("\nDetailed Disk Usage (Top Crystals):\n")
+      stats.topCrystals.foreach { c =>
+        val archTag = if c.isArchived then " [Archived]" else ""
+        sb.append(
+          f"  - ${c.crystalId}%-20s: ${formatBytes(c.totalBytes)}%8s | ${c.dagNodes}%3d nodes | ~${c.estimatedTokens} tokens [${c.status}]$archTag\n",
+        )
+      }
+
+    sb.append("==============================================\n")
     sb.toString

@@ -243,6 +243,7 @@ When the user communicates in natural language, translate their intent into the 
 | *"We're done with the spike, clean it"* | Release/clean transient resource | `ccrystal transient clean <id> -l <lease-id>` |
 | *"This bug is unrelated, let's track it separately"* | Cleave context and fork into child crystal | `ccrystal slice <id> --from <anchor-or-node> --fork-to <child-id> --prune` |
 | *"Find crystals about X"*, *"Search crystals from yesterday"*, *"What crystals are in progress?"* | Search and inspect crystals with multi-dimensional filters or status queries | `ccrystal search [-q '<query>'] [--since <time>] [--until <time>] [--status <status>] [--limit <N>]` (or MCP `crystal_search`) |
+| *"Cave statistics"*, *"How much disk is the cave using?"*, *"Token savings stats"* | Compute quantitative metrics, physical disk footprints, and token savings | `ccrystal stats [--since <time>] [--status <status>] [--detailed] [--json]` (or MCP `crystal_stats`) |
 | *"Triage workspace cave"*, *"What crystals can we clean?"* | Classify cave crystals for lifecycle hygiene | `crystal_triage` |
 | *"Complete task X"* | Mark acceptance criterion done | `ccrystal task done <id> -t <task-id>` |
 | *"Conclude crystal X"*, *"We're finished with this project"* | Conclude crystal goal and record resolution node | `ccrystal conclude <id> [-s '<summary>']` (or MCP `crystal_goal_transition`) |

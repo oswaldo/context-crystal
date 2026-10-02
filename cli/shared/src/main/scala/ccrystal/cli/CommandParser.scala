@@ -180,7 +180,7 @@ object CommandParser:
     Opts.options[String]("task", "Initial acceptance criterion / task", "t").orEmpty,
   ).mapN(CliCommand.Init.apply)
 
-  private val searchOpts = (
+  private val searchFilterOpts = (
     Opts
       .option[String](
         "query",
@@ -243,7 +243,6 @@ object CommandParser:
         .orFalse,
       Opts.flag("archived", "Include crystals in cold storage (.ccrystals/archive/)").orFalse,
     ).mapN(_ || _),
-    Opts.flag("json", "Output JSON array of search matches instead of formatted table").orFalse,
   ).mapN {
     (
         query,
@@ -263,7 +262,6 @@ object CommandParser:
         offset,
         all,
         includeArchived,
-        json,
     ) =>
       val effectiveSince =
         if today && since.isEmpty then Some("today")
@@ -292,7 +290,33 @@ object CommandParser:
         offset = offset,
         uncapped = isUncapped,
       )
-      CliCommand.Search(filter, json)
+      filter
+  }
+
+  private val searchOpts = (
+    searchFilterOpts,
+    Opts.flag("json", "Output JSON array of search matches instead of formatted table").orFalse,
+  ).mapN((filter, json) => CliCommand.Search(filter, json))
+
+  private val statsOpts = (
+    searchFilterOpts,
+    Opts.flag("detailed", "Show detailed per-crystal storage breakdown and ranking").orFalse,
+    Opts.flag("json", "Output cave statistics and storage metrics as JSON").orFalse,
+  ).mapN { (filter, detailed, json) =>
+    val hasFilterCriteria = filter.query.isDefined ||
+      filter.since.isDefined ||
+      filter.until.isDefined ||
+      filter.status.isDefined ||
+      filter.hasActiveLeases.isDefined ||
+      filter.touchingPath.isDefined ||
+      filter.hasOpenTasks.isDefined ||
+      filter.hasLessons.isDefined ||
+      filter.author.isDefined ||
+      filter.aging.isDefined ||
+      filter.includeArchived
+
+    val effectiveFilter = if hasFilterCriteria then Some(filter) else None
+    CliCommand.Stats(effectiveFilter, detailed = detailed, jsonOutput = json)
   }
 
   private val taskAddOpts = (
@@ -610,6 +634,10 @@ object CommandParser:
       "search",
       "Search and query crystals across the cave with temporal and metadata filters",
     )(searchOpts),
+    Opts.subcommand(
+      "stats",
+      "Display workspace cave metrics, physical disk footprint, and token savings",
+    )(statsOpts),
     taskCmd,
     Opts.subcommand("conclude", "Conclude a crystal with optional resolution summary")(
       concludeOpts,

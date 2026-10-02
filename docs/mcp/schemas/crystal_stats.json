@@ -1,0 +1,63 @@
+{
+  "name": "crystal_stats",
+  "description": "Compute and inspect workspace cave statistics, temporal genesis, structural totals, physical disk footprints, and quantitative prompt token savings across global cave or filtered search criteria.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "query": {
+        "type": "string",
+        "description": "Optional free-text search query to scope statistics calculation"
+      },
+      "since": {
+        "type": "string",
+        "description": "Filter crystals active on or after ISO-8601 date/datetime or relative expression (today, yesterday, 1d, 7d)"
+      },
+      "until": {
+        "type": "string",
+        "description": "Filter crystals active on or before ISO-8601 date/datetime or relative expression"
+      },
+      "status": {
+        "type": "string",
+        "enum": ["in_progress", "concluded_success", "concluded_abandoned"],
+        "description": "Filter by goal status"
+      },
+      "has_active_leases": {
+        "type": "boolean",
+        "description": "Filter crystals holding active transient resource leases"
+      },
+      "touching_path": {
+        "type": "string",
+        "description": "Match leases or artifacts referencing the specified filesystem path or URI"
+      },
+      "has_open_tasks": {
+        "type": "boolean",
+        "description": "Filter crystals with incomplete acceptance criteria"
+      },
+      "has_lessons": {
+        "type": "boolean",
+        "description": "Filter crystals with recorded lessons learned"
+      },
+      "author": {
+        "type": "string",
+        "description": "Filter by author entity ID"
+      },
+      "aging": {
+        "type": "string",
+        "enum": ["active", "solid", "stale"],
+        "description": "Filter by aging category (active, solid, stale)"
+      },
+      "include_archived": {
+        "type": "boolean",
+        "description": "Include crystals in cold storage (default: false)"
+      },
+      "detailed": {
+        "type": "boolean",
+        "description": "Show detailed per-crystal storage breakdown and ranking (default: false)"
+      },
+      "json_output": {
+        "type": "boolean",
+        "description": "Output structured JSON instead of human-readable dashboard table (default: false)"
+      }
+    }
+  }
+}

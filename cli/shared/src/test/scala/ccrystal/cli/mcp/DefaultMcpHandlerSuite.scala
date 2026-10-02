@@ -1007,3 +1007,42 @@ class DefaultMcpHandlerSuite extends FunSuite:
 
     val crystalAfter = store.load("c-mcp-melt").toOption.get
     assertEquals(crystalAfter.dag.nodes.size, 1)
+
+  test("DefaultMcpHandler handles crystal_stats tool call"):
+    val (handler, store, _) = createFixture()
+    val initReq = JsonRpcRequest(
+      id = JsonRpcId.Num(120L),
+      method = "tools/call",
+      params = Some(
+        Json.obj(
+          "name" -> "crystal_init".asJson,
+          "arguments" -> Json.obj(
+            "name" -> "c-stats-test".asJson,
+            "goal" -> "Test Cave Stats Tool".asJson,
+          ),
+        ),
+      ),
+    )
+    handler.handle(initReq)
+
+    val statsReq = JsonRpcRequest(
+      id = JsonRpcId.Num(121L),
+      method = "tools/call",
+      params = Some(
+        Json.obj(
+          "name" -> "crystal_stats".asJson,
+          "arguments" -> Json.obj(
+            "detailed"    -> true.asJson,
+            "json_output" -> false.asJson,
+          ),
+        ),
+      ),
+    )
+    val statsResp = handler.handle(statsReq)
+    assertEquals(statsResp.error.isEmpty, true)
+    val callResult = statsResp.result.get.as[CallToolResult].toOption.get
+    assertEquals(callResult.isError, false)
+    val text = callResult.content.head.text
+    assert(text.contains("=== CONTEXT CRYSTAL CAVE METRICS & STATS ==="), "stats header")
+    assert(text.contains("c-stats-test"), "crystal included in stats")
+    assert(text.contains("Quantitative Token Savings"), "savings section")

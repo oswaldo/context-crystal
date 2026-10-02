@@ -160,12 +160,12 @@ Context Crystal includes ready-to-use skills and instruction adapters for major 
 
 Context Crystal includes an embedded, zero-overhead MCP server built directly into the native binary. It connects Claude Desktop, Cursor, Zed, Windsurf, and agent harnesses to your workspace crystals with zero Python or Node.js runtime dependencies.
 
-- **Compound Atomic Tools (15 tools):**
+- **Compound Atomic Tools (16 tools):**
   - **Batching & Inception:** `crystal_batch`, `crystal_init`.
   - **Transitions & Provenance:** `crystal_checkpoint`, `crystal_task_transition`, `crystal_goal_transition`.
   - **Artifacts & Leases:** `crystal_artifact`, `crystal_transient_lease`.
   - **Context Shaping & Slicing:** `crystal_hydrate`, `crystal_slice_fork`.
-  - **Search & Lifecycle:** `crystal_search` (replaces legacy `crystal_list` with multi-dimensional filtering and pagination), `crystal_triage`, `crystal_melt`, `crystal_archive`, `crystal_unarchive`, `crystal_delete`.
+  - **Metrics, Search & Lifecycle:** `crystal_stats`, `crystal_search` (multi-dimensional filtering and pagination), `crystal_triage`, `crystal_melt`, `crystal_archive`, `crystal_unarchive`, `crystal_delete`.
 - **Dynamic Context Resources (`ccrystal://`):**
   - `ccrystal://{id}/state`: Living state container JSON (Goal status, pending tasks, active leases, open lessons).
   - `ccrystal://{id}/dag`: Normalized DAG nodes and parent lineage JSON.
@@ -278,17 +278,21 @@ ccrystal hydrate auth-refactor --from v1-checkpoint --tail 5
 # 9. Deterministic Sub-DAG Melting (Squash intermediate node chains)
 ccrystal melt auth-refactor --from node-auth-refactor-init --to checkpoint-1 --summary "Finalized initial auth spec & scaffolding"
 
-# 10. Cave Hygiene Triage & Cold Storage Archiving
+# 10. Cave Metrics & Storage Footprint
+ccrystal stats                     # High-level cave metrics, disk footprints, and token savings
+ccrystal stats --since 7d --detailed # Scoped breakdown for crystals updated in last 7 days
+
+# 11. Cave Hygiene Triage & Cold Storage Archiving
 ccrystal triage --solid          # Inspect concluded crystals ready for cleanup
 ccrystal archive auth-refactor   # Move completed crystal to cold storage (.ccrystals/archive/)
 ccrystal unarchive auth-refactor # Restore crystal to active cave
-ccrystal list --archived         # List active and archived crystals
+ccrystal search --archived       # Search across active and archived crystals
 
-# 11. Dual-Audience Guidance & Entity Conventions
+# 12. Dual-Audience Guidance & Entity Conventions
 ccrystal --for-ai               # Operational invariants, PII rules, and entity schemes for AI agents
 ccrystal entity conventions     # Display canonical entity prefixes (usr_, agt_, mdl_, tool_, sys_)
 
-# 12. Universal Agent Runtime Onboarding & Diagnostics
+# 13. Universal Agent Runtime Onboarding & Diagnostics
 ccrystal agent doctor                  # Check environment, PATH, and harness configurations
 ccrystal agent doctor --json           # Machine-readable JSON diagnostic report
 ccrystal agent install --dry-run       # Preview automated MCP registration without disk changes

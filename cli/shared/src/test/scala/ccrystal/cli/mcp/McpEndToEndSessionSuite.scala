@@ -208,9 +208,10 @@ class McpEndToEndSessionSuite extends FunSuite:
         |{"jsonrpc":"2.0","id":2,"method":"tools/list"}
         |{"jsonrpc":"2.0","id":3,"method":"tools/call","params":{"name":"crystal_init","arguments":{"name":"ergo-session","goal":"Ergonomic Tools E2E","tasks":["T1 Design","T2 Implement"]}}}
         |{"jsonrpc":"2.0","id":4,"method":"tools/call","params":{"name":"crystal_search","arguments":{"json_output":true}}}
-        |{"jsonrpc":"2.0","id":5,"method":"tools/call","params":{"name":"crystal_hydrate","arguments":{"crystal_id":"ergo-session","summary_only":true}}}
-        |{"jsonrpc":"2.0","id":6,"method":"tools/call","params":{"name":"crystal_triage","arguments":{"json_output":false}}}
-        |{"jsonrpc":"2.0","id":7,"method":"tools/call","params":{"name":"crystal_delete","arguments":{"crystal_id":"ergo-session","force":true}}}
+        |{"jsonrpc":"2.0","id":5,"method":"tools/call","params":{"name":"crystal_stats","arguments":{"detailed":true,"json_output":false}}}
+        |{"jsonrpc":"2.0","id":6,"method":"tools/call","params":{"name":"crystal_hydrate","arguments":{"crystal_id":"ergo-session","summary_only":true}}}
+        |{"jsonrpc":"2.0","id":7,"method":"tools/call","params":{"name":"crystal_triage","arguments":{"json_output":false}}}
+        |{"jsonrpc":"2.0","id":8,"method":"tools/call","params":{"name":"crystal_delete","arguments":{"crystal_id":"ergo-session","force":true}}}
         |""".stripMargin
 
     val in        = new BufferedReader(new StringReader(sessionScript))
@@ -220,7 +221,7 @@ class McpEndToEndSessionSuite extends FunSuite:
     transport.run(handler)
 
     val responseLines = outBuf.toString("UTF-8").split("\n").map(_.trim).filter(_.nonEmpty).toList
-    assertEquals(responseLines.size, 7)
+    assertEquals(responseLines.size, 8)
 
     // 1. initialize
     val initResp = decode[JsonRpcResponse](responseLines(0)).toOption.get
@@ -231,6 +232,7 @@ class McpEndToEndSessionSuite extends FunSuite:
     val toolsResp = decode[JsonRpcResponse](responseLines(1)).toOption.get
     val tools     = toolsResp.result.get.hcursor.as[ListToolsResult].toOption.get.tools
     assert(tools.exists(_.name == "crystal_search"), "must list crystal_search")
+    assert(tools.exists(_.name == "crystal_stats"), "must list crystal_stats")
     assert(!tools.exists(_.name == "crystal_list"), "must not list obsolete crystal_list")
     assert(tools.exists(_.name == "crystal_hydrate"), "must list crystal_hydrate")
     assert(tools.exists(_.name == "crystal_triage"), "must list crystal_triage")
@@ -253,21 +255,31 @@ class McpEndToEndSessionSuite extends FunSuite:
       "must contain crystal id",
     )
 
-    // 5. crystal_hydrate (summary_only)
-    val hydResp   = decode[JsonRpcResponse](responseLines(4)).toOption.get
+    // 5. crystal_stats
+    val statsResp   = decode[JsonRpcResponse](responseLines(4)).toOption.get
+    val statsResult = statsResp.result.get.hcursor.as[CallToolResult].toOption.get
+    assert(!statsResult.isError, "crystal_stats must succeed")
+    assert(
+      statsResult.content.head.text.contains("=== CONTEXT CRYSTAL CAVE METRICS & STATS ==="),
+      "stats header",
+    )
+    assert(statsResult.content.head.text.contains("ergo-session"), "crystal in stats")
+
+    // 6. crystal_hydrate (summary_only)
+    val hydResp   = decode[JsonRpcResponse](responseLines(5)).toOption.get
     val hydResult = hydResp.result.get.hcursor.as[CallToolResult].toOption.get
     assert(!hydResult.isError, "crystal_hydrate must succeed")
     assert(hydResult.content.head.text.contains("Ergonomic Tools E2E"), "must contain goal title")
 
-    // 6. crystal_triage (markdown table)
-    val triageResp   = decode[JsonRpcResponse](responseLines(5)).toOption.get
+    // 7. crystal_triage (markdown table)
+    val triageResp   = decode[JsonRpcResponse](responseLines(6)).toOption.get
     val triageResult = triageResp.result.get.hcursor.as[CallToolResult].toOption.get
     assert(!triageResult.isError, "crystal_triage must succeed")
     assert(triageResult.content.head.text.contains("ergo-session"), "triage must list ergo-session")
     assert(triageResult.content.head.text.contains("Keep"), "in-progress crystal must be Keep")
 
-    // 7. crystal_delete
-    val delResp   = decode[JsonRpcResponse](responseLines(6)).toOption.get
+    // 8. crystal_delete
+    val delResp   = decode[JsonRpcResponse](responseLines(7)).toOption.get
     val delResult = delResp.result.get.hcursor.as[CallToolResult].toOption.get
     assert(!delResult.isError, "crystal_delete must succeed")
     assertEquals(store.exists("ergo-session"), false)

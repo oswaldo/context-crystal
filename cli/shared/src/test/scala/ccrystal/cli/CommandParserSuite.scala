@@ -813,3 +813,36 @@ class CommandParserSuite extends FunSuite:
         assertEquals(filter.aging, Some(ccrystal.core.model.search.AgingCategory.Active))
       case other => fail(s"Unexpected command: $other")
     }
+
+  test("Parses 'stats' command with global defaults"):
+    val res = CommandParser.parse(List("stats"))
+    assertEquals(res.isRight, true)
+    res.foreach {
+      case CliCommand.Stats(filter, detailed, jsonOutput) =>
+        assertEquals(filter, None)
+        assertEquals(detailed, false)
+        assertEquals(jsonOutput, false)
+      case other => fail(s"Unexpected command: $other")
+    }
+
+  test("Parses 'stats' with search filter flags and --detailed --json"):
+    val res = CommandParser.parse(
+      List(
+        "stats",
+        "--since",
+        "7d",
+        "--status",
+        "in_progress",
+        "--detailed",
+        "--json",
+      ),
+    )
+    assertEquals(res.isRight, true)
+    res.foreach {
+      case CliCommand.Stats(Some(filter), detailed, jsonOutput) =>
+        assertEquals(filter.since, Some("7d"))
+        assertEquals(filter.status, Some(GoalStatus.InProgress))
+        assertEquals(detailed, true)
+        assertEquals(jsonOutput, true)
+      case other => fail(s"Unexpected command: $other")
+    }
