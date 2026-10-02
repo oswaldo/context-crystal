@@ -123,7 +123,7 @@ class CrystalSearchEngineSuite extends FunSuite:
       .get
     assertEquals(successOnly.matches.map(_.crystal.id), List("old-archive"))
 
-  test("CrystalStore.search supports sorting and pagination with remaining telemetry"):
+  test("CrystalStore.search supports sorting and pagination with remaining count metadata"):
     val c1 = sampleCrystal("alpha", "Alpha goal", updatedAt = "2026-09-01T10:00:00Z")
     val c2 = sampleCrystal("beta", "Beta goal", updatedAt = "2026-09-05T10:00:00Z")
     val c3 = sampleCrystal("gamma", "Gamma goal", updatedAt = "2026-09-10T10:00:00Z")

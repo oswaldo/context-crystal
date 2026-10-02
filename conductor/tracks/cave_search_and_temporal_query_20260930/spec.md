@@ -49,7 +49,7 @@ Define an immutable, zero-reflection filter abstraction in `core` (`io.github.os
 - **Defensive Pagination & Context Limits (`limit: Option[Int]`, `offset: Option[Int]`):**
   - `limit`: Maximum results to return per page (default: 20; uncap with `--all` or `limit: 0`).
   - `offset`: Starting index offset for page pagination (default: 0).
-- **Result Telemetry (`SearchResult`):** Contains `total` (all matching crystals), `offset`, `limit`, `hasMore`, `remaining` count of unviewed matching crystals, and paginated `matches`.
+- **Result Metadata (`SearchResult`):** Contains `total` (all matching crystals), `offset`, `limit`, `hasMore`, `remaining` count of unviewed matching crystals, and paginated `matches`.
 
 ### 2.2 CLI Command: `ccrystal search`
 
@@ -72,7 +72,7 @@ Add `ccrystal search` with Decline-based options, while retaining `ccrystal list
 - `--offset <N>`: Pagination offset (default: 0).
 - `--all`: Show all results without pagination cap.
 - `--include-archived`: Include crystals in cold storage (`.ccrystals/archive/`).
-- `--json`: Output JSON envelope (`SearchResult`) with pagination telemetry and matches instead of formatted text.
+- `--json`: Output JSON envelope (`SearchResult`) with pagination metadata and matches instead of formatted text.
 
 **Formatting:**
 - Text table output displays: Crystal ID, Status, Matched Reasons/Snippets, Task Progress ($X/Y$), Active Leases, Last Modified relative date.

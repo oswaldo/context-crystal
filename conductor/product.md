@@ -106,6 +106,6 @@ To maintain high focus and interoperability, Context Crystal explicitly excludes
 
 - **Planning & Methodology Enforcement:** Does not mandate or enforce specific planning schemas (e.g., Conductor, OpenSpec, SpecKit); it serves as the underlying context and state interchange format for all of them.
 - **Long-Term Memory Search & Storage:** Vector databases, embedding indexes, semantic search engines, and knowledge vaults are considered external consumer/producer tools. Context Crystal is an operational state transition lattice (a navigational map and compass), not an associative memory recall engine.
-- **Secret & Credential Vaulting:** Context Crystal is not a secrets manager, key vault, or credential broker. Crystals must never store raw secrets, passwords, or tokens; credentials belong in external secure storage, with crystals maintaining only external pointer references or sanitized telemetry.
+- **Secret & Credential Vaulting:** Context Crystal is not a secrets manager, key vault, or credential broker. Crystals must never store raw secrets, passwords, or tokens; credentials belong in external secure storage, with crystals maintaining only external pointer references or sanitized debug metadata.
 - **Agent Runtime & Orchestration:** Model switching loops, autonomous execution loops, and scheduler daemons are the responsibility of the host engine/harness.
 - **Direct LLM Execution:** The core specification and schema do not make direct LLM API calls or enforce prompt templating formats.

@@ -246,11 +246,11 @@ class ContextHydratorSuite extends FunSuite:
       timestamp = "2026-09-13T10:00:00Z",
       actorId = "agent_bob",
       kind = NodeKind.ToolExecution,
-      contentSummary = "Flash firmware and run telemetry",
+      contentSummary = "Flash firmware and run diagnostics",
       anchor = Some("flash_test"),
       artifactIds = List("art-model-file"),
       inputArtifactIds = List("art-model-file"),
-      outputArtifactIds = List("art-telemetry-log"),
+      outputArtifactIds = List("art-diagnostics-log"),
       preconditionArtifactIds = List("art-env-power", "art-test-rig"),
     )
 
@@ -282,7 +282,7 @@ class ContextHydratorSuite extends FunSuite:
 
     // Assert directional links in transition line
     assert(text.contains("[inputs: art-model-file]"), "Missing inputs badge")
-    assert(text.contains("[outputs: art-telemetry-log]"), "Missing outputs badge")
+    assert(text.contains("[outputs: art-diagnostics-log]"), "Missing outputs badge")
     assert(
       text.contains("[preconditions: art-env-power, art-test-rig]"),
       "Missing preconditions badge",

@@ -58,7 +58,7 @@ class FsCrystalStoreSuite extends FunSuite:
           "l-1",
           TransientResourceType.EnvOverride,
           None,
-          "Debug telemetry",
+          "Debug metrics",
           DisposalPolicy.RevertOnConclusion,
           TransientLeaseStatus.Active,
           "2026-08-29T12:00:00Z",

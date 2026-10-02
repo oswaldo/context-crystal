@@ -481,7 +481,7 @@ class DefaultMcpHandlerSuite extends FunSuite:
     assert(listText.contains("init-tasks-crystal"), "search text output should mention crystal ID")
     assert(listText.contains("Tasks: 0/2"), "search text output should show task ratio 0/2")
 
-    // 4. tools/call crystal_search (json output with telemetry)
+    // 4. tools/call crystal_search (json output with pagination metadata)
     val listJsonReq = JsonRpcRequest(
       id = JsonRpcId.Str("call-search-json"),
       method = "tools/call",
