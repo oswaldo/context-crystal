@@ -55,17 +55,19 @@ brew tap oswaldo/context-crystal
 brew install ccrystal
 ```
 
-### 3. Coursier (JVM Zero-Install & Universal OS)
+### 3. Coursier (Universal Zero-Install: Windows, macOS, Linux, BSD)
 
-For developers on any operating system (including Windows, macOS, Linux, and BSD) with Java 17+ installed:
+For developers and automated agents on any operating system with Java 17+ installed:
 
 ```bash
-# Launch on-demand instantly without installation (resolved directly via Maven Central)
-cs launch io.github.oswaldo:ccrystal-cli_3:latest.release -- --help
+# Instant launch via official Coursier contrib channel:
+cs launch --contrib ccrystal
 
-# Or install binary locally via repo channel
-cs install --channel gh:oswaldo/context-crystal/main ccrystal
+# Or install globally to your PATH:
+cs install --contrib ccrystal
 ```
+
+*(You can also launch directly via immutable Maven Central coordinates: `cs launch io.github.oswaldo:ccrystal-cli_3:latest.release -- --help`)*
 
 ### 4. Platform Support Matrix
 
