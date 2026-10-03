@@ -53,6 +53,11 @@
 - **Track 25: Native MCP Server Consolidation, TDQS Optimization & Tool Quality:**
   - **Objective:** Refactor the MCP server tool surface into an ergonomic, consolidated facade (e.g. 6-8 cohesive tools: `crystal_manage`, `crystal_hydrate`, `crystal_transition`, `crystal_artifact`, `crystal_lesson`, `crystal_lifecycle`) to eliminate prompt context bloat and agent routing indecision.
   - **Naming & Completeness:** Enforce strict, uniform `verb_noun` naming conventions, add dedicated first-class lesson management tools (`crystal_lesson` to record, list, and resolve open lessons), and provide full artifact lifecycle support (updating metadata and unregistering artifacts) to achieve a verified Grade A (4.5+/5.0) on Glama TDQS.
+- **Track 26: Golden Triad Onboarding: Agent Skill Auto-Distribution & Doctor Evolution (`golden_triad_agent_skill_distribution`):**
+  - **Objective:** Bridge the gap between raw tool access and agent reflexes by completing the "Golden Triad" (Runtime CLI + MCP Server + Agent Skill):
+    - **Skill Diagnostic in `ccrystal agent doctor`:** Inspect whether `.agents/skills/context-crystal/SKILL.md` or harness-specific skill directories (`~/.gemini/antigravity-cli/skills/`, `~/.claude/skills/`, `.cursorrules`) have the Context Crystal skill equipped, providing actionable tips if an agent has MCP tools configured without cognitive reflexes.
+    - **Auto-Installation in `ccrystal agent install`:** Expand `ccrystal agent install` with automatic skill distribution (`--with-skill`, enabled by default) to install and link the authoritative `SKILL.md` into target agent workspaces.
+    - **Showcase & Registry Documentation:** Update `README.md` and the web documentation portal with the "Golden Triad" setup guide, educating users and autonomous agents on why equipping the skill delivers zero-prompt autonomy.
 - **Track 14: Strict Functional Quality & Invariant Hardening (Disallow var, null, throws):**
   - Compiler warning configurations (`-Werror`, `-Wnonunit-statement`), scalafix lint rules, and elimination of mutable state / null / throw across `core` and `cli`.
 - **Track 15: Context Armor, Secret Guards & Threat Modeling (Betterleaks Integration & Injection Defenses):**
