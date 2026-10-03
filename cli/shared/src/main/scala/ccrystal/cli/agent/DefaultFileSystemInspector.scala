@@ -2,29 +2,39 @@ package ccrystal.cli.agent
 
 import ccrystal.core.agent.FileSystemInspector
 import java.io.File
-import java.nio.charset.StandardCharsets
-import java.nio.file.{Files, Paths}
 
 object DefaultFileSystemInspector extends FileSystemInspector:
 
   override def fileExists(path: String): Boolean =
-    Files.isRegularFile(Paths.get(path))
+    try
+      val p = os.Path(path, os.pwd)
+      os.isFile(p)
+    catch case _: Throwable => false
 
   override def directoryExists(path: String): Boolean =
-    Files.isDirectory(Paths.get(path))
+    try
+      val p = os.Path(path, os.pwd)
+      os.isDir(p)
+    catch case _: Throwable => false
 
   override def isWritable(path: String): Boolean =
-    Files.isWritable(Paths.get(path))
+    try
+      val p = os.Path(path, os.pwd)
+      p.toIO.canWrite
+    catch case _: Throwable => false
 
   override def isExecutable(path: String): Boolean =
-    Files.isExecutable(Paths.get(path))
+    try
+      val p = os.Path(path, os.pwd)
+      p.toIO.canExecute
+    catch case _: Throwable => false
 
   override def readFile(path: String): Option[String] =
-    val p = Paths.get(path)
-    if Files.isRegularFile(p) then
-      try Some(new String(Files.readAllBytes(p), StandardCharsets.UTF_8))
-      catch case _: Throwable => None
-    else None
+    try
+      val p = os.Path(path, os.pwd)
+      if os.isFile(p) then Some(os.read(p))
+      else None
+    catch case _: Throwable => None
 
   override def findInPath(binaryName: String): Option[String] =
     val pathEnv   = sys.env.getOrElse("PATH", "")
@@ -33,6 +43,6 @@ object DefaultFileSystemInspector extends FileSystemInspector:
       .split(separator)
       .iterator
       .filter(_.trim.nonEmpty)
-      .map(dir => Paths.get(dir).resolve(binaryName))
-      .find(p => Files.isRegularFile(p) && Files.isExecutable(p))
-      .map(_.toAbsolutePath.toString)
+      .map(dir => os.Path(dir, os.pwd) / binaryName)
+      .find(p => os.isFile(p) && p.toIO.canExecute)
+      .map(_.toString)

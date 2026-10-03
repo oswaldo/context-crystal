@@ -1,8 +1,6 @@
 package ccrystal.cli.agent
 
 import ccrystal.core.agent.FileSystemOperator
-import java.nio.charset.StandardCharsets
-import java.nio.file.{Files, Paths, StandardCopyOption}
 
 object DefaultFileSystemOperator extends FileSystemOperator:
 
@@ -26,19 +24,21 @@ object DefaultFileSystemOperator extends FileSystemOperator:
 
   override def createDirectories(path: String): Either[String, Unit] =
     try
-      Files.createDirectories(Paths.get(path))
+      os.makeDir.all(os.Path(path, os.pwd))
       Right(())
     catch case e: Throwable => Left(s"Failed to create directory '$path': ${e.getMessage}")
 
   override def writeFile(path: String, content: String): Either[String, Unit] =
     try
-      Files.write(Paths.get(path), content.getBytes(StandardCharsets.UTF_8))
+      os.write.over(os.Path(path, os.pwd), content, createFolders = true)
       Right(())
     catch case e: Throwable => Left(s"Failed to write file '$path': ${e.getMessage}")
 
   override def copyFile(source: String, destination: String): Either[String, Unit] =
     try
-      Files.copy(Paths.get(source), Paths.get(destination), StandardCopyOption.REPLACE_EXISTING)
+      val src = os.Path(source, os.pwd)
+      val dest = os.Path(destination, os.pwd)
+      os.copy.over(src, dest, createFolders = true)
       Right(())
     catch
       case e: Throwable =>
@@ -46,9 +46,18 @@ object DefaultFileSystemOperator extends FileSystemOperator:
 
   override def atomicWrite(path: String, content: String): Either[String, Unit] =
     try
-      val targetPath = Paths.get(path)
-      val tempPath   = Paths.get(s"$path.tmp-${System.currentTimeMillis()}")
-      Files.write(tempPath, content.getBytes(StandardCharsets.UTF_8))
-      Files.move(tempPath, targetPath, StandardCopyOption.REPLACE_EXISTING)
-      Right(())
+      val target = os.Path(path, os.pwd)
+      val parent = target / os.up
+      if !os.exists(parent) then os.makeDir.all(parent)
+      val temp = parent / s".${target.last}.tmp-${System.currentTimeMillis()}"
+      try
+        os.write.over(temp, content, createFolders = true)
+        try os.move(temp, target, replaceExisting = true, atomicMove = true)
+        catch case _: Throwable => os.move(temp, target, replaceExisting = true)
+        Right(())
+      catch
+        case e: Throwable =>
+          try os.remove(temp)
+          catch case _: Throwable => ()
+          throw e
     catch case e: Throwable => Left(s"Failed to write file atomically to '$path': ${e.getMessage}")

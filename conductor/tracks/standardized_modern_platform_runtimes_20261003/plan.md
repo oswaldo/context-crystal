@@ -35,14 +35,14 @@
 
 ## Phase 3: Filesystem Modernization in cli & Agent Operations
 
-- [ ] Task: Add `os-lib` to `cli` and refactor agent file operations
-  - [ ] Add `"com.lihaoyi" %%% "os-lib" % "0.11.4"` to `cli` in `build.sbt`
-  - [ ] Refactor `DefaultFileSystemOperator.scala` to use `os.Path`, `os.write.over`, `os.copy`, and `os.remove`
-  - [ ] Refactor `StoreResolver.scala` to use `os.Path` and `os.exists`
-- [ ] Task: Verify CLI test suites
-  - [ ] Run `AgentInstallerSuite`, `AgentDoctorSuite`, `HarnessConfigPatcherSuite`, `StoreResolverSuite`
-  - [ ] Run `CommandParserSuite`, `RunnerSuite`, and `McpEndToEndSessionSuite`
-- [ ] Task: Phase 3 Verification & Checkpoint (Refer to workflow.md)
+- [x] Task: Add `os-lib` to `cli` and refactor agent file operations
+  - [x] Add `"com.lihaoyi" %%% "os-lib" % "0.11.4"` to `cli` in `build.sbt`
+  - [x] Refactor `DefaultFileSystemOperator.scala` to use `os.Path`, `os.write.over`, `os.copy.over`, and atomic rename
+  - [x] Refactor `StoreResolver.scala` to use `os.Path` and `os.isFile`
+- [x] Task: Verify CLI test suites
+  - [x] Run `AgentInstallerSuite`, `AgentDoctorSuite`, `HarnessConfigPatcherSuite`, `StoreResolverSuite`
+  - [x] Run `CommandParserSuite`, `RunnerSuite`, and `McpEndToEndSessionSuite`
+- [x] Task: Phase 3 Verification & Checkpoint (Refer to workflow.md)
 
 ## Phase 4: Full Multi-Platform Verification, Linting & Documentation
 
