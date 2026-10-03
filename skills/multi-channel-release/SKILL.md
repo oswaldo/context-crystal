@@ -59,6 +59,10 @@ This skill codifies the complete operational lifecycle, architecture invariants,
   - Public API and library additions
 - **Strict Exclusion of Meta-Rules:** Repo-internal process improvements, governance guidelines codified into `AGENTS.md`, agent prompt engineering, and developer-internal workflows are not external deliverables and must be strictly excluded from public release notes.
 
+### D. Zero-Telemetry Terminology Invariant
+
+- **100% Local & Sovereign:** Context Crystal is strictly offline, deterministic, and local-first. Never use the word "telemetry" in user-facing CLI options, command descriptions, release communications, or public documentation to describe local workspace inspection, storage accounting, or token savings. Avoid surveillance and phone-home stigmas; prefer *metrics*, *statistics*, *accounting*, *observability*, or *inspection*.
+
 ---
 
 ## 2. Pre-Release Verification Checklist
@@ -108,8 +112,11 @@ Instruct the operator to push the tag and branch using their locked transport ke
 
 ```bash
 git push github main && git push origin main
-git push github v1.0.2 && git push origin v1.0.2
+git push github v1.1.0 && git push origin v1.1.0
 ```
+
+> [!TIP]
+> **Unified Push Helper Script Pattern:** When a release touches multiple repositories or remotes (`context-crystal`, `homebrew-context-crystal`, `context-crystal-gh-pages`), the agent should generate a clean, temporary POSIX helper script (`/tmp/push_release_bundle.sh`) with `set -euo pipefail` and executable permissions. This allows the operator to execute the push sequence with their locked transport key in a single turn without repetitive cross-terminal copy-pasting. Remove the helper script immediately after the pushes succeed.
 
 ### Step 4: Monitor Release Workflow
 
@@ -136,11 +143,17 @@ Once the GitHub Release and Maven Central publishing succeed:
 
 Verify that root `apps.json` and upstream `apps-contrib/resources/ccrystal.json` maintain dynamic `${version}` and `"io.github.oswaldo:ccrystal-cli_3:latest.release"`.
 
-### 3. Update Web Showcase Portal & llms.txt
+### 3. Update Web Showcase Portal & llms.txt (`../context-crystal-gh-pages`)
 
-1. Update version references in `../context-crystal-gh-pages/site/TabQuickstart.scala` and `llms.txt`.
-2. Recompile static bundle: `scala-cli --power package site --js-mode release -o main.js --force`.
-3. Commit and push to `gh-pages`.
+Always execute the complete portal release synchronization checklist:
+
+1. **Brand Badge:** Update the version string in `site/Header.scala` (`span(className := "brand-badge", "v<version> • ...")`).
+2. **MCP Tool Catalog:** Update tool counts and table entries in `site/TabMcp.scala` to reflect new or modified tools.
+3. **Platform Matrix:** Verify platform compiler and linker optimizations in `site/TabQuickstart.scala`.
+4. **Cache Busting Invariant:** Update the script tag in `index.html` with a version query string (`<script type="module" src="main.js?v=<version>"></script>`) to immediately bust browser caches for returning visitors.
+5. **AI Discovery:** Update `/llms.txt` and `/llms-full.txt` with the new version number, commands, and MCP tools.
+6. **Bundle Recompilation:** Recompile the static bundle with `scala-cli --power package site --js-mode release -o main.js --force`.
+7. **Commit & Push:** Commit changes to `gh-pages` and push via the operator push gate.
 
 ---
 

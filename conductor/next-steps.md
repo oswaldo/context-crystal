@@ -26,19 +26,23 @@
 
 ---
 
-## 2. Next Track: Crystal Comms & Lock-Free Multi-Entity Mailboxes
+## 2. Next Track: Cross-Crystal Connections, Lattice Bonds & Defensive Hydration Paging (`crystal_connections_and_lattice_bonds`)
 
-- **Objective:** Filesystem-based inbox/outbox signaling (`.ccrystals/_comms/<entity-id>/inbox/`) and `Entity.endpoints` resolution for multi-agent coordination without lock contention.
-- **Priority:** High impact, establishes multi-entity communication channels for coordinated workflows; scheduled directly after Cave Stats & Storage Metrics.
+- **Objective:** Introduce first-class structural relationships between crystals (Spec v1.1) and defensive hydration controls to prevent context blowup:
+  - **Typed Lattice Bonds:** Support typed cross-crystal links (`relates_to`, `depends_on`, `blocks`, `supersedes`, `references`) connecting distinct operational goals (e.g. linking a release crystal to an external registration/distribution crystal).
+  - **CLI & MCP Ergonomics:** Introduce `ccrystal connect <source> <target> --rel <kind>`, `ccrystal disconnect`, `ccrystal connections <id>`, and companion MCP tools (`crystal_connect`, `crystal_disconnect`).
+  - **Lattice Beam Projection & Quick-Peeking:** Automatically project connected crystals into `ccrystal hydrate` with status and open task summaries, enabling agents to peek across boundaries without context loss.
+  - **Defensive Hydration Paging & Safe Defaults:** Convention-over-configuration limits on hydration beams (default `--tail 10`, max connection depth 1, filtering completed tasks) to protect against unhygienic cave bloat, with optional external configuration/profile overrides.
+- **Priority:** Immediate next step (High impact, establishes topological workspace graph and protects prompt context windows).
 
 ---
 
 ## 3. Backlog & Future Track Roadmap
 
-- **Subsequent Track: Crystal Comms & Lock-Free Multi-Entity Mailboxes:**
-  - **Objective:** Filesystem-based inbox/outbox signaling (`.ccrystals/_comms/<entity-id>/inbox/`) and `Entity.endpoints` resolution for multi-agent coordination without lock contention.
-  - **Priority:** High impact, establishes multi-entity communication channels for coordinated workflows; scheduled directly after Cave Query & Search.
-- **Track 22: Native MCP Server Consolidation, TDQS Optimization & Tool Quality:**
+- **Subsequent Track: Modular Spec Extensions Architecture & Crystal Comms (`spec_extensions_and_crystal_comms`):**
+  - **Objective:** Keep the core Context Crystal spec minimal and sovereign by establishing a formal modular extension architecture (companion manifests and namespaced storage). Implement **Crystal Comms** (lock-free filesystem inboxes/outboxes and multi-agent coordination with human steersman oversight) as the premier reference extension module.
+  - **Priority:** High impact, establishes decoupled extensibility before building multi-agent mailboxes.
+- **Track 24: Native MCP Server Consolidation, TDQS Optimization & Tool Quality:**
   - **Objective:** Refactor the MCP server tool surface into an ergonomic, consolidated facade (e.g. 6-8 cohesive tools: `crystal_manage`, `crystal_hydrate`, `crystal_transition`, `crystal_artifact`, `crystal_lesson`, `crystal_lifecycle`) to eliminate prompt context bloat and agent routing indecision.
   - **Naming & Completeness:** Enforce strict, uniform `verb_noun` naming conventions, add dedicated first-class lesson management tools (`crystal_lesson` to record, list, and resolve open lessons), and provide full artifact lifecycle support (updating metadata and unregistering artifacts) to achieve a verified Grade A (4.5+/5.0) on Glama TDQS.
 - **Track 14: Strict Functional Quality & Invariant Hardening (Disallow var, null, throws):**
