@@ -16,7 +16,7 @@ object Header:
             div(
               className := "brand-text-col",
               span(className := "brand-title", "Context Crystal"),
-              span(className := "brand-badge", "v1.0.0 • Zero-Token Context DAG"),
+              span(className := "brand-badge", "v1.1.0 • Zero-Token Context DAG"),
             ),
           ),
         ),

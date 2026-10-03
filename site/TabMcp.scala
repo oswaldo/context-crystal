@@ -87,7 +87,7 @@ object TabMcp:
           className := "qs-card-header",
           span(className := "qs-step-number", "2"),
           div(
-            h3("The 15 Native MCP Tools"),
+            h3("The 16 Native MCP Tools"),
             p("First-class protocol capabilities designed specifically for autonomous AI pairs:"),
           ),
         ),
@@ -109,9 +109,14 @@ object TabMcp:
                 td("Atomically instantiates a new crystal with predefined acceptance criteria."),
               ),
               tr(
-                td(code("crystal_list")),
-                td(code("status?, json_output?")),
-                td("Queries crystals in the workspace cave with optional InProgress/Concluded filter."),
+                td(code("crystal_search")),
+                td(code("query?, since?, until?, status?, aging?, touching_path?, author?, has_active_leases?, has_open_tasks?, sort?, limit?, offset?")),
+                td("Navigates cave crystals with multi-dimensional criteria, temporal Gregorian calendar bounds, pagination, and sorting."),
+              ),
+              tr(
+                td(code("crystal_stats")),
+                td(code("filter?, detailed?, json_output?")),
+                td("Computes deterministic workspace health metrics, temporal extents, disk footprints, and prompt token savings."),
               ),
               tr(
                 td(code("crystal_hydrate")),

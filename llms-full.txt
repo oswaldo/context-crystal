@@ -1,7 +1,7 @@
 # Context Crystal: Comprehensive Machine-Readable Corpus (llms-full.txt)
 
 > **Context Crystal** — Sovereign, Deterministic, Local-First Context and DAG Lifecycle Engine.
-> Version: 1.0.0
+> Version: 1.1.0
 > License: MIT
 > Specification: JSON Schema v1 (`spec/v1/context-crystal.json`) with JSON-LD semantics.
 > Repository: https://github.com/oswaldo/context-crystal
@@ -112,7 +112,8 @@ Native stdio JSON-RPC 2.0 endpoint started via `ccrystal mcp`.
 | Tool Name | Key Arguments | Purpose |
 |---|---|---|
 | `crystal_init` | `id`, `goal_title`, `intent`, `tasks?` | Instantiate crystal with atomic criteria |
-| `crystal_list` | `status?`, `json_output?` | List cave crystals with optional filter |
+| `crystal_search` | `query?`, `since?`, `until?`, `status?`, `aging?`, `sort?`, `limit?`, `offset?` | Navigate crystals across metadata, DAG, and date bounds with pagination |
+| `crystal_stats` | `filter?`, `detailed?`, `json_output?` | Workspace health metrics, temporal genesis, disk usage, and token savings |
 | `crystal_hydrate` | `crystal_id`, `tail?`, `from?`, `to?`, `summary_only?` | Context beam shaping for LLM prompts |
 | `crystal_triage` | `filter?`, `json_output?` | Deterministic aging hygiene categorization |
 | `crystal_artifact` | `action`, `id?`, `name?`, `substrate?`, `role?`, `uri?` | Manage virtual/physical artifacts |
