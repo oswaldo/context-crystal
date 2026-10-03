@@ -7,6 +7,7 @@ trait FileSystemOperator extends FileSystemInspector:
   def writeFile(path: String, content: String): Either[String, Unit]
   def copyFile(source: String, destination: String): Either[String, Unit]
   def atomicWrite(path: String, content: String): Either[String, Unit]
+  def createSymlink(source: String, destination: String): Either[String, Unit]
 
 enum InstallActionKind derives CanEqual:
   case Installed
@@ -15,17 +16,26 @@ enum InstallActionKind derives CanEqual:
   case SkippedNotInstalled
   case Failed(reason: String)
 
+case class SkillInstallReceipt(
+    targetPath: String,
+    action: InstallActionKind,
+    isSymlink: Boolean = false,
+    backupPath: Option[String] = None,
+) derives CanEqual
+
 case class HarnessInstallReceipt(
     harness: AgentHarness,
     configPath: String,
     action: InstallActionKind,
     backupPath: Option[String],
     rollbackInstruction: Option[String],
+    skillReceipt: Option[SkillInstallReceipt] = None,
 ) derives CanEqual
 
 case class InstallSummary(
     receipts: List[HarnessInstallReceipt],
     dryRun: Boolean,
+    workspaceSkillReceipt: Option[SkillInstallReceipt] = None,
 ) derives CanEqual:
   def modifiedCount: Int = receipts.count(r =>
     r.action match
@@ -44,16 +54,150 @@ class AgentInstaller(
       target: Option[AgentHarness],
       dryRun: Boolean,
       force: Boolean,
+      installSkill: Boolean = true,
+      symlinkSkill: Boolean = false,
+      installWorkspaceSkill: Boolean = false,
   ): InstallSummary =
     val targets = target match
       case Some(t) => doctorReport.harnesses.filter(_.harness == t)
       case None    => doctorReport.harnesses
 
     val receipts = targets.map { diag =>
-      installSingle(diag, dryRun, force)
+      val mcpReceipt = installSingle(diag, dryRun, force)
+      mcpReceipt.action match
+        case InstallActionKind.Failed(_) =>
+          mcpReceipt
+        case _ =>
+          val skillReceipt =
+            if !installSkill then None
+            else installHarnessSkill(diag, dryRun, force, symlinkSkill)
+          mcpReceipt.copy(skillReceipt = skillReceipt)
     }
 
-    InstallSummary(receipts, dryRun)
+    val workspaceReceipt =
+      if installWorkspaceSkill then
+        Some(
+          deploySkill(resolver.workspaceSkillPath, dryRun, symlink = false, sourceForSymlink = None),
+        )
+      else None
+
+    InstallSummary(receipts, dryRun, workspaceReceipt)
+
+  private def installHarnessSkill(
+      diag: HarnessDiagnosis,
+      dryRun: Boolean,
+      force: Boolean,
+      symlinkSkill: Boolean,
+  ): Option[SkillInstallReceipt] =
+    val harness = diag.harness
+    resolver.skillPath(harness).map { destPath =>
+      if diag.status == HarnessStatus.NotInstalled && !force then
+        SkillInstallReceipt(
+          destPath,
+          InstallActionKind.SkippedNotInstalled,
+          isSymlink = symlinkSkill,
+          backupPath = None,
+        )
+      else
+        val source =
+          if symlinkSkill then
+            val wsPath = resolver.workspaceSkillPath
+            if !dryRun && !operator.fileExists(wsPath) then
+              val _ = operator.createDirectories(parentDir(wsPath))
+              val _ = operator.atomicWrite(wsPath, CanonicalSkill.content)
+            Some(wsPath)
+          else None
+        deploySkill(destPath, dryRun, symlink = symlinkSkill, sourceForSymlink = source)
+    }
+
+  private def deploySkill(
+      destPath: String,
+      dryRun: Boolean,
+      symlink: Boolean,
+      sourceForSymlink: Option[String],
+  ): SkillInstallReceipt =
+    if symlink then
+      val sourcePath = sourceForSymlink.getOrElse(resolver.workspaceSkillPath)
+      if operator
+          .isSymlink(destPath) && operator.readFile(destPath).contains(CanonicalSkill.content)
+      then SkillInstallReceipt(destPath, InstallActionKind.Unchanged, isSymlink = true)
+      else if operator.fileExists(destPath) then
+        val bak = HarnessConfigPatcher.backupPath(destPath)
+        if dryRun then
+          SkillInstallReceipt(
+            destPath,
+            InstallActionKind.Updated,
+            isSymlink = true,
+            backupPath = Some(bak),
+          )
+        else
+          val res = for
+            _ <- operator.copyFile(destPath, bak)
+            _ <- operator.createSymlink(sourcePath, destPath)
+          yield ()
+          res match
+            case Left(err) =>
+              SkillInstallReceipt(destPath, InstallActionKind.Failed(err), isSymlink = true)
+            case Right(_) =>
+              SkillInstallReceipt(
+                destPath,
+                InstallActionKind.Updated,
+                isSymlink = true,
+                backupPath = Some(bak),
+              )
+      else if dryRun then
+        SkillInstallReceipt(destPath, InstallActionKind.Installed, isSymlink = true)
+      else
+        val res = for
+          _ <- operator.createDirectories(parentDir(destPath))
+          _ <- operator.createSymlink(sourcePath, destPath)
+        yield ()
+        res match
+          case Left(err) =>
+            SkillInstallReceipt(destPath, InstallActionKind.Failed(err), isSymlink = true)
+          case Right(_) =>
+            SkillInstallReceipt(destPath, InstallActionKind.Installed, isSymlink = true)
+    else
+      operator.readFile(destPath) match
+        case Some(content) if content == CanonicalSkill.content =>
+          SkillInstallReceipt(destPath, InstallActionKind.Unchanged, isSymlink = false)
+        case Some(_) =>
+          val bak = HarnessConfigPatcher.backupPath(destPath)
+          if dryRun then
+            SkillInstallReceipt(
+              destPath,
+              InstallActionKind.Updated,
+              isSymlink = false,
+              backupPath = Some(bak),
+            )
+          else
+            val res = for
+              _ <- operator.copyFile(destPath, bak)
+              _ <- operator.atomicWrite(destPath, CanonicalSkill.content)
+            yield ()
+            res match
+              case Left(err) =>
+                SkillInstallReceipt(destPath, InstallActionKind.Failed(err), isSymlink = false)
+              case Right(_) =>
+                SkillInstallReceipt(
+                  destPath,
+                  InstallActionKind.Updated,
+                  isSymlink = false,
+                  backupPath = Some(bak),
+                )
+        case None =>
+          if dryRun then
+            SkillInstallReceipt(destPath, InstallActionKind.Installed, isSymlink = false)
+          else
+            val res = for
+              _ <- operator.createDirectories(parentDir(destPath))
+              _ <- operator.atomicWrite(destPath, CanonicalSkill.content)
+            yield ()
+            res match
+              case Left(err) =>
+                SkillInstallReceipt(destPath, InstallActionKind.Failed(err), isSymlink = false)
+              case Right(_) =>
+                SkillInstallReceipt(destPath, InstallActionKind.Installed, isSymlink = false)
 
   private def installSingle(
       diag: HarnessDiagnosis,

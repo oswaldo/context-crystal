@@ -44,6 +44,19 @@ object DefaultFileSystemOperator extends FileSystemOperator:
       case e: Throwable =>
         Left(s"Failed to copy file from '$source' to '$destination': ${e.getMessage}")
 
+  override def createSymlink(source: String, destination: String): Either[String, Unit] =
+    try
+      val src    = os.Path(source, os.pwd)
+      val dest   = os.Path(destination, os.pwd)
+      val parent = dest / os.up
+      if !os.exists(parent) then os.makeDir.all(parent)
+      if os.isLink(dest) || os.exists(dest) || os.isDir(dest) then os.remove(dest)
+      os.symlink(dest, src)
+      Right(())
+    catch
+      case e: Throwable =>
+        Left(s"Failed to create symlink from '$source' to '$destination': ${e.getMessage}")
+
   override def atomicWrite(path: String, content: String): Either[String, Unit] =
     try
       val target = os.Path(path, os.pwd)

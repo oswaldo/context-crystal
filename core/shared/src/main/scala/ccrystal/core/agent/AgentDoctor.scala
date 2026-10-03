@@ -12,6 +12,7 @@ trait FileSystemInspector:
   def isExecutable(path: String): Boolean
   def readFile(path: String): Option[String]
   def findInPath(binaryName: String): Option[String]
+  def isSymlink(path: String): Boolean = false
 
 enum HarnessStatus derives CanEqual:
   case Configured

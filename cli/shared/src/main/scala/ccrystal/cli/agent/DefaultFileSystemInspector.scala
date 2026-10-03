@@ -46,3 +46,9 @@ object DefaultFileSystemInspector extends FileSystemInspector:
       .map(dir => os.Path(dir, os.pwd) / binaryName)
       .find(p => os.isFile(p) && p.toIO.canExecute)
       .map(_.toString)
+
+  override def isSymlink(path: String): Boolean =
+    try
+      val p = os.Path(path, os.pwd)
+      os.isLink(p)
+    catch case _: Throwable => false
