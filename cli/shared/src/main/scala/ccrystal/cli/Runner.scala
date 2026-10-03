@@ -492,9 +492,20 @@ class Runner(
 
     case castCmd: CliCommand.Cast =>
       store.load(castCmd.crystalId).flatMap { crystal =>
+        val bondsSummary = store.bonds(crystal.id).toOption
+        val connectedIds = bondsSummary match
+          case Some(s) =>
+            (s.outbound.map(_.targetCrystalId) ++ s.inbound.map(_.sourceCrystalId)).distinct
+          case None => crystal.bonds.map(_.targetCrystalId).distinct
+        val peeks = connectedIds.flatMap(id => store.load(id).toOption.map(c => id -> c)).toMap
         ContextHydrator.hydrate(
           crystal,
-          HydrationParams(slice = castCmd.castSliceParams, summaryOnly = castCmd.summaryOnly),
+          HydrationParams(
+            slice = castCmd.castSliceParams,
+            summaryOnly = castCmd.summaryOnly,
+            bondsSummary = bondsSummary,
+            connectedPeeks = peeks,
+          ),
         )
       }
 

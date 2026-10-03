@@ -288,3 +288,86 @@ class ContextHydratorSuite extends FunSuite:
       "Missing preconditions badge",
     )
   }
+
+  test("ContextHydrator projects connected lattice bonds with depth-1 quick peeks"):
+    import ccrystal.core.model.lattice.*
+
+    val targetCrystal = crystal.copy(
+      id = "c-target-auth",
+      goal = Goal(
+        title = "Auth Service Refactor",
+        intent = "Migrate to JWT",
+        status = GoalStatus.InProgress,
+        acceptanceCriteria = List(
+          AcceptanceCriterion("t-1", "Design token", completed = true),
+          AcceptanceCriterion("t-2", "Implement handler", completed = false),
+        ),
+      ),
+    )
+
+    val sourceCrystal = crystal.copy(
+      id = "c-caller-billing",
+      goal = Goal(
+        title = "Billing Integration",
+        intent = "Connect Stripe",
+        status = GoalStatus.ConcludedSuccess,
+        acceptanceCriteria = List(AcceptanceCriterion("t-b", "Done", completed = true)),
+      ),
+    )
+
+    val outboundBond = LatticeBond(
+      targetCrystalId = "c-target-auth",
+      relation = BondRelation.DependsOn,
+      description = Some("Requires auth tokens"),
+      createdAt = "2026-10-03T18:00:00Z",
+    )
+
+    val inboundBond = InboundBond(
+      sourceCrystalId = "c-caller-billing",
+      bond = LatticeBond(
+        targetCrystalId = crystal.id,
+        relation = BondRelation.Blocks,
+        description = Some("Billing blocked until crystal completes"),
+        createdAt = "2026-10-03T18:05:00Z",
+      ),
+    )
+
+    val bondsSummary = CrystalBondsSummary(
+      crystalId = crystal.id,
+      outbound = List(outboundBond),
+      inbound = List(inboundBond),
+    )
+
+    val peeks = Map(
+      "c-target-auth"    -> targetCrystal,
+      "c-caller-billing" -> sourceCrystal,
+    )
+
+    val params = HydrationParams(
+      bondsSummary = Some(bondsSummary),
+      connectedPeeks = peeks,
+    )
+
+    val res = ContextHydrator.hydrate(crystal, params)
+    assert(res.isRight)
+    val text = res.toOption.get
+
+    assert(text.contains("## Connected Lattice Bonds:"), "Expected Connected Lattice Bonds header")
+    assert(
+      text.contains(
+        "- -> c-target-auth (depends_on): Requires auth tokens [Goal: Auth Service Refactor | Status: in_progress | Open Tasks: 1]",
+      ),
+      s"Expected formatted outbound bond with peek, got:\n$text",
+    )
+    assert(
+      text.contains(
+        "- <- c-caller-billing (blocks): Billing blocked until crystal completes [Goal: Billing Integration | Status: concluded_success | Open Tasks: 0]",
+      ),
+      s"Expected formatted inbound bond with peek, got:\n$text",
+    )
+
+  test("ContextHydrator omits Connected Lattice Bonds section when bonds are empty"):
+    val res = ContextHydrator.hydrate(crystal, HydrationParams())
+    assert(res.isRight)
+    val text = res.toOption.get
+    assert(!text.contains("## Connected Lattice Bonds:"))

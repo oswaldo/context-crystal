@@ -38,13 +38,13 @@
 
 ## Phase 3: Defensive Hydration & Lattice Quick-Peeking
 
-- [ ] Task: Update `ContextHydrator.scala` in `core/shared/src/main/scala/ccrystal/core/dag/`
-  - [ ] Project connected crystals into `## Connected Lattice Bonds:`
-  - [ ] Limit depth strictly to 1 (quick-peek only direct targets)
-  - [ ] Enforce concise summary format (goal title, status, open task count)
-  - [ ] Omit completed tasks from connected quick-peeking
-- [ ] Task: Unit tests in `core/shared/src/test/scala/ccrystal/core/dag/ContextHydratorSuite.scala`
-- [ ] Task: Phase 3 Verification & Checkpoint (Refer to workflow.md)
+- [x] Task: Update `ContextHydrator.scala` in `core/shared/src/main/scala/ccrystal/core/dag/`
+  - [x] Project connected crystals into `## Connected Lattice Bonds:`
+  - [x] Limit depth strictly to 1 (quick-peek only direct targets)
+  - [x] Enforce concise summary format (goal title, status, open task count)
+  - [x] Omit completed tasks from connected quick-peeking
+- [x] Task: Unit tests in `core/shared/src/test/scala/ccrystal/core/dag/ContextHydratorSuite.scala`
+- [x] Task: Phase 3 Verification & Checkpoint (Refer to workflow.md)
 
 ## Phase 4: CLI Subcommands (`connect`, `disconnect`, `connections`)
 

@@ -6,9 +6,24 @@ import scala.CanEqual
 case class HydrationParams(
     slice: SliceParams = SliceParams(),
     summaryOnly: Boolean = false,
+    bondsSummary: Option[ccrystal.core.model.lattice.CrystalBondsSummary] = None,
+    connectedPeeks: Map[String, ContextCrystal] = Map.empty,
 ) derives CanEqual
 
 object ContextHydrator:
+
+  private def formatStatus(status: GoalStatus): String = status match
+    case GoalStatus.InProgress         => "in_progress"
+    case GoalStatus.ConcludedSuccess   => "concluded_success"
+    case GoalStatus.ConcludedAbandoned => "concluded_abandoned"
+
+  private def peekSuffix(crystalOpt: Option[ContextCrystal]): String =
+    crystalOpt match
+      case Some(c) =>
+        val status    = formatStatus(c.goal.status)
+        val openTasks = c.goal.acceptanceCriteria.count(!_.completed)
+        s" [Goal: ${c.goal.title} | Status: $status | Open Tasks: $openTasks]"
+      case None => ""
 
   def hydrate(crystal: ContextCrystal, params: HydrationParams): Either[String, String] =
     val slicedNodesRes: Either[String, List[DAGNode]] =
@@ -25,10 +40,7 @@ object ContextHydrator:
       sb.append(s"=== CONTEXT CRYSTAL CAST: ${crystal.id} ===\n\n")
       sb.append(s"## Goal: ${crystal.goal.title}\n")
       sb.append(s"Intent: ${crystal.goal.intent}\n")
-      val statusStr = crystal.goal.status match
-        case GoalStatus.InProgress         => "in_progress"
-        case GoalStatus.ConcludedSuccess   => "concluded_success"
-        case GoalStatus.ConcludedAbandoned => "concluded_abandoned"
+      val statusStr = formatStatus(crystal.goal.status)
       sb.append(s"Status: $statusStr\n\n")
 
       sb.append("## Active Tasks:\n")
@@ -63,6 +75,26 @@ object ContextHydrator:
             case None => ""
           val descPart = a.description.map(d => s" - $d").getOrElse("")
           sb.append(s"- [${a.role}] (${a.substrate}) ${a.id}: ${a.name}$locPart$uriPart$descPart\n")
+        }
+        sb.append("\n")
+
+      val (outboundBonds, inboundBonds) = params.bondsSummary match
+        case Some(s) => (s.outbound, s.inbound)
+        case None    => (crystal.bonds, Nil)
+
+      if outboundBonds.nonEmpty || inboundBonds.nonEmpty then
+        sb.append("## Connected Lattice Bonds:\n")
+        outboundBonds.foreach { b =>
+          val relStr  = ccrystal.core.model.lattice.BondRelation.format(b.relation)
+          val descStr = b.description.map(d => s": $d").getOrElse("")
+          val peek    = peekSuffix(params.connectedPeeks.get(b.targetCrystalId))
+          sb.append(s"- -> ${b.targetCrystalId} ($relStr)$descStr$peek\n")
+        }
+        inboundBonds.foreach { ib =>
+          val relStr  = ccrystal.core.model.lattice.BondRelation.format(ib.bond.relation)
+          val descStr = ib.bond.description.map(d => s": $d").getOrElse("")
+          val peek    = peekSuffix(params.connectedPeeks.get(ib.sourceCrystalId))
+          sb.append(s"- <- ${ib.sourceCrystalId} ($relStr)$descStr$peek\n")
         }
         sb.append("\n")
 
