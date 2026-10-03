@@ -72,7 +72,8 @@ class DefaultMcpHandlerSuite extends FunSuite:
     assertEquals(toolNames.contains("crystal_task_transition"), true)
     assertEquals(toolNames.contains("crystal_transient_lease"), true)
     assertEquals(toolNames.contains("crystal_slice_fork"), true)
-    assertEquals(toolNames.contains("crystal_delete"), true)
+    assertEquals(toolNames.contains("crystal_prune"), true)
+    assertEquals(toolNames.contains("crystal_delete"), false)
 
   test("DefaultMcpHandler handles tools/call crystal_init and crystal_batch"):
     val (handler, store, _) = createFixture()
@@ -1046,3 +1047,65 @@ class DefaultMcpHandlerSuite extends FunSuite:
     assert(text.contains("=== CONTEXT CRYSTAL CAVE METRICS & STATS ==="), "stats header")
     assert(text.contains("c-stats-test"), "crystal included in stats")
     assert(text.contains("Quantitative Token Savings"), "savings section")
+
+  test("DefaultMcpHandler handles crystal_prune tool call"):
+    val (handler, store, _) = createFixture()
+    // Init crystal
+    handler.handle(
+      JsonRpcRequest(
+        id = JsonRpcId.Num(130L),
+        method = "tools/call",
+        params = Some(
+          Json.obj(
+            "name" -> "crystal_init".asJson,
+            "arguments" -> Json.obj(
+              "name" -> "c-prune-target".asJson,
+              "goal" -> "Test Prune Tool".asJson,
+            ),
+          ),
+        ),
+      ),
+    )
+    assert(store.exists("c-prune-target"))
+
+    // Prune single crystal
+    val pruneResp = handler.handle(
+      JsonRpcRequest(
+        id = JsonRpcId.Num(131L),
+        method = "tools/call",
+        params = Some(
+          Json.obj(
+            "name" -> "crystal_prune".asJson,
+            "arguments" -> Json.obj(
+              "crystal_id" -> "c-prune-target".asJson,
+              "force"      -> true.asJson,
+            ),
+          ),
+        ),
+      ),
+    )
+    assertEquals(pruneResp.error.isEmpty, true)
+    val pruneResult = pruneResp.result.get.as[CallToolResult].toOption.get
+    assertEquals(pruneResult.isError, false)
+    assert(pruneResult.content.head.text.contains("Permanently pruned crystal 'c-prune-target'"))
+    assert(!store.exists("c-prune-target"))
+
+    // Batch prune dry run
+    val batchPruneResp = handler.handle(
+      JsonRpcRequest(
+        id = JsonRpcId.Num(132L),
+        method = "tools/call",
+        params = Some(
+          Json.obj(
+            "name" -> "crystal_prune".asJson,
+            "arguments" -> Json.obj(
+              "older_than" -> "30d".asJson,
+              "dry_run"    -> true.asJson,
+            ),
+          ),
+        ),
+      ),
+    )
+    assertEquals(batchPruneResp.error.isEmpty, true)
+    val batchResult = batchPruneResp.result.get.as[CallToolResult].toOption.get
+    assertEquals(batchResult.isError, false)

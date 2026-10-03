@@ -106,3 +106,18 @@ class CrystalTriageSuite extends FunSuite:
 
     val activeOnly = CrystalTriage.filterByAging(items, Some(AgingState.Active))
     assertEquals(activeOnly.map(_.id), List("c-active"))
+
+  test("CrystalTriage identifies Archived crystals and recommends prune if >= 90d"):
+    val archRecent =
+      makeCrystal("c-arch-recent", GoalStatus.ConcludedSuccess, "2026-09-01T10:00:00Z")
+    val itemRecent =
+      CrystalTriage.triage(archRecent, isArchived = true, nowIso = "2026-09-19T00:00:00Z")
+    assertEquals(itemRecent.category, "Archived")
+    assertEquals(itemRecent.isArchived, true)
+
+    val archAncient =
+      makeCrystal("c-arch-ancient", GoalStatus.ConcludedSuccess, "2026-06-01T10:00:00Z")
+    val itemAncient =
+      CrystalTriage.triage(archAncient, isArchived = true, nowIso = "2026-09-19T00:00:00Z")
+    assertEquals(itemAncient.category, "ArchivedPruneCandidate")
+    assert(itemAncient.recommendation.contains("ccrystal prune"))

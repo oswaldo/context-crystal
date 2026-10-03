@@ -26,7 +26,7 @@ class McpEndToEndSessionSuite extends FunSuite:
         |{"jsonrpc":"2.0","id":5,"method":"resources/read","params":{"uri":"ccrystal://e2e-crystal/state"}}
         |{"jsonrpc":"2.0","id":6,"method":"prompts/get","params":{"name":"hydrate_context","arguments":{"crystal_id":"e2e-crystal"}}}
         |{"jsonrpc":"2.0","id":7,"method":"prompts/get","params":{"name":"triage_cave"}}
-        |{"jsonrpc":"2.0","id":8,"method":"tools/call","params":{"name":"crystal_delete","arguments":{"crystal_id":"e2e-crystal","force":true}}}
+        |{"jsonrpc":"2.0","id":8,"method":"tools/call","params":{"name":"crystal_prune","arguments":{"crystal_id":"e2e-crystal","force":true}}}
         |""".stripMargin
 
     val in     = new BufferedReader(new StringReader(sessionScript))
@@ -53,7 +53,8 @@ class McpEndToEndSessionSuite extends FunSuite:
     assertEquals(toolsResp.id, JsonRpcId.Num(2L))
     val tools = toolsResp.result.get.hcursor.as[ListToolsResult].toOption.get.tools
     assertEquals(tools.exists(_.name == "crystal_batch"), true)
-    assertEquals(tools.exists(_.name == "crystal_delete"), true)
+    assertEquals(tools.exists(_.name == "crystal_prune"), true)
+    assertEquals(tools.exists(_.name == "crystal_delete"), false)
 
     // 3. crystal_init response
     val crystalInitResp = decode[JsonRpcResponse](responseLines(2)).toOption.get
@@ -211,7 +212,7 @@ class McpEndToEndSessionSuite extends FunSuite:
         |{"jsonrpc":"2.0","id":5,"method":"tools/call","params":{"name":"crystal_stats","arguments":{"detailed":true,"json_output":false}}}
         |{"jsonrpc":"2.0","id":6,"method":"tools/call","params":{"name":"crystal_hydrate","arguments":{"crystal_id":"ergo-session","summary_only":true}}}
         |{"jsonrpc":"2.0","id":7,"method":"tools/call","params":{"name":"crystal_triage","arguments":{"json_output":false}}}
-        |{"jsonrpc":"2.0","id":8,"method":"tools/call","params":{"name":"crystal_delete","arguments":{"crystal_id":"ergo-session","force":true}}}
+        |{"jsonrpc":"2.0","id":8,"method":"tools/call","params":{"name":"crystal_prune","arguments":{"crystal_id":"ergo-session","force":true}}}
         |""".stripMargin
 
     val in        = new BufferedReader(new StringReader(sessionScript))
@@ -236,6 +237,8 @@ class McpEndToEndSessionSuite extends FunSuite:
     assert(!tools.exists(_.name == "crystal_list"), "must not list obsolete crystal_list")
     assert(tools.exists(_.name == "crystal_hydrate"), "must list crystal_hydrate")
     assert(tools.exists(_.name == "crystal_triage"), "must list crystal_triage")
+    assert(tools.exists(_.name == "crystal_prune"), "must list crystal_prune")
+    assert(!tools.exists(_.name == "crystal_delete"), "must not list obsolete crystal_delete")
 
     // 3. crystal_init with tasks
     val cInitResp   = decode[JsonRpcResponse](responseLines(2)).toOption.get
@@ -278,8 +281,8 @@ class McpEndToEndSessionSuite extends FunSuite:
     assert(triageResult.content.head.text.contains("ergo-session"), "triage must list ergo-session")
     assert(triageResult.content.head.text.contains("Keep"), "in-progress crystal must be Keep")
 
-    // 8. crystal_delete
+    // 8. crystal_prune
     val delResp   = decode[JsonRpcResponse](responseLines(7)).toOption.get
     val delResult = delResp.result.get.hcursor.as[CallToolResult].toOption.get
-    assert(!delResult.isError, "crystal_delete must succeed")
+    assert(!delResult.isError, "crystal_prune must succeed")
     assertEquals(store.exists("ergo-session"), false)

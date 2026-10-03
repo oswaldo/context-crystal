@@ -440,11 +440,6 @@ object CommandParser:
     Opts.flag("force", "Skip interactive confirmation prompt", "f").orFalse,
   ).mapN(CliCommand.EntityDeregister.apply)
 
-  private val deleteOpts = (
-    Opts.argument[String]("crystal-id"),
-    Opts.flag("force", "Skip interactive confirmation prompt", "f").orFalse,
-  ).mapN(CliCommand.Delete.apply)
-
   private val pruneOpts = (
     Opts.argument[String]("crystal-id").orNone,
     Opts
@@ -669,12 +664,9 @@ object CommandParser:
       "Re-project derived views (tasks.md, lessons-learned.md) from crystal.json",
     )(refreshOpts),
     Opts.subcommand("slice", "Extract crystal fragments or slice sub-DAGs")(sliceOpts),
-    Opts.subcommand("delete", "Permanently delete a crystal and cascade orphaned entities")(
-      deleteOpts,
-    ),
     Opts.subcommand(
       "prune",
-      "Prune obsolete archived crystals from cold storage by retention policy",
+      "Permanently prune a crystal or cold storage archives by retention policy",
     )(pruneOpts),
     Opts.subcommand("archive", "Archive a crystal to cold storage (.ccrystals/archive/)")(
       archiveOpts,

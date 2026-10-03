@@ -583,25 +583,26 @@ class Runner(
     case CliCommand.Batch(script) =>
       Left("Batch execution handled via BatchExecutor")
 
-    case CliCommand.Delete(crystalId, force) =>
-      val limit = getPreviewLimit
-      store.previewCrystalDeletion(crystalId, limit).flatMap { preview =>
-        if !force then
-          print(formatCrystalDeletionPreview(preview))
-          val confirmed = confirmPrompt(
-            s"Are you sure you want to permanently delete crystal '$crystalId' and all associated state? [y/N]: ",
-          )
-          if !confirmed then Right(s"Deletion of crystal '$crystalId' cancelled.")
-          else executeDelete(crystalId)
-        else executeDelete(crystalId)
-      }
-
     case CliCommand.Prune(crystalIdOpt, olderThanOpt, all, dryRun, force) =>
-      if crystalIdOpt.isEmpty && olderThanOpt.isEmpty && !all then
-        Left(
-          "At least one targeting option must be specified for prune: <crystal-id>, --older-than <duration> (e.g. 30d, 2w), or --all",
-        )
-      else
+      if crystalIdOpt.isDefined && olderThanOpt.isEmpty && !all then
+        val crystalId = crystalIdOpt.get
+        val limit     = getPreviewLimit
+        store.previewCrystalDeletion(crystalId, limit).flatMap { preview =>
+          val previewText = formatCrystalDeletionPreview(preview)
+          if dryRun then
+            Right(
+              s"$previewText\n[DRY RUN] No crystals were pruned. Run without --dry-run to permanently prune crystal '$crystalId'.",
+            )
+          else if !force then
+            print(previewText)
+            val confirmed = confirmPrompt(
+              s"Are you sure you want to permanently prune crystal '$crystalId' and all associated state? [y/N]: ",
+            )
+            if !confirmed then Right(s"Pruning of crystal '$crystalId' cancelled.")
+            else executeDelete(crystalId)
+          else executeDelete(crystalId)
+        }
+      else if olderThanOpt.isDefined || all then
         val parsedDays: Either[String, Option[Long]] = olderThanOpt match
           case Some(ot) => ccrystal.core.prune.PruneEngine.parseDurationDays(ot).map(Some(_))
           case None     => Right(None)
@@ -615,7 +616,7 @@ class Runner(
             else if dryRun then
               val table = formatPrunePreview(preview)
               Right(
-                s"$table\n[DRY RUN] No crystals were deleted. Run without --dry-run to permanently prune cold storage.",
+                s"$table\n[DRY RUN] No crystals were pruned. Run without --dry-run to permanently prune cold storage.",
               )
             else if !force then
               print(formatPrunePreview(preview))
@@ -627,6 +628,10 @@ class Runner(
             else executePrune(crystalIdOpt, minDays, all)
           }
         }
+      else
+        Left(
+          "At least one targeting option must be specified for prune: <crystal-id>, --older-than <duration> (e.g. 30d, 2w), or --all",
+        )
 
     case CliCommand.Archive(crystalId) =>
       store.archive(crystalId).map { _ =>
@@ -820,7 +825,7 @@ class Runner(
         if res.cleanedArtifactIds.nonEmpty then
           s" (Cleaned cave artifacts: ${res.cleanedArtifactIds.mkString(", ")})"
         else ""
-      s"Permanently deleted crystal '$crystalId'$locMsg$cascadeMsg$artMsg"
+      s"Permanently pruned crystal '$crystalId'$locMsg$cascadeMsg$artMsg"
     }
 
   private def executePrune(
@@ -875,7 +880,7 @@ class Runner(
     val sb        = new java.lang.StringBuilder()
     val locHeader = if preview.isArchived then " [Cold Storage Archive]" else ""
     sb.append(
-      s"\n--- IRRECOVERABLE DELETION IMPACT: Crystal '${preview.crystalId}'$locHeader ---\n",
+      s"\n--- IRRECOVERABLE PRUNE IMPACT: Crystal '${preview.crystalId}'$locHeader ---\n",
     )
     sb.append(s"Goal: ${preview.goalTitle} [${preview.goalStatus}]\n")
     if preview.intent.nonEmpty then sb.append(s"Intent: ${preview.intent}\n")

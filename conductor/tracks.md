@@ -71,5 +71,9 @@
 - [x] **Track: Cave Statistics, Storage Metrics & Token Savings**  
   *Link: [conductor/tracks/cave_stats_and_telemetry_20261002/index.md](./tracks/cave_stats_and_telemetry_20261002/index.md)*
 
-- [ ] **Track: Cold Storage Prune, Deletion Symmetry & Lifecycle Completeness**  
+- [x] **Track: Cold Storage Prune, Deletion Symmetry & Lifecycle Completeness**  
   *Link: [conductor/tracks/cold_storage_purge_and_lifecycle_20261003/index.md](./tracks/cold_storage_purge_and_lifecycle_20261003/index.md)*
+
+- [ ] **Track: Standardized Temporal Architecture (java.time / scala-java-time Migration)**  
+  *Link: [conductor/tracks/temporal_architecture_and_java_time_migration/index.md](./tracks/temporal_architecture_and_java_time_migration/index.md)*
+

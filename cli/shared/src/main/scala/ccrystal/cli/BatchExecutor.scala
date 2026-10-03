@@ -66,10 +66,6 @@ object BatchExecutor:
       CommandParser.parse(args) match
         case Right(cmd) =>
           cmd match
-            case CliCommand.Delete(_, false) =>
-              validationError = Some(
-                s"Destructive command 'delete' in batch mode requires --force (-f) flag at command #${idx + 1} (${args.mkString(" ")})",
-              )
             case CliCommand.Prune(_, _, _, false, false) =>
               validationError = Some(
                 s"Destructive command 'prune' in batch mode requires --force (-f) or --dry-run flag at command #${idx + 1} (${args.mkString(" ")})",

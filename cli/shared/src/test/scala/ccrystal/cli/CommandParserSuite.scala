@@ -436,21 +436,30 @@ class CommandParserSuite extends FunSuite:
     val invalidFormat = List("slice", "my-crystal", "--format", "yaml")
     assert(CommandParser.parse(invalidFormat).isLeft)
 
-  test("Parses 'delete' command with optional --force flag"):
-    val deleteNoForce = List("delete", "my-crystal")
-    val parsed1       = CommandParser.parse(deleteNoForce)
+  test("Parses 'prune' command with optional target crystal and --force flag"):
+    val pruneNoForce = List("prune", "my-crystal")
+    val parsed1      = CommandParser.parse(pruneNoForce)
     assert(parsed1.isRight)
-    assertEquals(parsed1.toOption.get, CliCommand.Delete("my-crystal", force = false))
+    assertEquals(
+      parsed1.toOption.get,
+      CliCommand.Prune(crystalId = Some("my-crystal"), force = false),
+    )
 
-    val deleteWithForce = List("delete", "my-crystal", "--force")
-    val parsed2         = CommandParser.parse(deleteWithForce)
+    val pruneWithForce = List("prune", "my-crystal", "--force")
+    val parsed2        = CommandParser.parse(pruneWithForce)
     assert(parsed2.isRight)
-    assertEquals(parsed2.toOption.get, CliCommand.Delete("my-crystal", force = true))
+    assertEquals(
+      parsed2.toOption.get,
+      CliCommand.Prune(crystalId = Some("my-crystal"), force = true),
+    )
 
-    val deleteShortForce = List("delete", "my-crystal", "-f")
-    val parsed3          = CommandParser.parse(deleteShortForce)
+    val pruneShortForce = List("prune", "my-crystal", "-f")
+    val parsed3         = CommandParser.parse(pruneShortForce)
     assert(parsed3.isRight)
-    assertEquals(parsed3.toOption.get, CliCommand.Delete("my-crystal", force = true))
+    assertEquals(
+      parsed3.toOption.get,
+      CliCommand.Prune(crystalId = Some("my-crystal"), force = true),
+    )
 
   test("Parses 'prune' command with various flags"):
     val pruneSpecific = List("prune", "c-arch-1")

@@ -335,21 +335,37 @@ class DefaultMcpHandler(
             ),
           ),
           Tool(
-            name = "crystal_delete",
-            description = "Permanently delete a crystal and cascade orphaned entities.",
+            name = "crystal_prune",
+            description =
+              "Permanently prune a crystal or cold storage archives by retention policy (with entity and artifact cascade).",
             inputSchema = Json.obj(
               "type" -> "object".asJson,
               "properties" -> Json.obj(
                 "crystal_id" -> Json.obj(
                   "type"        -> "string".asJson,
-                  "description" -> "Crystal identifier to delete".asJson,
+                  "description" -> "Crystal identifier to delete (active or archived)".asJson,
+                ),
+                "older_than" -> Json.obj(
+                  "type" -> "string".asJson,
+                  "description" -> "Batch prune archived crystals inactive for duration (e.g. '30d', '2w', '3m')".asJson,
+                ),
+                "all" -> Json.obj(
+                  "type" -> "boolean".asJson,
+                  "description" -> "Batch prune all archived crystals in cold storage (default: false)".asJson,
+                ),
+                "archive_only" -> Json.obj(
+                  "type" -> "boolean".asJson,
+                  "description" -> "Restrict deletion strictly to cold storage (default: true for batch prune)".asJson,
+                ),
+                "dry_run" -> Json.obj(
+                  "type" -> "boolean".asJson,
+                  "description" -> "Preview candidates and cascade impact without deleting (default: false for batch prune)".asJson,
                 ),
                 "force" -> Json.obj(
-                  "type"        -> "boolean".asJson,
-                  "description" -> "Force deletion without confirmation".asJson,
+                  "type" -> "boolean".asJson,
+                  "description" -> "Force deletion/pruning without confirmation prompt (default: true for single crystal delete, false for batch prune)".asJson,
                 ),
               ),
-              "required" -> List("crystal_id").asJson,
             ),
           ),
           Tool(
@@ -927,17 +943,35 @@ class DefaultMcpHandler(
               isError = true,
             )
 
-      case "crystal_delete" =>
+      case "crystal_prune" =>
         val crystalIdOpt = cursor.get[String]("crystal_id").toOption
-        val forceOpt     = cursor.get[Boolean]("force").toOption.getOrElse(true)
-        crystalIdOpt match
-          case Some(cId) =>
-            runCommandToResult(CliCommand.Delete(crystalId = cId, force = forceOpt))
-          case None =>
-            CallToolResult(
-              List(ToolContent(text = "Missing required 'crystal_id'")),
-              isError = true,
-            )
+        val olderThanOpt = cursor.get[String]("older_than").toOption
+        val allOpt       = cursor.get[Boolean]("all").toOption.getOrElse(false)
+        val dryRunOpt    = cursor.get[Boolean]("dry_run").toOption
+        val forceOpt     = cursor.get[Boolean]("force").toOption
+
+        if crystalIdOpt.isEmpty && olderThanOpt.isEmpty && !allOpt then
+          CallToolResult(
+            List(
+              ToolContent(
+                text =
+                  "Missing required argument: specify 'crystal_id' to prune a crystal, or 'older_than' / 'all' to prune archived crystals",
+              ),
+            ),
+            isError = true,
+          )
+        else
+          val isBatch = olderThanOpt.isDefined || allOpt
+          val force   = forceOpt.getOrElse(!isBatch)
+          val dryRun  = dryRunOpt.getOrElse(if isBatch then !force else false)
+          val cmd = CliCommand.Prune(
+            crystalId = crystalIdOpt,
+            olderThan = olderThanOpt,
+            all = allOpt,
+            dryRun = dryRun,
+            force = force,
+          )
+          runCommandToResult(cmd)
 
       case "crystal_artifact" =>
         val actionOpt = cursor.get[String]("action").toOption
@@ -1343,7 +1377,7 @@ class DefaultMcpHandler(
                   )
                   sb.append("2. Present a succinct recommendation to the user.\n")
                   sb.append(
-                    "3. DO NOT delete any crystal without explicit user confirmation. When the user approves deletion, use `crystal_delete` (or `ccrystal delete <id> --force`).\n",
+                    "3. DO NOT prune any crystal without explicit user confirmation. When the user approves pruning, use `crystal_prune` (or `ccrystal prune <id> --force`).\n",
                   )
 
                   GetPromptResult(

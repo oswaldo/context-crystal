@@ -76,7 +76,18 @@ object CrystalTriage:
 
     val (category, recommendation) =
       if isArchived then
-        ("Archived", "Stored in cold storage; unarchive via crystal_unarchive if resuming")
+        val elapsedDays = for
+          nowDays     <- parseApproxDays(nowIso)
+          updatedDays <- parseApproxDays(crystal.updatedAt)
+        yield nowDays - updatedDays
+        elapsedDays match
+          case Some(days) if days >= 90 =>
+            (
+              "ArchivedPruneCandidate",
+              s"Archived ${days}d ago (>=90d retention); recommend pruning via 'ccrystal prune --older-than 90d'",
+            )
+          case _ =>
+            ("Archived", "Stored in cold storage; unarchive via crystal_unarchive if resuming")
       else if isConcluded && pendingTasks == 0 && activeLeases == 0 && openLessons == 0 then
         (
           "CandidateForCleanup",

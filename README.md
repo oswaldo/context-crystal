@@ -167,7 +167,7 @@ Context Crystal includes an embedded, zero-overhead MCP server built directly in
   - **Transitions & Provenance:** `crystal_checkpoint`, `crystal_task_transition`, `crystal_goal_transition`.
   - **Artifacts & Leases:** `crystal_artifact`, `crystal_transient_lease`.
   - **Context Shaping & Slicing:** `crystal_hydrate`, `crystal_slice_fork`.
-  - **Metrics, Search & Lifecycle:** `crystal_stats`, `crystal_search` (multi-dimensional filtering and pagination), `crystal_triage`, `crystal_melt`, `crystal_archive`, `crystal_unarchive`, `crystal_delete`.
+  - **Metrics, Search & Lifecycle:** `crystal_stats`, `crystal_search` (multi-dimensional filtering and pagination), `crystal_triage`, `crystal_melt`, `crystal_archive`, `crystal_unarchive`, `crystal_prune`.
 - **Dynamic Context Resources (`ccrystal://`):**
   - `ccrystal://{id}/state`: Living state container JSON (Goal status, pending tasks, active leases, open lessons).
   - `ccrystal://{id}/dag`: Normalized DAG nodes and parent lineage JSON.
@@ -284,11 +284,14 @@ ccrystal melt auth-refactor --from node-auth-refactor-init --to checkpoint-1 --s
 ccrystal stats                     # High-level cave metrics, disk footprints, and token savings
 ccrystal stats --since 7d --detailed # Scoped breakdown for crystals updated in last 7 days
 
-# 11. Cave Hygiene Triage & Cold Storage Archiving
-ccrystal triage --solid          # Inspect concluded crystals ready for cleanup
-ccrystal archive auth-refactor   # Move completed crystal to cold storage (.ccrystals/archive/)
-ccrystal unarchive auth-refactor # Restore crystal to active cave
-ccrystal search --archived       # Search across active and archived crystals
+# 11. Cave Hygiene Triage, Cold Storage Archiving & Retention Pruning
+ccrystal triage --solid               # Inspect concluded crystals ready for cleanup
+ccrystal archive auth-refactor        # Move completed crystal to cold storage (.ccrystals/archive/)
+ccrystal unarchive auth-refactor      # Restore crystal to active cave
+ccrystal search --archived            # Search across active and archived crystals
+ccrystal prune auth-refactor -f       # Permanently prune single crystal with entity cascade
+ccrystal prune --older-than 90d       # Prune archived crystals exceeding 90-day retention
+ccrystal prune --older-than 30d --dry-run # Preview candidates and freed bytes without deleting
 
 # 12. Dual-Audience Guidance & Entity Conventions
 ccrystal --for-ai               # Operational invariants, PII rules, and entity schemes for AI agents

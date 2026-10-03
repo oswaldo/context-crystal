@@ -41,17 +41,17 @@ class RunnerDeletionSuite extends FunSuite:
 
     (runner, store, promptsAsked)
 
-  test("Runner Delete with interactive confirmation approved executes deletion"):
+  test("Runner Prune with interactive confirmation approved executes pruning"):
     val (runner, store, prompts) = createTestFixture()
     assert(store.exists("c-target"))
 
-    val res = runner.run(CliCommand.Delete("c-target", force = false))
+    val res = runner.run(CliCommand.Prune(crystalId = Some("c-target"), force = false))
     assert(res.isRight)
-    assert(res.toOption.get.contains("Permanently deleted crystal 'c-target'"))
+    assert(res.toOption.get.contains("Permanently pruned crystal 'c-target'"))
     assert(prompts.nonEmpty, "Confirmation prompt must have been presented")
     assert(!store.exists("c-target"))
 
-  test("Runner Delete with interactive confirmation declined aborts deletion"):
+  test("Runner Prune with interactive confirmation declined aborts pruning"):
     val store  = new InMemoryCrystalStore()
     val runner = new Runner(store, confirmPrompt = _ => false)
 
@@ -69,12 +69,12 @@ class RunnerDeletionSuite extends FunSuite:
     )
     store.save(crystal)
 
-    val res = runner.run(CliCommand.Delete("c-abort", force = false))
+    val res = runner.run(CliCommand.Prune(crystalId = Some("c-abort"), force = false))
     assert(res.isRight)
     assert(res.toOption.get.contains("cancelled"))
     assert(store.exists("c-abort"), "Crystal must remain intact when cancelled")
 
-  test("Runner Delete with force=true skips confirmation prompt"):
+  test("Runner Prune with force=true skips confirmation prompt"):
     val store        = new InMemoryCrystalStore()
     var promptCalled = false
     val runner       = new Runner(store, confirmPrompt = _ => { promptCalled = true; true })
@@ -93,7 +93,7 @@ class RunnerDeletionSuite extends FunSuite:
     )
     store.save(crystal)
 
-    val res = runner.run(CliCommand.Delete("c-force", force = true))
+    val res = runner.run(CliCommand.Prune(crystalId = Some("c-force"), force = true))
     assert(res.isRight)
     assert(!promptCalled, "Confirmation prompt must not be invoked when force=true")
     assert(!store.exists("c-force"))
@@ -112,9 +112,9 @@ class RunnerDeletionSuite extends FunSuite:
   test("BatchExecutor rejects unforced destructive commands"):
     val store    = new InMemoryCrystalStore()
     val runner   = new Runner(store)
-    val batchRes = BatchExecutor.executeChain("delete c-test", runner)
+    val batchRes = BatchExecutor.executeChain("prune c-test", runner)
     assert(batchRes.isLeft)
-    assert(batchRes.left.toOption.get.contains("requires --force (-f) flag"))
+    assert(batchRes.left.toOption.get.contains("requires --force (-f) or --dry-run flag"))
 
   test("BatchExecutor allows forced destructive commands"):
     val store = new InMemoryCrystalStore()
@@ -132,6 +132,6 @@ class RunnerDeletionSuite extends FunSuite:
     )
     store.save(crystal)
     val runner   = new Runner(store)
-    val batchRes = BatchExecutor.executeChain("delete c-batch -f", runner)
+    val batchRes = BatchExecutor.executeChain("prune c-batch -f", runner)
     assert(batchRes.isRight)
     assert(!store.exists("c-batch"))

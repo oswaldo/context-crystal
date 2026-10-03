@@ -118,11 +118,11 @@ class RunnerPruneSuite extends FunSuite:
     assertEquals(prompts.isEmpty, true, "No prompts on --force")
     assert(!store.isArchived("c-arch-old"))
 
-  test("Runner Delete on archived crystal indicates cold storage"):
+  test("Runner Prune on single archived crystal indicates cold storage"):
     val (runner, store, _) = createTestFixture()
     assert(store.isArchived("c-arch-old"))
 
-    val res = runner.run(CliCommand.Delete("c-arch-old", force = true))
+    val res = runner.run(CliCommand.Prune(crystalId = Some("c-arch-old"), force = true))
     assert(res.isRight)
     assert(res.toOption.get.contains("from cold storage"))
     assert(!store.isArchived("c-arch-old"))

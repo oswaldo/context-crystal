@@ -42,25 +42,25 @@
 
 ## Phase 4: Native MCP Server Tool (`crystal_prune`) & Triage Integration
 
-- [ ] Task: Expose `crystal_prune` (with `crystal_delete` alias) in `DefaultMcpHandler.scala`
-  - [ ] Register `crystal_prune` in `tools/list`
-  - [ ] Handle `crystal_delete` as backward-compatible alias to same logic
-  - [ ] Write MCP unit tests in `cli/shared/src/test/scala/ccrystal/cli/mcp/DefaultMcpHandlerSuite.scala`
-  - [ ] Add end-to-end integration test in `cli/shared/src/test/scala/ccrystal/cli/mcp/McpEndToEndSessionSuite.scala`
-- [ ] Task: Integrate retention recommendations in `TriageEngine` and `ccrystal triage`
-  - [ ] Scan cold storage archive for crystals exceeding retention threshold (default: 90 days)
-  - [ ] Emit recommendation suggesting `ccrystal prune --older-than 90d`
-  - [ ] Write triage tests in `cli/shared/src/test/scala/ccrystal/cli/TriageEngineSuite.scala`
-- [ ] Task: Phase 4 Verification & Checkpoint (Refer to workflow.md)
+- [x] Task: Expose `crystal_prune` in `DefaultMcpHandler.scala` (unified single tool, zero aliases)
+  - [x] Register `crystal_prune` in `tools/list`
+  - [x] Standardize on `crystal_prune` as the sole canonical deletion/prune tool
+  - [x] Write MCP unit tests in `cli/shared/src/test/scala/ccrystal/cli/mcp/DefaultMcpHandlerSuite.scala`
+  - [x] Add end-to-end integration test in `cli/shared/src/test/scala/ccrystal/cli/mcp/McpEndToEndSessionSuite.scala`
+- [x] Task: Integrate retention recommendations in `TriageEngine` and `ccrystal triage`
+  - [x] Scan cold storage archive for crystals exceeding retention threshold (default: 90 days)
+  - [x] Emit recommendation suggesting `ccrystal prune --older-than 90d`
+  - [x] Write triage tests in `core/shared/src/test/scala/ccrystal/core/audit/CrystalTriageSuite.scala`
+- [x] Task: Phase 4 Verification & Checkpoint (Refer to workflow.md)
 
 ## Phase 5: Documentation, Multi-Platform Verification & Integration
 
-- [ ] Task: Export MCP tool schema for `crystal_prune`
-  - [ ] Write `crystal_prune.json` in `docs/mcp/schemas/`
-- [ ] Task: Update documentation and agent skills
-  - [ ] Update `README.md`, `.agents/skills/context-crystal/SKILL.md`, and `docs/mcp/instructions.md`
-  - [ ] Run Markdown linting (`npx markdownlint-cli ...`)
-- [ ] Task: Multi-platform test suite & formatting
-  - [ ] Run `sbt test` across Native, JVM, and JS targets
-  - [ ] Run `sbt "scalafmtCheckAll; scalafixAll --check"`
-- [ ] Task: Phase 5 Verification & Checkpoint (Refer to workflow.md)
+- [x] Task: Export MCP tool schema for `crystal_prune`
+  - [x] Write `crystal_prune.json` in `docs/mcp/schemas/`
+- [x] Task: Update documentation and agent skills
+  - [x] Update `README.md`, `.agents/skills/context-crystal/SKILL.md`, and `docs/mcp/instructions.md`
+  - [x] Run Markdown linting (`npx markdownlint-cli ...`)
+- [x] Task: Multi-platform test suite & formatting
+  - [x] Run `sbt test` across Native, JVM, and JS targets
+  - [x] Run `sbt "scalafmtCheckAll; scalafixAll --check"`
+- [x] Task: Phase 5 Verification & Checkpoint (Refer to workflow.md)

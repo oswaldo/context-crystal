@@ -32,7 +32,7 @@ class CliFsDeletionIntegrationSuite extends FunSuite:
     val crystalDir = tempDir.resolve(".ccrystals").resolve("proj-alpha")
     assert(Files.exists(crystalDir))
 
-    val delRes = runner.run(CliCommand.Delete("proj-alpha", force = true))
+    val delRes = runner.run(CliCommand.Prune(crystalId = Some("proj-alpha"), force = true))
     assert(delRes.isRight)
     assert(!Files.exists(crystalDir), "Directory must be physically removed")
     assert(!store.exists("proj-alpha"))

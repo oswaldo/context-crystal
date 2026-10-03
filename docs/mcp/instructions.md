@@ -31,7 +31,7 @@ flowchart LR
     Work --> Conclude[crystal_goal_transition]
     Conclude --> Triage[crystal_triage]
     Triage --> Archive[crystal_archive]
-    Triage -.-> Delete[crystal_delete]
+    Triage -.-> Prune[crystal_prune]
 ```
 
 0. **Discovery & Search (`crystal_search`):**
@@ -53,11 +53,11 @@ flowchart LR
 6. **Conclusion (`crystal_goal_transition`):**
    Once all criteria are met, transition goal status to `concluded_success` (or `concluded_abandoned` if aborted/superseded) with a `summary`. Context Crystal automatically records a `resolution` DAG node preserving completion provenance.
 7. **Hygiene & Triage (`crystal_triage`):**
-   Inspect cave health. Classify crystals into `Active`, `Solid`, and `Stale`. Crystals with status `concluded_success` or `concluded_abandoned` and 0 active leases are classified as `Solid` and `CandidateForCleanup`.
+   Inspect cave health. Classify crystals into `Active`, `Solid`, and `Stale`. Crystals with status `concluded_success` or `concluded_abandoned` and 0 active leases are classified as `Solid` and `CandidateForCleanup`. Archived crystals older than 90d are flagged for retention pruning.
 8. **Cold Storage Archiving (`crystal_archive`):**
    **Preferred non-destructive cleanup:** Move concluded crystals into cold storage (`.ccrystals/archive/`). All state and artifacts are preserved, and crystals can be restored anytime with `crystal_unarchive`.
-9. **Destructive Cleanup (`crystal_delete`):**
-   Permanently delete crystals only when explicitly instructed by the operator for scratch spikes or unneeded throwaway work. Never perform unprompted deletions.
+9. **Permanent Pruning & Retention (`crystal_prune`):**
+   Permanently prune single crystals or batch prune ancient archived crystals by retention policy (e.g. `older_than: "90d"`, `all: true`). Supports `dry_run: true` to preview candidates and freed bytes before execution. Never perform unprompted pruning.
 
 ---
 

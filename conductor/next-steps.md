@@ -82,4 +82,8 @@
   - Integrate compile-time build constants / `sbt-buildinfo` into `cli` module.
   - Support top-level `ccrystal -v` and `ccrystal --version` emitting semantic release version, commit SHA, build timestamp, and target platform architecture (`x86_64-pc-linux`, `aarch64-apple-darwin`, etc.).
   - Add Decline root parser support and automated CLI integration test suite.
+- **Track 27: Standardized Temporal Architecture (java.time / scala-java-time Migration):**
+  - Migrate in-house `CivilDate` Gregorian epoch math and temporal parsing to standard `java.time` / `io.github.cquiroz::scala-java-time` across Native, JVM, and JS targets.
+  - Eliminate custom civil date algorithms in favor of standard `Instant`, `LocalDate`, and `Duration`, unifying temporal parsing and formatting across all modules.
 - **Maintenance / Chore (Completed / Locked):** Upgraded to Scala 3.9.0 LTS and sbt-scala-native 0.5.12 with zero warnings. sbt 2.0.8 compatibility locked at sbt 1.10.7 pending community sbt 2.x cross-publishing of required plugins (sbt-crossproject, sbt-updates, scalafix, scalafmt).
+
