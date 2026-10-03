@@ -74,6 +74,8 @@
 - [x] **Track: Cold Storage Prune, Deletion Symmetry & Lifecycle Completeness**  
   *Link: [conductor/tracks/cold_storage_purge_and_lifecycle_20261003/index.md](./tracks/cold_storage_purge_and_lifecycle_20261003/index.md)*
 
+- [ ] **Track: Cross-Crystal Connections, Lattice Bonds & Defensive Hydration Paging**  
+  *Link: [conductor/tracks/crystal_connections_and_lattice_bonds_20261003/index.md](./tracks/crystal_connections_and_lattice_bonds_20261003/index.md)*
+
 - [ ] **Track: Standardized Temporal Architecture (java.time / scala-java-time Migration)**  
   *Link: [conductor/tracks/temporal_architecture_and_java_time_migration/index.md](./tracks/temporal_architecture_and_java_time_migration/index.md)*
-
