@@ -1,13 +1,13 @@
 package ccrystal.core.prune
 
 import munit.FunSuite
+import java.time.Instant
 import ccrystal.core.model.*
 import ccrystal.core.model.prune.*
-import ccrystal.core.model.search.CivilDate
 
 class PruneEngineSuite extends FunSuite:
 
-  private val nowMillis = CivilDate.epochMillis(2026, 10, 3, 12, 0, 0)
+  private val nowMillis = Instant.parse("2026-10-03T12:00:00Z").toEpochMilli
 
   private def makeCrystal(id: String, author: String, updatedAt: String): ContextCrystal =
     ContextCrystal(

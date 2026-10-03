@@ -109,7 +109,7 @@ object CaveStatsEngine:
         val iso =
           if c.createdAt != null && c.createdAt.trim.nonEmpty then c.createdAt
           else c.dag.nodes.headOption.map(_.timestamp).getOrElse("1970-01-01T00:00:00Z")
-        CivilDate.parseIsoToEpochMillis(iso).map(millis => (c.id, iso, millis))
+        ccrystal.core.model.search.TimeUtil.parseIsoToEpochMillis(iso).map(millis => (c.id, iso, millis))
       }
 
       val (oldestId, oldestIso, minMillis) =
@@ -129,7 +129,7 @@ object CaveStatsEngine:
                 if c.createdAt != null && c.createdAt.trim.nonEmpty then c.createdAt
                 else "1970-01-01T00:00:00Z",
               )
-        CivilDate.parseIsoToEpochMillis(iso).map(millis => (c.id, iso, millis))
+        ccrystal.core.model.search.TimeUtil.parseIsoToEpochMillis(iso).map(millis => (c.id, iso, millis))
       }
 
       val (newestId, newestIso, maxMillis) =
@@ -139,7 +139,11 @@ object CaveStatsEngine:
         else (None, None, 0L)
 
       val spanDays =
-        if minMillis > 0L && maxMillis >= minMillis then (maxMillis - minMillis) / 86400000L
+        if minMillis > 0L && maxMillis >= minMillis then
+          java.time.temporal.ChronoUnit.DAYS.between(
+            java.time.Instant.ofEpochMilli(minMillis),
+            java.time.Instant.ofEpochMilli(maxMillis),
+          )
         else 0L
 
       TemporalExtents(

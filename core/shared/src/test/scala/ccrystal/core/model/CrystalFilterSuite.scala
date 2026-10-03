@@ -1,19 +1,20 @@
 package ccrystal.core.model
 
+import java.time.Instant
 import ccrystal.core.model.search.{
   AgingCategory,
-  CivilDate,
   CrystalFilter,
   SearchEngine,
   SearchMatch,
   TemporalParser,
+  TimeUtil,
 }
 import munit.FunSuite
 
 class CrystalFilterSuite extends FunSuite:
 
   // 2026-10-01T12:00:00Z
-  private val nowMillis = CivilDate.epochMillis(2026, 10, 1, 12, 0, 0)
+  private val nowMillis = Instant.parse("2026-10-01T12:00:00Z").toEpochMilli
 
   private def makeCrystal(
       id: String,
@@ -51,20 +52,20 @@ class CrystalFilterSuite extends FunSuite:
 
   test("TemporalParser parses ISO-8601 date and datetime strings"):
     val t1         = TemporalParser.parse("2026-09-30T10:00:00Z", nowMillis)
-    val expectedT1 = CivilDate.epochMillis(2026, 9, 30, 10, 0, 0)
+    val expectedT1 = Instant.parse("2026-09-30T10:00:00Z").toEpochMilli
     assertEquals(t1, Some(expectedT1))
 
     val t2         = TemporalParser.parse("2026-09-30", nowMillis)
-    val expectedT2 = CivilDate.epochMillis(2026, 9, 30, 0, 0, 0)
+    val expectedT2 = Instant.parse("2026-09-30T00:00:00Z").toEpochMilli
     assertEquals(t2, Some(expectedT2))
 
   test("TemporalParser parses relative date expressions (today, yesterday, 1d, 7d, 24h)"):
     val today         = TemporalParser.parse("today", nowMillis)
-    val expectedToday = CivilDate.epochMillis(2026, 10, 1, 0, 0, 0)
+    val expectedToday = Instant.parse("2026-10-01T00:00:00Z").toEpochMilli
     assertEquals(today, Some(expectedToday))
 
     val yesterday         = TemporalParser.parse("yesterday", nowMillis)
-    val expectedYesterday = CivilDate.epochMillis(2026, 9, 30, 0, 0, 0)
+    val expectedYesterday = Instant.parse("2026-09-30T00:00:00Z").toEpochMilli
     assertEquals(yesterday, Some(expectedYesterday))
 
     val oneDay = TemporalParser.parse("1d", nowMillis)
@@ -221,17 +222,17 @@ class CrystalFilterSuite extends FunSuite:
     )
 
   test(
-    "CivilDate.formatIso correctly formats epoch millis and roundtrips with parseIsoToEpochMillis",
+    "TimeUtil.formatIso correctly formats epoch millis and roundtrips with parseIsoToEpochMillis",
   ):
     val epoch0 = 0L // 1970-01-01T00:00:00Z
-    assertEquals(CivilDate.formatIso(epoch0), "1970-01-01T00:00:00Z")
+    assertEquals(TimeUtil.formatIso(epoch0), "1970-01-01T00:00:00Z")
 
-    val testMillis = CivilDate.epochMillis(2026, 10, 3, 21, 15, 30)
-    val iso        = CivilDate.formatIso(testMillis)
+    val testMillis = Instant.parse("2026-10-03T21:15:30Z").toEpochMilli
+    val iso        = TimeUtil.formatIso(testMillis)
     assertEquals(iso, "2026-10-03T21:15:30Z")
-    assertEquals(CivilDate.parseIsoToEpochMillis(iso), Some(testMillis))
+    assertEquals(TimeUtil.parseIsoToEpochMillis(iso), Some(testMillis))
 
-    val nowIso = CivilDate.nowIso()
+    val nowIso = TimeUtil.nowIso()
     assert(nowIso.endsWith("Z"), "nowIso ends with Z")
     assert(nowIso.contains("T"), "nowIso contains T")
-    assert(CivilDate.parseIsoToEpochMillis(nowIso).isDefined, "nowIso is parseable")
+    assert(TimeUtil.parseIsoToEpochMillis(nowIso).isDefined, "nowIso is parseable")

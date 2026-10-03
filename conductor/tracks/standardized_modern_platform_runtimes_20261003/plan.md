@@ -2,21 +2,21 @@
 
 ## Phase 1: Build Dependencies & Temporal Modernization (java.time / scala-java-time)
 
-- [ ] Task: Add `scala-java-time` dependency to `core` cross-project in `build.sbt`
-  - [ ] Add `"io.github.cquiroz" %%% "scala-java-time" % "2.6.0"` to `core` libraryDependencies
-  - [ ] Verify clean compilation across `coreJVM`, `coreNative`, and `coreJS`
-- [ ] Task: Modernize `SearchModels.scala` and `TemporalParser`
-  - [ ] Refactor `TemporalParser` to use `java.time.Instant`, `java.time.LocalDate`, and `java.time.ZoneOffset.UTC`
-  - [ ] Refactor `SearchEngine` to use standard `java.time.Instant` comparison (`isBefore`, `isAfter`)
-  - [ ] Remove bespoke `CivilDate` calendar arithmetic object (`daysSince1970`, `epochMillis`, `parseIsoToEpochMillis`, `formatIso`, `nowIso`)
-- [ ] Task: Modernize `CaveStatsEngine.scala` and `FsCrystalStore.scala`
-  - [ ] Update `CaveStatsEngine` to compute day spans using `java.time.temporal.ChronoUnit.DAYS.between`
-  - [ ] Update `FsCrystalStore` to generate standard ISO-8601 timestamps using `java.time.Instant.now().toString`
-- [ ] Task: Update unit tests in `core`
-  - [ ] Update `CrystalFilterSuite.scala` with `java.time.Instant` test cases
-  - [ ] Update `CaveStatsEngineSuite.scala` and `FsCrystalStoreLatticeSuite.scala`
-  - [ ] Verify `coreJVM/test`, `coreNative/test`, and `coreJS/test`
-- [ ] Task: Phase 1 Verification & Checkpoint (Refer to workflow.md)
+- [x] Task: Add `scala-java-time` dependency to `core` cross-project in `build.sbt` (07b730b)
+  - [x] Add `"io.github.cquiroz" %%% "scala-java-time" % "2.6.0"` to `core` libraryDependencies
+  - [x] Verify clean compilation across `coreJVM`, `coreNative`, and `coreJS`
+- [x] Task: Modernize `SearchModels.scala` and `TemporalParser`
+  - [x] Refactor `TemporalParser` to use `java.time.Instant`, `java.time.LocalDate`, and `java.time.ZoneOffset.UTC`
+  - [x] Refactor `SearchEngine` to use standard `java.time.Instant` comparison (`isBefore`, `isAfter`)
+  - [x] Remove bespoke `CivilDate` calendar arithmetic object (`daysSince1970`, `epochMillis`, `parseIsoToEpochMillis`, `formatIso`, `nowIso`)
+- [x] Task: Modernize `CaveStatsEngine.scala` and `FsCrystalStore.scala`
+  - [x] Update `CaveStatsEngine` to compute day spans using `java.time.temporal.ChronoUnit.DAYS.between`
+  - [x] Update `FsCrystalStore` to generate standard ISO-8601 timestamps using `java.time.Instant.now().toString`
+- [x] Task: Update unit tests in `core`
+  - [x] Update `CrystalFilterSuite.scala` with `java.time.Instant` test cases
+  - [x] Update `CaveStatsEngineSuite.scala` and `FsCrystalStoreLatticeSuite.scala`
+  - [x] Verify `coreJVM/test`, `coreNative/test`, and `coreJS/test`
+- [x] Task: Phase 1 Verification & Checkpoint (Refer to workflow.md)
 
 ## Phase 2: Filesystem & Process Modernization with os-lib in core/jvm-native
 
