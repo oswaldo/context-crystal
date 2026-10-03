@@ -26,23 +26,31 @@
 
 ---
 
-## 2. Next Track: Cross-Crystal Connections, Lattice Bonds & Defensive Hydration Paging (`crystal_connections_and_lattice_bonds`)
+## 2. Next Track: Cold Storage Purge, Deletion Symmetry & Lifecycle Completeness (`cold_storage_purge_and_lifecycle`)
 
-- **Objective:** Introduce first-class structural relationships between crystals (Spec v1.1) and defensive hydration controls to prevent context blowup:
-  - **Typed Lattice Bonds:** Support typed cross-crystal links (`relates_to`, `depends_on`, `blocks`, `supersedes`, `references`) connecting distinct operational goals (e.g. linking a release crystal to an external registration/distribution crystal).
-  - **CLI & MCP Ergonomics:** Introduce `ccrystal connect <source> <target> --rel <kind>`, `ccrystal disconnect`, `ccrystal connections <id>`, and companion MCP tools (`crystal_connect`, `crystal_disconnect`).
-  - **Lattice Beam Projection & Quick-Peeking:** Automatically project connected crystals into `ccrystal hydrate` with status and open task summaries, enabling agents to peek across boundaries without context loss.
-  - **Defensive Hydration Paging & Safe Defaults:** Convention-over-configuration limits on hydration beams (default `--tail 10`, max connection depth 1, filtering completed tasks) to protect against unhygienic cave bloat, with optional external configuration/profile overrides.
-- **Priority:** Immediate next step (High impact, establishes topological workspace graph and protects prompt context windows).
+- **Objective:** Seal the single-crystal lifecycle by closing the asymmetric gap between active and cold storage deletion, preventing monotonic cave bloat and enabling clean referential integrity before introducing cross-crystal bonds:
+  - **Cold Storage Deletion Symmetry:** Ensure `ccrystal delete <id>` seamlessly handles crystals located in `.ccrystals/archive/` as well as active storage, cascade-deregistering orphaned entities and cleaning artifact registries consistently.
+  - **Batch & Retention Purging:** Introduce `ccrystal purge <id>` with retention criteria (`--all`, `--older-than <duration>` e.g. `30d`, `90d`, and `--dry-run`), allowing human operators and automated cave hygiene to safely prune obsolete cold storage.
+  - **Native MCP Tooling (`crystal_purge`):** Provide a dedicated MCP tool with dry-run/preview impact reporting for AI agents conducting cave maintenance.
+  - **Triage Recommendation Integration:** Teach `ccrystal triage` / `crystal_triage` to identify stale archived crystals past retention thresholds as candidates for permanent purge.
+- **Priority:** Immediate next step (High impact; seals single-crystal lifecycle before multi-crystal bonds and spec extensions to eliminate cascading rework).
 
 ---
 
 ## 3. Backlog & Future Track Roadmap
 
-- **Subsequent Track: Modular Spec Extensions Architecture & Crystal Comms (`spec_extensions_and_crystal_comms`):**
-  - **Objective:** Keep the core Context Crystal spec minimal and sovereign by establishing a formal modular extension architecture (companion manifests and namespaced storage). Implement **Crystal Comms** (lock-free filesystem inboxes/outboxes and multi-agent coordination with human steersman oversight) as the premier reference extension module.
-  - **Priority:** High impact, establishes decoupled extensibility before building multi-agent mailboxes.
-- **Track 24: Native MCP Server Consolidation, TDQS Optimization & Tool Quality:**
+- **Subsequent Track (Track 23): Cross-Crystal Connections, Lattice Bonds & Defensive Hydration Paging (`crystal_connections_and_lattice_bonds`):**
+  - **Objective:** Introduce first-class structural relationships between crystals (Spec v1.1) and defensive hydration controls to prevent context blowup:
+    - **Typed Lattice Bonds:** Support typed cross-crystal links (`relates_to`, `depends_on`, `blocks`, `supersedes`, `references`) connecting distinct operational goals (e.g. linking a release crystal to an external registration/distribution crystal).
+    - **Lifecycle Referential Integrity:** Gracefully handle bonded crystal archiving and purge with cascade checks or warnings (`on_purge` warnings when dependent bonds exist).
+    - **CLI & MCP Ergonomics:** Introduce `ccrystal connect <source> <target> --rel <kind>`, `ccrystal disconnect`, `ccrystal connections <id>`, and companion MCP tools (`crystal_connect`, `crystal_disconnect`).
+    - **Lattice Beam Projection & Quick-Peeking:** Automatically project connected crystals into `ccrystal hydrate` with status and open task summaries, enabling agents to peek across boundaries without context loss.
+    - **Defensive Hydration Paging & Safe Defaults:** Convention-over-configuration limits on hydration beams (default `--tail 10`, max connection depth 1, filtering completed tasks) to protect against unhygienic cave bloat, with optional external configuration/profile overrides.
+  - **Priority:** Scheduled directly after Cold Storage Purge.
+- **Subsequent Track (Track 24): Modular Spec Extensions Architecture & Crystal Comms (`spec_extensions_and_crystal_comms`):**
+  - **Objective:** Keep the core Context Crystal spec minimal and sovereign by establishing a formal modular extension architecture (companion manifests and namespaced storage `.ccrystals/<id>/extensions/`). Implement **Crystal Comms** (lock-free filesystem inboxes/outboxes and multi-agent coordination with human steersman oversight) as the premier reference extension module.
+  - **Priority:** Scheduled after Cross-Crystal Connections.
+- **Track 25: Native MCP Server Consolidation, TDQS Optimization & Tool Quality:**
   - **Objective:** Refactor the MCP server tool surface into an ergonomic, consolidated facade (e.g. 6-8 cohesive tools: `crystal_manage`, `crystal_hydrate`, `crystal_transition`, `crystal_artifact`, `crystal_lesson`, `crystal_lifecycle`) to eliminate prompt context bloat and agent routing indecision.
   - **Naming & Completeness:** Enforce strict, uniform `verb_noun` naming conventions, add dedicated first-class lesson management tools (`crystal_lesson` to record, list, and resolve open lessons), and provide full artifact lifecycle support (updating metadata and unregistering artifacts) to achieve a verified Grade A (4.5+/5.0) on Glama TDQS.
 - **Track 14: Strict Functional Quality & Invariant Hardening (Disallow var, null, throws):**
