@@ -82,8 +82,10 @@ object TimeUtil:
         Some(LocalDate.parse(normalized).atStartOfDay(ZoneOffset.UTC).toInstant.toEpochMilli)
       else
         val withZ =
-          if normalized.length >= 19 && !normalized.endsWith("Z") && !normalized.contains("+") && normalized.indexOf('-', 10) == -1 then
-            normalized + "Z"
+          if normalized.length >= 19 && !normalized.endsWith("Z") && !normalized.contains(
+              "+",
+            ) && normalized.indexOf('-', 10) == -1
+          then normalized + "Z"
           else normalized
         Some(Instant.parse(withZ).toEpochMilli)
     catch case _: Throwable => None
@@ -102,10 +104,25 @@ object TemporalParser:
     trimmed.toLowerCase match
       case "today" =>
         val nowInstant = Instant.ofEpochMilli(nowEpochMillis)
-        Some(nowInstant.atOffset(ZoneOffset.UTC).toLocalDate.atStartOfDay(ZoneOffset.UTC).toInstant.toEpochMilli)
+        Some(
+          nowInstant
+            .atOffset(ZoneOffset.UTC)
+            .toLocalDate
+            .atStartOfDay(ZoneOffset.UTC)
+            .toInstant
+            .toEpochMilli,
+        )
       case "yesterday" =>
         val nowInstant = Instant.ofEpochMilli(nowEpochMillis)
-        Some(nowInstant.atOffset(ZoneOffset.UTC).toLocalDate.minusDays(1).atStartOfDay(ZoneOffset.UTC).toInstant.toEpochMilli)
+        Some(
+          nowInstant
+            .atOffset(ZoneOffset.UTC)
+            .toLocalDate
+            .minusDays(1)
+            .atStartOfDay(ZoneOffset.UTC)
+            .toInstant
+            .toEpochMilli,
+        )
       case RelativeRegex(amountStr, unit) =>
         Try(amountStr.toLong).toOption.map { amount =>
           val nowInstant = Instant.ofEpochMilli(nowEpochMillis)

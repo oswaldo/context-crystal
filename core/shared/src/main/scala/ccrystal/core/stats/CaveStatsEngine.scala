@@ -109,7 +109,9 @@ object CaveStatsEngine:
         val iso =
           if c.createdAt != null && c.createdAt.trim.nonEmpty then c.createdAt
           else c.dag.nodes.headOption.map(_.timestamp).getOrElse("1970-01-01T00:00:00Z")
-        ccrystal.core.model.search.TimeUtil.parseIsoToEpochMillis(iso).map(millis => (c.id, iso, millis))
+        ccrystal.core.model.search.TimeUtil
+          .parseIsoToEpochMillis(iso)
+          .map(millis => (c.id, iso, millis))
       }
 
       val (oldestId, oldestIso, minMillis) =
@@ -129,7 +131,9 @@ object CaveStatsEngine:
                 if c.createdAt != null && c.createdAt.trim.nonEmpty then c.createdAt
                 else "1970-01-01T00:00:00Z",
               )
-        ccrystal.core.model.search.TimeUtil.parseIsoToEpochMillis(iso).map(millis => (c.id, iso, millis))
+        ccrystal.core.model.search.TimeUtil
+          .parseIsoToEpochMillis(iso)
+          .map(millis => (c.id, iso, millis))
       }
 
       val (newestId, newestIso, maxMillis) =

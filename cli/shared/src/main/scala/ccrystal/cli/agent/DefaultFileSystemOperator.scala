@@ -36,7 +36,7 @@ object DefaultFileSystemOperator extends FileSystemOperator:
 
   override def copyFile(source: String, destination: String): Either[String, Unit] =
     try
-      val src = os.Path(source, os.pwd)
+      val src  = os.Path(source, os.pwd)
       val dest = os.Path(destination, os.pwd)
       os.copy.over(src, dest, createFolders = true)
       Right(())

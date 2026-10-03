@@ -25,7 +25,8 @@ class FsCrystalStore(val rootPath: Path) extends CrystalStore:
   private def atomicWrite(target: os.Path, content: String): Unit =
     val parent = target / os.up
     if !os.exists(parent) then os.makeDir.all(parent)
-    val tempFile = parent / s".${target.last}.tmp-${System.currentTimeMillis()}-${System.nanoTime()}"
+    val tempFile =
+      parent / s".${target.last}.tmp-${System.currentTimeMillis()}-${System.nanoTime()}"
     try
       os.write.over(tempFile, content, createFolders = true)
       try os.move(tempFile, target, replaceExisting = true, atomicMove = true)
@@ -42,7 +43,9 @@ class FsCrystalStore(val rootPath: Path) extends CrystalStore:
   private[store] def withCrystalLock[T](dir: Path)(block: => Either[String, T]): Either[String, T] =
     withCrystalLock(os.Path(dir.toAbsolutePath.normalize()))(block)
 
-  private[store] def withCrystalLock[T](dir: os.Path)(block: => Either[String, T]): Either[String, T] =
+  private[store] def withCrystalLock[T](dir: os.Path)(
+      block: => Either[String, T],
+  ): Either[String, T] =
     val pLock = FsCrystalStore.getProcessLock(dir.toNIO)
     pLock.lock()
     try
@@ -731,12 +734,15 @@ class FsCrystalStore(val rootPath: Path) extends CrystalStore:
     if !os.exists(dir) then 0L
     else
       try
-        os.walk(dir).iterator.map { p =>
-          if os.isFile(p) then
-            try os.size(p)
-            catch case _: Throwable => 0L
-          else 0L
-        }.sum
+        os.walk(dir)
+          .iterator
+          .map { p =>
+            if os.isFile(p) then
+              try os.size(p)
+              catch case _: Throwable => 0L
+            else 0L
+          }
+          .sum
       catch case _: Throwable => 0L
 
   override def getDiskSizes(): (Long, Long, Map[String, Long]) =
@@ -748,9 +754,7 @@ class FsCrystalStore(val rootPath: Path) extends CrystalStore:
 
         val activeDirs = os
           .list(rootOsPath)
-          .filter(p =>
-            os.isDir(p) && p.last != "archive" && !p.last.startsWith("_"),
-          )
+          .filter(p => os.isDir(p) && p.last != "archive" && !p.last.startsWith("_"))
           .toList
 
         activeDirs.foreach { dir =>

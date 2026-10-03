@@ -46,13 +46,13 @@
 
 ## Phase 4: Full Multi-Platform Verification, Linting & Documentation
 
-- [ ] Task: Run full cross-platform test matrix
-  - [ ] Execute `sbt test` across Native, JVM, and JS targets
-- [ ] Task: Format and lint code
-  - [ ] Run `sbt "scalafmtCheckAll; scalafixAll --check"`
-  - [ ] Run markdown linting (`npx markdownlint-cli ...`)
-  - [ ] Run shellcheck (`npx shellcheck ...`)
-- [ ] Task: Update Tech Stack & Documentation
-  - [ ] Update `conductor/tech-stack.md` documenting `scala-java-time` and `os-lib`
-  - [ ] Synchronize `README.md` and `skills/context-crystal/SKILL.md` if any references to legacy date math exist
-- [ ] Task: Phase 4 Verification & Checkpoint (Refer to workflow.md)
+- [x] Task: Run full cross-platform test matrix
+  - [x] Execute `sbt test` across Native, JVM, and JS targets
+- [x] Task: Format and lint code
+  - [x] Run `sbt "scalafmtCheckAll; scalafixAll --check"`
+  - [x] Run markdown linting (`npx markdownlint-cli ...`)
+  - [x] Run shellcheck (`npx shellcheck ...`)
+- [x] Task: Update Tech Stack & Documentation
+  - [x] Update `conductor/tech-stack.md` documenting `scala-java-time` and `os-lib`
+  - [x] Synchronize `README.md` and `skills/context-crystal/SKILL.md` if any references to legacy date math exist
+- [x] Task: Phase 4 Verification & Checkpoint (Refer to workflow.md)

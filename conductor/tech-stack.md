@@ -14,6 +14,8 @@
   - **Scala JVM:** For server-side integrations, big data pipelines, and enterprise JVM services.
   - **Scala.js:** For browser-based applications, client-side validation, and WASM/JS interop.
 - **Serialization & Codecs:** `circe` / `circe-generic` / `circe-parser` (cross-compiled on JVM, JS, and Native).
+- **Temporal & Time Computation:** Standard `java.time` backed by `scala-java-time` across Native, JVM, and JS, guaranteeing deterministic ISO-8601 parsing and UTC date arithmetic.
+- **Filesystem & Operating System Operations:** `os-lib` across Native and JVM for ergonomic, robust, POSIX-compliant filesystem and path operations (`os.Path`, `os.read`, `os.write`, `os.move`, `os.list`, `os.remove.all`), preserving pure browser isolation for `coreJS`.
 - **Graph & Data Structures:** Immutable functional collections, Cats / Cats-Effect (optional / modularized).
 - **Pluggable Persistence SPI:** Abstract `CrystalStore` trait supporting:
   - `FsCrystalStore`: Filesystem repository reading/writing human-readable `.ccrystals/<name>/` (with `crystal.json`, `artifacts/`, `tasks.md`, `lessons-learned.md`, `transient.json`, and nested sub-contexts).
