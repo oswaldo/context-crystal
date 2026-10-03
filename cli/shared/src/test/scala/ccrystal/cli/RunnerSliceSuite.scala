@@ -106,7 +106,10 @@ class InMemoryCrystalStore extends CrystalStore:
     registerEntity(ent)
 
   def deleteCrystal(id: String): Either[String, CrystalDeletionResult] =
-    if crystals.remove(id).isDefined then Right(CrystalDeletionResult(id, Nil))
+    val wasArch = isArchived(id)
+    archivedCrystals.remove(id)
+    if crystals.remove(id).isDefined then
+      Right(CrystalDeletionResult(id, Nil, Nil, isArchived = wasArch))
     else Left(s"Crystal not found: $id")
 
   def deregisterEntity(entityId: String): Either[String, EntityDeregistrationResult] =
@@ -136,6 +139,7 @@ class InMemoryCrystalStore extends CrystalStore:
         c.transientLeases.count(_.status == TransientLeaseStatus.Active),
         c.transientLeases.take(limit).map(_.description),
         Nil,
+        isArchived = isArchived(id),
       )
     }
 
@@ -146,6 +150,50 @@ class InMemoryCrystalStore extends CrystalStore:
     registry.entities.get(entityId) match
       case Some(e) => Right(EntityImpactPreview(e, Nil))
       case None    => Left(s"Entity not found: $entityId")
+
+  override def previewPrune(
+      targetCrystalId: Option[String],
+      olderThanDays: Option[Long],
+      all: Boolean,
+  ): Either[String, ccrystal.core.model.prune.PruneImpactPreview] =
+    val allCrystals      = crystals.values.toList
+    val archivedCrystals = allCrystals.filter(c => isArchived(c.id))
+    val activeCrystals   = allCrystals.filterNot(c => isArchived(c.id))
+    ccrystal.core.prune.PruneEngine.evaluate(
+      archivedCrystals = archivedCrystals,
+      activeCrystals = activeCrystals,
+      perCrystalDiskBytes = archivedCrystals.map(c => c.id -> 1024L).toMap,
+      entityRegistry = registry,
+      artifactRegistry = artifactRegistry,
+      targetCrystalId = targetCrystalId,
+      olderThanDays = olderThanDays,
+      all = all,
+    )
+
+  override def pruneArchived(
+      targetCrystalId: Option[String],
+      olderThanDays: Option[Long],
+      all: Boolean,
+      dryRun: Boolean,
+  ): Either[String, ccrystal.core.model.prune.PruneResult] =
+    previewPrune(targetCrystalId, olderThanDays, all).map { preview =>
+      if !dryRun then
+        preview.candidates.foreach { c =>
+          crystals.remove(c.crystalId)
+          archivedCrystals.remove(c.crystalId)
+        }
+        registry =
+          registry.copy(entities = registry.entities -- preview.orphanedEntitiesToDeregister)
+        artifactRegistry =
+          artifactRegistry.copy(artifacts = artifactRegistry.artifacts -- preview.artifactsToClean)
+      ccrystal.core.model.prune.PruneResult(
+        prunedCrystalIds = preview.candidates.map(_.crystalId),
+        deregisteredEntityIds = preview.orphanedEntitiesToDeregister,
+        cleanedArtifactIds = preview.artifactsToClean,
+        bytesFreed = preview.totalBytesFreed,
+        dryRun = dryRun,
+      )
+    }
 
 class RunnerSliceSuite extends FunSuite:
 

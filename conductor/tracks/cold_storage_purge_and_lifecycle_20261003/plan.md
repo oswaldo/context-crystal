@@ -30,15 +30,15 @@
 
 ## Phase 3: CLI Commands (`ccrystal prune` & Enhanced `ccrystal delete`)
 
-- [ ] Task: Implement Decline parser for `ccrystal prune` in `cli/shared/src/main/scala/ccrystal/cli/CommandParser.scala`
-  - [ ] Add `CliCommand.Prune(crystalId: Option[String], olderThan: Option[String], all: Boolean, dryRun: Boolean, force: Boolean)`
-  - [ ] Write parser unit tests in `cli/shared/src/test/scala/ccrystal/cli/CommandParserSuite.scala`
-- [ ] Task: Implement CLI runner and renderer for `prune` and enhanced `delete` in `cli/shared/src/main/scala/ccrystal/cli/Runner.scala`
-  - [ ] Add interactive confirmation and preview table for `ccrystal prune`
-  - [ ] Enforce batch safety invariant (require `--force` in headless mode)
-  - [ ] Update `delete` output to distinguish active vs archived targets
-  - [ ] Write CLI integration test in `cli/shared/src/test/scala/ccrystal/cli/RunnerPruneSuite.scala`
-- [ ] Task: Phase 3 Verification & Checkpoint (Refer to workflow.md)
+- [x] Task: Implement Decline parser for `ccrystal prune` in `cli/shared/src/main/scala/ccrystal/cli/CommandParser.scala`
+  - [x] Add `CliCommand.Prune(crystalId: Option[String], olderThan: Option[String], all: Boolean, dryRun: Boolean, force: Boolean)`
+  - [x] Write parser unit tests in `cli/shared/src/test/scala/ccrystal/cli/CommandParserSuite.scala`
+- [x] Task: Implement CLI runner and renderer for `prune` and enhanced `delete` in `cli/shared/src/main/scala/ccrystal/cli/Runner.scala`
+  - [x] Add interactive confirmation and preview table for `ccrystal prune`
+  - [x] Enforce batch safety invariant (require `--force` in headless mode)
+  - [x] Update `delete` output to distinguish active vs archived targets
+  - [x] Write CLI integration test in `cli/shared/src/test/scala/ccrystal/cli/RunnerPruneSuite.scala`
+- [x] Task: Phase 3 Verification & Checkpoint (Refer to workflow.md)
 
 ## Phase 4: Native MCP Server Tool (`crystal_prune`) & Triage Integration
 

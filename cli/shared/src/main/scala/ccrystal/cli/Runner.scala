@@ -596,6 +596,38 @@ class Runner(
         else executeDelete(crystalId)
       }
 
+    case CliCommand.Prune(crystalIdOpt, olderThanOpt, all, dryRun, force) =>
+      if crystalIdOpt.isEmpty && olderThanOpt.isEmpty && !all then
+        Left(
+          "At least one targeting option must be specified for prune: <crystal-id>, --older-than <duration> (e.g. 30d, 2w), or --all",
+        )
+      else
+        val parsedDays: Either[String, Option[Long]] = olderThanOpt match
+          case Some(ot) => ccrystal.core.prune.PruneEngine.parseDurationDays(ot).map(Some(_))
+          case None     => Right(None)
+
+        parsedDays.flatMap { minDays =>
+          store.previewPrune(crystalIdOpt, minDays, all).flatMap { preview =>
+            if preview.candidates.isEmpty then
+              Right(
+                "No archived crystals match the specified retention criteria. Cold storage is clean.",
+              )
+            else if dryRun then
+              val table = formatPrunePreview(preview)
+              Right(
+                s"$table\n[DRY RUN] No crystals were deleted. Run without --dry-run to permanently prune cold storage.",
+              )
+            else if !force then
+              print(formatPrunePreview(preview))
+              val confirmed = confirmPrompt(
+                s"Are you sure you want to permanently prune ${preview.totalCrystals} archived crystal(s) and free ${formatBytes(preview.totalBytesFreed)}? [y/N]: ",
+              )
+              if !confirmed then Right("Prune operation cancelled.")
+              else executePrune(crystalIdOpt, minDays, all)
+            else executePrune(crystalIdOpt, minDays, all)
+          }
+        }
+
     case CliCommand.Archive(crystalId) =>
       store.archive(crystalId).map { _ =>
         s"Archived crystal '$crystalId' to cold storage (.ccrystals/archive/$crystalId)"
@@ -779,11 +811,33 @@ class Runner(
 
   private def executeDelete(crystalId: String): Either[String, String] =
     store.deleteCrystal(crystalId).map { res =>
+      val locMsg = if res.isArchived then " from cold storage" else ""
       val cascadeMsg =
         if res.deregisteredEntityIds.nonEmpty then
           s" (Cascade-deregistered orphaned entities: ${res.deregisteredEntityIds.mkString(", ")})"
         else ""
-      s"Permanently deleted crystal '$crystalId'$cascadeMsg"
+      val artMsg =
+        if res.cleanedArtifactIds.nonEmpty then
+          s" (Cleaned cave artifacts: ${res.cleanedArtifactIds.mkString(", ")})"
+        else ""
+      s"Permanently deleted crystal '$crystalId'$locMsg$cascadeMsg$artMsg"
+    }
+
+  private def executePrune(
+      crystalIdOpt: Option[String],
+      olderThanDays: Option[Long],
+      all: Boolean,
+  ): Either[String, String] =
+    store.pruneArchived(crystalIdOpt, olderThanDays, all, dryRun = false).map { res =>
+      val cascadeMsg =
+        if res.deregisteredEntityIds.nonEmpty then
+          s"\nCascade-deregistered orphaned entities: ${res.deregisteredEntityIds.mkString(", ")}"
+        else ""
+      val artMsg =
+        if res.cleanedArtifactIds.nonEmpty then
+          s"\nCleaned cave artifacts: ${res.cleanedArtifactIds.mkString(", ")}"
+        else ""
+      s"Successfully pruned ${res.prunedCrystalIds.size} archived crystal(s) from cold storage. Freed ${formatBytes(res.bytesFreed)}.$cascadeMsg$artMsg"
     }
 
   private def executeDeregister(entityId: String): Either[String, String] =
@@ -795,9 +849,34 @@ class Runner(
       s"Deregistered entity '$entityId' from cave registry$cascadeMsg"
     }
 
-  private def formatCrystalDeletionPreview(preview: CrystalImpactPreview): String =
+  private def formatPrunePreview(preview: ccrystal.core.model.prune.PruneImpactPreview): String =
     val sb = new java.lang.StringBuilder()
-    sb.append(s"\n--- IRRECOVERABLE DELETION IMPACT: Crystal '${preview.crystalId}' ---\n")
+    sb.append(
+      s"\n--- COLD STORAGE PRUNE IMPACT PREVIEW (${preview.totalCrystals} crystal(s) targeted) ---\n\n",
+    )
+    sb.append("| Crystal ID | Age | Disk Footprint | Nodes | Tasks | Lessons |\n")
+    sb.append("|---|---|---|---|---|---|\n")
+    preview.candidates.foreach { c =>
+      sb.append(
+        s"| `${c.crystalId}` | ${c.ageDays}d | ${formatBytes(c.diskBytes)} | ${c.nodeCount} | ${c.taskCount} | ${c.lessonCount} |\n",
+      )
+    }
+    sb.append(s"\nTotal storage to be freed: ${formatBytes(preview.totalBytesFreed)}\n")
+    if preview.orphanedEntitiesToDeregister.nonEmpty then
+      sb.append(
+        s"Orphaned entities to cascade-deregister: ${preview.orphanedEntitiesToDeregister.mkString(", ")}\n",
+      )
+    if preview.artifactsToClean.nonEmpty then
+      sb.append(s"Cave artifacts to clean: ${preview.artifactsToClean.mkString(", ")}\n")
+    sb.append("------------------------------------------------------------\n")
+    sb.toString
+
+  private def formatCrystalDeletionPreview(preview: CrystalImpactPreview): String =
+    val sb        = new java.lang.StringBuilder()
+    val locHeader = if preview.isArchived then " [Cold Storage Archive]" else ""
+    sb.append(
+      s"\n--- IRRECOVERABLE DELETION IMPACT: Crystal '${preview.crystalId}'$locHeader ---\n",
+    )
     sb.append(s"Goal: ${preview.goalTitle} [${preview.goalStatus}]\n")
     if preview.intent.nonEmpty then sb.append(s"Intent: ${preview.intent}\n")
     sb.append(s"Created: ${preview.createdAt} | Updated: ${preview.updatedAt}\n\n")

@@ -107,6 +107,13 @@ enum CliCommand derives CanEqual:
   case Refresh(crystalId: Option[String], all: Boolean)
   case Batch(scriptOrChain: String)
   case Delete(crystalId: String, force: Boolean = false)
+  case Prune(
+      crystalId: Option[String] = None,
+      olderThan: Option[String] = None,
+      all: Boolean = false,
+      dryRun: Boolean = false,
+      force: Boolean = false,
+  )
   case Archive(crystalId: String)
   case Unarchive(crystalId: String)
   case Melt(

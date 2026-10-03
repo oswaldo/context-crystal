@@ -445,6 +445,19 @@ object CommandParser:
     Opts.flag("force", "Skip interactive confirmation prompt", "f").orFalse,
   ).mapN(CliCommand.Delete.apply)
 
+  private val pruneOpts = (
+    Opts.argument[String]("crystal-id").orNone,
+    Opts
+      .option[String](
+        "older-than",
+        "Prune archived crystals older than duration (e.g. 30d, 2w, 3m)",
+      )
+      .orNone,
+    Opts.flag("all", "Prune all archived crystals in cold storage").orFalse,
+    Opts.flag("dry-run", "Preview prune impact without deleting files").orFalse,
+    Opts.flag("force", "Skip interactive confirmation prompt", "f").orFalse,
+  ).mapN(CliCommand.Prune.apply)
+
   private val lessonAddOpts = (
     Opts.argument[String]("crystal-id"),
     Opts.option[String]("friction", "Observed friction", "f"),
@@ -659,6 +672,10 @@ object CommandParser:
     Opts.subcommand("delete", "Permanently delete a crystal and cascade orphaned entities")(
       deleteOpts,
     ),
+    Opts.subcommand(
+      "prune",
+      "Prune obsolete archived crystals from cold storage by retention policy",
+    )(pruneOpts),
     Opts.subcommand("archive", "Archive a crystal to cold storage (.ccrystals/archive/)")(
       archiveOpts,
     ),

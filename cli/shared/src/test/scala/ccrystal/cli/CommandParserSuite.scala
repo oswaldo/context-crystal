@@ -452,6 +452,22 @@ class CommandParserSuite extends FunSuite:
     assert(parsed3.isRight)
     assertEquals(parsed3.toOption.get, CliCommand.Delete("my-crystal", force = true))
 
+  test("Parses 'prune' command with various flags"):
+    val pruneSpecific = List("prune", "c-arch-1")
+    val p1            = CommandParser.parse(pruneSpecific)
+    assert(p1.isRight)
+    assertEquals(p1.toOption.get, CliCommand.Prune(crystalId = Some("c-arch-1")))
+
+    val pruneOlderThan = List("prune", "--older-than", "30d", "--dry-run")
+    val p2             = CommandParser.parse(pruneOlderThan)
+    assert(p2.isRight)
+    assertEquals(p2.toOption.get, CliCommand.Prune(olderThan = Some("30d"), dryRun = true))
+
+    val pruneAll = List("prune", "--all", "-f")
+    val p3       = CommandParser.parse(pruneAll)
+    assert(p3.isRight)
+    assertEquals(p3.toOption.get, CliCommand.Prune(all = true, force = true))
+
   test("Parses 'entity deregister' command with optional --force flag"):
     val deregNoForce = List("entity", "deregister", "usr_alice")
     val parsed1      = CommandParser.parse(deregNoForce)
