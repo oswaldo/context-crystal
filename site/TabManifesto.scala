@@ -22,7 +22,7 @@ object TabManifesto:
         ),
         p(
           className := "hero-lead",
-          "Context Crystal cures session amnesia and eliminates agent debris. A local-first, zero-token lifecycle and context beam engine engineered for software architects and autonomous AI entities collaborating with deliberate human craftsmanship.",
+          "Context Crystal is the medicine for session amnesia and agent debris. A local-first, zero-token lifecycle and context beam engine engineered for software architects and autonomous AI entities collaborating with deliberate human craftsmanship.",
         ),
         div(
           className := "hero-cta-group",
