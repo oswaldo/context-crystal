@@ -5,9 +5,9 @@
 - [x] Task: Canonical Skill Template & Path Resolver Evolution (TDD) (29cd083)
   - [x] Write unit tests for `CanonicalSkill` content bundling and `HarnessPathResolver` resolving global/workspace skill paths.
   - [x] Implement `CanonicalSkill` embedded object and update `HarnessPathResolver` with `skillPath` and `workspaceSkillPath`.
-- [ ] Task: Agent Doctor Skill Diagnostics (TDD)
-  - [ ] Write unit tests in `AgentDoctorSuite` checking `SkillStatus` (`Equipped`, `Missing`, `NotSupported`).
-  - [ ] Implement skill inspection logic in `AgentDoctor` and update `DoctorReport` / `HarnessDiagnosis`.
+- [x] Task: Agent Doctor Skill Diagnostics (TDD) (6bd8c5a)
+  - [x] Write unit tests in `AgentDoctorSuite` checking `SkillStatus` (`Equipped`, `Missing`, `NotSupported`).
+  - [x] Implement skill inspection logic in `AgentDoctor` and update `DoctorReport` / `HarnessDiagnosis`.
 - [ ] Task: Agent Doctor CLI & Text/JSON Rendering (TDD)
   - [ ] Write unit tests for `AgentDoctorRenderer` verifying matrix columns (MCP and Skill status) and actionable tips.
   - [ ] Update `AgentDoctorRenderer` and verify CLI `agent doctor` output.
