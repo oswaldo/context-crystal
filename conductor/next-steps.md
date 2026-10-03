@@ -21,70 +21,30 @@
 - **Track 18 (`store_hardening_and_concurrency_20260920`):** Complete `[x]` (Storage Isolation, Atomic Swaps & Optimistic Concurrency Control: zero-torn-read inode engine via temporary file staging and POSIX atomic renames, pure 128-bit `ContentFingerprint` CAS rebase retry loop on `CrystalStore.update(id)(f)`, defensive drift detection in `AgentInstaller`, and ephemeral `.lock` mutex serialization with PID tracking and 5s staleness auto-expiration).
 - **Track 20 (`cave_search_and_temporal_query_20260930`):** Complete `[x]` (Cave Query, Search & Temporal Navigation: multi-dimensional `SearchEngine` across metadata, DAG nodes, lessons, artifacts, zero-dependency portable `CivilDate` Gregorian calendar epoch math, Decline CLI `ccrystal search` with defensive pagination and sorting, consolidated MCP `crystal_search` replacing `crystal_list`, and full multi-platform test suites).
 - **Track 21 (`cave_stats_and_telemetry_20261002`):** Complete `[x]` (Cave Statistics, Storage Metrics & Token Savings: quantitative lifecycle metrics, genesis/recent extents, disk usage across active and cold storage, per-crystal footprint ranking, reference prompt token savings estimation, Decline CLI `ccrystal stats`, native MCP `crystal_stats` tool, and multi-platform verification of operational health metrics).
+- **Track 22 (`cold_storage_purge_and_lifecycle_20261003`):** Complete `[x]` (Unified `ccrystal prune`, MCP `crystal_prune`, deletion symmetry, companion artifact unlinking, and cold storage retention triage).
+- **Track 23 (`crystal_connections_and_lattice_bonds_20261003`):** Complete `[x]` (Cross-crystal connections, typed lattice bonds, cycle detector, bounded hydration context beams, `ccrystal connect/disconnect`, `ccrystal://{id}/bonds`).
+- **Track 26 (`golden_triad_agent_skill_distribution_20261003`):** Complete `[x]` (Golden Triad onboarding, `ccrystal agent doctor` readiness matrix, embedded `CanonicalSkill`, `ccrystal agent install` skill auto-distribution, drift diagnostics `SkillStatus.Outdated`, symlink and workspace support).
+- **Track 27 (`standardized_modern_platform_runtimes_20261003`):** Complete `[x]` (Standardized `java.time` / `scala-java-time` and `os-lib 0.11.8` across Native, JVM, and JS targets).
+- **Milestone v1.2.0 (Twinning):** Released / in deployment matrix.
+- **Codeberg Remote Sync:** Note to sync `origin` (`ssh://git@codeberg.org/oswaldo/context-crystal.git`) once the forge recovers from temporary degradation (`git push origin main && git push origin v1.2.0`).
 - **Binary Location:** `./cli/native/target/scala-3.9.0/ccrystal-cli` (installed in `~/.local/bin/ccrystal` with Thin LTO)
-- **Codeberg Remote:** Clean, up-to-date with linear Conventional Commits history and Git Notes.
 
 ---
 
-## 2. Next Track: Cold Storage Purge, Deletion Symmetry & Lifecycle Completeness (`cold_storage_purge_and_lifecycle`)
+## 2. Next Track: Modular Spec Extensions Architecture & Crystal Comms (`spec_extensions_and_crystal_comms`)
 
-- **Objective:** Seal the single-crystal lifecycle by closing the asymmetric gap between active and cold storage deletion, preventing monotonic cave bloat and enabling clean referential integrity before introducing cross-crystal bonds:
-  - **Cold Storage Deletion Symmetry:** Ensure `ccrystal delete <id>` seamlessly handles crystals located in `.ccrystals/archive/` as well as active storage, cascade-deregistering orphaned entities and cleaning artifact registries consistently.
-  - **Batch & Retention Purging:** Introduce `ccrystal purge <id>` with retention criteria (`--all`, `--older-than <duration>` e.g. `30d`, `90d`, and `--dry-run`), allowing human operators and automated cave hygiene to safely prune obsolete cold storage.
-  - **Native MCP Tooling (`crystal_purge`):** Provide a dedicated MCP tool with dry-run/preview impact reporting for AI agents conducting cave maintenance.
-  - **Triage Recommendation Integration:** Teach `ccrystal triage` / `crystal_triage` to identify stale archived crystals past retention thresholds as candidates for permanent purge.
-- **Priority:** Immediate next step (High impact; seals single-crystal lifecycle before multi-crystal bonds and spec extensions to eliminate cascading rework).
+- **Objective:** Keep the core Context Crystal spec minimal and sovereign by establishing a formal modular extension architecture (companion manifests and namespaced storage `.ccrystals/<id>/extensions/`). Implement **Crystal Comms** (lock-free filesystem inboxes/outboxes and multi-agent coordination with human steersman oversight) as the premier reference extension module.
+- **Priority:** High impact; unlocks multi-agent swarms and asynchronous peer coordination on top of the context lattice.
 
 ---
 
 ## 3. Backlog & Future Track Roadmap
 
-- **Subsequent Track (Track 23): Cross-Crystal Connections, Lattice Bonds & Defensive Hydration Paging (`crystal_connections_and_lattice_bonds`):**
-  - **Objective:** Introduce first-class structural relationships between crystals (Spec v1.1) and defensive hydration controls to prevent context blowup:
-    - **Typed Lattice Bonds:** Support typed cross-crystal links (`relates_to`, `depends_on`, `blocks`, `supersedes`, `references`) connecting distinct operational goals (e.g. linking a release crystal to an external registration/distribution crystal).
-    - **Lifecycle Referential Integrity:** Gracefully handle bonded crystal archiving and purge with cascade checks or warnings (`on_purge` warnings when dependent bonds exist).
-    - **CLI & MCP Ergonomics:** Introduce `ccrystal connect <source> <target> --rel <kind>`, `ccrystal disconnect`, `ccrystal connections <id>`, and companion MCP tools (`crystal_connect`, `crystal_disconnect`).
-    - **Lattice Beam Projection & Quick-Peeking:** Automatically project connected crystals into `ccrystal hydrate` with status and open task summaries, enabling agents to peek across boundaries without context loss.
-    - **Defensive Hydration Paging & Safe Defaults:** Convention-over-configuration limits on hydration beams (default `--tail 10`, max connection depth 1, filtering completed tasks) to protect against unhygienic cave bloat, with optional external configuration/profile overrides.
-  - **Priority:** Scheduled directly after Cold Storage Purge.
-- **Subsequent Track (Track 24): Modular Spec Extensions Architecture & Crystal Comms (`spec_extensions_and_crystal_comms`):**
-  - **Objective:** Keep the core Context Crystal spec minimal and sovereign by establishing a formal modular extension architecture (companion manifests and namespaced storage `.ccrystals/<id>/extensions/`). Implement **Crystal Comms** (lock-free filesystem inboxes/outboxes and multi-agent coordination with human steersman oversight) as the premier reference extension module.
-  - **Priority:** Scheduled after Cross-Crystal Connections.
+- **Track 24: Modular Spec Extensions Architecture & Crystal Comms (`spec_extensions_and_crystal_comms`):**
+  - **Objective:** Companion manifests and namespaced storage `.ccrystals/<id>/extensions/`. Lock-free filesystem inboxes/outboxes and multi-agent coordination.
 - **Track 25: Native MCP Server Consolidation, TDQS Optimization & Tool Quality:**
   - **Objective:** Refactor the MCP server tool surface into an ergonomic, consolidated facade (e.g. 6-8 cohesive tools: `crystal_manage`, `crystal_hydrate`, `crystal_transition`, `crystal_artifact`, `crystal_lesson`, `crystal_lifecycle`) to eliminate prompt context bloat and agent routing indecision.
   - **Naming & Completeness:** Enforce strict, uniform `verb_noun` naming conventions, add dedicated first-class lesson management tools (`crystal_lesson` to record, list, and resolve open lessons), and provide full artifact lifecycle support (updating metadata and unregistering artifacts) to achieve a verified Grade A (4.5+/5.0) on Glama TDQS.
-- **Track 26: Golden Triad Onboarding: Agent Skill Auto-Distribution & Doctor Evolution (`golden_triad_agent_skill_distribution`):**
-  - **Objective:** Bridge the gap between raw tool access and agent reflexes by completing the "Golden Triad" (Runtime CLI + MCP Server + Agent Skill):
-    - **Skill Diagnostic in `ccrystal agent doctor`:** Inspect whether `.agents/skills/context-crystal/SKILL.md` or harness-specific skill directories (`~/.gemini/antigravity-cli/skills/`, `~/.claude/skills/`, `.cursorrules`) have the Context Crystal skill equipped, providing actionable tips if an agent has MCP tools configured without cognitive reflexes.
-    - **Auto-Installation in `ccrystal agent install`:** Expand `ccrystal agent install` with automatic skill distribution (`--with-skill`, enabled by default) to install and link the authoritative `SKILL.md` into target agent workspaces.
-    - **Showcase & Registry Documentation:** Update `README.md` and the web documentation portal with the "Golden Triad" setup guide, educating users and autonomous agents on why equipping the skill delivers zero-prompt autonomy.
-- **Track 14: Strict Functional Quality & Invariant Hardening (Disallow var, null, throws):**
-  - Compiler warning configurations (`-Werror`, `-Wnonunit-statement`), scalafix lint rules, and elimination of mutable state / null / throw across `core` and `cli`.
-- **Track 15: Context Armor, Secret Guards & Threat Modeling (Betterleaks Integration & Injection Defenses):**
-  - **Secret Sanitization & Betterleaks Guard:** Prevent sensitive credentials, API keys, passwords, and tokens from leaking into immutable crystal DAGs and companion stores. Support an optional pre-crystallization validation hook (`ccrystal config hook.pre-transition "betterleaks --no-git ..."` or native BPE/regex scanning) with configurable enforcement policies (`--secret-policy=warn|block|redact`).
-  - **Zero-Dependency In-Flight Redaction:** Automatic scrubbing and redaction of common authorization headers (e.g. `Bearer <token>`), AWS access keys, and PEM certificates from intercepted `tool_execution` summaries and checkpoints before DAG insertion.
-  - **Prompt Injection Defense & Structural Sandboxing:** Structural sandboxing, delimiter escaping for untrusted node summaries and tool outputs, untrusted data provenance stamping, and cryptographic verification.
-- **Track 12: Bidirectional Schema Tooling & Code Generation Strategy:**
-  - Automated, zero-reflection code generation or code-first schema derivation (Smithy4s / Tapir).
-- **Track 11: Experimental Context Lattice Visualizer & Interface Accessibility:**
-  - **Pre-Implementation Discussion Gate:** Evaluate whether a graphical or terminal visualizer is genuinely necessary, or if the sovereign CLI + MCP + conversational agent interaction model renders visual UIs redundant (or relevant only for enterprise oversight).
-  - **Universal Accessibility (Visually Impaired & Screen-Reader First):** Any visualizer or web portal must achieve strict WCAG 2.1 AA/AAA compliance. Ensure full parity for visually impaired collaborators via screen reader support (Orca / VoiceOver), semantic ARIA tree structures, keyboard-only traversal, and high-contrast modes.
-  - **Conversational & Auditory Briefing Streams:** Design context beams and DAG hydrations to be inherently screen-reader and voice-friendly, enabling natural auditory briefings ("Morning Context Cast") for developers who prefer voice/audio interaction over typing.
-
-- **Post-MLP Portal Search & Extended Docs Engine:**
-  - Client-side search engines (Pagefind WASM or Typelevel Laika) for the public documentation portal.
-- **Track 20: Local Developer Ergonomics, Zero-Friction Git Hooks & Pre-Push Quality Guards:**
-  - Automated setup and configuration of repository Git hooks (`.githooks/` configured via `core.hooksPath`).
-  - Fast staged-file pre-commit verification: incremental `scalafmt`, `scalafix`, `markdownlint`, and `shellcheck`.
-  - Robust pre-push guard: prevents pushing to `main` or pushing release tags (`v*.*.*`) if uncommitted changes, formatting deviations, or failing tests exist locally, entirely eliminating the remote "push-and-fail" cycle.
-  - Secret protection hook: intercepts accidental credentials, API tokens, or private keys before staging into git.
-- **Track 21: CLI Version Flag & BuildInfo Integration (`ccrystal --version / -v`):**
-  - Integrate compile-time build constants / `sbt-buildinfo` into `cli` module.
-  - Support top-level `ccrystal -v` and `ccrystal --version` emitting semantic release version, commit SHA, build timestamp, and target platform architecture (`x86_64-pc-linux`, `aarch64-apple-darwin`, etc.).
-  - Add Decline root parser support and automated CLI integration test suite.
-- **Track 27: Standardized Modern Platform Runtimes (Scala Toolkit, os-lib & java.time / scala-java-time Migration):**
-  - **Temporal Modernization:** Migrate in-house `CivilDate` Gregorian epoch math and temporal parsing to standard `java.time` / `io.github.cquiroz::scala-java-time` across Native, JVM, and JS targets. Eliminate custom civil date algorithms in favor of standard `Instant`, `LocalDate`, and `Duration`.
-  - **Filesystem & Process Execution Modernization:** Adopt the official **Scala Toolkit** (`org.scala-lang::toolkit` / `os-lib`), replacing low-level Java `java.nio.file.*` imports and bespoke POSIX/JVM process shims (`ProcessPlatform.scala`) with idiomatic, cross-platform `os-lib` APIs (`os.Path`, `os.read`, `os.write`, `os.proc`, atomic filesystem operations) fully unified across JVM and Scala Native.
 - **Track 28: Crystal Archive Import/Export Bundles (`crystal_archive_import_export_bundles`):**
   - **Objective:** Create a portable, compressed bundling feature (`.crystal.zip` or `<name>-<iso-timestamp>.crystal.zip`) that packages complete crystal state (JSON schema files, DAG nodes, artifacts, lessons learned, and metadata) from an individual crystal or a filtered search query.
   - **Lattice Subgraph Traversal:** Support depth-bounded connection following (`--follow-connections --depth <N>`) to bundle entire interconnected subgraphs without breaking cross-crystal referential integrity.
@@ -93,4 +53,29 @@
   - **Objective:** Capture harness meta-events (such as context window compactions, session pauses, and transcript truncations) as first-class operational provenance without breaking existing v1 schema compatibility.
   - **Immediate Idiom (Zero Spec Drift):** Encoded as a `checkpoint` node kind with `actorId: sys_context_window` (or system handle) and extensible `metadata: {"event_type": "context_compaction", "compaction_count": "<N>"}`.
   - **Future Formalization:** Evaluate extending `DAGNodeKind` enum with an explicit `session_boundary` or `context_event` kind, accompanied by CLI flag `ccrystal checkpoint --event context_compaction` or MCP helper for anti-amnesia provenance and audit trails.
-- **Maintenance / Chore (Completed / Locked):** Upgraded to Scala 3.9.0 LTS and sbt-scala-native 0.5.12 with zero warnings. sbt 2.0.8 compatibility locked at sbt 1.10.7 pending community sbt 2.x cross-publishing of required plugins (sbt-crossproject, sbt-updates, scalafix, scalafmt).
+- **Track 30: Interactive Showcase Demo Tab: Context Preservation vs. Agent Amnesia (`interactive_showcase_demo_tab`):**
+  - **Objective:** Build an engaging, interactive "Demo" tab in the public documentation portal (`context-crystal-gh-pages`) demonstrating the real-world value proposition of Context Crystal in a humorous and vivid side-by-side comparison.
+  - **Split-Screen Layout & Agent Look-and-Feel:**
+    - Two synchronized agent terminal/chat panes mimicking realistic IDE agent runs tackling an identical multi-step coding task.
+    - **Top Progress Bars:** Dynamic progress indicators tracking state across time.
+  - **Left Pane (With Context Crystal):**
+    - Smooth, structured progress bar moving from solid blue to solid green over ~15 seconds.
+    - Agent hydrates context beams (`ccrystal cast`), marks task progress, references architectural invariants, and reaches clean completion with zero drift.
+  - **Right Pane (Without Context Crystal / Raw Chat History):**
+    - Progress bar moves forward initially, but around ~10-15s, context window compaction hits.
+    - Amnesia strikes: The agent repeats an already-answered question or modifies a file it was specifically instructed not to touch.
+    - Frustrated user short prompt appears ("I told you 2 messages ago not to touch X!").
+    - Progress bar stalls, fades to warning red, and moves backwards.
+    - Repeated clarification loops and friction before a clumsy arrival at the solution in ~30s.
+  - **Play / Pause / Reset Controls:** Allows visitors to replay the comparison at normal or 2x speed.
+- **Track 14: Strict Functional Quality & Invariant Hardening (Disallow var, null, throws):**
+  - Compiler warning configurations (`-Werror`, `-Wnonunit-statement`), scalafix lint rules, and elimination of mutable state / null / throw across `core` and `cli`.
+- **Track 15: Context Armor, Secret Guards & Threat Modeling (Betterleaks Integration & Injection Defenses):**
+  - **Secret Sanitization & Betterleaks Guard:** Prevent sensitive credentials, API keys, passwords, and tokens from leaking into immutable crystal DAGs and companion stores.
+  - **Zero-Dependency In-Flight Redaction:** Automatic scrubbing and redaction of common authorization headers (`Bearer <token>`), AWS keys, PEM certificates.
+  - **Prompt Injection Defense & Structural Sandboxing:** Structural sandboxing, delimiter escaping for untrusted summaries and tool outputs.
+- **Track 11: Experimental Context Lattice Visualizer & Interface Accessibility:**
+  - Universal accessibility (WCAG 2.1 AA/AAA, screen-reader friendly Orca/VoiceOver).
+- **Post-MLP Portal Search & Extended Docs Engine:** Pagefind WASM / Typelevel Laika search for documentation.
+- **Track 20: Local Developer Ergonomics, Zero-Friction Git Hooks & Pre-Push Quality Guards:** Automated git hooks for pre-commit and pre-push.
+- **Track 21: CLI Version Flag & BuildInfo Integration (`ccrystal --version / -v`).**
