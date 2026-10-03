@@ -68,6 +68,10 @@ ccrystal triage [--solid|--stale|--active]
 ccrystal archive <id>
 ccrystal unarchive <id>
 
+# Universal agent runtime onboarding & Golden Triad diagnostics
+ccrystal agent doctor
+ccrystal agent install [--dry-run] [--symlink-skill] [--workspace-skill] [--no-skill]
+
 # Start native Model Context Protocol (MCP) server
 ccrystal mcp
 ```

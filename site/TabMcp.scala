@@ -34,10 +34,10 @@ object TabMcp:
             className := "feature-card client-config-card",
             div(className := "client-header", strong("Automated Onboarding (Recommended)")),
             p(className := "config-path", "Claude Desktop • Cursor • Windsurf • Zed • Google Antigravity • Claude Code"),
-            p("Context Crystal automatically discovers installed IDEs and agent runtimes, updates their configurations, and creates defensive `.ccrystal.bak` rollback snapshots:"),
+            p("Context Crystal automatically discovers installed IDEs and agent runtimes, equips both MCP configurations and cognitive agent skills, and creates defensive `.ccrystal.bak` rollback snapshots:"),
             div(
               className := "code-snippet-box",
-              pre(code("ccrystal agent install --all")),
+              pre(code("ccrystal agent install")),
               button(
                 typ := "button",
                 className := "snippet-copy-btn",
@@ -46,11 +46,11 @@ object TabMcp:
                   case _ => "Copy"
                 },
                 onClick --> { _ =>
-                  State.copyToClipboard("agent-install", "ccrystal agent install --all")
+                  State.copyToClipboard("agent-install", "ccrystal agent install")
                 },
               ),
             ),
-            p(className := "config-path", "Run diagnostic anytime to inspect health: `ccrystal agent doctor`"),
+            p(className := "config-path", "Run diagnostic anytime to inspect Golden Triad health: `ccrystal agent doctor`"),
           ),
           // Unified Manual Declaration
           div(
