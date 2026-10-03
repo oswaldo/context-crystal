@@ -31,17 +31,22 @@
 
 ---
 
-## 2. Next Track: Modular Spec Extensions Architecture & Crystal Comms (`spec_extensions_and_crystal_comms`)
+## 2. Next Track: Interactive Showcase Demo Tab: Context Preservation vs. Agent Amnesia (`interactive_showcase_demo_tab`)
 
-- **Objective:** Keep the core Context Crystal spec minimal and sovereign by establishing a formal modular extension architecture (companion manifests and namespaced storage `.ccrystals/<id>/extensions/`). Implement **Crystal Comms** (lock-free filesystem inboxes/outboxes and multi-agent coordination with human steersman oversight) as the premier reference extension module.
-- **Priority:** High impact; unlocks multi-agent swarms and asynchronous peer coordination on top of the context lattice.
+- **Objective:** Build an engaging, interactive "Demo" tab in the public documentation portal (`context-crystal-gh-pages`) demonstrating the real-world value proposition of Context Crystal in a humorous, high-impact side-by-side comparison:
+  - **Split-Screen Layout & Agent Look-and-Feel:** Two synchronized agent terminal/chat panes mimicking realistic IDE agent runs tackling an identical multi-step coding task, each with a dynamic progress bar on top.
+  - **Left Pane (With Context Crystal):** Progress bar moves steadily from solid blue to solid green over ~15 seconds. Structured context hydrations (`ccrystal cast`), zero redundant turns, and immediate clean task completion.
+  - **Right Pane (Without Context Crystal / Raw Chat History):** Progress bar moves forward initially, but around ~10-15s context compaction hits. Amnesia strikes: agent forgets prior constraints, repeats already-answered inquiries, or touches forbidden files. Frustrated user short prompt appears ("I told you 2 messages ago not to touch X!"). Progress bar stalls, fades to warning red, and slips backwards, before a clumsy resolution in ~30s.
+  - **Interactive Playback Controls:** Play / pause / reset and 1x/2x speed toggles for effortless visitor exploration.
+- **Priority:** Immediate next step (Zero backend friction, delightful frontend quick win, immediate marketing impact for v1.2.0 showcase portal).
 
 ---
 
 ## 3. Backlog & Future Track Roadmap
 
 - **Track 24: Modular Spec Extensions Architecture & Crystal Comms (`spec_extensions_and_crystal_comms`):**
-  - **Objective:** Companion manifests and namespaced storage `.ccrystals/<id>/extensions/`. Lock-free filesystem inboxes/outboxes and multi-agent coordination.
+  - **Objective:** Keep the core Context Crystal spec minimal and sovereign by establishing a formal modular extension architecture (companion manifests and namespaced storage `.ccrystals/<id>/extensions/`). Implement **Crystal Comms** (lock-free filesystem inboxes/outboxes and multi-agent coordination with human steersman oversight) as the premier reference extension module.
+  - **Priority:** Scheduled after Interactive Demo Tab.
 - **Track 25: Native MCP Server Consolidation, TDQS Optimization & Tool Quality:**
   - **Objective:** Refactor the MCP server tool surface into an ergonomic, consolidated facade (e.g. 6-8 cohesive tools: `crystal_manage`, `crystal_hydrate`, `crystal_transition`, `crystal_artifact`, `crystal_lesson`, `crystal_lifecycle`) to eliminate prompt context bloat and agent routing indecision.
   - **Naming & Completeness:** Enforce strict, uniform `verb_noun` naming conventions, add dedicated first-class lesson management tools (`crystal_lesson` to record, list, and resolve open lessons), and provide full artifact lifecycle support (updating metadata and unregistering artifacts) to achieve a verified Grade A (4.5+/5.0) on Glama TDQS.

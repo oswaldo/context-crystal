@@ -82,3 +82,6 @@
 
 - [x] **Track: Golden Triad Onboarding: Agent Skill Auto-Distribution & Doctor Evolution**  
   *Link: [conductor/tracks/golden_triad_agent_skill_distribution_20261003/index.md](./tracks/golden_triad_agent_skill_distribution_20261003/index.md)*
+
+- [ ] **Track: Interactive Showcase Demo Tab: Context Preservation vs. Agent Amnesia**  
+  *Link: [conductor/tracks/interactive_showcase_demo_tab_20261004/index.md](./tracks/interactive_showcase_demo_tab_20261004/index.md)*
