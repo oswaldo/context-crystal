@@ -659,7 +659,12 @@ object CommandParser:
     Opts.flag("dry-run", "Preview configuration changes without writing to disk").orFalse,
     Opts.flag("force", "Overwrite existing context-crystal configuration").orFalse,
     Opts.flag("no-skill", "Skip agent skill installation").orFalse,
-    Opts.flag("symlink-skill", "Symlink agent skill from workspace instead of copying").orFalse,
+    Opts
+      .flag(
+        "symlink-skill",
+        "Symlink agent skill from workspace instead of copying (macOS/Linux; requires Developer Mode on Windows)",
+      )
+      .orFalse,
     Opts
       .flag(
         "workspace-skill",

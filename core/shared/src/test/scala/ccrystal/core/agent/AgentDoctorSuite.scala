@@ -183,3 +183,37 @@ class AgentDoctorSuite extends FunSuite:
     assertEquals(zedDiag.skillStatus, SkillStatus.NotSupported)
     assertEquals(zedDiag.skillPath, None)
   }
+
+  test(
+    "AgentDoctor detects Outdated SkillStatus when installed skill differs from canonical content",
+  ) {
+    val cursorMcpPath   = resolver.configPath(AgentHarness.Cursor)
+    val cursorSkillPath = resolver.skillPath(AgentHarness.Cursor).get
+    val oldSkillContent = "# Old 1.0.0 skill content\n"
+
+    val validMcpConfig =
+      """{
+        |  "mcpServers": {
+        |    "context-crystal": { "command": "ccrystal", "args": ["mcp"] }
+        |  }
+        |}""".stripMargin
+
+    val inspector = MockFileSystemInspector(
+      files = Map(
+        cursorMcpPath   -> validMcpConfig,
+        cursorSkillPath -> oldSkillContent,
+      ),
+      directories = Set(
+        "/home/testuser/.cursor",
+        "/home/testuser/.cursor/rules",
+      ),
+    )
+
+    val doctor = AgentDoctor(inspector, resolver)
+    val report = doctor.diagnose("/tmp/.ccrystals")
+
+    val cursorDiag = report.harnesses.find(_.harness == AgentHarness.Cursor).get
+    assertEquals(cursorDiag.status, HarnessStatus.Configured)
+    assertEquals(cursorDiag.skillStatus, SkillStatus.Outdated)
+    assertEquals(cursorDiag.skillPath, Some(cursorSkillPath))
+  }

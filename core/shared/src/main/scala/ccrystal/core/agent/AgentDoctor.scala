@@ -32,6 +32,7 @@ object HarnessStatus:
 
 enum SkillStatus derives CanEqual:
   case Equipped
+  case Outdated
   case Missing
   case NotSupported
 
@@ -39,6 +40,7 @@ object SkillStatus:
   given Encoder[SkillStatus] = Encoder.encodeString.contramap(_.toString)
   given Decoder[SkillStatus] = Decoder.decodeString.emap {
     case "Equipped"     => Right(SkillStatus.Equipped)
+    case "Outdated"     => Right(SkillStatus.Outdated)
     case "Missing"      => Right(SkillStatus.Missing)
     case "NotSupported" => Right(SkillStatus.NotSupported)
     case other          => Left(s"Unknown SkillStatus: $other")
@@ -122,8 +124,10 @@ class AgentDoctor(
     val maybeSkill = resolver.skillPath(harness)
     val (skillStatus, skillPath) = maybeSkill match
       case Some(sp) =>
-        if inspector.fileExists(sp) then (SkillStatus.Equipped, Some(sp))
-        else (SkillStatus.Missing, Some(sp))
+        if !inspector.fileExists(sp) then (SkillStatus.Missing, Some(sp))
+        else if inspector.readFile(sp).contains(CanonicalSkill.content) then
+          (SkillStatus.Equipped, Some(sp))
+        else (SkillStatus.Outdated, Some(sp))
       case None =>
         (SkillStatus.NotSupported, None)
 

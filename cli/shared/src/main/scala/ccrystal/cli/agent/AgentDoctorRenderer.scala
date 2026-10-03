@@ -44,6 +44,7 @@ object AgentDoctorRenderer:
 
       val skillBadge = diag.skillStatus match
         case SkillStatus.Equipped     => "[OK] Equipped"
+        case SkillStatus.Outdated     => "[OUTDATED]"
         case SkillStatus.Missing      => "[MISSING]"
         case SkillStatus.NotSupported => "[N/A]"
 
@@ -68,6 +69,9 @@ object AgentDoctorRenderer:
     val skillsMissing = report.harnesses.count(d =>
       d.status == HarnessStatus.Configured && d.skillStatus == SkillStatus.Missing,
     )
+    val skillsOutdated = report.harnesses.count(d =>
+      d.status == HarnessStatus.Configured && d.skillStatus == SkillStatus.Outdated,
+    )
 
     sb.append("\n")
     sb.append(
@@ -76,7 +80,11 @@ object AgentDoctorRenderer:
     if corruptedCount > 0 then sb.append(s", $corruptedCount corrupted")
     sb.append(".\n")
 
-    if skillsMissing > 0 then
+    if skillsOutdated > 0 then
+      sb.append(
+        "Tip: Detected harnesses have outdated skill files. Run 'ccrystal agent install' to synchronize skills with the current version.\n",
+      )
+    else if skillsMissing > 0 then
       sb.append(
         "Tip: Detected harnesses have MCP tools configured but lack the agent skill. Run 'ccrystal agent install' to equip cognitive reflexes.\n",
       )

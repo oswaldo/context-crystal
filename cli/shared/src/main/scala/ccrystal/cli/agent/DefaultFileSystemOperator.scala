@@ -55,7 +55,11 @@ object DefaultFileSystemOperator extends FileSystemOperator:
       Right(())
     catch
       case e: Throwable =>
-        Left(s"Failed to create symlink from '$source' to '$destination': ${e.getMessage}")
+        val hint =
+          if ccrystal.core.agent.OsFamily.current == ccrystal.core.agent.OsFamily.Windows then
+            " Note: Symbolic links on Windows require Developer Mode or Administrator privileges; run without --symlink-skill to install by copy."
+          else ""
+        Left(s"Failed to create symlink from '$source' to '$destination': ${e.getMessage}.$hint")
 
   override def atomicWrite(path: String, content: String): Either[String, Unit] =
     try
