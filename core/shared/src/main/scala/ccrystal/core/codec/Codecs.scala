@@ -434,6 +434,28 @@ given Codec[ccrystal.core.model.stats.CaveHealthBreakdown]  = deriveCodec
 given Codec[ccrystal.core.model.stats.CrystalDiskUsage]     = deriveCodec
 given Codec[ccrystal.core.model.stats.CaveStats]            = deriveCodec
 
-given Codec[ccrystal.core.model.prune.PruneCandidate]     = deriveCodec
-given Codec[ccrystal.core.model.prune.PruneImpactPreview] = deriveCodec
-given Codec[ccrystal.core.model.prune.PruneResult]        = deriveCodec
+given Codec[ccrystal.core.model.prune.PruneCandidate] = deriveCodec
+given Codec[ccrystal.core.model.prune.PruneImpactPreview] = Codec.from(
+  Decoder.instance { c =>
+    for
+      candidates    <- c.downField("candidates").as[List[ccrystal.core.model.prune.PruneCandidate]]
+      totalCrystals <- c.downField("totalCrystals").as[Int]
+      totalBytesFreed              <- c.downField("totalBytesFreed").as[Long]
+      orphanedEntitiesToDeregister <- c.downField("orphanedEntitiesToDeregister").as[List[String]]
+      artifactsToClean             <- c.downField("artifactsToClean").as[List[String]]
+      inboundLatticeWarnings <- c
+        .downField("inboundLatticeWarnings")
+        .as[Option[List[String]]]
+        .map(_.getOrElse(Nil))
+    yield ccrystal.core.model.prune.PruneImpactPreview(
+      candidates = candidates,
+      totalCrystals = totalCrystals,
+      totalBytesFreed = totalBytesFreed,
+      orphanedEntitiesToDeregister = orphanedEntitiesToDeregister,
+      artifactsToClean = artifactsToClean,
+      inboundLatticeWarnings = inboundLatticeWarnings,
+    )
+  },
+  deriveEncoder[ccrystal.core.model.prune.PruneImpactPreview],
+)
+given Codec[ccrystal.core.model.prune.PruneResult] = deriveCodec

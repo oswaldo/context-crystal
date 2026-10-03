@@ -353,6 +353,7 @@ case class CrystalImpactPreview(
     leaseDescriptions: List[String],
     cascadingDeregisterEntityIds: List[String] = Nil,
     isArchived: Boolean = false,
+    inboundBonds: List[ccrystal.core.model.lattice.InboundBond] = Nil,
 ) derives CanEqual
 
 case class EntityImpactPreview(

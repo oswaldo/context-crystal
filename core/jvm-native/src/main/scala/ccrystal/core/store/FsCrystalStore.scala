@@ -573,6 +573,11 @@ class FsCrystalStore(val rootPath: Path) extends CrystalStore:
       lessonFrictions   = lessons.take(limit).map(l => s"[${l.status}] ${l.observedFriction}")
       leases            = targetCrystal.transientLeases.reverse
       leaseDescriptions = leases.take(limit).map(l => s"[${l.status}] ${l.description}")
+      inboundBonds = remainingCrystals.flatMap { other =>
+        other.bonds.filter(_.targetCrystalId == id).map { b =>
+          ccrystal.core.model.lattice.InboundBond(other.id, b)
+        }
+      }
     yield CrystalImpactPreview(
       crystalId = targetCrystal.id,
       goalTitle = targetCrystal.goal.title,
@@ -593,6 +598,7 @@ class FsCrystalStore(val rootPath: Path) extends CrystalStore:
       leaseDescriptions = leaseDescriptions,
       cascadingDeregisterEntityIds = entitiesToDeregister,
       isArchived = isArch,
+      inboundBonds = inboundBonds,
     )
 
   override def previewEntityDeregistration(
@@ -800,3 +806,79 @@ class FsCrystalStore(val rootPath: Path) extends CrystalStore:
 
         (activeTotal, archiveTotal, perCrystal.result())
     catch case _: Throwable => (0L, 0L, Map.empty)
+
+  override def connect(
+      sourceId: String,
+      targetId: String,
+      relation: ccrystal.core.model.lattice.BondRelation,
+      description: Option[String] = None,
+  ): Either[String, ccrystal.core.model.lattice.LatticeBond] =
+    if !exists(sourceId) && !isArchived(sourceId) then Left(s"Source crystal '$sourceId' not found")
+    else if !exists(targetId) && !isArchived(targetId) then
+      Left(s"Target crystal '$targetId' not found")
+    else
+      for
+        allCrystals <- list(includeArchived = true)
+        existingBonds = allCrystals.map(c => c.id -> c.bonds).toMap
+        _ <- ccrystal.core.lattice.LatticeCycleDetector
+          .detectCycle(sourceId, targetId, existingBonds) match
+          case Some(cyclePath) =>
+            Left(
+              s"Cycle detected: Cannot connect '$sourceId' to '$targetId' as it forms a closed cycle: ${cyclePath.mkString(" -> ")}",
+            )
+          case None => Right(())
+        now = java.time.Instant.now().toString
+        newBond = ccrystal.core.model.lattice.LatticeBond(
+          targetCrystalId = targetId,
+          relation = relation,
+          description = description,
+          createdAt = now,
+        )
+        _ <- update(sourceId) { crystal =>
+          val filtered =
+            crystal.bonds.filterNot(b => b.targetCrystalId == targetId && b.relation == relation)
+          Right(crystal.copy(bonds = filtered :+ newBond, updatedAt = now))
+        }
+      yield newBond
+
+  override def disconnect(
+      sourceId: String,
+      targetId: String,
+      relation: Option[ccrystal.core.model.lattice.BondRelation] = None,
+  ): Either[String, Boolean] =
+    if !exists(sourceId) && !isArchived(sourceId) then Left(s"Source crystal '$sourceId' not found")
+    else
+      var removed = false
+      val now     = java.time.Instant.now().toString
+      update(sourceId) { crystal =>
+        val (matching, remaining) = crystal.bonds.partition { b =>
+          b.targetCrystalId == targetId && relation.forall(_ == b.relation)
+        }
+        if matching.nonEmpty then
+          removed = true
+          Right(crystal.copy(bonds = remaining, updatedAt = now))
+        else Right(crystal)
+      }.map(_ => removed)
+
+  override def bonds(
+      crystalId: String,
+  ): Either[String, ccrystal.core.model.lattice.CrystalBondsSummary] =
+    if !exists(crystalId) && !isArchived(crystalId) then Left(s"Crystal '$crystalId' not found")
+    else
+      for
+        targetCrystal <- load(crystalId)
+        allCrystals   <- list(includeArchived = true)
+      yield
+        val outbound = targetCrystal.bonds
+        val inbound = allCrystals.flatMap { other =>
+          if other.id == crystalId then Nil
+          else
+            other.bonds.filter(_.targetCrystalId == crystalId).map { b =>
+              ccrystal.core.model.lattice.InboundBond(other.id, b)
+            }
+        }
+        ccrystal.core.model.lattice.CrystalBondsSummary(
+          crystalId = crystalId,
+          outbound = outbound,
+          inbound = inbound,
+        )

@@ -2,39 +2,39 @@
 
 ## Phase 1: Spec v1.1 Schema, Domain Models & Pure Cycle Detection Engine
 
-- [ ] Task: Update JSON Schema `spec/v1/context-crystal.json`
-  - [ ] Replace rigid `schemaVersion` enum with SemVer pattern `^1\.[0-9]+\.[0-9]+$`
-  - [ ] Add `bonds` array property with `$defs/LatticeBond`
-- [ ] Task: Implement Domain Models in `core/shared/src/main/scala/ccrystal/core/model/`
-  - [ ] Create `BondRelation` enum (`RelatesTo`, `DependsOn`, `Blocks`, `Supersedes`, `References`) with forgiving string normalization
-  - [ ] Create `LatticeBond` case class (`targetCrystalId`, `relation`, `description`, `createdAt`)
-  - [ ] Create `CrystalBondsSummary` case class (`crystalId`, `outbound`, `inbound`)
-  - [ ] Add `bonds: List[LatticeBond] = Nil` field to `ContextCrystal`
-- [ ] Task: Implement Circe Codecs in `core/shared/src/main/scala/ccrystal/core/codec/Codecs.scala`
-  - [ ] Codec for `BondRelation` and `LatticeBond`
-  - [ ] Backward-compatible decoder on `ContextCrystal` defaulting missing `bonds` to `Nil`
-  - [ ] Unit tests in `core/shared/src/test/scala/ccrystal/core/ModelCodecSuite.scala`
-- [ ] Task: Implement Pure Functional `LatticeCycleDetector`
-  - [ ] Write `LatticeCycleDetector.scala` in `core/shared/src/main/scala/ccrystal/core/lattice/`
-  - [ ] Implement reachability search `detectCycle(sourceId, targetId, existingBonds)`
-  - [ ] Return human-readable cycle path trace if a cycle is detected
-  - [ ] Unit tests in `core/shared/src/test/scala/ccrystal/core/lattice/LatticeCycleDetectorSuite.scala`
-- [ ] Task: Phase 1 Verification & Checkpoint (Refer to workflow.md)
+- [x] Task: Update JSON Schema `spec/v1/context-crystal.json`
+  - [x] Replace rigid `schemaVersion` enum with SemVer pattern `^1\.[0-9]+\.[0-9]+$`
+  - [x] Add `bonds` array property with `$defs/LatticeBond`
+- [x] Task: Implement Domain Models in `core/shared/src/main/scala/ccrystal/core/model/`
+  - [x] Create `BondRelation` enum (`RelatesTo`, `DependsOn`, `Blocks`, `Supersedes`, `References`) with forgiving string normalization
+  - [x] Create `LatticeBond` case class (`targetCrystalId`, `relation`, `description`, `createdAt`)
+  - [x] Create `CrystalBondsSummary` case class (`crystalId`, `outbound`, `inbound`)
+  - [x] Add `bonds: List[LatticeBond] = Nil` field to `ContextCrystal`
+- [x] Task: Implement Circe Codecs in `core/shared/src/main/scala/ccrystal/core/codec/Codecs.scala`
+  - [x] Codec for `BondRelation` and `LatticeBond`
+  - [x] Backward-compatible decoder on `ContextCrystal` defaulting missing `bonds` to `Nil`
+  - [x] Unit tests in `core/shared/src/test/scala/ccrystal/core/ModelCodecSuite.scala`
+- [x] Task: Implement Pure Functional `LatticeCycleDetector`
+  - [x] Write `LatticeCycleDetector.scala` in `core/shared/src/main/scala/ccrystal/core/lattice/`
+  - [x] Implement reachability search `detectCycle(sourceId, targetId, existingBonds)`
+  - [x] Return human-readable cycle path trace if a cycle is detected
+  - [x] Unit tests in `core/shared/src/test/scala/ccrystal/core/lattice/LatticeCycleDetectorSuite.scala`
+- [x] Task: Phase 1 Verification & Checkpoint (Refer to workflow.md)
 
 ## Phase 2: Storage Layer Operations & Referential Integrity
 
-- [ ] Task: Define SPI methods on `CrystalStore.scala`
-  - [ ] `connect(sourceId, targetId, relation, description)`
-  - [ ] `disconnect(sourceId, targetId, relation)`
-  - [ ] `bonds(crystalId)`
-- [ ] Task: Implement storage operations in `FsCrystalStore.scala`
-  - [ ] Validate source and target existence
-  - [ ] Run `LatticeCycleDetector` check before saving
-  - [ ] Atomically update source crystal with OCC rebase
-  - [ ] Implement inbound bond discovery across cave
-  - [ ] Add bonded inbound target warnings in `previewCrystalDeletion` and `previewPrune`
-- [ ] Task: Write storage integration tests in `core/jvm-native/src/test/scala/ccrystal/core/store/FsCrystalStoreLatticeSuite.scala`
-- [ ] Task: Phase 2 Verification & Checkpoint (Refer to workflow.md)
+- [x] Task: Define SPI methods on `CrystalStore.scala`
+  - [x] `connect(sourceId, targetId, relation, description)`
+  - [x] `disconnect(sourceId, targetId, relation)`
+  - [x] `bonds(crystalId)`
+- [x] Task: Implement storage operations in `FsCrystalStore.scala`
+  - [x] Validate source and target existence
+  - [x] Run `LatticeCycleDetector` check before saving
+  - [x] Atomically update source crystal with OCC rebase
+  - [x] Implement inbound bond discovery across cave
+  - [x] Add bonded inbound target warnings in `previewCrystalDeletion` and `previewPrune`
+- [x] Task: Write storage integration tests in `core/jvm-native/src/test/scala/ccrystal/core/store/FsCrystalStoreLatticeSuite.scala`
+- [x] Task: Phase 2 Verification & Checkpoint (Refer to workflow.md)
 
 ## Phase 3: Defensive Hydration & Lattice Quick-Peeking
 

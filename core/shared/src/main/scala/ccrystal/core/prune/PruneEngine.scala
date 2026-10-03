@@ -106,6 +106,12 @@ object PruneEngine:
 
         val totalBytes = candidates.map(_.diskBytes).sum
 
+        val inboundLatticeWarnings = remainingCrystals.flatMap { other =>
+          other.bonds.filter(b => candidateIds.contains(b.targetCrystalId)).map { b =>
+            s"Active crystal '${other.id}' has inbound ${ccrystal.core.model.lattice.BondRelation.format(b.relation)} bond targeting candidate '${b.targetCrystalId}'"
+          }
+        }.sorted
+
         Right(
           PruneImpactPreview(
             candidates = candidates,
@@ -113,5 +119,6 @@ object PruneEngine:
             totalBytesFreed = totalBytes,
             orphanedEntitiesToDeregister = entitiesToDeregister,
             artifactsToClean = artifactsToClean,
+            inboundLatticeWarnings = inboundLatticeWarnings,
           ),
         )

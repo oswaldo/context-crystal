@@ -18,6 +18,7 @@ final case class PruneImpactPreview(
     totalBytesFreed: Long,
     orphanedEntitiesToDeregister: List[String],
     artifactsToClean: List[String],
+    inboundLatticeWarnings: List[String] = Nil,
 ) derives CanEqual
 
 final case class PruneResult(

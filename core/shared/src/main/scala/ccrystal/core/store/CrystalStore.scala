@@ -91,3 +91,18 @@ trait CrystalStore:
       dryRun: Boolean = false,
   ): Either[String, ccrystal.core.model.prune.PruneResult] =
     Left("pruneArchived not supported by this store")
+  def connect(
+      sourceId: String,
+      targetId: String,
+      relation: ccrystal.core.model.lattice.BondRelation,
+      description: Option[String] = None,
+  ): Either[String, ccrystal.core.model.lattice.LatticeBond] =
+    Left("connect not supported by this store")
+  def disconnect(
+      sourceId: String,
+      targetId: String,
+      relation: Option[ccrystal.core.model.lattice.BondRelation] = None,
+  ): Either[String, Boolean] =
+    Left("disconnect not supported by this store")
+  def bonds(crystalId: String): Either[String, ccrystal.core.model.lattice.CrystalBondsSummary] =
+    Left("bonds not supported by this store")
