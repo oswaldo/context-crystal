@@ -80,5 +80,5 @@
 - [x] **Track: Standardized Modern Platform Runtimes (Scala Toolkit, os-lib & java.time / scala-java-time Migration)**  
   *Link: [conductor/tracks/standardized_modern_platform_runtimes_20261003/index.md](./tracks/standardized_modern_platform_runtimes_20261003/index.md)*
 
-- [ ] **Track: Golden Triad Onboarding: Agent Skill Auto-Distribution & Doctor Evolution**  
+- [~] **Track: Golden Triad Onboarding: Agent Skill Auto-Distribution & Doctor Evolution**  
   *Link: [conductor/tracks/golden_triad_agent_skill_distribution_20261003/index.md](./tracks/golden_triad_agent_skill_distribution_20261003/index.md)*
