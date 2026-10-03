@@ -24,12 +24,12 @@
   - [x] Update `CommandParser`, `CliCommand.AgentInstallCmd`, and `AgentInstallerRenderer` with skill receipts.
 - [x] Task: Phase 2 Verification & Checkpoint (Refer to workflow.md) (e103255)
 
-## Phase 3: Multi-Platform Testing, Documentation & Showcase
+## Phase 3: Multi-Platform Testing, Documentation & Showcase [checkpoint: 7ed7cf1]
 
-- [ ] Task: Cross-Platform Verification Suite
-  - [ ] Run full test suite across JVM, Native, and JS targets (`sbt test`).
-  - [ ] Run Scala and Markdown linters (`scalafmtCheckAll`, `scalafixAll --check`, `markdownlint`).
-- [ ] Task: Documentation & Showcase Portal Synchronization
-  - [ ] Update `README.md` and `skills/context-crystal/SKILL.md` explaining the Golden Triad.
-  - [ ] Update documentation portal in `../context-crystal-gh-pages` if relevant.
-- [ ] Task: Phase 3 Verification & Checkpoint (Refer to workflow.md)
+- [x] Task: Cross-Platform Verification Suite (7ed7cf1)
+  - [x] Run full test suite across JVM, Native, and JS targets (`sbt test`).
+  - [x] Run Scala and Markdown linters (`scalafmtCheckAll`, `scalafixAll --check`, `markdownlint`).
+- [x] Task: Documentation & Showcase Portal Synchronization (3b0c837, 7ed7cf1)
+  - [x] Update `README.md` and `skills/context-crystal/SKILL.md` explaining the Golden Triad.
+  - [x] Update documentation portal in `../context-crystal-gh-pages` if relevant.
+- [x] Task: Phase 3 Verification & Checkpoint (Refer to workflow.md) (7ed7cf1)
