@@ -1,9 +1,10 @@
 import sbtcrossproject.CrossPlugin.autoImport.{crossProject, CrossType}
 
-val scala3Version   = "3.9.0"
-val circeVersion    = "0.14.16"
-val munitVersion    = "1.3.6"
-val declineVersion  = "2.6.2"
+val scala3Version        = "3.9.0"
+val circeVersion         = "0.14.16"
+val munitVersion         = "1.3.6"
+val declineVersion       = "2.6.2"
+val scalaJavaTimeVersion = "2.6.0"
 
 ThisBuild / scalaVersion := scala3Version
 ThisBuild / organization := "io.github.oswaldo"
@@ -38,10 +39,11 @@ lazy val core = crossProject(JVMPlatform, NativePlatform, JSPlatform)
   .settings(
     name := "ccrystal-core",
     libraryDependencies ++= Seq(
-      "io.circe" %%% "circe-core"    % circeVersion,
-      "io.circe" %%% "circe-generic" % circeVersion,
-      "io.circe" %%% "circe-parser"  % circeVersion,
-      "org.scalameta" %%% "munit"    % munitVersion % Test
+      "io.circe"         %%% "circe-core"       % circeVersion,
+      "io.circe"         %%% "circe-generic"    % circeVersion,
+      "io.circe"         %%% "circe-parser"     % circeVersion,
+      "io.github.cquiroz" %%% "scala-java-time" % scalaJavaTimeVersion,
+      "org.scalameta"    %%% "munit"            % munitVersion % Test,
     ),
     testFrameworks += new TestFramework("munit.Framework"),
     scalacOptions ++= Seq(
