@@ -52,7 +52,39 @@ lazy val core = crossProject(JVMPlatform, NativePlatform, JSPlatform)
       "-feature",
       "-unchecked",
       "-language:strictEquality"
-    )
+    ),
+    Compile / sourceGenerators += Def.task {
+      val skillFile = (ThisBuild / baseDirectory).value / ".agents" / "skills" / "context-crystal" / "SKILL.md"
+      val targetFile = (Compile / sourceManaged).value / "ccrystal" / "core" / "agent" / "CanonicalSkill.scala"
+      val content = IO.read(skillFile)
+      def jsonStringEscape(s: String): String = {
+        val out = new java.lang.StringBuilder("\"")
+        for (c <- s) {
+          c match {
+            case '"'  => out.append("\\\"")
+            case '\\' => out.append("\\\\")
+            case '\b' => out.append("\\b")
+            case '\f' => out.append("\\f")
+            case '\n' => out.append("\\n")
+            case '\r' => out.append("\\r")
+            case '\t' => out.append("\\t")
+            case ch if ch < 0x20 || (ch >= 0x7f && ch <= 0x9f) =>
+              out.append(f"\\u${ch.toInt}%04x")
+            case ch   => out.append(ch)
+          }
+        }
+        out.append("\"").toString
+      }
+      val escaped = jsonStringEscape(content)
+      val code =
+        s"""package ccrystal.core.agent
+           |
+           |object CanonicalSkill:
+           |  val content: String = $escaped
+           |""".stripMargin
+      IO.write(targetFile, code)
+      Seq(targetFile)
+    }
   )
   .jvmSettings(
     libraryDependencies += "com.lihaoyi" %%% "os-lib" % osLibVersion,
