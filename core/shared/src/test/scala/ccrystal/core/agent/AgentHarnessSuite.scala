@@ -69,3 +69,45 @@ class AgentHarnessSuite extends FunSuite:
       "/Users/testuser/.config/zed/settings.json",
     )
   }
+
+  test("CanonicalSkill bundles non-empty authoritative skill content") {
+    assert(CanonicalSkill.content.contains("name: context-crystal"))
+    assert(CanonicalSkill.content.contains("Context Crystal Agent Skill"))
+    assert(
+      CanonicalSkill.content.contains("Golden Triad") || CanonicalSkill.content.contains("ccrystal"),
+    )
+  }
+
+  test("HarnessPathResolver resolves global and workspace skill paths") {
+    val env      = Map("HOME" -> "/home/testuser")
+    val resolver = HarnessPathResolver(env, OsFamily.Linux)
+
+    assertEquals(
+      resolver.skillPath(AgentHarness.GoogleAntigravity),
+      Some("/home/testuser/.gemini/antigravity-cli/skills/context-crystal/SKILL.md"),
+    )
+    assertEquals(
+      resolver.skillPath(AgentHarness.ClaudeCode),
+      Some("/home/testuser/.claude/skills/context-crystal/SKILL.md"),
+    )
+    assertEquals(
+      resolver.skillPath(AgentHarness.ClaudeDesktop),
+      Some("/home/testuser/.claude/skills/context-crystal/SKILL.md"),
+    )
+    assertEquals(
+      resolver.skillPath(AgentHarness.Cursor),
+      Some("/home/testuser/.cursor/rules/context-crystal.mdc"),
+    )
+    assertEquals(
+      resolver.skillPath(AgentHarness.Windsurf),
+      Some("/home/testuser/.codeium/windsurf/memories/global_rules.md"),
+    )
+    assertEquals(
+      resolver.skillPath(AgentHarness.Zed),
+      None,
+    )
+    assertEquals(
+      resolver.workspaceSkillPath,
+      ".agents/skills/context-crystal/SKILL.md",
+    )
+  }

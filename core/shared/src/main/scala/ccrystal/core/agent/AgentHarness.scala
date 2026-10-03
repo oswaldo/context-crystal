@@ -80,6 +80,22 @@ case class HarnessPathResolver(env: Map[String, String], os: OsFamily) derives C
       case AgentHarness.Zed               => HarnessConfigType.ZedSettings
       case _                              => HarnessConfigType.StandardMcp
 
+  def skillPath(harness: AgentHarness): Option[String] =
+    harness match
+      case AgentHarness.GoogleAntigravity =>
+        Some(s"$home/.gemini/antigravity-cli/skills/context-crystal/SKILL.md")
+      case AgentHarness.ClaudeCode | AgentHarness.ClaudeDesktop =>
+        Some(s"$home/.claude/skills/context-crystal/SKILL.md")
+      case AgentHarness.Cursor =>
+        Some(s"$home/.cursor/rules/context-crystal.mdc")
+      case AgentHarness.Windsurf =>
+        Some(s"$home/.codeium/windsurf/memories/global_rules.md")
+      case AgentHarness.Zed =>
+        None
+
+  def workspaceSkillPath: String =
+    ".agents/skills/context-crystal/SKILL.md"
+
 object HarnessPathResolver:
   def default: HarnessPathResolver =
     HarnessPathResolver(sys.env, OsFamily.current)
