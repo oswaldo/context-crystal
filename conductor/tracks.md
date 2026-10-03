@@ -70,3 +70,6 @@
 
 - [x] **Track: Cave Statistics, Storage Metrics & Token Savings**  
   *Link: [conductor/tracks/cave_stats_and_telemetry_20261002/index.md](./tracks/cave_stats_and_telemetry_20261002/index.md)*
+
+- [ ] **Track: Cold Storage Prune, Deletion Symmetry & Lifecycle Completeness**  
+  *Link: [conductor/tracks/cold_storage_purge_and_lifecycle_20261003/index.md](./tracks/cold_storage_purge_and_lifecycle_20261003/index.md)*

@@ -1,0 +1,66 @@
+# Implementation Plan: Cold Storage Prune, Deletion Symmetry & Lifecycle Completeness
+
+## Phase 1: Storage Layer Deletion Symmetry & Artifact Cleanup
+
+- [ ] Task: Write failing unit tests for deletion symmetry and artifact cleanup in `FsCrystalStoreSuite`
+  - [ ] Test deleting an archived crystal located in `.ccrystals/archive/<id>`
+  - [ ] Test cascade-deregistration of entities exclusively authored by an archived crystal
+  - [ ] Test cleanup of artifact records in `.ccrystals/artifacts.json` owned by deleted crystal
+  - [ ] Test `previewCrystalDeletion` reporting `[Cold Storage Archive]` status
+- [ ] Task: Implement deletion symmetry in `core/jvm-native/src/main/scala/ccrystal/core/store/FsCrystalStore.scala`
+  - [ ] Update `deleteCrystal` to check both active `.ccrystals/<id>` and cold storage `.ccrystals/archive/<id>`
+  - [ ] Update entity reference scan across both active and archived crystals during cascade check
+  - [ ] Update `previewCrystalDeletion` to inspect active and archived locations
+  - [ ] Synchronize `.ccrystals/artifacts.json` removal upon crystal deletion
+- [ ] Task: Phase 1 Verification & Checkpoint (Refer to workflow.md)
+
+## Phase 2: Prune Models, Codecs & Pure Functional PruneEngine
+
+- [ ] Task: Define prune domain models & Circe codecs
+  - [ ] Implement `PruneCandidate`, `PruneImpactPreview`, `PruneResult` in `core/shared/src/main/scala/ccrystal/core/model/prune/PruneModels.scala`
+  - [ ] Implement Circe codecs in `core/shared/src/main/scala/ccrystal/core/codec/Codecs.scala`
+  - [ ] Write unit tests for codecs in `core/shared/src/test/scala/ccrystal/core/ModelCodecSuite.scala`
+- [ ] Task: Implement pure functional `PruneEngine` in `core/shared/src/main/scala/ccrystal/core/prune/PruneEngine.scala`
+  - [ ] Duration parser for `<number>d`, `<number>w`, `<number>m`
+  - [ ] Candidate evaluation: age calculation, disk size calculation, node/task/lesson counts
+  - [ ] Symmetrical entity cascade and artifact cleanup evaluation
+  - [ ] Wire `previewPrune` and `pruneArchived` into `CrystalStore` trait and `FsCrystalStore`
+  - [ ] Write unit tests in `core/shared/src/test/scala/ccrystal/core/prune/PruneEngineSuite.scala`
+- [ ] Task: Phase 2 Verification & Checkpoint (Refer to workflow.md)
+
+## Phase 3: CLI Commands (`ccrystal prune` & Enhanced `ccrystal delete`)
+
+- [ ] Task: Implement Decline parser for `ccrystal prune` in `cli/shared/src/main/scala/ccrystal/cli/CommandParser.scala`
+  - [ ] Add `CliCommand.Prune(crystalId: Option[String], olderThan: Option[String], all: Boolean, dryRun: Boolean, force: Boolean)`
+  - [ ] Write parser unit tests in `cli/shared/src/test/scala/ccrystal/cli/CommandParserSuite.scala`
+- [ ] Task: Implement CLI runner and renderer for `prune` and enhanced `delete` in `cli/shared/src/main/scala/ccrystal/cli/Runner.scala`
+  - [ ] Add interactive confirmation and preview table for `ccrystal prune`
+  - [ ] Enforce batch safety invariant (require `--force` in headless mode)
+  - [ ] Update `delete` output to distinguish active vs archived targets
+  - [ ] Write CLI integration test in `cli/shared/src/test/scala/ccrystal/cli/RunnerPruneSuite.scala`
+- [ ] Task: Phase 3 Verification & Checkpoint (Refer to workflow.md)
+
+## Phase 4: Native MCP Server Tool (`crystal_prune`) & Triage Integration
+
+- [ ] Task: Expose `crystal_prune` (with `crystal_delete` alias) in `DefaultMcpHandler.scala`
+  - [ ] Register `crystal_prune` in `tools/list`
+  - [ ] Handle `crystal_delete` as backward-compatible alias to same logic
+  - [ ] Write MCP unit tests in `cli/shared/src/test/scala/ccrystal/cli/mcp/DefaultMcpHandlerSuite.scala`
+  - [ ] Add end-to-end integration test in `cli/shared/src/test/scala/ccrystal/cli/mcp/McpEndToEndSessionSuite.scala`
+- [ ] Task: Integrate retention recommendations in `TriageEngine` and `ccrystal triage`
+  - [ ] Scan cold storage archive for crystals exceeding retention threshold (default: 90 days)
+  - [ ] Emit recommendation suggesting `ccrystal prune --older-than 90d`
+  - [ ] Write triage tests in `cli/shared/src/test/scala/ccrystal/cli/TriageEngineSuite.scala`
+- [ ] Task: Phase 4 Verification & Checkpoint (Refer to workflow.md)
+
+## Phase 5: Documentation, Multi-Platform Verification & Integration
+
+- [ ] Task: Export MCP tool schema for `crystal_prune`
+  - [ ] Write `crystal_prune.json` in `docs/mcp/schemas/`
+- [ ] Task: Update documentation and agent skills
+  - [ ] Update `README.md`, `.agents/skills/context-crystal/SKILL.md`, and `docs/mcp/instructions.md`
+  - [ ] Run Markdown linting (`npx markdownlint-cli ...`)
+- [ ] Task: Multi-platform test suite & formatting
+  - [ ] Run `sbt test` across Native, JVM, and JS targets
+  - [ ] Run `sbt "scalafmtCheckAll; scalafixAll --check"`
+- [ ] Task: Phase 5 Verification & Checkpoint (Refer to workflow.md)
