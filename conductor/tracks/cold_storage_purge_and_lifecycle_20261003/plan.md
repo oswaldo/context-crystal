@@ -16,17 +16,17 @@
 
 ## Phase 2: Prune Models, Codecs & Pure Functional PruneEngine
 
-- [ ] Task: Define prune domain models & Circe codecs
-  - [ ] Implement `PruneCandidate`, `PruneImpactPreview`, `PruneResult` in `core/shared/src/main/scala/ccrystal/core/model/prune/PruneModels.scala`
-  - [ ] Implement Circe codecs in `core/shared/src/main/scala/ccrystal/core/codec/Codecs.scala`
-  - [ ] Write unit tests for codecs in `core/shared/src/test/scala/ccrystal/core/ModelCodecSuite.scala`
-- [ ] Task: Implement pure functional `PruneEngine` in `core/shared/src/main/scala/ccrystal/core/prune/PruneEngine.scala`
-  - [ ] Duration parser for `<number>d`, `<number>w`, `<number>m`
-  - [ ] Candidate evaluation: age calculation, disk size calculation, node/task/lesson counts
-  - [ ] Symmetrical entity cascade and artifact cleanup evaluation
-  - [ ] Wire `previewPrune` and `pruneArchived` into `CrystalStore` trait and `FsCrystalStore`
-  - [ ] Write unit tests in `core/shared/src/test/scala/ccrystal/core/prune/PruneEngineSuite.scala`
-- [ ] Task: Phase 2 Verification & Checkpoint (Refer to workflow.md)
+- [x] Task: Define prune domain models & Circe codecs
+  - [x] Implement `PruneCandidate`, `PruneImpactPreview`, `PruneResult` in `core/shared/src/main/scala/ccrystal/core/model/prune/PruneModels.scala`
+  - [x] Implement Circe codecs in `core/shared/src/main/scala/ccrystal/core/codec/Codecs.scala`
+  - [x] Write unit tests for codecs in `core/shared/src/test/scala/ccrystal/core/ModelCodecSuite.scala`
+- [x] Task: Implement pure functional `PruneEngine` in `core/shared/src/main/scala/ccrystal/core/prune/PruneEngine.scala`
+  - [x] Duration parser for `<number>d`, `<number>w`, `<number>m`
+  - [x] Candidate evaluation: age calculation, disk size calculation, node/task/lesson counts
+  - [x] Symmetrical entity cascade and artifact cleanup evaluation
+  - [x] Wire `previewPrune` and `pruneArchived` into `CrystalStore` trait and `FsCrystalStore`
+  - [x] Write unit tests in `core/shared/src/test/scala/ccrystal/core/prune/PruneEngineSuite.scala`
+- [x] Task: Phase 2 Verification & Checkpoint (Refer to workflow.md)
 
 ## Phase 3: CLI Commands (`ccrystal prune` & Enhanced `ccrystal delete`)
 

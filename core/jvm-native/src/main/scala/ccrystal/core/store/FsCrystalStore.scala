@@ -615,6 +615,77 @@ class FsCrystalStore(val rootPath: Path) extends CrystalStore:
       }
     yield EntityImpactPreview(entity, previews)
 
+  override def previewPrune(
+      targetCrystalId: Option[String] = None,
+      olderThanDays: Option[Long] = None,
+      all: Boolean = false,
+  ): Either[String, ccrystal.core.model.prune.PruneImpactPreview] =
+    for
+      allCrystals <- list(includeArchived = true)
+      activeCrystals   = allCrystals.filterNot(c => isArchived(c.id))
+      archivedCrystals = allCrystals.filter(c => isArchived(c.id))
+      diskSizes        = getDiskSizes()
+      perCrystal       = diskSizes._3
+      entityReg   <- getEntityRegistry()
+      artifactReg <- getArtifactRegistry()
+      preview <- ccrystal.core.prune.PruneEngine.evaluate(
+        archivedCrystals = archivedCrystals,
+        activeCrystals = activeCrystals,
+        perCrystalDiskBytes = perCrystal,
+        entityRegistry = entityReg,
+        artifactRegistry = artifactReg,
+        targetCrystalId = targetCrystalId,
+        olderThanDays = olderThanDays,
+        all = all,
+      )
+    yield preview
+
+  override def pruneArchived(
+      targetCrystalId: Option[String] = None,
+      olderThanDays: Option[Long] = None,
+      all: Boolean = false,
+      dryRun: Boolean = false,
+  ): Either[String, ccrystal.core.model.prune.PruneResult] =
+    previewPrune(targetCrystalId, olderThanDays, all).flatMap { preview =>
+      if dryRun then
+        Right(
+          ccrystal.core.model.prune.PruneResult(
+            prunedCrystalIds = preview.candidates.map(_.crystalId),
+            deregisteredEntityIds = preview.orphanedEntitiesToDeregister,
+            cleanedArtifactIds = preview.artifactsToClean,
+            bytesFreed = preview.totalBytesFreed,
+            dryRun = true,
+          ),
+        )
+      else
+        for
+          _ <- preview.candidates.foldLeft[Either[String, Unit]](Right(())) { (acc, cand) =>
+            acc.flatMap(_ => deleteDirectoryRecursively(archiveCrystalDir(cand.crystalId)))
+          }
+          entityReg <- getEntityRegistry()
+          _ <-
+            if preview.orphanedEntitiesToDeregister.isEmpty then Right(())
+            else
+              val updated =
+                entityReg
+                  .copy(entities = entityReg.entities -- preview.orphanedEntitiesToDeregister)
+              saveEntityRegistry(updated)
+          artifactReg <- getArtifactRegistry()
+          _ <-
+            if preview.artifactsToClean.isEmpty then Right(())
+            else
+              val updated =
+                artifactReg.copy(artifacts = artifactReg.artifacts -- preview.artifactsToClean)
+              saveArtifactRegistry(updated)
+        yield ccrystal.core.model.prune.PruneResult(
+          prunedCrystalIds = preview.candidates.map(_.crystalId),
+          deregisteredEntityIds = preview.orphanedEntitiesToDeregister,
+          cleanedArtifactIds = preview.artifactsToClean,
+          bytesFreed = preview.totalBytesFreed,
+          dryRun = false,
+        )
+    }
+
   private def crystalEntityReferences(crystal: ContextCrystal): Set[String] =
     val author     = crystal.defaultAuthorId.toSet
     val inEntities = crystal.entities.map(_.id).toSet

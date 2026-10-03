@@ -516,3 +516,33 @@ class ModelCodecSuite extends FunSuite:
     val json    = stats.asJson.noSpaces
     val decoded = decode[CaveStats](json)
     assertEquals(decoded, Right(stats))
+
+  test("Round-trip serialization of PruneCandidate, PruneImpactPreview, and PruneResult"):
+    import ccrystal.core.model.prune.*
+    val candidate = PruneCandidate(
+      crystalId = "c-archived-1",
+      archivedAt = Some("2026-08-01T10:00:00Z"),
+      ageDays = 63L,
+      diskBytes = 25600L,
+      nodeCount = 12,
+      taskCount = 4,
+      lessonCount = 2,
+    )
+    val preview = PruneImpactPreview(
+      candidates = List(candidate),
+      totalCrystals = 1,
+      totalBytesFreed = 25600L,
+      orphanedEntitiesToDeregister = List("usr_old_agent"),
+      artifactsToClean = List("art-old-spec"),
+    )
+    val result = PruneResult(
+      prunedCrystalIds = List("c-archived-1"),
+      deregisteredEntityIds = List("usr_old_agent"),
+      cleanedArtifactIds = List("art-old-spec"),
+      bytesFreed = 25600L,
+      dryRun = false,
+    )
+
+    assertEquals(decode[PruneCandidate](candidate.asJson.noSpaces), Right(candidate))
+    assertEquals(decode[PruneImpactPreview](preview.asJson.noSpaces), Right(preview))
+    assertEquals(decode[PruneResult](result.asJson.noSpaces), Right(result))

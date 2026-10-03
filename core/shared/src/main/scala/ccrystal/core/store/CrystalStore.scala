@@ -78,3 +78,16 @@ trait CrystalStore:
   def registerArtifact(artifact: Artifact): Either[String, Artifact]
   def listArtifacts(crystalId: Option[String] = None): Either[String, List[Artifact]]
   def getArtifact(id: String, crystalId: Option[String] = None): Either[String, Option[Artifact]]
+  def previewPrune(
+      targetCrystalId: Option[String] = None,
+      olderThanDays: Option[Long] = None,
+      all: Boolean = false,
+  ): Either[String, ccrystal.core.model.prune.PruneImpactPreview] =
+    Left("previewPrune not supported by this store")
+  def pruneArchived(
+      targetCrystalId: Option[String] = None,
+      olderThanDays: Option[Long] = None,
+      all: Boolean = false,
+      dryRun: Boolean = false,
+  ): Either[String, ccrystal.core.model.prune.PruneResult] =
+    Left("pruneArchived not supported by this store")

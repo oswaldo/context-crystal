@@ -309,3 +309,7 @@ given Codec[ccrystal.core.model.stats.TokenSavingsEstimate] = deriveCodec
 given Codec[ccrystal.core.model.stats.CaveHealthBreakdown]  = deriveCodec
 given Codec[ccrystal.core.model.stats.CrystalDiskUsage]     = deriveCodec
 given Codec[ccrystal.core.model.stats.CaveStats]            = deriveCodec
+
+given Codec[ccrystal.core.model.prune.PruneCandidate]     = deriveCodec
+given Codec[ccrystal.core.model.prune.PruneImpactPreview] = deriveCodec
+given Codec[ccrystal.core.model.prune.PruneResult]        = deriveCodec
