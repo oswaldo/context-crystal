@@ -1,0 +1,38 @@
+[
+  {
+    "id" : "lease-1",
+    "resourceType" : "git_worktree",
+    "resourcePath" : null,
+    "description" : "Isolated git worktree at /home/oswaldo/git/ccrystal-worktrees/cold_storage_purge_and_lifecycle holding branch track/cold_storage_purge_and_lifecycle_20261003",
+    "disposalPolicy" : "manual",
+    "status" : "cleaned",
+    "createdAt" : "2026-10-03T11:34:58.752Z"
+  },
+  {
+    "id" : "lease-2",
+    "resourceType" : "git_worktree",
+    "resourcePath" : null,
+    "description" : "Git worktree for Track 23 at /home/oswaldo/git/ccrystal-worktrees/crystal_connections_and_lattice_bonds",
+    "disposalPolicy" : "manual",
+    "status" : "cleaned",
+    "createdAt" : "2026-10-03T15:58:23.801Z"
+  },
+  {
+    "id" : "lease-3",
+    "resourceType" : "git_worktree",
+    "resourcePath" : "/home/oswaldo/git/ccrystal-worktrees/standardized_modern_platform_runtimes",
+    "description" : "Worktree for Track 27: Standardized Modern Platform Runtimes",
+    "disposalPolicy" : "revert_on_conclusion",
+    "status" : "cleaned",
+    "createdAt" : "2026-10-03T19:19:48.026Z"
+  },
+  {
+    "id" : "lease-4",
+    "resourceType" : "git_worktree",
+    "resourcePath" : null,
+    "description" : "Worktree for Track 26: Golden Triad Agent Skill Auto-Distribution & Doctor Evolution at ../ccrystal-worktrees/golden_triad_agent_skill_distribution",
+    "disposalPolicy" : "manual",
+    "status" : "cleaned",
+    "createdAt" : "2026-10-03T21:01:21.352Z"
+  }
+]
