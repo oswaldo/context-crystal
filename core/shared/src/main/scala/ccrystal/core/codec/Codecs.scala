@@ -176,11 +176,57 @@ given Decoder[ArtifactRole] = Decoder.decodeString.emap {
 }
 
 given Codec[AcceptanceCriterion] = deriveCodec
-given Codec[Goal]                = deriveCodec
-given Codec[Entity]              = deriveCodec
-given Codec[EntityRegistry]      = deriveCodec
-given Codec[Mask]                = deriveCodec
-given Codec[PhysicalLocation]    = deriveCodec
+given Codec[Goal] = Codec.from(
+  Decoder.instance { c =>
+    for
+      title              <- c.downField("title").as[String]
+      intent             <- c.downField("intent").as[String]
+      status             <- c.downField("status").as[GoalStatus]
+      acceptanceCriteria <- c.downField("acceptanceCriteria").as[List[AcceptanceCriterion]]
+      metadata <- c
+        .downField("metadata")
+        .as[Option[Map[String, String]]]
+        .map(_.getOrElse(Map.empty))
+    yield Goal(
+      title = title,
+      intent = intent,
+      status = status,
+      acceptanceCriteria = acceptanceCriteria,
+      metadata = metadata,
+    )
+  },
+  deriveEncoder[Goal],
+)
+given Codec[Entity] = Codec.from(
+  Decoder.instance { c =>
+    for
+      id   <- c.downField("id").as[String]
+      kind <- c.downField("kind").as[EntityKind]
+      name <- c.downField("name").as[String]
+      metadata <- c
+        .downField("metadata")
+        .as[Option[Map[String, String]]]
+        .map(_.getOrElse(Map.empty))
+      publicKey <- c.downField("publicKey").as[Option[String]]
+      endpoints <- c
+        .downField("endpoints")
+        .as[Option[Map[String, String]]]
+        .map(_.getOrElse(Map.empty))
+    yield Entity(
+      id = id,
+      kind = kind,
+      name = name,
+      metadata = metadata,
+      publicKey = publicKey,
+      endpoints = endpoints,
+    )
+  },
+  deriveEncoder[Entity],
+)
+given Codec[EntityRegistry]   = deriveCodec
+given Codec[CrystalOrigin]    = deriveCodec
+given Codec[Mask]             = deriveCodec
+given Codec[PhysicalLocation] = deriveCodec
 given Codec[DAGNode] = Codec.from(
   Decoder.instance { c =>
     for
@@ -266,9 +312,87 @@ given Codec[Artifact] = Codec.from(
   },
   deriveEncoder[Artifact],
 )
-given Codec[CaveArtifactRegistry]                  = deriveCodec
-given Codec[CrystalOrigin]                         = deriveCodec
-given Codec[ContextCrystal]                        = deriveCodec
+given Codec[CaveArtifactRegistry] = deriveCodec
+given Encoder[ccrystal.core.model.lattice.BondRelation] = Encoder.encodeString.contramap {
+  case ccrystal.core.model.lattice.BondRelation.RelatesTo  => "relates_to"
+  case ccrystal.core.model.lattice.BondRelation.DependsOn  => "depends_on"
+  case ccrystal.core.model.lattice.BondRelation.Blocks     => "blocks"
+  case ccrystal.core.model.lattice.BondRelation.Supersedes => "supersedes"
+  case ccrystal.core.model.lattice.BondRelation.References => "references"
+}
+
+given Decoder[ccrystal.core.model.lattice.BondRelation] = Decoder.decodeString.emap { s =>
+  ccrystal.core.model.lattice.BondRelation.parse(s) match
+    case Some(r) => Right(r)
+    case None =>
+      Left(
+        s"Invalid BondRelation: '$s' (valid: relates_to, depends_on, blocks, supersedes, references)",
+      )
+}
+
+given Codec[ccrystal.core.model.lattice.LatticeBond]         = deriveCodec
+given Codec[ccrystal.core.model.lattice.InboundBond]         = deriveCodec
+given Codec[ccrystal.core.model.lattice.CrystalBondsSummary] = deriveCodec
+
+given Codec[ContextCrystal] = Codec.from(
+  Decoder.instance { c =>
+    for
+      schemaVersion   <- c.downField("schemaVersion").as[String]
+      id              <- c.downField("id").as[String]
+      name            <- c.downField("name").as[Option[String]]
+      createdAt       <- c.downField("createdAt").as[String]
+      updatedAt       <- c.downField("updatedAt").as[String]
+      parentCrystalId <- c.downField("parentCrystalId").as[Option[String]]
+      origin          <- c.downField("origin").as[Option[CrystalOrigin]]
+      caveId          <- c.downField("caveId").as[Option[String]]
+      defaultAuthorId <- c.downField("defaultAuthorId").as[Option[String]]
+      goal            <- c.downField("goal").as[Goal]
+      entities        <- c.downField("entities").as[List[Entity]]
+      activeMask      <- c.downField("activeMask").as[Option[Mask]]
+      dag             <- c.downField("dag").as[DAG]
+      transientLeases <- c
+        .downField("transientLeases")
+        .as[Option[List[TransientLease]]]
+        .map(_.getOrElse(Nil))
+      lessonsLearned <- c
+        .downField("lessonsLearned")
+        .as[Option[List[LessonLearned]]]
+        .map(_.getOrElse(Nil))
+      artifacts <- c
+        .downField("artifacts")
+        .as[Option[List[Artifact]]]
+        .map(_.getOrElse(Nil))
+      bonds <- c
+        .downField("bonds")
+        .as[Option[List[ccrystal.core.model.lattice.LatticeBond]]]
+        .map(_.getOrElse(Nil))
+      metadata <- c
+        .downField("metadata")
+        .as[Option[Map[String, String]]]
+        .map(_.getOrElse(Map.empty))
+    yield ContextCrystal(
+      schemaVersion = schemaVersion,
+      id = id,
+      name = name,
+      createdAt = createdAt,
+      updatedAt = updatedAt,
+      parentCrystalId = parentCrystalId,
+      origin = origin,
+      caveId = caveId,
+      defaultAuthorId = defaultAuthorId,
+      goal = goal,
+      entities = entities,
+      activeMask = activeMask,
+      dag = dag,
+      transientLeases = transientLeases,
+      lessonsLearned = lessonsLearned,
+      artifacts = artifacts,
+      bonds = bonds,
+      metadata = metadata,
+    )
+  },
+  deriveEncoder[ContextCrystal],
+)
 given Codec[ccrystal.core.audit.CrystalTriageItem] = deriveCodec
 
 given Encoder[ccrystal.core.model.search.AgingCategory] = Encoder.encodeString.contramap {

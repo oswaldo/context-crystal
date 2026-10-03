@@ -546,3 +546,111 @@ class ModelCodecSuite extends FunSuite:
     assertEquals(decode[PruneCandidate](candidate.asJson.noSpaces), Right(candidate))
     assertEquals(decode[PruneImpactPreview](preview.asJson.noSpaces), Right(preview))
     assertEquals(decode[PruneResult](result.asJson.noSpaces), Right(result))
+
+  test("Round-trip serialization of BondRelation, LatticeBond, and CrystalBondsSummary"):
+    import ccrystal.core.model.lattice.*
+
+    val bond1 = LatticeBond(
+      targetCrystalId = "cc-target-001",
+      relation = BondRelation.DependsOn,
+      description = Some("Needs auth API to be finalized"),
+      createdAt = "2026-10-03T18:00:00Z",
+    )
+    val bond2 = LatticeBond(
+      targetCrystalId = "cc-target-002",
+      relation = BondRelation.RelatesTo,
+      description = None,
+      createdAt = "2026-10-03T18:05:00Z",
+    )
+
+    assertEquals(decode[LatticeBond](bond1.asJson.noSpaces), Right(bond1))
+    assertEquals(decode[LatticeBond](bond2.asJson.noSpaces), Right(bond2))
+
+    val inbound = InboundBond("cc-source-001", bond1)
+    assertEquals(decode[InboundBond](inbound.asJson.noSpaces), Right(inbound))
+
+    val summary = CrystalBondsSummary(
+      crystalId = "cc-current-001",
+      outbound = List(bond1, bond2),
+      inbound = List(inbound),
+    )
+    assertEquals(decode[CrystalBondsSummary](summary.asJson.noSpaces), Right(summary))
+
+  test("BondRelation enum formatting and parsing"):
+    import ccrystal.core.model.lattice.*
+    assertEquals(BondRelation.parse("relates_to"), Some(BondRelation.RelatesTo))
+    assertEquals(BondRelation.parse("depends-on"), Some(BondRelation.DependsOn))
+    assertEquals(BondRelation.parse("blocks"), Some(BondRelation.Blocks))
+    assertEquals(BondRelation.parse("supersedes"), Some(BondRelation.Supersedes))
+    assertEquals(BondRelation.parse("references"), Some(BondRelation.References))
+    assertEquals(BondRelation.parse("invalid"), None)
+    assertEquals(BondRelation.format(BondRelation.DependsOn), "depends_on")
+
+  test("ContextCrystal round-trip with lattice bonds and backward compatibility"):
+    import ccrystal.core.model.lattice.*
+
+    val crystalWithBonds = ContextCrystal(
+      schemaVersion = "1.1.0",
+      id = "cc-lattice-001",
+      name = Some("Lattice Crystal"),
+      createdAt = "2026-10-03T18:00:00Z",
+      updatedAt = "2026-10-03T18:00:00Z",
+      parentCrystalId = None,
+      goal = Goal("Test Lattice", "Verify lattice bonds", GoalStatus.InProgress, Nil),
+      entities = List(Entity("ent-1", EntityKind.Agent, "Worker", Map.empty)),
+      activeMask = None,
+      dag = DAG(
+        "n-1",
+        List(DAGNode("n-1", Nil, "2026-10-03T18:00:00Z", "ent-1", NodeKind.HumanPrompt, "Init")),
+      ),
+      transientLeases = Nil,
+      lessonsLearned = Nil,
+      artifacts = Nil,
+      bonds = List(
+        LatticeBond(
+          "cc-dep-1",
+          BondRelation.DependsOn,
+          Some("Auth service"),
+          "2026-10-03T18:00:00Z",
+        ),
+      ),
+    )
+
+    val json    = crystalWithBonds.asJson.noSpaces
+    val decoded = decode[ContextCrystal](json)
+    assertEquals(decoded, Right(crystalWithBonds))
+
+    // Backward compatibility: legacy JSON without "bonds" field defaults to Nil
+    val legacyJson =
+      """
+        |{
+        |  "schemaVersion": "1.0.0",
+        |  "id": "cc-legacy-no-bonds",
+        |  "createdAt": "2026-10-03T18:00:00Z",
+        |  "updatedAt": "2026-10-03T18:00:00Z",
+        |  "goal": {
+        |    "title": "Legacy Goal",
+        |    "intent": "Legacy Intent",
+        |    "status": "in_progress",
+        |    "acceptanceCriteria": []
+        |  },
+        |  "entities": [],
+        |  "dag": {
+        |    "rootNodeId": "root",
+        |    "nodes": [
+        |      {
+        |        "id": "root",
+        |        "parentIds": [],
+        |        "timestamp": "2026-10-03T18:00:00Z",
+        |        "actorId": "human",
+        |        "kind": "human_prompt",
+        |        "contentSummary": "Start"
+        |      }
+        |    ]
+        |  }
+        |}
+        |""".stripMargin
+
+    val decodedLegacy = decode[ContextCrystal](legacyJson)
+    assertEquals(decodedLegacy.isRight, true, s"Failed decoding: $decodedLegacy")
+    assertEquals(decodedLegacy.toOption.get.bonds, Nil)

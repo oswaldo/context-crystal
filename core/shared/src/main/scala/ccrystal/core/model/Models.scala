@@ -317,6 +317,7 @@ case class ContextCrystal(
     transientLeases: List[TransientLease] = Nil,
     lessonsLearned: List[LessonLearned] = Nil,
     artifacts: List[Artifact] = Nil,
+    bonds: List[ccrystal.core.model.lattice.LatticeBond] = Nil,
     metadata: Map[String, String] = Map.empty,
 ) derives CanEqual
 

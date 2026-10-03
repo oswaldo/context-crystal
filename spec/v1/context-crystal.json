@@ -18,7 +18,7 @@
   "properties": {
     "schemaVersion": {
       "type": "string",
-      "enum": ["1.0.0"]
+      "pattern": "^1\\.[0-9]+\\.[0-9]+$"
     },
     "id": {
       "type": "string",
@@ -75,6 +75,13 @@
       "type": "array",
       "items": {
         "$ref": "#/$defs/Artifact"
+      },
+      "default": []
+    },
+    "bonds": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/LatticeBond"
       },
       "default": []
     }
@@ -297,6 +304,19 @@
           "type": "object",
           "additionalProperties": { "type": "string" }
         }
+      }
+    },
+    "LatticeBond": {
+      "type": "object",
+      "required": ["targetCrystalId", "relation", "createdAt"],
+      "properties": {
+        "targetCrystalId": { "type": "string" },
+        "relation": {
+          "type": "string",
+          "enum": ["relates_to", "depends_on", "blocks", "supersedes", "references"]
+        },
+        "description": { "type": ["string", "null"] },
+        "createdAt": { "type": "string", "format": "date-time" }
       }
     }
   }
