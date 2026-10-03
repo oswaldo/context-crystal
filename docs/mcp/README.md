@@ -25,6 +25,7 @@ The Context Crystal native MCP server exposes zero-overhead context lifecycle ma
 - **`crystal_task_transition`:** Add (`action: "add"`) or complete (`action: "done"`) a task.
 - **`crystal_transient_lease`:** Acquire (`action: "lease"`) or clean (`action: "clean"`) a transient resource lease (e.g., git worktrees, debug configs).
 - **`crystal_slice_fork`:** Extract crystal fragments or fork sub-DAG lineages into a new child crystal.
+- **`crystal_connect`:** Connect (`action: "connect"`), disconnect (`action: "disconnect"`), or inspect (`action: "list"`) directed lattice bonds between crystals with cycle detection and defensive hydration.
 - **`crystal_delete`:** Irrecoverably delete a crystal and cascade orphaned cave entities (`force: true`).
 
 ### 2. Resources
@@ -34,6 +35,7 @@ All living context crystals expose dynamic resources under the `ccrystal://` URI
 - **`ccrystal://{crystal_id}/state`:** Returns living state container JSON (Goal status, pending tasks, active leases, open lessons).
 - **`ccrystal://{crystal_id}/dag`:** Returns normalized DAG nodes and parent lineage JSON.
 - **`ccrystal://{crystal_id}/hydrate`:** Returns the synthesized, human- and LLM-ready Markdown context beam (the "cast"). Supports selective sub-DAG beam shaping query parameters: `?from=<anchor|id>&to=<anchor|id>&tail=<N>`.
+- **`ccrystal://{crystal_id}/bonds`:** Returns lattice bonds and inbound/outbound topology JSON.
 - **`ccrystal://entities`:** Returns registered cave entities and identities.
 
 Why the `/hydrate` endpoint? Context Crystal separates raw state and topological graph data from prompt-ready context beams. Reading `.../state` returns structured JSON for tools, whereas `.../hydrate` performs selective DAG traversal and formats living state into a concise, token-efficient prompt beam ready for immediate LLM ingestion.

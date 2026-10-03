@@ -126,6 +126,30 @@ object CivilDate:
       else None
     catch case _: Throwable => None
 
+  def formatIso(epochMillis: Long): String =
+    val totalSeconds =
+      if epochMillis >= 0 then epochMillis / 1000L else (epochMillis - 999L) / 1000L
+    val days = if totalSeconds >= 0 then totalSeconds / 86400L else (totalSeconds - 86399L) / 86400L
+    val remSeconds = (totalSeconds % 86400L + 86400L) % 86400L
+    val hour       = (remSeconds / 3600L).toInt
+    val minute     = ((remSeconds  % 3600L) / 60L).toInt
+    val second     = (remSeconds   % 60L).toInt
+
+    val z    = days + 719468L
+    val era  = (if z >= 0 then z else z - 146096L) / 146097L
+    val doe  = z - era * 146097L
+    val yoe  = (doe - doe / 1460L + doe / 36524L - doe / 146096L) / 365L
+    val y    = yoe + era * 400L
+    val doy  = doe - (365L * yoe + yoe / 4L - yoe / 100L)
+    val mp   = (5L * doy + 2L) / 153L
+    val d    = (doy - (153L * mp + 2L) / 5L + 1L).toInt
+    val m    = (mp + (if mp < 10L then 3L else -9L)).toInt
+    val year = (y + (if m <= 2 then 1L else 0L)).toInt
+
+    f"$year%04d-$m%02d-$d%02dT$hour%02d:$minute%02d:$second%02dZ"
+
+  def nowIso(): String = formatIso(System.currentTimeMillis())
+
 object TemporalParser:
   private val RelativeRegex = """^(\d+)([dhm])$""".r
 

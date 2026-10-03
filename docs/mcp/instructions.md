@@ -26,6 +26,8 @@ flowchart LR
     Init[crystal_init] --> Work[Tasks & Nodes]
     Work --> Lease[crystal_transient_lease]
     Lease --> Work
+    Work --> Connect[crystal_connect]
+    Connect --> Work
     Work --> Melt[crystal_melt]
     Melt --> Work
     Work --> Conclude[crystal_goal_transition]
@@ -46,6 +48,8 @@ flowchart LR
    - **Fidelity Guarantee:** Default to `inferred` for agent-authored reasoning; use `intercepted` only for exact captured tool inputs/outputs.
 3. **Transient Leases (`crystal_transient_lease`):**
    Register temporary working state (e.g. `git_worktree`). Always clean or promote leases before concluding work.
+3b. **Lattice Bonds & Cross-Crystal Connections (`crystal_connect`):**
+   Establish directed relationships (`relates_to`, `depends_on`, `blocks`, `supersedes`, `references`) between crystals. Context Crystal enforces acyclic DAG invariants (preventing circular dependencies) and automatically renders depth-1 connected lattice peeks into hydrated context beams (`crystal_hydrate`). Inspect bonds via `action: "list"` or resource `ccrystal://<id>/bonds`.
 4. **Selective Context Hydration (`crystal_hydrate`):**
    Project tailored context beams into LLM context using `tail`, `from`, `to`, or `summary_only`.
 5. **Sub-DAG Melting (`crystal_melt`):**

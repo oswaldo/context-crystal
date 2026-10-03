@@ -17,7 +17,7 @@ This skill equips AI coding entities (Antigravity, Claude Code, Cursor, Windsurf
 - **Context Over Session (The Navigational Map & Compass):** Context and goals exist independently of any individual chat session, IDE window, or token budget. A crystal is not an "agent memory" (RAG/vector DB) simulating cognitive recall, but a portable, externalized navigational artifact: a map of where the task has been (verified milestones, executed tools, resolved friction) and a compass pointer to where it is heading (goal nucleus, active tasks, pending leases). Crystals are self-contained and inert at rest; active use and hydration turn them into meaningful, high-bandwidth context.
 - **Agent as Operator (Zero Human Learning Curve):** The human operator should never need to learn CLI flags, subcommands, or manual installation routines. The agent autonomously interprets user intent, manages binary installation, and executes atomic batched updates behind the scenes.
 - **Fidelity Guarantee:** In the absence of an OS-level deterministic kernel interceptor, all agent-synthesized DAG transitions MUST specify `--fidelity inferred`.
-- **Atomic Multi-Command Batching & Native MCP Preference:** Autonomous agents interacting with Context Crystal should prioritize native MCP tools (`crystal_batch`, `crystal_search`, `crystal_hydrate`, `crystal_triage`, `crystal_init`, `crystal_checkpoint`, `crystal_task_transition`, `crystal_goal_transition`, `crystal_transient_lease`, `crystal_slice_fork`, `crystal_melt`, `crystal_archive`, `crystal_unarchive`, `crystal_prune`, `crystal_artifact`) and resources (`ccrystal://artifacts`, `ccrystal://{id}/artifacts`) over shell subprocesses. For multi-step transitions, compose a single `crystal_batch` recipe or `ccrystal batch` command to execute atomically with minimal turn roundtrips.
+- **Atomic Multi-Command Batching & Native MCP Preference:** Autonomous agents interacting with Context Crystal should prioritize native MCP tools (`crystal_batch`, `crystal_search`, `crystal_hydrate`, `crystal_triage`, `crystal_init`, `crystal_checkpoint`, `crystal_task_transition`, `crystal_goal_transition`, `crystal_transient_lease`, `crystal_slice_fork`, `crystal_melt`, `crystal_connect`, `crystal_archive`, `crystal_unarchive`, `crystal_prune`, `crystal_artifact`) and resources (`ccrystal://artifacts`, `ccrystal://{id}/artifacts`, `ccrystal://{id}/bonds`) over shell subprocesses. For multi-step transitions, compose a single `crystal_batch` recipe or `ccrystal batch` command to execute atomically with minimal turn roundtrips.
 - **Preservation of Clean Repositories:** Context Crystal fully supports out-of-tree companion context repositories (`CCRYSTAL_STORE`). Respect user repository policies to prevent polluting production code with local tracking files.
 - **Secret Sanitization Invariant (Pointers Over Values):** Never record raw secrets, credentials, API tokens, passwords, or private keys in `.ccrystals/` DAG nodes, envelopes, or artifacts. When recording tool execution outputs or logs, redact sensitive authorization headers (e.g. `Bearer <REDACTED>`) and tokens. Crystals may contain pointer references (`env:VAR_NAME`, vault URIs) and discuss secret handling, but must remain strictly zero-secret artifacts. Entities must NEVER run commands that dump, echo, print, or grep environment variables (`env`, `printenv`, `export`), process lists, or credential store files that risk leaking sensitive tokens into tool outputs or transcripts. When CLI tools report authentication failures, pause and request the human operator's assistance rather than attempting environmental secret harvesting.
 - **Mandatory Task Inception Gate:** When starting any non-trivial or multi-step engineering task, the agent MUST immediately inspect existing crystals (`ccrystal list`, `ccrystal search`, or MCP `crystal_search`). If an existing crystal relates to the session context or feature track, attach to it and hydrate context (`ccrystal hydrate` or MCP `crystal_hydrate`) before making code edits. If none exists, initialize a new crystal with atomic acceptance criteria (`crystal_init` with `tasks` or `ccrystal init -t ...`). Never proceed through multi-turn refactors or feature tracks without active crystal anchoring.
@@ -101,6 +101,7 @@ If `ccrystal` is not present in PATH:
   - **Artifact Roles (`--role`):** `target`, `instrument`, `precondition`
   - **Artifact Substrates (`--substrate`):** `virtual`, `physical`
   - **Aging States (`--state`):** `active`, `solid`, `stale`
+  - **Bond Relations (`--relation`, `-r`):** `relates_to`, `depends_on`, `blocks`, `supersedes`, `references`
 
 ### Agent Runtime Onboarding & Diagnostics (`ccrystal agent`)
 
@@ -258,6 +259,9 @@ When the user communicates in natural language, translate their intent into the 
 | *"Inspect artifact X"*, *"Check test rig location / details"* | Inspect metadata, substrate, and physical location of artifact | `ccrystal artifact inspect <id> [--crystal <id>]` |
 | *"Execute test using rig X"*, *"Link artifact inputs / outputs"* | Record transition with directional artifact links | `ccrystal node add <id> -k tool_execution -s '<summary>' --input-artifact <in-id> --output-artifact <out-id> --precondition-artifact <pre-id>` |
 | *"Melt intermediate steps in crystal X"*, *"Squash nodes from N1 to N2"* | Deterministically squash sub-DAG path into single checkpoint | `ccrystal melt <id> --from <from> --to <to> [--summary '<text>']` (or MCP `crystal_melt`) |
+| *"Connect crystal A to B"*, *"Link dependencies between crystals"* | Connect two crystals with directed semantic relation | `ccrystal connect <source> <target> -r <rel> [-d '<desc>']` (or MCP `crystal_connect`) |
+| *"Disconnect crystal A from B"*, *"Sever cross-crystal link"* | Sever directed lattice bond between crystals | `ccrystal disconnect <source> <target> [-r <rel>]` (or MCP `crystal_connect`) |
+| *"Show crystal connections"*, *"What crystals depend on X?"* | Inspect outbound and inbound cross-crystal bonds | `ccrystal connections <id> [--json]` (or MCP `crystal_connect`) |
 | *"Archive crystal X"*, *"Move completed crystal to cold storage"* | Move concluded/inactive crystal to cold storage (`.ccrystals/archive/`) | `ccrystal archive <id>` (or MCP `crystal_archive`) |
 | *"Restore crystal X from archive"* | Restore archived crystal back to active cave | `ccrystal unarchive <id>` (or MCP `crystal_unarchive`) |
 | *"Triage solid / stale crystals"*, *"Filter cave hygiene"* | Triage crystals with aging filters (`--solid`, `--stale`, `--active`) | `ccrystal triage [--solid\|--stale]` (or MCP `crystal_triage`) |
@@ -304,6 +308,12 @@ ccrystal batch "artifact register --id rig-sensor-1 --name 'Oscilloscope Station
 
 ```bash
 ccrystal batch "melt my-feature --from init-node --to milestone-1 -s 'Scaffolding & DB schema finalized'; archive completed-spike"
+```
+
+### Recipe 7: Cross-Crystal Lattice Bonds & Dependencies
+
+```bash
+ccrystal batch "connect track-auth-core track-api-gateway -r depends_on -d 'Gateway relies on token verification contract'; connections track-auth-core"
 ```
 
 ---

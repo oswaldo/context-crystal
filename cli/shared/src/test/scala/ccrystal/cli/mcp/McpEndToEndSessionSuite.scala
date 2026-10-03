@@ -54,6 +54,7 @@ class McpEndToEndSessionSuite extends FunSuite:
     val tools = toolsResp.result.get.hcursor.as[ListToolsResult].toOption.get.tools
     assertEquals(tools.exists(_.name == "crystal_batch"), true)
     assertEquals(tools.exists(_.name == "crystal_prune"), true)
+    assertEquals(tools.exists(_.name == "crystal_connect"), true)
     assertEquals(tools.exists(_.name == "crystal_delete"), false)
 
     // 3. crystal_init response
@@ -238,6 +239,7 @@ class McpEndToEndSessionSuite extends FunSuite:
     assert(tools.exists(_.name == "crystal_hydrate"), "must list crystal_hydrate")
     assert(tools.exists(_.name == "crystal_triage"), "must list crystal_triage")
     assert(tools.exists(_.name == "crystal_prune"), "must list crystal_prune")
+    assert(tools.exists(_.name == "crystal_connect"), "must list crystal_connect")
     assert(!tools.exists(_.name == "crystal_delete"), "must not list obsolete crystal_delete")
 
     // 3. crystal_init with tasks
@@ -286,3 +288,79 @@ class McpEndToEndSessionSuite extends FunSuite:
     val delResult = delResp.result.get.hcursor.as[CallToolResult].toOption.get
     assert(!delResult.isError, "crystal_prune must succeed")
     assertEquals(store.exists("ergo-session"), false)
+
+  test("Full end-to-end MCP lattice bond connection, hydration quick-peeking, and resources"):
+    val store   = new InMemoryCrystalStore()
+    val runner  = new Runner(store, confirmPrompt = _ => true)
+    val handler = new DefaultMcpHandler(store, runner)
+
+    val sessionScript =
+      """{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2024-11-05"}}
+        |{"jsonrpc":"2.0","method":"notifications/initialized"}
+        |{"jsonrpc":"2.0","id":2,"method":"tools/call","params":{"name":"crystal_init","arguments":{"name":"lattice-alpha","goal":"Alpha Component","tasks":["Build alpha engine"]}}}
+        |{"jsonrpc":"2.0","id":3,"method":"tools/call","params":{"name":"crystal_init","arguments":{"name":"lattice-beta","goal":"Beta Gateway","tasks":["Consume alpha engine"]}}}
+        |{"jsonrpc":"2.0","id":4,"method":"tools/call","params":{"name":"crystal_connect","arguments":{"action":"connect","source_crystal_id":"lattice-beta","target_crystal_id":"lattice-alpha","relation":"depends_on","description":"Beta requires Alpha engine"}}}
+        |{"jsonrpc":"2.0","id":5,"method":"tools/call","params":{"name":"crystal_connect","arguments":{"action":"list","crystal_id":"lattice-beta"}}}
+        |{"jsonrpc":"2.0","id":6,"method":"resources/read","params":{"uri":"ccrystal://lattice-beta/bonds"}}
+        |{"jsonrpc":"2.0","id":7,"method":"tools/call","params":{"name":"crystal_hydrate","arguments":{"crystal_id":"lattice-beta"}}}
+        |{"jsonrpc":"2.0","id":8,"method":"tools/call","params":{"name":"crystal_connect","arguments":{"action":"disconnect","source_crystal_id":"lattice-beta","target_crystal_id":"lattice-alpha"}}}
+        |""".stripMargin
+
+    val in     = new BufferedReader(new StringReader(sessionScript))
+    val outBuf = new ByteArrayOutputStream()
+    val out    = new PrintStream(outBuf, true, "UTF-8")
+
+    val transport = new StdioMcpTransport(in, out)
+    transport.run(handler)
+
+    val responseLines = outBuf.toString("UTF-8").split("\n").map(_.trim).filter(_.nonEmpty).toList
+    assertEquals(responseLines.size, 8)
+
+    // 4. crystal_connect connect response
+    val connectResp = decode[JsonRpcResponse](responseLines(3)).toOption.get
+    assertEquals(connectResp.id, JsonRpcId.Num(4L))
+    val connectResult = connectResp.result.get.hcursor.as[CallToolResult].toOption.get
+    assert(!connectResult.isError, "connect must succeed")
+    assert(
+      connectResult.content.head.text
+        .contains("Connected 'lattice-beta' -> 'lattice-alpha' [depends_on]"),
+    )
+
+    // 5. crystal_connect list response
+    val listResp = decode[JsonRpcResponse](responseLines(4)).toOption.get
+    assertEquals(listResp.id, JsonRpcId.Num(5L))
+    val listResult = listResp.result.get.hcursor.as[CallToolResult].toOption.get
+    assert(!listResult.isError, "list must succeed")
+    assert(listResult.content.head.text.contains("Outbound Bonds (1):"))
+    assert(listResult.content.head.text.contains("lattice-alpha"))
+
+    // 6. resources/read ccrystal://lattice-beta/bonds
+    val bondsResResp = decode[JsonRpcResponse](responseLines(5)).toOption.get
+    assertEquals(bondsResResp.id, JsonRpcId.Num(6L))
+    val bondsResult = bondsResResp.result.get.hcursor.as[ReadResourceResult].toOption.get
+    val bondsJson   = io.circe.parser.parse(bondsResult.contents.head.text).toOption.get
+    assertEquals(bondsJson.hcursor.get[String]("crystalId").toOption, Some("lattice-beta"))
+
+    // 7. crystal_hydrate response (should contain ## Connected Lattice Bonds:)
+    val hydResp = decode[JsonRpcResponse](responseLines(6)).toOption.get
+    assertEquals(hydResp.id, JsonRpcId.Num(7L))
+    val hydResult = hydResp.result.get.hcursor.as[CallToolResult].toOption.get
+    assert(!hydResult.isError, "hydrate must succeed")
+    assert(
+      hydResult.content.head.text.contains("## Connected Lattice Bonds:"),
+      "hydrate contains lattice bonds section",
+    )
+    assert(
+      hydResult.content.head.text.contains("lattice-alpha"),
+      "quick-peek mentions lattice-alpha",
+    )
+
+    // 8. crystal_connect disconnect response
+    val discResp = decode[JsonRpcResponse](responseLines(7)).toOption.get
+    assertEquals(discResp.id, JsonRpcId.Num(8L))
+    val discResult = discResp.result.get.hcursor.as[CallToolResult].toOption.get
+    assert(!discResult.isError, "disconnect must succeed")
+    assert(
+      discResult.content.head.text
+        .contains("Disconnected all bonds from 'lattice-beta' -> 'lattice-alpha'"),
+    )

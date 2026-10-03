@@ -827,7 +827,7 @@ class FsCrystalStore(val rootPath: Path) extends CrystalStore:
               s"Cycle detected: Cannot connect '$sourceId' to '$targetId' as it forms a closed cycle: ${cyclePath.mkString(" -> ")}",
             )
           case None => Right(())
-        now = java.time.Instant.now().toString
+        now = ccrystal.core.model.search.CivilDate.nowIso()
         newBond = ccrystal.core.model.lattice.LatticeBond(
           targetCrystalId = targetId,
           relation = relation,
@@ -849,7 +849,7 @@ class FsCrystalStore(val rootPath: Path) extends CrystalStore:
     if !exists(sourceId) && !isArchived(sourceId) then Left(s"Source crystal '$sourceId' not found")
     else
       var removed = false
-      val now     = java.time.Instant.now().toString
+      val now     = ccrystal.core.model.search.CivilDate.nowIso()
       update(sourceId) { crystal =>
         val (matching, remaining) = crystal.bonds.partition { b =>
           b.targetCrystalId == targetId && relation.forall(_ == b.relation)

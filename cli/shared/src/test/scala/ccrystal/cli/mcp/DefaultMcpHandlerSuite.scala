@@ -73,6 +73,7 @@ class DefaultMcpHandlerSuite extends FunSuite:
     assertEquals(toolNames.contains("crystal_transient_lease"), true)
     assertEquals(toolNames.contains("crystal_slice_fork"), true)
     assertEquals(toolNames.contains("crystal_prune"), true)
+    assertEquals(toolNames.contains("crystal_connect"), true)
     assertEquals(toolNames.contains("crystal_delete"), false)
 
   test("DefaultMcpHandler handles tools/call crystal_init and crystal_batch"):
@@ -1109,3 +1110,128 @@ class DefaultMcpHandlerSuite extends FunSuite:
     assertEquals(batchPruneResp.error.isEmpty, true)
     val batchResult = batchPruneResp.result.get.as[CallToolResult].toOption.get
     assertEquals(batchResult.isError, false)
+
+  test("DefaultMcpHandler handles crystal_connect tool calls and bonds resource reading"):
+    val (handler, store, _) = createFixture()
+    // 1. Initialize two crystals
+    handler.handle(
+      JsonRpcRequest(
+        id = JsonRpcId.Num(140L),
+        method = "tools/call",
+        params = Some(
+          Json.obj(
+            "name" -> "crystal_init".asJson,
+            "arguments" -> Json.obj(
+              "name" -> "c-alpha".asJson,
+              "goal" -> "Alpha crystal".asJson,
+            ),
+          ),
+        ),
+      ),
+    )
+    handler.handle(
+      JsonRpcRequest(
+        id = JsonRpcId.Num(141L),
+        method = "tools/call",
+        params = Some(
+          Json.obj(
+            "name" -> "crystal_init".asJson,
+            "arguments" -> Json.obj(
+              "name" -> "c-beta".asJson,
+              "goal" -> "Beta crystal".asJson,
+            ),
+          ),
+        ),
+      ),
+    )
+
+    // 2. Connect c-alpha -> c-beta with depends_on
+    val connectResp = handler.handle(
+      JsonRpcRequest(
+        id = JsonRpcId.Num(142L),
+        method = "tools/call",
+        params = Some(
+          Json.obj(
+            "name" -> "crystal_connect".asJson,
+            "arguments" -> Json.obj(
+              "action"            -> "connect".asJson,
+              "source_crystal_id" -> "c-alpha".asJson,
+              "target_crystal_id" -> "c-beta".asJson,
+              "relation"          -> "depends_on".asJson,
+              "description"       -> "Alpha depends on Beta".asJson,
+            ),
+          ),
+        ),
+      ),
+    )
+    assertEquals(connectResp.error.isEmpty, true)
+    val connectResult = connectResp.result.get.as[CallToolResult].toOption.get
+    assertEquals(connectResult.isError, false)
+    assert(connectResult.content.head.text.contains("Connected 'c-alpha' -> 'c-beta' [depends_on]"))
+
+    // 3. List connections for c-beta (should show inbound from c-alpha)
+    val listResp = handler.handle(
+      JsonRpcRequest(
+        id = JsonRpcId.Num(143L),
+        method = "tools/call",
+        params = Some(
+          Json.obj(
+            "name" -> "crystal_connect".asJson,
+            "arguments" -> Json.obj(
+              "action"     -> "list".asJson,
+              "crystal_id" -> "c-beta".asJson,
+            ),
+          ),
+        ),
+      ),
+    )
+    assertEquals(listResp.error.isEmpty, true)
+    val listResult = listResp.result.get.as[CallToolResult].toOption.get
+    assertEquals(listResult.isError, false)
+    assert(listResult.content.head.text.contains("Inbound Bonds (1):"))
+    assert(listResult.content.head.text.contains("c-alpha"))
+
+    // 4. Read ccrystal://c-beta/bonds resource
+    val readResourceResp = handler.handle(
+      JsonRpcRequest(
+        id = JsonRpcId.Num(144L),
+        method = "resources/read",
+        params = Some(
+          Json.obj(
+            "uri" -> "ccrystal://c-beta/bonds".asJson,
+          ),
+        ),
+      ),
+    )
+    assertEquals(readResourceResp.error.isEmpty, true)
+    val readResult = readResourceResp.result.get.as[ReadResourceResult].toOption.get
+    val bondsJson  = io.circe.parser.parse(readResult.contents.head.text).toOption.get
+    assertEquals(bondsJson.hcursor.get[String]("crystalId").toOption, Some("c-beta"))
+    val inboundList = bondsJson.hcursor.downField("inbound").as[List[Json]].toOption.get
+    assertEquals(inboundList.size, 1)
+    assertEquals(inboundList.head.hcursor.get[String]("sourceCrystalId").toOption, Some("c-alpha"))
+
+    // 5. Disconnect
+    val disconnectResp = handler.handle(
+      JsonRpcRequest(
+        id = JsonRpcId.Num(145L),
+        method = "tools/call",
+        params = Some(
+          Json.obj(
+            "name" -> "crystal_connect".asJson,
+            "arguments" -> Json.obj(
+              "action"            -> "disconnect".asJson,
+              "source_crystal_id" -> "c-alpha".asJson,
+              "target_crystal_id" -> "c-beta".asJson,
+            ),
+          ),
+        ),
+      ),
+    )
+    assertEquals(disconnectResp.error.isEmpty, true)
+    val disconnectResult = disconnectResp.result.get.as[CallToolResult].toOption.get
+    assertEquals(disconnectResult.isError, false)
+    assert(
+      disconnectResult.content.head.text
+        .contains("Disconnected all bonds from 'c-alpha' -> 'c-beta'"),
+    )

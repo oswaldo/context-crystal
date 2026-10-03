@@ -61,17 +61,17 @@
 
 ## Phase 5: Native MCP Server Tool (`crystal_connect`) & Documentation
 
-- [ ] Task: Implement `crystal_connect` tool in `cli/shared/src/main/scala/ccrystal/cli/mcp/DefaultMcpHandler.scala`
-  - [ ] Register `crystal_connect` in `tools/list`
-  - [ ] Handle actions `connect`, `disconnect`, `list` in `tools/call`
-  - [ ] Export MCP schema `docs/mcp/schemas/crystal_connect.json`
-- [ ] Task: MCP Unit and E2E Tests
-  - [ ] `DefaultMcpHandlerSuite.scala`
-  - [ ] `McpEndToEndSessionSuite.scala`
-- [ ] Task: Update documentation and agent skills
-  - [ ] Update `README.md`, `.agents/skills/context-crystal/SKILL.md`, and `docs/mcp/instructions.md`
-  - [ ] Run Markdown linting (`npx markdownlint-cli ...`)
-- [ ] Task: Full multi-platform test suite & formatting
-  - [ ] Run `sbt test` across Native, JVM, and JS
-  - [ ] Run `sbt "scalafmtCheckAll; scalafixAll --check"`
-- [ ] Task: Phase 5 Verification & Checkpoint (Refer to workflow.md)
+- [x] Task: Implement `crystal_connect` tool in `cli/shared/src/main/scala/ccrystal/cli/mcp/DefaultMcpHandler.scala`
+  - [x] Register `crystal_connect` in `tools/list`
+  - [x] Handle actions `connect`, `disconnect`, `list` in `tools/call`
+  - [x] Export MCP schema `docs/mcp/schemas/crystal_connect.json`
+- [x] Task: MCP Unit and E2E Tests
+  - [x] `DefaultMcpHandlerSuite.scala`
+  - [x] `McpEndToEndSessionSuite.scala`
+- [x] Task: Update documentation and agent skills
+  - [x] Update `README.md`, `.agents/skills/context-crystal/SKILL.md`, and `docs/mcp/instructions.md`
+  - [x] Run Markdown linting (`npx markdownlint-cli ...`)
+- [x] Task: Full multi-platform test suite & formatting
+  - [x] Run `sbt test` across Native, JVM, and JS
+  - [x] Run `sbt "scalafmtCheckAll; scalafixAll --check"`
+- [x] Task: Phase 5 Verification & Checkpoint (Refer to workflow.md)

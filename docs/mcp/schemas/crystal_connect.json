@@ -1,0 +1,49 @@
+{
+  "name": "crystal_connect",
+  "description": "Connect, disconnect, or inspect directed lattice bonds between crystals in the cave, enforcing an acyclic graph invariant and supporting cross-crystal context hydration.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "action": {
+        "type": "string",
+        "enum": [
+          "connect",
+          "disconnect",
+          "list"
+        ],
+        "description": "Action: connect (establish bond), disconnect (sever bond), or list (inspect inbound and outbound bonds; default: connect)"
+      },
+      "crystal_id": {
+        "type": "string",
+        "description": "Crystal ID to inspect when action is 'list' (or alias for source_crystal_id)"
+      },
+      "source_crystal_id": {
+        "type": "string",
+        "description": "Source crystal ID initiating the bond"
+      },
+      "target_crystal_id": {
+        "type": "string",
+        "description": "Target crystal ID being connected to (required for connect)"
+      },
+      "relation": {
+        "type": "string",
+        "enum": [
+          "relates_to",
+          "depends_on",
+          "blocks",
+          "supersedes",
+          "references"
+        ],
+        "description": "Bond relation type (relates_to, depends_on, blocks, supersedes, references; required for connect)"
+      },
+      "description": {
+        "type": "string",
+        "description": "Optional human or agent rationale explaining the cross-crystal bond"
+      },
+      "json_output": {
+        "type": "boolean",
+        "description": "Output structured JSON instead of formatted text (default: false)"
+      }
+    }
+  }
+}

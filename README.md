@@ -162,16 +162,18 @@ Context Crystal includes ready-to-use skills and instruction adapters for major 
 
 Context Crystal includes an embedded, zero-overhead MCP server built directly into the native binary. It connects Claude Desktop, Cursor, Zed, Windsurf, and agent harnesses to your workspace crystals with zero Python or Node.js runtime dependencies.
 
-- **Compound Atomic Tools (16 tools):**
+- **Compound Atomic Tools (17 tools):**
   - **Batching & Inception:** `crystal_batch`, `crystal_init`.
   - **Transitions & Provenance:** `crystal_checkpoint`, `crystal_task_transition`, `crystal_goal_transition`.
   - **Artifacts & Leases:** `crystal_artifact`, `crystal_transient_lease`.
   - **Context Shaping & Slicing:** `crystal_hydrate`, `crystal_slice_fork`.
+  - **Lattice Bonds & Topology:** `crystal_connect` (cross-crystal relations, cycle-defended directed DAG edges, and depth-1 defensive hydration context projection).
   - **Metrics, Search & Lifecycle:** `crystal_stats`, `crystal_search` (multi-dimensional filtering and pagination), `crystal_triage`, `crystal_melt`, `crystal_archive`, `crystal_unarchive`, `crystal_prune`.
 - **Dynamic Context Resources (`ccrystal://`):**
   - `ccrystal://{id}/state`: Living state container JSON (Goal status, pending tasks, active leases, open lessons).
   - `ccrystal://{id}/dag`: Normalized DAG nodes and parent lineage JSON.
   - `ccrystal://{id}/hydrate`: Synthesized Markdown context beam formatted for immediate LLM prompt injection (supports `?from=...&to=...&tail=...` query parameters).
+  - `ccrystal://{id}/bonds`: Lattice bonds and inbound/outbound topology JSON.
   - `ccrystal://artifacts`: Global cave artifact registry.
   - `ccrystal://{id}/artifacts`: Crystal-scoped referenced artifacts.
   - `ccrystal://entities`: Registered cave identities and authors.
@@ -280,11 +282,16 @@ ccrystal hydrate auth-refactor --from v1-checkpoint --tail 5
 # 9. Deterministic Sub-DAG Melting (Squash intermediate node chains)
 ccrystal melt auth-refactor --from node-auth-refactor-init --to checkpoint-1 --summary "Finalized initial auth spec & scaffolding"
 
-# 10. Cave Metrics & Storage Footprint
+# 10. Cross-Crystal Lattice Bonds & Defensive Hydration Paging
+ccrystal connect auth-core api-gateway -r depends_on -d "Gateway relies on token contract"
+ccrystal connections auth-core        # Inspect outbound and inbound bonds
+ccrystal disconnect auth-core api-gateway # Sever cross-crystal link
+
+# 11. Cave Metrics & Storage Footprint
 ccrystal stats                     # High-level cave metrics, disk footprints, and token savings
 ccrystal stats --since 7d --detailed # Scoped breakdown for crystals updated in last 7 days
 
-# 11. Cave Hygiene Triage, Cold Storage Archiving & Retention Pruning
+# 12. Cave Hygiene Triage, Cold Storage Archiving & Retention Pruning
 ccrystal triage --solid               # Inspect concluded crystals ready for cleanup
 ccrystal archive auth-refactor        # Move completed crystal to cold storage (.ccrystals/archive/)
 ccrystal unarchive auth-refactor      # Restore crystal to active cave
@@ -293,11 +300,11 @@ ccrystal prune auth-refactor -f       # Permanently prune single crystal with en
 ccrystal prune --older-than 90d       # Prune archived crystals exceeding 90-day retention
 ccrystal prune --older-than 30d --dry-run # Preview candidates and freed bytes without deleting
 
-# 12. Dual-Audience Guidance & Entity Conventions
+# 13. Dual-Audience Guidance & Entity Conventions
 ccrystal --for-ai               # Operational invariants, PII rules, and entity schemes for AI agents
 ccrystal entity conventions     # Display canonical entity prefixes (usr_, agt_, mdl_, tool_, sys_)
 
-# 13. Universal Agent Runtime Onboarding & Diagnostics
+# 14. Universal Agent Runtime Onboarding & Diagnostics
 ccrystal agent doctor                  # Check environment, PATH, and harness configurations
 ccrystal agent doctor --json           # Machine-readable JSON diagnostic report
 ccrystal agent install --dry-run       # Preview automated MCP registration without disk changes

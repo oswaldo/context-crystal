@@ -557,6 +557,52 @@ class DefaultMcpHandler(
               "required" -> List("crystal_id", "from", "to").asJson,
             ),
           ),
+          Tool(
+            name = "crystal_connect",
+            description =
+              "Connect, disconnect, or inspect directed lattice bonds between crystals in the cave, enforcing an acyclic graph invariant and supporting cross-crystal context hydration.",
+            inputSchema = Json.obj(
+              "type" -> "object".asJson,
+              "properties" -> Json.obj(
+                "action" -> Json.obj(
+                  "type" -> "string".asJson,
+                  "enum" -> List("connect", "disconnect", "list").asJson,
+                  "description" -> "Action: connect (establish bond), disconnect (sever bond), or list (inspect inbound and outbound bonds; default: connect)".asJson,
+                ),
+                "crystal_id" -> Json.obj(
+                  "type" -> "string".asJson,
+                  "description" -> "Crystal ID to inspect when action is 'list' (or alias for source_crystal_id)".asJson,
+                ),
+                "source_crystal_id" -> Json.obj(
+                  "type"        -> "string".asJson,
+                  "description" -> "Source crystal ID initiating the bond".asJson,
+                ),
+                "target_crystal_id" -> Json.obj(
+                  "type" -> "string".asJson,
+                  "description" -> "Target crystal ID being connected to (required for connect)".asJson,
+                ),
+                "relation" -> Json.obj(
+                  "type" -> "string".asJson,
+                  "enum" -> List(
+                    "relates_to",
+                    "depends_on",
+                    "blocks",
+                    "supersedes",
+                    "references",
+                  ).asJson,
+                  "description" -> "Bond relation type (relates_to, depends_on, blocks, supersedes, references; required for connect)".asJson,
+                ),
+                "description" -> Json.obj(
+                  "type" -> "string".asJson,
+                  "description" -> "Optional human or agent rationale explaining the cross-crystal bond".asJson,
+                ),
+                "json_output" -> Json.obj(
+                  "type" -> "boolean".asJson,
+                  "description" -> "When action is 'list', return structured JSON instead of formatted text (default: false)".asJson,
+                ),
+              ),
+            ),
+          ),
         )
         JsonRpcResponse(id = request.id, result = Some(ListToolsResult(tools).asJson))
 
@@ -1139,6 +1185,108 @@ class DefaultMcpHandler(
               isError = true,
             )
 
+      case "crystal_connect" =>
+        val action = cursor.get[String]("action").getOrElse("connect").trim.toLowerCase
+        action match
+          case "connect" =>
+            val sourceIdOpt = cursor
+              .get[String]("source_crystal_id")
+              .toOption
+              .orElse(cursor.get[String]("crystal_id").toOption)
+            val targetIdOpt = cursor.get[String]("target_crystal_id").toOption
+            val relationOpt = cursor
+              .get[String]("relation")
+              .toOption
+              .flatMap(ccrystal.core.model.lattice.BondRelation.parse)
+            val descOpt = cursor.get[String]("description").toOption
+
+            (sourceIdOpt, targetIdOpt, relationOpt) match
+              case (Some(sourceId), Some(targetId), Some(relation)) =>
+                runCommandToResult(CliCommand.Connect(sourceId, targetId, relation, descOpt))
+              case (None, _, _) =>
+                CallToolResult(
+                  List(
+                    ToolContent(text = "Missing required 'source_crystal_id' (or 'crystal_id')"),
+                  ),
+                  isError = true,
+                )
+              case (_, None, _) =>
+                CallToolResult(
+                  List(
+                    ToolContent(text = "Missing required 'target_crystal_id' for action 'connect'"),
+                  ),
+                  isError = true,
+                )
+              case (_, _, None) =>
+                val rawRel = cursor.get[String]("relation").getOrElse("")
+                CallToolResult(
+                  List(
+                    ToolContent(
+                      text =
+                        s"Invalid or missing 'relation': '$rawRel' (valid: relates_to, depends_on, blocks, supersedes, references)",
+                    ),
+                  ),
+                  isError = true,
+                )
+
+          case "disconnect" =>
+            val sourceIdOpt = cursor
+              .get[String]("source_crystal_id")
+              .toOption
+              .orElse(cursor.get[String]("crystal_id").toOption)
+            val targetIdOpt = cursor.get[String]("target_crystal_id").toOption
+            val relationOpt = cursor
+              .get[String]("relation")
+              .toOption
+              .flatMap(ccrystal.core.model.lattice.BondRelation.parse)
+
+            (sourceIdOpt, targetIdOpt) match
+              case (Some(sourceId), Some(targetId)) =>
+                runCommandToResult(CliCommand.Disconnect(sourceId, targetId, relationOpt))
+              case (None, _) =>
+                CallToolResult(
+                  List(
+                    ToolContent(text = "Missing required 'source_crystal_id' (or 'crystal_id')"),
+                  ),
+                  isError = true,
+                )
+              case (_, None) =>
+                CallToolResult(
+                  List(
+                    ToolContent(
+                      text = "Missing required 'target_crystal_id' for action 'disconnect'",
+                    ),
+                  ),
+                  isError = true,
+                )
+
+          case "list" | "connections" =>
+            val crystalIdOpt = cursor
+              .get[String]("crystal_id")
+              .toOption
+              .orElse(cursor.get[String]("source_crystal_id").toOption)
+            val jsonOutput = cursor.get[Boolean]("json_output").getOrElse(false)
+
+            crystalIdOpt match
+              case Some(crystalId) =>
+                runCommandToResult(CliCommand.Connections(crystalId, jsonOutput = jsonOutput))
+              case None =>
+                CallToolResult(
+                  List(ToolContent(text = "Missing required 'crystal_id' for action 'list'")),
+                  isError = true,
+                )
+
+          case other =>
+            CallToolResult(
+              List(
+                ToolContent(
+                  text =
+                    s"Unknown action '$other' for crystal_connect (valid: connect, disconnect, list)",
+                ),
+              ),
+              isError = true,
+            )
+
       case other =>
         CallToolResult(List(ToolContent(text = s"Unknown tool: $other")), isError = true)
 
@@ -1174,6 +1322,12 @@ class DefaultMcpHandler(
             uri = s"ccrystal://${c.id}/artifacts",
             name = s"Artifacts for ${c.id}",
             description = Some("Artifacts and physical substrates JSON"),
+            mimeType = Some("application/json"),
+          ),
+          Resource(
+            uri = s"ccrystal://${c.id}/bonds",
+            name = s"Lattice bonds for ${c.id}",
+            description = Some("Lattice bonds and inbound/outbound topology JSON"),
             mimeType = Some("application/json"),
           ),
         )
@@ -1307,6 +1461,19 @@ class DefaultMcpHandler(
                       uri = uri,
                       mimeType = Some("application/json"),
                       text = c.artifacts.asJson.spaces2,
+                    ),
+                  ),
+                )
+              }
+            else if uri.startsWith("ccrystal://") && uri.endsWith("/bonds") then
+              val crystalId = uri.stripPrefix("ccrystal://").stripSuffix("/bonds")
+              store.bonds(crystalId).map { summary =>
+                ReadResourceResult(
+                  List(
+                    ResourceContents(
+                      uri = uri,
+                      mimeType = Some("application/json"),
+                      text = summary.asJson.spaces2,
                     ),
                   ),
                 )

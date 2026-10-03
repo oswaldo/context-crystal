@@ -219,3 +219,19 @@ class CrystalFilterSuite extends FunSuite:
       SearchEngine.matches(stale, filterStale, nowMillis).isDefined,
       "stale crystal should be Stale",
     )
+
+  test(
+    "CivilDate.formatIso correctly formats epoch millis and roundtrips with parseIsoToEpochMillis",
+  ):
+    val epoch0 = 0L // 1970-01-01T00:00:00Z
+    assertEquals(CivilDate.formatIso(epoch0), "1970-01-01T00:00:00Z")
+
+    val testMillis = CivilDate.epochMillis(2026, 10, 3, 21, 15, 30)
+    val iso        = CivilDate.formatIso(testMillis)
+    assertEquals(iso, "2026-10-03T21:15:30Z")
+    assertEquals(CivilDate.parseIsoToEpochMillis(iso), Some(testMillis))
+
+    val nowIso = CivilDate.nowIso()
+    assert(nowIso.endsWith("Z"), "nowIso ends with Z")
+    assert(nowIso.contains("T"), "nowIso contains T")
+    assert(CivilDate.parseIsoToEpochMillis(nowIso).isDefined, "nowIso is parseable")
