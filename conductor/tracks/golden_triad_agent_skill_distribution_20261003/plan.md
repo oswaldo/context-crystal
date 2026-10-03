@@ -2,9 +2,9 @@
 
 ## Phase 1: Skill Domain Models, Canonical Template & Doctor Evolution
 
-- [ ] Task: Canonical Skill Template & Path Resolver Evolution (TDD)
-  - [ ] Write unit tests for `CanonicalSkill` content bundling and `HarnessPathResolver` resolving global/workspace skill paths.
-  - [ ] Implement `CanonicalSkill` embedded object and update `HarnessPathResolver` with `skillPath` and `workspaceSkillPath`.
+- [x] Task: Canonical Skill Template & Path Resolver Evolution (TDD) (29cd083)
+  - [x] Write unit tests for `CanonicalSkill` content bundling and `HarnessPathResolver` resolving global/workspace skill paths.
+  - [x] Implement `CanonicalSkill` embedded object and update `HarnessPathResolver` with `skillPath` and `workspaceSkillPath`.
 - [ ] Task: Agent Doctor Skill Diagnostics (TDD)
   - [ ] Write unit tests in `AgentDoctorSuite` checking `SkillStatus` (`Equipped`, `Missing`, `NotSupported`).
   - [ ] Implement skill inspection logic in `AgentDoctor` and update `DoctorReport` / `HarnessDiagnosis`.
