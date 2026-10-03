@@ -87,7 +87,7 @@ object TabMcp:
           className := "qs-card-header",
           span(className := "qs-step-number", "2"),
           div(
-            h3("The 16 Native MCP Tools"),
+            h3("The 17 Native MCP Tools"),
             p("First-class protocol capabilities designed specifically for autonomous AI pairs:"),
           ),
         ),
@@ -127,6 +127,11 @@ object TabMcp:
                 td(code("crystal_triage")),
                 td(code("filter?, json_output?")),
                 td("Deterministic cave hygiene: classifies crystals into solid, stale, or active aging buckets."),
+              ),
+              tr(
+                td(code("crystal_connect")),
+                td(code("id, target_id, relation, notes?")),
+                td("Bonds distinct crystals in a topological context lattice (supersedes, depends_on, relates_to, derives_from)."),
               ),
               tr(
                 td(code("crystal_artifact")),
@@ -174,9 +179,9 @@ object TabMcp:
                 td("Restores archived crystal from cold storage back to active workspace cave."),
               ),
               tr(
-                td(code("crystal_delete")),
-                td(code("crystal_id, force?")),
-                td("Destructive lifecycle removal with cascade orphaned entity preview."),
+                td(code("crystal_prune")),
+                td(code("crystal_id?, filter?, archived?, force?, dry_run?")),
+                td("Unified deletion and cold storage purge with cascade impact preview and lattice bond safety."),
               ),
               tr(
                 td(code("crystal_batch")),

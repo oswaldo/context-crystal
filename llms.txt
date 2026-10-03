@@ -60,6 +60,15 @@ ccrystal melt <id> --from <anchor> --to <anchor> [-s "<summary>"]
 ccrystal transient lease <id> -t <git_worktree|mock_service> -p <path> -d "<desc>" --policy revert_on_conclusion
 ccrystal transient clean <id> -l <lease-id>
 
+# Manage cross-crystal connections & lattice bonds
+ccrystal connect <source> <target> -r supersedes|depends_on|relates_to|derives_from
+ccrystal disconnect <source> <target>
+ccrystal connections <id>
+
+# Unified pruning & cold storage purge
+ccrystal prune <id> [--force]
+ccrystal prune --archived --older-than 30d [--dry-run]
+
 # Slice and fork sub-DAG
 ccrystal slice <id> --from <anchor> --fork-to <child-id> [--prune]
 
@@ -82,17 +91,18 @@ ccrystal mcp
 3. `crystal_stats`: Calculate workspace health metrics, temporal genesis, disk usage, and prompt token savings.
 4. `crystal_hydrate`: Beam shaping with `tail`, `from`, `to`, `depth`, `summary_only`.
 5. `crystal_triage`: Deterministic cave hygiene (`solid`, `stale`, `active`).
-6. `crystal_artifact`: Register, list, or inspect virtual and physical artifacts.
-7. `crystal_checkpoint`: Append immutable DAG checkpoint node.
-8. `crystal_task_transition`: Complete or update acceptance criteria.
-9. `crystal_goal_transition`: Conclude or transition crystal goal status.
-10. `crystal_transient_lease`: Acquire temporary resource lease.
-11. `crystal_slice_fork`: Cleave sub-DAG into child crystal.
-12. `crystal_melt`: Deterministically squash linear sub-DAG segment into checkpoint.
-13. `crystal_archive`: Move concluded crystal to cold storage archive.
-14. `crystal_unarchive`: Restore archived crystal from cold storage back to cave.
-15. `crystal_delete`: Delete crystal with cascade entity preview.
-16. `crystal_batch`: Execute semicolon-delimited CLI recipes atomically.
+6. `crystal_connect`: Bond distinct crystals in a topological context lattice.
+7. `crystal_artifact`: Register, list, or inspect virtual and physical artifacts.
+8. `crystal_checkpoint`: Append immutable DAG checkpoint node.
+9. `crystal_task_transition`: Complete or update acceptance criteria.
+10. `crystal_goal_transition`: Conclude or transition crystal goal status.
+11. `crystal_transient_lease`: Acquire temporary resource lease.
+12. `crystal_slice_fork`: Cleave sub-DAG into child crystal.
+13. `crystal_melt`: Deterministically squash linear sub-DAG segment into checkpoint.
+14. `crystal_archive`: Move concluded crystal to cold storage archive.
+15. `crystal_unarchive`: Restore archived crystal from cold storage back to cave.
+16. `crystal_prune`: Unified deletion and cold storage purge with cascade preview.
+17. `crystal_batch`: Execute semicolon-delimited CLI recipes atomically.
 
 ## Full Corpus Link
 For full JSON schemas, ontology models, and exhaustive CLI documentation, see `/llms-full.txt`.
