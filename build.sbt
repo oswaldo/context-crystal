@@ -4,8 +4,8 @@ val scala3Version        = "3.9.0"
 val circeVersion         = "0.14.16"
 val munitVersion         = "1.3.6"
 val declineVersion       = "2.6.2"
-val scalaJavaTimeVersion = "2.6.0"
-val osLibVersion         = "0.11.4"
+val scalaJavaTimeVersion = "2.7.0"
+val osLibVersion         = "0.11.8"
 
 ThisBuild / scalaVersion := scala3Version
 ThisBuild / organization := "io.github.oswaldo"
