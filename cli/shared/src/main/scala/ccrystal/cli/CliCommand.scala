@@ -133,6 +133,9 @@ enum CliCommand derives CanEqual:
       target: Option[String] = None,
       dryRun: Boolean = false,
       force: Boolean = false,
+      installSkill: Boolean = true,
+      symlinkSkill: Boolean = false,
+      installWorkspaceSkill: Boolean = false,
   )
   case ForAi
   case Search(

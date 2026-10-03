@@ -658,7 +658,24 @@ object CommandParser:
       .orNone,
     Opts.flag("dry-run", "Preview configuration changes without writing to disk").orFalse,
     Opts.flag("force", "Overwrite existing context-crystal configuration").orFalse,
-  ).mapN(CliCommand.AgentInstallCmd.apply)
+    Opts.flag("no-skill", "Skip agent skill installation").orFalse,
+    Opts.flag("symlink-skill", "Symlink agent skill from workspace instead of copying").orFalse,
+    Opts
+      .flag(
+        "workspace-skill",
+        "Install canonical skill into local workspace (.agents/skills/context-crystal/SKILL.md)",
+      )
+      .orFalse,
+  ).mapN((target, dryRun, force, noSkill, symlinkSkill, workspaceSkill) =>
+    CliCommand.AgentInstallCmd(
+      target = target,
+      dryRun = dryRun,
+      force = force,
+      installSkill = !noSkill,
+      symlinkSkill = symlinkSkill,
+      installWorkspaceSkill = workspaceSkill,
+    ),
+  )
 
   private val agentCmd =
     Opts.subcommand("agent", "Manage AI agent runtime harnesses and onboarding")(

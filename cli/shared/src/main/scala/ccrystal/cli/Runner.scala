@@ -800,7 +800,14 @@ class Runner(
       if jsonOutput then Right(ccrystal.cli.agent.AgentDoctorRenderer.renderJson(report))
       else Right(ccrystal.cli.agent.AgentDoctorRenderer.renderText(report, verbose))
 
-    case CliCommand.AgentInstallCmd(targetOpt, dryRun, force) =>
+    case CliCommand.AgentInstallCmd(
+          targetOpt,
+          dryRun,
+          force,
+          installSkill,
+          symlinkSkill,
+          installWorkspaceSkill,
+        ) =>
       val targetHarness = targetOpt.flatMap(ccrystal.core.agent.AgentHarness.fromString)
       if targetOpt.isDefined && targetHarness.isEmpty then
         Left(
@@ -818,8 +825,16 @@ class Runner(
         val storePath = store match
           case fs: ccrystal.core.store.FsCrystalStore => fs.rootPath.toAbsolutePath.toString
           case _                                      => ".ccrystals"
-        val report  = doctor.diagnose(storePath)
-        val summary = installer.install(report, targetHarness, dryRun, force)
+        val report = doctor.diagnose(storePath)
+        val summary = installer.install(
+          doctorReport = report,
+          target = targetHarness,
+          dryRun = dryRun,
+          force = force,
+          installSkill = installSkill,
+          symlinkSkill = symlinkSkill,
+          installWorkspaceSkill = installWorkspaceSkill,
+        )
         Right(ccrystal.cli.agent.AgentInstallerRenderer.renderText(summary))
 
     case CliCommand.Connect(sourceId, targetId, relation, desc) =>

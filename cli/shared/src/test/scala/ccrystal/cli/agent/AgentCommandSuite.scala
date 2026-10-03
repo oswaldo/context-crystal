@@ -31,10 +31,61 @@ class AgentCommandSuite extends FunSuite:
       CommandParser.parse(List("agent", "install", "--target", "cursor", "--dry-run", "--force"))
     assert(parsed.isRight)
     parsed.foreach {
-      case CliCommand.AgentInstallCmd(target, dryRun, force) =>
+      case CliCommand.AgentInstallCmd(
+            target,
+            dryRun,
+            force,
+            installSkill,
+            symlinkSkill,
+            installWorkspaceSkill,
+          ) =>
         assertEquals(target, Some("cursor"))
         assertEquals(dryRun, true)
         assertEquals(force, true)
+        assertEquals(installSkill, true)
+        assertEquals(symlinkSkill, false)
+        assertEquals(installWorkspaceSkill, false)
+      case other => fail(s"Unexpected command: $other")
+    }
+
+  test("CommandParser parses 'agent install --no-skill'"):
+    val parsed = CommandParser.parse(List("agent", "install", "--no-skill"))
+    assert(parsed.isRight)
+    parsed.foreach {
+      case CliCommand.AgentInstallCmd(
+            target,
+            dryRun,
+            force,
+            installSkill,
+            symlinkSkill,
+            installWorkspaceSkill,
+          ) =>
+        assertEquals(target, None)
+        assertEquals(dryRun, false)
+        assertEquals(force, false)
+        assertEquals(installSkill, false)
+        assertEquals(symlinkSkill, false)
+        assertEquals(installWorkspaceSkill, false)
+      case other => fail(s"Unexpected command: $other")
+    }
+
+  test("CommandParser parses 'agent install --symlink-skill --workspace-skill'"):
+    val parsed =
+      CommandParser.parse(List("agent", "install", "--symlink-skill", "--workspace-skill"))
+    assert(parsed.isRight)
+    parsed.foreach {
+      case CliCommand.AgentInstallCmd(
+            target,
+            dryRun,
+            force,
+            installSkill,
+            symlinkSkill,
+            installWorkspaceSkill,
+          ) =>
+        assertEquals(target, None)
+        assertEquals(installSkill, true)
+        assertEquals(symlinkSkill, true)
+        assertEquals(installWorkspaceSkill, true)
       case other => fail(s"Unexpected command: $other")
     }
 
@@ -147,3 +198,35 @@ class AgentCommandSuite extends FunSuite:
       rendered.contains("Summary: 1 updated, 1 unchanged, 1 skipped."),
       "Summary line must be present",
     )
+
+  test("AgentInstallerRenderer renders skill installation receipts and workspace skill"):
+    val summary = InstallSummary(
+      receipts = List(
+        HarnessInstallReceipt(
+          AgentHarness.GoogleAntigravity,
+          "/path/.gemini/antigravity-cli/mcp/context-crystal",
+          InstallActionKind.Installed,
+          None,
+          None,
+          skillReceipt = Some(
+            SkillInstallReceipt(
+              "/path/.gemini/antigravity-cli/skills/context-crystal/SKILL.md",
+              InstallActionKind.Installed,
+              isSymlink = false,
+            ),
+          ),
+        ),
+      ),
+      dryRun = false,
+      workspaceSkillReceipt = Some(
+        SkillInstallReceipt(
+          ".agents/skills/context-crystal/SKILL.md",
+          InstallActionKind.Installed,
+          isSymlink = false,
+        ),
+      ),
+    )
+
+    val rendered = AgentInstallerRenderer.renderText(summary)
+    assert(rendered.contains("Skill:"), "Skill line must be present")
+    assert(rendered.contains("Workspace Skill"), "Workspace skill must be present")

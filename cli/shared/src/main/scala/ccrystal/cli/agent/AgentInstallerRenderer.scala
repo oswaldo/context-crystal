@@ -35,6 +35,42 @@ object AgentInstallerRenderer:
           sb.append(s"  - $namePadded [SKIPPED] Harness not installed\n")
         case InstallActionKind.Failed(reason) =>
           sb.append(s"  - $namePadded [FAILED] $reason (${receipt.configPath})\n")
+
+      receipt.skillReceipt.foreach { s =>
+        val symlinkTag = if s.isSymlink then " (symlink)" else ""
+        s.action match
+          case InstallActionKind.Installed =>
+            sb.append(s"       Skill:   [INSTALLED]$symlinkTag ${s.targetPath}\n")
+          case InstallActionKind.Updated =>
+            sb.append(s"       Skill:   [UPDATED]$symlinkTag ${s.targetPath}\n")
+            s.backupPath.foreach { bak =>
+              sb.append(s"         Backup created: $bak\n")
+            }
+          case InstallActionKind.Unchanged =>
+            sb.append(s"       Skill:   [UNCHANGED]$symlinkTag ${s.targetPath}\n")
+          case InstallActionKind.SkippedNotInstalled =>
+            sb.append("       Skill:   [SKIPPED] Harness not installed or skill not supported\n")
+          case InstallActionKind.Failed(reason) =>
+            sb.append(s"       Skill:   [FAILED] $reason (${s.targetPath})\n")
+      }
+    }
+
+    summary.workspaceSkillReceipt.foreach { ws =>
+      val wsPadded = "Workspace Skill".padTo(20, ' ')
+      ws.action match
+        case InstallActionKind.Installed =>
+          sb.append(s"  - $wsPadded [INSTALLED] ${ws.targetPath}\n")
+        case InstallActionKind.Updated =>
+          sb.append(s"  - $wsPadded [UPDATED] ${ws.targetPath}\n")
+          ws.backupPath.foreach { bak =>
+            sb.append(s"       Backup created: $bak\n")
+          }
+        case InstallActionKind.Unchanged =>
+          sb.append(s"  - $wsPadded [UNCHANGED] ${ws.targetPath}\n")
+        case InstallActionKind.SkippedNotInstalled =>
+          sb.append(s"  - $wsPadded [SKIPPED]\n")
+        case InstallActionKind.Failed(reason) =>
+          sb.append(s"  - $wsPadded [FAILED] $reason (${ws.targetPath})\n")
     }
 
     val installedCount = summary.receipts.count(_.action == InstallActionKind.Installed)
