@@ -31,24 +31,33 @@ object AgentDoctorRenderer:
     sb.append(s"  Cave Store:       $storeBadge $storeDetail\n\n")
 
     sb.append("[Agent Harness Matrix]\n")
+    sb.append(
+      s"  ${"Harness".padTo(20, ' ')} ${"MCP Server".padTo(18, ' ')} ${"Agent Skill".padTo(16, ' ')} Config Path\n",
+    )
+    sb.append(s"  ${"-" * 20} ${"-" * 18} ${"-" * 16} ${"-" * 20}\n")
     report.harnesses.foreach { diag =>
-      val badge = diag.status match
-        case HarnessStatus.Configured    => "[OK]"
+      val mcpBadge = diag.status match
+        case HarnessStatus.Configured    => "[OK] Configured"
         case HarnessStatus.MissingConfig => "[MISSING]"
         case HarnessStatus.NotInstalled  => "[NOT INSTALLED]"
         case HarnessStatus.Corrupted     => "[CORRUPTED]"
 
-      val statusName = diag.status match
-        case HarnessStatus.Configured    => "Configured"
-        case HarnessStatus.MissingConfig => "MissingConfig"
-        case HarnessStatus.NotInstalled  => "NotInstalled"
-        case HarnessStatus.Corrupted     => "Corrupted"
+      val skillBadge = diag.skillStatus match
+        case SkillStatus.Equipped     => "[OK] Equipped"
+        case SkillStatus.Missing      => "[MISSING]"
+        case SkillStatus.NotSupported => "[N/A]"
 
-      val namePadded = diag.harness.displayName.padTo(20, ' ')
-      sb.append(s"  $namePadded $badge $statusName (${diag.configPath})\n")
+      val namePadded  = diag.harness.displayName.padTo(20, ' ')
+      val mcpPadded   = mcpBadge.padTo(18, ' ')
+      val skillPadded = skillBadge.padTo(16, ' ')
+      sb.append(s"  $namePadded $mcpPadded $skillPadded (${diag.configPath})\n")
 
       diag.details.foreach { d =>
         if verbose || diag.status != HarnessStatus.Configured then sb.append(s"     - Note: $d\n")
+      }
+      diag.skillPath.foreach { sp =>
+        if verbose && diag.skillStatus != SkillStatus.NotSupported then
+          sb.append(s"     - Skill Target: $sp\n")
       }
     }
 
@@ -56,6 +65,9 @@ object AgentDoctorRenderer:
     val missingCount    = report.harnesses.count(_.status == HarnessStatus.MissingConfig)
     val notInstCount    = report.harnesses.count(_.status == HarnessStatus.NotInstalled)
     val corruptedCount  = report.harnesses.count(_.status == HarnessStatus.Corrupted)
+    val skillsMissing = report.harnesses.count(d =>
+      d.status == HarnessStatus.Configured && d.skillStatus == SkillStatus.Missing,
+    )
 
     sb.append("\n")
     sb.append(
@@ -64,7 +76,15 @@ object AgentDoctorRenderer:
     if corruptedCount > 0 then sb.append(s", $corruptedCount corrupted")
     sb.append(".\n")
 
-    if missingCount > 0 then
+    if skillsMissing > 0 then
+      sb.append(
+        "Tip: Detected harnesses have MCP tools configured but lack the agent skill. Run 'ccrystal agent install' to equip cognitive reflexes.\n",
+      )
+    else if missingCount > 0 then
       sb.append("Tip: Run 'ccrystal agent install' to safely auto-configure detected harnesses.\n")
+
+    sb.append(
+      "Tip: Run 'ccrystal agent install' to safely auto-configure detected harnesses and deploy skills.\n",
+    )
 
     sb.toString

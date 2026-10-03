@@ -69,6 +69,42 @@ class AgentCommandSuite extends FunSuite:
       "Summary should be present",
     )
 
+  test("AgentDoctorRenderer displays Golden Triad Matrix (MCP + Skill) and actionable skill tip"):
+    val report = DoctorReport(
+      binary = BinaryStatus(true, Some("/usr/bin/ccrystal"), true),
+      store = StoreStatus("/path/.ccrystals", true, true),
+      harnesses = List(
+        HarnessDiagnosis(
+          AgentHarness.GoogleAntigravity,
+          "/home/u/.gemini/antigravity-cli/mcp/context-crystal",
+          HarnessStatus.Configured,
+          None,
+          skillStatus = SkillStatus.Missing,
+          skillPath = Some("/home/u/.gemini/antigravity-cli/skills/context-crystal/SKILL.md"),
+        ),
+        HarnessDiagnosis(
+          AgentHarness.Cursor,
+          "/home/u/.cursor/mcp.json",
+          HarnessStatus.Configured,
+          None,
+          skillStatus = SkillStatus.Equipped,
+          skillPath = Some("/home/u/.cursor/rules/context-crystal.mdc"),
+        ),
+      ),
+    )
+
+    val rendered = AgentDoctorRenderer.renderText(report, verbose = false)
+    assert(rendered.contains("MCP"), "Matrix header should mention MCP")
+    assert(rendered.contains("Skill"), "Matrix header should mention Skill")
+    assert(rendered.contains("Google Antigravity"), "Harness should be listed")
+    assert(rendered.contains("Tip:"), "Tip should be displayed for missing skill")
+    assert(
+      rendered.contains(
+        "Run 'ccrystal agent install' to safely auto-configure detected harnesses and deploy skills",
+      ),
+      "Actionable installation advice should mention skills",
+    )
+
   test("AgentInstallerRenderer renders install receipts with backup and rollback"):
     val summary = InstallSummary(
       receipts = List(
