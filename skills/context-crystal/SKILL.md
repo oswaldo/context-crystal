@@ -103,18 +103,30 @@ If `ccrystal` is not present in PATH:
   - **Aging States (`--state`):** `active`, `solid`, `stale`
   - **Bond Relations (`--relation`, `-r`):** `relates_to`, `depends_on`, `blocks`, `supersedes`, `references`
 
-### Agent Runtime Onboarding & Diagnostics (`ccrystal agent`)
+### Agent Runtime Onboarding & The Golden Triad (`ccrystal agent`)
 
-Agents can autonomously diagnose host environment health and configure MCP integration across detected harnesses:
+Context Crystal operates on the **Golden Triad** model:
+
+1. **The Runtime Binary (`ccrystal`):** The engine and deterministic CLI.
+2. **The MCP Server Engine (`ccrystal mcp`):** Real-time interactive tool calls and prompt resources.
+3. **The Agent Skill (`SKILL.md`):** Autonomous cognitive reflexes, task ceremonies, and anti-amnesia re-anchoring protocols.
+
+Agents can autonomously diagnose Golden Triad readiness and deploy both MCP configurations and skills across detected harnesses:
 
 ```bash
-# Non-destructive environment and harness configuration check
+# Non-destructive environment, MCP configuration, and agent skill diagnostics
 ccrystal agent doctor
 
-# Auto-configure Context Crystal across all detected harnesses (with automatic .ccrystal.bak backups)
+# Auto-configure Context Crystal and deploy skills across all detected harnesses (with .ccrystal.bak backups)
 ccrystal agent install
 
-# Or preview configuration without disk changes
+# Deploy skill as a symlink pointing to workspace canonical skill for live development
+ccrystal agent install --symlink-skill
+
+# Install canonical skill into local repository workspace (.agents/skills/context-crystal/SKILL.md)
+ccrystal agent install --workspace-skill
+
+# Preview configuration and skill distribution without disk changes
 ccrystal agent install --dry-run
 ```
 
