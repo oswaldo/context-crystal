@@ -29,6 +29,20 @@ object HarnessStatus:
     case other           => Left(s"Unknown HarnessStatus: $other")
   }
 
+enum SkillStatus derives CanEqual:
+  case Equipped
+  case Missing
+  case NotSupported
+
+object SkillStatus:
+  given Encoder[SkillStatus] = Encoder.encodeString.contramap(_.toString)
+  given Decoder[SkillStatus] = Decoder.decodeString.emap {
+    case "Equipped"     => Right(SkillStatus.Equipped)
+    case "Missing"      => Right(SkillStatus.Missing)
+    case "NotSupported" => Right(SkillStatus.NotSupported)
+    case other          => Left(s"Unknown SkillStatus: $other")
+  }
+
 case class BinaryStatus(
     inPath: Boolean,
     resolvedPath: Option[String],
@@ -54,7 +68,10 @@ case class HarnessDiagnosis(
     configPath: String,
     status: HarnessStatus,
     details: Option[String],
-) derives CanEqual
+    skillStatus: SkillStatus = SkillStatus.NotSupported,
+    skillPath: Option[String] = None,
+) derives CanEqual:
+  def mcpStatus: HarnessStatus = status
 
 object HarnessDiagnosis:
   given Encoder[AgentHarness] = Encoder.encodeString.contramap(_.id)
@@ -100,8 +117,16 @@ class AgentDoctor(
     DoctorReport(binStatus, storeStatus, diagnoses)
 
   private def diagnoseHarness(harness: AgentHarness): HarnessDiagnosis =
-    val path = resolver.configPath(harness)
-    harness match
+    val path       = resolver.configPath(harness)
+    val maybeSkill = resolver.skillPath(harness)
+    val (skillStatus, skillPath) = maybeSkill match
+      case Some(sp) =>
+        if inspector.fileExists(sp) then (SkillStatus.Equipped, Some(sp))
+        else (SkillStatus.Missing, Some(sp))
+      case None =>
+        (SkillStatus.NotSupported, None)
+
+    val baseDiag = harness match
       case AgentHarness.GoogleAntigravity =>
         if inspector.directoryExists(path) then
           HarnessDiagnosis(harness, path, HarnessStatus.Configured, None)
@@ -121,6 +146,8 @@ class AgentDoctor(
 
       case _ =>
         inspectJsonConfig(harness, path, "mcpServers")
+
+    baseDiag.copy(skillStatus = skillStatus, skillPath = skillPath)
 
   private def inspectJsonConfig(
       harness: AgentHarness,

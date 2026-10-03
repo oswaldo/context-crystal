@@ -137,3 +137,49 @@ class AgentDoctorSuite extends FunSuite:
     val zedDiag = report.harnesses.find(_.harness == AgentHarness.Zed).get
     assertEquals(zedDiag.status, HarnessStatus.Configured)
   }
+
+  test("AgentDoctor diagnoses SkillStatus across harnesses") {
+    val cursorMcpPath   = resolver.configPath(AgentHarness.Cursor)
+    val cursorSkillPath = resolver.skillPath(AgentHarness.Cursor).get
+    val claudeMcpPath   = resolver.configPath(AgentHarness.ClaudeCode)
+    val claudeSkillPath = resolver.skillPath(AgentHarness.ClaudeCode).get
+
+    val validMcpConfig =
+      """{
+        |  "mcpServers": {
+        |    "context-crystal": { "command": "ccrystal", "args": ["mcp"] }
+        |  }
+        |}""".stripMargin
+
+    val inspector = MockFileSystemInspector(
+      files = Map(
+        cursorMcpPath   -> validMcpConfig,
+        cursorSkillPath -> CanonicalSkill.content,
+        claudeMcpPath   -> validMcpConfig,
+        // claudeSkillPath is missing!
+      ),
+      directories = Set(
+        "/home/testuser/.cursor",
+        "/home/testuser/.cursor/rules",
+        "/home/testuser",
+        "/home/testuser/.claude",
+      ),
+    )
+
+    val doctor = AgentDoctor(inspector, resolver)
+    val report = doctor.diagnose("/tmp/.ccrystals")
+
+    val cursorDiag = report.harnesses.find(_.harness == AgentHarness.Cursor).get
+    assertEquals(cursorDiag.status, HarnessStatus.Configured)
+    assertEquals(cursorDiag.skillStatus, SkillStatus.Equipped)
+    assertEquals(cursorDiag.skillPath, Some(cursorSkillPath))
+
+    val claudeDiag = report.harnesses.find(_.harness == AgentHarness.ClaudeCode).get
+    assertEquals(claudeDiag.status, HarnessStatus.Configured)
+    assertEquals(claudeDiag.skillStatus, SkillStatus.Missing)
+    assertEquals(claudeDiag.skillPath, Some(claudeSkillPath))
+
+    val zedDiag = report.harnesses.find(_.harness == AgentHarness.Zed).get
+    assertEquals(zedDiag.skillStatus, SkillStatus.NotSupported)
+    assertEquals(zedDiag.skillPath, None)
+  }
