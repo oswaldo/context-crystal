@@ -871,3 +871,55 @@ class CommandParserSuite extends FunSuite:
         assertEquals(jsonOutput, true)
       case other => fail(s"Unexpected command: $other")
     }
+
+  test("Parses 'connect' command with relation and optional description"):
+    import ccrystal.core.model.lattice.BondRelation
+    val cmd = List("connect", "crystal-a", "crystal-b", "-r", "depends_on", "-d", "Needs auth API")
+    val res = CommandParser.parse(cmd)
+    assertEquals(res.isRight, true)
+    assertEquals(
+      res.toOption.get,
+      CliCommand.Connect("crystal-a", "crystal-b", BondRelation.DependsOn, Some("Needs auth API")),
+    )
+
+    // Forgiving kebab-case relation parsing
+    val cmdKebab = List("connect", "c-1", "c-2", "--relation", "relates-to")
+    val resKebab = CommandParser.parse(cmdKebab)
+    assertEquals(resKebab.isRight, true)
+    assertEquals(
+      resKebab.toOption.get,
+      CliCommand.Connect("c-1", "c-2", BondRelation.RelatesTo, None),
+    )
+
+  test("Rejects 'connect' with invalid bond relation with helpful message"):
+    val cmd = List("connect", "c-1", "c-2", "-r", "invalid_rel")
+    val res = CommandParser.parse(cmd)
+    assertEquals(res.isLeft, true)
+    assert(res.left.toOption.get.contains("Invalid bond relation: 'invalid_rel'"))
+
+  test("Parses 'disconnect' command with optional relation"):
+    import ccrystal.core.model.lattice.BondRelation
+    val cmd = List("disconnect", "c-1", "c-2", "-r", "blocks")
+    val res = CommandParser.parse(cmd)
+    assertEquals(res.isRight, true)
+    assertEquals(
+      res.toOption.get,
+      CliCommand.Disconnect("c-1", "c-2", Some(BondRelation.Blocks)),
+    )
+
+    val cmdAll = List("disconnect", "c-1", "c-2")
+    val resAll = CommandParser.parse(cmdAll)
+    assertEquals(resAll.isRight, true)
+    assertEquals(
+      resAll.toOption.get,
+      CliCommand.Disconnect("c-1", "c-2", None),
+    )
+
+  test("Parses 'connections' command with optional --json flag"):
+    val cmd = List("connections", "c-1", "--json")
+    val res = CommandParser.parse(cmd)
+    assertEquals(res.isRight, true)
+    assertEquals(
+      res.toOption.get,
+      CliCommand.Connections("c-1", jsonOutput = true),
+    )

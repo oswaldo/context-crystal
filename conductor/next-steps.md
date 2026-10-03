@@ -82,8 +82,8 @@
   - Integrate compile-time build constants / `sbt-buildinfo` into `cli` module.
   - Support top-level `ccrystal -v` and `ccrystal --version` emitting semantic release version, commit SHA, build timestamp, and target platform architecture (`x86_64-pc-linux`, `aarch64-apple-darwin`, etc.).
   - Add Decline root parser support and automated CLI integration test suite.
-- **Track 27: Standardized Temporal Architecture (java.time / scala-java-time Migration):**
-  - Migrate in-house `CivilDate` Gregorian epoch math and temporal parsing to standard `java.time` / `io.github.cquiroz::scala-java-time` across Native, JVM, and JS targets.
-  - Eliminate custom civil date algorithms in favor of standard `Instant`, `LocalDate`, and `Duration`, unifying temporal parsing and formatting across all modules.
+- **Track 27: Standardized Modern Platform Runtimes (Scala Toolkit, os-lib & java.time / scala-java-time Migration):**
+  - **Temporal Modernization:** Migrate in-house `CivilDate` Gregorian epoch math and temporal parsing to standard `java.time` / `io.github.cquiroz::scala-java-time` across Native, JVM, and JS targets. Eliminate custom civil date algorithms in favor of standard `Instant`, `LocalDate`, and `Duration`.
+  - **Filesystem & Process Execution Modernization:** Adopt the official **Scala Toolkit** (`org.scala-lang::toolkit` / `os-lib`), replacing low-level Java `java.nio.file.*` imports and bespoke POSIX/JVM process shims (`ProcessPlatform.scala`) with idiomatic, cross-platform `os-lib` APIs (`os.Path`, `os.read`, `os.write`, `os.proc`, atomic filesystem operations) fully unified across JVM and Scala Native.
 - **Maintenance / Chore (Completed / Locked):** Upgraded to Scala 3.9.0 LTS and sbt-scala-native 0.5.12 with zero warnings. sbt 2.0.8 compatibility locked at sbt 1.10.7 pending community sbt 2.x cross-publishing of required plugins (sbt-crossproject, sbt-updates, scalafix, scalafmt).
 

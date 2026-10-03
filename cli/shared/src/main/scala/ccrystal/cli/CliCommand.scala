@@ -144,6 +144,21 @@ enum CliCommand derives CanEqual:
       detailed: Boolean = false,
       jsonOutput: Boolean = false,
   )
+  case Connect(
+      sourceCrystalId: String,
+      targetCrystalId: String,
+      relation: ccrystal.core.model.lattice.BondRelation,
+      description: Option[String] = None,
+  )
+  case Disconnect(
+      sourceCrystalId: String,
+      targetCrystalId: String,
+      relation: Option[ccrystal.core.model.lattice.BondRelation] = None,
+  )
+  case Connections(
+      crystalId: String,
+      jsonOutput: Boolean = false,
+  )
 
   def castSliceParams: SliceParams = this match
     case Cast(_, from, to, tail, depth, _) =>

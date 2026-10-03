@@ -4,6 +4,7 @@ import cats.data.Validated
 import cats.implicits.*
 import com.monovore.decline.*
 import ccrystal.core.model.*
+import ccrystal.core.model.lattice.*
 
 object CommandParser:
 
@@ -12,6 +13,15 @@ object CommandParser:
       .replaceAll("([a-z0-9])([A-Z])", "$1_$2")
       .toLowerCase
       .replace('-', '_')
+
+  private given bondRelationArgument: Argument[BondRelation] = Argument.from("relation") { s =>
+    BondRelation.parse(s) match
+      case Some(r) => Validated.valid(r)
+      case None =>
+        Validated.invalidNel(
+          s"Invalid bond relation: '$s' (valid: relates_to, depends_on, blocks, supersedes, references)",
+        )
+  }
 
   private given nodeKindArgument: Argument[NodeKind] = Argument.from("node-kind") { s =>
     normalize(s) match
@@ -511,6 +521,34 @@ object CommandParser:
     Opts.flag("all", "Refresh derived views for all crystals in .ccrystals/").orFalse,
   ).mapN(CliCommand.Refresh.apply)
 
+  private val connectOpts = (
+    Opts.argument[String]("source-crystal-id"),
+    Opts.argument[String]("target-crystal-id"),
+    Opts.option[BondRelation](
+      "relation",
+      "Lattice bond relation (relates_to, depends_on, blocks, supersedes, references)",
+      "r",
+    ),
+    Opts.option[String]("desc", "Optional bond description or rationale", "d").orNone,
+  ).mapN(CliCommand.Connect.apply)
+
+  private val disconnectOpts = (
+    Opts.argument[String]("source-crystal-id"),
+    Opts.argument[String]("target-crystal-id"),
+    Opts
+      .option[BondRelation](
+        "relation",
+        "Specific lattice bond relation to disconnect (relates_to, depends_on, blocks, supersedes, references)",
+        "r",
+      )
+      .orNone,
+  ).mapN(CliCommand.Disconnect.apply)
+
+  private val connectionsOpts = (
+    Opts.argument[String]("crystal-id"),
+    Opts.flag("json", "Output connections summary as JSON").orFalse,
+  ).mapN(CliCommand.Connections.apply)
+
   private val mcpOpts = Opts
     .option[String]("transport", "MCP transport protocol (default: stdio)", "t")
     .withDefault("stdio")
@@ -678,6 +716,13 @@ object CommandParser:
     )(meltOpts),
     Opts.subcommand("triage", "Triage workspace crystals for lifecycle hygiene and aging")(
       triageOpts,
+    ),
+    Opts.subcommand("connect", "Connect two crystals with a directed lattice bond")(connectOpts),
+    Opts.subcommand("disconnect", "Disconnect a directed lattice bond between two crystals")(
+      disconnectOpts,
+    ),
+    Opts.subcommand("connections", "List inbound and outbound lattice bonds for a crystal")(
+      connectionsOpts,
     ),
     agentCmd,
     Opts.subcommand("mcp", "Start the Model Context Protocol (MCP) server")(mcpOpts),

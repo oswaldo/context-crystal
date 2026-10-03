@@ -195,6 +195,67 @@ class InMemoryCrystalStore extends CrystalStore:
       )
     }
 
+  override def connect(
+      sourceId: String,
+      targetId: String,
+      relation: ccrystal.core.model.lattice.BondRelation,
+      description: Option[String],
+  ): Either[String, ccrystal.core.model.lattice.LatticeBond] =
+    if !exists(sourceId) then Left(s"Source crystal '$sourceId' not found")
+    else if !exists(targetId) then Left(s"Target crystal '$targetId' not found")
+    else
+      val existingBonds = crystals.map((id, c) => id -> c.bonds).toMap
+      ccrystal.core.lattice.LatticeCycleDetector
+        .detectCycle(sourceId, targetId, existingBonds) match
+        case Some(cyclePath) =>
+          Left(
+            s"Cycle detected: Cannot connect '$sourceId' to '$targetId' as it forms a closed cycle: ${cyclePath.mkString(" -> ")}",
+          )
+        case None =>
+          val bond = ccrystal.core.model.lattice.LatticeBond(
+            targetId,
+            relation,
+            description,
+            "2026-10-03T18:00:00Z",
+          )
+          val src = crystals(sourceId)
+          val filtered =
+            src.bonds.filterNot(b => b.targetCrystalId == targetId && b.relation == relation)
+          crystals.put(sourceId, src.copy(bonds = filtered :+ bond))
+          Right(bond)
+
+  override def disconnect(
+      sourceId: String,
+      targetId: String,
+      relation: Option[ccrystal.core.model.lattice.BondRelation],
+  ): Either[String, Boolean] =
+    if !exists(sourceId) then Left(s"Source crystal '$sourceId' not found")
+    else
+      val src = crystals(sourceId)
+      val (matching, remaining) = src.bonds.partition { b =>
+        b.targetCrystalId == targetId && relation.forall(_ == b.relation)
+      }
+      if matching.nonEmpty then
+        crystals.put(sourceId, src.copy(bonds = remaining))
+        Right(true)
+      else Right(false)
+
+  override def bonds(
+      crystalId: String,
+  ): Either[String, ccrystal.core.model.lattice.CrystalBondsSummary] =
+    if !exists(crystalId) then Left(s"Crystal '$crystalId' not found")
+    else
+      val target   = crystals(crystalId)
+      val outbound = target.bonds
+      val inbound = crystals.values.toList.flatMap { other =>
+        if other.id == crystalId then Nil
+        else
+          other.bonds.filter(_.targetCrystalId == crystalId).map { b =>
+            ccrystal.core.model.lattice.InboundBond(other.id, b)
+          }
+      }
+      Right(ccrystal.core.model.lattice.CrystalBondsSummary(crystalId, outbound, inbound))
+
 class RunnerSliceSuite extends FunSuite:
 
   def createTestRunner(): (Runner, InMemoryCrystalStore) =

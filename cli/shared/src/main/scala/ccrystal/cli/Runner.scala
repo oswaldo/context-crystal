@@ -822,6 +822,55 @@ class Runner(
         val summary = installer.install(report, targetHarness, dryRun, force)
         Right(ccrystal.cli.agent.AgentInstallerRenderer.renderText(summary))
 
+    case CliCommand.Connect(sourceId, targetId, relation, desc) =>
+      store.connect(sourceId, targetId, relation, desc).map { bond =>
+        val relStr  = ccrystal.core.model.lattice.BondRelation.format(bond.relation)
+        val descStr = bond.description.map(d => s": $d").getOrElse("")
+        s"Connected '$sourceId' -> '$targetId' [$relStr]$descStr"
+      }
+
+    case CliCommand.Disconnect(sourceId, targetId, relationOpt) =>
+      store.disconnect(sourceId, targetId, relationOpt).map { removed =>
+        if removed then
+          relationOpt match
+            case Some(r) =>
+              s"Disconnected '$sourceId' -> '$targetId' [${ccrystal.core.model.lattice.BondRelation.format(r)}]."
+            case None =>
+              s"Disconnected all bonds from '$sourceId' -> '$targetId'."
+        else s"No matching bond found from '$sourceId' targeting '$targetId'."
+      }
+
+    case CliCommand.Connections(crystalId, jsonOutput) =>
+      store.bonds(crystalId).map { summary =>
+        if jsonOutput then summary.asJson.spaces2
+        else renderConnections(summary)
+      }
+
+  private def renderConnections(summary: ccrystal.core.model.lattice.CrystalBondsSummary): String =
+    val sb = new java.lang.StringBuilder()
+    sb.append(s"=== LATTICE BONDS: ${summary.crystalId} ===\n\n")
+
+    sb.append(s"Outbound Bonds (${summary.outbound.size}):\n")
+    if summary.outbound.isEmpty then sb.append("  (none)\n")
+    else
+      summary.outbound.foreach { b =>
+        val rel  = ccrystal.core.model.lattice.BondRelation.format(b.relation)
+        val desc = b.description.map(d => s": $d").getOrElse("")
+        sb.append(s"  - -> ${b.targetCrystalId} ($rel)$desc [created: ${b.createdAt}]\n")
+      }
+    sb.append("\n")
+
+    sb.append(s"Inbound Bonds (${summary.inbound.size}):\n")
+    if summary.inbound.isEmpty then sb.append("  (none)\n")
+    else
+      summary.inbound.foreach { ib =>
+        val rel  = ccrystal.core.model.lattice.BondRelation.format(ib.bond.relation)
+        val desc = ib.bond.description.map(d => s": $d").getOrElse("")
+        sb.append(s"  - <- ${ib.sourceCrystalId} ($rel)$desc [created: ${ib.bond.createdAt}]\n")
+      }
+
+    sb.toString
+
   private def getPreviewLimit: Int =
     sys.env.get("CCRYSTAL_DELETION_PREVIEW_LIMIT").flatMap(_.toIntOption).getOrElse(10)
 
@@ -884,6 +933,11 @@ class Runner(
       )
     if preview.artifactsToClean.nonEmpty then
       sb.append(s"Cave artifacts to clean: ${preview.artifactsToClean.mkString(", ")}\n")
+    if preview.inboundLatticeWarnings.nonEmpty then
+      sb.append(
+        "\nREFERENTIAL INTEGRITY WARNING: Active crystals maintain bonds to targeted candidates:\n",
+      )
+      preview.inboundLatticeWarnings.foreach(w => sb.append(s"  ! $w\n"))
     sb.append("------------------------------------------------------------\n")
     sb.toString
 
@@ -926,6 +980,16 @@ class Runner(
         sb.append(
           s"  ... and ${preview.totalLeases - preview.leaseDescriptions.size} older leases\n",
         )
+
+    if preview.inboundBonds.nonEmpty then
+      sb.append(
+        s"\nREFERENTIAL INTEGRITY WARNING: Inbound bonds targeting this crystal (${preview.inboundBonds.size}):\n",
+      )
+      preview.inboundBonds.foreach { ib =>
+        val rel  = ccrystal.core.model.lattice.BondRelation.format(ib.bond.relation)
+        val desc = ib.bond.description.map(d => s": $d").getOrElse("")
+        sb.append(s"  ! Active crystal '${ib.sourceCrystalId}' has inbound $rel bond$desc\n")
+      }
 
     if preview.cascadingDeregisterEntityIds.nonEmpty then
       sb.append("\nCascading Entity Deregistration:\n")

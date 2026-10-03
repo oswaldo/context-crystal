@@ -48,16 +48,16 @@
 
 ## Phase 4: CLI Subcommands (`connect`, `disconnect`, `connections`)
 
-- [ ] Task: Implement Decline options in `cli/shared/src/main/scala/ccrystal/cli/CommandParser.scala`
-  - [ ] Parse `connect`, `disconnect`, `connections`
-  - [ ] Unit tests in `cli/shared/src/test/scala/ccrystal/cli/CommandParserSuite.scala`
-- [ ] Task: Implement Runner logic in `cli/shared/src/main/scala/ccrystal/cli/Runner.scala`
-  - [ ] Execute `connect` and format confirmation
-  - [ ] Execute `disconnect` and format confirmation
-  - [ ] Render formatted connection tree/table for `connections`
-  - [ ] Add JSON output support for `connections --json`
-- [ ] Task: Integration tests in `cli/shared/src/test/scala/ccrystal/cli/RunnerLatticeSuite.scala`
-- [ ] Task: Phase 4 Verification & Checkpoint (Refer to workflow.md)
+- [x] Task: Implement Decline options in `cli/shared/src/main/scala/ccrystal/cli/CommandParser.scala`
+  - [x] Parse `connect`, `disconnect`, `connections`
+  - [x] Unit tests in `cli/shared/src/test/scala/ccrystal/cli/CommandParserSuite.scala`
+- [x] Task: Implement Runner logic in `cli/shared/src/main/scala/ccrystal/cli/Runner.scala`
+  - [x] Execute `connect` and format confirmation
+  - [x] Execute `disconnect` and format confirmation
+  - [x] Render formatted connection tree/table for `connections`
+  - [x] Add JSON output support for `connections --json`
+- [x] Task: Integration tests in `cli/shared/src/test/scala/ccrystal/cli/RunnerLatticeSuite.scala`
+- [x] Task: Phase 4 Verification & Checkpoint (Refer to workflow.md)
 
 ## Phase 5: Native MCP Server Tool (`crystal_connect`) & Documentation
 
