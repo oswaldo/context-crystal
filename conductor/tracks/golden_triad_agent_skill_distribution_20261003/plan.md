@@ -8,10 +8,10 @@
 - [x] Task: Agent Doctor Skill Diagnostics (TDD) (6bd8c5a)
   - [x] Write unit tests in `AgentDoctorSuite` checking `SkillStatus` (`Equipped`, `Missing`, `NotSupported`).
   - [x] Implement skill inspection logic in `AgentDoctor` and update `DoctorReport` / `HarnessDiagnosis`.
-- [ ] Task: Agent Doctor CLI & Text/JSON Rendering (TDD)
-  - [ ] Write unit tests for `AgentDoctorRenderer` verifying matrix columns (MCP and Skill status) and actionable tips.
-  - [ ] Update `AgentDoctorRenderer` and verify CLI `agent doctor` output.
-- [ ] Task: Phase 1 Verification & Checkpoint (Refer to workflow.md)
+- [x] Task: Agent Doctor CLI & Text/JSON Rendering (TDD) (8802da0)
+  - [x] Write unit tests for `AgentDoctorRenderer` verifying matrix columns (MCP and Skill status) and actionable tips.
+  - [x] Update `AgentDoctorRenderer` and verify CLI `agent doctor` output.
+- [~] Task: Phase 1 Verification & Checkpoint (Refer to workflow.md)
 
 ## Phase 2: Automated Skill Distribution Engine (`AgentInstaller`)
 
