@@ -85,5 +85,9 @@
 - **Track 27: Standardized Modern Platform Runtimes (Scala Toolkit, os-lib & java.time / scala-java-time Migration):**
   - **Temporal Modernization:** Migrate in-house `CivilDate` Gregorian epoch math and temporal parsing to standard `java.time` / `io.github.cquiroz::scala-java-time` across Native, JVM, and JS targets. Eliminate custom civil date algorithms in favor of standard `Instant`, `LocalDate`, and `Duration`.
   - **Filesystem & Process Execution Modernization:** Adopt the official **Scala Toolkit** (`org.scala-lang::toolkit` / `os-lib`), replacing low-level Java `java.nio.file.*` imports and bespoke POSIX/JVM process shims (`ProcessPlatform.scala`) with idiomatic, cross-platform `os-lib` APIs (`os.Path`, `os.read`, `os.write`, `os.proc`, atomic filesystem operations) fully unified across JVM and Scala Native.
+- **Track 28: Crystal Archive Import/Export Bundles (`crystal_archive_import_export_bundles`):**
+  - **Objective:** Create a portable, compressed bundling feature (`.crystal.zip` or `<name>-<iso-timestamp>.crystal.zip`) that packages complete crystal state (JSON schema files, DAG nodes, artifacts, lessons learned, and metadata) from an individual crystal or a filtered search query.
+  - **Lattice Subgraph Traversal:** Support depth-bounded connection following (`--follow-connections --depth <N>`) to bundle entire interconnected subgraphs without breaking cross-crystal referential integrity.
+  - **Import & Relocation:** Provide `ccrystal import <bundle.zip>` and companion MCP tools with conflict detection and namespace remapping.
 - **Maintenance / Chore (Completed / Locked):** Upgraded to Scala 3.9.0 LTS and sbt-scala-native 0.5.12 with zero warnings. sbt 2.0.8 compatibility locked at sbt 1.10.7 pending community sbt 2.x cross-publishing of required plugins (sbt-crossproject, sbt-updates, scalafix, scalafmt).
 
