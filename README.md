@@ -304,11 +304,14 @@ ccrystal prune --older-than 30d --dry-run # Preview candidates and freed bytes w
 ccrystal --for-ai               # Operational invariants, PII rules, and entity schemes for AI agents
 ccrystal entity conventions     # Display canonical entity prefixes (usr_, agt_, mdl_, tool_, sys_)
 
-# 14. Universal Agent Runtime Onboarding & Diagnostics
-ccrystal agent doctor                  # Check environment, PATH, and harness configurations
+# 14. Universal Agent Runtime Onboarding & The Golden Triad
+ccrystal agent doctor                  # Diagnose Golden Triad status (Runtime Binary, MCP Server & Agent Skill)
 ccrystal agent doctor --json           # Machine-readable JSON diagnostic report
-ccrystal agent install --dry-run       # Preview automated MCP registration without disk changes
-ccrystal agent install                 # Safely auto-configure detected agent harnesses with .ccrystal.bak backups
+ccrystal agent install --dry-run       # Preview automated MCP and skill distribution without disk changes
+ccrystal agent install                 # Safely auto-configure detected agent harnesses and deploy agent skills
+ccrystal agent install --symlink-skill # Symlink canonical skill from workspace instead of copying
+ccrystal agent install --workspace-skill # Install canonical skill into local workspace (.agents/skills/context-crystal/SKILL.md)
+ccrystal agent install --no-skill      # Configure MCP server only without installing skill files
 ccrystal agent install --target cursor # Auto-configure specific harness (cursor, claude-code, zed, etc.)
 ```
 
