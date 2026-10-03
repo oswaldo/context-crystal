@@ -2,17 +2,17 @@
 
 ## Phase 1: Storage Layer Deletion Symmetry & Artifact Cleanup
 
-- [ ] Task: Write failing unit tests for deletion symmetry and artifact cleanup in `FsCrystalStoreSuite`
-  - [ ] Test deleting an archived crystal located in `.ccrystals/archive/<id>`
-  - [ ] Test cascade-deregistration of entities exclusively authored by an archived crystal
-  - [ ] Test cleanup of artifact records in `.ccrystals/artifacts.json` owned by deleted crystal
-  - [ ] Test `previewCrystalDeletion` reporting `[Cold Storage Archive]` status
-- [ ] Task: Implement deletion symmetry in `core/jvm-native/src/main/scala/ccrystal/core/store/FsCrystalStore.scala`
-  - [ ] Update `deleteCrystal` to check both active `.ccrystals/<id>` and cold storage `.ccrystals/archive/<id>`
-  - [ ] Update entity reference scan across both active and archived crystals during cascade check
-  - [ ] Update `previewCrystalDeletion` to inspect active and archived locations
-  - [ ] Synchronize `.ccrystals/artifacts.json` removal upon crystal deletion
-- [ ] Task: Phase 1 Verification & Checkpoint (Refer to workflow.md)
+- [x] Task: Write failing unit tests for deletion symmetry and artifact cleanup in `FsCrystalStoreSuite`
+  - [x] Test deleting an archived crystal located in `.ccrystals/archive/<id>`
+  - [x] Test cascade-deregistration of entities exclusively authored by an archived crystal
+  - [x] Test cleanup of artifact records in `.ccrystals/artifacts.json` owned by deleted crystal
+  - [x] Test `previewCrystalDeletion` reporting `[Cold Storage Archive]` status
+- [x] Task: Implement deletion symmetry in `core/jvm-native/src/main/scala/ccrystal/core/store/FsCrystalStore.scala`
+  - [x] Update `deleteCrystal` to check both active `.ccrystals/<id>` and cold storage `.ccrystals/archive/<id>`
+  - [x] Update entity reference scan across both active and archived crystals during cascade check
+  - [x] Update `previewCrystalDeletion` to inspect active and archived locations
+  - [x] Synchronize `.ccrystals/artifacts.json` removal upon crystal deletion
+- [x] Task: Phase 1 Verification & Checkpoint (Refer to workflow.md)
 
 ## Phase 2: Prune Models, Codecs & Pure Functional PruneEngine
 

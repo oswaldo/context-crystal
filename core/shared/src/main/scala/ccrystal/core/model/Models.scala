@@ -323,6 +323,8 @@ case class ContextCrystal(
 case class CrystalDeletionResult(
     deletedCrystalId: String,
     deregisteredEntityIds: List[String] = Nil,
+    cleanedArtifactIds: List[String] = Nil,
+    isArchived: Boolean = false,
 ) derives CanEqual
 
 case class EntityDeregistrationResult(
@@ -349,6 +351,7 @@ case class CrystalImpactPreview(
     activeLeases: Int,
     leaseDescriptions: List[String],
     cascadingDeregisterEntityIds: List[String] = Nil,
+    isArchived: Boolean = false,
 ) derives CanEqual
 
 case class EntityImpactPreview(

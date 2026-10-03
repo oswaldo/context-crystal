@@ -226,3 +226,91 @@ class FsCrystalStoreDeletionSuite extends FunSuite:
     val preview = previewRes.toOption.get
     assertEquals(preview.entity.id, "usr_alice")
     assertEquals(preview.affectedCrystals.map(_.crystalId).sorted, List("c-1", "c-2"))
+
+  test("deleteCrystal deletes an archived crystal from cold storage"):
+    val store   = FsCrystalStore(tempDir.resolve(".ccrystals").toString)
+    val crystal = createDummyCrystal("c-arch", "usr_oswaldo")
+    assert(store.save(crystal).isRight)
+    assert(store.archive("c-arch").isRight)
+    assert(store.isArchived("c-arch"))
+    assert(!store.exists("c-arch"))
+
+    val deleteRes = store.deleteCrystal("c-arch")
+    assert(deleteRes.isRight)
+    val res = deleteRes.toOption.get
+    assertEquals(res.deletedCrystalId, "c-arch")
+    assertEquals(res.isArchived, true)
+    assert(!store.isArchived("c-arch"))
+    assert(store.load("c-arch").isLeft)
+
+  test(
+    "deleteCrystal on archived crystal cascades orphaned entity only authored by that archived crystal",
+  ):
+    val store   = FsCrystalStore(tempDir.resolve(".ccrystals").toString)
+    val entity1 = Entity("usr_arch_solo", EntityKind.Human, "Solo Arch User")
+    val entity2 = Entity("usr_active_shared", EntityKind.Human, "Shared Active User")
+    assert(store.registerEntity(entity1).isRight)
+    assert(store.registerEntity(entity2).isRight)
+
+    val crystal1 = createDummyCrystal("c-arch-solo", "usr_arch_solo")
+    val crystal2 = createDummyCrystal("c-active-shared", "usr_active_shared")
+    assert(store.save(crystal1).isRight)
+    assert(store.save(crystal2).isRight)
+    assert(store.archive("c-arch-solo").isRight)
+
+    val deleteRes = store.deleteCrystal("c-arch-solo")
+    assert(deleteRes.isRight)
+    val res = deleteRes.toOption.get
+    assertEquals(res.deletedCrystalId, "c-arch-solo")
+    assertEquals(res.isArchived, true)
+    assertEquals(res.deregisteredEntityIds, List("usr_arch_solo"))
+
+    val registry = store.getEntityRegistry().toOption.get
+    assert(!registry.entities.contains("usr_arch_solo"), "usr_arch_solo should be deregistered")
+    assert(registry.entities.contains("usr_active_shared"), "usr_active_shared should still exist")
+
+  test(
+    "deleteCrystal cleans up entries in .ccrystals/artifacts.json associated with the deleted crystal",
+  ):
+    val store   = FsCrystalStore(tempDir.resolve(".ccrystals").toString)
+    val crystal = createDummyCrystal("c-with-art", "usr_oswaldo")
+    assert(store.save(crystal).isRight)
+
+    val caveArtifact = Artifact(
+      id = "art-c-with-art",
+      name = "Cave Artifact for c-with-art",
+      substrate = ArtifactSubstrate.Virtual,
+      role = ArtifactRole.Target,
+      uri = Some("file:///tmp/something"),
+      metadata = Map("crystal_id" -> "c-with-art"),
+    )
+    val unassociatedArtifact = Artifact(
+      id = "art-unrelated",
+      name = "Unrelated Cave Artifact",
+      substrate = ArtifactSubstrate.Virtual,
+      role = ArtifactRole.Target,
+      uri = Some("file:///tmp/other"),
+    )
+    assert(store.registerArtifact(caveArtifact).isRight)
+    assert(store.registerArtifact(unassociatedArtifact).isRight)
+
+    val deleteRes = store.deleteCrystal("c-with-art")
+    assert(deleteRes.isRight)
+    val res = deleteRes.toOption.get
+    assertEquals(res.cleanedArtifactIds, List("art-c-with-art"))
+
+    val reg = store.getArtifactRegistry().toOption.get
+    assert(!reg.artifacts.contains("art-c-with-art"), "Associated artifact should be removed")
+    assert(reg.artifacts.contains("art-unrelated"), "Unrelated artifact must remain")
+
+  test("previewCrystalDeletion indicates isArchived when crystal is in cold storage"):
+    val store   = FsCrystalStore(tempDir.resolve(".ccrystals").toString)
+    val crystal = createDummyCrystal("c-preview-arch", "usr_oswaldo")
+    assert(store.save(crystal).isRight)
+    assert(store.archive("c-preview-arch").isRight)
+
+    val previewRes = store.previewCrystalDeletion("c-preview-arch")
+    assert(previewRes.isRight)
+    val preview = previewRes.toOption.get
+    assertEquals(preview.crystalId, "c-preview-arch")
+    assertEquals(preview.isArchived, true)

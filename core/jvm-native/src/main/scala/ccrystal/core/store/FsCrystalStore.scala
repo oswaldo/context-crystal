@@ -469,27 +469,58 @@ class FsCrystalStore(val rootPath: Path) extends CrystalStore:
 
   override def deleteCrystal(id: String): Either[String, CrystalDeletionResult] =
     try
-      val dir = crystalDir(id)
-      if !Files.exists(dir) || !Files.exists(dir.resolve("crystal.json")) then
-        Left(s"Crystal '$id' not found at $dir")
+      val activeD       = crystalDir(id)
+      val archiveD      = archiveCrystalDir(id)
+      val activeExists  = Files.exists(activeD) && Files.exists(activeD.resolve("crystal.json"))
+      val archiveExists = Files.exists(archiveD) && Files.exists(archiveD.resolve("crystal.json"))
+
+      if !activeExists && !archiveExists then
+        Left(s"Crystal '$id' not found in active or archived storage")
       else
+        val dirsToDelete =
+          (if activeExists then List(activeD) else Nil) ++ (if archiveExists then List(archiveD)
+                                                            else Nil)
+        val wasArchived = !activeExists && archiveExists
         for
           targetCrystal <- load(id)
-          allCrystals   <- list()
+          allCrystals   <- list(includeArchived = true)
           remainingCrystals  = allCrystals.filterNot(_.id == id)
           remainingEntityIds = remainingCrystals.flatMap(crystalEntityReferences).toSet
           targetEntityIds    = crystalEntityReferences(targetCrystal).toSet
           orphanedEntityIds  = targetEntityIds.filterNot(remainingEntityIds.contains)
           registry <- getEntityRegistry()
           entitiesToDeregister = orphanedEntityIds.filter(registry.entities.contains).toList.sorted
-          _ <- deleteDirectoryRecursively(dir)
+          _ <- dirsToDelete.foldLeft[Either[String, Unit]](Right(())) { (acc, d) =>
+            acc.flatMap(_ => deleteDirectoryRecursively(d))
+          }
           _ <-
             if entitiesToDeregister.isEmpty then Right(())
             else
               val updatedRegistry =
                 registry.copy(entities = registry.entities -- entitiesToDeregister)
               saveEntityRegistry(updatedRegistry)
-        yield CrystalDeletionResult(id, entitiesToDeregister)
+          artifactReg <- getArtifactRegistry()
+          matchingArtifacts = artifactReg.artifacts.values.filter { art =>
+            art.metadata.get("crystal_id").contains(id) ||
+            art.metadata.get("crystalId").contains(id) ||
+            art.uri.exists(u =>
+              u.startsWith(s"crystal://$id") || u.contains(s"/.ccrystals/$id/") || u.contains(
+                s"/.ccrystals/archive/$id/",
+              ),
+            )
+          }.toList
+          cleanedArtifactIds = matchingArtifacts.map(_.id).sorted
+          _ <-
+            if cleanedArtifactIds.isEmpty then Right(())
+            else
+              val updatedArtifacts = artifactReg.artifacts -- cleanedArtifactIds
+              saveArtifactRegistry(artifactReg.copy(artifacts = updatedArtifacts))
+        yield CrystalDeletionResult(
+          deletedCrystalId = id,
+          deregisteredEntityIds = entitiesToDeregister,
+          cleanedArtifactIds = cleanedArtifactIds,
+          isArchived = wasArchived,
+        )
     catch case ex: Throwable => Left(s"Failed to delete crystal '$id': ${ex.getMessage}")
 
   override def deregisterEntity(entityId: String): Either[String, EntityDeregistrationResult] =
@@ -500,11 +531,18 @@ class FsCrystalStore(val rootPath: Path) extends CrystalStore:
           if !registry.entities.contains(entityId) then
             Left(s"Entity '$entityId' not found in cave registry")
           else Right(())
-        allCrystals <- list()
+        allCrystals <- list(includeArchived = true)
         crystalsToDelete = allCrystals.filter(c => crystalEntityReferences(c).contains(entityId))
         deletedIds       = crystalsToDelete.map(_.id).sorted
         _ <- deletedIds.foldLeft[Either[String, Unit]](Right(())) { (acc, cId) =>
-          acc.flatMap(_ => deleteDirectoryRecursively(crystalDir(cId)))
+          acc.flatMap { _ =>
+            val aDir   = crystalDir(cId)
+            val arcDir = archiveCrystalDir(cId)
+            val r1     = if Files.exists(aDir) then deleteDirectoryRecursively(aDir) else Right(())
+            val r2 =
+              if Files.exists(arcDir) then deleteDirectoryRecursively(arcDir) else Right(())
+            r1.flatMap(_ => r2)
+          }
         }
         updatedRegistry = registry.copy(entities = registry.entities - entityId)
         _ <- saveEntityRegistry(updatedRegistry)
@@ -515,9 +553,10 @@ class FsCrystalStore(val rootPath: Path) extends CrystalStore:
       id: String,
       limit: Int = 10,
   ): Either[String, CrystalImpactPreview] =
+    val isArch = isArchived(id)
     for
       targetCrystal <- load(id)
-      allCrystals   <- list()
+      allCrystals   <- list(includeArchived = true)
       remainingCrystals  = allCrystals.filterNot(_.id == id)
       remainingEntityIds = remainingCrystals.flatMap(crystalEntityReferences).toSet
       targetEntityIds    = crystalEntityReferences(targetCrystal).toSet
@@ -553,6 +592,7 @@ class FsCrystalStore(val rootPath: Path) extends CrystalStore:
       activeLeases = targetCrystal.transientLeases.count(_.status == TransientLeaseStatus.Active),
       leaseDescriptions = leaseDescriptions,
       cascadingDeregisterEntityIds = entitiesToDeregister,
+      isArchived = isArch,
     )
 
   override def previewEntityDeregistration(
@@ -564,7 +604,7 @@ class FsCrystalStore(val rootPath: Path) extends CrystalStore:
       entity <- registry.entities.get(entityId) match
         case Some(e) => Right(e)
         case None    => Left(s"Entity '$entityId' not found in cave registry")
-      allCrystals <- list()
+      allCrystals <- list(includeArchived = true)
       crystalsToDelete = allCrystals.filter(c => crystalEntityReferences(c).contains(entityId))
       previews <- crystalsToDelete.foldLeft[Either[String, List[CrystalImpactPreview]]](
         Right(Nil),
