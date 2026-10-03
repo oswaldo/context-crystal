@@ -4,11 +4,9 @@ import ccrystal.core.model.*
 import ccrystal.core.codec.given
 import io.circe.parser.decode
 import io.circe.syntax.*
-import java.nio.file.{Files, Path, Paths, StandardCopyOption, StandardOpenOption}
-import java.nio.charset.StandardCharsets
+import java.nio.file.{Path, Paths}
 import java.util.concurrent.ConcurrentHashMap
 import java.util.concurrent.locks.ReentrantLock
-import scala.jdk.CollectionConverters.*
 
 object FsCrystalStore:
   private val processLocks = new ConcurrentHashMap[String, ReentrantLock]()
@@ -19,30 +17,22 @@ object FsCrystalStore:
 
 class FsCrystalStore(val rootPath: Path) extends CrystalStore:
 
+  val rootOsPath: os.Path = os.Path(rootPath.toAbsolutePath.normalize())
+
+  def this(rootOs: os.Path) = this(rootOs.toNIO)
   def this(rootStr: String) = this(Paths.get(rootStr))
 
-  private def atomicWrite(target: Path, content: String): Unit =
-    val parent = target.getParent
-    if parent != null && !Files.exists(parent) then Files.createDirectories(parent)
-    val tempFile = parent.resolve(
-      s".${target.getFileName.toString}.tmp-${System.currentTimeMillis()}-${System.nanoTime()}",
-    )
+  private def atomicWrite(target: os.Path, content: String): Unit =
+    val parent = target / os.up
+    if !os.exists(parent) then os.makeDir.all(parent)
+    val tempFile = parent / s".${target.last}.tmp-${System.currentTimeMillis()}-${System.nanoTime()}"
     try
-      Files.write(tempFile, content.getBytes(StandardCharsets.UTF_8))
-      try
-        Files.move(
-          tempFile,
-          target,
-          StandardCopyOption.REPLACE_EXISTING,
-          StandardCopyOption.ATOMIC_MOVE,
-        )
-      catch
-        case _: Throwable =>
-          Files.move(tempFile, target, StandardCopyOption.REPLACE_EXISTING)
-
+      os.write.over(tempFile, content, createFolders = true)
+      try os.move(tempFile, target, replaceExisting = true, atomicMove = true)
+      catch case _: Throwable => os.move(tempFile, target, replaceExisting = true)
     catch
       case ex: Throwable =>
-        try Files.deleteIfExists(tempFile)
+        try os.remove(tempFile)
         catch case _: Throwable => ()
         throw ex
 
@@ -50,42 +40,39 @@ class FsCrystalStore(val rootPath: Path) extends CrystalStore:
   private val MaxLockAttempts: Int  = 50
 
   private[store] def withCrystalLock[T](dir: Path)(block: => Either[String, T]): Either[String, T] =
-    val pLock = FsCrystalStore.getProcessLock(dir)
+    withCrystalLock(os.Path(dir.toAbsolutePath.normalize()))(block)
+
+  private[store] def withCrystalLock[T](dir: os.Path)(block: => Either[String, T]): Either[String, T] =
+    val pLock = FsCrystalStore.getProcessLock(dir.toNIO)
     pLock.lock()
     try
-      if !Files.exists(dir) then Files.createDirectories(dir)
-      val lockFile = dir.resolve(".lock")
+      if !os.exists(dir) then os.makeDir.all(dir)
+      val lockFile = dir / ".lock"
       val pid      = ProcessPlatform.currentPid()
 
       def acquire(attemptCount: Int): Boolean =
         val now         = System.currentTimeMillis()
         val lockContent = s"pid=$pid\ntimestamp=$now\n"
         try
-          Files.write(
-            lockFile,
-            lockContent.getBytes(StandardCharsets.UTF_8),
-            StandardOpenOption.CREATE_NEW,
-            StandardOpenOption.WRITE,
-          )
+          os.write(lockFile, lockContent)
           true
         catch
           case _: Throwable =>
             val isStale =
               try
-                if Files.exists(lockFile) then
-                  val rawBytes = Files.readAllBytes(lockFile)
-                  val rawStr   = new String(rawBytes, StandardCharsets.UTF_8)
+                if os.exists(lockFile) then
+                  val rawStr = os.read(lockFile)
                   rawStr.linesIterator.find(_.startsWith("timestamp=")).flatMap { l =>
                     l.stripPrefix("timestamp=").trim.toLongOption
                   } match
                     case Some(ts) => (now - ts) > LockStalenessMs
                     case None =>
-                      (now - Files.getLastModifiedTime(lockFile).toMillis) > LockStalenessMs
+                      (now - os.mtime(lockFile)) > LockStalenessMs
                 else false
               catch case _: Throwable => false
 
             if isStale then
-              try Files.deleteIfExists(lockFile)
+              try os.remove(lockFile)
               catch case _: Throwable => ()
 
             if attemptCount < MaxLockAttempts then
@@ -97,38 +84,37 @@ class FsCrystalStore(val rootPath: Path) extends CrystalStore:
       if acquire(1) then
         try block
         finally
-          try Files.deleteIfExists(lockFile)
+          try os.remove(lockFile)
           catch case _: Throwable => ()
       else
         Left(s"Failed to acquire lock on crystal directory '$dir' after $MaxLockAttempts attempts")
     finally pLock.unlock()
 
-  private def saveDirect(dir: Path, crystal: ContextCrystal): Either[String, Unit] =
+  private def saveDirect(dir: os.Path, crystal: ContextCrystal): Either[String, Unit] =
     try
-      Files.createDirectories(dir)
-      Files.createDirectories(dir.resolve("artifacts"))
+      os.makeDir.all(dir / "artifacts")
 
       // 1. Write crystal.json (Source of Truth)
       val jsonContent = crystal.asJson.spaces2
-      atomicWrite(dir.resolve("crystal.json"), jsonContent)
+      atomicWrite(dir / "crystal.json", jsonContent)
 
       // 2. Write tasks.md (Derived view)
       val tasksContent = generateTasksMarkdown(crystal)
-      atomicWrite(dir.resolve("tasks.md"), tasksContent)
+      atomicWrite(dir / "tasks.md", tasksContent)
 
       // 3. Write lessons-learned.md (Derived view)
       val lessonsContent = generateLessonsMarkdown(crystal)
-      atomicWrite(dir.resolve("lessons-learned.md"), lessonsContent)
+      atomicWrite(dir / "lessons-learned.md", lessonsContent)
 
       // 4. Write transient.json
       val transientContent = crystal.transientLeases.asJson.spaces2
-      atomicWrite(dir.resolve("transient.json"), transientContent)
+      atomicWrite(dir / "transient.json", transientContent)
 
       Right(())
     catch case ex: Throwable => Left(s"Failed to save crystal ${crystal.id}: ${ex.getMessage}")
 
   override def exists(id: String): Boolean =
-    Files.exists(crystalDir(id).resolve("crystal.json"))
+    os.exists(crystalDir(id) / "crystal.json")
 
   override def save(crystal: ContextCrystal): Either[String, Unit] =
     val dir = crystalDir(crystal.id)
@@ -140,11 +126,11 @@ class FsCrystalStore(val rootPath: Path) extends CrystalStore:
       f: ContextCrystal => Either[String, ContextCrystal],
   ): Either[String, ContextCrystal] =
     val dir        = crystalDir(id)
-    val activeFile = dir.resolve("crystal.json")
+    val activeFile = dir / "crystal.json"
     val maxRetries = 25
 
     def attempt(retryCount: Int): Either[String, ContextCrystal] =
-      if !Files.exists(activeFile) then
+      if !os.exists(activeFile) then
         if retryCount < maxRetries then
           try Thread.sleep(retryCount * 5L + scala.util.Random.nextInt(10))
           catch case _: Throwable => ()
@@ -152,8 +138,7 @@ class FsCrystalStore(val rootPath: Path) extends CrystalStore:
         else Left(s"Crystal '$id' not found at ${activeFile.toString}")
       else
         try
-          val rawBytes   = Files.readAllBytes(activeFile)
-          val rawContent = new String(rawBytes, StandardCharsets.UTF_8)
+          val rawContent = os.read(activeFile)
           if rawContent.trim.isEmpty then
             if retryCount < maxRetries then
               try Thread.sleep(retryCount * 5L + scala.util.Random.nextInt(10))
@@ -178,8 +163,7 @@ class FsCrystalStore(val rootPath: Path) extends CrystalStore:
                   case Left(err) => Left(err)
                   case Right(updatedCrystal) =>
                     val commitResult = withCrystalLock(dir) {
-                      val currentBytes       = Files.readAllBytes(activeFile)
-                      val currentContent     = new String(currentBytes, StandardCharsets.UTF_8)
+                      val currentContent     = os.read(activeFile)
                       val currentFingerprint = ContentFingerprint.compute(currentContent)
 
                       if currentFingerprint == initialFingerprint then
@@ -211,7 +195,7 @@ class FsCrystalStore(val rootPath: Path) extends CrystalStore:
     attempt(1)
 
   override def isArchived(id: String): Boolean =
-    Files.exists(archiveCrystalDir(id).resolve("crystal.json"))
+    os.exists(archiveCrystalDir(id) / "crystal.json")
 
   override def archive(id: String): Either[String, Unit] =
     try
@@ -219,11 +203,11 @@ class FsCrystalStore(val rootPath: Path) extends CrystalStore:
       val destDir = archiveCrystalDir(id)
       if isArchived(id) then Left(s"Crystal '$id' is already archived")
       else if !exists(id) then Left(s"Crystal '$id' does not exist in active cave")
-      else if Files.exists(destDir) then
+      else if os.exists(destDir) then
         Left(s"Cannot archive crystal '$id': target directory $destDir already exists")
       else
-        Files.createDirectories(archiveDir)
-        Files.move(srcDir, destDir)
+        os.makeDir.all(archiveDir)
+        os.move(srcDir, destDir)
         Right(())
     catch case ex: Throwable => Left(s"Failed to archive crystal '$id': ${ex.getMessage}")
 
@@ -235,7 +219,7 @@ class FsCrystalStore(val rootPath: Path) extends CrystalStore:
       else if exists(id) then
         Left(s"Cannot unarchive crystal '$id': active crystal already exists at $destDir")
       else
-        Files.move(srcDir, destDir)
+        os.move(srcDir, destDir)
         Right(())
     catch case ex: Throwable => Left(s"Failed to unarchive crystal '$id': ${ex.getMessage}")
 
@@ -270,20 +254,20 @@ class FsCrystalStore(val rootPath: Path) extends CrystalStore:
     val maxRetries = 10
     def attempt(retryCount: Int): Either[String, ContextCrystal] =
       try
-        val activeFile  = crystalDir(id).resolve("crystal.json")
-        val archiveFile = archiveCrystalDir(id).resolve("crystal.json")
+        val activeFile  = crystalDir(id) / "crystal.json"
+        val archiveFile = archiveCrystalDir(id) / "crystal.json"
         val file =
-          if Files.exists(activeFile) then activeFile
-          else if Files.exists(archiveFile) then archiveFile
+          if os.exists(activeFile) then activeFile
+          else if os.exists(archiveFile) then archiveFile
           else activeFile
-        if !Files.exists(file) then
+        if !os.exists(file) then
           if retryCount < maxRetries then
             try Thread.sleep(retryCount * 5L + scala.util.Random.nextInt(10))
             catch case _: Throwable => ()
             attempt(retryCount + 1)
           else Left(s"Crystal '$id' not found at $file")
         else
-          val content = new String(Files.readAllBytes(file), StandardCharsets.UTF_8)
+          val content = os.read(file)
           if content.trim.isEmpty then
             if retryCount < maxRetries then
               try Thread.sleep(retryCount * 5L + scala.util.Random.nextInt(10))
@@ -312,34 +296,27 @@ class FsCrystalStore(val rootPath: Path) extends CrystalStore:
 
   override def list(includeArchived: Boolean): Either[String, List[ContextCrystal]] =
     try
-      if !Files.exists(rootPath) then Right(Nil)
+      if !os.exists(rootOsPath) then Right(Nil)
       else
-        val activeDirs = Files
-          .list(rootPath)
-          .iterator()
-          .asScala
+        val activeDirs = os
+          .list(rootOsPath)
           .filter { p =>
-            Files.isDirectory(p) &&
-            p.getFileName.toString != "archive" &&
-            !p.getFileName.toString.startsWith("_")
+            os.isDir(p) &&
+            p.last != "archive" &&
+            !p.last.startsWith("_")
           }
           .toList
 
         val archiveDirs =
-          if includeArchived && Files.exists(archiveDir) then
-            Files
-              .list(archiveDir)
-              .iterator()
-              .asScala
-              .filter(Files.isDirectory(_))
-              .toList
+          if includeArchived && os.exists(archiveDir) then
+            os.list(archiveDir).filter(os.isDir(_)).toList
           else Nil
 
         val allDirs = activeDirs ++ archiveDirs
         val crystals = allDirs.flatMap { dir =>
-          val jsonFile = dir.resolve("crystal.json")
-          if Files.exists(jsonFile) then
-            val content = new String(Files.readAllBytes(jsonFile), StandardCharsets.UTF_8)
+          val jsonFile = dir / "crystal.json"
+          if os.exists(jsonFile) then
+            val content = os.read(jsonFile)
             decode[ContextCrystal](content).toOption
           else None
         }
@@ -348,10 +325,10 @@ class FsCrystalStore(val rootPath: Path) extends CrystalStore:
 
   override def getEntityRegistry(): Either[String, EntityRegistry] =
     try
-      val file = rootPath.resolve("entities.json")
-      if !Files.exists(file) then Right(EntityRegistry())
+      val file = rootOsPath / "entities.json"
+      if !os.exists(file) then Right(EntityRegistry())
       else
-        val content = new String(Files.readAllBytes(file), StandardCharsets.UTF_8)
+        val content = os.read(file)
         decode[EntityRegistry](content).left.map(err =>
           s"JSON parse error in entities.json: ${err.getMessage}",
         )
@@ -359,8 +336,8 @@ class FsCrystalStore(val rootPath: Path) extends CrystalStore:
 
   override def saveEntityRegistry(registry: EntityRegistry): Either[String, Unit] =
     try
-      Files.createDirectories(rootPath)
-      val file        = rootPath.resolve("entities.json")
+      os.makeDir.all(rootOsPath)
+      val file        = rootOsPath / "entities.json"
       val jsonContent = registry.asJson.spaces2
       atomicWrite(file, jsonContent)
       Right(())
@@ -374,10 +351,10 @@ class FsCrystalStore(val rootPath: Path) extends CrystalStore:
 
   override def getArtifactRegistry(): Either[String, CaveArtifactRegistry] =
     try
-      val file = rootPath.resolve("artifacts.json")
-      if !Files.exists(file) then Right(CaveArtifactRegistry())
+      val file = rootOsPath / "artifacts.json"
+      if !os.exists(file) then Right(CaveArtifactRegistry())
       else
-        val content = new String(Files.readAllBytes(file), StandardCharsets.UTF_8)
+        val content = os.read(file)
         decode[CaveArtifactRegistry](content).left.map(err =>
           s"JSON parse error in artifacts.json: ${err.getMessage}",
         )
@@ -385,8 +362,8 @@ class FsCrystalStore(val rootPath: Path) extends CrystalStore:
 
   override def saveArtifactRegistry(registry: CaveArtifactRegistry): Either[String, Unit] =
     try
-      Files.createDirectories(rootPath)
-      val file        = rootPath.resolve("artifacts.json")
+      os.makeDir.all(rootOsPath)
+      val file        = rootOsPath / "artifacts.json"
       val jsonContent = registry.asJson.spaces2
       atomicWrite(file, jsonContent)
       Right(())
@@ -471,8 +448,8 @@ class FsCrystalStore(val rootPath: Path) extends CrystalStore:
     try
       val activeD       = crystalDir(id)
       val archiveD      = archiveCrystalDir(id)
-      val activeExists  = Files.exists(activeD) && Files.exists(activeD.resolve("crystal.json"))
-      val archiveExists = Files.exists(archiveD) && Files.exists(archiveD.resolve("crystal.json"))
+      val activeExists  = os.exists(activeD) && os.exists(activeD / "crystal.json")
+      val archiveExists = os.exists(archiveD) && os.exists(archiveD / "crystal.json")
 
       if !activeExists && !archiveExists then
         Left(s"Crystal '$id' not found in active or archived storage")
@@ -538,9 +515,9 @@ class FsCrystalStore(val rootPath: Path) extends CrystalStore:
           acc.flatMap { _ =>
             val aDir   = crystalDir(cId)
             val arcDir = archiveCrystalDir(cId)
-            val r1     = if Files.exists(aDir) then deleteDirectoryRecursively(aDir) else Right(())
+            val r1     = if os.exists(aDir) then deleteDirectoryRecursively(aDir) else Right(())
             val r2 =
-              if Files.exists(arcDir) then deleteDirectoryRecursively(arcDir) else Right(())
+              if os.exists(arcDir) then deleteDirectoryRecursively(arcDir) else Right(())
             r1.flatMap(_ => r2)
           }
         }
@@ -698,24 +675,20 @@ class FsCrystalStore(val rootPath: Path) extends CrystalStore:
     val inNodes    = crystal.dag.nodes.map(_.actorId).toSet
     author ++ inEntities ++ inNodes
 
-  private def deleteDirectoryRecursively(dir: Path): Either[String, Unit] =
+  private def deleteDirectoryRecursively(dir: os.Path): Either[String, Unit] =
     try
-      if Files.exists(dir) then
-        Files
-          .walk(dir)
-          .sorted(java.util.Comparator.reverseOrder())
-          .forEach(Files.deleteIfExists)
+      if os.exists(dir) then os.remove.all(dir)
       Right(())
     catch case ex: Throwable => Left(s"Failed to delete directory '$dir': ${ex.getMessage}")
 
-  private def crystalDir(id: String): Path =
-    rootPath.resolve(id)
+  private def crystalDir(id: String): os.Path =
+    rootOsPath / id
 
-  private def archiveDir: Path =
-    rootPath.resolve("archive")
+  private def archiveDir: os.Path =
+    rootOsPath / "archive"
 
-  private def archiveCrystalDir(id: String): Path =
-    archiveDir.resolve(id)
+  private def archiveCrystalDir(id: String): os.Path =
+    archiveDir / id
 
   private val AutoGenWarning =
     "> [!NOTE]\n> **Auto-Generated View:** This file is projected from `crystal.json` (the single source of truth). Do not edit manually; use `ccrystal` CLI commands to update state.\n\n"
@@ -754,54 +727,45 @@ class FsCrystalStore(val rootPath: Path) extends CrystalStore:
       }
     sb.toString
 
-  private def computeDirSize(dir: Path): Long =
-    if !Files.exists(dir) then 0L
+  private def computeDirSize(dir: os.Path): Long =
+    if !os.exists(dir) then 0L
     else
       try
-        Files
-          .list(dir)
-          .iterator()
-          .asScala
-          .map { p =>
-            if Files.isDirectory(p) then computeDirSize(p)
-            else
-              try Files.size(p)
-              catch case _: Throwable => 0L
-          }
-          .sum
+        os.walk(dir).iterator.map { p =>
+          if os.isFile(p) then
+            try os.size(p)
+            catch case _: Throwable => 0L
+          else 0L
+        }.sum
       catch case _: Throwable => 0L
 
   override def getDiskSizes(): (Long, Long, Map[String, Long]) =
     try
-      if !Files.exists(rootPath) then (0L, 0L, Map.empty)
+      if !os.exists(rootOsPath) then (0L, 0L, Map.empty)
       else
         var activeTotal = 0L
         val perCrystal  = Map.newBuilder[String, Long]
 
-        val activeDirs = Files
-          .list(rootPath)
-          .iterator()
-          .asScala
+        val activeDirs = os
+          .list(rootOsPath)
           .filter(p =>
-            Files.isDirectory(p) && p.getFileName.toString != "archive" && !p.getFileName.toString
-              .startsWith("_"),
+            os.isDir(p) && p.last != "archive" && !p.last.startsWith("_"),
           )
           .toList
 
         activeDirs.foreach { dir =>
           val sz = computeDirSize(dir)
           activeTotal += sz
-          perCrystal += (dir.getFileName.toString -> sz)
+          perCrystal += (dir.last -> sz)
         }
 
         var archiveTotal = 0L
-        if Files.exists(archiveDir) then
-          val arcDirs =
-            Files.list(archiveDir).iterator().asScala.filter(Files.isDirectory(_)).toList
+        if os.exists(archiveDir) then
+          val arcDirs = os.list(archiveDir).filter(os.isDir(_)).toList
           arcDirs.foreach { dir =>
             val sz = computeDirSize(dir)
             archiveTotal += sz
-            perCrystal += (dir.getFileName.toString -> sz)
+            perCrystal += (dir.last -> sz)
           }
 
         (activeTotal, archiveTotal, perCrystal.result())

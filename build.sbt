@@ -5,6 +5,7 @@ val circeVersion         = "0.14.16"
 val munitVersion         = "1.3.6"
 val declineVersion       = "2.6.2"
 val scalaJavaTimeVersion = "2.6.0"
+val osLibVersion         = "0.11.4"
 
 ThisBuild / scalaVersion := scala3Version
 ThisBuild / organization := "io.github.oswaldo"
@@ -54,10 +55,12 @@ lazy val core = crossProject(JVMPlatform, NativePlatform, JSPlatform)
     )
   )
   .jvmSettings(
+    libraryDependencies += "com.lihaoyi" %%% "os-lib" % osLibVersion,
     Compile / unmanagedSourceDirectories += (ThisBuild / baseDirectory).value / "core" / "jvm-native" / "src" / "main" / "scala",
     Test / unmanagedSourceDirectories += (ThisBuild / baseDirectory).value / "core" / "jvm-native" / "src" / "test" / "scala"
   )
   .nativeSettings(
+    libraryDependencies += "com.lihaoyi" %%% "os-lib" % osLibVersion,
     Compile / unmanagedSourceDirectories += (ThisBuild / baseDirectory).value / "core" / "jvm-native" / "src" / "main" / "scala",
     Test / unmanagedSourceDirectories += (ThisBuild / baseDirectory).value / "core" / "jvm-native" / "src" / "test" / "scala",
     publish / skip := true
@@ -75,6 +78,7 @@ lazy val cli = crossProject(JVMPlatform, NativePlatform)
     name := "ccrystal-cli",
     libraryDependencies ++= Seq(
       "com.monovore"  %%% "decline" % declineVersion,
+      "com.lihaoyi"   %%% "os-lib"  % osLibVersion,
       "org.scalameta" %%% "munit"   % munitVersion % Test
     ),
     testFrameworks += new TestFramework("munit.Framework"),

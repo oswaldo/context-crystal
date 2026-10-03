@@ -20,18 +20,18 @@
 
 ## Phase 2: Filesystem & Process Modernization with os-lib in core/jvm-native
 
-- [ ] Task: Add `os-lib` dependency to `core/jvm-native` in `build.sbt`
-  - [ ] Add `"com.lihaoyi" %%% "os-lib" % "0.11.4"` to JVM and Native settings (preserving JS isolation)
-- [ ] Task: Refactor `FsCrystalStore.scala` with `os-lib`
-  - [ ] Convert `java.nio.file.Path` to `os.Path`
-  - [ ] Replace file I/O with `os.read`, `os.write.over`, `os.list`, `os.remove.all`, and `os.copy.into`
-  - [ ] Simplify atomic inode replacement using `os.move(..., replaceExisting = true, atomicMove = true)`
-  - [ ] Refactor `.lock` mutex handling with `os.exists`, `os.write`, and `os.remove`
-- [ ] Task: Unify Subprocess Execution
-  - [ ] Modernize `ProcessPlatform.scala` using `os.proc` where applicable
-- [ ] Task: Verify storage test matrix
-  - [ ] Run `FsCrystalStoreSuite`, `FsCrystalStoreLatticeSuite`, `FsCrystalStoreDeletionSuite`, `FsCrystalStoreArchivingSuite`, `FsCrystalStorePruneSuite`
-- [ ] Task: Phase 2 Verification & Checkpoint (Refer to workflow.md)
+- [x] Task: Add `os-lib` dependency to `core/jvm-native` in `build.sbt`
+  - [x] Add `"com.lihaoyi" %%% "os-lib" % "0.11.4"` to JVM and Native settings (preserving JS isolation)
+- [x] Task: Refactor `FsCrystalStore.scala` with `os-lib`
+  - [x] Convert `java.nio.file.Path` to `os.Path`
+  - [x] Replace file I/O with `os.read`, `os.write.over`, `os.list`, `os.remove.all`, and `os.copy.into`
+  - [x] Simplify atomic inode replacement using `os.move(..., replaceExisting = true, atomicMove = true)`
+  - [x] Refactor `.lock` mutex handling with `os.exists`, `os.write`, and `os.remove`
+- [x] Task: Unify Subprocess Execution
+  - [x] Review `ProcessPlatform.scala` across JVM and Native targets (retaining zero-overhead OS PID bindings)
+- [x] Task: Verify storage test matrix
+  - [x] Run `FsCrystalStoreSuite`, `FsCrystalStoreLatticeSuite`, `FsCrystalStoreDeletionSuite`, `FsCrystalStoreArchivingSuite`, `FsCrystalStorePruneSuite`
+- [x] Task: Phase 2 Verification & Checkpoint (Refer to workflow.md)
 
 ## Phase 3: Filesystem Modernization in cli & Agent Operations
 
