@@ -5,6 +5,7 @@ import org.scalajs.dom
 
 enum Tab(val id: String, val label: String, val icon: String):
   case Manifesto extends Tab("manifesto", "Manifesto & Architecture", "◈")
+  case Demo extends Tab("demo", "Interactive Demo", "▶")
   case Explorer extends Tab("explorer", "Interactive DAG Explorer", "⬡")
   case Quickstart extends Tab("quickstart", "Install & Quickstart", "◇")
   case Mcp extends Tab("mcp", "Native MCP Reference", "⌥")

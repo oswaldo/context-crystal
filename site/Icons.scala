@@ -99,3 +99,39 @@ object Icons:
       svg.path(svg.d := "M12 2c0 4-4 6-4 10a4 4 0 008 0c0-4-4-6-4-10z"),
       svg.path(svg.d := "M12 14a2 2 0 00-2 2c0 1.1.9 2 2 2s2-.9 2-2a2 2 0 00-2-2z")
     )
+
+  def play(size: Int = 18): SvgElement =
+    svg.svg(
+      svg.viewBox := "0 0 24 24",
+      svg.width := s"${size}px",
+      svg.height := s"${size}px",
+      svg.fill := "currentColor",
+      svg.className := "btn-svg-icon",
+      svg.polygon(svg.points := "5,3 19,12 5,21")
+    )
+
+  def pause(size: Int = 18): SvgElement =
+    svg.svg(
+      svg.viewBox := "0 0 24 24",
+      svg.width := s"${size}px",
+      svg.height := s"${size}px",
+      svg.fill := "currentColor",
+      svg.className := "btn-svg-icon",
+      svg.rect(svg.x := "6", svg.y := "4", svg.width := "4", svg.height := "16"),
+      svg.rect(svg.x := "14", svg.y := "4", svg.width := "4", svg.height := "16")
+    )
+
+  def reset(size: Int = 18): SvgElement =
+    svg.svg(
+      svg.viewBox := "0 0 24 24",
+      svg.width := s"${size}px",
+      svg.height := s"${size}px",
+      svg.fill := "none",
+      svg.stroke := "currentColor",
+      svg.strokeWidth := "2",
+      svg.strokeLineCap := "round",
+      svg.strokeLineJoin := "round",
+      svg.className := "btn-svg-icon",
+      svg.polyline(svg.points := "1 4 1 10 7 10"),
+      svg.path(svg.d := "M3.51 15a9 9 0 1 0 2.13-9.36L1 10")
+    )

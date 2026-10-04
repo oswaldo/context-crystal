@@ -35,6 +35,12 @@ object TabManifesto:
           button(
             typ := "button",
             className := "btn-secondary",
+            span("▶ Watch Context vs. Amnesia Demo"),
+            onClick.mapTo(Tab.Demo) --> State.activeTab.writer,
+          ),
+          button(
+            typ := "button",
+            className := "btn-secondary",
             span("⬡ Explore Live Interactive DAG"),
             onClick.mapTo(Tab.Explorer) --> State.activeTab.writer,
           ),
