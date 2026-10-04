@@ -135,3 +135,34 @@ object Icons:
       svg.polyline(svg.points := "1 4 1 10 7 10"),
       svg.path(svg.d := "M3.51 15a9 9 0 1 0 2.13-9.36L1 10")
     )
+
+  def menu(size: Int = 20): SvgElement =
+    svg.svg(
+      svg.viewBox := "0 0 24 24",
+      svg.width := s"${size}px",
+      svg.height := s"${size}px",
+      svg.fill := "none",
+      svg.stroke := "currentColor",
+      svg.strokeWidth := "2",
+      svg.strokeLineCap := "round",
+      svg.strokeLineJoin := "round",
+      svg.className := "btn-svg-icon",
+      svg.line(svg.x1 := "3", svg.y1 := "12", svg.x2 := "21", svg.y2 := "12"),
+      svg.line(svg.x1 := "3", svg.y1 := "6", svg.x2 := "21", svg.y2 := "6"),
+      svg.line(svg.x1 := "3", svg.y1 := "18", svg.x2 := "21", svg.y2 := "18")
+    )
+
+  def close(size: Int = 20): SvgElement =
+    svg.svg(
+      svg.viewBox := "0 0 24 24",
+      svg.width := s"${size}px",
+      svg.height := s"${size}px",
+      svg.fill := "none",
+      svg.stroke := "currentColor",
+      svg.strokeWidth := "2",
+      svg.strokeLineCap := "round",
+      svg.strokeLineJoin := "round",
+      svg.className := "btn-svg-icon",
+      svg.line(svg.x1 := "18", svg.y1 := "6", svg.x2 := "6", svg.y2 := "18"),
+      svg.line(svg.x1 := "6", svg.y1 := "6", svg.x2 := "18", svg.y2 := "18")
+    )
