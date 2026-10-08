@@ -1,0 +1,317 @@
+{
+  "schemaVersion" : "1.0.0",
+  "id" : "interactive-showcase-demo-tab",
+  "name" : "interactive-showcase-demo-tab",
+  "createdAt" : "2026-10-03T23:11:06.207Z",
+  "updatedAt" : "2026-10-08T18:58:51.510Z",
+  "parentCrystalId" : null,
+  "origin" : null,
+  "caveId" : null,
+  "defaultAuthorId" : "usr_antigravity",
+  "goal" : {
+    "title" : "Interactive Showcase Demo Tab: Context Preservation vs. Agent Amnesia",
+    "intent" : "Build an engaging, interactive Demo tab in the public documentation portal (context-crystal-gh-pages) demonstrating Context Preservation vs. Agent Amnesia with side-by-side terminal playback controls.",
+    "status" : "concluded_success",
+    "acceptanceCriteria" : [
+      {
+        "id" : "task-1",
+        "description" : "Analyze existing portal architecture, tabs, and styles in gh-pages",
+        "completed" : true
+      },
+      {
+        "id" : "task-2",
+        "description" : "Design and implement TabDemo.scala with synchronized split-screen comparison (With CC vs Without CC) and progress bars",
+        "completed" : true
+      },
+      {
+        "id" : "task-3",
+        "description" : "Add interactive playback controls (play, pause, reset, 1x/2x speed)",
+        "completed" : true
+      },
+      {
+        "id" : "task-4",
+        "description" : "Integrate TabDemo into navigation, Header, and Model",
+        "completed" : true
+      },
+      {
+        "id" : "task-5",
+        "description" : "Compile static JS bundle with scala-cli and verify with cask server",
+        "completed" : true
+      },
+      {
+        "id" : "task-6",
+        "description" : "Fix mobile horizontal overflow leaks on demo scrubber and nested panels",
+        "completed" : true
+      }
+    ],
+    "metadata" : {
+      
+    }
+  },
+  "entities" : [
+    {
+      "id" : "usr_antigravity",
+      "kind" : "human",
+      "name" : "Antigravity",
+      "metadata" : {
+        
+      },
+      "publicKey" : null,
+      "endpoints" : {
+        
+      }
+    }
+  ],
+  "activeMask" : null,
+  "dag" : {
+    "rootNodeId" : "node-interactive-showcase-demo-tab-init",
+    "nodes" : [
+      {
+        "id" : "node-interactive-showcase-demo-tab-init",
+        "parentIds" : [
+        ],
+        "timestamp" : "2026-10-03T23:11:06.207Z",
+        "actorId" : "usr_antigravity",
+        "kind" : "human_prompt",
+        "contentSummary" : "Initialized crystal 'interactive-showcase-demo-tab' with goal: Interactive Showcase Demo Tab: Context Preservation vs. Agent Amnesia",
+        "anchor" : null,
+        "artifactIds" : [
+        ],
+        "inputArtifactIds" : [
+        ],
+        "outputArtifactIds" : [
+        ],
+        "preconditionArtifactIds" : [
+        ],
+        "fidelity" : "inferred",
+        "metadata" : {
+          
+        }
+      },
+      {
+        "id" : "node-2",
+        "parentIds" : [
+          "node-interactive-showcase-demo-tab-init"
+        ],
+        "timestamp" : "2026-10-03T23:20:24.726Z",
+        "actorId" : "usr_antigravity",
+        "kind" : "checkpoint",
+        "contentSummary" : "Implemented TabDemo.scala in gh-pages portal with side-by-side terminal simulation (With CC vs Without CC), interactive playback controls (play, pause, reset, 1x/2x speed, timeline scrubber, chapter jumps), progress bars, and telemetry comparison scorecard. Recompiled release static bundle and launched Cask preview server at http://localhost:8080.",
+        "anchor" : "interactive-demo-tab-ready",
+        "artifactIds" : [
+        ],
+        "inputArtifactIds" : [
+        ],
+        "outputArtifactIds" : [
+        ],
+        "preconditionArtifactIds" : [
+        ],
+        "fidelity" : "inferred",
+        "metadata" : {
+          
+        }
+      },
+      {
+        "id" : "node-3",
+        "parentIds" : [
+          "node-2"
+        ],
+        "timestamp" : "2026-10-03T23:29:29.433Z",
+        "actorId" : "usr_antigravity",
+        "kind" : "checkpoint",
+        "contentSummary" : "Added default-checked Auto-scroll checkbox to toolbar and smooth scroll-to-bottom on event updates for both terminal viewports. Rebuilt release bundle and bumped cache bust.",
+        "anchor" : "autoscroll-enabled",
+        "artifactIds" : [
+        ],
+        "inputArtifactIds" : [
+        ],
+        "outputArtifactIds" : [
+        ],
+        "preconditionArtifactIds" : [
+        ],
+        "fidelity" : "inferred",
+        "metadata" : {
+          
+        }
+      },
+      {
+        "id" : "node-4",
+        "parentIds" : [
+          "node-3"
+        ],
+        "timestamp" : "2026-10-03T23:37:28.672Z",
+        "actorId" : "usr_antigravity",
+        "kind" : "checkpoint",
+        "contentSummary" : "Replaced overselling and telemetry terminology with grounded, humble, and accurate wording ('Side-by-Side Scenario Simulation' and 'Scenario Summary & Token Usage'). Recompiled release bundle and bumped asset cache busting.",
+        "anchor" : "tone-and-language-adjusted",
+        "artifactIds" : [
+        ],
+        "inputArtifactIds" : [
+        ],
+        "outputArtifactIds" : [
+        ],
+        "preconditionArtifactIds" : [
+        ],
+        "fidelity" : "inferred",
+        "metadata" : {
+          
+        }
+      },
+      {
+        "id" : "node-5",
+        "parentIds" : [
+          "node-4"
+        ],
+        "timestamp" : "2026-10-03T23:46:56.314Z",
+        "actorId" : "usr_antigravity",
+        "kind" : "checkpoint",
+        "contentSummary" : "Removed artificial timestamps and buffer numbers. Shifted comparison to Steps to Completion and Negative Invariant Survival. Framed the simulation as an ongoing pair-programming session where amnesia has repeatedly struck, capturing the realistic human frustration.",
+        "anchor" : "steps-and-session-grounding",
+        "artifactIds" : [
+        ],
+        "inputArtifactIds" : [
+        ],
+        "outputArtifactIds" : [
+        ],
+        "preconditionArtifactIds" : [
+        ],
+        "fidelity" : "inferred",
+        "metadata" : {
+          
+        }
+      },
+      {
+        "id" : "node-6",
+        "parentIds" : [
+          "node-5"
+        ],
+        "timestamp" : "2026-10-03T23:54:19.653Z",
+        "actorId" : "usr_antigravity",
+        "kind" : "checkpoint",
+        "contentSummary" : "Enabled viewport-based autoplay using IntersectionObserver (starts playback as soon as terminal panels are visible on screen, pauses when scrolled away). Enabled continuous looping by default (waits 3.5s at completion, then restarts), with an explicit Loop toggle and respect for manual user pause.",
+        "anchor" : "autoplay-and-loop-enabled",
+        "artifactIds" : [
+        ],
+        "inputArtifactIds" : [
+        ],
+        "outputArtifactIds" : [
+        ],
+        "preconditionArtifactIds" : [
+        ],
+        "fidelity" : "inferred",
+        "metadata" : {
+          
+        }
+      },
+      {
+        "id" : "node-7",
+        "parentIds" : [
+          "node-6"
+        ],
+        "timestamp" : "2026-10-04T00:03:45.353Z",
+        "actorId" : "usr_antigravity",
+        "kind" : "checkpoint",
+        "contentSummary" : "Implemented frosted dark glass effect on portal header with -webkit-backdrop-filter and backdrop-filter (blur 20px, saturate 180%, 72% dark alpha). Transformed mobile header into a sleek single-row bar with responsive hamburger button and animated dropdown drawer.",
+        "anchor" : "glass-and-mobile-drawer",
+        "artifactIds" : [
+        ],
+        "inputArtifactIds" : [
+        ],
+        "outputArtifactIds" : [
+        ],
+        "preconditionArtifactIds" : [
+        ],
+        "fidelity" : "inferred",
+        "metadata" : {
+          
+        }
+      },
+      {
+        "id" : "node-8",
+        "parentIds" : [
+          "node-7"
+        ],
+        "timestamp" : "2026-10-04T01:28:02.457Z",
+        "actorId" : "usr_antigravity",
+        "kind" : "checkpoint",
+        "contentSummary" : "Captured analysis of post-compaction read loops alongside amnesia, and mapped mobile horizontal overflow fixes for demo scrubber and nested cards",
+        "anchor" : null,
+        "artifactIds" : [
+        ],
+        "inputArtifactIds" : [
+        ],
+        "outputArtifactIds" : [
+        ],
+        "preconditionArtifactIds" : [
+        ],
+        "fidelity" : "inferred",
+        "metadata" : {
+          
+        }
+      },
+      {
+        "id" : "node-9",
+        "parentIds" : [
+          "node-8"
+        ],
+        "timestamp" : "2026-10-08T18:58:51.510Z",
+        "actorId" : "usr_antigravity",
+        "kind" : "resolution",
+        "contentSummary" : "Interactive Showcase Demo Tab fully implemented in gh-pages: side-by-side terminal simulation (With CC vs Without CC), interactive playback controls (play, pause, reset, 1x/2x speed, scrubber, jumps), autoscroll, responsive frosted glass header, mobile dropdown drawer, and horizontal overflow fixes. Static bundle compiled and verified. All 6 tasks complete, transient leases cleaned, lesson-1 actioned. Connected via lattice bond to cybernetic-dyad-philosophy-and-anti-swarm-thesis.",
+        "anchor" : null,
+        "artifactIds" : [
+        ],
+        "inputArtifactIds" : [
+        ],
+        "outputArtifactIds" : [
+        ],
+        "preconditionArtifactIds" : [
+        ],
+        "fidelity" : "inferred",
+        "metadata" : {
+          
+        }
+      }
+    ]
+  },
+  "transientLeases" : [
+    {
+      "id" : "lease-1",
+      "resourceType" : "git_worktree",
+      "resourcePath" : null,
+      "description" : "gh-pages documentation portal worktree at ../context-crystal-gh-pages",
+      "disposalPolicy" : "manual",
+      "status" : "cleaned",
+      "createdAt" : "2026-10-03T23:11:10.219Z"
+    }
+  ],
+  "lessonsLearned" : [
+    {
+      "id" : "lesson-1",
+      "observedFriction" : "Agent entered compulsive file read loop after context compaction",
+      "rootCause" : "Session amnesia and lack of immediate re-anchoring to crystal DAG causes agents to re-read files redundantly",
+      "recommendedAction" : "Pair session amnesia with redundant read loops across project narrative, manifesto, and demo simulation",
+      "status" : "actioned",
+      "actionAuditTrail" : [
+        {
+          "timestamp" : "2026-10-08T18:58:43.759Z",
+          "action" : "Codified compaction read loops vs. zero-token DAG hydration into TabDemo.scala and docs/for_devs.md",
+          "actorId" : "usr_antigravity"
+        }
+      ]
+    }
+  ],
+  "artifacts" : [
+  ],
+  "bonds" : [
+    {
+      "targetCrystalId" : "cybernetic-dyad-philosophy-and-anti-swarm-thesis",
+      "relation" : "references",
+      "description" : "Connects foundational cybernetic dyad / anti-swarm thesis to the interactive showcase demo tab demonstrating the real-world value proposition.",
+      "createdAt" : "2026-10-08T17:17:02.462Z"
+    }
+  ],
+  "metadata" : {
+    
+  }
+}

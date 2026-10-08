@@ -1,0 +1,11 @@
+[
+  {
+    "id" : "lease-1",
+    "resourceType" : "git_worktree",
+    "resourcePath" : null,
+    "description" : "gh-pages documentation portal worktree at ../context-crystal-gh-pages",
+    "disposalPolicy" : "manual",
+    "status" : "cleaned",
+    "createdAt" : "2026-10-03T23:11:10.219Z"
+  }
+]
