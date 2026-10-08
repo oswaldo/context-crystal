@@ -75,6 +75,48 @@ object TabManifesto:
             code("curl -fsSL https://raw.githubusercontent.com/oswaldo/context-crystal/main/install.sh | sh"),
           ),
         ),
+
+        // Daily Crystallographic Reflection Card
+        div(
+          className := "hero-quote-card",
+          div(
+            className := "hero-quote-header",
+            div(
+              className := "hero-quote-tag",
+              span("◈"),
+              span("Crystallographic Reflection of the Day"),
+            ),
+            button(
+              typ := "button",
+              className := "btn-cycle-quote",
+              title := "Cycle to next reflection",
+              span("↻ Another Reflection"),
+              onClick --> { _ => State.nextQuote() },
+            ),
+          ),
+          blockQuote(
+            className := "hero-quote-body",
+            child <-- State.currentQuoteIndex.signal.map { idx =>
+              val q = State.quotes(idx)
+              p(s"“${q.text}”")
+            },
+          ),
+          div(
+            className := "hero-quote-footer",
+            span(className := "quote-source-label", "From: "),
+            child <-- State.currentQuoteIndex.signal.map { idx =>
+              val q = State.quotes(idx)
+              a(
+                className := "quote-source-link",
+                href := q.sourceLink,
+                target := "_blank",
+                rel := "noopener noreferrer",
+                code(q.sourceFile),
+                span(s" (${q.sourceTitle}) ↗"),
+              )
+            },
+          ),
+        ),
       ),
 
       // The 3 Failures Section
