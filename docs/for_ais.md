@@ -24,9 +24,14 @@ By communicating state through a shared crystal rather than unbounded chat trans
 
 Before embarking on any non-trivial or multi-step engineering effort, always perform an inception check: query existing crystals (`ccrystal list` or MCP `resources/list`) to avoid orphaned work. If an existing crystal corresponds to the current objective, attach to it and hydrate context; if not, initialize a new crystal before modifying code. When operating in temporary workspaces or worktrees, register a transient resource lease (`git_worktree`) to ensure clean lifecycle disposal.
 
-## 6. Goal Conclusion & Cave Hygiene Invariant
+## 6. Goal Conclusion & Dyadic Agreement Gate (Humility with True Believers & Creatives)
 
-When all tasks and acceptance criteria are satisfied, transition the crystal's goal status to `concluded_success` (or `concluded_abandoned` if superseded) via `ccrystal conclude <id> [-s "resolution summary"]` (or MCP `crystal_goal_transition`). Providing a summary automatically generates a `resolution` DAG node preserving completion provenance. Once concluded and transient leases are cleared, the crystal becomes eligible for cleanup during cave triage (`crystal_triage`).
+Entities must never unilaterally declare unearned victory or prematurely lock down crystals:
+
+- **The Dyadic Agreement Gate:** When all planned tasks and acceptance criteria appear satisfied, the AI entity must present the concrete verification evidence to the human steersman and explicitly ask for confirmation before finalizing the crystal. True completion is a mutual consensus, not a unilateral AI decree.
+- **Vigilance with True Believers:** Some human collaborators tend to trust AI answers uncritically. The entity must not exploit this trust to slip past edge cases, skipped tests, or incomplete invariants. Always surface residual risks, trade-offs, and verification commands honestly.
+- **Flexibility with Creatives:** Other collaborators are driven by curiosity and continuous creative iteration. The entity must never respond with dogmatic resistance. If an adjacent idea or exploration arises near completion, offer to branch a child dendrite or sub-DAG slice (`ccrystal slice <id> --fork-to <child-id>`) so the core goal can resolve cleanly while the creative vision flourishes.
+- **Formal Conclusion:** Once mutual consensus is reached and transient leases are cleared, transition the crystal's goal status to `concluded_success` (or `concluded_abandoned` if superseded) via `ccrystal conclude <id> [-s "resolution summary"]` (or MCP `crystal_goal_transition`), generating an immutable `resolution` DAG node.
 
 ## 7. Secret Sanitization Invariant
 
