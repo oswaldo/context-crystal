@@ -41,8 +41,8 @@ object TabManifesto:
           button(
             typ := "button",
             className := "btn-secondary",
-            span("⬡ Explore Live Interactive DAG"),
-            onClick.mapTo(Tab.Explorer) --> State.activeTab.writer,
+            span("⌥ Native MCP Reference"),
+            onClick.mapTo(Tab.Mcp) --> State.activeTab.writer,
           ),
           a(
             className := "btn-tertiary",

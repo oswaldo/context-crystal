@@ -17,7 +17,6 @@ object Main:
         child <-- State.activeTab.signal.map {
           case Tab.Manifesto      => TabManifesto.render()
           case Tab.Demo           => TabDemo.render()
-          case Tab.Explorer       => TabExplorer.render()
           case Tab.Quickstart     => TabQuickstart.render()
           case Tab.Mcp            => TabMcp.render()
           case Tab.AgentIngestion => TabAgentIngestion.render()
