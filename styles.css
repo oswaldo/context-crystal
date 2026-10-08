@@ -49,6 +49,7 @@ html {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
@@ -60,6 +61,7 @@ body {
     radial-gradient(circle at 100% 100%, rgba(168, 85, 247, 0.05) 0%, transparent 45%),
     var(--bg-deep);
   background-attachment: fixed;
+  overflow-x: hidden;
 }
 
 #app {
@@ -1347,6 +1349,7 @@ tbody tr:hover td {
   display: flex;
   align-items: center;
   gap: 0.85rem;
+  flex: 1;
 }
 
 .phase-display {
@@ -1358,7 +1361,9 @@ tbody tr:hover td {
 }
 
 .timeline-slider {
-  width: 170px;
+  flex: 1;
+  min-width: 120px;
+  max-width: 260px;
   cursor: pointer;
   accent-color: var(--accent-cyan);
 }
@@ -1670,6 +1675,7 @@ tbody tr:hover td {
   align-items: center;
   gap: 0.5rem;
   margin-bottom: 0.25rem;
+  flex-wrap: wrap;
 }
 
 .event-time {
@@ -1693,6 +1699,7 @@ tbody tr:hover td {
 
 .event-body {
   word-break: break-word;
+  overflow-wrap: anywhere;
 }
 
 .event-detail {
@@ -1702,6 +1709,8 @@ tbody tr:hover td {
   padding-left: 0.6rem;
   border-left: 2px solid var(--border-highlight);
   font-style: italic;
+  word-break: break-word;
+  overflow-wrap: anywhere;
 }
 
 /* Event Types */
@@ -1913,6 +1922,31 @@ tbody tr:hover td {
   .crystal-glyph {
     font-size: 1.4rem;
   }
+  .demo-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 1rem;
+    padding: 1rem 1.25rem;
+  }
+  .toolbar-left {
+    justify-content: flex-start;
+    gap: 0.6rem;
+  }
+  .toolbar-center {
+    width: 100%;
+  }
+  .scrubber-cluster {
+    width: 100%;
+  }
+  .timeline-slider {
+    flex: 1;
+    max-width: none;
+  }
+  .toolbar-right {
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
   .demo-panes-grid {
     grid-template-columns: 1fr;
   }
@@ -1927,5 +1961,127 @@ tbody tr:hover td {
   }
   .hero-title {
     font-size: 2.3rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .container {
+    padding: 0 0.85rem;
+  }
+  .portal-main {
+    padding-top: 1.25rem;
+    padding-bottom: 2.5rem;
+  }
+  .demo-hero {
+    margin-bottom: 1.25rem;
+  }
+  .demo-lead {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+  .demo-toolbar {
+    padding: 0.75rem;
+    gap: 0.75rem;
+    border-radius: var(--radius-md);
+  }
+  .toolbar-left {
+    gap: 0.4rem;
+  }
+  .btn-ctrl {
+    padding: 0.4rem 0.75rem;
+    font-size: 0.78rem;
+  }
+  .btn-speed {
+    padding: 0.2rem 0.45rem;
+    font-size: 0.7rem;
+  }
+  .autoscroll-toggle {
+    padding: 0.25rem 0.45rem;
+    font-size: 0.72rem;
+  }
+  .scrubber-cluster {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.35rem;
+    width: 100%;
+  }
+  .phase-display {
+    min-width: 0;
+    width: 100%;
+    text-align: center;
+    font-size: 0.75rem;
+  }
+  .timeline-slider {
+    width: 100%;
+    max-width: none;
+  }
+  .toolbar-right {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.35rem;
+    width: 100%;
+  }
+  .jump-label {
+    display: none;
+  }
+  .btn-jump {
+    width: 100%;
+    text-align: center;
+    font-size: 0.7rem;
+    padding: 0.4rem 0.25rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .demo-panes-grid {
+    gap: 1.25rem;
+    margin-bottom: 2rem;
+  }
+  .pane-top-bar {
+    flex-wrap: wrap;
+    padding: 0.65rem 0.85rem;
+    gap: 0.4rem;
+  }
+  .pane-title-group {
+    flex: 1;
+    min-width: 0;
+  }
+  .pane-top-bar .pane-title {
+    font-size: 0.75rem;
+  }
+  .pane-status-pill {
+    width: 100%;
+    text-align: center;
+    margin-top: 0.15rem;
+    font-size: 0.68rem;
+    padding: 0.2rem 0.4rem;
+  }
+  .progress-meta {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.2rem;
+    padding: 0.4rem 0.85rem;
+  }
+  .progress-label,
+  .progress-steps {
+    font-size: 0.7rem;
+  }
+  .terminal-viewport {
+    height: 380px;
+    padding: 0.65rem 0.75rem;
+    font-size: 0.78rem;
+  }
+  .event-row {
+    padding: 0.5rem 0.65rem;
+  }
+  .scorecard-card {
+    padding: 1.25rem 1rem;
+  }
+  .scorecard-comparison {
+    gap: 0.75rem;
+  }
+  .stat-col.cc .stat-val,
+  .stat-col.raw .stat-val {
+    font-size: 1.45rem;
   }
 }
