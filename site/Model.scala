@@ -6,7 +6,7 @@ import scala.scalajs.js
 
 enum Tab(val id: String, val label: String, val icon: String):
   case Manifesto extends Tab("manifesto", "Manifesto & Architecture", "◈")
-  case Demo extends Tab("demo", "Interactive Demo", "▶")
+  case Demo extends Tab("demo", "Demo", "▶")
   case Quickstart extends Tab("quickstart", "Install & Quickstart", "◇")
   case Mcp extends Tab("mcp", "Native MCP Reference", "⌥")
   case AgentIngestion extends Tab("agent-ingestion", "Agent Ingestion (llms.txt)", "§")

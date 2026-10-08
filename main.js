@@ -18599,7 +18599,7 @@ var $d_Lccrystal_site_Tab$$anon$1 = new $TypeData().i($c_Lccrystal_site_Tab$$ano
 function $c_Lccrystal_site_Tab$$anon$2() {
   this.dG = null;
   this.dF = null;
-  $ct_Lccrystal_site_Tab__T__T__T__(this, "demo", "Interactive Demo", "\u25b6");
+  $ct_Lccrystal_site_Tab__T__T__T__(this, "demo", "Demo", "\u25b6");
 }
 $p = $c_Lccrystal_site_Tab$$anon$2.prototype = new $h_Lccrystal_site_Tab();
 $p.constructor = $c_Lccrystal_site_Tab$$anon$2;
