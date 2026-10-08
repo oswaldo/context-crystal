@@ -361,6 +361,8 @@ ccrystal batch "connect track-auth-core track-api-gateway -r depends_on -d 'Gate
   - If unset, prompt the operator *once*, and offer to persist the choice so subsequent pairing sessions run autonomously without repeated questions.
   - NEVER scrape `git config user.name` or OS environment variables without explicit operator confirmation.
 
+- **Idempotent Handle Resolution:** CLI options (`--author`) and MCP parameters (`author`) accept the bare handle (`antigravity`, `oswaldo`). Even if an agent accidentally supplies an already-prefixed handle (`agt_antigravity`, `usr_oswaldo`), `ccrystal`'s store defensively strips redundant prefixes, guaranteeing idempotent canonical IDs (`agt_antigravity`, `usr_oswaldo`) without duplicate prefix nesting (`agt_agt_...`).
+
 - **CLI Guidance Invariants:**
   - Run `ccrystal --for-ai` to retrieve dense operational invariants directly from the CLI binary.
   - Run `ccrystal entity conventions` to display the canonical prefix reference table.

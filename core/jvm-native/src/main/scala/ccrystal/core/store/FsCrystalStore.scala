@@ -404,43 +404,44 @@ class FsCrystalStore(val rootPath: Path) extends CrystalStore:
       kind: EntityKind,
       distinct: Boolean = false,
   ): Either[String, Entity] =
+    val prefix        = kind.prefix
+    val normalizedRaw = name.stripPrefix(s"${prefix}_")
+    val cleanName     = if normalizedRaw.nonEmpty then normalizedRaw else name
     getEntityRegistry().flatMap { reg =>
       val existingMatches = reg.entities.values
-        .filter(e => e.kind == kind && (e.name == name || e.name.startsWith(s"$name-")))
+        .filter(e =>
+          e.kind == kind && (e.name == cleanName || e.name == name || e.name.startsWith(
+            s"$cleanName-",
+          )),
+        )
         .toList
-      if !distinct && existingMatches.exists(_.name == name) then
-        Right(existingMatches.find(_.name == name).get)
+      if !distinct && existingMatches.exists(e => e.name == cleanName || e.name == name) then
+        Right(
+          existingMatches
+            .find(e => e.name == cleanName)
+            .orElse(existingMatches.find(e => e.name == name))
+            .get,
+        )
       else if existingMatches.isEmpty then
-        val prefix = kind match
-          case EntityKind.Human  => "usr"
-          case EntityKind.Agent  => "agt"
-          case EntityKind.Model  => "mdl"
-          case EntityKind.System => "sys"
-          case EntityKind.Tool   => "tool"
-        val slug      = name.toLowerCase.replaceAll("[^a-z0-9_-]", "_")
+        val slug      = cleanName.toLowerCase.replaceAll("[^a-z0-9_-]", "_")
         val entityId  = s"${prefix}_$slug"
-        val newEntity = Entity(entityId, kind, name)
+        val newEntity = Entity(entityId, kind, cleanName)
         registerEntity(newEntity)
       else
         // Distinct or collision: assign incremental numerical suffix
-        val pattern = s"^${java.util.regex.Pattern.quote(name)}-([0-9]+)$$".r
+        val pattern = s"^${java.util.regex.Pattern.quote(cleanName)}-([0-9]+)$$".r
         val usedIndices = existingMatches.flatMap { e =>
-          e.name match
-            case `name`       => Some(0)
-            case pattern(num) => num.toIntOption
-            case _            => None
+          if e.name == cleanName || e.name == name then Some(0)
+          else
+            e.name match
+              case pattern(num) => num.toIntOption
+              case _            => None
         }.toSet
 
         var nextIdx = 1
         while usedIndices.contains(nextIdx) do nextIdx += 1
 
-        val newName = s"$name-$nextIdx"
-        val prefix = kind match
-          case EntityKind.Human  => "usr"
-          case EntityKind.Agent  => "agt"
-          case EntityKind.Model  => "mdl"
-          case EntityKind.System => "sys"
-          case EntityKind.Tool   => "tool"
+        val newName   = s"$cleanName-$nextIdx"
         val slug      = newName.toLowerCase.replaceAll("[^a-z0-9_-]", "_")
         val entityId  = s"${prefix}_$slug"
         val newEntity = Entity(entityId, kind, newName)

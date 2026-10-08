@@ -33,6 +33,13 @@ enum EntityKind derives CanEqual:
   case System
   case Tool
 
+  def prefix: String = this match
+    case Human  => "usr"
+    case Agent  => "agt"
+    case Model  => "mdl"
+    case System => "sys"
+    case Tool   => "tool"
+
 enum AuthorshipMode derives CanEqual:
   case None
   case Tracked

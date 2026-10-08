@@ -177,6 +177,22 @@ class FsCrystalStoreSuite extends FunSuite:
     assert(handleRes.isRight)
     assertEquals(handleRes.toOption.get.id, "usr_john")
 
+    // Idempotent prefix stripping: caller passes already-prefixed handle
+    val alreadyPrefixedAgt = store.resolveOrCreateEntity("agt_runner", EntityKind.Agent)
+    assert(alreadyPrefixedAgt.isRight)
+    assertEquals(alreadyPrefixedAgt.toOption.get.id, "agt_runner")
+    assertEquals(alreadyPrefixedAgt.toOption.get.name, "runner")
+
+    val alreadyPrefixedUsr = store.resolveOrCreateEntity("usr_alice", EntityKind.Human)
+    assert(alreadyPrefixedUsr.isRight)
+    assertEquals(alreadyPrefixedUsr.toOption.get.id, "usr_alice")
+    assertEquals(alreadyPrefixedUsr.toOption.get.name, "alice")
+
+    // Resolving with bare or prefixed handle resolves to the same entity
+    val resolvedSameAgt = store.resolveOrCreateEntity("runner", EntityKind.Agent)
+    assert(resolvedSameAgt.isRight)
+    assertEquals(resolvedSameAgt.toOption.get.id, "agt_runner")
+
   test("FsCrystalStore manages .ccrystals/artifacts.json lifecycle and artifact queries"):
     val store = FsCrystalStore(tempDir.resolve(".ccrystals").toString)
 
