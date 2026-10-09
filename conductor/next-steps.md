@@ -31,19 +31,33 @@
 
 ---
 
-## 2. Next Track: Interactive Showcase Demo Tab: Context Preservation vs. Agent Amnesia (`interactive_showcase_demo_tab`)
+## 2. Next Track: Modular Spec Extensions Architecture & Crystal Comms (`spec_extensions_and_crystal_comms`)
 
-- **Objective:** Build an engaging, interactive "Demo" tab in the public documentation portal (`context-crystal-gh-pages`) demonstrating the real-world value proposition of Context Crystal in a humorous, high-impact side-by-side comparison:
-  - **Split-Screen Layout & Agent Look-and-Feel:** Two synchronized agent terminal/chat panes mimicking realistic IDE agent runs tackling an identical multi-step coding task, each with a dynamic progress bar on top.
-  - **Left Pane (With Context Crystal):** Progress bar moves steadily from solid blue to solid green over ~15 seconds. Structured context hydrations (`ccrystal cast`), zero redundant turns, and immediate clean task completion.
-  - **Right Pane (Without Context Crystal / Raw Chat History):** Progress bar moves forward initially, but around ~10-15s context compaction hits. Amnesia strikes: agent forgets prior constraints, repeats already-answered inquiries, or touches forbidden files. Frustrated user short prompt appears ("I told you 2 messages ago not to touch X!"). Progress bar stalls, fades to warning red, and slips backwards, before a clumsy resolution in ~30s.
-  - **Interactive Playback Controls:** Play / pause / reset and 1x/2x speed toggles for effortless visitor exploration.
-- **Priority:** Immediate next step (Zero backend friction, delightful frontend quick win, immediate marketing impact for v1.2.0 showcase portal).
+- **Objective:** Keep the core Context Crystal spec minimal and sovereign by establishing a formal modular extension architecture (companion manifests and namespaced storage `.ccrystals/<id>/extensions/`). Implement **Crystal Comms** (lock-free filesystem inboxes/outboxes and multi-agent coordination with human steersman oversight) as the premier reference extension module.
+- **Priority:** Immediate next step.
 
 ---
 
 ## 3. Backlog & Future Track Roadmap
 
+- **Track 31: Experimental Organic Nautilus Crystal Visualizer (`organic_nautilus_crystal_visualizer`):**
+  - **Objective:** Create an exploratory, compact visual representation of context crystals rendered on a dedicated demo page in the portal, visualizing the internal anatomy, dialogue rhythm, and provenance of crystals in a striking, organic layout.
+  - **Geometric Anatomy & Stable Glyphs (All with Rounded Corners):**
+    - **Triangles (rounded):** Tool executions and scripts.
+    - **Rectangles (rounded):** User / human messages and prompts.
+    - **Hexagons (rounded):** Agent / AI responses and deliberations.
+  - **Proportional Scaling & Volume Weight:**
+    - Baseline size 1 is uniform across all element types.
+    - Scaled dynamically by character length / token volume multiplier (e.g., a massive tool call or raw script output expands into a triangle twice as large as the user prompt rectangle it answers).
+  - **Temporal Chromatic Gradient:**
+    - Nodes are colored along a continuous gradient from **Green** (genesis / first element) transitioning through intermediate hues to **Red** (resolution / final element).
+  - **Directional Connectors & Asymmetric Gaps:**
+    - Connected by subtle, semi-transparent wide lines—nearly as wide as the source element.
+    - Directional gap indicator: the wide connector does not touch the target element boundary, preserving clear visual flow and temporal causality.
+  - **Organic Nautilus Morphology vs. Orthogonal Repulsion:**
+    - Non-overlapping elements with attraction dynamics among causally related nodes, tending to curve inwards into a compact **nautilus spiral** shell.
+    - Weakly bound elements (non-sequiturs, side dendrites, tangential inquiries) experience orthogonal repulsion, moving outwards and maintaining longer connector spans to visually isolate exploratory tangents.
+  - **Initial Phase:** Static rendering of the crystal in its final compact form on a showcase page (deferring complex physics simulations or animations to subsequent iterations). Detailed layout algorithms and visual mockups to be refined at track inception.
 - **Track 24: Modular Spec Extensions Architecture & Crystal Comms (`spec_extensions_and_crystal_comms`):**
   - **Objective:** Keep the core Context Crystal spec minimal and sovereign by establishing a formal modular extension architecture (companion manifests and namespaced storage `.ccrystals/<id>/extensions/`). Implement **Crystal Comms** (lock-free filesystem inboxes/outboxes and multi-agent coordination with human steersman oversight) as the premier reference extension module.
   - **Priority:** Scheduled after Interactive Demo Tab.
