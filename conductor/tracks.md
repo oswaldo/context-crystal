@@ -85,3 +85,6 @@
 
 - [x] **Track: Interactive Showcase Demo Tab: Context Preservation vs. Agent Amnesia**  
   *Link: [conductor/tracks/interactive_showcase_demo_tab_20261004/index.md](./tracks/interactive_showcase_demo_tab_20261004/index.md)*
+
+- [ ] **Track: Native MCP Server Consolidation, TDQS Optimization & Agent Ergonomics**  
+  *Link: [conductor/next-steps.md#backlog--future-track-roadmap](./next-steps.md)*
