@@ -106,8 +106,20 @@ lazy val cli = crossProject(JVMPlatform, NativePlatform)
   .crossType(CrossType.Full)
   .in(file("cli"))
   .dependsOn(core)
+  .enablePlugins(BuildInfoPlugin)
   .settings(
     name := "ccrystal-cli",
+    buildInfoPackage := "ccrystal",
+    buildInfoObject := "BuildInfo",
+    buildInfoKeys := Seq[BuildInfoKey](
+      BuildInfoKey.action("name")("ccrystal"),
+      version,
+      scalaVersion,
+      sbtVersion,
+      BuildInfoKey.action("gitCommit") {
+        scala.util.Try(scala.sys.process.Process("git rev-parse HEAD").lineStream.head).getOrElse("unknown")
+      }
+    ),
     libraryDependencies ++= Seq(
       "com.monovore"  %%% "decline" % declineVersion,
       "com.lihaoyi"   %%% "os-lib"  % osLibVersion,
