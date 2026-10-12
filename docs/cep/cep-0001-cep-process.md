@@ -2,10 +2,10 @@
 
 - **Author(s):** Oswaldo Dantas <oswaldodantas@proton.me>
 - **AI Runtime / Co-Pilot (Optional):** Antigravity CLI / gemini-3.8-flash
-- **Status:** Draft
+- **Status:** Accepted
 - **Type:** Process Track
 - **Created:** 2026-10-05
-- **Target Version:** v0.4.0
+- **Target Version:** v1.3.0
 - **Discussions-To:** `.ccrystals/crystal-enhancement-proposal-process-and-media-extension`
 
 ---
@@ -22,7 +22,7 @@ Inspired by the success of RFCs (Rust / IETF), JSRs (Java Community Process), an
 
 Context Crystal is expanding from a low-overhead developer CLI into the cognitive coordination substrate for diverse ecosystems:
 
-- Autonomous video studios and media pipelines (Elatus Studio).
+- Autonomous video studios, automated post-production pipelines, and generative media synthesis.
 - Physical robotics, telemetry streaming, and sensor fusion.
 - Multi-agent swarm coordination and tool synthesis.
 
@@ -83,3 +83,15 @@ Every CEP must satisfy these core invariants before being moved to `Accepted`:
    No proposal may introduce automatic scraping or persistence of human personal data (legal names, personal emails, private keys) without explicit, auditable user authorization.
 3. **Substrate & Platform Agnosticism:**
    Core enhancements must maintain 100% feature parity across Native (Linux/macOS), JVM, and JS runtimes.
+4. **Domain Isolation & Non-Pollution Invariant:**
+   Extension Track specifications must remain strictly opt-in and namespace-isolated. Core CLI arguments, help screens, and universal MCP tool signatures must remain completely agnostic to specialized domain extensions. A software engineer writing code should never encounter media, robotics, or other domain-specific flags in core tooling.
+
+---
+
+## 6. Relationship to Google Conductor & Internal Execution (Zero-ADR Layering)
+
+To eliminate bureaucratic overhead and documentation duplication, Context Crystal pairs public CEP specifications directly with internal execution:
+
+- **CEP is the Public RFC:** It serves as the open-source community specification, architectural contract, and domain schema definition.
+- **Google Conductor is the Execution Engine:** When a Standards Track CEP is marked `Accepted`, it becomes the direct upstream requirement input for a Conductor track (`conductor/tracks/<track-name>/{spec.md, plan.md}`).
+- **Zero Redundant Documentation Layers:** Because Conductor tracks already maintain detailed planning and execution specs, and CEPs define public architectural contracts, there is **no need for redundant Architecture Decision Records (ADRs) or duplicate internal RFCs**. CEP is the single source of public architectural truth.

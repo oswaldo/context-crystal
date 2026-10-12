@@ -1,10 +1,12 @@
-# Crystal Enhancement Proposals (CEPs)
+# Crystal Enhancement Proposals (CEPs / RFCs)
 
-Welcome to the **Crystal Enhancement Proposal (CEP)** process.
+Welcome to the **Crystal Enhancement Proposal (CEP)** process—Context Crystal's official **Request for Comments (RFC)** framework.
 
 A CEP is a formal design document that provides information to the Context Crystal community, describes a new feature, extension standard, or operational process for Context Crystal (`ccrystal`), and outlines its architectural rationale, interface schemas, and migration path.
 
-Analogous to **RFCs** (IETF / Rust), **JSRs** (Java Specification Requests), and **PEPs** (Python Enhancement Proposals), the CEP process ensures that Context Crystal evolves with rigorous community governance while strictly safeguarding its core architectural invariant: **a lightweight, zero-reflection, microsecond-latency context engine**.
+Analogous to **RFCs** (IETF / Rust), **PEPs** (Python), **SIPs** (Scala), and **KEPs** (Kubernetes), the CEP process ensures that Context Crystal evolves with rigorous community governance while strictly safeguarding its core architectural invariant: **a lightweight, zero-reflection, microsecond-latency context engine**.
+
+Accepted CEPs serve directly as the upstream specification input for internal **Google Conductor** execution tracks, eliminating the need for redundant Architecture Decision Records (ADRs) or duplicate internal RFCs.
 
 ---
 
@@ -23,8 +25,8 @@ Analogous to **RFCs** (IETF / Rust), **JSRs** (Java Specification Requests), and
 
 | CEP # | Title | Type | Status | Author | Created |
 | :--- | :--- | :--- | :--- | :--- | :--- |
-| [**CEP-0001**](cep-0001-cep-process.md) | The Crystal Enhancement Proposal Process & Lifecycle Specification | Process | **Draft** | Oswaldo Dantas | 2026-10-05 |
-| [**CEP-0002**](cep-0002-media-multimodal-provenance.md) | Media & Multi-Modal Asset Provenance Extension Standard | Extension | **Draft** | Oswaldo Dantas | 2026-10-05 |
+| [**CEP-0001**](cep-0001-cep-process.md) | The Crystal Enhancement Proposal Process & Lifecycle Specification | Process | **Accepted** | Oswaldo Dantas | 2026-10-05 |
+| [**CEP-0002**](cep-0002-media-multimodal-provenance.md) | Media & Multi-Modal Asset Provenance Extension Standard | Extension | **Accepted** | Oswaldo Dantas | 2026-10-05 |
 
 ---
 

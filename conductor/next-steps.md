@@ -102,3 +102,6 @@
 - **Post-MLP Portal Search & Extended Docs Engine:** Pagefind WASM / Typelevel Laika search for documentation.
 - **Track 20: Local Developer Ergonomics, Zero-Friction Git Hooks & Pre-Push Quality Guards:** Automated git hooks for pre-commit and pre-push.
 - **Track 21: CLI Version Flag & BuildInfo Integration (`ccrystal --version / -v`).**
+- **Track 32: Federated Lattice Bonds & Cross-Cave Addressing (`federated_lattice_bonds_and_cross_cave_addressing`):**
+  - **Objective:** Extend `LatticeBond` to support cross-cave URI addressing (`ccrystal://<cave-path>/<crystal-id>`), enabling crystals in client/downstream repositories to bond across local or remote caves to standards and parent crystals in upstream repositories.
+  - **Privacy & Isolation Guardrails:** Enforce strict privacy boundary validation: public crystals must never store or expose private filesystem paths, uncommitted private repos, or corporate internal repository names.
