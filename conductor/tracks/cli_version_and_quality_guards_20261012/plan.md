@@ -29,9 +29,9 @@
 
 ## Phase 3: Cross-Platform Verification & Release Readiness
 
-- [ ] Task: Run full platform cross-build verification
-  - [ ] Execute `sbt test` across JVM, Native, and JS platforms
-  - [ ] Execute `sbt "cliNative/nativeLink"` to confirm native binary links
+- [x] Task: Run full platform cross-build verification (803d72b)
+  - [x] Execute `sbt test` across JVM, Native, and JS platforms
+  - [x] Execute `sbt "cliNative/nativeLink"` to confirm native binary links
 - [ ] Task: Package and verify v1.2.1 release artifacts
   - [ ] Run dry-run package script `scripts/package-release.sh v1.2.1`
   - [ ] Update Context Crystal tasks in `release-v1-2-1-ergonomics-and-quality-guards`
