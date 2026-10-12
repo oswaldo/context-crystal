@@ -3,7 +3,7 @@
   "id" : "release-v1-2-1-ergonomics-and-quality-guards",
   "name" : "release-v1-2-1-ergonomics-and-quality-guards",
   "createdAt" : "2026-10-12T20:38:46.789Z",
-  "updatedAt" : "2026-10-12T21:15:59.941Z",
+  "updatedAt" : "2026-10-12T21:24:08.395Z",
   "parentCrystalId" : null,
   "origin" : null,
   "caveId" : null,
@@ -21,7 +21,7 @@
       {
         "id" : "task-2",
         "description" : "Implement automated pre-commit and pre-push quality hooks for zero push-fail cycles [task-2]",
-        "completed" : false
+        "completed" : true
       },
       {
         "id" : "task-3",
