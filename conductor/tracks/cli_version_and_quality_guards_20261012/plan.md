@@ -10,7 +10,7 @@
   - [x] Support `--verbose` flag for extended build metadata output
 - [x] Task: Unit tests for version flag output (507f752)
   - [x] Write MUnit test verifying `--version` and `-v` parsing and output formatting
-- [ ] Task: Phase 1 Verification & Checkpoint (Refer to workflow.md)
+- [x] Task: Phase 1 Verification & Checkpoint (Refer to workflow.md)
 
 ---
 
