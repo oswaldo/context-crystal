@@ -23,7 +23,7 @@
 - [x] Task: Hook validation and permission audit (7060ae1)
   - [x] Verify execution permissions and run hooks in dry-run
   - [x] Document hook configuration in `docs/` and `README.md`
-- [ ] Task: Phase 2 Verification & Checkpoint (Refer to workflow.md)
+- [x] Task: Phase 2 Verification & Checkpoint (Refer to workflow.md)
 
 ---
 
