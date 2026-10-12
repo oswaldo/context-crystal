@@ -3,7 +3,7 @@
   "id" : "release-v1-2-1-ergonomics-and-quality-guards",
   "name" : "release-v1-2-1-ergonomics-and-quality-guards",
   "createdAt" : "2026-10-12T20:38:46.789Z",
-  "updatedAt" : "2026-10-12T21:24:08.395Z",
+  "updatedAt" : "2026-10-12T21:27:15.969Z",
   "parentCrystalId" : null,
   "origin" : null,
   "caveId" : null,
@@ -26,7 +26,7 @@
       {
         "id" : "task-3",
         "description" : "Run full platform cross-build verification (Native, JVM, JS) [task-3]",
-        "completed" : false
+        "completed" : true
       },
       {
         "id" : "task-4",
