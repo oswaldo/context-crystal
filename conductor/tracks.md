@@ -87,7 +87,7 @@
   *Link: [conductor/tracks/interactive_showcase_demo_tab_20261004/index.md](./tracks/interactive_showcase_demo_tab_20261004/index.md)*
 
 - [ ] **Track: Native MCP Server Consolidation, TDQS Optimization & Agent Ergonomics**  
-  *Link: [conductor/next-steps.md#backlog--future-track-roadmap](./next-steps.md)*
+  *Link: [conductor/tracks/native_mcp_server_consolidation_20261012/index.md](./tracks/native_mcp_server_consolidation_20261012/index.md)*
 
 - [x] **Track: CLI Version Flag & BuildInfo Integration and Pre-Push Quality Guards**  
   *Link: [conductor/tracks/cli_version_and_quality_guards_20261012/index.md](./tracks/cli_version_and_quality_guards_20261012/index.md)*
