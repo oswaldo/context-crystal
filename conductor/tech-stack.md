@@ -29,6 +29,8 @@
 ## 3. Command-Line Interface (`cli/`)
 - **CLI Parsing:** `decline` (composable, applicative command-line parser) or `mainargs`.
 - **Packaging:** Native binary output via Scala Native (`sbt coreNative/nativeLink`).
+- **Build Metadata & Versioning:** `sbt-buildinfo` generating `ccrystal.BuildInfo` (name, version, scalaVersion, sbtVersion, gitCommit) surfaced through `ccrystal --version / -v` and `ccrystal --version --verbose`.
+- **Quality Guards:** Repository-managed git hooks in `.githooks/` (`pre-commit` and `pre-push`) configured via `scripts/setup-hooks.sh` (`git config core.hooksPath .githooks`).
 - **Core Commands (Zero-LLM Fast Paths):**
   - `ccrystal init <name>` / `ccrystal validate` / `ccrystal export`
   - `ccrystal audit lessons` (identify unaddressed/open lessons across all local crystals)
