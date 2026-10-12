@@ -10,6 +10,29 @@ if [ "${HOOK_BYPASS:-0}" = "1" ]; then
     exit 0
 fi
 
+# Detect whether this push contains only tag refs or ref deletions
+# Standard input format: <local-ref> <local-sha> <remote-ref> <remote-sha>
+ONLY_TAGS=1
+ANY_REFS=0
+
+while read -r local_ref local_sha _remote_ref _remote_sha; do
+    ANY_REFS=1
+    case "$local_ref" in
+        refs/tags/*) ;;
+        *)
+            # Ignore ref deletions (where local_sha is all zeros or (delete))
+            if [ "$local_sha" != "0000000000000000000000000000000000000000" ] && [ "$local_sha" != "(delete)" ]; then
+                ONLY_TAGS=0
+            fi
+            ;;
+    esac
+done
+
+if [ "$ANY_REFS" = "1" ] && [ "$ONLY_TAGS" = "1" ]; then
+    printf '\033[0;34m[pre-push]\033[0m Only tag/deletion refs detected. Skipping redundant test suite verification.\n'
+    exit 0
+fi
+
 printf '\033[0;34m===> [pre-push]\033[0m Running Context Crystal pre-push quality guards...\n'
 
 # 1. Format & Lint Check
