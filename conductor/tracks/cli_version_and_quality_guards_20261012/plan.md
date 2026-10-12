@@ -2,9 +2,9 @@
 
 ## Phase 1: BuildInfo & CLI Version Flag (`--version`, `-v`)
 
-- [ ] Task: Integrate `sbt-buildinfo` plugin and configure BuildInfo generation
-  - [ ] Add `sbt-buildinfo` plugin to `project/plugins.sbt`
-  - [ ] Configure `BuildInfoPlugin` in `build.sbt` with version, scalaVersion, git commit
+- [x] Task: Integrate `sbt-buildinfo` plugin and configure BuildInfo generation (230838e)
+  - [x] Add `sbt-buildinfo` plugin to `project/plugins.sbt`
+  - [x] Configure `BuildInfoPlugin` in `build.sbt` with version, scalaVersion, git commit
 - [ ] Task: Implement `--version` and `-v` CLI options in Decline parser & Main runner
   - [ ] Add version flag parsing in `Main.scala` / `CommandParser.scala`
   - [ ] Support `--verbose` flag for extended build metadata output
