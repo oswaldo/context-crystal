@@ -1,0 +1,105 @@
+{
+  "schemaVersion" : "1.0.0",
+  "id" : "release-v1-3-0-extensions-media-and-mcp-optimization",
+  "name" : "release-v1-3-0-extensions-media-and-mcp-optimization",
+  "createdAt" : "2026-10-12T20:38:50.670Z",
+  "updatedAt" : "2026-10-12T20:39:02.899Z",
+  "parentCrystalId" : null,
+  "origin" : null,
+  "caveId" : null,
+  "defaultAuthorId" : "usr_oswaldo",
+  "goal" : {
+    "title" : "Release v1.3.0: Modular Spec Extensions, CEP-0002 Media Provenance, and Native MCP Ergonomics",
+    "intent" : "Deliver major v1.3.0 milestone consolidating Track 24 (spec extensions / crystal comms), CEP-0002 (media provenance), and Track 25 (MCP consolidation & TDQS optimization)",
+    "status" : "in_progress",
+    "acceptanceCriteria" : [
+      {
+        "id" : "task-1",
+        "description" : "Track 25: Consolidate MCP tools to uniform verb_noun and promote eager lifecycle registrations [task-1]",
+        "completed" : false
+      },
+      {
+        "id" : "task-2",
+        "description" : "Track 24: Implement Modular Spec Extensions Architecture under .ccrystals/<id>/extensions/ [task-2]",
+        "completed" : false
+      },
+      {
+        "id" : "task-3",
+        "description" : "CEP-0002: Implement Media & Multi-Modal Provenance extension metadata schemas and verification [task-3]",
+        "completed" : false
+      },
+      {
+        "id" : "task-4",
+        "description" : "Synchronize agent harnesses and distribute updated skill across agents [task-4]",
+        "completed" : false
+      },
+      {
+        "id" : "task-5",
+        "description" : "Run multi-platform test matrices and tag release v1.3.0 [task-5]",
+        "completed" : false
+      }
+    ],
+    "metadata" : {
+      
+    }
+  },
+  "entities" : [
+    {
+      "id" : "usr_oswaldo",
+      "kind" : "human",
+      "name" : "oswaldo",
+      "metadata" : {
+        
+      },
+      "publicKey" : null,
+      "endpoints" : {
+        
+      }
+    }
+  ],
+  "activeMask" : null,
+  "dag" : {
+    "rootNodeId" : "node-release-v1-3-0-extensions-media-and-mcp-optimization-init",
+    "nodes" : [
+      {
+        "id" : "node-release-v1-3-0-extensions-media-and-mcp-optimization-init",
+        "parentIds" : [
+        ],
+        "timestamp" : "2026-10-12T20:38:50.670Z",
+        "actorId" : "usr_oswaldo",
+        "kind" : "human_prompt",
+        "contentSummary" : "Initialized crystal 'release-v1-3-0-extensions-media-and-mcp-optimization' with goal: Release v1.3.0: Modular Spec Extensions, CEP-0002 Media Provenance, and Native MCP Ergonomics",
+        "anchor" : null,
+        "artifactIds" : [
+        ],
+        "inputArtifactIds" : [
+        ],
+        "outputArtifactIds" : [
+        ],
+        "preconditionArtifactIds" : [
+        ],
+        "fidelity" : "inferred",
+        "metadata" : {
+          
+        }
+      }
+    ]
+  },
+  "transientLeases" : [
+  ],
+  "lessonsLearned" : [
+  ],
+  "artifacts" : [
+  ],
+  "bonds" : [
+    {
+      "targetCrystalId" : "release-v1-2-1-ergonomics-and-quality-guards",
+      "relation" : "depends_on",
+      "description" : "v1.3.0 builds upon the ergonomics and pre-push quality guards in v1.2.1",
+      "createdAt" : "2026-10-12T20:39:02.899Z"
+    }
+  ],
+  "metadata" : {
+    
+  }
+}

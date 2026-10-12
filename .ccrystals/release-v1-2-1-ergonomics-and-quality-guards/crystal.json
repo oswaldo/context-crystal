@@ -1,0 +1,94 @@
+{
+  "schemaVersion" : "1.0.0",
+  "id" : "release-v1-2-1-ergonomics-and-quality-guards",
+  "name" : "release-v1-2-1-ergonomics-and-quality-guards",
+  "createdAt" : "2026-10-12T20:38:46.789Z",
+  "updatedAt" : "2026-10-12T20:38:46.789Z",
+  "parentCrystalId" : null,
+  "origin" : null,
+  "caveId" : null,
+  "defaultAuthorId" : "usr_oswaldo",
+  "goal" : {
+    "title" : "Release v1.2.1: CLI Version Flag & BuildInfo Integration and Pre-Push Quality Guards",
+    "intent" : "Deliver v1.2.1 patch milestone focusing on developer ergonomics, ccrystal --version integration, and automated quality guards before moving to v1.3.0",
+    "status" : "in_progress",
+    "acceptanceCriteria" : [
+      {
+        "id" : "task-1",
+        "description" : "Integrate sbt-buildinfo to expose ccrystal --version and -v CLI flags [task-1]",
+        "completed" : false
+      },
+      {
+        "id" : "task-2",
+        "description" : "Implement automated pre-commit and pre-push quality hooks for zero push-fail cycles [task-2]",
+        "completed" : false
+      },
+      {
+        "id" : "task-3",
+        "description" : "Run full platform cross-build verification (Native, JVM, JS) [task-3]",
+        "completed" : false
+      },
+      {
+        "id" : "task-4",
+        "description" : "Execute multi-channel release workflow and tag v1.2.1 [task-4]",
+        "completed" : false
+      }
+    ],
+    "metadata" : {
+      
+    }
+  },
+  "entities" : [
+    {
+      "id" : "usr_oswaldo",
+      "kind" : "human",
+      "name" : "oswaldo",
+      "metadata" : {
+        
+      },
+      "publicKey" : null,
+      "endpoints" : {
+        
+      }
+    }
+  ],
+  "activeMask" : null,
+  "dag" : {
+    "rootNodeId" : "node-release-v1-2-1-ergonomics-and-quality-guards-init",
+    "nodes" : [
+      {
+        "id" : "node-release-v1-2-1-ergonomics-and-quality-guards-init",
+        "parentIds" : [
+        ],
+        "timestamp" : "2026-10-12T20:38:46.789Z",
+        "actorId" : "usr_oswaldo",
+        "kind" : "human_prompt",
+        "contentSummary" : "Initialized crystal 'release-v1-2-1-ergonomics-and-quality-guards' with goal: Release v1.2.1: CLI Version Flag & BuildInfo Integration and Pre-Push Quality Guards",
+        "anchor" : null,
+        "artifactIds" : [
+        ],
+        "inputArtifactIds" : [
+        ],
+        "outputArtifactIds" : [
+        ],
+        "preconditionArtifactIds" : [
+        ],
+        "fidelity" : "inferred",
+        "metadata" : {
+          
+        }
+      }
+    ]
+  },
+  "transientLeases" : [
+  ],
+  "lessonsLearned" : [
+  ],
+  "artifacts" : [
+  ],
+  "bonds" : [
+  ],
+  "metadata" : {
+    
+  }
+}
