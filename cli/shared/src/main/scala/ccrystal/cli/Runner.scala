@@ -788,6 +788,16 @@ class Runner(
           |Note: This instruction was meant for non-humans (AI assistants and autonomous agents). For human CLI usage, run 'ccrystal --help'.""".stripMargin.trim,
       )
 
+    case CliCommand.Version(verbose) =>
+      if verbose then
+        Right(
+          s"""ccrystal ${ccrystal.BuildInfo.version}
+             |Scala Version: ${ccrystal.BuildInfo.scalaVersion}
+             |SBT Version:   ${ccrystal.BuildInfo.sbtVersion}
+             |Git Commit:    ${ccrystal.BuildInfo.gitCommit}""".stripMargin,
+        )
+      else Right(s"ccrystal ${ccrystal.BuildInfo.version}")
+
     case CliCommand.AgentDoctorCmd(jsonOutput, verbose) =>
       val doctor = new ccrystal.core.agent.AgentDoctor(
         ccrystal.cli.agent.DefaultFileSystemInspector,

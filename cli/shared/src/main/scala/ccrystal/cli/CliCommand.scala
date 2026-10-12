@@ -138,6 +138,7 @@ enum CliCommand derives CanEqual:
       installWorkspaceSkill: Boolean = false,
   )
   case ForAi
+  case Version(verbose: Boolean = false)
   case Search(
       filter: ccrystal.core.model.search.CrystalFilter,
       jsonOutput: Boolean = false,

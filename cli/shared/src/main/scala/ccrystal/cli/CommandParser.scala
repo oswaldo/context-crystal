@@ -561,6 +561,26 @@ object CommandParser:
     )
     .as(CliCommand.ForAi)
 
+  private val verboseFlag = Opts
+    .flag(
+      "verbose",
+      help = "Show detailed build metadata (commit, Scala version, sbt version)",
+    )
+    .orFalse
+
+  private val versionOpt = (
+    Opts.flag(
+      "version",
+      help = "Print version information and exit",
+      short = "v",
+    ),
+    verboseFlag,
+  ).mapN((_, verbose) => CliCommand.Version(verbose))
+
+  private val versionCmd = Opts.subcommand("version", "Print version information and exit")(
+    verboseFlag.map(CliCommand.Version.apply),
+  )
+
   private val taskCmd = Opts.subcommand("task", "Manage tasks")(
     Opts
       .subcommand("add", "Add task")(taskAddOpts)
@@ -697,6 +717,8 @@ object CommandParser:
 
   private val subcommands: List[Opts[CliCommand]] = List(
     forAiOpt,
+    versionOpt,
+    versionCmd,
     Opts.subcommand("init", "Initialize a new crystal")(initOpts),
     Opts.subcommand(
       "search",

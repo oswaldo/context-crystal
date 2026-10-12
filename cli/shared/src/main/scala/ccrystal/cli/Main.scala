@@ -25,6 +25,7 @@ object Main:
           |Global Options:
           |  --store <path>   Override context store directory (or set CCRYSTAL_STORE)
           |  --for-ai         Emit operational protocol guidelines and entity conventions for AI agents
+          |  --version, -v    Print version information and exit (combine with --verbose for build metadata)
           |
           |Run 'ccrystal --help' for a full list of available subcommands and options.
           |
