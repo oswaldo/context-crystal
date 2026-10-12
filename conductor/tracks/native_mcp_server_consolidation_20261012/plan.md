@@ -2,16 +2,16 @@
 
 ## Phase 1: First-Class Lesson Management (`crystal_lesson`)
 
-- [ ] Task: Define `crystal_lesson` schema and parameters in `DefaultMcpHandler.scala`
-  - [ ] Add `crystal_lesson` tool declaration with actions (`record`, `resolve`, `list`)
-  - [ ] Support recording lessons with category, context, summary, and resolution
-- [ ] Task: Implement backend handler logic for lesson actions in `DefaultMcpHandler`
-  - [ ] Wire `record` action to crystal store lessons ledger
-  - [ ] Wire `resolve` action to mark lessons resolved
-  - [ ] Wire `list` action to render structured lessons Markdown table
-- [ ] Task: Unit tests for `crystal_lesson` tool
-  - [ ] Write MUnit tests in `DefaultMcpHandlerSuite` verifying `record`, `resolve`, and `list`
-- [ ] Task: Phase 1 Verification & Checkpoint (Refer to workflow.md)
+- [x] Task: Define `crystal_lesson` schema and parameters in `DefaultMcpHandler.scala`
+  - [x] Add `crystal_lesson` tool declaration with actions (`record`, `resolve`, `list`)
+  - [x] Support recording lessons with category, context, summary, and resolution
+- [x] Task: Implement backend handler logic for lesson actions in `DefaultMcpHandler`
+  - [x] Wire `record` action to crystal store lessons ledger
+  - [x] Wire `resolve` action to mark lessons resolved
+  - [x] Wire `list` action to render structured lessons Markdown table
+- [x] Task: Unit tests for `crystal_lesson` tool
+  - [x] Write MUnit tests in `DefaultMcpHandlerSuite` verifying `record`, `resolve`, and `list`
+- [x] Task: Phase 1 Verification & Checkpoint (Refer to workflow.md)
 
 ---
 

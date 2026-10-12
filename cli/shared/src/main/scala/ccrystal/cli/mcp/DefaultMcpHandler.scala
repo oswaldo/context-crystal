@@ -1,5 +1,6 @@
 package ccrystal.cli.mcp
 
+import java.time.Instant
 import io.circe.*
 import io.circe.syntax.*
 import ccrystal.core.mcp.*
@@ -601,6 +602,55 @@ class DefaultMcpHandler(
                   "description" -> "When action is 'list', return structured JSON instead of formatted text (default: false)".asJson,
                 ),
               ),
+            ),
+          ),
+          Tool(
+            name = "crystal_lesson",
+            description =
+              "Record, resolve, or list lessons learned across crystals to prevent cognitive regression, repeated friction, and agent amnesia.",
+            inputSchema = Json.obj(
+              "type" -> "object".asJson,
+              "properties" -> Json.obj(
+                "action" -> Json.obj(
+                  "type" -> "string".asJson,
+                  "enum" -> List("record", "resolve", "dismiss", "list").asJson,
+                  "description" -> "Action: record (capture lesson), resolve (mark resolved/actioned), dismiss, or list".asJson,
+                ),
+                "crystal_id" -> Json.obj(
+                  "type" -> "string".asJson,
+                  "description" -> "Target crystal ID (required for record and resolve; optional for list)".asJson,
+                ),
+                "id" -> Json.obj(
+                  "type" -> "string".asJson,
+                  "description" -> "Lesson identifier (e.g. lesson-1; required for resolve/dismiss; optional for record)".asJson,
+                ),
+                "observed_friction" -> Json.obj(
+                  "type" -> "string".asJson,
+                  "description" -> "Description of the observed friction or failure pattern (required for record)".asJson,
+                ),
+                "root_cause" -> Json.obj(
+                  "type"        -> "string".asJson,
+                  "description" -> "Root cause analysis of the friction (optional)".asJson,
+                ),
+                "recommended_action" -> Json.obj(
+                  "type" -> "string".asJson,
+                  "description" -> "Actionable pattern, rule, or remediation to prevent recurrence (optional for record)".asJson,
+                ),
+                "action_summary" -> Json.obj(
+                  "type" -> "string".asJson,
+                  "description" -> "Summary of resolution action taken (optional for resolve)".asJson,
+                ),
+                "actor_id" -> Json.obj(
+                  "type" -> "string".asJson,
+                  "description" -> "Entity ID performing the action (optional, defaults to agt_mcp)".asJson,
+                ),
+                "status" -> Json.obj(
+                  "type" -> "string".asJson,
+                  "enum" -> List("open", "actioned", "dismissed").asJson,
+                  "description" -> "Filter status for list action (optional: open, actioned, dismissed)".asJson,
+                ),
+              ),
+              "required" -> List("action").asJson,
             ),
           ),
         )
@@ -1284,6 +1334,216 @@ class DefaultMcpHandler(
                     s"Unknown action '$other' for crystal_connect (valid: connect, disconnect, list)",
                 ),
               ),
+              isError = true,
+            )
+
+      case "crystal_lesson" =>
+        val actionOpt = cursor.get[String]("action").toOption
+        actionOpt match
+          case Some("record") =>
+            val crystalIdOpt = cursor.get[String]("crystal_id").toOption
+            val frictionOpt  = cursor.get[String]("observed_friction").toOption
+            val rootCauseOpt = cursor.get[String]("root_cause").toOption
+            val recActionOpt = cursor.get[String]("recommended_action").toOption
+            val customIdOpt  = cursor.get[String]("id").toOption
+
+            (crystalIdOpt, frictionOpt) match
+              case (Some(crystalId), Some(friction)) =>
+                var assignedLessonId = ""
+                val res = store.update(crystalId) { crystal =>
+                  val lessonId =
+                    customIdOpt.getOrElse(s"lesson-${crystal.lessonsLearned.size + 1}")
+                  assignedLessonId = lessonId
+                  val newLesson =
+                    LessonLearned(lessonId, friction, rootCauseOpt, recActionOpt, LessonStatus.Open)
+                  Right(
+                    crystal.copy(
+                      updatedAt = Instant.now().toString,
+                      lessonsLearned = crystal.lessonsLearned :+ newLesson,
+                    ),
+                  )
+                }
+                res match
+                  case Right(_) =>
+                    CallToolResult(
+                      List(
+                        ToolContent(
+                          text = s"Recorded lesson '$assignedLessonId' in crystal '$crystalId'.",
+                        ),
+                      ),
+                      isError = false,
+                    )
+                  case Left(err) =>
+                    CallToolResult(
+                      List(ToolContent(text = s"Failed to record lesson: $err")),
+                      isError = true,
+                    )
+              case (None, _) =>
+                CallToolResult(
+                  List(ToolContent(text = "Missing required 'crystal_id' for action 'record'")),
+                  isError = true,
+                )
+              case (_, None) =>
+                CallToolResult(
+                  List(
+                    ToolContent(text = "Missing required 'observed_friction' for action 'record'"),
+                  ),
+                  isError = true,
+                )
+
+          case Some("resolve") | Some("dismiss") =>
+            val isDismiss    = actionOpt.contains("dismiss")
+            val crystalIdOpt = cursor.get[String]("crystal_id").toOption
+            val lessonIdOpt  = cursor.get[String]("id").toOption
+            val summaryOpt   = cursor.get[String]("action_summary").toOption
+            val actorId      = cursor.get[String]("actor_id").getOrElse("agt_mcp")
+
+            (crystalIdOpt, lessonIdOpt) match
+              case (Some(crystalId), Some(lessonId)) =>
+                val targetStatus =
+                  if isDismiss then LessonStatus.Dismissed else LessonStatus.Actioned
+                val actionDesc =
+                  if isDismiss then summaryOpt.getOrElse("Dismissed lesson via crystal_lesson")
+                  else summaryOpt.getOrElse("Resolved lesson via crystal_lesson")
+
+                val res = store.update(crystalId) { crystal =>
+                  val now   = Instant.now().toString
+                  var found = false
+                  val updatedLessons = crystal.lessonsLearned.map { l =>
+                    if l.id == lessonId then
+                      found = true
+                      l.copy(
+                        status = targetStatus,
+                        actionAuditTrail =
+                          l.actionAuditTrail :+ ActionAuditEntry(now, actionDesc, actorId),
+                      )
+                    else l
+                  }
+                  if !found then Left(s"Lesson '$lessonId' not found in crystal '$crystalId'")
+                  else
+                    Right(
+                      crystal.copy(
+                        updatedAt = now,
+                        lessonsLearned = updatedLessons,
+                      ),
+                    )
+                }
+                res match
+                  case Right(_) =>
+                    val verb = if isDismiss then "Dismissed" else "Resolved"
+                    CallToolResult(
+                      List(
+                        ToolContent(
+                          text = s"$verb lesson '$lessonId' in crystal '$crystalId'.",
+                        ),
+                      ),
+                      isError = false,
+                    )
+                  case Left(err) =>
+                    CallToolResult(
+                      List(ToolContent(text = s"Failed to update lesson: $err")),
+                      isError = true,
+                    )
+              case (None, _) =>
+                CallToolResult(
+                  List(
+                    ToolContent(
+                      text = s"Missing required 'crystal_id' for action '${actionOpt.get}'",
+                    ),
+                  ),
+                  isError = true,
+                )
+              case (_, None) =>
+                CallToolResult(
+                  List(
+                    ToolContent(
+                      text = s"Missing required 'id' for action '${actionOpt.get}'",
+                    ),
+                  ),
+                  isError = true,
+                )
+
+          case Some("list") =>
+            val crystalIdOpt = cursor.get[String]("crystal_id").toOption
+            val statusFilterOpt = cursor.get[String]("status").toOption.flatMap {
+              case "open"      => Some(LessonStatus.Open)
+              case "actioned"  => Some(LessonStatus.Actioned)
+              case "dismissed" => Some(LessonStatus.Dismissed)
+              case _           => None
+            }
+
+            crystalIdOpt match
+              case Some(crystalId) =>
+                store.load(crystalId) match
+                  case Right(c) =>
+                    val filtered = statusFilterOpt match
+                      case Some(st) => c.lessonsLearned.filter(_.status == st)
+                      case None     => c.lessonsLearned
+                    val sb = new java.lang.StringBuilder()
+                    sb.append(s"### Lessons Learned for `${c.id}` (${filtered.size} total)\n\n")
+                    if filtered.isEmpty then sb.append("No lessons found matching criteria.\n")
+                    else
+                      sb.append("| ID | Status | Observed Friction | Recommended Action |\n")
+                      sb.append("|---|---|---|---|\n")
+                      filtered.foreach { l =>
+                        val rec = l.recommendedAction.getOrElse("-")
+                        sb.append(s"| `${l.id}` | ${l.status} | ${l.observedFriction} | $rec |\n")
+                      }
+                    CallToolResult(List(ToolContent(text = sb.toString)), isError = false)
+                  case Left(err) =>
+                    CallToolResult(
+                      List(ToolContent(text = s"Failed to load crystal '$crystalId': $err")),
+                      isError = true,
+                    )
+              case None =>
+                // List across cave
+                store.list() match
+                  case Right(crystals) =>
+                    val sb = new java.lang.StringBuilder()
+                    sb.append("### Cave Lessons Learned\n\n")
+                    var total = 0
+                    sb.append(
+                      "| Crystal ID | ID | Status | Observed Friction | Recommended Action |\n",
+                    )
+                    sb.append("|---|---|---|---|---|\n")
+                    crystals.foreach { c =>
+                      val filtered = statusFilterOpt match
+                        case Some(st) => c.lessonsLearned.filter(_.status == st)
+                        case None     => c.lessonsLearned
+                      total += filtered.size
+                      filtered.foreach { l =>
+                        val rec = l.recommendedAction.getOrElse("-")
+                        sb.append(
+                          s"| `${c.id}` | `${l.id}` | ${l.status} | ${l.observedFriction} | $rec |\n",
+                        )
+                      }
+                    }
+                    if total == 0 then
+                      CallToolResult(
+                        List(ToolContent(text = "No lessons found across cave.")),
+                        isError = false,
+                      )
+                    else CallToolResult(List(ToolContent(text = sb.toString)), isError = false)
+                  case Left(err) =>
+                    CallToolResult(
+                      List(ToolContent(text = s"Failed to list crystals: $err")),
+                      isError = true,
+                    )
+
+          case Some(other) =>
+            CallToolResult(
+              List(
+                ToolContent(
+                  text =
+                    s"Unknown action '$other' for crystal_lesson (valid: record, resolve, dismiss, list)",
+                ),
+              ),
+              isError = true,
+            )
+
+          case None =>
+            CallToolResult(
+              List(ToolContent(text = "Missing required 'action' parameter for crystal_lesson")),
               isError = true,
             )
 

@@ -1235,3 +1235,89 @@ class DefaultMcpHandlerSuite extends FunSuite:
       disconnectResult.content.head.text
         .contains("Disconnected all bonds from 'c-alpha' -> 'c-beta'"),
     )
+
+  test("DefaultMcpHandler handles crystal_lesson record, resolve, and list"):
+    val (handler, store, _) = createFixture()
+
+    val initReq = JsonRpcRequest(
+      id = JsonRpcId.Num(200L),
+      method = "tools/call",
+      params = Some(
+        Json.obj(
+          "name" -> "crystal_init".asJson,
+          "arguments" -> Json.obj(
+            "name" -> "c-lesson-test".asJson,
+            "goal" -> "Test Goal".asJson,
+          ),
+        ),
+      ),
+    )
+    val initResp = handler.handle(initReq)
+    assertEquals(initResp.error.isEmpty, true)
+    val initResult = initResp.result.get.as[CallToolResult].toOption.get
+    assertEquals(initResult.isError, false)
+
+    // 1. Record lesson
+    val recordReq = JsonRpcRequest(
+      id = JsonRpcId.Num(201L),
+      method = "tools/call",
+      params = Some(
+        Json.obj(
+          "name" -> "crystal_lesson".asJson,
+          "arguments" -> Json.obj(
+            "action"             -> "record".asJson,
+            "crystal_id"         -> "c-lesson-test".asJson,
+            "observed_friction"  -> "SBT failed to resolve dependency".asJson,
+            "root_cause"         -> "Missing resolver repository".asJson,
+            "recommended_action" -> "Add Sonatype repository to resolvers".asJson,
+          ),
+        ),
+      ),
+    )
+    val recordResp = handler.handle(recordReq)
+    assertEquals(recordResp.error.isEmpty, true)
+    val recordResult = recordResp.result.get.as[CallToolResult].toOption.get
+    assertEquals(recordResult.isError, false)
+    assert(recordResult.content.head.text.contains("Recorded lesson"))
+
+    // 2. List lessons
+    val listReq = JsonRpcRequest(
+      id = JsonRpcId.Num(202L),
+      method = "tools/call",
+      params = Some(
+        Json.obj(
+          "name" -> "crystal_lesson".asJson,
+          "arguments" -> Json.obj(
+            "action"     -> "list".asJson,
+            "crystal_id" -> "c-lesson-test".asJson,
+          ),
+        ),
+      ),
+    )
+    val listResp = handler.handle(listReq)
+    assertEquals(listResp.error.isEmpty, true)
+    val listResult = listResp.result.get.as[CallToolResult].toOption.get
+    assertEquals(listResult.isError, false)
+    assert(listResult.content.head.text.contains("SBT failed to resolve dependency"))
+
+    // 3. Resolve lesson
+    val resolveReq = JsonRpcRequest(
+      id = JsonRpcId.Num(203L),
+      method = "tools/call",
+      params = Some(
+        Json.obj(
+          "name" -> "crystal_lesson".asJson,
+          "arguments" -> Json.obj(
+            "action"         -> "resolve".asJson,
+            "crystal_id"     -> "c-lesson-test".asJson,
+            "id"             -> "lesson-1".asJson,
+            "action_summary" -> "Configured Sonatype resolver in build.sbt".asJson,
+          ),
+        ),
+      ),
+    )
+    val resolveResp = handler.handle(resolveReq)
+    assertEquals(resolveResp.error.isEmpty, true)
+    val resolveResult = resolveResp.result.get.as[CallToolResult].toOption.get
+    assertEquals(resolveResult.isError, false)
+    assert(resolveResult.content.head.text.contains("Resolved lesson 'lesson-1'"))
