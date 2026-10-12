@@ -3,7 +3,7 @@
   "id" : "release-v1-2-1-ergonomics-and-quality-guards",
   "name" : "release-v1-2-1-ergonomics-and-quality-guards",
   "createdAt" : "2026-10-12T20:38:46.789Z",
-  "updatedAt" : "2026-10-12T20:38:46.789Z",
+  "updatedAt" : "2026-10-12T21:15:59.941Z",
   "parentCrystalId" : null,
   "origin" : null,
   "caveId" : null,
@@ -16,7 +16,7 @@
       {
         "id" : "task-1",
         "description" : "Integrate sbt-buildinfo to expose ccrystal --version and -v CLI flags [task-1]",
-        "completed" : false
+        "completed" : true
       },
       {
         "id" : "task-2",
