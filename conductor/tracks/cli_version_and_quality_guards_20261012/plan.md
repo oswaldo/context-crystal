@@ -32,7 +32,7 @@
 - [x] Task: Run full platform cross-build verification (803d72b)
   - [x] Execute `sbt test` across JVM, Native, and JS platforms
   - [x] Execute `sbt "cliNative/nativeLink"` to confirm native binary links
-- [ ] Task: Package and verify v1.2.1 release artifacts
-  - [ ] Run dry-run package script `scripts/package-release.sh v1.2.1`
-  - [ ] Update Context Crystal tasks in `release-v1-2-1-ergonomics-and-quality-guards`
+- [x] Task: Package and verify v1.2.1 release artifacts (51bf185)
+  - [x] Run dry-run package script `scripts/package-release.sh v1.2.1`
+  - [x] Update Context Crystal tasks in `release-v1-2-1-ergonomics-and-quality-guards`
 - [ ] Task: Phase 3 Verification & Checkpoint (Refer to workflow.md)
