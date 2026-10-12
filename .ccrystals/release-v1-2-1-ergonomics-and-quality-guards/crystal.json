@@ -3,7 +3,7 @@
   "id" : "release-v1-2-1-ergonomics-and-quality-guards",
   "name" : "release-v1-2-1-ergonomics-and-quality-guards",
   "createdAt" : "2026-10-12T20:38:46.789Z",
-  "updatedAt" : "2026-10-12T21:27:15.969Z",
+  "updatedAt" : "2026-10-12T21:33:29.499Z",
   "parentCrystalId" : null,
   "origin" : null,
   "caveId" : null,
@@ -11,7 +11,7 @@
   "goal" : {
     "title" : "Release v1.2.1: CLI Version Flag & BuildInfo Integration and Pre-Push Quality Guards",
     "intent" : "Deliver v1.2.1 patch milestone focusing on developer ergonomics, ccrystal --version integration, and automated quality guards before moving to v1.3.0",
-    "status" : "in_progress",
+    "status" : "concluded_success",
     "acceptanceCriteria" : [
       {
         "id" : "task-1",
@@ -31,7 +31,7 @@
       {
         "id" : "task-4",
         "description" : "Execute multi-channel release workflow and tag v1.2.1 [task-4]",
-        "completed" : false
+        "completed" : true
       }
     ],
     "metadata" : {
@@ -64,6 +64,29 @@
         "actorId" : "usr_oswaldo",
         "kind" : "human_prompt",
         "contentSummary" : "Initialized crystal 'release-v1-2-1-ergonomics-and-quality-guards' with goal: Release v1.2.1: CLI Version Flag & BuildInfo Integration and Pre-Push Quality Guards",
+        "anchor" : null,
+        "artifactIds" : [
+        ],
+        "inputArtifactIds" : [
+        ],
+        "outputArtifactIds" : [
+        ],
+        "preconditionArtifactIds" : [
+        ],
+        "fidelity" : "inferred",
+        "metadata" : {
+          
+        }
+      },
+      {
+        "id" : "node-2",
+        "parentIds" : [
+          "node-release-v1-2-1-ergonomics-and-quality-guards-init"
+        ],
+        "timestamp" : "2026-10-12T21:33:29.499Z",
+        "actorId" : "usr_oswaldo",
+        "kind" : "resolution",
+        "contentSummary" : "Delivered v1.2.1 milestone: integrated sbt-buildinfo for ccrystal --version and -v CLI flags, authored repo-managed git quality hooks in .githooks, verified cross-platform matrices (Native, JVM, JS) and release packaging.",
         "anchor" : null,
         "artifactIds" : [
         ],
