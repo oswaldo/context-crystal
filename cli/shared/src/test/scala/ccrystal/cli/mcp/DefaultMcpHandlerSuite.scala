@@ -1321,3 +1321,115 @@ class DefaultMcpHandlerSuite extends FunSuite:
     val resolveResult = resolveResp.result.get.as[CallToolResult].toOption.get
     assertEquals(resolveResult.isError, false)
     assert(resolveResult.content.head.text.contains("Resolved lesson 'lesson-1'"))
+
+  test(
+    "DefaultMcpHandler self-hydrates task checklist and goal summary on crystal_task_transition",
+  ):
+    val (handler, _, _) = createFixture()
+
+    handler.handle(
+      JsonRpcRequest(
+        id = JsonRpcId.Num(300L),
+        method = "tools/call",
+        params = Some(
+          Json.obj(
+            "name" -> "crystal_init".asJson,
+            "arguments" -> Json.obj(
+              "name"   -> "c-hydrate-tasks".asJson,
+              "goal"   -> "Implement self-hydrating responses".asJson,
+              "intent" -> "Eliminate redundant read tool calls".asJson,
+            ),
+          ),
+        ),
+      ),
+    )
+
+    // Add task
+    val addReq = JsonRpcRequest(
+      id = JsonRpcId.Num(301L),
+      method = "tools/call",
+      params = Some(
+        Json.obj(
+          "name" -> "crystal_task_transition".asJson,
+          "arguments" -> Json.obj(
+            "crystal_id"        -> "c-hydrate-tasks".asJson,
+            "action"            -> "add".asJson,
+            "description_or_id" -> "Write failing unit tests".asJson,
+          ),
+        ),
+      ),
+    )
+    val addResp   = handler.handle(addReq)
+    val addResult = addResp.result.get.as[CallToolResult].toOption.get
+    assertEquals(addResult.isError, false)
+    val addText = addResult.content.head.text
+    assert(addText.contains("Added task 'task-1'"))
+    assert(addText.contains("0/1 completed"))
+    assert(addText.contains("- [ ] task-1: Write failing unit tests"))
+    assert(addText.contains("Goal: Implement self-hydrating responses"))
+
+    // Done task
+    val doneReq = JsonRpcRequest(
+      id = JsonRpcId.Num(302L),
+      method = "tools/call",
+      params = Some(
+        Json.obj(
+          "name" -> "crystal_task_transition".asJson,
+          "arguments" -> Json.obj(
+            "crystal_id"        -> "c-hydrate-tasks".asJson,
+            "action"            -> "done".asJson,
+            "description_or_id" -> "task-1".asJson,
+          ),
+        ),
+      ),
+    )
+    val doneResp   = handler.handle(doneReq)
+    val doneResult = doneResp.result.get.as[CallToolResult].toOption.get
+    assertEquals(doneResult.isError, false)
+    val doneText = doneResult.content.head.text
+    assert(doneText.contains("Marked task 'task-1' as completed"))
+    assert(doneText.contains("1/1 completed"))
+    assert(doneText.contains("- [x] task-1: Write failing unit tests"))
+
+  test("DefaultMcpHandler self-hydrates DAG head and task progress snapshot on crystal_checkpoint"):
+    val (handler, _, _) = createFixture()
+
+    handler.handle(
+      JsonRpcRequest(
+        id = JsonRpcId.Num(310L),
+        method = "tools/call",
+        params = Some(
+          Json.obj(
+            "name" -> "crystal_init".asJson,
+            "arguments" -> Json.obj(
+              "name"  -> "c-hydrate-checkpoint".asJson,
+              "goal"  -> "Test checkpoint self-hydration".asJson,
+              "tasks" -> List("Task Alpha", "Task Beta").asJson,
+            ),
+          ),
+        ),
+      ),
+    )
+
+    val cpReq = JsonRpcRequest(
+      id = JsonRpcId.Num(311L),
+      method = "tools/call",
+      params = Some(
+        Json.obj(
+          "name" -> "crystal_checkpoint".asJson,
+          "arguments" -> Json.obj(
+            "crystal_id" -> "c-hydrate-checkpoint".asJson,
+            "summary"    -> "Completed first phase checkpoint".asJson,
+            "anchor"     -> "phase-1-done".asJson,
+          ),
+        ),
+      ),
+    )
+    val cpResp   = handler.handle(cpReq)
+    val cpResult = cpResp.result.get.as[CallToolResult].toOption.get
+    assertEquals(cpResult.isError, false)
+    val cpText = cpResult.content.head.text
+    assert(cpText.contains("Appended node 'node-2'"))
+    assert(cpText.contains("<anchor: phase-1-done>"))
+    assert(cpText.contains("Tasks: 0/2 completed"))
+    assert(cpText.contains("DAG Head: node-2 [checkpoint]"))

@@ -922,7 +922,24 @@ class DefaultMcpHandler(
               anchor = anchorOpt,
               timestamp = None,
             )
-            runCommandToResult(cmd)
+            val baseResult = runCommandToResult(cmd)
+            if !baseResult.isError then
+              store.load(cId) match
+                case Right(crystal) =>
+                  val sb = new java.lang.StringBuilder()
+                  sb.append(baseResult.content.head.text).append("\n\n")
+                  val completedTasks = crystal.goal.acceptanceCriteria.count(_.completed)
+                  val totalTasks     = crystal.goal.acceptanceCriteria.size
+                  sb.append(s"Tasks: $completedTasks/$totalTasks completed\n")
+                  crystal.dag.nodes.lastOption.foreach { head =>
+                    val anchorStr = head.anchor.fold("")(a => s" <anchor: $a>")
+                    sb.append(
+                      s"DAG Head: ${head.id} [${head.kind.toString.toLowerCase}]$anchorStr: ${head.contentSummary}\n",
+                    )
+                  }
+                  CallToolResult(List(ToolContent(text = sb.toString.trim)), isError = false)
+                case Left(_) => baseResult
+            else baseResult
           case _ =>
             CallToolResult(
               List(ToolContent(text = "Missing required 'crystal_id' or 'summary'")),
@@ -935,9 +952,15 @@ class DefaultMcpHandler(
         val targetOpt    = cursor.get[String]("description_or_id").toOption
         (crystalIdOpt, actionOpt, targetOpt) match
           case (Some(cId), Some("add"), Some(desc)) =>
-            runCommandToResult(CliCommand.TaskAdd(crystalId = cId, description = desc))
+            val baseResult = runCommandToResult(
+              CliCommand.TaskAdd(crystalId = cId, description = desc),
+            )
+            if !baseResult.isError then enrichTaskTransitionResult(cId, baseResult) else baseResult
           case (Some(cId), Some("done"), Some(taskId)) =>
-            runCommandToResult(CliCommand.TaskDone(crystalId = cId, taskId = taskId))
+            val baseResult = runCommandToResult(
+              CliCommand.TaskDone(crystalId = cId, taskId = taskId),
+            )
+            if !baseResult.isError then enrichTaskTransitionResult(cId, baseResult) else baseResult
           case _ =>
             CallToolResult(
               List(ToolContent(text = "Missing or invalid arguments for crystal_task_transition")),
@@ -1549,6 +1572,26 @@ class DefaultMcpHandler(
 
       case other =>
         CallToolResult(List(ToolContent(text = s"Unknown tool: $other")), isError = true)
+
+  private def enrichTaskTransitionResult(
+      crystalId: String,
+      baseResult: CallToolResult,
+  ): CallToolResult =
+    store.load(crystalId) match
+      case Right(crystal) =>
+        val sb = new java.lang.StringBuilder()
+        sb.append(baseResult.content.head.text).append("\n\n")
+        val completed = crystal.goal.acceptanceCriteria.count(_.completed)
+        val total     = crystal.goal.acceptanceCriteria.size
+        sb.append(s"Goal: ${crystal.goal.title}\n")
+        crystal.goal.intent.foreach(i => sb.append(s"Intent: $i\n"))
+        sb.append(s"Tasks: $completed/$total completed\n")
+        crystal.goal.acceptanceCriteria.foreach { ac =>
+          val mark = if ac.completed then "[x]" else "[ ]"
+          sb.append(s"- $mark ${ac.id}: ${ac.description}\n")
+        }
+        CallToolResult(List(ToolContent(text = sb.toString.trim)), isError = false)
+      case Left(_) => baseResult
 
   private def runCommandToResult(cmd: CliCommand): CallToolResult =
     runner.run(cmd) match

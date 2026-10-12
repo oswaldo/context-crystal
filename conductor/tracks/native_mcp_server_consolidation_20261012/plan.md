@@ -17,14 +17,14 @@
 
 ## Phase 2: Self-Hydrating Lifecycle Responses
 
-- [ ] Task: Implement self-hydrating task responses in `crystal_task_transition`
-  - [ ] Append rendered Markdown tasks list (`- [x] ...`, `- [ ] ...`) and progress counter
-  - [ ] Include active goal title and intent in transition response
-- [ ] Task: Implement context progress snapshot in `crystal_checkpoint`
-  - [ ] Append current DAG head and task progress snapshot in checkpoint response
-- [ ] Task: Unit tests for self-hydrating responses
-  - [ ] Write MUnit tests asserting rendered task list in `crystal_task_transition` response
-- [ ] Task: Phase 2 Verification & Checkpoint (Refer to workflow.md)
+- [x] Task: Implement self-hydrating task responses in `crystal_task_transition`
+  - [x] Append rendered Markdown tasks list (`- [x] ...`, `- [ ] ...`) and progress counter
+  - [x] Include active goal title and intent in transition response
+- [x] Task: Implement context progress snapshot in `crystal_checkpoint`
+  - [x] Append current DAG head and task progress snapshot in checkpoint response
+- [x] Task: Unit tests for self-hydrating responses
+  - [x] Write MUnit tests asserting rendered task list in `crystal_task_transition` response
+- [x] Task: Phase 2 Verification & Checkpoint (Refer to workflow.md)
 
 ---
 
