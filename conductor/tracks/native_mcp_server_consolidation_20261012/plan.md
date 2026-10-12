@@ -30,10 +30,10 @@
 
 ## Phase 3: Eager Harness Configuration & TDQS Hardening
 
-- [ ] Task: Update `AgentInstaller` for Eager tool promotion and instructions generation
-  - [ ] Promote high-frequency tools (`crystal_checkpoint`, `crystal_task_transition`, `crystal_hydrate`, `crystal_lesson`) to eager declarations
-  - [ ] Generate compact `instructions.md` reference cheatsheets
-- [ ] Task: End-to-end verification and cross-platform tests
-  - [ ] Run full test suites across Native and JVM targets (`sbt test`)
-  - [ ] Update Context Crystal task in `release-v1-3-0-extensions-media-and-mcp-optimization`
-- [ ] Task: Phase 3 Verification & Checkpoint (Refer to workflow.md)
+- [x] Task: Update `AgentInstaller` for Eager tool promotion and instructions generation
+  - [x] Promote high-frequency tools (`crystal_checkpoint`, `crystal_task_transition`, `crystal_hydrate`, `crystal_lesson`) to eager declarations
+  - [x] Generate compact `instructions.md` reference cheatsheets
+- [x] Task: End-to-end verification and cross-platform tests
+  - [x] Run full test suites across Native and JVM targets (`sbt test`)
+  - [x] Update Context Crystal task in `release-v1-3-0-extensions-media-and-mcp-optimization`
+- [x] Task: Phase 3 Verification & Checkpoint (Refer to workflow.md)

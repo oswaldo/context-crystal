@@ -43,8 +43,9 @@ flowchart LR
 1. **Inception (`crystal_init`):**
    Initialize a dedicated crystal with `name`, `goal`, optional `intent`, `author`, and initial `tasks`.
 2. **Work & Provenance Tracking:**
-   - **Tasks:** `crystal_task_transition` (`action: "add"` or `"done"`).
-   - **DAG Anchors & Nodes:** `crystal_checkpoint` for semantic anchors, or `node add` via `crystal_batch`.
+   - **Tasks:** `crystal_task_transition` (`action: "add"` or `"done"`). Self-hydrates with rendered task checklist (`- [x] ...`, `- [ ] ...`), completion count, and goal summary.
+   - **DAG Anchors & Nodes:** `crystal_checkpoint` for semantic anchors, or `node add` via `crystal_batch`. Self-hydrates with latest DAG head and task progress snapshot.
+   - **Lessons Learned (`crystal_lesson`):** Record friction or failure patterns (`action: "record"` with `observed_friction`, `root_cause`, `recommended_action`), mark actioned/resolved (`action: "resolve"` or `action: "dismiss"`), or query lessons (`action: "list"`). Prevents cognitive regression across turns and sessions.
    - **Fidelity Guarantee:** Default to `inferred` for agent-authored reasoning; use `intercepted` only for exact captured tool inputs/outputs.
 3. **Transient Leases (`crystal_transient_lease`):**
    Register temporary working state (e.g. `git_worktree`). Always clean or promote leases before concluding work.

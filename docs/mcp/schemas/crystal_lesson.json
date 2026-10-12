@@ -1,0 +1,48 @@
+{
+  "name": "crystal_lesson",
+  "description": "Record, resolve, or list lessons learned across crystals to prevent cognitive regression, repeated friction, and agent amnesia.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "action": {
+        "type": "string",
+        "enum": ["record", "resolve", "dismiss", "list"],
+        "description": "Action: record (capture lesson), resolve (mark resolved/actioned), dismiss, or list"
+      },
+      "crystal_id": {
+        "type": "string",
+        "description": "Target crystal ID (required for record and resolve; optional for list)"
+      },
+      "id": {
+        "type": "string",
+        "description": "Lesson identifier (e.g. lesson-1; required for resolve/dismiss; optional for record)"
+      },
+      "observed_friction": {
+        "type": "string",
+        "description": "Description of the observed friction or failure pattern (required for record)"
+      },
+      "root_cause": {
+        "type": "string",
+        "description": "Root cause analysis of the friction (optional)"
+      },
+      "recommended_action": {
+        "type": "string",
+        "description": "Actionable pattern, rule, or remediation to prevent recurrence (optional for record)"
+      },
+      "action_summary": {
+        "type": "string",
+        "description": "Summary of resolution action taken (optional for resolve)"
+      },
+      "actor_id": {
+        "type": "string",
+        "description": "Entity ID performing the action (optional, defaults to agt_mcp)"
+      },
+      "status": {
+        "type": "string",
+        "enum": ["open", "actioned", "dismissed"],
+        "description": "Filter status for list action (optional: open, actioned, dismissed)"
+      }
+    },
+    "required": ["action"]
+  }
+}
