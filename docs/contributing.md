@@ -95,15 +95,23 @@ All daily coding and testing stays 100% inside standard `sbt`:
   sbt test
   ```
 
-- **Pre-Commit / Pre-Push Linting Round:**
-  To guarantee that what you review and sign matches exactly what runs in CI, always format and lint before committing:
+- **Automated Git Quality Hooks (Zero Push-Fail Cycles):**
+  Activate the repository-managed hooks to automatically guard formatting on commit and full verification on push:
+
+  ```bash
+  ./scripts/setup-hooks.sh
+  ```
+
+  - **`pre-commit`:** Runs `sbt scalafmtCheckAll` whenever staged `.scala` files are detected.
+  - **`pre-push`:** Executes `sbt "scalafmtCheckAll; scalafixAll --check"` and `sbt test` before remote transport pushes.
+
+- **Manual Formatting Round:**
+  If hooks detect formatting discrepancies, run:
 
   ```bash
   sbt "scalafmtAll; scalafixAll"
   sbt "scalafmtCheckAll"
   ```
-
-  *(CI will fail pull requests if unlinted or unformatted changes are detected).*
 
 ---
 

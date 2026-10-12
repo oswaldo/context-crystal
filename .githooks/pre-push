@@ -1,0 +1,32 @@
+#!/bin/sh
+# Context Crystal Pre-Push Quality Guard
+# Runs comprehensive verification (scalafmt, scalafix, tests) before publishing to remotes.
+# Prevents broken CI builds and push-fail cycles.
+
+set -e
+
+# Support emergency bypass
+if [ "${HOOK_BYPASS:-0}" = "1" ]; then
+    exit 0
+fi
+
+printf '\033[0;34m===> [pre-push]\033[0m Running Context Crystal pre-push quality guards...\n'
+
+# 1. Format & Lint Check
+printf '\033[0;34m[pre-push]\033[0m Step 1/2: Verifying formatting and scalafix lints...\n'
+if ! sbt "scalafmtCheckAll; scalafixAll --check"; then
+    printf '\033[0;31m[pre-push] FAILED:\033[0m Formatting or scalafix lint check failed.\n' >&2
+    printf 'Run \033[1;32msbt "scalafmtAll; scalafixAll"\033[0m to resolve.\n' >&2
+    exit 1
+fi
+
+# 2. Test Suite Check
+printf '\033[0;34m[pre-push]\033[0m Step 2/2: Executing test suites...\n'
+if ! sbt "test"; then
+    printf '\033[0;31m[pre-push] FAILED:\033[0m Unit test suites failed.\n' >&2
+    printf 'Fix the failing tests before pushing, or use \033[1;33mgit push --no-verify\033[0m for emergency bypass.\n' >&2
+    exit 1
+fi
+
+printf '\033[0;32m===> [pre-push] All quality guards PASSED.\033[0m Proceeding with push.\n'
+exit 0

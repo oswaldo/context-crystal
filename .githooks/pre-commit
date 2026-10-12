@@ -1,0 +1,24 @@
+#!/bin/sh
+# Context Crystal Pre-Commit Quality Guard
+# Verifies Scala source formatting and basic safety on staged files before commit.
+
+set -e
+
+# Support emergency bypass
+if [ "${HOOK_BYPASS:-0}" = "1" ]; then
+    exit 0
+fi
+
+# Detect staged Scala files
+STAGED_SCALA=$(git diff --cached --name-only --diff-filter=ACM | grep '\.scala$' || true)
+
+if [ -n "$STAGED_SCALA" ]; then
+    printf '\033[0;34m[pre-commit]\033[0m Checking Scala formatting with scalafmt...\n'
+    if ! sbt -error "scalafmtCheckAll"; then
+        printf '\033[0;31m[pre-commit] Error:\033[0m Code formatting violations detected.\n' >&2
+        printf 'Run \033[1;32msbt scalafmtAll\033[0m and stage the changes before committing.\n' >&2
+        exit 1
+    fi
+fi
+
+exit 0

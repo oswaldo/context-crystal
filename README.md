@@ -357,6 +357,18 @@ sbt "coreJVM/test; cliJVM/test"
 sbt "scalafmtCheckAll; scalafixAll"
 ```
 
+### Quality Guards & Automated Git Hooks
+
+Context Crystal includes repository-managed git hooks in `.githooks/` to enforce zero push-fail cycles:
+
+```bash
+# Activate automated pre-commit and pre-push quality guards
+./scripts/setup-hooks.sh
+```
+
+- **`pre-commit`:** Runs `sbt scalafmtCheckAll` on staged `.scala` files.
+- **`pre-push`:** Runs `sbt "scalafmtCheckAll; scalafixAll --check"` and `sbt test` before pushes.
+
 ---
 
 ## Philosophy & Foundations
