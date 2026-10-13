@@ -51,13 +51,13 @@
 
 ## Phase 4: Native MCP Server Tools & Schema Synchronization
 
-- [ ] Task 4.1: Native MCP Tools for Extensions
+- [x] Task 4.1: Native MCP Tools for Extensions
   - Implement `crystal_extension_list` (with multi-scope resolution) and `crystal_extension_manage`.
   - Implement MCP comms operations (`crystal_extension_comms_send`, `crystal_extension_comms_read`).
-- [ ] Task 4.2: MCP Schemas & Instructions Documentation
+- [x] Task 4.2: MCP Schemas & Instructions Documentation
   - Update `docs/mcp/schemas/` with tool schemas and update `docs/mcp/instructions.md`.
   - Write MCP JSON-RPC unit tests.
-- [ ] Task 4.3: Phase 4 Checkpoint & MCP Verification
+- [x] Task 4.3: Phase 4 Checkpoint & MCP Verification
   - Verify MCP handler test suite across targets.
 
 ---
