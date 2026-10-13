@@ -7,6 +7,7 @@
   "enabled": true,
   "description": "CEP-0002 Media & Multi-Modal Asset Provenance Extension Standard",
   "schemaUri": "spec/extensions/media/schema.json",
+  "entrypoint": "review.sh",
   "metadata": {
     "supportedMediaTypes": "video_master,inspection_still,audio_stem,lut_profile,motion_template",
     "protocolVersion": "1.0"

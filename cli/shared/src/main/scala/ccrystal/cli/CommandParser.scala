@@ -4,6 +4,7 @@ import cats.data.Validated
 import cats.implicits.*
 import com.monovore.decline.*
 import ccrystal.core.model.*
+import ccrystal.core.model.extension.*
 import ccrystal.core.model.lattice.*
 
 object CommandParser:
@@ -13,6 +14,17 @@ object CommandParser:
       .replaceAll("([a-z0-9])([A-Z])", "$1_$2")
       .toLowerCase
       .replace('-', '_')
+
+  private given extensionScopeArgument: Argument[ExtensionScope] = Argument.from("scope") { s =>
+    normalize(s) match
+      case "host"    => Validated.valid(ExtensionScope.Host)
+      case "cave"    => Validated.valid(ExtensionScope.Cave)
+      case "crystal" => Validated.valid(ExtensionScope.Crystal)
+      case _ =>
+        Validated.invalidNel(
+          s"Invalid extension scope: '$s' (valid: host, cave, crystal)",
+        )
+  }
 
   private given bondRelationArgument: Argument[BondRelation] = Argument.from("relation") { s =>
     BondRelation.parse(s) match
@@ -715,6 +727,79 @@ object CommandParser:
         ),
     )
 
+  private val extListOpts = (
+    Opts.option[String]("crystal", "Filter by specific crystal ID", "c").orNone,
+    Opts.option[ExtensionScope]("scope", "Filter by extension scope (host, cave, crystal)").orNone,
+    Opts.flag("json", "Output in JSON format").orFalse,
+  ).mapN(CliCommand.ExtensionList.apply)
+
+  private val extEnableOpts = (
+    Opts.argument[String]("ext-id"),
+    Opts.option[String]("crystal", "Enable for specific crystal ID", "c").orNone,
+    Opts.flag("cave", "Enable cave-wide").orFalse,
+  ).mapN(CliCommand.ExtensionEnable.apply)
+
+  private val extDisableOpts = (
+    Opts.argument[String]("ext-id"),
+    Opts.option[String]("crystal", "Disable for specific crystal ID", "c").orNone,
+    Opts.flag("cave", "Disable cave-wide").orFalse,
+  ).mapN(CliCommand.ExtensionDisable.apply)
+
+  private val extRunOpts = (
+    Opts.argument[String]("ext-id"),
+    Opts.option[String]("crystal", "Context crystal ID", "c").orNone,
+    Opts.arguments[String]("args").map(_.toList).withDefault(Nil),
+  ).mapN(CliCommand.ExtensionRun.apply)
+
+  private val commsSendOpts = (
+    Opts.argument[String]("crystal-id"),
+    Opts.option[String]("from", "Sender entity ID (e.g. usr_oswaldo, agt_architect)"),
+    Opts.options[String]("to", "Recipient entity, group ID, or @all / @channel").map(_.toList),
+    Opts.option[String]("subject", "Message subject or topic", "s"),
+    Opts.option[String]("body", "Message body content", "b"),
+    Opts
+      .option[String]("channel", "Communication channel (default: default)")
+      .withDefault("default"),
+    Opts.option[String]("reply-to", "In-reply-to message ID").orNone,
+  ).mapN(CliCommand.CommsSend.apply)
+
+  private val commsListOpts = (
+    Opts.argument[String]("crystal-id"),
+    Opts.option[String]("inbox", "List inbox messages for recipient entity ID").orNone,
+    Opts.option[String]("outbox", "List outbox messages for sender entity ID").orNone,
+    Opts.option[Int]("limit", "Maximum number of audit log messages to display", "n").orNone,
+    Opts.flag("json", "Output in JSON format").orFalse,
+  ).mapN(CliCommand.CommsList.apply)
+
+  private val commsCmd = Opts.subcommand("comms", "Crystal Comms lock-free messaging")(
+    Opts
+      .subcommand("send", "Send a message to entities or groups")(commsSendOpts)
+      .orElse(Opts.subcommand("list", "List inbox, outbox, or audit messages")(commsListOpts)),
+  )
+
+  private val extCmd = Opts.subcommand("ext", "Manage Context Crystal modular spec extensions")(
+    Opts
+      .subcommand("list", "List active, embedded, and discovered extensions across scopes")(
+        extListOpts,
+      )
+      .orElse(Opts.subcommand("enable", "Enable an extension")(extEnableOpts))
+      .orElse(Opts.subcommand("disable", "Disable an extension")(extDisableOpts))
+      .orElse(Opts.subcommand("run", "Execute extension entrypoint subprocess")(extRunOpts))
+      .orElse(commsCmd),
+  )
+
+  private val extensionCmd =
+    Opts.subcommand("extension", "Manage Context Crystal modular spec extensions (alias for ext)")(
+      Opts
+        .subcommand("list", "List active, embedded, and discovered extensions across scopes")(
+          extListOpts,
+        )
+        .orElse(Opts.subcommand("enable", "Enable an extension")(extEnableOpts))
+        .orElse(Opts.subcommand("disable", "Disable an extension")(extDisableOpts))
+        .orElse(Opts.subcommand("run", "Execute extension entrypoint subprocess")(extRunOpts))
+        .orElse(commsCmd),
+    )
+
   private val subcommands: List[Opts[CliCommand]] = List(
     forAiOpt,
     versionOpt,
@@ -768,6 +853,8 @@ object CommandParser:
     Opts.subcommand("connections", "List inbound and outbound lattice bonds for a crystal")(
       connectionsOpts,
     ),
+    extCmd,
+    extensionCmd,
     agentCmd,
     Opts.subcommand("mcp", "Start the Model Context Protocol (MCP) server")(mcpOpts),
   )

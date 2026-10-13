@@ -20,6 +20,7 @@ case class ExtensionManifest(
     enabled: Boolean,
     description: Option[String] = None,
     schemaUri: Option[String] = None,
+    entrypoint: Option[String] = None,
     metadata: Map[String, String] = Map.empty,
 ) derives CanEqual
 

@@ -1,10 +1,13 @@
 package ccrystal.cli
 
 import ccrystal.core.model.*
+import ccrystal.core.model.extension.*
+import ccrystal.core.codec.given
+import ccrystal.core.codec.extension.given
+import ccrystal.core.codec.extension.comms.given
 import ccrystal.core.store.CrystalStore
 import ccrystal.core.dag.{ContextHydrator, CrystalDAG, CrystalSlicer, HydrationParams, SliceParams}
 import ccrystal.core.audit.CrystalAuditor
-import ccrystal.core.codec.given
 import io.circe.syntax.*
 import java.time.Instant
 
@@ -870,6 +873,184 @@ class Runner(
         if jsonOutput then summary.asJson.spaces2
         else renderConnections(summary)
       }
+
+    case CliCommand.ExtensionList(crystalIdOpt, scopeOpt, jsonOutput) =>
+      store.listExtensions(crystalIdOpt).map { exts =>
+        val filtered = scopeOpt match
+          case Some(sc) => exts.filter(_.scope == sc)
+          case None     => exts
+        if jsonOutput then filtered.asJson.spaces2
+        else renderExtensionList(filtered, crystalIdOpt)
+      }
+
+    case CliCommand.ExtensionEnable(extId, crystalIdOpt, cave) =>
+      val targetScope =
+        if cave then ExtensionScope.Cave
+        else crystalIdOpt.map(_ => ExtensionScope.Crystal).getOrElse(ExtensionScope.Cave)
+      store.getExtensionManifest(extId, crystalIdOpt).flatMap {
+        case Some(existing) =>
+          val updated = existing.copy(enabled = true, scope = targetScope)
+          store
+            .saveExtensionManifest(updated, crystalIdOpt)
+            .map(_ => s"Extension '$extId' enabled for $targetScope.")
+        case None =>
+          Left(s"Extension '$extId' not found.")
+      }
+
+    case CliCommand.ExtensionDisable(extId, crystalIdOpt, cave) =>
+      val targetScope =
+        if cave then ExtensionScope.Cave
+        else crystalIdOpt.map(_ => ExtensionScope.Crystal).getOrElse(ExtensionScope.Cave)
+      store.getExtensionManifest(extId, crystalIdOpt).flatMap {
+        case Some(existing) =>
+          val updated = existing.copy(enabled = false, scope = targetScope)
+          store
+            .saveExtensionManifest(updated, crystalIdOpt)
+            .map(_ => s"Extension '$extId' disabled for $targetScope.")
+        case None =>
+          Left(s"Extension '$extId' not found.")
+      }
+
+    case CliCommand.ExtensionRun(extId, crystalIdOpt, args) =>
+      store.getExtensionManifest(extId, crystalIdOpt).flatMap {
+        case Some(m) =>
+          m.entrypoint match
+            case Some(ep) =>
+              val caveDir = store match
+                case fs: ccrystal.core.store.FsCrystalStore => fs.rootOsPath
+                case _                                      => os.pwd / ".ccrystals"
+              val extDirEither: Either[String, os.Path] = m.scope match
+                case ExtensionScope.Crystal =>
+                  crystalIdOpt match
+                    case Some(cId) => Right(caveDir / cId / "extensions" / extId)
+                    case None => Left("Crystal ID required for crystal-scoped extension execution")
+                case ExtensionScope.Host =>
+                  Right(os.home / ".config" / "ccrystal" / "extensions" / extId)
+                case ExtensionScope.Cave =>
+                  Right(caveDir / "extensions" / extId)
+
+              extDirEither.flatMap { extDir =>
+                val execPath =
+                  if java.io.File(ep).isAbsolute then os.Path(java.nio.file.Paths.get(ep))
+                  else extDir / ep
+                if !os.exists(execPath) then
+                  Left(s"Extension entrypoint '$ep' not found at $execPath")
+                else
+                  try
+                    val p = os
+                      .proc(execPath.toString, args)
+                      .call(
+                        cwd = extDir,
+                        env = Map(
+                          "CCRYSTAL_CAVE_ROOT"  -> caveDir.toString,
+                          "CCRYSTAL_CRYSTAL_ID" -> crystalIdOpt.getOrElse(""),
+                          "CCRYSTAL_EXT_DIR"    -> extDir.toString,
+                        ),
+                        check = false,
+                      )
+                    if p.exitCode == 0 then Right(p.out.text().trim)
+                    else
+                      Left(
+                        s"Extension '$extId' failed with exit code ${p.exitCode}:\n${p.err.text().trim}",
+                      )
+                  catch
+                    case ex: Throwable =>
+                      Left(s"Failed to execute extension '$extId': ${ex.getMessage}")
+              }
+            case None =>
+              Left(s"Extension '$extId' does not declare an executable entrypoint in its manifest.")
+        case None =>
+          Left(s"Extension '$extId' not found.")
+      }
+
+    case CliCommand.CommsSend(crystalId, from, to, subject, body, channel, replyTo) =>
+      store.resolveExtensionStateDir("comms", crystalId).flatMap { stateDirStr =>
+        val commsEngine = new ccrystal.core.extension.comms.CommsEngine(
+          os.Path(java.nio.file.Paths.get(stateDirStr)),
+          () => store.getEntityRegistry().toOption,
+        )
+        val msg = ccrystal.core.model.extension.comms.CommsMessage(
+          id =
+            s"msg-${System.currentTimeMillis()}-${(scala.util.Random.nextDouble() * 10000).toInt}",
+          timestamp = Instant.now().toString,
+          senderId = from,
+          recipientIds = to,
+          subject = subject,
+          body = body,
+          channel = channel,
+          replyToId = replyTo,
+          metadata = Map.empty,
+        )
+        commsEngine
+          .sendMessage(msg)
+          .map(_ => s"Message '${msg.id}' sent to ${to.mkString(", ")} via channel '$channel'.")
+      }
+
+    case CliCommand.CommsList(
+          crystalId,
+          inboxRecipientOpt,
+          outboxSenderOpt,
+          limitOpt,
+          jsonOutput,
+        ) =>
+      store.resolveExtensionStateDir("comms", crystalId).flatMap { stateDirStr =>
+        val commsEngine = new ccrystal.core.extension.comms.CommsEngine(
+          os.Path(java.nio.file.Paths.get(stateDirStr)),
+          () => store.getEntityRegistry().toOption,
+        )
+        val msgsEither = (inboxRecipientOpt, outboxSenderOpt) match
+          case (Some(recipient), _) => commsEngine.listInbox(recipient)
+          case (_, Some(sender))    => commsEngine.listOutbox(sender)
+          case _                    => commsEngine.listAuditLog(limitOpt)
+
+        msgsEither.map { msgs =>
+          if jsonOutput then msgs.asJson.spaces2
+          else renderCommsMessages(msgs, crystalId, inboxRecipientOpt, outboxSenderOpt)
+        }
+      }
+
+  private def renderExtensionList(
+      exts: List[ExtensionManifest],
+      crystalIdOpt: Option[String],
+  ): String =
+    val sb          = new java.lang.StringBuilder()
+    val scopeHeader = crystalIdOpt.map(c => s"for crystal '$c'").getOrElse("cave & host")
+    sb.append(s"=== CONTEXT CRYSTAL EXTENSIONS ($scopeHeader) ===\n\n")
+    if exts.isEmpty then sb.append("  (no extensions found)\n")
+    else
+      exts.foreach { m =>
+        val statusTag = if m.enabled then "[Enabled]" else "[Disabled]"
+        val epTag     = m.entrypoint.map(ep => s" [entrypoint: $ep]").getOrElse("")
+        sb.append(
+          f"  - ${m.id}%-16s ${m.version}%-8s [${m.substrate}] [${m.scope}] $statusTag$epTag: ${m.name}\n",
+        )
+        m.description.foreach(d => sb.append(s"      $d\n"))
+      }
+    sb.toString
+
+  private def renderCommsMessages(
+      msgs: List[ccrystal.core.model.extension.comms.CommsMessage],
+      crystalId: String,
+      inboxRecipient: Option[String],
+      outboxSender: Option[String],
+  ): String =
+    val sb = new java.lang.StringBuilder()
+    val mode = (inboxRecipient, outboxSender) match
+      case (Some(r), _) => s"Inbox for $r"
+      case (_, Some(s)) => s"Outbox for $s"
+      case _            => "Audit Log"
+    sb.append(s"=== COMMS ($mode, crystal: $crystalId) ===\n\n")
+    if msgs.isEmpty then sb.append("  (no messages)\n")
+    else
+      msgs.foreach { m =>
+        val replyStr = m.replyToId.map(r => s" (reply-to: $r)").getOrElse("")
+        sb.append(
+          s"[${m.timestamp}] ${m.id} | ${m.senderId} -> ${m.recipientIds.mkString(",")} [${m.channel}]$replyStr\n",
+        )
+        sb.append(s"  Subject: ${m.subject}\n")
+        sb.append(s"  ${m.body}\n\n")
+      }
+    sb.toString
 
   private def renderConnections(summary: ccrystal.core.model.lattice.CrystalBondsSummary): String =
     val sb = new java.lang.StringBuilder()

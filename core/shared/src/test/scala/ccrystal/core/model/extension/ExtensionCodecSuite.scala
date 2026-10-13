@@ -64,6 +64,7 @@ class ExtensionCodecSuite extends FunSuite:
       enabled = false,
       description = None,
       schemaUri = None,
+      entrypoint = None,
       metadata = Map.empty,
     )
 

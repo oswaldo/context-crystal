@@ -163,6 +163,42 @@ enum CliCommand derives CanEqual:
       crystalId: String,
       jsonOutput: Boolean = false,
   )
+  case ExtensionList(
+      crystalId: Option[String] = None,
+      scope: Option[ccrystal.core.model.extension.ExtensionScope] = None,
+      jsonOutput: Boolean = false,
+  )
+  case ExtensionEnable(
+      extId: String,
+      crystalId: Option[String] = None,
+      cave: Boolean = false,
+  )
+  case ExtensionDisable(
+      extId: String,
+      crystalId: Option[String] = None,
+      cave: Boolean = false,
+  )
+  case ExtensionRun(
+      extId: String,
+      crystalId: Option[String] = None,
+      args: List[String] = Nil,
+  )
+  case CommsSend(
+      crystalId: String,
+      from: String,
+      to: List[String],
+      subject: String,
+      body: String,
+      channel: String = "default",
+      replyTo: Option[String] = None,
+  )
+  case CommsList(
+      crystalId: String,
+      inboxRecipient: Option[String] = None,
+      outboxSender: Option[String] = None,
+      limit: Option[Int] = None,
+      jsonOutput: Boolean = false,
+  )
 
   def castSliceParams: SliceParams = this match
     case Cast(_, from, to, tail, depth, _) =>
