@@ -3,7 +3,7 @@
   "id" : "release-v1-3-0-extensions-media-and-mcp-optimization",
   "name" : "release-v1-3-0-extensions-media-and-mcp-optimization",
   "createdAt" : "2026-10-12T20:38:50.670Z",
-  "updatedAt" : "2026-10-12T22:54:17.789Z",
+  "updatedAt" : "2026-10-13T23:34:13.345Z",
   "parentCrystalId" : null,
   "origin" : null,
   "caveId" : null,
@@ -21,7 +21,7 @@
       {
         "id" : "task-2",
         "description" : "Track 24: Implement Modular Spec Extensions Architecture under .ccrystals/<id>/extensions/ [task-2]",
-        "completed" : false
+        "completed" : true
       },
       {
         "id" : "task-3",
@@ -37,6 +37,11 @@
         "id" : "task-5",
         "description" : "Run multi-platform test matrices and tag release v1.3.0 [task-5]",
         "completed" : false
+      },
+      {
+        "id" : "task-6",
+        "description" : "Implement Modular Extension Embedded Skills: manifest skill field, CLI ext skill, comms/sample_runner skills, and agent harness discovery",
+        "completed" : true
       }
     ],
     "metadata" : {
@@ -105,10 +110,111 @@
         "metadata" : {
           
         }
+      },
+      {
+        "id" : "node-3",
+        "parentIds" : [
+          "node-2"
+        ],
+        "timestamp" : "2026-10-13T22:42:16.993Z",
+        "actorId" : "usr_oswaldo",
+        "kind" : "checkpoint",
+        "contentSummary" : "Implemented comms DAG reflection: added --record-dag flag to CLI comms send and record_dag parameter to crystal_extension_comms and crystal_extension_call, automatically recording causal DAG nodes (human_prompt for humans, agent_reasoning for agents) with comms_message_id metadata",
+        "anchor" : null,
+        "artifactIds" : [
+        ],
+        "inputArtifactIds" : [
+        ],
+        "outputArtifactIds" : [
+        ],
+        "preconditionArtifactIds" : [
+        ],
+        "fidelity" : "inferred",
+        "metadata" : {
+          
+        }
+      },
+      {
+        "id" : "node-4",
+        "parentIds" : [
+          "node-3"
+        ],
+        "timestamp" : "2026-10-13T22:48:09.466Z",
+        "actorId" : "usr_oswaldo",
+        "kind" : "checkpoint",
+        "contentSummary" : "Expanded Track 24 scope with task-6: Implement Modular Extension Embedded Skills (manifest skill field, CLI ext skill, comms and sample_runner companion skills, and agent harness discovery)",
+        "anchor" : null,
+        "artifactIds" : [
+        ],
+        "inputArtifactIds" : [
+        ],
+        "outputArtifactIds" : [
+        ],
+        "preconditionArtifactIds" : [
+        ],
+        "fidelity" : "inferred",
+        "metadata" : {
+          
+        }
+      },
+      {
+        "id" : "node-5",
+        "parentIds" : [
+          "node-4"
+        ],
+        "timestamp" : "2026-10-13T23:00:09.139Z",
+        "actorId" : "usr_oswaldo",
+        "kind" : "checkpoint",
+        "contentSummary" : "Completed task-6: Implemented Modular Extension Embedded Skills with ExtensionManifest skill field, FsCrystalStore SKILL.md auto-detection and resolution across scopes, BuiltInExtensions commsSkillMarkdown, sample_runner reference SKILL.md, CLI ext skill command, and crystal_extension_call dynamic skill dispatch",
+        "anchor" : null,
+        "artifactIds" : [
+        ],
+        "inputArtifactIds" : [
+        ],
+        "outputArtifactIds" : [
+        ],
+        "preconditionArtifactIds" : [
+        ],
+        "fidelity" : "inferred",
+        "metadata" : {
+          
+        }
+      },
+      {
+        "id" : "node-6",
+        "parentIds" : [
+          "node-5"
+        ],
+        "timestamp" : "2026-10-13T23:34:13.345Z",
+        "actorId" : "usr_oswaldo",
+        "kind" : "checkpoint",
+        "contentSummary" : "Track 24 Comms Hygiene & Extension Metrics complete: Implemented mailbox ack, clear, and FIFO limit, aligned routing to distinguish groups from topic channels, and added zero-telemetry Extension Metrics & Overview to stats dashboard. Verified across JVM and Native with 100% green tests.",
+        "anchor" : null,
+        "artifactIds" : [
+        ],
+        "inputArtifactIds" : [
+        ],
+        "outputArtifactIds" : [
+        ],
+        "preconditionArtifactIds" : [
+        ],
+        "fidelity" : "inferred",
+        "metadata" : {
+          
+        }
       }
     ]
   },
   "transientLeases" : [
+    {
+      "id" : "lease-1",
+      "resourceType" : "git_worktree",
+      "resourcePath" : null,
+      "description" : "Git worktree for Track 24 at ../ccrystal-worktrees/spec_extensions_and_crystal_comms",
+      "disposalPolicy" : "manual",
+      "status" : "active",
+      "createdAt" : "2026-10-13T19:33:40.918Z"
+    }
   ],
   "lessonsLearned" : [
   ],
