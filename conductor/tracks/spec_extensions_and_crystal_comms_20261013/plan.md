@@ -12,7 +12,7 @@
   - Implement `ExtensionSubstrate` (Embedded, Declarative), `ExtensionScope` (Host, Cave, Crystal), and `ExtensionManifest`.
   - Circe codecs adhering to `spec/v1/context-crystal.json` non-breaking conventions.
   - Write MUnit tests in `core` validating round-trip serialization and substrate/scope parsing.
-- [ ] Task 1.2: 3-Tier Storage & Extension Discovery on `CrystalStore` / `FsCrystalStore`
+- [x] Task 1.2: 3-Tier Storage & Extension Discovery on `CrystalStore` / `FsCrystalStore` [c42c214]
   - Implement discovery scanner resolving `Host (~/.config/ccrystal/extensions)` -> `Cave (.ccrystals/extensions)` -> `Crystal (.ccrystals/<id>/extensions)` precedence cascade.
   - Implement `listExtensions`, `getExtensionManifest`, `saveExtensionManifest`, and `resolveExtensionStateDir`.
   - Write MUnit tests covering multi-scope resolution and precedence overrides.
