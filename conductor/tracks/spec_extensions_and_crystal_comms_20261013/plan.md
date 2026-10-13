@@ -8,7 +8,7 @@
 
 ## Phase 1: Core Extension Models & 3-Tier Scoping Engine (`core`)
 
-- [ ] Task 1.1: Extension Domain Models & Circe Codecs
+- [x] Task 1.1: Extension Domain Models & Circe Codecs [026f876]
   - Implement `ExtensionSubstrate` (Embedded, Declarative), `ExtensionScope` (Host, Cave, Crystal), and `ExtensionManifest`.
   - Circe codecs adhering to `spec/v1/context-crystal.json` non-breaking conventions.
   - Write MUnit tests in `core` validating round-trip serialization and substrate/scope parsing.
