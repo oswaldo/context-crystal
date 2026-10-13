@@ -223,7 +223,45 @@ given Codec[Entity] = Codec.from(
   },
   deriveEncoder[Entity],
 )
-given Codec[EntityRegistry]   = deriveCodec
+given Codec[EntityGroup] = deriveCodec
+given Codec[EntityRegistry] = Codec.from(
+  Decoder.instance { c =>
+    for
+      caveId <- c.downField("caveId").as[Option[String]]
+      authorshipMode <- c
+        .downField("authorshipMode")
+        .as[Option[AuthorshipMode]]
+        .map(_.getOrElse(AuthorshipMode.Tracked))
+      entities <- c
+        .downField("entities")
+        .as[Option[Map[String, Entity]]]
+        .map(_.getOrElse(Map.empty))
+      groups <- c
+        .downField("groups")
+        .as[Option[Map[String, EntityGroup]]]
+        .map(_.getOrElse(Map.empty))
+      metadata <- c
+        .downField("metadata")
+        .as[Option[Map[String, String]]]
+        .map(_.getOrElse(Map.empty))
+    yield EntityRegistry(
+      caveId = caveId,
+      authorshipMode = authorshipMode,
+      entities = entities,
+      groups = groups,
+      metadata = metadata,
+    )
+  },
+  Encoder.instance { reg =>
+    Json.obj(
+      "caveId"         -> reg.caveId.asJson,
+      "authorshipMode" -> reg.authorshipMode.asJson,
+      "entities"       -> reg.entities.asJson,
+      "groups"         -> reg.groups.asJson,
+      "metadata"       -> reg.metadata.asJson,
+    )
+  },
+)
 given Codec[CrystalOrigin]    = deriveCodec
 given Codec[Mask]             = deriveCodec
 given Codec[PhysicalLocation] = deriveCodec

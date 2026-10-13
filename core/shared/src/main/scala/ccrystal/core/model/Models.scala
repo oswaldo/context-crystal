@@ -54,10 +54,19 @@ case class Entity(
     endpoints: Map[String, String] = Map.empty,
 ) derives CanEqual
 
+case class EntityGroup(
+    id: String,
+    name: String,
+    memberIds: List[String],
+    description: Option[String] = None,
+    metadata: Map[String, String] = Map.empty,
+) derives CanEqual
+
 case class EntityRegistry(
     caveId: Option[String] = None,
     authorshipMode: AuthorshipMode = AuthorshipMode.Tracked,
     entities: Map[String, Entity] = Map.empty,
+    groups: Map[String, EntityGroup] = Map.empty,
     metadata: Map[String, String] = Map.empty,
 ) derives CanEqual
 
