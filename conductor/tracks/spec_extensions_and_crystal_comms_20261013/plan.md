@@ -16,7 +16,7 @@
   - Implement discovery scanner resolving `Host (~/.config/ccrystal/extensions)` -> `Cave (.ccrystals/extensions)` -> `Crystal (.ccrystals/<id>/extensions)` precedence cascade.
   - Implement `listExtensions`, `getExtensionManifest`, `saveExtensionManifest`, and `resolveExtensionStateDir`.
   - Write MUnit tests covering multi-scope resolution and precedence overrides.
-- [ ] Task 1.3: Crystal Comms Embedded Module (`CommsEngine`)
+- [x] Task 1.3: Crystal Comms Embedded Module (`CommsEngine`) [71c3d18]
   - Implement `CommsMessage` case class and Circe codecs.
   - Implement `CommsEngine` managing atomic inbox delivery, outbox staging, and append-only `messages.jsonl` audit log inside `.ccrystals/<id>/extensions/comms/`.
   - Write MUnit tests verifying lock-free message delivery, listing, and recipient isolation.
