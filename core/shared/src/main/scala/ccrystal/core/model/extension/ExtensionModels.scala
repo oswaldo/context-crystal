@@ -38,8 +38,9 @@ object BuiltInExtensions:
       |
       |## 1. Concepts & Architecture
       |- **Mailbox Directory Structure**: Located under `.ccrystals/<crystal-id>/extensions/comms/`:
-      |  - `inboxes/<recipient>/`: Incoming messages delivered to specific entities or groups.
-      |  - `outbox/<sender>/`: Audit log of sent messages by sender entity ID.
+      |  - `inbox/<recipient>/`: Incoming messages delivered to specific entities or groups (`<msg-id>.json`).
+      |  - `outbox/<sender>/`: Audit log of sent messages by sender entity ID (`<msg-id>.json`).
+      |  - `messages.jsonl`: Append-only cave/crystal audit log.
       |- **Addressing Modes**:
       |  - Individual Entities: Standard registered entities (`usr_*` for humans, `agt_*` for agents).
       |  - Entity Groups: Named groups (`grp_*`, e.g. `grp_team`, `grp_reviewers`).
@@ -51,7 +52,24 @@ object BuiltInExtensions:
       |  - Groups/Other senders produce `checkpoint` nodes.
       |  - Metadata records `comms_message_id`, `comms_channel`, `comms_sender`, and `comms_recipients`.
       |
-      |## 2. CLI Usage
+      |## 2. Practical Agent-to-Agent Coordination Patterns
+      |In local multi-agent environments, two agents communicate using one of three complementary patterns:
+      |
+      |### Pattern A: Causal Turn Hydration (Zero-Daemon, Recommended)
+      |Agent A sends with `--record-dag` (or MCP `record_dag: true`). The message is recorded as a DAG transition node in `crystal.json`.
+      |When Agent B activates or begins its turn, calling `crystal_hydrate` or `ccrystal cast` automatically projects Agent A's message, sender ID, and intent directly into Agent B's context window.
+      |
+      |### Pattern B: Reactive File Watching (Event-Driven / Inotify)
+      |Agent B or its host runner monitors `.ccrystals/<crystal-id>/extensions/comms/inbox/agt_b/` using filesystem events (`inotifywait`, `fsevents`, or watcher).
+      |Because `CommsEngine` delivers messages via atomic temporary file rename (`replaceExisting = true`), the kernel triggers a clean `MOVED_TO` / `CLOSE_WRITE` event with zero partial-read race conditions.
+      |Agent B wakes immediately upon arrival of `<msg-id>.json`.
+      |
+      |### Pattern C: Discrete Mailbox Inspection (Turn Handoff / Polling)
+      |Before starting a work cycle or after completing a task checkpoint, Agent B queries:
+      |`ccrystal ext comms list <crystal-id> --inbox agt_b` (or MCP `crystal_extension_comms(action: "list", inbox: "agt_b")`).
+      |Messages are returned in ascending timestamp order, allowing sequential processing.
+      |
+      |## 3. CLI Usage
       |```bash
       |# Send message to an agent
       |ccrystal ext comms send <crystal-id> --from usr_oswaldo --to agt_alice -s "Review" -b "Please check PR"
@@ -66,7 +84,7 @@ object BuiltInExtensions:
       |ccrystal ext comms list <crystal-id> --outbox usr_oswaldo --limit 20
       |```
       |
-      |## 3. MCP Usage
+      |## 4. MCP Usage
       |Use `crystal_extension_comms`:
       |```json
       |{
