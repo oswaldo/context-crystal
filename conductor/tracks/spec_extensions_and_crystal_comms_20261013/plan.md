@@ -20,7 +20,7 @@
   - Implement `CommsMessage` case class and Circe codecs.
   - Implement `CommsEngine` managing atomic inbox delivery, outbox staging, and append-only `messages.jsonl` audit log inside `.ccrystals/<id>/extensions/comms/`.
   - Write MUnit tests verifying lock-free message delivery, listing, and recipient isolation.
-- [ ] Task 1.4: Phase 1 Checkpoint & Cross-Build Test
+- [x] Task 1.4: Phase 1 Checkpoint & Cross-Build Test
   - Run `sbt "coreJVM/test; coreNative/test; coreJS/test"`.
 
 ---
