@@ -31,24 +31,26 @@ class RunnerExtensionSuite extends FunSuite:
     )
 
   test("Parses 'ext enable' and 'ext disable'"):
-    val enRes = CommandParser.parse(List("ext", "enable", "media", "--cave"))
+    val enRes = CommandParser.parse(List("ext", "enable", "sample_runner", "--cave"))
     assert(enRes.isRight, "ext enable should parse")
-    assertEquals(enRes.toOption.get, CliCommand.ExtensionEnable("media", None, cave = true))
+    assertEquals(enRes.toOption.get, CliCommand.ExtensionEnable("sample_runner", None, cave = true))
 
-    val disRes = CommandParser.parse(List("ext", "disable", "media", "--crystal", "c-1"))
+    val disRes = CommandParser.parse(List("ext", "disable", "sample_runner", "--crystal", "c-1"))
     assert(disRes.isRight, "ext disable should parse")
     assertEquals(
       disRes.toOption.get,
-      CliCommand.ExtensionDisable("media", Some("c-1"), cave = false),
+      CliCommand.ExtensionDisable("sample_runner", Some("c-1"), cave = false),
     )
 
   test("Parses 'ext run' with arguments"):
     val runRes =
-      CommandParser.parse(List("ext", "run", "media", "--crystal", "c-1", "--", "--port", "8080"))
+      CommandParser.parse(
+        List("ext", "run", "sample_runner", "--crystal", "c-1", "--", "--port", "8080"),
+      )
     assert(runRes.isRight, "ext run should parse")
     assertEquals(
       runRes.toOption.get,
-      CliCommand.ExtensionRun("media", Some("c-1"), List("--port", "8080")),
+      CliCommand.ExtensionRun("sample_runner", Some("c-1"), List("--port", "8080")),
     )
 
   test("Parses 'ext comms send' and 'ext comms list'"):
@@ -122,13 +124,13 @@ class RunnerExtensionSuite extends FunSuite:
       assert(inboxOutput.toOption.get.contains("Task Review"), "inbox should contain sent message")
 
       // 4. Test ExtensionRun subprocess execution
-      val mediaDir = tempCave / "extensions" / "media"
-      os.makeDir.all(mediaDir)
+      val sampleDir = tempCave / "extensions" / "sample_runner"
+      os.makeDir.all(sampleDir)
       os.write(
-        mediaDir / "extension.json",
+        sampleDir / "extension.json",
         """{
-          |  "id": "media",
-          |  "name": "Media Extension",
+          |  "id": "sample_runner",
+          |  "name": "Sample Runner Extension",
           |  "version": "1.0.0",
           |  "substrate": "declarative",
           |  "scope": "cave",
@@ -136,12 +138,12 @@ class RunnerExtensionSuite extends FunSuite:
           |  "entrypoint": "run.sh"
           |}""".stripMargin,
       )
-      val scriptFile = mediaDir / "run.sh"
+      val scriptFile = sampleDir / "run.sh"
       os.write(scriptFile, "#!/usr/bin/env sh\necho \"Executed with: $*\"\n")
       os.perms.set(scriptFile, "rwxr-xr-x")
 
       val runOutput =
-        runner.run(CliCommand.ExtensionRun("media", Some("c-1"), List("--flag", "foo")))
+        runner.run(CliCommand.ExtensionRun("sample_runner", Some("c-1"), List("--flag", "foo")))
       assert(runOutput.isRight, "ExtensionRun should succeed")
       assert(
         runOutput.toOption.get.contains("Executed with: --flag foo"),

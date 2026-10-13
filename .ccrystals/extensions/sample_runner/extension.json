@@ -1,0 +1,14 @@
+{
+  "id": "sample_runner",
+  "name": "Sample Drop-in Executable Extension",
+  "version": "1.0.0",
+  "substrate": "declarative",
+  "scope": "cave",
+  "enabled": true,
+  "description": "Reference drop-in executable template demonstrating host environment injection and subprocess lifecycle across languages (Rust, Go, C, Scala, Python, Node, Shell)",
+  "entrypoint": "run.sh",
+  "metadata": {
+    "protocolVersion": "1.0",
+    "role": "reference_template"
+  }
+}
