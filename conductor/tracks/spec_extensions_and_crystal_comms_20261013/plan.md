@@ -2,7 +2,7 @@
 
 - **Track ID:** `spec_extensions_and_crystal_comms_20261013`
 - **Specification:** [spec.md](./spec.md)
-- **Status:** In Progress
+- **Status:** Complete
 
 ---
 
