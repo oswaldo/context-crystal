@@ -31,7 +31,7 @@
   - Create packaged extension bundle under `spec/extensions/media/` and sample cave installation `.ccrystals/extensions/media/` containing `extension.json` and schema definitions per CEP-0002.
 - [x] Task 2.2: Declarative Extension Validation & Dogfood Test [aed86ec]
   - Write unit/integration tests confirming cave-wide declarative drop-in discovery, manifest inheritance by crystals, and media metadata validation on artifacts.
-- [ ] Task 2.3: Phase 2 Checkpoint & Verification
+- [x] Task 2.3: Phase 2 Checkpoint & Verification
   - Verify declarative loading passes seamlessly on Native and JVM targets.
 
 ---
