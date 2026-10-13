@@ -25,16 +25,16 @@
 - **Track 23 (`crystal_connections_and_lattice_bonds_20261003`):** Complete `[x]` (Cross-crystal connections, typed lattice bonds, cycle detector, bounded hydration context beams, `ccrystal connect/disconnect`, `ccrystal://{id}/bonds`).
 - **Track 26 (`golden_triad_agent_skill_distribution_20261003`):** Complete `[x]` (Golden Triad onboarding, `ccrystal agent doctor` readiness matrix, embedded `CanonicalSkill`, `ccrystal agent install` skill auto-distribution, drift diagnostics `SkillStatus.Outdated`, symlink and workspace support).
 - **Track 27 (`standardized_modern_platform_runtimes_20261003`):** Complete `[x]` (Standardized `java.time` / `scala-java-time` and `os-lib 0.11.8` across Native, JVM, and JS targets).
-- **Milestone v1.2.0 (Twinning):** Released / in deployment matrix.
-- **Codeberg Remote Sync:** Note to sync `origin` (`ssh://git@codeberg.org/oswaldo/context-crystal.git`) once the forge recovers from temporary degradation (`git push origin main && git push origin v1.2.0`).
+- [x] **Track 24 (`spec_extensions_and_crystal_comms_20261013`):** Complete `[x]` (Modular Spec Extensions Architecture & Crystal Comms: dual-substrate model with embedded Scala Native modules and declarative/executable drop-in extensions across 3-tier scoping cascade Host -> Cave -> Crystal; CEP-0002 Media Provenance; lock-free filesystem inboxes/outboxes with entity group fanout and broadcasting; Decline CLI commands and native MCP tools).
+- **Milestone v1.3.0:** In progress (Track 25 complete, Track 24 complete; pending skill sync and release tagging).
 - **Binary Location:** `./cli/native/target/scala-3.9.0/ccrystal-cli` (installed in `~/.local/bin/ccrystal` with Thin LTO)
 
 ---
 
-## 2. Next Track: Modular Spec Extensions Architecture & Crystal Comms (`spec_extensions_and_crystal_comms`)
+## 2. Next Steps: Milestone v1.3.0 Finalization
 
-- **Objective:** Keep the core Context Crystal spec minimal and sovereign by establishing a formal modular extension architecture (companion manifests and namespaced storage `.ccrystals/<id>/extensions/`). Implement **Crystal Comms** (lock-free filesystem inboxes/outboxes and multi-agent coordination with human steersman oversight) as the premier reference extension module.
-- **Priority:** Immediate next step.
+- **Skill Synchronization & Agent Doctor:** Synchronize updated operational guidance and auto-distribute updated skills (`ccrystal agent install`).
+- **Release Verification & Multi-Platform Matrix:** Run full release test matrix across Linux & macOS, compile optimized release binaries, and draft collaborative v1.3.0 release notes.
 
 ---
 

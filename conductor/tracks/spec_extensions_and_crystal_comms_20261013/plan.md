@@ -64,10 +64,10 @@
 
 ## Phase 5: Verification, Linters, and Conductor Review
 
-- [ ] Task 5.1: Run Full Verification Suite
+- [x] Task 5.1: Run Full Verification Suite
   - Run `sbt "scalafmtCheckAll; scalafixAll --check; test"`.
   - Run `npx markdownlint-cli "README.md" "AGENTS.md" "docs/*.md" "skills/**/SKILL.md"`.
-- [ ] Task 5.2: Update Active Crystal Tasks & Conductor Registry
+- [x] Task 5.2: Update Active Crystal Tasks & Conductor Registry
   - Update `tasks.md` in `.ccrystals/release-v1-3-0-extensions-media-and-mcp-optimization`.
   - Update `conductor/tracks.md` and `conductor/next-steps.md`.
   - Prepare branch for review.
