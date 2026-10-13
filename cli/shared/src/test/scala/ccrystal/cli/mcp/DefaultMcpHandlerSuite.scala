@@ -1539,6 +1539,32 @@ class DefaultMcpHandlerSuite extends FunSuite:
       assertEquals(listResult.isError, false)
       assert(listResult.content.head.text.contains("MCP Mission"))
       assert(listResult.content.head.text.contains("Coordinate multi-agent extension tasks"))
+
+      // Test universal dynamic dispatch via crystal_extension_call
+      val callReq = JsonRpcRequest(
+        id = JsonRpcId.Num(504L),
+        method = "tools/call",
+        params = Some(
+          Json.obj(
+            "name" -> "crystal_extension_call".asJson,
+            "arguments" -> Json.obj(
+              "extension_id" -> "comms".asJson,
+              "crystal_id"   -> "c-mcp-comms".asJson,
+              "action"       -> "send".asJson,
+              "payload" -> Json.obj(
+                "from"    -> "agt_mcp".asJson,
+                "to"      -> List("usr_oswaldo").asJson,
+                "subject" -> "Dynamic dispatch success".asJson,
+                "body"    -> "Executed seamlessly via universal crystal_extension_call".asJson,
+              ),
+            ),
+          ),
+        ),
+      )
+      val callResp   = handler.handle(callReq)
+      val callResult = callResp.result.get.as[CallToolResult].toOption.get
+      assertEquals(callResult.isError, false)
+      assert(callResult.content.head.text.contains("sent to usr_oswaldo"))
     finally
       try os.remove.all(tempCave)
       catch case _: Throwable => ()

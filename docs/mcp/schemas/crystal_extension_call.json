@@ -1,0 +1,26 @@
+{
+  "name": "crystal_extension_call",
+  "description": "Universal dynamic dispatch invocation for any extension (embedded or drop-in executable) with structured action and JSON payload parameters, avoiding MCP schema changes for future extensions.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "extension_id": {
+        "type": "string",
+        "description": "Target extension identifier (e.g. 'comms', 'media', 'project_management')"
+      },
+      "crystal_id": {
+        "type": "string",
+        "description": "Target crystal context ID"
+      },
+      "action": {
+        "type": "string",
+        "description": "Extension action or operation name (e.g. 'send', 'list', 'review')"
+      },
+      "payload": {
+        "type": "object",
+        "description": "Arbitrary structured JSON payload / parameters for the extension"
+      }
+    },
+    "required": ["extension_id", "crystal_id", "action"]
+  }
+}

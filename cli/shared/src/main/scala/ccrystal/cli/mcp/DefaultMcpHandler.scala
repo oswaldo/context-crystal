@@ -728,6 +728,33 @@ class DefaultMcpHandler(
             ),
           ),
           Tool(
+            name = "crystal_extension_call",
+            description =
+              "Universal dynamic dispatch invocation for any extension (embedded or drop-in executable) with structured action and JSON payload parameters, avoiding MCP schema changes for future extensions.",
+            inputSchema = Json.obj(
+              "type" -> "object".asJson,
+              "properties" -> Json.obj(
+                "extension_id" -> Json.obj(
+                  "type" -> "string".asJson,
+                  "description" -> "Target extension identifier (e.g. 'comms', 'media', 'project_management')".asJson,
+                ),
+                "crystal_id" -> Json.obj(
+                  "type"        -> "string".asJson,
+                  "description" -> "Target crystal context ID".asJson,
+                ),
+                "action" -> Json.obj(
+                  "type" -> "string".asJson,
+                  "description" -> "Extension action or operation name (e.g. 'send', 'list', 'review')".asJson,
+                ),
+                "payload" -> Json.obj(
+                  "type" -> "object".asJson,
+                  "description" -> "Arbitrary structured JSON payload / parameters for the extension".asJson,
+                ),
+              ),
+              "required" -> List("extension_id", "crystal_id", "action").asJson,
+            ),
+          ),
+          Tool(
             name = "crystal_extension_comms",
             description =
               "Send messages or inspect inboxes/outboxes/audit logs via the embedded Crystal Comms extension.",
@@ -1774,6 +1801,105 @@ class DefaultMcpHandler(
               List(
                 ToolContent(
                   text = "Missing required 'extension_id' parameter for crystal_extension_run",
+                ),
+              ),
+              isError = true,
+            )
+
+      case "crystal_extension_call" =>
+        val extIdOpt     = cursor.get[String]("extension_id").toOption
+        val crystalIdOpt = cursor.get[String]("crystal_id").toOption
+        val actionOpt    = cursor.get[String]("action").toOption
+        val payloadOpt   = cursor.get[JsonObject]("payload").toOption
+
+        (extIdOpt, crystalIdOpt, actionOpt) match
+          case (Some("comms"), Some(crystalId), Some(act)) =>
+            // Dispatch to embedded comms engine with payload parameters
+            val payload = payloadOpt.getOrElse(JsonObject.empty)
+            act match
+              case "send" =>
+                val fromOpt    = payload("from").flatMap(_.asString)
+                val toList     = payload("to").flatMap(_.as[List[String]].toOption).getOrElse(Nil)
+                val subjectOpt = payload("subject").flatMap(_.asString)
+                val bodyOpt    = payload("body").flatMap(_.asString)
+                val channel    = payload("channel").flatMap(_.asString).getOrElse("general")
+                val replyTo    = payload("reply_to").flatMap(_.asString)
+                if fromOpt.isEmpty || toList.isEmpty || subjectOpt.isEmpty || bodyOpt.isEmpty then
+                  CallToolResult(
+                    List(
+                      ToolContent(
+                        text =
+                          "Comms send requires 'from', 'to' array, 'subject', and 'body' in payload",
+                      ),
+                    ),
+                    isError = true,
+                  )
+                else
+                  runCommandToResult(
+                    CliCommand.CommsSend(
+                      crystalId = crystalId,
+                      from = fromOpt.get,
+                      to = toList,
+                      subject = subjectOpt.get,
+                      body = bodyOpt.get,
+                      channel = channel,
+                      replyTo = replyTo,
+                    ),
+                  )
+              case "list" =>
+                val inboxOpt   = payload("inbox").flatMap(_.asString)
+                val outboxOpt  = payload("outbox").flatMap(_.asString)
+                val limitOpt   = payload("limit").flatMap(_.asNumber.flatMap(_.toInt))
+                val jsonOutput = payload("json_output").flatMap(_.asBoolean).getOrElse(true)
+                runCommandToResult(
+                  CliCommand.CommsList(
+                    crystalId = crystalId,
+                    inboxRecipient = inboxOpt,
+                    outboxSender = outboxOpt,
+                    limit = limitOpt,
+                    jsonOutput = jsonOutput,
+                  ),
+                )
+              case other =>
+                CallToolResult(
+                  List(
+                    ToolContent(
+                      text = s"Unknown comms action '$other' (supported: send, list)",
+                    ),
+                  ),
+                  isError = true,
+                )
+
+          case (Some(extId), Some(crystalId), Some(act)) =>
+            // Dispatch to drop-in executable extension passing action and serialized payload arguments
+            val payloadArgs = payloadOpt match
+              case Some(obj) => List(act, obj.asJson.noSpaces)
+              case None      => List(act)
+            runCommandToResult(CliCommand.ExtensionRun(extId, Some(crystalId), payloadArgs))
+
+          case (None, _, _) =>
+            CallToolResult(
+              List(
+                ToolContent(
+                  text = "Missing required 'extension_id' parameter for crystal_extension_call",
+                ),
+              ),
+              isError = true,
+            )
+          case (_, None, _) =>
+            CallToolResult(
+              List(
+                ToolContent(
+                  text = "Missing required 'crystal_id' parameter for crystal_extension_call",
+                ),
+              ),
+              isError = true,
+            )
+          case (_, _, None) =>
+            CallToolResult(
+              List(
+                ToolContent(
+                  text = "Missing required 'action' parameter for crystal_extension_call",
                 ),
               ),
               isError = true,

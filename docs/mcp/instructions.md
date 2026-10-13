@@ -52,8 +52,10 @@ flowchart LR
 3b. **Lattice Bonds & Cross-Crystal Connections (`crystal_connect`):**
    Establish directed relationships (`relates_to`, `depends_on`, `blocks`, `supersedes`, `references`) between crystals. Context Crystal enforces acyclic DAG invariants (preventing circular dependencies) and automatically renders depth-1 connected lattice peeks into hydrated context beams (`crystal_hydrate`). Inspect bonds via `action: "list"` or resource `ccrystal://<id>/bonds`.
 3c. **Extension Discovery & Subprocess Execution (`crystal_extension_list`, `crystal_extension_run`, `crystal_extension_manage`):**
-   Discover and manage extensions across the 3-tier scoping cascade (Host -> Cave -> Crystal). Embedded extensions (such as `comms`) run natively with zero IPC overhead; declarative and executable drop-in extensions (such as `media` / CEP-0002) provide schema validation and executable entrypoints with injected environment boundaries (`CCRYSTAL_CAVE_ROOT`, `CCRYSTAL_CRYSTAL_ID`, `CCRYSTAL_EXT_DIR`).
-3d. **Multi-Agent Coordination & Crystal Comms (`crystal_extension_comms`):**
+   Discover and manage extensions across the 3-tier scoping cascade (Host -> Cave -> Crystal). Embedded extensions (such as `comms`) run natively with zero IPC overhead; declarative and executable drop-in extensions (such as `media` / CEP-0002) provide schema validation and executable entrypoints with injected environment boundaries (`CCRYSTAL_BIN`, `CCRYSTAL_CAVE_ROOT`, `CCRYSTAL_CRYSTAL_ID`, `CCRYSTAL_EXT_DIR`, `CCRYSTAL_STATE_DIR`).
+3d. **Universal Extension Invocations (`crystal_extension_call`):**
+   Dynamic dispatch tool providing a stable, future-proof MCP invocation interface for any extension without requiring MCP server schema modifications. Accepts `extension_id`, `crystal_id`, `action`, and structured `payload`.
+3e. **Multi-Agent Coordination & Crystal Comms (`crystal_extension_comms`):**
    Coordinate peer agents within crystal boundaries using lock-free atomic filesystem mailboxes. Supports single recipients, entity groups (`grp_*`), broadcast (`@all`, `@channel`), and full causal message audit trails (`action: "send"`, `action: "list"`).
 4. **Selective Context Hydration (`crystal_hydrate`):**
    Project tailored context beams into LLM context using `tail`, `from`, `to`, or `summary_only`.

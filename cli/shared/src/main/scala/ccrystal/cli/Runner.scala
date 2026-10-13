@@ -936,15 +936,21 @@ class Runner(
                 if !os.exists(execPath) then
                   Left(s"Extension entrypoint '$ep' not found at $execPath")
                 else
+                  val stateDir = crystalIdOpt
+                    .flatMap(cId => store.resolveExtensionStateDir(extId, cId).toOption)
+                    .getOrElse((extDir / "state").toString)
+                  val binaryPath = sys.env.getOrElse("CCRYSTAL_BIN", "ccrystal")
                   try
                     val p = os
                       .proc(execPath.toString, args)
                       .call(
                         cwd = extDir,
                         env = Map(
+                          "CCRYSTAL_BIN"        -> binaryPath,
                           "CCRYSTAL_CAVE_ROOT"  -> caveDir.toString,
                           "CCRYSTAL_CRYSTAL_ID" -> crystalIdOpt.getOrElse(""),
                           "CCRYSTAL_EXT_DIR"    -> extDir.toString,
+                          "CCRYSTAL_STATE_DIR"  -> stateDir,
                         ),
                         check = false,
                       )
