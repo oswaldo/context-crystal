@@ -89,12 +89,39 @@ class RunnerExtensionSuite extends FunSuite:
     assertEquals(sendCmd.body, "Hello team")
 
     val listRes = CommandParser.parse(
-      List("ext", "comms", "list", "c-1", "--inbox", "agt_alice", "--limit", "10"),
+      List("ext", "comms", "list", "c-1", "--inbox", "agt_alice", "--limit", "10", "--ack"),
     )
     assert(listRes.isRight, "comms list should parse")
     assertEquals(
       listRes.toOption.get,
-      CliCommand.CommsList("c-1", Some("agt_alice"), None, Some(10), false),
+      CliCommand.CommsList("c-1", Some("agt_alice"), None, Some(10), true, false),
+    )
+
+    val ackRes = CommandParser.parse(
+      List("ext", "comms", "ack", "c-1", "-m", "msg-123", "--inbox", "agt_alice"),
+    )
+    assert(ackRes.isRight, "comms ack should parse")
+    assertEquals(
+      ackRes.toOption.get,
+      CliCommand.CommsAck("c-1", "msg-123", Some("agt_alice")),
+    )
+
+    val clearRes = CommandParser.parse(
+      List("ext", "comms", "clear", "c-1", "-i", "agt_alice"),
+    )
+    assert(clearRes.isRight, "comms clear should parse")
+    assertEquals(
+      clearRes.toOption.get,
+      CliCommand.CommsClear("c-1", "agt_alice"),
+    )
+
+    val statsRes = CommandParser.parse(
+      List("ext", "comms", "stats", "c-1", "--json"),
+    )
+    assert(statsRes.isRight, "comms stats should parse")
+    assertEquals(
+      statsRes.toOption.get,
+      CliCommand.CommsStats(Some("c-1"), true),
     )
 
     val sendDagRes = CommandParser.parse(
@@ -146,13 +173,38 @@ class RunnerExtensionSuite extends FunSuite:
           inboxRecipient = Some("agt_alice"),
           outboxSender = None,
           limit = None,
+          ack = false,
           jsonOutput = false,
         ),
       )
       assert(inboxOutput.isRight, "CommsList should succeed")
       assert(inboxOutput.toOption.get.contains("Task Review"), "inbox should contain sent message")
 
-      // 3b. Initialize a crystal and send comms message with recordDag = true
+      // 3a. Verify CommsStats
+      val statsOutput = runner.run(CliCommand.CommsStats(Some("c-1"), jsonOutput = false))
+      assert(statsOutput.isRight, "CommsStats should succeed")
+      assert(statsOutput.toOption.get.contains("Total Messages Exchanged:  1"), "stats output")
+      assert(statsOutput.toOption.get.contains("Pending Inbox Messages:    1"), "pending msgs")
+
+      // 3b. Acknowledge message from inbox
+      val clearOutput = runner.run(CliCommand.CommsClear("c-1", "agt_alice"))
+      assert(clearOutput.isRight, "CommsClear should succeed")
+      assert(clearOutput.toOption.get.contains("Cleared 1 pending message"), "clear output")
+
+      val emptyInbox = runner.run(
+        CliCommand.CommsList(
+          crystalId = "c-1",
+          inboxRecipient = Some("agt_alice"),
+          outboxSender = None,
+          limit = None,
+          ack = false,
+          jsonOutput = false,
+        ),
+      )
+      assert(emptyInbox.isRight, "CommsList after clear should succeed")
+      assert(emptyInbox.toOption.get.contains("(no messages)"), "inbox should be empty")
+
+      // 3c. Initialize a crystal and send comms message with recordDag = true
       val initRes = runner.run(
         CliCommand.Init(
           name = "c-comms-dag",

@@ -773,14 +773,40 @@ object CommandParser:
     Opts.argument[String]("crystal-id"),
     Opts.option[String]("inbox", "List inbox messages for recipient entity ID").orNone,
     Opts.option[String]("outbox", "List outbox messages for sender entity ID").orNone,
-    Opts.option[Int]("limit", "Maximum number of audit log messages to display", "n").orNone,
+    Opts
+      .option[Int](
+        "limit",
+        "Maximum number of messages to display (FIFO for inbox, LIFO for outbox/audit)",
+        "n",
+      )
+      .orNone,
+    Opts.flag("ack", "Acknowledge and drain listed inbox messages upon inspection").orFalse,
     Opts.flag("json", "Output in JSON format").orFalse,
   ).mapN(CliCommand.CommsList.apply)
+
+  private val commsAckOpts = (
+    Opts.argument[String]("crystal-id"),
+    Opts.option[String]("message-id", "Message ID to acknowledge and drain from inbox", "m"),
+    Opts.option[String]("inbox", "Recipient inbox entity ID").orNone,
+  ).mapN(CliCommand.CommsAck.apply)
+
+  private val commsClearOpts = (
+    Opts.argument[String]("crystal-id"),
+    Opts.option[String]("inbox", "Recipient inbox entity ID to clear", "i"),
+  ).mapN(CliCommand.CommsClear.apply)
+
+  private val commsStatsOpts = (
+    Opts.argument[String]("crystal-id").orNone,
+    Opts.flag("json", "Output in JSON format").orFalse,
+  ).mapN(CliCommand.CommsStats.apply)
 
   private val commsCmd = Opts.subcommand("comms", "Crystal Comms lock-free messaging")(
     Opts
       .subcommand("send", "Send a message to entities or groups")(commsSendOpts)
-      .orElse(Opts.subcommand("list", "List inbox, outbox, or audit messages")(commsListOpts)),
+      .orElse(Opts.subcommand("list", "List inbox, outbox, or audit messages")(commsListOpts))
+      .orElse(Opts.subcommand("ack", "Acknowledge and drain a message from an inbox")(commsAckOpts))
+      .orElse(Opts.subcommand("clear", "Clear all pending messages from an inbox")(commsClearOpts))
+      .orElse(Opts.subcommand("stats", "Display comms messaging statistics")(commsStatsOpts)),
   )
 
   private val extCmd = Opts.subcommand("ext", "Manage Context Crystal modular spec extensions")(

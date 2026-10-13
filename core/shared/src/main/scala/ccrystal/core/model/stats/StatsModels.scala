@@ -64,6 +64,13 @@ final case class CrystalDiskUsage(
     isArchived: Boolean,
 ) derives CanEqual
 
+final case class ExtensionStatsSummary(
+    extensionId: String,
+    scope: String,
+    metrics: Map[String, String],
+    summary: String,
+) derives CanEqual
+
 final case class CaveStats(
     filter: Option[CrystalFilter],
     extents: TemporalExtents,
@@ -72,4 +79,5 @@ final case class CaveStats(
     tokenSavings: TokenSavingsEstimate,
     health: CaveHealthBreakdown,
     topCrystals: List[CrystalDiskUsage],
+    extensions: List[ExtensionStatsSummary] = Nil,
 ) derives CanEqual

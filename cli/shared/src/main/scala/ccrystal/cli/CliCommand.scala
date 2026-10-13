@@ -202,6 +202,20 @@ enum CliCommand derives CanEqual:
       inboxRecipient: Option[String] = None,
       outboxSender: Option[String] = None,
       limit: Option[Int] = None,
+      ack: Boolean = false,
+      jsonOutput: Boolean = false,
+  )
+  case CommsAck(
+      crystalId: String,
+      messageId: String,
+      inboxRecipient: Option[String] = None,
+  )
+  case CommsClear(
+      crystalId: String,
+      inboxRecipient: String,
+  )
+  case CommsStats(
+      crystalId: Option[String] = None,
       jsonOutput: Boolean = false,
   )
 

@@ -1,7 +1,7 @@
 package ccrystal.core.extension.comms
 
 import ccrystal.core.model.EntityRegistry
-import ccrystal.core.model.extension.comms.CommsMessage
+import ccrystal.core.model.extension.comms.{CommsMessage, CommsStats}
 import ccrystal.core.codec.extension.comms.given
 import io.circe.parser.decode
 import io.circe.syntax.*
@@ -36,8 +36,7 @@ class CommsEngine(
     val allEntities = registryOpt.map(_.entities.keySet).getOrElse(Set.empty)
 
     targets.flatMap { target =>
-      if target == "@all" || target == "@channel" then
-        if allEntities.nonEmpty then allEntities else Set(target)
+      if target == "@all" then if allEntities.nonEmpty then allEntities else Set(target)
       else if target.startsWith("grp_") || groups.contains(target) then
         groups.get(target).map(_.memberIds.toSet).getOrElse(Set(target))
       else Set(target)
@@ -64,7 +63,10 @@ class CommsEngine(
       Right(())
     catch case ex: Throwable => Left(s"Failed to send comms message: ${ex.getMessage}")
 
-  def listInbox(recipientId: String): Either[String, List[CommsMessage]] =
+  def listInbox(
+      recipientId: String,
+      limit: Option[Int] = None,
+  ): Either[String, List[CommsMessage]] =
     try
       val userInbox = inboxDir / recipientId
       if !os.exists(userInbox) || !os.isDir(userInbox) then Right(Nil)
@@ -75,10 +77,13 @@ class CommsEngine(
           .flatMap(p => decode[CommsMessage](os.read(p)).toOption)
           .toList
           .sortBy(_.timestamp)
-        Right(msgs)
+        val limited = limit match
+          case Some(n) if n > 0 => msgs.take(n)
+          case _                => msgs
+        Right(limited)
     catch case ex: Throwable => Left(s"Failed to list inbox: ${ex.getMessage}")
 
-  def listOutbox(senderId: String): Either[String, List[CommsMessage]] =
+  def listOutbox(senderId: String, limit: Option[Int] = None): Either[String, List[CommsMessage]] =
     try
       val userOutbox = outboxDir / senderId
       if !os.exists(userOutbox) || !os.isDir(userOutbox) then Right(Nil)
@@ -89,7 +94,10 @@ class CommsEngine(
           .flatMap(p => decode[CommsMessage](os.read(p)).toOption)
           .toList
           .sortBy(_.timestamp)
-        Right(msgs)
+        val limited = limit match
+          case Some(n) if n > 0 => msgs.takeRight(n)
+          case _                => msgs
+        Right(limited)
     catch case ex: Throwable => Left(s"Failed to list outbox: ${ex.getMessage}")
 
   def listAuditLog(limit: Option[Int] = None): Either[String, List[CommsMessage]] =
@@ -103,3 +111,70 @@ class CommsEngine(
           case _                => msgs
         Right(limited)
     catch case ex: Throwable => Left(s"Failed to read audit log: ${ex.getMessage}")
+
+  def ackMessage(recipientId: String, messageId: String): Either[String, Unit] =
+    try
+      val targetFile = inboxDir / recipientId / s"$messageId.json"
+      if os.exists(targetFile) && os.isFile(targetFile) then
+        os.remove(targetFile)
+        Right(())
+      else Left(s"Message '$messageId' not found in inbox '$recipientId'")
+    catch case ex: Throwable => Left(s"Failed to acknowledge message: ${ex.getMessage}")
+
+  def ackMessageAnyInbox(messageId: String): Either[String, List[String]] =
+    try
+      if !os.exists(inboxDir) || !os.isDir(inboxDir) then Right(Nil)
+      else
+        val removedFrom = os
+          .list(inboxDir)
+          .filter(os.isDir(_))
+          .flatMap { recDir =>
+            val targetFile = recDir / s"$messageId.json"
+            if os.exists(targetFile) && os.isFile(targetFile) then
+              os.remove(targetFile)
+              Some(recDir.last)
+            else None
+          }
+          .toList
+        if removedFrom.isEmpty then Left(s"Message '$messageId' not found in any inbox")
+        else Right(removedFrom)
+    catch case ex: Throwable => Left(s"Failed to acknowledge message: ${ex.getMessage}")
+
+  def clearInbox(recipientId: String): Either[String, Int] =
+    try
+      val userInbox = inboxDir / recipientId
+      if !os.exists(userInbox) || !os.isDir(userInbox) then Right(0)
+      else
+        val files = os.list(userInbox).filter(p => os.isFile(p) && p.ext == "json").toList
+        val count = files.size
+        files.foreach(os.remove(_))
+        Right(count)
+    catch case ex: Throwable => Left(s"Failed to clear inbox: ${ex.getMessage}")
+
+  def stats(): Either[String, CommsStats] =
+    try
+      val totalMsgs =
+        if os.exists(auditLogFile) && os.isFile(auditLogFile) then
+          os.read.lines(auditLogFile).count(_.trim.nonEmpty)
+        else 0
+      val auditLogSize =
+        if os.exists(auditLogFile) && os.isFile(auditLogFile) then os.size(auditLogFile)
+        else 0L
+      var pendingMsgs   = 0
+      var activeInboxes = 0
+      if os.exists(inboxDir) && os.isDir(inboxDir) then
+        os.list(inboxDir).filter(os.isDir(_)).foreach { recDir =>
+          val count = os.list(recDir).count(p => os.isFile(p) && p.ext == "json")
+          if count > 0 then
+            activeInboxes += 1
+            pendingMsgs += count
+        }
+      Right(
+        CommsStats(
+          totalMessages = totalMsgs,
+          pendingInboxMessages = pendingMsgs,
+          activeInboxes = activeInboxes,
+          auditLogSizeBytes = auditLogSize,
+        ),
+      )
+    catch case ex: Throwable => Left(s"Failed to compute comms stats: ${ex.getMessage}")

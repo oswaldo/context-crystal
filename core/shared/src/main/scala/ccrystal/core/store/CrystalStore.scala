@@ -24,6 +24,7 @@ trait CrystalStore:
       val pairs = activeCrystals.map((_, false)) ++ archivedCrystals.map((_, true))
       ccrystal.core.model.search.SearchEngine.search(pairs, filter)
   def getDiskSizes(): (Long, Long, Map[String, Long]) = (0L, 0L, Map.empty)
+  def getExtensionStats(): List[ccrystal.core.model.stats.ExtensionStatsSummary] = Nil
   def stats(
       filter: Option[ccrystal.core.model.search.CrystalFilter] = None,
   ): Either[String, ccrystal.core.model.stats.CaveStats] =
@@ -46,6 +47,7 @@ trait CrystalStore:
         entityRegistry = entityReg,
         artifactRegistry = artifactReg,
         filter = filter,
+        extensions = getExtensionStats(),
       )
   def archive(id: String): Either[String, Unit]
   def unarchive(id: String): Either[String, Unit]

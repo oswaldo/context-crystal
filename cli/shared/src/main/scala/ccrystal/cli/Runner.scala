@@ -1062,6 +1062,7 @@ class Runner(
           inboxRecipientOpt,
           outboxSenderOpt,
           limitOpt,
+          ack,
           jsonOutput,
         ) =>
       store.resolveExtensionStateDir("comms", crystalId).flatMap { stateDirStr =>
@@ -1070,15 +1071,101 @@ class Runner(
           () => store.getEntityRegistry().toOption,
         )
         val msgsEither = (inboxRecipientOpt, outboxSenderOpt) match
-          case (Some(recipient), _) => commsEngine.listInbox(recipient)
-          case (_, Some(sender))    => commsEngine.listOutbox(sender)
+          case (Some(recipient), _) => commsEngine.listInbox(recipient, limitOpt)
+          case (_, Some(sender))    => commsEngine.listOutbox(sender, limitOpt)
           case _                    => commsEngine.listAuditLog(limitOpt)
 
         msgsEither.map { msgs =>
+          if ack && inboxRecipientOpt.isDefined then
+            val rec = inboxRecipientOpt.get
+            msgs.foreach(m => commsEngine.ackMessage(rec, m.id))
+
           if jsonOutput then msgs.asJson.spaces2
           else renderCommsMessages(msgs, crystalId, inboxRecipientOpt, outboxSenderOpt)
         }
       }
+
+    case CliCommand.CommsAck(crystalId, messageId, inboxRecipientOpt) =>
+      store.resolveExtensionStateDir("comms", crystalId).flatMap { stateDirStr =>
+        val commsEngine = new ccrystal.core.extension.comms.CommsEngine(
+          os.Path(java.nio.file.Paths.get(stateDirStr)),
+          () => store.getEntityRegistry().toOption,
+        )
+        inboxRecipientOpt match
+          case Some(recipient) =>
+            commsEngine
+              .ackMessage(recipient, messageId)
+              .map(_ =>
+                s"Acknowledged and drained message '$messageId' from inbox '$recipient' in crystal '$crystalId'",
+              )
+          case None =>
+            commsEngine
+              .ackMessageAnyInbox(messageId)
+              .map(inboxes =>
+                s"Acknowledged and drained message '$messageId' from inbox(es): ${inboxes.mkString(", ")} in crystal '$crystalId'",
+              )
+      }
+
+    case CliCommand.CommsClear(crystalId, inboxRecipient) =>
+      store.resolveExtensionStateDir("comms", crystalId).flatMap { stateDirStr =>
+        val commsEngine = new ccrystal.core.extension.comms.CommsEngine(
+          os.Path(java.nio.file.Paths.get(stateDirStr)),
+          () => store.getEntityRegistry().toOption,
+        )
+        commsEngine.clearInbox(inboxRecipient).map { count =>
+          s"Cleared $count pending message(s) from inbox '$inboxRecipient' in crystal '$crystalId'"
+        }
+      }
+
+    case CliCommand.CommsStats(crystalIdOpt, jsonOutput) =>
+      crystalIdOpt match
+        case Some(cId) =>
+          store.resolveExtensionStateDir("comms", cId).flatMap { stateDirStr =>
+            val commsEngine = new ccrystal.core.extension.comms.CommsEngine(
+              os.Path(java.nio.file.Paths.get(stateDirStr)),
+              () => store.getEntityRegistry().toOption,
+            )
+            commsEngine.stats().map { s =>
+              if jsonOutput then s.asJson.spaces2
+              else s"""=== CRYSTAL COMMS METRICS (crystal: $cId) ===
+                   |  Total Messages Exchanged:  ${s.totalMessages}
+                   |  Pending Inbox Messages:    ${s.pendingInboxMessages}
+                   |  Active Recipient Inboxes:  ${s.activeInboxes}
+                   |  Audit Log Footprint:       ${formatBytes(s.auditLogSizeBytes)}
+                   |=============================================""".stripMargin
+            }
+          }
+        case None =>
+          val summaries       = store.getExtensionStats()
+          val commsSummaryOpt = summaries.find(_.extensionId == "comms")
+          commsSummaryOpt match
+            case Some(summary) =>
+              if jsonOutput then Right(summary.metrics.asJson.spaces2)
+              else
+                val total   = summary.metrics.getOrElse("total_messages", "0")
+                val pending = summary.metrics.getOrElse("pending_inbox_messages", "0")
+                val inboxes = summary.metrics.getOrElse("active_inboxes", "0")
+                val bytes =
+                  summary.metrics.getOrElse("storage_bytes", "0").toLongOption.getOrElse(0L)
+                Right(
+                  s"""=== CAVE COMMS METRICS (all crystals) ===
+                     |  Total Messages Exchanged:  $total
+                     |  Pending Inbox Messages:    $pending
+                     |  Active Recipient Inboxes:  $inboxes
+                     |  Total Comms Storage:       ${formatBytes(bytes)}
+                     |=========================================""".stripMargin,
+                )
+            case None =>
+              if jsonOutput then
+                Right(
+                  io.circe.Json
+                    .obj(
+                      "total_messages"         -> 0.asJson,
+                      "pending_inbox_messages" -> 0.asJson,
+                    )
+                    .spaces2,
+                )
+              else Right("No comms activity recorded in cave.")
 
   private def renderExtensionList(
       exts: List[ExtensionManifest],
@@ -1367,6 +1454,12 @@ class Runner(
     }
     sb.append(s"  Status: ${statusParts.mkString(" | ")}\n")
     sb.append(s"  Aging:  ${agingParts.mkString(" | ")}\n")
+
+    if stats.extensions.nonEmpty then
+      sb.append("\nExtensions Overview & Metrics:\n")
+      stats.extensions.foreach { ext =>
+        sb.append(s"  - ${ext.extensionId} [${ext.scope}]: ${ext.summary}\n")
+      }
 
     if detailed && stats.topCrystals.nonEmpty then
       sb.append("\nDetailed Disk Usage (Top Crystals):\n")

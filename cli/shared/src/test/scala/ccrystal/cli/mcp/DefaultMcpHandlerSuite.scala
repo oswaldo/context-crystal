@@ -1595,6 +1595,45 @@ class DefaultMcpHandlerSuite extends FunSuite:
       val skillResult = skillResp.result.get.as[CallToolResult].toOption.get
       assertEquals(skillResult.isError, false)
       assert(skillResult.content.head.text.contains("Crystal Comms"))
+
+      // Test crystal_extension_comms with action = "stats"
+      val statsReq = JsonRpcRequest(
+        id = JsonRpcId.Num(506L),
+        method = "tools/call",
+        params = Some(
+          Json.obj(
+            "name" -> "crystal_extension_comms".asJson,
+            "arguments" -> Json.obj(
+              "action"     -> "stats".asJson,
+              "crystal_id" -> "c-mcp-comms".asJson,
+            ),
+          ),
+        ),
+      )
+      val statsResp   = handler.handle(statsReq)
+      val statsResult = statsResp.result.get.as[CallToolResult].toOption.get
+      assertEquals(statsResult.isError, false)
+      assert(statsResult.content.head.text.contains("totalMessages"))
+
+      // Test crystal_extension_comms with action = "clear"
+      val clearReq = JsonRpcRequest(
+        id = JsonRpcId.Num(507L),
+        method = "tools/call",
+        params = Some(
+          Json.obj(
+            "name" -> "crystal_extension_comms".asJson,
+            "arguments" -> Json.obj(
+              "action"     -> "clear".asJson,
+              "crystal_id" -> "c-mcp-comms".asJson,
+              "inbox"      -> "agt_mcp".asJson,
+            ),
+          ),
+        ),
+      )
+      val clearResp   = handler.handle(clearReq)
+      val clearResult = clearResp.result.get.as[CallToolResult].toOption.get
+      assertEquals(clearResult.isError, false)
+      assert(clearResult.content.head.text.contains("Cleared"))
     finally
       try os.remove.all(tempCave)
       catch case _: Throwable => ()

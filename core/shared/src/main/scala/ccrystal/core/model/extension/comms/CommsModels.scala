@@ -14,7 +14,7 @@ case class CommsMessage(
     metadata: Map[String, String] = Map.empty,
 ) derives CanEqual:
   def isBroadcast: Boolean =
-    recipientIds.contains("@all") || recipientIds.contains("@channel")
+    recipientIds.contains("@all")
 
 object CommsMessage:
   def single(
@@ -56,3 +56,10 @@ object CommsMessage:
       subject = subject,
       body = body,
     )
+
+case class CommsStats(
+    totalMessages: Int,
+    pendingInboxMessages: Int,
+    activeInboxes: Int,
+    auditLogSizeBytes: Long,
+) derives CanEqual

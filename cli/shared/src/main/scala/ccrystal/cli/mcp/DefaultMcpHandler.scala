@@ -763,12 +763,16 @@ class DefaultMcpHandler(
               "properties" -> Json.obj(
                 "action" -> Json.obj(
                   "type" -> "string".asJson,
-                  "enum" -> List("send", "list").asJson,
-                  "description" -> "Action: send message or list messages (inbox, outbox, or audit log)".asJson,
+                  "enum" -> List("send", "list", "ack", "clear", "stats").asJson,
+                  "description" -> "Action: send, list, ack (drain message), clear (drain inbox), or stats (mailbox metrics)".asJson,
                 ),
                 "crystal_id" -> Json.obj(
+                  "type" -> "string".asJson,
+                  "description" -> "Target crystal ID providing the comms boundary (optional for cave-wide stats)".asJson,
+                ),
+                "message_id" -> Json.obj(
                   "type"        -> "string".asJson,
-                  "description" -> "Target crystal ID providing the comms boundary".asJson,
+                  "description" -> "Message ID to acknowledge and drain from inbox (for ack)".asJson,
                 ),
                 "from" -> Json.obj(
                   "type" -> "string".asJson,
@@ -796,8 +800,8 @@ class DefaultMcpHandler(
                   "description" -> "Optional causal parent message ID".asJson,
                 ),
                 "inbox" -> Json.obj(
-                  "type"        -> "string".asJson,
-                  "description" -> "Recipient entity ID to inspect inbox (for list)".asJson,
+                  "type" -> "string".asJson,
+                  "description" -> "Recipient entity ID to inspect inbox (for list/clear/ack)".asJson,
                 ),
                 "outbox" -> Json.obj(
                   "type"        -> "string".asJson,
@@ -806,6 +810,10 @@ class DefaultMcpHandler(
                 "limit" -> Json.obj(
                   "type"        -> "integer".asJson,
                   "description" -> "Maximum messages to return (for list)".asJson,
+                ),
+                "ack" -> Json.obj(
+                  "type" -> "boolean".asJson,
+                  "description" -> "When true, automatically acknowledges and drains listed inbox messages (for list, default: false)".asJson,
                 ),
                 "json_output" -> Json.obj(
                   "type" -> "boolean".asJson,
@@ -816,7 +824,7 @@ class DefaultMcpHandler(
                   "description" -> "When true, records the message as a causal DAG transition node in the crystal (default: false)".asJson,
                 ),
               ),
-              "required" -> List("action", "crystal_id").asJson,
+              "required" -> List("action").asJson,
             ),
           ),
         )
@@ -1859,6 +1867,7 @@ class DefaultMcpHandler(
                 val inboxOpt   = payload("inbox").flatMap(_.asString)
                 val outboxOpt  = payload("outbox").flatMap(_.asString)
                 val limitOpt   = payload("limit").flatMap(_.asNumber.flatMap(_.toInt))
+                val ack        = payload("ack").flatMap(_.asBoolean).getOrElse(false)
                 val jsonOutput = payload("json_output").flatMap(_.asBoolean).getOrElse(true)
                 runCommandToResult(
                   CliCommand.CommsList(
@@ -1866,14 +1875,48 @@ class DefaultMcpHandler(
                     inboxRecipient = inboxOpt,
                     outboxSender = outboxOpt,
                     limit = limitOpt,
+                    ack = ack,
                     jsonOutput = jsonOutput,
                   ),
+                )
+              case "ack" =>
+                val messageIdOpt = payload("message_id")
+                  .orElse(payload("messageId"))
+                  .flatMap(_.asString)
+                val inboxOpt = payload("inbox").flatMap(_.asString)
+                messageIdOpt match
+                  case Some(mId) =>
+                    runCommandToResult(
+                      CliCommand.CommsAck(crystalId, mId, inboxOpt),
+                    )
+                  case None =>
+                    CallToolResult(
+                      List(ToolContent(text = "Comms ack requires 'message_id' in payload")),
+                      isError = true,
+                    )
+              case "clear" =>
+                val inboxOpt = payload("inbox").flatMap(_.asString)
+                inboxOpt match
+                  case Some(inbox) =>
+                    runCommandToResult(
+                      CliCommand.CommsClear(crystalId, inbox),
+                    )
+                  case None =>
+                    CallToolResult(
+                      List(ToolContent(text = "Comms clear requires 'inbox' recipient in payload")),
+                      isError = true,
+                    )
+              case "stats" =>
+                val jsonOutput = payload("json_output").flatMap(_.asBoolean).getOrElse(true)
+                runCommandToResult(
+                  CliCommand.CommsStats(Some(crystalId), jsonOutput = jsonOutput),
                 )
               case other =>
                 CallToolResult(
                   List(
                     ToolContent(
-                      text = s"Unknown comms action '$other' (supported: send, list)",
+                      text =
+                        s"Unknown comms action '$other' (supported: send, list, ack, clear, stats)",
                     ),
                   ),
                   isError = true,
@@ -1996,6 +2039,7 @@ class DefaultMcpHandler(
                 val inboxOpt   = cursor.get[String]("inbox").toOption
                 val outboxOpt  = cursor.get[String]("outbox").toOption
                 val limitOpt   = cursor.get[Int]("limit").toOption
+                val ack        = cursor.get[Boolean]("ack").getOrElse(false)
                 val jsonOutput = cursor.get[Boolean]("json_output").getOrElse(false)
                 runCommandToResult(
                   CliCommand.CommsList(
@@ -2003,15 +2047,81 @@ class DefaultMcpHandler(
                     inboxRecipient = inboxOpt,
                     outboxSender = outboxOpt,
                     limit = limitOpt,
+                    ack = ack,
                     jsonOutput = jsonOutput,
                   ),
                 )
+
+          case Some("ack") =>
+            crystalIdOpt match
+              case None =>
+                CallToolResult(
+                  List(
+                    ToolContent(
+                      text =
+                        "Missing required 'crystal_id' parameter for crystal_extension_comms ack",
+                    ),
+                  ),
+                  isError = true,
+                )
+              case Some(crystalId) =>
+                val messageIdOpt = cursor
+                  .get[String]("message_id")
+                  .orElse(cursor.get[String]("messageId"))
+                  .toOption
+                val inboxOpt = cursor.get[String]("inbox").toOption
+                messageIdOpt match
+                  case Some(mId) =>
+                    runCommandToResult(
+                      CliCommand.CommsAck(crystalId, mId, inboxOpt),
+                    )
+                  case None =>
+                    CallToolResult(
+                      List(
+                        ToolContent(text = "Missing required 'message_id' parameter for comms ack"),
+                      ),
+                      isError = true,
+                    )
+
+          case Some("clear") =>
+            crystalIdOpt match
+              case None =>
+                CallToolResult(
+                  List(
+                    ToolContent(
+                      text =
+                        "Missing required 'crystal_id' parameter for crystal_extension_comms clear",
+                    ),
+                  ),
+                  isError = true,
+                )
+              case Some(crystalId) =>
+                val inboxOpt = cursor.get[String]("inbox").toOption
+                inboxOpt match
+                  case Some(inbox) =>
+                    runCommandToResult(
+                      CliCommand.CommsClear(crystalId, inbox),
+                    )
+                  case None =>
+                    CallToolResult(
+                      List(
+                        ToolContent(text = "Missing required 'inbox' parameter for comms clear"),
+                      ),
+                      isError = true,
+                    )
+
+          case Some("stats") =>
+            val jsonOutput = cursor.get[Boolean]("json_output").getOrElse(true)
+            runCommandToResult(
+              CliCommand.CommsStats(crystalIdOpt, jsonOutput = jsonOutput),
+            )
 
           case Some(other) =>
             CallToolResult(
               List(
                 ToolContent(
-                  text = s"Invalid action '$other' for crystal_extension_comms (valid: send, list)",
+                  text =
+                    s"Invalid action '$other' for crystal_extension_comms (valid: send, list, ack, clear, stats)",
                 ),
               ),
               isError = true,

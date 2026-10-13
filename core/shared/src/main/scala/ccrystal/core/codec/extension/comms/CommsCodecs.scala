@@ -48,3 +48,26 @@ given Decoder[CommsMessage] = Decoder.instance { c =>
     metadata = metadata,
   )
 }
+
+given Encoder[ccrystal.core.model.extension.comms.CommsStats] = Encoder.instance { s =>
+  Json.obj(
+    "totalMessages"        -> s.totalMessages.asJson,
+    "pendingInboxMessages" -> s.pendingInboxMessages.asJson,
+    "activeInboxes"        -> s.activeInboxes.asJson,
+    "auditLogSizeBytes"    -> s.auditLogSizeBytes.asJson,
+  )
+}
+
+given Decoder[ccrystal.core.model.extension.comms.CommsStats] = Decoder.instance { c =>
+  for
+    totalMessages        <- c.downField("totalMessages").as[Int]
+    pendingInboxMessages <- c.downField("pendingInboxMessages").as[Int]
+    activeInboxes        <- c.downField("activeInboxes").as[Int]
+    auditLogSizeBytes    <- c.downField("auditLogSizeBytes").as[Long]
+  yield ccrystal.core.model.extension.comms.CommsStats(
+    totalMessages = totalMessages,
+    pendingInboxMessages = pendingInboxMessages,
+    activeInboxes = activeInboxes,
+    auditLogSizeBytes = auditLogSizeBytes,
+  )
+}

@@ -791,6 +791,60 @@ class FsCrystalStore(
         (activeTotal, archiveTotal, perCrystal.result())
     catch case _: Throwable => (0L, 0L, Map.empty)
 
+  private def formatByteSize(bytes: Long): String =
+    if bytes < 1024 then s"$bytes B"
+    else if bytes < 1024 * 1024 then f"${bytes / 1024.0}%.1f KB"
+    else if bytes < 1024 * 1024 * 1024 then f"${bytes / (1024.0 * 1024.0)}%.1f MB"
+    else f"${bytes / (1024.0 * 1024.0 * 1024.0)}%.2f GB"
+
+  override def getExtensionStats(): List[ccrystal.core.model.stats.ExtensionStatsSummary] =
+    try
+      val summaries = List.newBuilder[ccrystal.core.model.stats.ExtensionStatsSummary]
+
+      if os.exists(rootOsPath) then
+        val crystalDirs = os
+          .list(rootOsPath)
+          .filter(p => os.isDir(p) && p.last != "archive" && !p.last.startsWith("_"))
+          .toList
+        var totalCommsMsgs     = 0
+        var totalPendingMsgs   = 0
+        var totalActiveInboxes = 0
+        var totalCommsBytes    = 0L
+
+        crystalDirs.foreach { cDir =>
+          val commsDir = cDir / "extensions" / "comms"
+          if os.exists(commsDir) && os.isDir(commsDir) then
+            totalCommsBytes += computeDirSize(commsDir)
+            val auditLog = commsDir / "messages.jsonl"
+            if os.exists(auditLog) && os.isFile(auditLog) then
+              totalCommsMsgs += os.read.lines(auditLog).count(_.trim.nonEmpty)
+            val inboxDir = commsDir / "inbox"
+            if os.exists(inboxDir) && os.isDir(inboxDir) then
+              os.list(inboxDir).filter(os.isDir(_)).foreach { recDir =>
+                val cnt = os.list(recDir).count(p => os.isFile(p) && p.ext == "json")
+                if cnt > 0 then
+                  totalActiveInboxes += 1
+                  totalPendingMsgs += cnt
+              }
+        }
+
+        if totalCommsMsgs > 0 || totalPendingMsgs > 0 || totalCommsBytes > 0 then
+          summaries += ccrystal.core.model.stats.ExtensionStatsSummary(
+            extensionId = "comms",
+            scope = "Cave",
+            metrics = Map(
+              "total_messages"         -> totalCommsMsgs.toString,
+              "pending_inbox_messages" -> totalPendingMsgs.toString,
+              "active_inboxes"         -> totalActiveInboxes.toString,
+              "storage_bytes"          -> totalCommsBytes.toString,
+            ),
+            summary =
+              s"$totalCommsMsgs message(s) exchanged | $totalPendingMsgs pending in inbox across $totalActiveInboxes entity mailbox(es) | ${formatByteSize(totalCommsBytes)}",
+          )
+
+      summaries.result()
+    catch case _: Throwable => Nil
+
   override def connect(
       sourceId: String,
       targetId: String,

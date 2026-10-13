@@ -19,6 +19,7 @@ object CaveStatsEngine:
       artifactRegistry: Option[CaveArtifactRegistry],
       filter: Option[CrystalFilter] = None,
       nowEpochMillis: Long = System.currentTimeMillis(),
+      extensions: List[ExtensionStatsSummary] = Nil,
   ): CaveStats =
     // 1. Filter crystals if a filter is provided
     val evaluatedPairs = filter match
@@ -92,6 +93,7 @@ object CaveStatsEngine:
       tokenSavings = tokenSavings,
       health = health,
       topCrystals = crystalUsages.sortBy(u => -u.totalBytes).take(10),
+      extensions = extensions,
     )
 
   private def computeTemporalExtents(crystals: List[ContextCrystal]): TemporalExtents =

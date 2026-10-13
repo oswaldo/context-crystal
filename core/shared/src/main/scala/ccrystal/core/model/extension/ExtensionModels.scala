@@ -43,9 +43,9 @@ object BuiltInExtensions:
       |  - `messages.jsonl`: Append-only cave/crystal audit log.
       |- **Addressing Modes**:
       |  - Individual Entities: Standard registered entities (`usr_*` for humans, `agt_*` for agents).
-      |  - Entity Groups: Named groups (`grp_*`, e.g. `grp_team`, `grp_reviewers`).
-      |  - Channel Broadcast: `@all` (delivers to all registered entities in cave), `@channel` (delivers to channel recipients).
-      |- **Channels**: Categorical topics (default: `general` or `default`).
+      |  - Entity Groups: Named groups (`grp_*`, e.g. `grp_team`, `grp_reviewers`) registered in `entities.json`.
+      |  - Cave Broadcast: `@all` (delivers to all registered entities in cave).
+      |- **Channels**: Categorical topics (e.g. `general`, `review`, `architecture`). Used for thematic tagging, not recipient resolution.
       |- **Causal DAG Reflection**: Passing `--record-dag` (CLI) or `"record_dag": true` (MCP) automatically appends a corresponding DAG node to the active crystal:
       |  - Human senders (`usr_*`) produce `human_prompt` nodes.
       |  - Agent senders (`agt_*`) produce `agent_reasoning` nodes.
@@ -64,12 +64,18 @@ object BuiltInExtensions:
       |Because `CommsEngine` delivers messages via atomic temporary file rename (`replaceExisting = true`), the kernel triggers a clean `MOVED_TO` / `CLOSE_WRITE` event with zero partial-read race conditions.
       |Agent B wakes immediately upon arrival of `<msg-id>.json`.
       |
-      |### Pattern C: Discrete Mailbox Inspection (Turn Handoff / Polling)
+      |### Pattern C: Discrete Mailbox Inspection & Drain (Turn Handoff / Polling)
       |Before starting a work cycle or after completing a task checkpoint, Agent B queries:
-      |`ccrystal ext comms list <crystal-id> --inbox agt_b` (or MCP `crystal_extension_comms(action: "list", inbox: "agt_b")`).
-      |Messages are returned in ascending timestamp order, allowing sequential processing.
+      |`ccrystal ext comms list <crystal-id> --inbox agt_b --ack` (or MCP `crystal_extension_comms(action: "list", inbox: "agt_b", ack: true)`).
+      |Passing `--ack` inspects and drains the incoming queue in a single turn.
       |
-      |## 3. CLI Usage
+      |## 3. Mailbox Hygiene & Queue Drainage
+      |- **Acknowledge (Drain) Message**: `ccrystal ext comms ack <crystal-id> -m <msg-id> [--inbox <id>]`
+      |- **Clear Inbox**: `ccrystal ext comms clear <crystal-id> -i <id>`
+      |- **Mailbox Metrics**: `ccrystal ext comms stats [crystal-id] [--json]`
+      |- Messages consumed from inboxes remain permanently preserved in append-only `messages.jsonl` and the sender's `outbox/`.
+      |
+      |## 4. CLI Usage
       |```bash
       |# Send message to an agent
       |ccrystal ext comms send <crystal-id> --from usr_oswaldo --to agt_alice -s "Review" -b "Please check PR"
@@ -77,14 +83,17 @@ object BuiltInExtensions:
       |# Send message with causal DAG reflection
       |ccrystal ext comms send <crystal-id> --from usr_oswaldo --to agt_alice -s "Decision" -b "Architecture approved" --record-dag
       |
-      |# Inspect recipient inbox
-      |ccrystal ext comms list <crystal-id> --inbox agt_alice
+      |# Inspect and drain recipient inbox in one turn
+      |ccrystal ext comms list <crystal-id> --inbox agt_alice --ack
       |
-      |# Inspect sender outbox audit trail
-      |ccrystal ext comms list <crystal-id> --outbox usr_oswaldo --limit 20
+      |# Acknowledge single message
+      |ccrystal ext comms ack <crystal-id> -m msg-001 --inbox agt_alice
+      |
+      |# Comms metrics
+      |ccrystal ext comms stats <crystal-id>
       |```
       |
-      |## 4. MCP Usage
+      |## 5. MCP Usage
       |Use `crystal_extension_comms`:
       |```json
       |{
@@ -95,6 +104,15 @@ object BuiltInExtensions:
       |  "subject": "Mission Update",
       |  "body": "Implementation complete",
       |  "record_dag": true
+      |}
+      |```
+      |Or drain inbox:
+      |```json
+      |{
+      |  "action": "list",
+      |  "crystal_id": "<crystal-id>",
+      |  "inbox": "agt_alice",
+      |  "ack": true
       |}
       |```
       |Or via universal dynamic dispatch `crystal_extension_call`:
