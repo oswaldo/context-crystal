@@ -38,13 +38,13 @@
 
 ## Phase 3: CLI Subcommands & User Ergonomics (`cli`)
 
-- [ ] Task 3.1: Decline CLI Subcommands for Extensions (`ccrystal ext`)
-  - Implement `ccrystal ext list` (with scope filtering/display), `ccrystal ext enable`, `ccrystal ext disable`.
+- [x] Task 3.1: Decline CLI Subcommands for Extensions (`ccrystal ext`)
+  - Implement `ccrystal ext list` (with scope filtering/display), `ccrystal ext enable`, `ccrystal ext disable`, `ccrystal ext run`.
   - Write CLI parser tests in `cliJVM/test`.
-- [ ] Task 3.2: Decline CLI Subcommands for Comms (`ccrystal ext comms`)
+- [x] Task 3.2: Decline CLI Subcommands for Comms (`ccrystal ext comms`)
   - Implement `ccrystal ext comms send` and `ccrystal ext comms list`.
   - Write CLI parser and execution tests.
-- [ ] Task 3.3: Phase 3 Checkpoint & Native Compilation
+- [x] Task 3.3: Phase 3 Checkpoint & Native Compilation
   - Verify `cliJVM/test` and link `cliNative/nativeLink`.
 
 ---
