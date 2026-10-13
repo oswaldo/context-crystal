@@ -969,6 +969,13 @@ class Runner(
           Left(s"Extension '$extId' not found.")
       }
 
+    case CliCommand.ExtensionSkill(extId, crystalIdOpt) =>
+      store.resolveExtensionSkill(extId, crystalIdOpt).flatMap {
+        case Some(skillText) => Right(skillText.trim)
+        case None =>
+          Left(s"Extension '$extId' has no companion skill (SKILL.md not found or not declared).")
+      }
+
     case CliCommand.CommsSend(crystalId, from, to, subject, body, channel, replyTo, recordDag) =>
       store.resolveExtensionStateDir("comms", crystalId).flatMap { stateDirStr =>
         val commsEngine = new ccrystal.core.extension.comms.CommsEngine(
@@ -1085,8 +1092,9 @@ class Runner(
       exts.foreach { m =>
         val statusTag = if m.enabled then "[Enabled]" else "[Disabled]"
         val epTag     = m.entrypoint.map(ep => s" [entrypoint: $ep]").getOrElse("")
+        val skillTag  = m.skill.map(s => s" [skill: $s]").getOrElse("")
         sb.append(
-          f"  - ${m.id}%-16s ${m.version}%-8s [${m.substrate}] [${m.scope}] $statusTag$epTag: ${m.name}\n",
+          f"  - ${m.id}%-16s ${m.version}%-8s [${m.substrate}] [${m.scope}] $statusTag$epTag$skillTag: ${m.name}\n",
         )
         m.description.foreach(d => sb.append(s"      $d\n"))
       }

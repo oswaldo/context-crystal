@@ -884,8 +884,12 @@ class FsCrystalStore(
             if os.exists(manifestFile) && os.isFile(manifestFile) then
               val content = os.read(manifestFile)
               decode[ExtensionManifest](content) match
-                case Right(m) => map(m.id) = m.copy(scope = scope)
-                case Left(_)  => () // skip corrupt manifests
+                case Right(m) =>
+                  val effSkill = m.skill.orElse(
+                    if os.exists(extDir / "SKILL.md") then Some("SKILL.md") else None,
+                  )
+                  map(m.id) = m.copy(scope = scope, skill = effSkill)
+                case Left(_) => () // skip corrupt manifests
           }
 
       // 2. Host scope
@@ -939,3 +943,40 @@ class FsCrystalStore(
 
   override def resolveExtensionStateDir(extId: String, crystalId: String): Either[String, String] =
     resolveExtensionStateOsPath(extId, crystalId).map(_.toString)
+
+  override def resolveExtensionSkill(
+      extId: String,
+      crystalId: Option[String] = None,
+  ): Either[String, Option[String]] =
+    if extId == "comms" then Right(Some(BuiltInExtensions.commsSkillMarkdown))
+    else
+      getExtensionManifest(extId, crystalId).flatMap {
+        case Some(manifest) =>
+          val extDirEither: Either[String, os.Path] = manifest.scope match
+            case ExtensionScope.Crystal =>
+              crystalId match
+                case Some(cId) => Right(crystalExtensionsDir(cId) / extId)
+                case None =>
+                  Left(s"Crystal ID required to resolve crystal-scoped extension '$extId'")
+            case ExtensionScope.Host =>
+              hostExtensionsDir match
+                case Some(hDir) => Right(hDir / extId)
+                case None       => Left("Host extensions directory not available")
+            case ExtensionScope.Cave =>
+              Right(caveExtensionsDir / extId)
+
+          extDirEither.flatMap { extDir =>
+            val skillFileName = manifest.skill.getOrElse("SKILL.md")
+            val skillFile =
+              if java.io.File(skillFileName).isAbsolute then
+                os.Path(java.nio.file.Paths.get(skillFileName))
+              else extDir / os.RelPath(skillFileName)
+            if os.exists(skillFile) && os.isFile(skillFile) then
+              try Right(Some(os.read(skillFile)))
+              catch
+                case ex: Throwable =>
+                  Left(s"Failed to read skill file for extension '$extId': ${ex.getMessage}")
+            else Right(None)
+          }
+        case None => Left(s"Extension '$extId' not found.")
+      }

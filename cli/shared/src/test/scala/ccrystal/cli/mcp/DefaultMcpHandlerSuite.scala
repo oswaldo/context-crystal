@@ -1575,6 +1575,26 @@ class DefaultMcpHandlerSuite extends FunSuite:
       assertEquals(lastNode.kind, ccrystal.core.model.NodeKind.AgentReasoning)
       assert(lastNode.contentSummary.contains("Dynamic dispatch success"))
       assertEquals(lastNode.metadata.get("extension"), Some("comms"))
+
+      // Test crystal_extension_call with action = "skill"
+      val skillReq = JsonRpcRequest(
+        id = JsonRpcId.Num(505L),
+        method = "tools/call",
+        params = Some(
+          Json.obj(
+            "name" -> "crystal_extension_call".asJson,
+            "arguments" -> Json.obj(
+              "extension_id" -> "comms".asJson,
+              "crystal_id"   -> "c-mcp-comms".asJson,
+              "action"       -> "skill".asJson,
+            ),
+          ),
+        ),
+      )
+      val skillResp   = handler.handle(skillReq)
+      val skillResult = skillResp.result.get.as[CallToolResult].toOption.get
+      assertEquals(skillResult.isError, false)
+      assert(skillResult.content.head.text.contains("Crystal Comms"))
     finally
       try os.remove.all(tempCave)
       catch case _: Throwable => ()

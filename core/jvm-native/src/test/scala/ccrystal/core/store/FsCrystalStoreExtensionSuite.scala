@@ -133,3 +133,44 @@ class FsCrystalStoreExtensionSuite extends FunSuite:
       assert(os.exists(os.Path(java.nio.file.Paths.get(pathStr))), "path should exist on disk")
       assertEquals(pathStr, (tempCave / crystalId / "extensions" / extId).toString)
     }
+
+  test("resolveExtensionSkill returns embedded comms skill and auto-detects SKILL.md"):
+    withTempStore { (store, tempCave, _) =>
+      // 1. Embedded comms skill
+      val commsSkill = store.resolveExtensionSkill("comms", None)
+      assert(commsSkill.isRight, "comms skill should resolve")
+      assert(commsSkill.toOption.get.isDefined, "comms skill should be defined")
+      assert(
+        commsSkill.toOption.get.get.contains("Crystal Comms"),
+        "comms skill should contain title",
+      )
+
+      // 2. Declarative extension with SKILL.md
+      val extDir = tempCave / "extensions" / "sample_ext"
+      os.makeDir.all(extDir)
+      os.write(
+        extDir / "extension.json",
+        """{
+          |  "id": "sample_ext",
+          |  "name": "Sample Extension",
+          |  "version": "1.0.0",
+          |  "substrate": "declarative",
+          |  "scope": "cave",
+          |  "enabled": true
+          |}""".stripMargin,
+      )
+      os.write(extDir / "SKILL.md", "# Sample Extension Agent Skill\n\nInstructions for agent.")
+
+      // Verify listExtensions auto-detects SKILL.md
+      val exts   = store.listExtensions(None).toOption.get
+      val sample = exts.find(_.id == "sample_ext").get
+      assertEquals(sample.skill, Some("SKILL.md"))
+
+      // Verify resolveExtensionSkill reads content
+      val skillRes = store.resolveExtensionSkill("sample_ext", None)
+      assert(skillRes.isRight, "sample_ext skill should resolve")
+      assertEquals(
+        skillRes.toOption.get,
+        Some("# Sample Extension Agent Skill\n\nInstructions for agent."),
+      )
+    }

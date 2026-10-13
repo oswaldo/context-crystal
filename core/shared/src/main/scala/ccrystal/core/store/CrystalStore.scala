@@ -122,3 +122,8 @@ trait CrystalStore:
     Left("saveExtensionManifest not supported by this store")
   def resolveExtensionStateDir(extId: String, crystalId: String): Either[String, String] =
     Left("resolveExtensionStateDir not supported by this store")
+  def resolveExtensionSkill(
+      extId: String,
+      crystalId: Option[String] = None,
+  ): Either[String, Option[String]] =
+    Right(None)

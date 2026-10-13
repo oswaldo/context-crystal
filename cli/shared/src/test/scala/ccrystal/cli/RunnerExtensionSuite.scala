@@ -53,6 +53,14 @@ class RunnerExtensionSuite extends FunSuite:
       CliCommand.ExtensionRun("sample_runner", Some("c-1"), List("--port", "8080")),
     )
 
+  test("Parses 'ext skill' command"):
+    val skillRes = CommandParser.parse(List("ext", "skill", "sample_runner", "--crystal", "c-1"))
+    assert(skillRes.isRight, "ext skill should parse")
+    assertEquals(
+      skillRes.toOption.get,
+      CliCommand.ExtensionSkill("sample_runner", Some("c-1")),
+    )
+
   test("Parses 'ext comms send' and 'ext comms list'"):
     val sendRes = CommandParser.parse(
       List(
@@ -214,5 +222,18 @@ class RunnerExtensionSuite extends FunSuite:
       assert(
         runOutput.toOption.get.contains("Executed with: --flag foo"),
         "subprocess output should match",
+      )
+
+      // 5. Test ExtensionSkill resolution
+      val commsSkill = runner.run(CliCommand.ExtensionSkill("comms", None))
+      assert(commsSkill.isRight, "comms skill should succeed")
+      assert(commsSkill.toOption.get.contains("Crystal Comms"), "should return comms markdown")
+
+      os.write(sampleDir / "SKILL.md", "# Sample Runner Skill\n\nInstructions for sample runner.")
+      val sampleSkill = runner.run(CliCommand.ExtensionSkill("sample_runner", Some("c-1")))
+      assert(sampleSkill.isRight, "sample_runner skill should succeed")
+      assertEquals(
+        sampleSkill.toOption.get,
+        "# Sample Runner Skill\n\nInstructions for sample runner.",
       )
     }

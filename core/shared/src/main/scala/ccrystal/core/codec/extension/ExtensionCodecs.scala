@@ -41,6 +41,7 @@ given Encoder[ExtensionManifest] = Encoder.instance { m =>
     "description" -> m.description.asJson,
     "schemaUri"   -> m.schemaUri.asJson,
     "entrypoint"  -> m.entrypoint.asJson,
+    "skill"       -> m.skill.asJson,
     "metadata"    -> m.metadata.asJson,
   )
 }
@@ -56,6 +57,7 @@ given Decoder[ExtensionManifest] = Decoder.instance { c =>
     description <- c.downField("description").as[Option[String]]
     schemaUri   <- c.downField("schemaUri").as[Option[String]]
     entrypoint  <- c.downField("entrypoint").as[Option[String]]
+    skill       <- c.downField("skill").as[Option[String]]
     metadata <- c.downField("metadata").as[Option[Map[String, String]]].map(_.getOrElse(Map.empty))
   yield ExtensionManifest(
     id = id,
@@ -67,6 +69,7 @@ given Decoder[ExtensionManifest] = Decoder.instance { c =>
     description = description,
     schemaUri = schemaUri,
     entrypoint = entrypoint,
+    skill = skill,
     metadata = metadata,
   )
 }

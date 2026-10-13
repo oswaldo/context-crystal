@@ -1817,6 +1817,9 @@ class DefaultMcpHandler(
         val payloadOpt   = cursor.get[JsonObject]("payload").toOption
 
         (extIdOpt, crystalIdOpt, actionOpt) match
+          case (Some(extId), Some(crystalId), Some("skill")) =>
+            runCommandToResult(CliCommand.ExtensionSkill(extId, Some(crystalId)))
+
           case (Some("comms"), Some(crystalId), Some(act)) =>
             // Dispatch to embedded comms engine with payload parameters
             val payload = payloadOpt.getOrElse(JsonObject.empty)

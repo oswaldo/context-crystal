@@ -183,6 +183,10 @@ enum CliCommand derives CanEqual:
       crystalId: Option[String] = None,
       args: List[String] = Nil,
   )
+  case ExtensionSkill(
+      extId: String,
+      crystalId: Option[String] = None,
+  )
   case CommsSend(
       crystalId: String,
       from: String,

@@ -751,6 +751,11 @@ object CommandParser:
     Opts.arguments[String]("args").map(_.toList).withDefault(Nil),
   ).mapN(CliCommand.ExtensionRun.apply)
 
+  private val extSkillOpts = (
+    Opts.argument[String]("ext-id"),
+    Opts.option[String]("crystal", "Resolve skill within specific crystal context", "c").orNone,
+  ).mapN(CliCommand.ExtensionSkill.apply)
+
   private val commsSendOpts = (
     Opts.argument[String]("crystal-id"),
     Opts.option[String]("from", "Sender entity ID (e.g. usr_oswaldo, agt_architect)"),
@@ -785,6 +790,11 @@ object CommandParser:
       )
       .orElse(Opts.subcommand("enable", "Enable an extension")(extEnableOpts))
       .orElse(Opts.subcommand("disable", "Disable an extension")(extDisableOpts))
+      .orElse(
+        Opts.subcommand("skill", "View companion cognitive agent skill for an extension")(
+          extSkillOpts,
+        ),
+      )
       .orElse(Opts.subcommand("run", "Execute extension entrypoint subprocess")(extRunOpts))
       .orElse(commsCmd),
   )
@@ -797,6 +807,11 @@ object CommandParser:
         )
         .orElse(Opts.subcommand("enable", "Enable an extension")(extEnableOpts))
         .orElse(Opts.subcommand("disable", "Disable an extension")(extDisableOpts))
+        .orElse(
+          Opts.subcommand("skill", "View companion cognitive agent skill for an extension")(
+            extSkillOpts,
+          ),
+        )
         .orElse(Opts.subcommand("run", "Execute extension entrypoint subprocess")(extRunOpts))
         .orElse(commsCmd),
     )

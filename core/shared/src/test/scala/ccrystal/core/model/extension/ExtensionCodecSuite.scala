@@ -65,7 +65,22 @@ class ExtensionCodecSuite extends FunSuite:
       description = None,
       schemaUri = None,
       entrypoint = None,
+      skill = None,
       metadata = Map.empty,
     )
 
     assertEquals(decode[ExtensionManifest](minimalJson), Right(expected))
+
+  test("Round-trip serialization with companion skill"):
+    val manifest = ExtensionManifest(
+      id = "sample_runner",
+      name = "Sample Drop-in Executable Extension",
+      version = "1.0.0",
+      substrate = ExtensionSubstrate.Declarative,
+      scope = ExtensionScope.Cave,
+      enabled = true,
+      entrypoint = Some("run.sh"),
+      skill = Some("SKILL.md"),
+    )
+    val json = manifest.asJson.noSpaces
+    assertEquals(decode[ExtensionManifest](json), Right(manifest))
