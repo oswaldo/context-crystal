@@ -27,7 +27,7 @@
 
 ## Phase 2: CEP-0002 Media Provenance Declarative Package & Cave-Wide Dogfooding
 
-- [ ] Task 2.1: Declarative Extension Manifest & Schema Package for Media
+- [x] Task 2.1: Declarative Extension Manifest & Schema Package for Media [f5d1412]
   - Create packaged extension bundle under `spec/extensions/media/` and sample cave installation `.ccrystals/extensions/media/` containing `extension.json` and schema definitions per CEP-0002.
 - [ ] Task 2.2: Declarative Extension Validation & Dogfood Test
   - Write unit/integration tests confirming cave-wide declarative drop-in discovery, manifest inheritance by crystals, and media metadata validation on artifacts.
