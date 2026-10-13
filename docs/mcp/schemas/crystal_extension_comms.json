@@ -55,6 +55,10 @@
       "json_output": {
         "type": "boolean",
         "description": "Return JSON array of CommsMessage objects (default: false)"
+      },
+      "record_dag": {
+        "type": "boolean",
+        "description": "When true, records the message as a causal DAG transition node in the crystal (default: false)"
       }
     },
     "required": ["action", "crystal_id"]

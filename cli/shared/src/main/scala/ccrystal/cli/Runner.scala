@@ -969,7 +969,7 @@ class Runner(
           Left(s"Extension '$extId' not found.")
       }
 
-    case CliCommand.CommsSend(crystalId, from, to, subject, body, channel, replyTo) =>
+    case CliCommand.CommsSend(crystalId, from, to, subject, body, channel, replyTo, recordDag) =>
       store.resolveExtensionStateDir("comms", crystalId).flatMap { stateDirStr =>
         val commsEngine = new ccrystal.core.extension.comms.CommsEngine(
           os.Path(java.nio.file.Paths.get(stateDirStr)),
@@ -989,7 +989,65 @@ class Runner(
         )
         commsEngine
           .sendMessage(msg)
-          .map(_ => s"Message '${msg.id}' sent to ${to.mkString(", ")} via channel '$channel'.")
+          .flatMap { _ =>
+            if recordDag then
+              val registry   = store.getEntityRegistry().toOption
+              val entityKind = registry.flatMap(_.entities.get(from)).map(_.kind)
+              val nodeKind = entityKind match
+                case Some(EntityKind.Human) => NodeKind.HumanPrompt
+                case Some(EntityKind.Agent) => NodeKind.AgentReasoning
+                case _ =>
+                  if from.startsWith("usr_") then NodeKind.HumanPrompt
+                  else if from.startsWith("agt_") then NodeKind.AgentReasoning
+                  else NodeKind.Checkpoint
+
+              val summaryText = s"[Comms to ${to.mkString(", ")}] $subject: $body"
+              val meta = Map(
+                "comms_message_id" -> msg.id,
+                "comms_channel"    -> channel,
+                "comms_sender"     -> from,
+                "comms_recipients" -> to.mkString(","),
+                "extension"        -> "comms",
+              ) ++ msg.replyToId.map("comms_reply_to" -> _).toMap
+
+              var recordedNodeId = ""
+              store
+                .update(crystalId) { crystal =>
+                  val now     = Instant.now().toString
+                  val parents = crystal.dag.nodes.lastOption.map(n => List(n.id)).getOrElse(Nil)
+                  var candidateIndex = crystal.dag.nodes.size + 1
+                  while crystal.dag.nodes.exists(_.id == s"node-$candidateIndex") do
+                    candidateIndex += 1
+                  val nodeId = s"node-$candidateIndex"
+                  recordedNodeId = nodeId
+                  val newNode = DAGNode(
+                    id = nodeId,
+                    parentIds = parents,
+                    timestamp = msg.timestamp,
+                    actorId = from,
+                    kind = nodeKind,
+                    contentSummary = summaryText,
+                    anchor = None,
+                    artifactIds = Nil,
+                    inputArtifactIds = Nil,
+                    outputArtifactIds = Nil,
+                    preconditionArtifactIds = Nil,
+                    fidelity = CaptureFidelity.Inferred,
+                    metadata = meta,
+                  )
+                  for
+                    cDag       <- CrystalDAG.fromDAG(crystal.dag)
+                    updatedDag <- cDag.addNode(newNode)
+                  yield crystal.copy(
+                    updatedAt = now,
+                    dag = updatedDag.raw,
+                  )
+                }
+                .map(_ =>
+                  s"Message '${msg.id}' sent to ${to.mkString(", ")} via channel '$channel' and recorded in DAG as node '$recordedNodeId'.",
+                )
+            else Right(s"Message '${msg.id}' sent to ${to.mkString(", ")} via channel '$channel'.")
+          }
       }
 
     case CliCommand.CommsList(

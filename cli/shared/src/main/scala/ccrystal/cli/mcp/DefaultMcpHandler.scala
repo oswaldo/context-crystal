@@ -811,6 +811,10 @@ class DefaultMcpHandler(
                   "type" -> "boolean".asJson,
                   "description" -> "Return JSON array of CommsMessage objects (default: false)".asJson,
                 ),
+                "record_dag" -> Json.obj(
+                  "type" -> "boolean".asJson,
+                  "description" -> "When true, records the message as a causal DAG transition node in the crystal (default: false)".asJson,
+                ),
               ),
               "required" -> List("action", "crystal_id").asJson,
             ),
@@ -1824,6 +1828,7 @@ class DefaultMcpHandler(
                 val bodyOpt    = payload("body").flatMap(_.asString)
                 val channel    = payload("channel").flatMap(_.asString).getOrElse("general")
                 val replyTo    = payload("reply_to").flatMap(_.asString)
+                val recordDag  = payload("record_dag").flatMap(_.asBoolean).getOrElse(false)
                 if fromOpt.isEmpty || toList.isEmpty || subjectOpt.isEmpty || bodyOpt.isEmpty then
                   CallToolResult(
                     List(
@@ -1844,6 +1849,7 @@ class DefaultMcpHandler(
                       body = bodyOpt.get,
                       channel = channel,
                       replyTo = replyTo,
+                      recordDag = recordDag,
                     ),
                   )
               case "list" =>
@@ -1936,6 +1942,7 @@ class DefaultMcpHandler(
                 val bodyOpt    = cursor.get[String]("body").toOption
                 val channel    = cursor.get[String]("channel").getOrElse("general")
                 val replyTo    = cursor.get[String]("reply_to").toOption
+                val recordDag  = cursor.get[Boolean]("record_dag").getOrElse(false)
 
                 if fromOpt.isEmpty then
                   CallToolResult(
@@ -1967,6 +1974,7 @@ class DefaultMcpHandler(
                       body = bodyOpt.get,
                       channel = channel,
                       replyTo = replyTo,
+                      recordDag = recordDag,
                     ),
                   )
 

@@ -191,6 +191,7 @@ enum CliCommand derives CanEqual:
       body: String,
       channel: String = "default",
       replyTo: Option[String] = None,
+      recordDag: Boolean = false,
   )
   case CommsList(
       crystalId: String,

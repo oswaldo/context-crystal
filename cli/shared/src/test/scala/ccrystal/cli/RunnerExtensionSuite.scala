@@ -89,6 +89,27 @@ class RunnerExtensionSuite extends FunSuite:
       CliCommand.CommsList("c-1", Some("agt_alice"), None, Some(10), false),
     )
 
+    val sendDagRes = CommandParser.parse(
+      List(
+        "ext",
+        "comms",
+        "send",
+        "c-1",
+        "--from",
+        "usr_oswaldo",
+        "--to",
+        "agt_alice",
+        "-s",
+        "Notice",
+        "-b",
+        "Important update",
+        "--record-dag",
+      ),
+    )
+    assert(sendDagRes.isRight, "comms send with --record-dag should parse")
+    val sendDagCmd = sendDagRes.toOption.get.asInstanceOf[CliCommand.CommsSend]
+    assertEquals(sendDagCmd.recordDag, true)
+
   test("Runner executes extension list, comms messaging, and extension runner"):
     withTempStore { (store, runner, tempCave) =>
       // 1. List extensions
@@ -122,6 +143,51 @@ class RunnerExtensionSuite extends FunSuite:
       )
       assert(inboxOutput.isRight, "CommsList should succeed")
       assert(inboxOutput.toOption.get.contains("Task Review"), "inbox should contain sent message")
+
+      // 3b. Initialize a crystal and send comms message with recordDag = true
+      val initRes = runner.run(
+        CliCommand.Init(
+          name = "c-comms-dag",
+          goalTitle = "Test Comms DAG Recording",
+          intent = None,
+        ),
+      )
+      assert(initRes.isRight, "Init should succeed")
+      val crystalId = "c-comms-dag"
+      val sendWithDag = runner.run(
+        CliCommand.CommsSend(
+          crystalId = crystalId,
+          from = "usr_oswaldo",
+          to = List("agt_alice"),
+          subject = "Architecture Decision",
+          body = "Use modular extensions for comms",
+          channel = "general",
+          replyTo = None,
+          recordDag = true,
+        ),
+      )
+      assert(sendWithDag.isRight, "CommsSend with recordDag should succeed")
+      assert(
+        sendWithDag.toOption.get.contains("recorded in DAG"),
+        "response should indicate DAG recording",
+      )
+
+      val loaded = store.load(crystalId)
+      assert(loaded.isRight, "crystal should load")
+      val crystal  = loaded.toOption.get
+      val lastNode = crystal.dag.nodes.lastOption
+      assert(lastNode.isDefined, "crystal should have DAG nodes")
+      assertEquals(lastNode.get.actorId, "usr_oswaldo")
+      assertEquals(lastNode.get.kind, ccrystal.core.model.NodeKind.HumanPrompt)
+      assert(
+        lastNode.get.contentSummary.contains("Architecture Decision"),
+        "node summary should include subject",
+      )
+      assertEquals(lastNode.get.metadata.get("extension"), Some("comms"))
+      assert(
+        lastNode.get.metadata.contains("comms_message_id"),
+        "node metadata should contain comms_message_id",
+      )
 
       // 4. Test ExtensionRun subprocess execution
       val sampleDir = tempCave / "extensions" / "sample_runner"

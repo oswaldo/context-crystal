@@ -761,6 +761,7 @@ object CommandParser:
       .option[String]("channel", "Communication channel (default: default)")
       .withDefault("default"),
     Opts.option[String]("reply-to", "In-reply-to message ID").orNone,
+    Opts.flag("record-dag", "Record message as a causal DAG transition node in the crystal").orFalse,
   ).mapN(CliCommand.CommsSend.apply)
 
   private val commsListOpts = (

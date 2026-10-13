@@ -56,7 +56,7 @@ flowchart LR
 3d. **Universal Extension Invocations (`crystal_extension_call`):**
    Dynamic dispatch tool providing a stable, future-proof MCP invocation interface for any extension without requiring MCP server schema modifications. Accepts `extension_id`, `crystal_id`, `action`, and structured `payload`.
 3e. **Multi-Agent Coordination & Crystal Comms (`crystal_extension_comms`):**
-   Coordinate peer agents within crystal boundaries using lock-free atomic filesystem mailboxes. Supports single recipients, entity groups (`grp_*`), broadcast (`@all`, `@channel`), and full causal message audit trails (`action: "send"`, `action: "list"`).
+   Coordinate peer agents within crystal boundaries using lock-free atomic filesystem mailboxes. Supports single recipients, entity groups (`grp_*`), broadcast (`@all`, `@channel`), optional causal DAG recording (`record_dag: true`), and full causal message audit trails (`action: "send"`, `action: "list"`).
 4. **Selective Context Hydration (`crystal_hydrate`):**
    Project tailored context beams into LLM context using `tail`, `from`, `to`, or `summary_only`.
 5. **Sub-DAG Melting (`crystal_melt`):**
