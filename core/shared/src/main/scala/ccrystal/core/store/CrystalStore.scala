@@ -106,3 +106,19 @@ trait CrystalStore:
     Left("disconnect not supported by this store")
   def bonds(crystalId: String): Either[String, ccrystal.core.model.lattice.CrystalBondsSummary] =
     Left("bonds not supported by this store")
+  def listExtensions(
+      crystalId: Option[String] = None,
+  ): Either[String, List[ccrystal.core.model.extension.ExtensionManifest]] =
+    Right(Nil)
+  def getExtensionManifest(
+      extId: String,
+      crystalId: Option[String] = None,
+  ): Either[String, Option[ccrystal.core.model.extension.ExtensionManifest]] =
+    Right(None)
+  def saveExtensionManifest(
+      manifest: ccrystal.core.model.extension.ExtensionManifest,
+      crystalId: Option[String] = None,
+  ): Either[String, Unit] =
+    Left("saveExtensionManifest not supported by this store")
+  def resolveExtensionStateDir(extId: String, crystalId: String): Either[String, String] =
+    Left("resolveExtensionStateDir not supported by this store")

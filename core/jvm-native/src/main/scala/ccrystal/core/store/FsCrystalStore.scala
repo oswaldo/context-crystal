@@ -1,7 +1,9 @@
 package ccrystal.core.store
 
 import ccrystal.core.model.*
+import ccrystal.core.model.extension.*
 import ccrystal.core.codec.given
+import ccrystal.core.codec.extension.given
 import io.circe.parser.decode
 import io.circe.syntax.*
 import java.nio.file.{Path, Paths}
@@ -15,12 +17,25 @@ object FsCrystalStore:
     val key = dir.toAbsolutePath.normalize().toString
     processLocks.computeIfAbsent(key, _ => new ReentrantLock())
 
-class FsCrystalStore(val rootPath: Path) extends CrystalStore:
+class FsCrystalStore(
+    val rootPath: Path,
+    val hostExtensionsDirOverride: Option[os.Path] = None,
+) extends CrystalStore:
 
   val rootOsPath: os.Path = os.Path(rootPath.toAbsolutePath.normalize())
 
-  def this(rootOs: os.Path) = this(rootOs.toNIO)
-  def this(rootStr: String) = this(Paths.get(rootStr))
+  def this(rootOs: os.Path) = this(rootOs.toNIO, None)
+  def this(rootStr: String) = this(Paths.get(rootStr), None)
+  def this(rootOs: os.Path, hostDir: Option[os.Path]) = this(rootOs.toNIO, hostDir)
+
+  val hostExtensionsDir: Option[os.Path] = hostExtensionsDirOverride.orElse {
+    val userHome = os.home
+    Some(userHome / ".config" / "ccrystal" / "extensions")
+  }
+
+  val caveExtensionsDir: os.Path = rootOsPath / "extensions"
+
+  def crystalExtensionsDir(id: String): os.Path = rootOsPath / id / "extensions"
 
   private def atomicWrite(target: os.Path, content: String): Unit =
     val parent = target / os.up
@@ -851,3 +866,76 @@ class FsCrystalStore(val rootPath: Path) extends CrystalStore:
           outbound = outbound,
           inbound = inbound,
         )
+
+  override def listExtensions(
+      crystalId: Option[String] = None,
+  ): Either[String, List[ExtensionManifest]] =
+    try
+      val map = collection.mutable.Map[String, ExtensionManifest]()
+
+      // 1. Embedded built-in defaults
+      BuiltInExtensions.all.foreach(m => map(m.id) = m)
+
+      // Helper to scan a directory for extension.json manifests
+      def scanDir(dir: os.Path, scope: ExtensionScope): Unit =
+        if os.exists(dir) && os.isDir(dir) then
+          os.list(dir).filter(os.isDir).foreach { extDir =>
+            val manifestFile = extDir / "extension.json"
+            if os.exists(manifestFile) && os.isFile(manifestFile) then
+              val content = os.read(manifestFile)
+              decode[ExtensionManifest](content) match
+                case Right(m) => map(m.id) = m.copy(scope = scope)
+                case Left(_)  => () // skip corrupt manifests
+          }
+
+      // 2. Host scope
+      hostExtensionsDir.foreach(scanDir(_, ExtensionScope.Host))
+
+      // 3. Cave scope
+      scanDir(caveExtensionsDir, ExtensionScope.Cave)
+
+      // 4. Crystal scope (if crystalId provided)
+      crystalId.foreach(cId => scanDir(crystalExtensionsDir(cId), ExtensionScope.Crystal))
+
+      Right(map.values.toList.sortBy(_.id))
+    catch case ex: Throwable => Left(s"Failed to list extensions: ${ex.getMessage}")
+
+  override def getExtensionManifest(
+      extId: String,
+      crystalId: Option[String] = None,
+  ): Either[String, Option[ExtensionManifest]] =
+    listExtensions(crystalId).map(_.find(_.id == extId))
+
+  override def saveExtensionManifest(
+      manifest: ExtensionManifest,
+      crystalId: Option[String] = None,
+  ): Either[String, Unit] =
+    val targetDirEither: Either[String, os.Path] = manifest.scope match
+      case ExtensionScope.Crystal =>
+        crystalId match
+          case Some(cId) => Right(crystalExtensionsDir(cId) / manifest.id)
+          case None => Left("crystalId must be provided when saving extension at Crystal scope")
+      case ExtensionScope.Host =>
+        hostExtensionsDir match
+          case Some(hDir) => Right(hDir / manifest.id)
+          case None       => Left("Host extensions directory not available")
+      case ExtensionScope.Cave =>
+        Right(caveExtensionsDir / manifest.id)
+
+    targetDirEither.flatMap { targetDir =>
+      try
+        val manifestFile = targetDir / "extension.json"
+        atomicWrite(manifestFile, manifest.asJson.spaces2)
+        Right(())
+      catch case ex: Throwable => Left(s"Failed to save extension manifest: ${ex.getMessage}")
+    }
+
+  def resolveExtensionStateOsPath(extId: String, crystalId: String): Either[String, os.Path] =
+    try
+      val dir = crystalExtensionsDir(crystalId) / extId
+      if !os.exists(dir) then os.makeDir.all(dir)
+      Right(dir)
+    catch case ex: Throwable => Left(s"Failed to resolve extension state dir: ${ex.getMessage}")
+
+  override def resolveExtensionStateDir(extId: String, crystalId: String): Either[String, String] =
+    resolveExtensionStateOsPath(extId, crystalId).map(_.toString)
