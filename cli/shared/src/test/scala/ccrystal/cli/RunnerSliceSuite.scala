@@ -256,6 +256,30 @@ class InMemoryCrystalStore extends CrystalStore:
       }
       Right(ccrystal.core.model.lattice.CrystalBondsSummary(crystalId, outbound, inbound))
 
+  val extensionManifests = mutable.Map[String, ccrystal.core.model.extension.ExtensionManifest]()
+  ccrystal.core.model.extension.BuiltInExtensions.all.foreach(m => extensionManifests(m.id) = m)
+
+  override def listExtensions(
+      crystalId: Option[String] = None,
+  ): Either[String, List[ccrystal.core.model.extension.ExtensionManifest]] =
+    Right(extensionManifests.values.toList.sortBy(_.id))
+
+  override def getExtensionManifest(
+      extId: String,
+      crystalId: Option[String] = None,
+  ): Either[String, Option[ccrystal.core.model.extension.ExtensionManifest]] =
+    Right(extensionManifests.get(extId))
+
+  override def saveExtensionManifest(
+      manifest: ccrystal.core.model.extension.ExtensionManifest,
+      crystalId: Option[String] = None,
+  ): Either[String, Unit] =
+    extensionManifests(manifest.id) = manifest
+    Right(())
+
+  override def resolveExtensionStateDir(extId: String, crystalId: String): Either[String, String] =
+    Right(s"/tmp/ccrystal-inmem-state/$crystalId/$extId")
+
 class RunnerSliceSuite extends FunSuite:
 
   def createTestRunner(): (Runner, InMemoryCrystalStore) =

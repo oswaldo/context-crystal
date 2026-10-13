@@ -1,0 +1,22 @@
+{
+  "name": "crystal_extension_list",
+  "description": "Discover and list extensions across the 3-tier scoping cascade (host, cave, crystal) including embedded Scala Native modules and declarative/executable drop-ins.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "crystal_id": {
+        "type": "string",
+        "description": "Optional crystal ID to inspect crystal-scoped extensions and state"
+      },
+      "scope": {
+        "type": "string",
+        "enum": ["host", "cave", "crystal"],
+        "description": "Filter by scope: host, cave, or crystal"
+      },
+      "json_output": {
+        "type": "boolean",
+        "description": "Return raw JSON manifest array instead of formatted summary (default: false)"
+      }
+    }
+  }
+}

@@ -653,6 +653,141 @@ class DefaultMcpHandler(
               "required" -> List("action").asJson,
             ),
           ),
+          Tool(
+            name = "crystal_extension_list",
+            description =
+              "Discover and list extensions across the 3-tier scoping cascade (host, cave, crystal) including embedded Scala Native modules and declarative/executable drop-ins.",
+            inputSchema = Json.obj(
+              "type" -> "object".asJson,
+              "properties" -> Json.obj(
+                "crystal_id" -> Json.obj(
+                  "type" -> "string".asJson,
+                  "description" -> "Optional crystal ID to inspect crystal-scoped extensions and state".asJson,
+                ),
+                "scope" -> Json.obj(
+                  "type"        -> "string".asJson,
+                  "enum"        -> List("host", "cave", "crystal").asJson,
+                  "description" -> "Filter by scope: host, cave, or crystal".asJson,
+                ),
+                "json_output" -> Json.obj(
+                  "type" -> "boolean".asJson,
+                  "description" -> "Return raw JSON manifest array instead of formatted summary (default: false)".asJson,
+                ),
+              ),
+            ),
+          ),
+          Tool(
+            name = "crystal_extension_manage",
+            description = "Enable or disable an extension at Cave or Crystal scope.",
+            inputSchema = Json.obj(
+              "type" -> "object".asJson,
+              "properties" -> Json.obj(
+                "action" -> Json.obj(
+                  "type"        -> "string".asJson,
+                  "enum"        -> List("enable", "disable").asJson,
+                  "description" -> "Action to perform: enable or disable".asJson,
+                ),
+                "extension_id" -> Json.obj(
+                  "type"        -> "string".asJson,
+                  "description" -> "Target extension identifier (e.g. 'media', 'comms')".asJson,
+                ),
+                "crystal_id" -> Json.obj(
+                  "type"        -> "string".asJson,
+                  "description" -> "Crystal ID if managing at crystal scope".asJson,
+                ),
+                "cave" -> Json.obj(
+                  "type" -> "boolean".asJson,
+                  "description" -> "Manage at cave scope (.ccrystals/extensions/); default: false".asJson,
+                ),
+              ),
+              "required" -> List("action", "extension_id").asJson,
+            ),
+          ),
+          Tool(
+            name = "crystal_extension_run",
+            description =
+              "Execute a drop-in extension's declared executable entrypoint within isolated crystal context.",
+            inputSchema = Json.obj(
+              "type" -> "object".asJson,
+              "properties" -> Json.obj(
+                "extension_id" -> Json.obj(
+                  "type" -> "string".asJson,
+                  "description" -> "Target extension identifier declaring an entrypoint (e.g. 'media')".asJson,
+                ),
+                "crystal_id" -> Json.obj(
+                  "type"        -> "string".asJson,
+                  "description" -> "Optional crystal context ID".asJson,
+                ),
+                "arguments" -> Json.obj(
+                  "type"  -> "array".asJson,
+                  "items" -> Json.obj("type" -> "string".asJson),
+                  "description" -> "Command-line arguments to pass to the extension executable".asJson,
+                ),
+              ),
+              "required" -> List("extension_id").asJson,
+            ),
+          ),
+          Tool(
+            name = "crystal_extension_comms",
+            description =
+              "Send messages or inspect inboxes/outboxes/audit logs via the embedded Crystal Comms extension.",
+            inputSchema = Json.obj(
+              "type" -> "object".asJson,
+              "properties" -> Json.obj(
+                "action" -> Json.obj(
+                  "type" -> "string".asJson,
+                  "enum" -> List("send", "list").asJson,
+                  "description" -> "Action: send message or list messages (inbox, outbox, or audit log)".asJson,
+                ),
+                "crystal_id" -> Json.obj(
+                  "type"        -> "string".asJson,
+                  "description" -> "Target crystal ID providing the comms boundary".asJson,
+                ),
+                "from" -> Json.obj(
+                  "type" -> "string".asJson,
+                  "description" -> "Sender entity ID (required for send; optional outbox filter for list)".asJson,
+                ),
+                "to" -> Json.obj(
+                  "type"  -> "array".asJson,
+                  "items" -> Json.obj("type" -> "string".asJson),
+                  "description" -> "List of recipient IDs (or single '@all', '@channel', 'grp_*') for send".asJson,
+                ),
+                "subject" -> Json.obj(
+                  "type"        -> "string".asJson,
+                  "description" -> "Message subject line (for send)".asJson,
+                ),
+                "body" -> Json.obj(
+                  "type"        -> "string".asJson,
+                  "description" -> "Message body text / payload (for send)".asJson,
+                ),
+                "channel" -> Json.obj(
+                  "type"        -> "string".asJson,
+                  "description" -> "Topic channel (default: 'general')".asJson,
+                ),
+                "reply_to" -> Json.obj(
+                  "type"        -> "string".asJson,
+                  "description" -> "Optional causal parent message ID".asJson,
+                ),
+                "inbox" -> Json.obj(
+                  "type"        -> "string".asJson,
+                  "description" -> "Recipient entity ID to inspect inbox (for list)".asJson,
+                ),
+                "outbox" -> Json.obj(
+                  "type"        -> "string".asJson,
+                  "description" -> "Sender entity ID to inspect outbox (for list)".asJson,
+                ),
+                "limit" -> Json.obj(
+                  "type"        -> "integer".asJson,
+                  "description" -> "Maximum messages to return (for list)".asJson,
+                ),
+                "json_output" -> Json.obj(
+                  "type" -> "boolean".asJson,
+                  "description" -> "Return JSON array of CommsMessage objects (default: false)".asJson,
+                ),
+              ),
+              "required" -> List("action", "crystal_id").asJson,
+            ),
+          ),
         )
         JsonRpcResponse(id = request.id, result = Some(ListToolsResult(tools).asJson))
 
@@ -1567,6 +1702,181 @@ class DefaultMcpHandler(
           case None =>
             CallToolResult(
               List(ToolContent(text = "Missing required 'action' parameter for crystal_lesson")),
+              isError = true,
+            )
+
+      case "crystal_extension_list" =>
+        val crystalIdOpt = cursor.get[String]("crystal_id").toOption
+        val scopeOpt = cursor
+          .get[String]("scope")
+          .toOption
+          .flatMap {
+            case "host"    => Some(ccrystal.core.model.extension.ExtensionScope.Host)
+            case "cave"    => Some(ccrystal.core.model.extension.ExtensionScope.Cave)
+            case "crystal" => Some(ccrystal.core.model.extension.ExtensionScope.Crystal)
+            case _         => None
+          }
+        val jsonOutput = cursor.get[Boolean]("json_output").getOrElse(false)
+        val cmd        = CliCommand.ExtensionList(crystalIdOpt, scopeOpt, jsonOutput)
+        runCommandToResult(cmd)
+
+      case "crystal_extension_manage" =>
+        val actionOpt = cursor.get[String]("action").toOption
+        val extIdOpt  = cursor.get[String]("extension_id").toOption
+        val crystalId = cursor.get[String]("crystal_id").toOption
+        val caveScope = cursor.get[Boolean]("cave").getOrElse(false)
+        actionOpt match
+          case None =>
+            CallToolResult(
+              List(
+                ToolContent(
+                  text = "Missing required 'action' parameter for crystal_extension_manage",
+                ),
+              ),
+              isError = true,
+            )
+          case Some(act) if act != "enable" && act != "disable" =>
+            CallToolResult(
+              List(
+                ToolContent(
+                  text =
+                    s"Invalid action '$act' for crystal_extension_manage (valid: enable, disable)",
+                ),
+              ),
+              isError = true,
+            )
+          case Some(act) =>
+            extIdOpt match
+              case None =>
+                CallToolResult(
+                  List(
+                    ToolContent(
+                      text =
+                        "Missing required 'extension_id' parameter for crystal_extension_manage",
+                    ),
+                  ),
+                  isError = true,
+                )
+              case Some(extId) =>
+                if act == "enable" then
+                  runCommandToResult(CliCommand.ExtensionEnable(extId, crystalId, caveScope))
+                else runCommandToResult(CliCommand.ExtensionDisable(extId, crystalId, caveScope))
+
+      case "crystal_extension_run" =>
+        val extIdOpt     = cursor.get[String]("extension_id").toOption
+        val crystalIdOpt = cursor.get[String]("crystal_id").toOption
+        val args         = cursor.get[List[String]]("arguments").getOrElse(Nil)
+        extIdOpt match
+          case Some(extId) =>
+            runCommandToResult(CliCommand.ExtensionRun(extId, crystalIdOpt, args))
+          case None =>
+            CallToolResult(
+              List(
+                ToolContent(
+                  text = "Missing required 'extension_id' parameter for crystal_extension_run",
+                ),
+              ),
+              isError = true,
+            )
+
+      case "crystal_extension_comms" =>
+        val actionOpt    = cursor.get[String]("action").toOption
+        val crystalIdOpt = cursor.get[String]("crystal_id").toOption
+        actionOpt match
+          case None =>
+            CallToolResult(
+              List(
+                ToolContent(
+                  text = "Missing required 'action' parameter for crystal_extension_comms",
+                ),
+              ),
+              isError = true,
+            )
+          case Some("send") =>
+            crystalIdOpt match
+              case None =>
+                CallToolResult(
+                  List(
+                    ToolContent(
+                      text = "Missing required 'crystal_id' parameter for crystal_extension_comms",
+                    ),
+                  ),
+                  isError = true,
+                )
+              case Some(crystalId) =>
+                val fromOpt    = cursor.get[String]("from").toOption
+                val toList     = cursor.get[List[String]]("to").getOrElse(Nil)
+                val subjectOpt = cursor.get[String]("subject").toOption
+                val bodyOpt    = cursor.get[String]("body").toOption
+                val channel    = cursor.get[String]("channel").getOrElse("general")
+                val replyTo    = cursor.get[String]("reply_to").toOption
+
+                if fromOpt.isEmpty then
+                  CallToolResult(
+                    List(ToolContent(text = "Missing required 'from' parameter for comms send")),
+                    isError = true,
+                  )
+                else if toList.isEmpty then
+                  CallToolResult(
+                    List(ToolContent(text = "Missing required 'to' recipient list for comms send")),
+                    isError = true,
+                  )
+                else if subjectOpt.isEmpty then
+                  CallToolResult(
+                    List(ToolContent(text = "Missing required 'subject' parameter for comms send")),
+                    isError = true,
+                  )
+                else if bodyOpt.isEmpty then
+                  CallToolResult(
+                    List(ToolContent(text = "Missing required 'body' parameter for comms send")),
+                    isError = true,
+                  )
+                else
+                  runCommandToResult(
+                    CliCommand.CommsSend(
+                      crystalId = crystalId,
+                      from = fromOpt.get,
+                      to = toList,
+                      subject = subjectOpt.get,
+                      body = bodyOpt.get,
+                      channel = channel,
+                      replyTo = replyTo,
+                    ),
+                  )
+
+          case Some("list") =>
+            crystalIdOpt match
+              case None =>
+                CallToolResult(
+                  List(
+                    ToolContent(
+                      text = "Missing required 'crystal_id' parameter for crystal_extension_comms",
+                    ),
+                  ),
+                  isError = true,
+                )
+              case Some(crystalId) =>
+                val inboxOpt   = cursor.get[String]("inbox").toOption
+                val outboxOpt  = cursor.get[String]("outbox").toOption
+                val limitOpt   = cursor.get[Int]("limit").toOption
+                val jsonOutput = cursor.get[Boolean]("json_output").getOrElse(false)
+                runCommandToResult(
+                  CliCommand.CommsList(
+                    crystalId = crystalId,
+                    inboxRecipient = inboxOpt,
+                    outboxSender = outboxOpt,
+                    limit = limitOpt,
+                    jsonOutput = jsonOutput,
+                  ),
+                )
+
+          case Some(other) =>
+            CallToolResult(
+              List(
+                ToolContent(
+                  text = s"Invalid action '$other' for crystal_extension_comms (valid: send, list)",
+                ),
+              ),
               isError = true,
             )
 

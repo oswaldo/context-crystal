@@ -1,0 +1,25 @@
+{
+  "name": "crystal_extension_run",
+  "description": "Execute a drop-in extension's declared executable entrypoint within isolated crystal context.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "extension_id": {
+        "type": "string",
+        "description": "Target extension identifier declaring an entrypoint (e.g. 'media')"
+      },
+      "crystal_id": {
+        "type": "string",
+        "description": "Optional crystal context ID"
+      },
+      "arguments": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "description": "Command-line arguments to pass to the extension executable"
+      }
+    },
+    "required": ["extension_id"]
+  }
+}

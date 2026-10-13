@@ -1,0 +1,27 @@
+{
+  "name": "crystal_extension_manage",
+  "description": "Enable or disable an extension at Cave or Crystal scope.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "action": {
+        "type": "string",
+        "enum": ["enable", "disable"],
+        "description": "Action to perform: enable or disable"
+      },
+      "extension_id": {
+        "type": "string",
+        "description": "Target extension identifier (e.g. 'media', 'comms')"
+      },
+      "crystal_id": {
+        "type": "string",
+        "description": "Crystal ID if managing at crystal scope"
+      },
+      "cave": {
+        "type": "boolean",
+        "description": "Manage at cave scope (.ccrystals/extensions/); default: false"
+      }
+    },
+    "required": ["action", "extension_id"]
+  }
+}

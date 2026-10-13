@@ -51,6 +51,10 @@ flowchart LR
    Register temporary working state (e.g. `git_worktree`). Always clean or promote leases before concluding work.
 3b. **Lattice Bonds & Cross-Crystal Connections (`crystal_connect`):**
    Establish directed relationships (`relates_to`, `depends_on`, `blocks`, `supersedes`, `references`) between crystals. Context Crystal enforces acyclic DAG invariants (preventing circular dependencies) and automatically renders depth-1 connected lattice peeks into hydrated context beams (`crystal_hydrate`). Inspect bonds via `action: "list"` or resource `ccrystal://<id>/bonds`.
+3c. **Extension Discovery & Subprocess Execution (`crystal_extension_list`, `crystal_extension_run`, `crystal_extension_manage`):**
+   Discover and manage extensions across the 3-tier scoping cascade (Host -> Cave -> Crystal). Embedded extensions (such as `comms`) run natively with zero IPC overhead; declarative and executable drop-in extensions (such as `media` / CEP-0002) provide schema validation and executable entrypoints with injected environment boundaries (`CCRYSTAL_CAVE_ROOT`, `CCRYSTAL_CRYSTAL_ID`, `CCRYSTAL_EXT_DIR`).
+3d. **Multi-Agent Coordination & Crystal Comms (`crystal_extension_comms`):**
+   Coordinate peer agents within crystal boundaries using lock-free atomic filesystem mailboxes. Supports single recipients, entity groups (`grp_*`), broadcast (`@all`, `@channel`), and full causal message audit trails (`action: "send"`, `action: "list"`).
 4. **Selective Context Hydration (`crystal_hydrate`):**
    Project tailored context beams into LLM context using `tail`, `from`, `to`, or `summary_only`.
 5. **Sub-DAG Melting (`crystal_melt`):**

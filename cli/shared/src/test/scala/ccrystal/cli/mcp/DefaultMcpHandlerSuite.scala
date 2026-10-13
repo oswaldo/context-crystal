@@ -1433,3 +1433,112 @@ class DefaultMcpHandlerSuite extends FunSuite:
     assert(cpText.contains("<anchor: phase-1-done>"))
     assert(cpText.contains("Tasks: 0/2 completed"))
     assert(cpText.contains("DAG Head: node-2 [checkpoint]"))
+
+  test("DefaultMcpHandler handles crystal_extension_list and crystal_extension_manage"):
+    val (handler, store, _) = createFixture()
+    val listReq = JsonRpcRequest(
+      id = JsonRpcId.Num(401L),
+      method = "tools/call",
+      params = Some(
+        Json.obj(
+          "name"      -> "crystal_extension_list".asJson,
+          "arguments" -> Json.obj("json_output" -> true.asJson),
+        ),
+      ),
+    )
+    val listResp = handler.handle(listReq)
+    assertEquals(listResp.error.isEmpty, true)
+    val listResult = listResp.result.get.as[CallToolResult].toOption.get
+    assertEquals(listResult.isError, false)
+    val text = listResult.content.head.text
+    assert(text.contains("comms"), "comms embedded extension is present")
+
+    val manageReq = JsonRpcRequest(
+      id = JsonRpcId.Num(402L),
+      method = "tools/call",
+      params = Some(
+        Json.obj(
+          "name" -> "crystal_extension_manage".asJson,
+          "arguments" -> Json.obj(
+            "action"       -> "enable".asJson,
+            "extension_id" -> "comms".asJson,
+            "cave"         -> true.asJson,
+          ),
+        ),
+      ),
+    )
+    val manageResp   = handler.handle(manageReq)
+    val manageResult = manageResp.result.get.as[CallToolResult].toOption.get
+    assertEquals(manageResult.isError, false)
+    assert(manageResult.content.head.text.contains("Extension 'comms' enabled"))
+
+  test("DefaultMcpHandler handles crystal_extension_comms send and list"):
+    val tempCave = os.temp.dir(prefix = "mcp-comms-test")
+    try
+      val fsStore = new ccrystal.core.store.FsCrystalStore(tempCave)
+      val runner  = new Runner(fsStore)
+      val handler = new DefaultMcpHandler(fsStore, runner)
+
+      // Initialize crystal
+      val initReq = JsonRpcRequest(
+        id = JsonRpcId.Num(501L),
+        method = "tools/call",
+        params = Some(
+          Json.obj(
+            "name" -> "crystal_init".asJson,
+            "arguments" -> Json.obj(
+              "name" -> "c-mcp-comms".asJson,
+              "goal" -> "Test MCP Comms".asJson,
+            ),
+          ),
+        ),
+      )
+      assertEquals(handler.handle(initReq).error.isEmpty, true)
+
+      // Send comms message
+      val sendReq = JsonRpcRequest(
+        id = JsonRpcId.Num(502L),
+        method = "tools/call",
+        params = Some(
+          Json.obj(
+            "name" -> "crystal_extension_comms".asJson,
+            "arguments" -> Json.obj(
+              "action"     -> "send".asJson,
+              "crystal_id" -> "c-mcp-comms".asJson,
+              "from"       -> "usr_oswaldo".asJson,
+              "to"         -> List("agt_mcp").asJson,
+              "subject"    -> "MCP Mission".asJson,
+              "body"       -> "Coordinate multi-agent extension tasks".asJson,
+            ),
+          ),
+        ),
+      )
+      val sendResp   = handler.handle(sendReq)
+      val sendResult = sendResp.result.get.as[CallToolResult].toOption.get
+      assertEquals(sendResult.isError, false)
+      assert(sendResult.content.head.text.contains("sent to agt_mcp"))
+
+      // List inbox
+      val listReq = JsonRpcRequest(
+        id = JsonRpcId.Num(503L),
+        method = "tools/call",
+        params = Some(
+          Json.obj(
+            "name" -> "crystal_extension_comms".asJson,
+            "arguments" -> Json.obj(
+              "action"      -> "list".asJson,
+              "crystal_id"  -> "c-mcp-comms".asJson,
+              "inbox"       -> "agt_mcp".asJson,
+              "json_output" -> true.asJson,
+            ),
+          ),
+        ),
+      )
+      val listResp   = handler.handle(listReq)
+      val listResult = listResp.result.get.as[CallToolResult].toOption.get
+      assertEquals(listResult.isError, false)
+      assert(listResult.content.head.text.contains("MCP Mission"))
+      assert(listResult.content.head.text.contains("Coordinate multi-agent extension tasks"))
+    finally
+      try os.remove.all(tempCave)
+      catch case _: Throwable => ()

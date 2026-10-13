@@ -1,0 +1,62 @@
+{
+  "name": "crystal_extension_comms",
+  "description": "Send messages or inspect inboxes/outboxes/audit logs via the embedded Crystal Comms extension.",
+  "parameters": {
+    "type": "object",
+    "properties": {
+      "action": {
+        "type": "string",
+        "enum": ["send", "list"],
+        "description": "Action: send message or list messages (inbox, outbox, or audit log)"
+      },
+      "crystal_id": {
+        "type": "string",
+        "description": "Target crystal ID providing the comms boundary"
+      },
+      "from": {
+        "type": "string",
+        "description": "Sender entity ID (required for send; optional outbox filter for list)"
+      },
+      "to": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        },
+        "description": "List of recipient IDs (or single '@all', '@channel', 'grp_*') for send"
+      },
+      "subject": {
+        "type": "string",
+        "description": "Message subject line (for send)"
+      },
+      "body": {
+        "type": "string",
+        "description": "Message body text / payload (for send)"
+      },
+      "channel": {
+        "type": "string",
+        "description": "Topic channel (default: 'general')"
+      },
+      "reply_to": {
+        "type": "string",
+        "description": "Optional causal parent message ID"
+      },
+      "inbox": {
+        "type": "string",
+        "description": "Recipient entity ID to inspect inbox (for list)"
+      },
+      "outbox": {
+        "type": "string",
+        "description": "Sender entity ID to inspect outbox (for list)"
+      },
+      "limit": {
+        "type": "integer",
+        "description": "Maximum messages to return (for list)"
+      },
+      "json_output": {
+        "type": "boolean",
+        "description": "Return JSON array of CommsMessage objects (default: false)"
+      }
+    },
+    "required": ["action", "crystal_id"]
+  }
+}
