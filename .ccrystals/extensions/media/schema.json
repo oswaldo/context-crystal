@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://context-crystal.org/spec/extensions/media/v1/schema.json",
+  "title": "CEP-0002 Media & Multi-Modal Asset Provenance",
+  "description": "Standardized metadata schema for media cut manifests, color LUTs, audio stems, and inspection stills.",
+  "type": "object",
+  "required": ["type"],
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": ["video_master", "inspection_still", "audio_stem", "lut_profile", "motion_template"],
+      "description": "Primary role of the media asset."
+    },
+    "aspect_ratio": {
+      "type": "string",
+      "pattern": "^[0-9]+:[0-9]+$",
+      "description": "Geometric aspect ratio, e.g. 16:9 or 9:16."
+    },
+    "resolution": {
+      "type": "string",
+      "pattern": "^[0-9]+x[0-9]+$",
+      "description": "Spatial dimensions in pixels, e.g. 1920x1080."
+    },
+    "fps": {
+      "type": "number",
+      "minimum": 0.0,
+      "description": "Temporal playback frequency in frames per second."
+    },
+    "duration_seconds": {
+      "type": "number",
+      "minimum": 0.0,
+      "description": "Total asset runtime duration in seconds."
+    },
+    "codec": {
+      "type": "string",
+      "description": "Video/audio encoding specification, e.g. h264_nvenc, hevc, aac."
+    },
+    "color_profile": {
+      "type": "string",
+      "description": "Color space and transfer curve, e.g. bt709, rec2020, srgb."
+    },
+    "size_bytes": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "File size in bytes."
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[a-fA-F0-9]{64}$",
+      "description": "Cryptographic content digest."
+    },
+    "review_path": {
+      "type": "string",
+      "description": "Relative URI for local-first HTTP 206 byte-range media review streaming."
+    },
+    "inspection_frames": {
+      "type": "array",
+      "description": "Ordered stills captured at key timestamps for visual regression verification.",
+      "items": {
+        "type": "object",
+        "required": ["name", "timestamp_seconds", "uri"],
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Descriptive title of the inspection marker."
+          },
+          "timestamp_seconds": {
+            "type": "number",
+            "minimum": 0.0,
+            "description": "Offset in seconds where the frame was captured."
+          },
+          "uri": {
+            "type": "string",
+            "description": "Path to high-resolution inspection still."
+          }
+        }
+      }
+    }
+  }
+}

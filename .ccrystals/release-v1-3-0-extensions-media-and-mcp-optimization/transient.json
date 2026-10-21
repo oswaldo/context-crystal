@@ -5,7 +5,16 @@
     "resourcePath" : null,
     "description" : "Git worktree for Track 24 at ../ccrystal-worktrees/spec_extensions_and_crystal_comms",
     "disposalPolicy" : "manual",
-    "status" : "active",
+    "status" : "cleaned",
     "createdAt" : "2026-10-13T19:33:40.918Z"
+  },
+  {
+    "id" : "lease-2",
+    "resourceType" : "git_worktree",
+    "resourcePath" : "../ccrystal-worktrees/v1-3-0-extensions-media-and-ergonomics",
+    "description" : "Worktree for v1.3.0 extensions, media provenance, and DAG inspection",
+    "disposalPolicy" : "manual",
+    "status" : "active",
+    "createdAt" : "2026-10-21T20:07:24.410Z"
   }
 ]

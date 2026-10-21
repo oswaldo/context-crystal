@@ -1,0 +1,16 @@
+{
+  "id": "media",
+  "name": "Media & Multi-Modal Asset Provenance",
+  "version": "1.0.0",
+  "substrate": "declarative",
+  "scope": "cave",
+  "enabled": true,
+  "description": "CEP-0002 Media & Multi-Modal Asset Provenance Extension Standard",
+  "schemaUri": "spec/extensions/media/schema.json",
+  "entrypoint": "review.sh",
+  "skill": "SKILL.md",
+  "metadata": {
+    "supportedMediaTypes": "video_master,inspection_still,audio_stem,lut_profile,motion_template",
+    "protocolVersion": "1.0"
+  }
+}

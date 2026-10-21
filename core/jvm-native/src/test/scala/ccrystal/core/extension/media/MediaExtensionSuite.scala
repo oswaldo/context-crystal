@@ -87,3 +87,61 @@ class MediaExtensionSuite extends FunSuite:
       assertEquals(retrieved.metadata.get("resolution"), Some("1920x1080"))
       assertEquals(retrieved.metadata.get("fps"), Some("30.0"))
     }
+
+  test("packaged spec/extensions/media extension manifest and schema parse cleanly"):
+    import io.circe.parser.decode
+    import ccrystal.core.codec.extension.given
+
+    val specMediaDir = os.pwd / "spec" / "extensions" / "media"
+    assert(os.exists(specMediaDir), "spec/extensions/media must exist")
+    assert(os.exists(specMediaDir / "extension.json"), "extension.json must exist")
+    assert(os.exists(specMediaDir / "schema.json"), "schema.json must exist")
+    assert(os.exists(specMediaDir / "review.sh"), "review.sh must exist")
+    assert(os.exists(specMediaDir / "SKILL.md"), "SKILL.md must exist")
+
+    val manifestContent = os.read(specMediaDir / "extension.json")
+    val manifestRes     = decode[ExtensionManifest](manifestContent)
+    assert(manifestRes.isRight, s"Manifest decode failed: ${manifestRes.left}")
+    val manifest = manifestRes.toOption.get
+    assertEquals(manifest.id, "media")
+    assertEquals(manifest.substrate, ExtensionSubstrate.Declarative)
+    assertEquals(manifest.scope, ExtensionScope.Cave)
+    assertEquals(manifest.enabled, true)
+    assertEquals(manifest.schemaUri, Some("spec/extensions/media/schema.json"))
+    assertEquals(manifest.entrypoint, Some("review.sh"))
+    assertEquals(manifest.skill, Some("SKILL.md"))
+
+  test("store resolves companion SKILL.md for declarative media extension"):
+    val tempCave = os.temp.dir(prefix = "ccrystal-media-skill")
+    try
+      val mediaDir = tempCave / "extensions" / "media"
+      os.makeDir.all(mediaDir)
+      os.write(
+        mediaDir / "extension.json",
+        """{
+          |  "id": "media",
+          |  "name": "Media & Multi-Modal Asset Provenance",
+          |  "version": "1.0.0",
+          |  "substrate": "declarative",
+          |  "scope": "cave",
+          |  "enabled": true,
+          |  "description": "CEP-0002 Media Provenance",
+          |  "schemaUri": "spec/extensions/media/schema.json",
+          |  "skill": "SKILL.md"
+          |}""".stripMargin,
+      )
+      os.write(
+        mediaDir / "SKILL.md",
+        """# Media Skill
+          |Review media assets.
+          |""".stripMargin,
+      )
+      val store    = new FsCrystalStore(tempCave)
+      val skillRes = store.resolveExtensionSkill("media", None)
+      assert(skillRes.isRight, "skill lookup should succeed")
+      val skillText = skillRes.toOption.get
+      assert(skillText.isDefined, "skill text must be found")
+      assert(skillText.get.contains("Media Skill"), "content should match")
+    finally
+      try os.remove.all(tempCave)
+      catch case _: Throwable => ()
