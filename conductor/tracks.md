@@ -94,3 +94,6 @@
 
 - [x] **Track: Modular Spec Extensions Architecture & Crystal Comms**  
   *Link: [conductor/tracks/spec_extensions_and_crystal_comms_20261013/index.md](./tracks/spec_extensions_and_crystal_comms_20261013/index.md)*
+
+- [ ] **Track: DAG Node Inspection, Hydration Ergonomics & Dogfooding Guards**  
+  *Link: [conductor/tracks/dag_node_inspection_and_hydration_ergonomics_20261021/plan.md](./tracks/dag_node_inspection_and_hydration_ergonomics_20261021/plan.md)*

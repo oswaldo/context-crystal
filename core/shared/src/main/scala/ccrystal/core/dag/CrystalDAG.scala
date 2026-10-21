@@ -14,6 +14,18 @@ case class CrystalDAG private (raw: DAG):
     val parentIdSet = nodes.flatMap(_.parentIds).toSet
     nodes.filterNot(n => parentIdSet.contains(n.id))
 
+  def findNode(nodeId: String): Option[DAGNode] = raw.findNode(nodeId)
+
+  def queryNodes(
+      query: Option[String] = None,
+      kind: Option[ccrystal.core.model.NodeKind] = None,
+      author: Option[String] = None,
+      sort: ccrystal.core.model.DAGNodeSort = ccrystal.core.model.DAGNodeSort.Recent,
+      limit: Int = 20,
+      offset: Int = 0,
+  ): (List[DAGNode], Int) =
+    raw.queryNodes(query, kind, author, sort, limit, offset)
+
   def addNode(node: DAGNode): Either[String, CrystalDAG] =
     if nodeMap.contains(node.id) then Left(s"Duplicate node ID: ${node.id}")
     else if node.parentIds.exists(pid => !nodeMap.contains(pid)) then

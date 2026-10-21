@@ -183,10 +183,68 @@ object DAGNode:
       metadata = metadata,
     )
 
+enum DAGNodeSort derives CanEqual:
+  case Recent
+  case Oldest
+
+object DAGNodeSort:
+  def parse(s: String): Option[DAGNodeSort] =
+    s.trim.toLowerCase match
+      case "recent" | "newest" | "desc" => Some(DAGNodeSort.Recent)
+      case "oldest" | "asc"             => Some(DAGNodeSort.Oldest)
+      case _                            => None
+
 case class DAG(
     rootNodeId: String,
     nodes: List[DAGNode],
-) derives CanEqual
+) derives CanEqual:
+  def nodeMap: Map[String, DAGNode] =
+    nodes.map(n => n.id -> n).toMap
+
+  def findNode(nodeId: String): Option[DAGNode] =
+    nodeMap.get(nodeId).orElse(nodes.find(_.id.startsWith(nodeId)))
+
+  def queryNodes(
+      query: Option[String] = None,
+      kind: Option[NodeKind] = None,
+      author: Option[String] = None,
+      sort: DAGNodeSort = DAGNodeSort.Recent,
+      limit: Int = 20,
+      offset: Int = 0,
+  ): (List[DAGNode], Int) =
+    val filtered = nodes.filter { node =>
+      val matchesKind = kind.forall(_ == node.kind)
+      val matchesAuthor = author.forall { a =>
+        val normA = a.trim.toLowerCase
+        node.actorId.toLowerCase.contains(normA)
+      }
+      val matchesQuery = query.forall { q =>
+        val lowerQ = q.trim.toLowerCase
+        node.contentSummary.toLowerCase.contains(lowerQ) ||
+        node.id.toLowerCase.contains(lowerQ) ||
+        node.actorId.toLowerCase.contains(lowerQ) ||
+        node.anchor.exists(_.toLowerCase.contains(lowerQ)) ||
+        node.artifactIds.exists(_.toLowerCase.contains(lowerQ)) ||
+        node.inputArtifactIds.exists(_.toLowerCase.contains(lowerQ)) ||
+        node.outputArtifactIds.exists(_.toLowerCase.contains(lowerQ)) ||
+        node.preconditionArtifactIds.exists(_.toLowerCase.contains(lowerQ)) ||
+        node.metadata.exists { case (k, v) =>
+          k.toLowerCase.contains(lowerQ) || v.toLowerCase.contains(lowerQ)
+        }
+      }
+      matchesKind && matchesAuthor && matchesQuery
+    }
+
+    val sorted = sort match
+      case DAGNodeSort.Oldest => filtered
+      case DAGNodeSort.Recent => filtered.reverse
+
+    val totalCount = sorted.length
+    val paginated =
+      if limit <= 0 then sorted.drop(offset)
+      else sorted.drop(offset).take(limit)
+
+    (paginated, totalCount)
 
 enum TransientResourceType derives CanEqual:
   case GitWorktree
