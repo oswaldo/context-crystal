@@ -8,7 +8,7 @@
   "properties": {
     "type": {
       "type": "string",
-      "enum": ["video_master", "inspection_still", "audio_stem", "lut_profile", "motion_template"],
+      "enum": ["video_master", "inspection_still", "audio_stem", "lut_profile", "motion_template", "subtitle_track", "thumbnail"],
       "description": "Primary role of the media asset."
     },
     "aspect_ratio": {
@@ -38,6 +38,21 @@
     "color_profile": {
       "type": "string",
       "description": "Color space and transfer curve, e.g. bt709, rec2020, srgb."
+    },
+    "loudness_lufs": {
+      "type": "number",
+      "description": "Integrated audio loudness measurement in LUFS (e.g. -14.0 for broadcast / web delivery)."
+    },
+    "language": {
+      "type": "string",
+      "description": "Primary BCP-47 language tag (e.g. pt-BR, en, de)."
+    },
+    "languages": {
+      "type": "array",
+      "description": "Supported or bundled language tracks for multilingual assets.",
+      "items": {
+        "type": "string"
+      }
     },
     "size_bytes": {
       "type": "integer",

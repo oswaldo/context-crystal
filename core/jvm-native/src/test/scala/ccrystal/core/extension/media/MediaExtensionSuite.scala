@@ -88,6 +88,36 @@ class MediaExtensionSuite extends FunSuite:
       assertEquals(retrieved.metadata.get("fps"), Some("30.0"))
     }
 
+  test(
+    "supports studio media artifacts: trilingual subtitle tracks, thumbnails, and broadcast loudness",
+  ):
+    withTempCave { (store, _) =>
+      val subtitleTrack = Artifact(
+        id = "artifact-subtitles-trilingual",
+        name = "master_subtitles_pt_en_de.srt",
+        substrate = ArtifactSubstrate.Physical,
+        role = ArtifactRole.Target,
+        uri = Some("media/subtitles/master_subtitles.srt"),
+        mediaType = Some("application/x-subrip"),
+        description = Some("Synchronized trilingual broadcast subtitles"),
+        location = None,
+        metadata = Map(
+          "media_type"    -> "subtitle_track",
+          "language"      -> "pt-BR",
+          "languages"     -> "pt-BR,en,de",
+          "loudness_lufs" -> "-14.0",
+        ),
+      )
+
+      val regRes = store.registerArtifact(subtitleTrack)
+      assertEquals(regRes, Right(subtitleTrack))
+
+      val retrieved = store.getArtifact("artifact-subtitles-trilingual").toOption.flatten.get
+      assertEquals(retrieved.metadata.get("media_type"), Some("subtitle_track"))
+      assertEquals(retrieved.metadata.get("language"), Some("pt-BR"))
+      assertEquals(retrieved.metadata.get("loudness_lufs"), Some("-14.0"))
+    }
+
   test("packaged spec/extensions/media extension manifest and schema parse cleanly"):
     import io.circe.parser.decode
     import ccrystal.core.codec.extension.given

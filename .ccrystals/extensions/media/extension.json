@@ -10,7 +10,7 @@
   "entrypoint": "review.sh",
   "skill": "SKILL.md",
   "metadata": {
-    "supportedMediaTypes": "video_master,inspection_still,audio_stem,lut_profile,motion_template",
+    "supportedMediaTypes": "video_master,inspection_still,audio_stem,lut_profile,motion_template,subtitle_track,thumbnail",
     "protocolVersion": "1.0"
   }
 }

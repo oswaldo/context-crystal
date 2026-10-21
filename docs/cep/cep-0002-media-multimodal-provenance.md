@@ -75,14 +75,23 @@ Under this specification, any Context Crystal `artifact` or `node` can include a
 - `inspection_still`: Static verification frame extracted at a precise timestamp.
 - `audio_stem`: Isolated vocal track, ambient audio, or synthetic voiceover.
 - `lut_profile`: 3D Color LUT (`.cube`) for optical calibration.
-- `motion_template`: Scripted animation definition (FFmpeg filtergraph, PIL overlay generator, Motion template).
+- `motion_template`: Declarative or scripted animation definition. Prioritizes declarative web-native motion engines (such as [Hyperframes](https://github.com/heygen-com/hyperframes) HTML/CSS compositions, Remotion) rendering transparent alpha overlays over procedural canvas/filtergraph scripts.
+- `subtitle_track`: Synchronized subtitle / caption track (`.srt`, `.vtt`, `.ass`, `.ttml`).
+- `thumbnail`: Safe-zone billboard, poster, or cover art still.
 
 ### Progressive Disclosure & Minimalist Workflows
 
 All fields within `metadata.media` (except `type`) are strictly optional and adhere to **Progressive Disclosure**:
 
 - **Casual / Minimalist Workflows:** A creator assembling a quick social clip or family video can simply tag an artifact with `{"type": "video_master"}`. Zero additional fields or schema ceremony are demanded.
-- **Advanced Studio / Cinema Workflows:** As technical rigor demands, attributes such as `fps`, `codec`, `color_profile`, `inspection_frames`, and cryptographic hashes (`sha256`) can be introduced progressively without schema validation friction.
+- **Advanced Studio / Cinema Workflows:** As technical rigor demands, attributes such as `fps`, `codec`, `color_profile`, `loudness_lufs`, `language`, `languages`, `inspection_frames`, and cryptographic hashes (`sha256`) can be introduced progressively without schema validation friction.
+
+### Declarative Motion Architecture (Hyperframes) vs. Procedural Scripting
+
+To prevent humans and AI entities from constantly reinventing the wheel—such as writing hundreds of lines of imperative, brittle Python PIL canvas scripts or labyrinthine FFmpeg filtergraphs for text layouts and easing curves—this specification establishes a **declarative-first motion hierarchy**:
+
+1. **Declarative Web-Native Engine (Hyperframes / HTML/CSS):** For lower thirds, kinetic HUDs, title sequences, infographics, and typography, agents should utilize declarative frameworks like **Hyperframes**. Styling is handled by standard modern CSS (supporting `backdrop-filter` glassmorphism, subpixel cubic easing, and flexbox/grid layout), with rendering outputting transparent alpha WebM (VP9) or ProRes 4444 passes.
+2. **Deterministic Composition:** The resulting transparent animation pass is composited directly over base footage via hardware-accelerated encoders (NVENC/FFmpeg), and recorded as an input/output DAG lineage artifact in Context Crystal. Procedural pixel-drawing scripts should be reserved strictly as a last resort.
 
 ### Native Multi-Asset Composition via DAG Lineage
 

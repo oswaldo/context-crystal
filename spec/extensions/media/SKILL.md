@@ -18,7 +18,9 @@ The `media` extension introduces standardized metadata schemas, visual inspectio
 - `inspection_still`: Static verification frame extracted at a precise timestamp.
 - `audio_stem`: Isolated vocal dialogue, music bed, sound effects, or synthetic voiceover.
 - `lut_profile`: 3D Color LUT (`.cube`) for color calibration.
-- `motion_template`: Scripted animation definition or motion project file.
+- `motion_template`: Declarative or scripted animation definition. Prioritizes web-native declarative engines (such as Hyperframes HTML/CSS compositions) generating transparent alpha overlays over procedural canvas scripts.
+- `subtitle_track`: Synchronized subtitle / caption track (`.srt`, `.vtt`, `.ass`, `.ttml`).
+- `thumbnail`: Safe-zone billboard, poster, or cover art still.
 
 ## 3. Metadata Structure Example
 
