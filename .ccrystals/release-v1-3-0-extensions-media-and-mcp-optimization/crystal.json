@@ -3,7 +3,7 @@
   "id" : "release-v1-3-0-extensions-media-and-mcp-optimization",
   "name" : "release-v1-3-0-extensions-media-and-mcp-optimization",
   "createdAt" : "2026-10-12T20:38:50.670Z",
-  "updatedAt" : "2026-10-21T23:30:19.394Z",
+  "updatedAt" : "2026-10-21T23:50:59.066Z",
   "parentCrystalId" : null,
   "origin" : null,
   "caveId" : null,
@@ -287,6 +287,15 @@
     }
   ],
   "lessonsLearned" : [
+    {
+      "id" : "lesson-1",
+      "observedFriction" : "Pure declarative extensions force agents to parse raw probe stdout and compose large JSON payloads, burning context tokens. Monorepo subfolders also risk cave blindness if execution starts outside workspace root.",
+      "rootCause" : "Absence of native media probe commands in declarative package, and store resolution currently checks workingDir rather than walking up to repo root.",
+      "recommendedAction" : "Implement upward parent cave traversal and declared subcaves in Track 33, and deliver dedicated Scala Native core-extensions/media submodule in v1.3.1 (Track 34) for single-turn probe and registration.",
+      "status" : "open",
+      "actionAuditTrail" : [
+      ]
+    }
   ],
   "artifacts" : [
   ],

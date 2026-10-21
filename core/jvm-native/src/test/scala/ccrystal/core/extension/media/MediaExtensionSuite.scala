@@ -175,3 +175,40 @@ class MediaExtensionSuite extends FunSuite:
     finally
       try os.remove.all(tempCave)
       catch case _: Throwable => ()
+
+  test("media extension reports aggregate telemetry to getExtensionStats"):
+    withTempCave { (store, cavePath) =>
+      val master = Artifact(
+        id = "master-cut",
+        name = "master.mp4",
+        substrate = ArtifactSubstrate.Physical,
+        role = ArtifactRole.Target,
+        metadata = Map(
+          "media_type"       -> "video_master",
+          "size_bytes"       -> "10485760", // 10 MB
+          "duration_seconds" -> "60.0",
+        ),
+      )
+      val still = Artifact(
+        id = "still-01",
+        name = "still.jpg",
+        substrate = ArtifactSubstrate.Physical,
+        role = ArtifactRole.Instrument,
+        metadata = Map(
+          "media_type" -> "inspection_still",
+          "size_bytes" -> "524288", // 512 KB
+        ),
+      )
+      store.registerArtifact(master)
+      store.registerArtifact(still)
+
+      val stats         = store.getExtensionStats()
+      val mediaStatsOpt = stats.find(_.extensionId == "media")
+      assert(mediaStatsOpt.isDefined, "media extension stats must be present")
+      val mediaStats = mediaStatsOpt.get
+      assertEquals(mediaStats.metrics.get("total_media_assets"), Some("2"))
+      assertEquals(mediaStats.metrics.get("type_video_master"), Some("1"))
+      assertEquals(mediaStats.metrics.get("type_inspection_still"), Some("1"))
+      assert(mediaStats.summary.contains("2 media asset(s)"))
+      assert(mediaStats.summary.contains("60.0s footage"))
+    }

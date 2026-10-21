@@ -948,6 +948,58 @@ class FsCrystalStore(
               s"$totalCommsMsgs message(s) exchanged | $totalPendingMsgs pending in inbox across $totalActiveInboxes entity mailbox(es) | ${formatByteSize(totalCommsBytes)}",
           )
 
+        // 2. Media extension telemetry
+        var totalMediaAssets  = 0
+        var totalMediaBytes   = 0L
+        var totalDurationSecs = 0.0
+        val mediaTypeCounts   = collection.mutable.Map[String, Int]().withDefaultValue(0)
+
+        def inspectArtifact(art: Artifact): Unit =
+          val mTypeOpt =
+            art.metadata.get("media_type").orElse(art.metadata.get("type")).orElse {
+              if art.mediaType.exists(_.startsWith("video/")) then Some("video_master")
+              else if art.mediaType.exists(_.startsWith("audio/")) then Some("audio_stem")
+              else None
+            }
+          mTypeOpt.foreach { kind =>
+            totalMediaAssets += 1
+            mediaTypeCounts(kind) += 1
+            art.metadata
+              .get("size_bytes")
+              .flatMap(_.toLongOption)
+              .foreach(b => totalMediaBytes += b)
+            art.metadata
+              .get("duration_seconds")
+              .flatMap(_.toDoubleOption)
+              .foreach(d => totalDurationSecs += d)
+          }
+
+        // Scan cave registry
+        getArtifactRegistry().toOption.foreach(_.artifacts.values.foreach(inspectArtifact))
+
+        // Scan crystal-scoped artifacts
+        crystalDirs.foreach { cDir =>
+          val cId = cDir.last
+          load(cId).toOption.foreach(_.artifacts.foreach(inspectArtifact))
+        }
+
+        if totalMediaAssets > 0 then
+          val breakdown =
+            mediaTypeCounts.toList.sortBy(-_._2).map { case (k, v) => s"$v $k" }.mkString(", ")
+          val durationStr =
+            if totalDurationSecs > 0 then f"${totalDurationSecs}%.1fs footage | " else ""
+          summaries += ccrystal.core.model.stats.ExtensionStatsSummary(
+            extensionId = "media",
+            scope = "Cave",
+            metrics = Map(
+              "total_media_assets"  -> totalMediaAssets.toString,
+              "total_duration_secs" -> totalDurationSecs.toString,
+              "total_media_bytes"   -> totalMediaBytes.toString,
+            ) ++ mediaTypeCounts.map { case (k, v) => s"type_$k" -> v.toString },
+            summary =
+              s"$totalMediaAssets media asset(s) ($breakdown) | $durationStr${formatByteSize(totalMediaBytes)} tracked",
+          )
+
       summaries.result()
     catch case _: Throwable => Nil
 

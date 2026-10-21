@@ -105,3 +105,9 @@
 - **Track 32: Federated Lattice Bonds & Cross-Cave Addressing (`federated_lattice_bonds_and_cross_cave_addressing`):**
   - **Objective:** Extend `LatticeBond` to support cross-cave URI addressing (`ccrystal://<cave-path>/<crystal-id>`), enabling crystals in client/downstream repositories to bond across local or remote caves to standards and parent crystals in upstream repositories.
   - **Privacy & Isolation Guardrails:** Enforce strict privacy boundary validation: public crystals must never store or expose private filesystem paths, uncommitted private repos, or corporate internal repository names.
+- **Track 33: Two-Way Monorepo Cave Federation & Subcave Inheritance (`monorepo_cave_federation_and_subcave_inheritance`):**
+  - **Upward Parent Cave Discovery:** When executed from any workspace subdirectory, `StoreResolver` automatically traverses parent directories upward to locate the nearest `.ccrystals/` cave (analogous to Git discovering `.git`), eliminating path friction in monorepo subprojects.
+  - **Downward Subcave Declaration & Aggregation:** Cave metadata format declaring nested subcaves/submodules (analogous to build tool multi-project definitions), enabling parent caves to federate with or aggregate context from domain-specific subcaves.
+- **Track 34: Native Media Submodule (`core-extensions/media`) & Probing Ergonomics (`v1.3.1`):**
+  - **Objective:** Build a dedicated Scala Native subproject/module (`core-extensions/media`) to handle first-class media file interactions, header parsing, and local metadata extraction (ffprobe/mediainfo integration without C library linkage bloat).
+  - **Single-Turn Agent Ingest:** Expose atomic CLI commands (`ccrystal ext media probe <path>`) and MCP tool actions (`crystal_extension_call` `action: "probe"`), eliminating agent context token burn from manual JSON wrangling and multi-step subprocess parsing.
