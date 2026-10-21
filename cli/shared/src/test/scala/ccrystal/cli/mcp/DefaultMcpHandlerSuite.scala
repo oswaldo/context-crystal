@@ -621,6 +621,53 @@ class DefaultMcpHandlerSuite extends FunSuite:
       "summary_only must exclude State Transitions header",
     )
 
+    // 5. tools/call crystal_hydrate with all = true
+    val hydAllReq = JsonRpcRequest(
+      id = JsonRpcId.Str("call-hyd-all"),
+      method = "tools/call",
+      params = Some(
+        Json.obj(
+          "name" -> "crystal_hydrate".asJson,
+          "arguments" -> Json.obj(
+            "crystal_id" -> "hydrate-test".asJson,
+            "all"        -> true.asJson,
+          ),
+        ),
+      ),
+    )
+    val hydAllResp = handler.handle(hydAllReq)
+    assertEquals(hydAllResp.error.isEmpty, true)
+    val hydAllText =
+      hydAllResp.result.get.hcursor.downField("content").downArray.get[String]("text").toOption.get
+    assert(hydAllText.contains("Node 1"), "all must include Node 1")
+    assert(hydAllText.contains("Node 2"), "all must include Node 2")
+
+    // 6. tools/call crystal_search scoped to crystal_id
+    val searchNodesReq = JsonRpcRequest(
+      id = JsonRpcId.Str("call-search-nodes"),
+      method = "tools/call",
+      params = Some(
+        Json.obj(
+          "name" -> "crystal_search".asJson,
+          "arguments" -> Json.obj(
+            "crystal_id" -> "hydrate-test".asJson,
+            "query"      -> "Node 1".asJson,
+          ),
+        ),
+      ),
+    )
+    val searchNodesResp = handler.handle(searchNodesReq)
+    assertEquals(searchNodesResp.error.isEmpty, true)
+    val searchNodesText =
+      searchNodesResp.result.get.hcursor
+        .downField("content")
+        .downArray
+        .get[String]("text")
+        .toOption
+        .get
+    assert(searchNodesText.contains("Node 1"), "scoped search must find Node 1")
+    assert(!searchNodesText.contains("Node 2"), "scoped search query must filter out Node 2")
+
   test("DefaultMcpHandler handles crystal_triage tool with structured categorization"):
     val (handler, store, _) = createFixture()
 

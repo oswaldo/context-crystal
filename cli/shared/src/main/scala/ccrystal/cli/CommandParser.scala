@@ -49,6 +49,15 @@ object CommandParser:
         )
   }
 
+  private given dagNodeSortArgument: Argument[DAGNodeSort] = Argument.from("sort") { s =>
+    DAGNodeSort.parse(s) match
+      case Some(sort) => Validated.valid(sort)
+      case None =>
+        Validated.invalidNel(
+          s"Invalid sort: '$s' (valid: recent, oldest)",
+        )
+  }
+
   private given resourceTypeArgument: Argument[TransientResourceType] =
     Argument.from("resource-type") { s =>
       normalize(s) match
@@ -395,6 +404,40 @@ object CommandParser:
     Opts.options[String]("precondition-artifact", "Precondition artifact IDs").orEmpty,
   ).mapN(CliCommand.NodeAdd.apply)
 
+  private val nodeListOpts = (
+    Opts.argument[String]("crystal-id"),
+    Opts
+      .option[String](
+        "query",
+        "Filter nodes by text query across summary, actor, anchor, metadata, artifacts",
+        "q",
+      )
+      .orNone,
+    Opts
+      .option[NodeKind](
+        "kind",
+        "Filter by node kind (human_prompt, agent_reasoning, tool_execution, checkpoint, branch, resolution)",
+        "k",
+      )
+      .orNone,
+    Opts.option[String]("author", "Filter by author/actor entity ID", "u").orNone,
+    Opts
+      .option[DAGNodeSort]("sort", "Sort order: recent (default), oldest")
+      .withDefault(DAGNodeSort.Recent),
+    Opts.option[Int]("limit", "Maximum number of nodes to return (default: 20)").withDefault(20),
+    Opts.option[Int]("offset", "Result offset for pagination (default: 0)").withDefault(0),
+    Opts.flag("all", "Show all matching nodes without pagination cap").orFalse,
+    Opts.flag("json", "Output JSON array of DAG nodes").orFalse,
+  ).mapN((id, q, k, u, s, limit, offset, all, json) =>
+    CliCommand.NodeList(id, q, k, u, s, if all then 0 else limit, offset, all, json),
+  )
+
+  private val nodeShowOpts = (
+    Opts.argument[String]("crystal-id"),
+    Opts.argument[String]("node-id"),
+    Opts.flag("json", "Output node as JSON").orFalse,
+  ).mapN(CliCommand.NodeShow.apply)
+
   private val artifactListOpts = (
     Opts.flag("cave", "List cave-wide artifacts in Cave Registry").orFalse,
     Opts.option[String]("crystal", "Filter or list artifacts in specified crystal", "c").orNone,
@@ -522,8 +565,17 @@ object CommandParser:
     Opts.option[Int]("tail", "Number of recent transitions to include in slice").orNone,
     Opts.option[Int]("depth", "Max DAG depth to cast (alias for tail)", "d").withDefault(10),
     Opts.flag("summary-only", "Emit only high-level summary").orFalse,
-  ).mapN { (id, from, to, tail, depth, summaryOnly) =>
-    CliCommand.Cast(id, from = from, to = to, tail = tail, depth = depth, summaryOnly = summaryOnly)
+    Opts.flag("all", "Cast full lineage beam without tail truncation").orFalse,
+  ).mapN { (id, from, to, tail, depth, summaryOnly, all) =>
+    CliCommand.Cast(
+      id,
+      from = from,
+      to = to,
+      tail = tail,
+      depth = depth,
+      summaryOnly = summaryOnly,
+      all = all,
+    )
   }
 
   private val hydrateOpts = castOpts
@@ -605,7 +657,16 @@ object CommandParser:
   )
 
   private val nodeCmd = Opts.subcommand("node", "Manage DAG nodes")(
-    Opts.subcommand("add", "Add DAG transition node")(nodeAddOpts),
+    Opts
+      .subcommand("add", "Add DAG transition node")(nodeAddOpts)
+      .orElse(
+        Opts.subcommand("list", "List and filter DAG transition nodes in a crystal")(nodeListOpts),
+      )
+      .orElse(
+        Opts.subcommand("show", "Show detailed information for a specific DAG transition node")(
+          nodeShowOpts,
+        ),
+      ),
   )
 
   private val entityCmd = Opts.subcommand("entity", "Manage cave entity registry")(

@@ -57,8 +57,8 @@ flowchart LR
    Dynamic dispatch tool providing a stable, future-proof MCP invocation interface for any extension without requiring MCP server schema modifications. Accepts `extension_id`, `crystal_id`, `action`, and structured `payload`.
 3e. **Multi-Agent Coordination & Crystal Comms (`crystal_extension_comms`):**
    Coordinate peer agents within crystal boundaries using lock-free atomic filesystem mailboxes. Supports single recipients, entity groups (`grp_*`), broadcast (`@all`, `@channel`), optional causal DAG recording (`record_dag: true`), and full causal message audit trails (`action: "send"`, `action: "list"`).
-4. **Selective Context Hydration (`crystal_hydrate`):**
-   Project tailored context beams into LLM context using `tail`, `from`, `to`, or `summary_only`.
+4. **Context Hydration & DAG Inspection (`crystal_hydrate`, `crystal_search`):**
+   Project tailored context beams into LLM context using `tail`, `from`, `to`, `summary_only`, or `all: true` for un-truncated beam casting. To search, query, or inspect historical DAG transition nodes within a specific crystal without whole-beam hydration, pass `crystal_id` to `crystal_search` (with optional `query`, `kind`, `author`, `sort`, `limit`, `all`).
 5. **Sub-DAG Melting (`crystal_melt`):**
    For long-running tracks or large lattices, collapse chains of fine-grained intermediary steps into a single consolidated checkpoint node with aggregated artifact links to save prompt beam tokens deterministically.
 6. **Conclusion (`crystal_goal_transition`):**

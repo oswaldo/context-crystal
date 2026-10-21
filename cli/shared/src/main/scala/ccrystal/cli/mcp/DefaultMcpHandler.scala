@@ -60,10 +60,30 @@ class DefaultMcpHandler(
           Tool(
             name = "crystal_search",
             description =
-              "Search and list crystals in the cave with multi-dimensional filtering (query text, temporal bounds, leases, tasks, lessons, status, aging, archived, sorting, and pagination). When called without filters, lists active crystals (most recently active first).",
+              "Search and list crystals in the cave with multi-dimensional filtering, or search and inspect DAG transition nodes when crystal_id is provided.",
             inputSchema = Json.obj(
               "type" -> "object".asJson,
               "properties" -> Json.obj(
+                "crystal_id" -> Json.obj(
+                  "type" -> "string".asJson,
+                  "description" -> "When provided, scopes search or listing to DAG nodes within the specified crystal, returning matching nodes".asJson,
+                ),
+                "kind" -> Json.obj(
+                  "type" -> "string".asJson,
+                  "enum" -> List(
+                    "human_prompt",
+                    "agent_reasoning",
+                    "tool_execution",
+                    "checkpoint",
+                    "branch",
+                    "resolution",
+                  ).asJson,
+                  "description" -> "When crystal_id is provided, filter nodes by kind".asJson,
+                ),
+                "all" -> Json.obj(
+                  "type" -> "boolean".asJson,
+                  "description" -> "When crystal_id is provided, return all matching nodes without pagination cap".asJson,
+                ),
                 "query" -> Json.obj(
                   "type" -> "string".asJson,
                   "description" -> "Free-text search query across crystal ID, title, intent, DAG nodes, lessons, and artifacts".asJson,
@@ -469,6 +489,10 @@ class DefaultMcpHandler(
                 "summary_only" -> Json.obj(
                   "type" -> "boolean".asJson,
                   "description" -> "Exclude DAG transitions and hydrate living state summary only (default: false)".asJson,
+                ),
+                "all" -> Json.obj(
+                  "type" -> "boolean".asJson,
+                  "description" -> "Cast full lineage beam without tail truncation (default: false)".asJson,
                 ),
               ),
               "required" -> List("crystal_id").asJson,
@@ -947,52 +971,93 @@ class DefaultMcpHandler(
                 )
 
       case "crystal_search" =>
-        val queryOpt = cursor.get[String]("query").toOption
-        val sinceOpt = cursor.get[String]("since").toOption
-        val untilOpt = cursor.get[String]("until").toOption
-        val statusOpt = cursor.get[String]("status").toOption.flatMap {
-          case "in_progress"                     => Some(GoalStatus.InProgress)
-          case "concluded" | "concluded_success" => Some(GoalStatus.ConcludedSuccess)
-          case "concluded_abandoned"             => Some(GoalStatus.ConcludedAbandoned)
-          case _                                 => None
-        }
-        val hasActiveLeasesOpt = cursor.get[Boolean]("has_active_leases").toOption
-        val touchingPathOpt    = cursor.get[String]("touching_path").toOption
-        val hasOpenTasksOpt    = cursor.get[Boolean]("has_open_tasks").toOption
-        val hasLessonsOpt      = cursor.get[Boolean]("has_lessons").toOption
-        val authorOpt          = cursor.get[String]("author").toOption
-        val agingOpt =
-          cursor
-            .get[String]("aging")
-            .toOption
-            .flatMap(ccrystal.core.model.search.AgingCategory.parse)
-        val sortOpt =
-          cursor.get[String]("sort").toOption.flatMap(ccrystal.core.model.search.SearchSort.parse)
-        val limitOpt        = cursor.get[Int]("limit").toOption
-        val offsetOpt       = cursor.get[Int]("offset").toOption
-        val isUncapped      = limitOpt.contains(0)
-        val includeArchived = cursor.get[Boolean]("include_archived").toOption.getOrElse(false)
-        val jsonOutput      = cursor.get[Boolean]("json_output").toOption.getOrElse(false)
+        val crystalIdOpt = cursor.get[String]("crystal_id").toOption
+        crystalIdOpt match
+          case Some(cId) =>
+            val queryOpt  = cursor.get[String]("query").toOption
+            val authorOpt = cursor.get[String]("author").toOption
+            val kindOpt = cursor.get[String]("kind").toOption.flatMap { k =>
+              k.trim.toLowerCase.replace("-", "_") match
+                case "human_prompt"    => Some(NodeKind.HumanPrompt)
+                case "agent_reasoning" => Some(NodeKind.AgentReasoning)
+                case "tool_execution"  => Some(NodeKind.ToolExecution)
+                case "checkpoint"      => Some(NodeKind.Checkpoint)
+                case "branch"          => Some(NodeKind.Branch)
+                case "resolution"      => Some(NodeKind.Resolution)
+                case _                 => None
+            }
+            val sort = cursor
+              .get[String]("sort")
+              .toOption
+              .flatMap(DAGNodeSort.parse)
+              .getOrElse(DAGNodeSort.Recent)
+            val limit      = cursor.get[Int]("limit").toOption.getOrElse(20)
+            val offset     = cursor.get[Int]("offset").toOption.getOrElse(0)
+            val all        = cursor.get[Boolean]("all").toOption.getOrElse(false) || limit == 0
+            val jsonOutput = cursor.get[Boolean]("json_output").toOption.getOrElse(false)
+            runCommandToResult(
+              CliCommand.NodeList(
+                crystalId = cId,
+                query = queryOpt,
+                kind = kindOpt,
+                author = authorOpt,
+                sort = sort,
+                limit = if all then 0 else limit,
+                offset = offset,
+                all = all,
+                jsonOutput = jsonOutput,
+              ),
+            )
+          case None =>
+            val queryOpt = cursor.get[String]("query").toOption
+            val sinceOpt = cursor.get[String]("since").toOption
+            val untilOpt = cursor.get[String]("until").toOption
+            val statusOpt = cursor.get[String]("status").toOption.flatMap {
+              case "in_progress"                     => Some(GoalStatus.InProgress)
+              case "concluded" | "concluded_success" => Some(GoalStatus.ConcludedSuccess)
+              case "concluded_abandoned"             => Some(GoalStatus.ConcludedAbandoned)
+              case _                                 => None
+            }
+            val hasActiveLeasesOpt = cursor.get[Boolean]("has_active_leases").toOption
+            val touchingPathOpt    = cursor.get[String]("touching_path").toOption
+            val hasOpenTasksOpt    = cursor.get[Boolean]("has_open_tasks").toOption
+            val hasLessonsOpt      = cursor.get[Boolean]("has_lessons").toOption
+            val authorOpt          = cursor.get[String]("author").toOption
+            val agingOpt =
+              cursor
+                .get[String]("aging")
+                .toOption
+                .flatMap(ccrystal.core.model.search.AgingCategory.parse)
+            val sortOpt =
+              cursor
+                .get[String]("sort")
+                .toOption
+                .flatMap(ccrystal.core.model.search.SearchSort.parse)
+            val limitOpt        = cursor.get[Int]("limit").toOption
+            val offsetOpt       = cursor.get[Int]("offset").toOption
+            val isUncapped      = limitOpt.contains(0)
+            val includeArchived = cursor.get[Boolean]("include_archived").toOption.getOrElse(false)
+            val jsonOutput      = cursor.get[Boolean]("json_output").toOption.getOrElse(false)
 
-        val filter = ccrystal.core.model.search.CrystalFilter(
-          query = queryOpt,
-          since = sinceOpt,
-          until = untilOpt,
-          status = statusOpt,
-          hasActiveLeases = hasActiveLeasesOpt,
-          touchingPath = touchingPathOpt,
-          hasOpenTasks = hasOpenTasksOpt,
-          hasLessons = hasLessonsOpt,
-          author = authorOpt,
-          aging = agingOpt,
-          includeArchived = includeArchived,
-          sort = sortOpt,
-          limit = if isUncapped then None else limitOpt.filter(_ > 0),
-          offset = offsetOpt,
-          uncapped = isUncapped,
-        )
-        val cmd = CliCommand.Search(filter = filter, jsonOutput = jsonOutput)
-        runCommandToResult(cmd)
+            val filter = ccrystal.core.model.search.CrystalFilter(
+              query = queryOpt,
+              since = sinceOpt,
+              until = untilOpt,
+              status = statusOpt,
+              hasActiveLeases = hasActiveLeasesOpt,
+              touchingPath = touchingPathOpt,
+              hasOpenTasks = hasOpenTasksOpt,
+              hasLessons = hasLessonsOpt,
+              author = authorOpt,
+              aging = agingOpt,
+              includeArchived = includeArchived,
+              sort = sortOpt,
+              limit = if isUncapped then None else limitOpt.filter(_ > 0),
+              offset = offsetOpt,
+              uncapped = isUncapped,
+            )
+            val cmd = CliCommand.Search(filter = filter, jsonOutput = jsonOutput)
+            runCommandToResult(cmd)
 
       case "crystal_stats" =>
         val queryOpt = cursor.get[String]("query").toOption
@@ -1358,6 +1423,7 @@ class DefaultMcpHandler(
             val tailOpt        = cursor.get[Int]("tail").toOption
             val depthOpt       = cursor.get[Int]("depth").toOption
             val summaryOnlyOpt = cursor.get[Boolean]("summary_only").toOption.getOrElse(false)
+            val allOpt         = cursor.get[Boolean]("all").toOption.getOrElse(false)
             val cmd = CliCommand.Cast(
               crystalId = cId,
               from = fromOpt,
@@ -1365,6 +1431,7 @@ class DefaultMcpHandler(
               tail = tailOpt,
               depth = depthOpt.getOrElse(10),
               summaryOnly = summaryOnlyOpt,
+              all = allOpt,
             )
             runCommandToResult(cmd)
           case None =>

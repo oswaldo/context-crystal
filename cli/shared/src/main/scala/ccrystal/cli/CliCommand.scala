@@ -39,6 +39,22 @@ enum CliCommand derives CanEqual:
       outputArtifactIds: List[String] = Nil,
       preconditionArtifactIds: List[String] = Nil,
   )
+  case NodeList(
+      crystalId: String,
+      query: Option[String] = None,
+      kind: Option[NodeKind] = None,
+      author: Option[String] = None,
+      sort: DAGNodeSort = DAGNodeSort.Recent,
+      limit: Int = 20,
+      offset: Int = 0,
+      all: Boolean = false,
+      jsonOutput: Boolean = false,
+  )
+  case NodeShow(
+      crystalId: String,
+      nodeId: String,
+      jsonOutput: Boolean = false,
+  )
   case ArtifactList(
       cave: Boolean = false,
       crystalId: Option[String] = None,
@@ -103,6 +119,7 @@ enum CliCommand derives CanEqual:
       tail: Option[Int] = None,
       depth: Int = 10,
       summaryOnly: Boolean = false,
+      all: Boolean = false,
   )
   case Refresh(crystalId: Option[String], all: Boolean)
   case Batch(scriptOrChain: String)
@@ -220,7 +237,9 @@ enum CliCommand derives CanEqual:
   )
 
   def castSliceParams: SliceParams = this match
-    case Cast(_, from, to, tail, depth, _) =>
-      val effTail = tail.orElse(if from.isEmpty && to.isEmpty then Some(depth) else None)
+    case Cast(_, from, to, tail, depth, _, all) =>
+      val effTail =
+        if all then None
+        else tail.orElse(if from.isEmpty && to.isEmpty then Some(depth) else None)
       SliceParams(from = from, to = to, tail = effTail)
     case _ => SliceParams()

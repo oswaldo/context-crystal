@@ -264,6 +264,96 @@ class Runner(
         }
         .map(_ => resultMsg)
 
+    case CliCommand.NodeList(
+          crystalId,
+          queryOpt,
+          kindOpt,
+          authorOpt,
+          sort,
+          limit,
+          offset,
+          all,
+          jsonOutput,
+        ) =>
+      store.load(crystalId).map { crystal =>
+        val (nodes, totalCount) = crystal.dag.queryNodes(
+          query = queryOpt,
+          kind = kindOpt,
+          author = authorOpt,
+          sort = sort,
+          limit = if all then 0 else limit,
+          offset = offset,
+        )
+
+        if jsonOutput then nodes.asJson.spaces2
+        else if nodes.isEmpty then
+          val filterDesc = List(
+            queryOpt.map(q => s"query='$q'"),
+            kindOpt.map(k => s"kind=${k.toString}"),
+            authorOpt.map(a => s"author='$a'"),
+          ).flatten.mkString(", ")
+          val filterMsg = if filterDesc.nonEmpty then s" matching ($filterDesc)" else ""
+          s"No DAG transition nodes found in crystal '$crystalId'$filterMsg."
+        else
+          val header = s"DAG transition nodes for crystal '$crystalId' (Total: $totalCount):"
+          val lines = nodes.map { n =>
+            val anchorStr = n.anchor.map(a => s" <anchor: $a>").getOrElse("")
+            val artifactParts = List(
+              Option.when(n.inputArtifactIds.nonEmpty)(s"in: ${n.inputArtifactIds.mkString(",")}"),
+              Option
+                .when(n.outputArtifactIds.nonEmpty)(s"out: ${n.outputArtifactIds.mkString(",")}"),
+              Option.when(n.preconditionArtifactIds.nonEmpty)(
+                s"pre: ${n.preconditionArtifactIds.mkString(",")}",
+              ),
+            ).flatten
+            val artMsg =
+              if artifactParts.nonEmpty then s" [${artifactParts.mkString("; ")}]" else ""
+            s"- ${n.id} [${n.kind}] (${n.actorId})$anchorStr: ${n.contentSummary}$artMsg"
+          }
+          val paginationFooter =
+            if all || totalCount <= nodes.length then ""
+            else
+              val end = math.min(offset + nodes.length, totalCount)
+              s"\nShowing ${offset + 1}-$end of $totalCount (use --offset $end to view next page, or --all)"
+          (header +: lines).mkString("\n") + paginationFooter
+      }
+
+    case CliCommand.NodeShow(crystalId, nodeId, jsonOutput) =>
+      store.load(crystalId).flatMap { crystal =>
+        crystal.dag.findNode(nodeId) match
+          case None =>
+            Left(s"Node '$nodeId' not found in crystal '$crystalId'")
+          case Some(node) =>
+            if jsonOutput then Right(node.asJson.spaces2)
+            else
+              val sb = new StringBuilder()
+              sb.append(s"DAG Node: ${node.id}\n")
+              sb.append(s"  Kind: ${node.kind}\n")
+              sb.append(s"  Actor: ${node.actorId}\n")
+              sb.append(s"  Timestamp: ${node.timestamp}\n")
+              sb.append(s"  Fidelity: ${node.fidelity}\n")
+              node.anchor.foreach(a => sb.append(s"  Anchor: $a\n"))
+              if node.parentIds.nonEmpty then
+                sb.append(s"  Parents: ${node.parentIds.mkString(", ")}\n")
+              if node.artifactIds.nonEmpty then
+                sb.append(s"  Artifacts: ${node.artifactIds.mkString(", ")}\n")
+              if node.inputArtifactIds.nonEmpty then
+                sb.append(s"  Input Artifacts: ${node.inputArtifactIds.mkString(", ")}\n")
+              if node.outputArtifactIds.nonEmpty then
+                sb.append(s"  Output Artifacts: ${node.outputArtifactIds.mkString(", ")}\n")
+              if node.preconditionArtifactIds.nonEmpty then
+                sb.append(
+                  s"  Precondition Artifacts: ${node.preconditionArtifactIds.mkString(", ")}\n",
+                )
+              if node.metadata.nonEmpty then
+                sb.append("  Metadata:\n")
+                node.metadata.toSeq.sortBy(_._1).foreach { case (k, v) =>
+                  sb.append(s"    $k: $v\n")
+                }
+              sb.append(s"  Summary: ${node.contentSummary}")
+              Right(sb.toString())
+      }
+
     case CliCommand.EntityList =>
       store.getEntityRegistry().map { reg =>
         val sb = new java.lang.StringBuilder()
