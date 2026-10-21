@@ -3,7 +3,7 @@
   "id" : "release-v1-3-0-extensions-media-and-mcp-optimization",
   "name" : "release-v1-3-0-extensions-media-and-mcp-optimization",
   "createdAt" : "2026-10-12T20:38:50.670Z",
-  "updatedAt" : "2026-10-21T22:47:05.845Z",
+  "updatedAt" : "2026-10-21T23:30:19.394Z",
   "parentCrystalId" : null,
   "origin" : null,
   "caveId" : null,
@@ -26,12 +26,12 @@
       {
         "id" : "task-3",
         "description" : "CEP-0002: Implement Media & Multi-Modal Provenance extension metadata schemas and verification [task-3]",
-        "completed" : false
+        "completed" : true
       },
       {
         "id" : "task-4",
         "description" : "Synchronize agent harnesses and distribute updated skill across agents [task-4]",
-        "completed" : false
+        "completed" : true
       },
       {
         "id" : "task-5",
@@ -51,12 +51,12 @@
       {
         "id" : "task-8",
         "description" : "Review latest automated media post-production pipeline patterns for potential CEP-0002 media provenance spec refinements",
-        "completed" : false
+        "completed" : true
       },
       {
         "id" : "task-9",
         "description" : "Close storage CRUD lifecycle completeness gaps: implement artifact unregistration/deletion symmetry and task cancellation/removal",
-        "completed" : false
+        "completed" : true
       }
     ],
     "metadata" : {
@@ -228,6 +228,29 @@
         "kind" : "checkpoint",
         "contentSummary" : "Completed Conductor track dag_node_inspection_and_hydration_ergonomics_20261021 and task-7: implemented DAG node query engine, ccrystal node list/show, ccrystal hydrate --all, crystal_hydrate(all=true), crystal_search(crystal_id=...), and codified dogfooding invariant in AGENTS.md",
         "anchor" : "dag-node-inspection-and-dogfooding-done",
+        "artifactIds" : [
+        ],
+        "inputArtifactIds" : [
+        ],
+        "outputArtifactIds" : [
+        ],
+        "preconditionArtifactIds" : [
+        ],
+        "fidelity" : "inferred",
+        "metadata" : {
+          
+        }
+      },
+      {
+        "id" : "node-8",
+        "parentIds" : [
+          "node-7"
+        ],
+        "timestamp" : "2026-10-21T23:30:19.394Z",
+        "actorId" : "usr_oswaldo",
+        "kind" : "checkpoint",
+        "contentSummary" : "Completed task-8 (CEP-0002 Hyperframes declarative motion, trilingual subtitles, broadcast loudness) and task-9 (storage CRUD lifecycle completeness: artifact unregistration and task cancellation symmetry across core, CLI, and native MCP). Verified across JVM, Native, and JS with 100% green test suite (833 tests) and installed updated binary.",
+        "anchor" : "cep-0002-and-crud-symmetry-complete",
         "artifactIds" : [
         ],
         "inputArtifactIds" : [
