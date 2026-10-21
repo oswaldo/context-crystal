@@ -20,6 +20,7 @@ enum CliCommand derives CanEqual:
   )
   case TaskAdd(crystalId: String, description: String)
   case TaskDone(crystalId: String, taskId: String)
+  case TaskRemove(crystalId: String, taskId: String)
   case TaskList(crystalId: String)
   case GoalTransition(
       crystalId: String,
@@ -79,6 +80,11 @@ enum CliCommand derives CanEqual:
       id: String,
       crystalId: Option[String] = None,
       jsonOutput: Boolean = false,
+  )
+  case ArtifactDelete(
+      id: String,
+      crystalId: Option[String] = None,
+      cave: Boolean = false,
   )
   case Slice(
       crystalId: String,

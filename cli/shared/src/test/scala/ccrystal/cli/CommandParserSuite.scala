@@ -73,6 +73,16 @@ class CommandParserSuite extends FunSuite:
     assert(parsedDone.isRight)
     assertEquals(parsedDone.toOption.get, CliCommand.TaskDone("my-crystal", "ac-1"))
 
+    val rmArgs   = List("task", "rm", "my-crystal", "--id", "ac-1")
+    val parsedRm = CommandParser.parse(rmArgs)
+    assert(parsedRm.isRight)
+    assertEquals(parsedRm.toOption.get, CliCommand.TaskRemove("my-crystal", "ac-1"))
+
+    val cancelArgs   = List("task", "cancel", "my-crystal", "--id", "ac-1")
+    val parsedCancel = CommandParser.parse(cancelArgs)
+    assert(parsedCancel.isRight)
+    assertEquals(parsedCancel.toOption.get, CliCommand.TaskRemove("my-crystal", "ac-1"))
+
   test("Parses 'cast' (and 'hydrate') command"):
     val castArgs   = List("cast", "my-crystal", "--depth", "5")
     val parsedCast = CommandParser.parse(castArgs)
@@ -630,6 +640,20 @@ class CommandParserSuite extends FunSuite:
     assertEquals(
       p2.toOption.get,
       CliCommand.ArtifactInspect("art-1", crystalId = Some("c-1"), jsonOutput = true),
+    )
+
+  test("Parses 'artifact rm' and 'artifact delete' with crystal and cave options"):
+    val rmCave = List("artifact", "rm", "art-1", "--cave")
+    val p1     = CommandParser.parse(rmCave)
+    assertEquals(p1.isRight, true, "artifact rm cave parse")
+    assertEquals(p1.toOption.get, CliCommand.ArtifactDelete("art-1", crystalId = None, cave = true))
+
+    val delCrystal = List("artifact", "delete", "art-1", "--crystal", "c-1")
+    val p2         = CommandParser.parse(delCrystal)
+    assertEquals(p2.isRight, true, "artifact delete crystal parse")
+    assertEquals(
+      p2.toOption.get,
+      CliCommand.ArtifactDelete("art-1", crystalId = Some("c-1"), cave = false),
     )
 
   test("Parses 'node add' with artifact linkage flags"):

@@ -360,6 +360,11 @@ object CommandParser:
     Opts.option[String]("id", "Task identifier", "t"),
   ).mapN(CliCommand.TaskDone.apply)
 
+  private val taskRemoveOpts = (
+    Opts.argument[String]("crystal-id"),
+    Opts.option[String]("id", "Task identifier to remove or cancel", "t"),
+  ).mapN(CliCommand.TaskRemove.apply)
+
   private val taskListOpts = Opts.argument[String]("crystal-id").map(CliCommand.TaskList.apply)
 
   private val concludeOpts = (
@@ -469,6 +474,12 @@ object CommandParser:
     Opts.option[String]("crystal", "Crystal scope for artifact", "c").orNone,
     Opts.flag("json", "Output as JSON").orFalse,
   ).mapN(CliCommand.ArtifactInspect.apply)
+
+  private val artifactDeleteOpts = (
+    Opts.argument[String]("artifact-id"),
+    Opts.option[String]("crystal", "Crystal to delete artifact from", "c").orNone,
+    Opts.flag("cave", "Delete artifact from cave registry").orFalse,
+  ).mapN(CliCommand.ArtifactDelete.apply)
 
   private val sliceOpts = (
     Opts.argument[String]("crystal-id"),
@@ -649,6 +660,9 @@ object CommandParser:
     Opts
       .subcommand("add", "Add task")(taskAddOpts)
       .orElse(Opts.subcommand("done", "Complete task")(taskDoneOpts))
+      .orElse(Opts.subcommand("rm", "Remove or cancel task")(taskRemoveOpts))
+      .orElse(Opts.subcommand("remove", "Remove or cancel task (alias for rm)")(taskRemoveOpts))
+      .orElse(Opts.subcommand("cancel", "Cancel or remove task (alias for rm)")(taskRemoveOpts))
       .orElse(Opts.subcommand("list", "List tasks")(taskListOpts)),
   )
 
@@ -705,6 +719,22 @@ object CommandParser:
       .subcommand("list", "List artifacts in cave or crystal")(artifactListOpts)
       .orElse(
         Opts.subcommand("register", "Register a virtual or physical artifact")(artifactRegisterOpts),
+      )
+      .orElse(
+        Opts.subcommand("add", "Register a virtual or physical artifact (alias for register)")(
+          artifactRegisterOpts,
+        ),
+      )
+      .orElse(Opts.subcommand("rm", "Delete or unregister an artifact")(artifactDeleteOpts))
+      .orElse(
+        Opts.subcommand("delete", "Delete or unregister an artifact (alias for rm)")(
+          artifactDeleteOpts,
+        ),
+      )
+      .orElse(
+        Opts.subcommand("unregister", "Delete or unregister an artifact (alias for rm)")(
+          artifactDeleteOpts,
+        ),
       )
       .orElse(Opts.subcommand("inspect", "Inspect artifact details")(artifactInspectOpts)),
   )

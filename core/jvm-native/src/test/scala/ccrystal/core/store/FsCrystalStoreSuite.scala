@@ -600,3 +600,91 @@ class FsCrystalStoreSuite extends FunSuite:
       "Lock file must not remain after stress test",
     )
   }
+
+  test("FsCrystalStore supports full CRUD lifecycle for artifacts across cave and crystal"):
+    val store     = FsCrystalStore(tempDir.resolve(".ccrystals").toString)
+    val crystalId = "c-artifact-crud-test"
+    val base = ContextCrystal(
+      schemaVersion = "1.0.0",
+      id = crystalId,
+      createdAt = "2026-09-20T10:00:00Z",
+      updatedAt = "2026-09-20T10:00:00Z",
+      goal = Goal("artifact-crud", "testing artifact crud", GoalStatus.InProgress, Nil),
+      entities = Nil,
+      dag = DAG(
+        "root",
+        List(DAGNode("root", Nil, "2026-09-20T10:00:00Z", "u-1", NodeKind.HumanPrompt, "Init")),
+      ),
+    )
+    store.save(base)
+
+    // 1. Cave-wide artifact registration and unregistration
+    val caveArt = Artifact(
+      id = "cave-art-1",
+      name = "cave_file.txt",
+      substrate = ArtifactSubstrate.Virtual,
+      role = ArtifactRole.Target,
+    )
+    assertEquals(store.registerArtifact(caveArt), Right(caveArt))
+    assertEquals(store.getArtifact("cave-art-1"), Right(Some(caveArt)))
+
+    val unregCaveRes = store.unregisterArtifact("cave-art-1")
+    assertEquals(unregCaveRes, Right(()))
+    assertEquals(store.getArtifact("cave-art-1"), Right(None))
+
+    // 2. Crystal-scoped artifact registration and unregistration
+    val crystalArt = Artifact(
+      id = "c-art-1",
+      name = "crystal_file.txt",
+      substrate = ArtifactSubstrate.Physical,
+      role = ArtifactRole.Instrument,
+    )
+    val updateRes = store.update(crystalId) { c =>
+      Right(c.copy(artifacts = c.artifacts :+ crystalArt))
+    }
+    assert(updateRes.isRight)
+    assertEquals(store.getArtifact("c-art-1", Some(crystalId)), Right(Some(crystalArt)))
+
+    val unregCrystalRes = store.unregisterArtifact("c-art-1", Some(crystalId))
+    assertEquals(unregCrystalRes, Right(()))
+    assertEquals(store.getArtifact("c-art-1", Some(crystalId)), Right(None))
+
+  test("FsCrystalStore supports full CRUD lifecycle for tasks: add, complete, and remove"):
+    val store     = FsCrystalStore(tempDir.resolve(".ccrystals").toString)
+    val crystalId = "c-task-crud-test"
+    val base = ContextCrystal(
+      schemaVersion = "1.0.0",
+      id = crystalId,
+      createdAt = "2026-09-20T10:00:00Z",
+      updatedAt = "2026-09-20T10:00:00Z",
+      goal = Goal("task-crud", "testing task crud", GoalStatus.InProgress, Nil),
+      entities = Nil,
+      dag = DAG(
+        "root",
+        List(DAGNode("root", Nil, "2026-09-20T10:00:00Z", "u-1", NodeKind.HumanPrompt, "Init")),
+      ),
+    )
+    store.save(base)
+
+    // 1. Add tasks
+    val t1 = store.addTask(crystalId, "First task").toOption.get
+    assertEquals(t1.id, "task-1")
+    assertEquals(t1.completed, false)
+
+    val t2 = store.addTask(crystalId, "Second task").toOption.get
+    assertEquals(t2.id, "task-2")
+
+    // 2. Complete task-1
+    val t1Done = store.completeTask(crystalId, "task-1").toOption.get
+    assertEquals(t1Done.id, "task-1")
+    assertEquals(t1Done.completed, true)
+
+    // 3. Remove task-1
+    val t1Removed = store.removeTask(crystalId, "task-1").toOption.get
+    assertEquals(t1Removed.id, "task-1")
+
+    val c = store.load(crystalId).toOption.get
+    assertEquals(c.goal.acceptanceCriteria.map(_.id), List("task-2"))
+
+    // 4. Removing non-existent task returns error
+    assert(store.removeTask(crystalId, "task-99").isLeft)

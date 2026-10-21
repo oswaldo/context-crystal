@@ -78,8 +78,100 @@ trait CrystalStore:
   def getArtifactRegistry(): Either[String, CaveArtifactRegistry]
   def saveArtifactRegistry(registry: CaveArtifactRegistry): Either[String, Unit]
   def registerArtifact(artifact: Artifact): Either[String, Artifact]
+  def unregisterArtifact(id: String, crystalId: Option[String] = None): Either[String, Unit] =
+    crystalId match
+      case Some(cId) =>
+        update(cId) { crystal =>
+          if !crystal.artifacts.exists(_.id == id) then
+            Left(s"Artifact '$id' not found in crystal '$cId'")
+          else
+            Right(
+              crystal.copy(
+                updatedAt = java.time.Instant.now().toString,
+                artifacts = crystal.artifacts.filterNot(_.id == id),
+              ),
+            )
+        }.map(_ => ())
+      case None =>
+        getArtifactRegistry().flatMap { reg =>
+          if !reg.artifacts.contains(id) then
+            Left(s"Artifact '$id' not found in cave artifact registry")
+          else
+            val updated = reg.copy(artifacts = reg.artifacts - id)
+            saveArtifactRegistry(updated)
+        }
   def listArtifacts(crystalId: Option[String] = None): Either[String, List[Artifact]]
   def getArtifact(id: String, crystalId: Option[String] = None): Either[String, Option[Artifact]]
+  def addTask(crystalId: String, description: String): Either[String, AcceptanceCriterion] =
+    var assignedAc: Option[AcceptanceCriterion] = None
+    update(crystalId) { crystal =>
+      val taskId = s"task-${crystal.goal.acceptanceCriteria.size + 1}"
+      val newAc  = AcceptanceCriterion(taskId, description, completed = false)
+      assignedAc = Some(newAc)
+      Right(
+        crystal.copy(
+          updatedAt = java.time.Instant.now().toString,
+          goal = crystal.goal.copy(
+            acceptanceCriteria = crystal.goal.acceptanceCriteria :+ newAc,
+          ),
+        ),
+      )
+    }.flatMap { _ =>
+      assignedAc match
+        case Some(ac) => Right(ac)
+        case None     => Left("Failed to record task")
+    }
+
+  def completeTask(crystalId: String, taskId: String): Either[String, AcceptanceCriterion] =
+    var completedAc: Option[AcceptanceCriterion] = None
+    update(crystalId) { crystal =>
+      val found = crystal.goal.acceptanceCriteria.exists(_.id == taskId)
+      val updatedAcs = crystal.goal.acceptanceCriteria.map { ac =>
+        if ac.id == taskId then
+          val comp = ac.copy(completed = true)
+          completedAc = Some(comp)
+          comp
+        else ac
+      }
+      val finalAcs =
+        if !found then
+          val synthetic = AcceptanceCriterion(taskId, taskId, completed = true)
+          completedAc = Some(synthetic)
+          updatedAcs :+ synthetic
+        else updatedAcs
+      Right(
+        crystal.copy(
+          updatedAt = java.time.Instant.now().toString,
+          goal = crystal.goal.copy(acceptanceCriteria = finalAcs),
+        ),
+      )
+    }.flatMap { _ =>
+      completedAc match
+        case Some(ac) => Right(ac)
+        case None     => Left(s"Task '$taskId' not found in crystal '$crystalId'")
+    }
+
+  def removeTask(crystalId: String, taskId: String): Either[String, AcceptanceCriterion] =
+    var removedAc: Option[AcceptanceCriterion] = None
+    update(crystalId) { crystal =>
+      crystal.goal.acceptanceCriteria.find(_.id == taskId) match
+        case None =>
+          Left(s"Task '$taskId' not found in crystal '$crystalId'")
+        case Some(ac) =>
+          removedAc = Some(ac)
+          Right(
+            crystal.copy(
+              updatedAt = java.time.Instant.now().toString,
+              goal = crystal.goal.copy(
+                acceptanceCriteria = crystal.goal.acceptanceCriteria.filterNot(_.id == taskId),
+              ),
+            ),
+          )
+    }.flatMap { _ =>
+      removedAc match
+        case Some(ac) => Right(ac)
+        case None     => Left(s"Task '$taskId' not found in crystal '$crystalId'")
+    }
   def previewPrune(
       targetCrystalId: Option[String] = None,
       olderThanDays: Option[Long] = None,

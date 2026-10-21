@@ -417,6 +417,27 @@ class DefaultMcpHandlerSuite extends FunSuite:
       "registry contains registered artifact",
     )
 
+    // 7. tools/call crystal_artifact delete
+    val deleteArtReq = JsonRpcRequest(
+      id = JsonRpcId.Num(46L),
+      method = "tools/call",
+      params = Some(
+        Json.obj(
+          "name" -> "crystal_artifact".asJson,
+          "arguments" -> Json.obj(
+            "action" -> "delete".asJson,
+            "id"     -> "mcp-art-1".asJson,
+            "cave"   -> true.asJson,
+          ),
+        ),
+      ),
+    )
+    val deleteArtResp = handler.handle(deleteArtReq)
+    assertEquals(deleteArtResp.error.isEmpty, true, "delete succeeds")
+    val delResult = deleteArtResp.result.get.hcursor.as[CallToolResult].toOption.get
+    assertEquals(delResult.isError, false)
+    assert(delResult.content.head.text.contains("Unregistered artifact 'mcp-art-1'"))
+
   test("DefaultMcpHandler returns MethodNotFound for unknown methods"):
     val (handler, _, _) = createFixture()
     val req = JsonRpcRequest(
@@ -1437,6 +1458,28 @@ class DefaultMcpHandlerSuite extends FunSuite:
     assert(doneText.contains("Marked task 'task-1' as completed"))
     assert(doneText.contains("1/1 completed"))
     assert(doneText.contains("- [x] task-1: Write failing unit tests"))
+
+    // Remove task
+    val removeReq = JsonRpcRequest(
+      id = JsonRpcId.Num(303L),
+      method = "tools/call",
+      params = Some(
+        Json.obj(
+          "name" -> "crystal_task_transition".asJson,
+          "arguments" -> Json.obj(
+            "crystal_id"        -> "c-hydrate-tasks".asJson,
+            "action"            -> "remove".asJson,
+            "description_or_id" -> "task-1".asJson,
+          ),
+        ),
+      ),
+    )
+    val removeResp   = handler.handle(removeReq)
+    val removeResult = removeResp.result.get.as[CallToolResult].toOption.get
+    assertEquals(removeResult.isError, false)
+    val removeText = removeResult.content.head.text
+    assert(removeText.contains("Removed task 'task-1'"))
+    assert(removeText.contains("0/0 completed"))
 
   test("DefaultMcpHandler self-hydrates DAG head and task progress snapshot on crystal_checkpoint"):
     val (handler, _, _) = createFixture()

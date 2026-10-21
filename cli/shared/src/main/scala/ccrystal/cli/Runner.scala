@@ -112,38 +112,19 @@ class Runner(
       }
 
     case CliCommand.TaskAdd(crystalId, desc) =>
-      var assignedTaskId = ""
-      store
-        .update(crystalId) { crystal =>
-          val taskId = s"task-${crystal.goal.acceptanceCriteria.size + 1}"
-          assignedTaskId = taskId
-          val newAc = AcceptanceCriterion(taskId, desc, completed = false)
-          val updatedGoal = crystal.goal.copy(
-            acceptanceCriteria = crystal.goal.acceptanceCriteria :+ newAc,
-          )
-          Right(
-            crystal.copy(
-              updatedAt = Instant.now().toString,
-              goal = updatedGoal,
-            ),
-          )
-        }
-        .map(_ => s"Added task '$assignedTaskId' to $crystalId: $desc")
+      store.addTask(crystalId, desc).map { ac =>
+        s"Added task '${ac.id}' to $crystalId: $desc"
+      }
 
     case CliCommand.TaskDone(crystalId, taskId) =>
-      store
-        .update(crystalId) { crystal =>
-          val updatedAcs = crystal.goal.acceptanceCriteria.map { ac =>
-            if ac.id == taskId then ac.copy(completed = true) else ac
-          }
-          Right(
-            crystal.copy(
-              updatedAt = Instant.now().toString,
-              goal = crystal.goal.copy(acceptanceCriteria = updatedAcs),
-            ),
-          )
-        }
-        .map(_ => s"Marked task '$taskId' as completed in $crystalId")
+      store.completeTask(crystalId, taskId).map { _ =>
+        s"Marked task '$taskId' as completed in $crystalId"
+      }
+
+    case CliCommand.TaskRemove(crystalId, taskId) =>
+      store.removeTask(crystalId, taskId).map { ac =>
+        s"Removed task '$taskId' from $crystalId: ${ac.description}"
+      }
 
     case CliCommand.TaskList(crystalId) =>
       store.load(crystalId).map { crystal =>
@@ -553,6 +534,17 @@ class Runner(
       else
         store.registerArtifact(artifact).map { art =>
           s"Registered artifact '${art.id}' [${art.substrate}/${art.role}] in cave registry."
+        }
+
+    case CliCommand.ArtifactDelete(id, crystalIdOpt, cave) =>
+      if crystalIdOpt.isDefined && !cave then
+        val cId = crystalIdOpt.get
+        store.unregisterArtifact(id, Some(cId)).map { _ =>
+          s"Unregistered artifact '$id' from crystal '$cId'."
+        }
+      else
+        store.unregisterArtifact(id, None).map { _ =>
+          s"Unregistered artifact '$id' from cave registry."
         }
 
     case CliCommand.ArtifactInspect(id, crystalIdOpt, jsonOutput) =>

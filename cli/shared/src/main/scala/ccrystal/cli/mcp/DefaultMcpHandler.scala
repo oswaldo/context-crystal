@@ -273,12 +273,12 @@ class DefaultMcpHandler(
                   .obj("type" -> "string".asJson, "description" -> "Crystal identifier".asJson),
                 "action" -> Json.obj(
                   "type"        -> "string".asJson,
-                  "enum"        -> List("add", "done").asJson,
-                  "description" -> "Action: add or done".asJson,
+                  "enum"        -> List("add", "done", "remove", "cancel").asJson,
+                  "description" -> "Action: add, done, remove, or cancel".asJson,
                 ),
                 "description_or_id" -> Json.obj(
                   "type"        -> "string".asJson,
-                  "description" -> "Task description (for add) or task ID (for done)".asJson,
+                  "description" -> "Task description (for add) or task ID (for done/remove)".asJson,
                 ),
               ),
               "required" -> List("crystal_id", "action", "description_or_id").asJson,
@@ -392,18 +392,18 @@ class DefaultMcpHandler(
           Tool(
             name = "crystal_artifact",
             description =
-              "Register, list, or inspect virtual and physical artifacts across cave or crystal.",
+              "Register, list, inspect, or delete virtual and physical artifacts across cave or crystal.",
             inputSchema = Json.obj(
               "type" -> "object".asJson,
               "properties" -> Json.obj(
                 "action" -> Json.obj(
                   "type"        -> "string".asJson,
-                  "enum"        -> List("list", "register", "inspect").asJson,
-                  "description" -> "Action: list, register, or inspect".asJson,
+                  "enum"        -> List("list", "register", "inspect", "delete", "remove").asJson,
+                  "description" -> "Action: list, register, inspect, delete, or remove".asJson,
                 ),
                 "id" -> Json.obj(
-                  "type"        -> "string".asJson,
-                  "description" -> "Artifact identifier (required for register/inspect)".asJson,
+                  "type" -> "string".asJson,
+                  "description" -> "Artifact identifier (required for register/inspect/delete)".asJson,
                 ),
                 "name" -> Json.obj(
                   "type"        -> "string".asJson,
@@ -1200,6 +1200,11 @@ class DefaultMcpHandler(
               CliCommand.TaskDone(crystalId = cId, taskId = taskId),
             )
             if !baseResult.isError then enrichTaskTransitionResult(cId, baseResult) else baseResult
+          case (Some(cId), Some("remove" | "cancel" | "rm"), Some(taskId)) =>
+            val baseResult = runCommandToResult(
+              CliCommand.TaskRemove(crystalId = cId, taskId = taskId),
+            )
+            if !baseResult.isError then enrichTaskTransitionResult(cId, baseResult) else baseResult
           case _ =>
             CallToolResult(
               List(ToolContent(text = "Missing or invalid arguments for crystal_task_transition")),
@@ -1404,6 +1409,27 @@ class DefaultMcpHandler(
                 CallToolResult(
                   List(
                     ToolContent(text = "Missing required argument 'id' for artifact inspect"),
+                  ),
+                  isError = true,
+                )
+
+          case Some("delete" | "remove" | "rm" | "unregister") =>
+            val idOpt = cursor.get[String]("id").toOption
+            idOpt match
+              case Some(id) =>
+                val crystalIdOpt = cursor.get[String]("crystal_id").toOption
+                val caveOpt      = cursor.get[Boolean]("cave").toOption
+                runCommandToResult(
+                  CliCommand.ArtifactDelete(
+                    id = id,
+                    crystalId = crystalIdOpt,
+                    cave = caveOpt.getOrElse(crystalIdOpt.isEmpty),
+                  ),
+                )
+              case None =>
+                CallToolResult(
+                  List(
+                    ToolContent(text = "Missing required argument 'id' for artifact delete"),
                   ),
                   isError = true,
                 )
