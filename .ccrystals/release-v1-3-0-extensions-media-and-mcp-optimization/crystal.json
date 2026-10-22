@@ -3,7 +3,7 @@
   "id" : "release-v1-3-0-extensions-media-and-mcp-optimization",
   "name" : "release-v1-3-0-extensions-media-and-mcp-optimization",
   "createdAt" : "2026-10-12T20:38:50.670Z",
-  "updatedAt" : "2026-10-21T23:50:59.066Z",
+  "updatedAt" : "2026-10-22T00:23:39.537Z",
   "parentCrystalId" : null,
   "origin" : null,
   "caveId" : null,
@@ -36,7 +36,7 @@
       {
         "id" : "task-5",
         "description" : "Run multi-platform test matrices and tag release v1.3.0 [task-5]",
-        "completed" : false
+        "completed" : true
       },
       {
         "id" : "task-6",
@@ -251,6 +251,29 @@
         "kind" : "checkpoint",
         "contentSummary" : "Completed task-8 (CEP-0002 Hyperframes declarative motion, trilingual subtitles, broadcast loudness) and task-9 (storage CRUD lifecycle completeness: artifact unregistration and task cancellation symmetry across core, CLI, and native MCP). Verified across JVM, Native, and JS with 100% green test suite (833 tests) and installed updated binary.",
         "anchor" : "cep-0002-and-crud-symmetry-complete",
+        "artifactIds" : [
+        ],
+        "inputArtifactIds" : [
+        ],
+        "outputArtifactIds" : [
+        ],
+        "preconditionArtifactIds" : [
+        ],
+        "fidelity" : "inferred",
+        "metadata" : {
+          
+        }
+      },
+      {
+        "id" : "node-9",
+        "parentIds" : [
+          "node-8"
+        ],
+        "timestamp" : "2026-10-22T00:23:39.537Z",
+        "actorId" : "usr_oswaldo",
+        "kind" : "checkpoint",
+        "contentSummary" : "Completed task-5: Verified release notes docs/releases/v1.3.0.md with codename Inclusion, verified installation commands (Coursier, POSIX installer, Homebrew, standalone binaries), verified 100% zero-telemetry phrasing, and passed all pre-push linter checks. All 9 tasks completed. Ready for PR push gate.",
+        "anchor" : null,
         "artifactIds" : [
         ],
         "inputArtifactIds" : [
